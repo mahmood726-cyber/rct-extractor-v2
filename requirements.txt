@@ -1,0 +1,21 @@
+# Core dependencies
+pydantic>=2.0
+pyyaml>=6.0
+rapidfuzz>=3.0
+
+# PDF parsing
+pdfplumber>=0.9
+pymupdf>=1.22
+
+# OCR (optional, for scanned PDFs)
+pytesseract>=0.3
+pillow>=9.0
+
+# ML table detection (optional)
+# torch>=2.0
+# transformers>=4.30
+# timm>=0.9
+
+# Development
+pytest>=7.0
+pytest-cov>=4.0

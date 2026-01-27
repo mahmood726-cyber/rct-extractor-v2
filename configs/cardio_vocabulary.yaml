@@ -1,0 +1,408 @@
+# Cardio Endpoint Vocabulary for RCT Extraction
+# Domain: Heart Failure (HF) + Acute Coronary Syndrome (ACS)
+#
+# Each endpoint has:
+# - canonical: Standardized name for output
+# - type: binary | tte | continuous
+# - synonyms: List of text variations (case-insensitive fuzzy matched)
+# - priority: Higher = prefer this interpretation when ambiguous
+# - composite_of: For composite endpoints, list components
+
+endpoints:
+
+  # ============================================================
+  # MORTALITY ENDPOINTS
+  # ============================================================
+
+  all_cause_death:
+    canonical: "ALL_CAUSE_DEATH"
+    type: tte
+    priority: 100
+    synonyms:
+      - "all-cause death"
+      - "all-cause mortality"
+      - "death from any cause"
+      - "total mortality"
+      - "overall mortality"
+      - "mortality"
+      - "death"
+      - "all cause death"
+      - "deaths from all causes"
+
+  cardiovascular_death:
+    canonical: "CV_DEATH"
+    type: tte
+    priority: 95
+    synonyms:
+      - "cardiovascular death"
+      - "CV death"
+      - "cardiac death"
+      - "death from cardiovascular causes"
+      - "cardiovascular mortality"
+      - "CV mortality"
+      - "death due to cardiovascular causes"
+      - "heart-related death"
+
+  sudden_cardiac_death:
+    canonical: "SUDDEN_CARDIAC_DEATH"
+    type: tte
+    priority: 90
+    synonyms:
+      - "sudden cardiac death"
+      - "sudden death"
+      - "SCD"
+      - "sudden cardiac arrest"
+
+  # ============================================================
+  # HEART FAILURE ENDPOINTS
+  # ============================================================
+
+  hf_hospitalization:
+    canonical: "HF_HOSPITALIZATION"
+    type: binary
+    priority: 85
+    synonyms:
+      - "heart failure hospitalization"
+      - "HF hospitalization"
+      - "hospitalization for heart failure"
+      - "hospitalization for worsening heart failure"
+      - "HF admission"
+      - "admission for heart failure"
+      - "hospitalization for HF"
+      - "worsening HF requiring hospitalization"
+      - "HF requiring hospitalization"
+      - "hospitalized for heart failure"
+      - "heart failure admission"
+      - "hospitalisation for heart failure"  # UK spelling
+
+  urgent_hf_visit:
+    canonical: "URGENT_HF_VISIT"
+    type: binary
+    priority: 70
+    synonyms:
+      - "urgent heart failure visit"
+      - "urgent HF visit"
+      - "urgent visit for worsening heart failure"
+      - "emergency HF visit"
+      - "urgent outpatient HF visit"
+
+  worsening_hf:
+    canonical: "WORSENING_HF"
+    type: binary
+    priority: 65
+    synonyms:
+      - "worsening heart failure"
+      - "worsening HF"
+      - "HF worsening"
+      - "deterioration of heart failure"
+      - "HF progression"
+
+  # ============================================================
+  # MYOCARDIAL INFARCTION
+  # ============================================================
+
+  myocardial_infarction:
+    canonical: "MI"
+    type: tte
+    priority: 85
+    synonyms:
+      - "myocardial infarction"
+      - "MI"
+      - "heart attack"
+      - "acute myocardial infarction"
+      - "AMI"
+      - "nonfatal myocardial infarction"
+      - "non-fatal MI"
+      - "nonfatal MI"
+      - "fatal or nonfatal MI"
+      - "recurrent MI"
+      - "reinfarction"
+
+  stemi:
+    canonical: "STEMI"
+    type: binary
+    priority: 80
+    synonyms:
+      - "ST-elevation myocardial infarction"
+      - "STEMI"
+      - "ST elevation MI"
+      - "ST-segment elevation MI"
+
+  nstemi:
+    canonical: "NSTEMI"
+    type: binary
+    priority: 80
+    synonyms:
+      - "non-ST-elevation myocardial infarction"
+      - "NSTEMI"
+      - "non-STEMI"
+      - "NSTE-ACS"
+
+  # ============================================================
+  # STROKE
+  # ============================================================
+
+  stroke:
+    canonical: "STROKE"
+    type: tte
+    priority: 85
+    synonyms:
+      - "stroke"
+      - "cerebrovascular accident"
+      - "CVA"
+      - "nonfatal stroke"
+      - "non-fatal stroke"
+      - "fatal or nonfatal stroke"
+      - "ischemic stroke"
+      - "hemorrhagic stroke"
+      - "any stroke"
+
+  ischemic_stroke:
+    canonical: "ISCHEMIC_STROKE"
+    type: binary
+    priority: 75
+    synonyms:
+      - "ischemic stroke"
+      - "ischaemic stroke"  # UK spelling
+      - "cerebral infarction"
+      - "thrombotic stroke"
+
+  tia:
+    canonical: "TIA"
+    type: binary
+    priority: 60
+    synonyms:
+      - "transient ischemic attack"
+      - "TIA"
+      - "transient ischaemic attack"
+      - "mini-stroke"
+
+  # ============================================================
+  # REVASCULARIZATION
+  # ============================================================
+
+  revascularization:
+    canonical: "REVASCULARIZATION"
+    type: binary
+    priority: 70
+    synonyms:
+      - "revascularization"
+      - "revascularisation"
+      - "coronary revascularization"
+      - "any revascularization"
+
+  urgent_revascularization:
+    canonical: "URGENT_REVASC"
+    type: binary
+    priority: 75
+    synonyms:
+      - "urgent revascularization"
+      - "urgent revascularisation"
+      - "ischemia-driven revascularization"
+      - "unplanned revascularization"
+      - "emergent revascularization"
+
+  pci:
+    canonical: "PCI"
+    type: binary
+    priority: 65
+    synonyms:
+      - "percutaneous coronary intervention"
+      - "PCI"
+      - "angioplasty"
+      - "PTCA"
+      - "coronary stenting"
+      - "stent implantation"
+
+  cabg:
+    canonical: "CABG"
+    type: binary
+    priority: 65
+    synonyms:
+      - "coronary artery bypass grafting"
+      - "CABG"
+      - "bypass surgery"
+      - "coronary bypass"
+      - "coronary artery bypass graft"
+
+  # ============================================================
+  # COMPOSITE ENDPOINTS - MACE VARIANTS
+  # ============================================================
+
+  mace_3point:
+    canonical: "MACE_3PT"
+    type: tte
+    priority: 100
+    is_composite: true
+    composite_of:
+      - CV_DEATH
+      - MI
+      - STROKE
+    synonyms:
+      - "MACE"
+      - "major adverse cardiovascular events"
+      - "major adverse cardiac events"
+      - "cardiovascular death, myocardial infarction, or stroke"
+      - "CV death, MI, or stroke"
+      - "composite of cardiovascular death, MI, and stroke"
+      - "3-point MACE"
+      - "three-point MACE"
+
+  mace_4point:
+    canonical: "MACE_4PT"
+    type: tte
+    priority: 98
+    is_composite: true
+    composite_of:
+      - CV_DEATH
+      - MI
+      - STROKE
+      - URGENT_REVASC
+    synonyms:
+      - "4-point MACE"
+      - "four-point MACE"
+      - "CV death, MI, stroke, or urgent revascularization"
+      - "MACE including revascularization"
+
+  # HF-specific composites
+  cv_death_or_hf_hosp:
+    canonical: "CV_DEATH_OR_HF_HOSP"
+    type: tte
+    priority: 100
+    is_composite: true
+    composite_of:
+      - CV_DEATH
+      - HF_HOSPITALIZATION
+    synonyms:
+      - "cardiovascular death or hospitalization for heart failure"
+      - "CV death or HF hospitalization"
+      - "composite of CV death and HF hospitalization"
+      - "worsening heart failure or cardiovascular death"
+      - "death from cardiovascular causes or hospitalization for heart failure"
+      - "cardiovascular death or worsening heart failure"
+
+  total_hf_events:
+    canonical: "TOTAL_HF_EVENTS"
+    type: binary  # Often reported as rate
+    priority: 85
+    synonyms:
+      - "total heart failure events"
+      - "total HF events"
+      - "total hospitalizations for heart failure"
+      - "recurrent HF hospitalizations"
+
+  # ============================================================
+  # OTHER CARDIOVASCULAR
+  # ============================================================
+
+  unstable_angina:
+    canonical: "UNSTABLE_ANGINA"
+    type: binary
+    priority: 70
+    synonyms:
+      - "unstable angina"
+      - "UA"
+      - "hospitalization for unstable angina"
+      - "unstable angina pectoris"
+
+  atrial_fibrillation:
+    canonical: "AFIB"
+    type: binary
+    priority: 60
+    synonyms:
+      - "atrial fibrillation"
+      - "AF"
+      - "AFib"
+      - "new-onset atrial fibrillation"
+      - "incident AF"
+
+  # ============================================================
+  # RENAL ENDPOINTS (common in HF trials)
+  # ============================================================
+
+  renal_composite:
+    canonical: "RENAL_COMPOSITE"
+    type: tte
+    priority: 80
+    synonyms:
+      - "renal composite"
+      - "composite renal endpoint"
+      - "sustained decline in eGFR"
+      - "doubling of creatinine"
+      - "end-stage renal disease"
+      - "ESRD"
+      - "renal death"
+
+  worsening_renal_function:
+    canonical: "WORSENING_RENAL"
+    type: binary
+    priority: 65
+    synonyms:
+      - "worsening renal function"
+      - "acute kidney injury"
+      - "AKI"
+      - "renal impairment"
+
+# ============================================================
+# TIMEPOINT NORMALIZATION RULES
+# ============================================================
+
+timepoints:
+  patterns:
+    # Days
+    - pattern: '(\d+)\s*(?:day|d)\b'
+      normalize_to: "{n}d"
+      days_formula: "n"
+
+    # Weeks
+    - pattern: '(\d+)\s*(?:week|wk|w)\b'
+      normalize_to: "{n}w"
+      days_formula: "n * 7"
+
+    # Months
+    - pattern: '(\d+)\s*(?:month|mo|m)\b'
+      normalize_to: "{n}m"
+      days_formula: "n * 30"
+
+    # Years
+    - pattern: '(\d+(?:\.\d+)?)\s*(?:year|yr|y)\b'
+      normalize_to: "{n}y"
+      days_formula: "n * 365"
+
+    # Median follow-up
+    - pattern: 'median\s+(?:follow-up|follow\s+up|fu)\s*(?:of\s+)?(\d+(?:\.\d+)?)\s*(year|month|day)'
+      normalize_to: "median_{n}{unit}"
+      is_median: true
+
+  selection_rules:
+    # Priority order for timepoint selection
+    - "If 'primary' is labeled, use primary timepoint"
+    - "If 'end of study' or 'final' is labeled, prefer that"
+    - "Otherwise, select longest follow-up"
+    - "If ambiguous, flag for review"
+
+# ============================================================
+# ANALYSIS POPULATION DETECTION
+# ============================================================
+
+analysis_population:
+  itt_indicators:
+    - "intention-to-treat"
+    - "ITT"
+    - "intent-to-treat"
+    - "all randomized"
+    - "full analysis set"
+    - "FAS"
+
+  per_protocol_indicators:
+    - "per-protocol"
+    - "per protocol"
+    - "PP"
+    - "as-treated"
+    - "on-treatment"
+
+  safety_indicators:
+    - "safety population"
+    - "safety analysis"
+    - "as-treated safety"
+    - "received at least one dose"

@@ -1,0 +1,20 @@
+{"trial_name": "ADVERSARIAL-1", "text": "The study enrolled 450 patients with a mean age of 65 years.", "expected": {"measure_type": "HR", "hr": null}, "adversarial": true}
+{"trial_name": "ADVERSARIAL-2", "text": "Blood pressure was reduced by 12 mmHg from baseline.", "expected": {"measure_type": "HR", "hr": null}, "adversarial": true}
+{"trial_name": "ADVERSARIAL-3", "text": "Adverse events occurred in 23% of patients.", "expected": {"measure_type": "HR", "hr": null}, "adversarial": true}
+{"trial_name": "ADVERSARIAL-4", "text": "The trial was conducted across 50 clinical sites.", "expected": {"measure_type": "OR", "or": null}, "adversarial": true}
+{"trial_name": "ADVERSARIAL-5", "text": "Patients were randomized 1:1 to treatment or placebo.", "expected": {"measure_type": "OR", "or": null}, "adversarial": true}
+{"trial_name": "ADVERSARIAL-6", "text": "The primary endpoint was overall survival at 24 months.", "expected": {"measure_type": "HR", "hr": null}, "adversarial": true}
+{"trial_name": "ADVERSARIAL-7", "text": "Laboratory values remained within normal ranges throughout the study.", "expected": {"measure_type": "RD", "rd": null}, "adversarial": true}
+{"trial_name": "ADVERSARIAL-8", "text": "The treatment was well tolerated with no dose-limiting toxicities.", "expected": {"measure_type": "HR", "hr": null}, "adversarial": true}
+{"trial_name": "ADVERSARIAL-9", "text": "Median follow-up was 36 months (range 12-48).", "expected": {"measure_type": "HR", "hr": null}, "adversarial": true}
+{"trial_name": "ADVERSARIAL-10", "text": "Quality of life scores improved significantly from baseline.", "expected": {"measure_type": "MD", "md": null}, "adversarial": true}
+{"trial_name": "ADVERSARIAL-11", "text": "The ratio of responders was approximately 2:1 favoring treatment.", "expected": {"measure_type": "HR", "hr": null}, "adversarial": true}
+{"trial_name": "ADVERSARIAL-12", "text": "Subgroup analysis showed consistent results across age groups.", "expected": {"measure_type": "HR", "hr": null}, "adversarial": true}
+{"trial_name": "ADVERSARIAL-13", "text": "The probability of progression at 1 year was 0.35.", "expected": {"measure_type": "HR", "hr": null}, "adversarial": true}
+{"trial_name": "ADVERSARIAL-14", "text": "Treatment duration ranged from 6 to 24 weeks.", "expected": {"measure_type": "HR", "hr": null}, "adversarial": true}
+{"trial_name": "ADVERSARIAL-15", "text": "The effect size was moderate according to Cohen's criteria.", "expected": {"measure_type": "MD", "md": null}, "adversarial": true}
+{"trial_name": "ADVERSARIAL-16", "text": "Kaplan-Meier curves showed separation at 6 months.", "expected": {"measure_type": "HR", "hr": null}, "adversarial": true}
+{"trial_name": "ADVERSARIAL-17", "text": "The number needed to treat was calculated as 15.", "expected": {"measure_type": "RD", "rd": null}, "adversarial": true}
+{"trial_name": "ADVERSARIAL-18", "text": "Interim analysis showed no safety concerns.", "expected": {"measure_type": "HR", "hr": null}, "adversarial": true}
+{"trial_name": "ADVERSARIAL-19", "text": "Patient characteristics were well balanced between groups.", "expected": {"measure_type": "OR", "or": null}, "adversarial": true}
+{"trial_name": "ADVERSARIAL-20", "text": "The study was powered to detect a 25% reduction in events.", "expected": {"measure_type": "HR", "hr": null}, "adversarial": true}

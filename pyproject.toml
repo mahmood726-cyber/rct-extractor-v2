@@ -1,0 +1,106 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rct-extractor"
+version = "2.0.0"
+description = "Meta-analysis grade RCT data extraction from clinical trial PDFs"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+authors = [
+    {name = "RCT Extractor Team"}
+]
+keywords = [
+    "clinical trials",
+    "RCT",
+    "meta-analysis",
+    "data extraction",
+    "PDF parsing",
+    "medical research"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Healthcare Industry",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+    "Topic :: Text Processing :: General",
+]
+
+dependencies = [
+    "pydantic>=2.0",
+    "pyyaml>=6.0",
+    "rapidfuzz>=3.0",
+]
+
+[project.optional-dependencies]
+pdf = [
+    "pdfplumber>=0.9",
+    "pymupdf>=1.22",
+]
+ocr = [
+    "pytesseract>=0.3",
+    "pillow>=9.0",
+]
+ml = [
+    "torch>=2.0",
+    "transformers>=4.30",
+    "timm>=0.9",
+]
+all = [
+    "pdfplumber>=0.9",
+    "pymupdf>=1.22",
+    "pytesseract>=0.3",
+    "pillow>=9.0",
+    "torch>=2.0",
+    "transformers>=4.30",
+    "timm>=0.9",
+]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "black>=23.0",
+    "ruff>=0.0.270",
+    "mypy>=1.0",
+]
+
+[project.scripts]
+rct-extract = "src.cli.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/rct-extractor/rct-extractor-v2"
+Documentation = "https://github.com/rct-extractor/rct-extractor-v2#readme"
+Repository = "https://github.com/rct-extractor/rct-extractor-v2"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*", "configs*"]
+
+[tool.setuptools.package-data]
+"*" = ["*.yaml", "*.yml"]
+
+[tool.black]
+line-length = 100
+target-version = ['py39', 'py310', 'py311']
+
+[tool.ruff]
+line-length = 100
+select = ["E", "F", "W", "I", "N", "D", "UP", "B"]
+ignore = ["D100", "D104", "D107"]
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-v --tb=short"
