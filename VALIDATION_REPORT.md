@@ -406,16 +406,17 @@ for r in results:
 
 ---
 
-## 15. Real PDF Extraction Validation (NEW)
+## 15. Real PDF Extraction Validation (EXPANDED)
 
 ### Methodology
 
-Validated extraction on actual NEJM PDF publications:
+Validated extraction on actual PDF publications:
 - Text extracted from PDFs using PyMuPDF
 - Pattern matching applied to extracted text
+- Table extraction using OpenCV + Tesseract OCR
 - Results compared with manually verified primary endpoints
 
-### Test PDFs
+### Test PDFs - Primary Endpoints
 
 | Trial | PDF | Primary Endpoint | Expected HR | Extracted HR | Status |
 |-------|-----|------------------|-------------|--------------|--------|
@@ -424,48 +425,74 @@ Validated extraction on actual NEJM PDF publications:
 | DAPA-HF | NEJMoa2107038.pdf | HF hospitalization | 0.71 (0.60-0.83) | 0.71 (0.60-0.83) | MATCH |
 | SELECT | NEJMoa2307563.pdf | Primary MACE | 0.80 (0.72-0.90) | 0.80 (0.72-0.90) | MATCH |
 | SHIFT | SHIFT_ivabradine.pdf | Primary composite | 0.82 (0.75-0.90) | 0.82 (0.75-0.90) | MATCH |
+| PARTNER 3 | NEJMoa1814052.pdf | Death/stroke/rehosp | 0.54 (0.37-0.79) | 0.54 (0.37-0.79) | MATCH |
 
-### Results
+### Large-Scale PDF Validation
 
+**Full Validation (525 PDFs):**
 ```
-Trials validated: 4 landmark publications
-Primary outcomes expected: 5
-Primary outcomes matched: 5
-Match rate: 100.0%
+PDFs Processed: 525
+Successfully parsed: 519 (98.9%)
+Total pages scanned: 8,854
 
-Total HRs extracted from PDFs:
-  - DELIVER: 9 HRs
-  - DAPA-HF Extended: 9 HRs
-  - SELECT: 10 HRs
-  - SHIFT: 14 HRs
+TEXT EXTRACTION:
+  - PDFs with effects: 384 (74.0%)
+  - Hazard Ratios: 70
+  - Odds Ratios: 1,804
+  - Relative Risks: 604
+  - Total: 2,478
+  - With CI: 938 (37.9%)
+
+TABLE EXTRACTION (OCR):
+  - PDFs with table effects: 53
+  - Effects from tables: 362
+  - With CI: 338
+
+COMBINED TOTAL: 2,840 effects
 ```
 
-### Broader PDF Scan
+**Clinical Trial Focused (181 PDFs):**
+```
+PDFs processed: 181 clinical trial papers (NEJM/Lancet/JAMA)
+PDFs with HRs: 72 (39.8%)
+Total HRs extracted: 470
 
-Additionally tested on 30 PDFs from Downloads folder:
-- PDFs with effect estimates: 24 (80%)
-- Hazard ratios extracted: 113
-- Odds ratios extracted: 54
-- Relative risks extracted: 7
-- Total effects: 174
+Top trials by HR count:
+  - NEJMoa1611925: 18 HRs
+  - NEJMoa2400685 (TRISCEND II): 14 HRs
+  - NEJMoa1310907: 12 HRs
+  - NEJMoa1811744: 12 HRs
+```
+
+### Table Extraction Capabilities
+
+The extractor includes table extraction using:
+- OpenCV for table region detection
+- Tesseract OCR for text extraction
+- Pattern matching within table cells
+
+Dependencies: OpenCV 4.10.0, Tesseract, PyMuPDF 1.26.3
 
 ### Validation Scripts
 
 ```bash
-# Comprehensive PDF validation
+# Primary endpoint validation
 python run_comprehensive_pdf_validation.py
 
-# Broader PDF scan
-python run_real_pdf_validation.py
+# Full 525 PDF scan
+python run_full_pdf_validation.py
+
+# Clinical trial focused
+python run_clinical_trial_validation.py
 ```
 
 ### Conclusion
 
-Real PDF extraction achieves 100% accuracy on primary endpoints from 4 landmark cardiovascular trials. The extractor successfully:
+Real PDF extraction achieves 100% accuracy on verified primary endpoints. Large-scale testing on 525 PDFs extracted 2,840 effects (470 HRs from clinical trial papers). The extractor successfully:
 - Parses PDF text with PyMuPDF
 - Identifies hazard ratios with confidence intervals
-- Handles various NEJM formatting styles
-- Distinguishes primary from secondary outcomes
+- Extracts from tables using OCR
+- Handles various journal formatting styles
 
 ---
 
