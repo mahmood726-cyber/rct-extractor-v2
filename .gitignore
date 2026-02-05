@@ -50,3 +50,9 @@ Thumbs.db
 # Project specific
 output/*.json
 *.log
+
+# Large data / corpus (not tracked in git)
+test_pdfs/
+
+# Windows artifacts
+nul

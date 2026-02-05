@@ -1,0 +1,224 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rct-extractor.example.com/schemas/pdf-annotation.json",
+  "title": "PDF Annotation Schema",
+  "description": "Schema for gold standard PDF annotations used in RCT Extractor validation",
+  "type": "object",
+  "required": ["pdf_filename", "trial_name", "annotator_id", "annotation_date", "effects"],
+  "properties": {
+    "pdf_filename": {
+      "type": "string",
+      "description": "Original PDF filename",
+      "pattern": ".*\\.pdf$"
+    },
+    "trial_name": {
+      "type": "string",
+      "description": "Name of the clinical trial",
+      "examples": ["DAPA-HF", "EMPEROR-Reduced", "PARADIGM-HF"]
+    },
+    "annotator_id": {
+      "type": "string",
+      "description": "Identifier for the annotator",
+      "enum": ["A", "B", "CONSENSUS", "AUTO"]
+    },
+    "annotation_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 datetime of annotation"
+    },
+    "total_pages": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Total number of pages in the PDF"
+    },
+    "effects": {
+      "type": "array",
+      "description": "List of extracted effect estimates",
+      "items": {
+        "$ref": "#/$defs/effect_estimate"
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata about the trial",
+      "properties": {
+        "journal": {
+          "type": "string",
+          "description": "Publication journal"
+        },
+        "year": {
+          "type": ["integer", "string"],
+          "description": "Publication year"
+        },
+        "pmid": {
+          "type": "string",
+          "description": "PubMed ID"
+        },
+        "pmc_id": {
+          "type": "string",
+          "description": "PubMed Central ID",
+          "pattern": "^PMC[0-9]+$"
+        },
+        "doi": {
+          "type": "string",
+          "description": "Digital Object Identifier"
+        },
+        "nct_number": {
+          "type": "string",
+          "description": "ClinicalTrials.gov identifier",
+          "pattern": "^NCT[0-9]+$"
+        },
+        "therapeutic_area": {
+          "type": "string",
+          "description": "Therapeutic area (e.g., Cardiology, Oncology)"
+        },
+        "agreement_rate": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Inter-rater agreement rate for consensus annotations"
+        },
+        "adjudication_needed": {
+          "type": "object",
+          "description": "Effects requiring adjudication"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "effect_estimate": {
+      "type": "object",
+      "required": ["effect_type", "value", "ci_lower", "ci_upper"],
+      "properties": {
+        "effect_type": {
+          "type": "string",
+          "description": "Type of effect estimate",
+          "enum": ["HR", "OR", "RR", "MD", "SMD", "ARD", "IRR", "NNT", "NNH"]
+        },
+        "value": {
+          "type": "number",
+          "description": "Point estimate of the effect"
+        },
+        "ci_lower": {
+          "type": "number",
+          "description": "Lower bound of confidence interval"
+        },
+        "ci_upper": {
+          "type": "number",
+          "description": "Upper bound of confidence interval"
+        },
+        "p_value": {
+          "type": ["number", "null"],
+          "minimum": 0,
+          "maximum": 1,
+          "description": "P-value (null if not reported)"
+        },
+        "outcome": {
+          "type": "string",
+          "description": "Outcome being measured",
+          "examples": ["CV death or HF hospitalization", "Overall survival", "PFS"]
+        },
+        "timepoint": {
+          "type": "string",
+          "description": "Time point or follow-up duration",
+          "examples": ["median 18.2 months", "12 months", "2 years"]
+        },
+        "comparison": {
+          "type": "string",
+          "description": "Comparison groups",
+          "examples": ["dapagliflozin vs placebo", "treatment vs control"]
+        },
+        "analysis_population": {
+          "type": "string",
+          "description": "Analysis population used",
+          "enum": ["ITT", "mITT", "per-protocol", "safety", "as-treated"],
+          "default": "ITT"
+        },
+        "source_type": {
+          "type": "string",
+          "description": "Source of the effect estimate",
+          "enum": ["text", "table", "figure", "abstract", "supplementary"],
+          "default": "text"
+        },
+        "page_number": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Page number where effect was found"
+        },
+        "raw_text": {
+          "type": "string",
+          "description": "Raw text snippet containing the effect"
+        },
+        "bounding_box": {
+          "type": ["object", "null"],
+          "description": "Bounding box coordinates on the page",
+          "properties": {
+            "x0": {"type": "number"},
+            "y0": {"type": "number"},
+            "x1": {"type": "number"},
+            "y1": {"type": "number"}
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "description": "Annotator confidence in extraction",
+          "enum": ["high", "medium", "low"],
+          "default": "high"
+        },
+        "notes": {
+          "type": "string",
+          "description": "Additional notes about this extraction"
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "pdf_filename": "dapa_hf_nejm_2019.pdf",
+      "trial_name": "DAPA-HF",
+      "annotator_id": "CONSENSUS",
+      "annotation_date": "2024-01-15T10:30:00Z",
+      "total_pages": 12,
+      "effects": [
+        {
+          "effect_type": "HR",
+          "value": 0.74,
+          "ci_lower": 0.65,
+          "ci_upper": 0.85,
+          "p_value": 0.00001,
+          "outcome": "CV death or worsening HF",
+          "timepoint": "median 18.2 months",
+          "comparison": "dapagliflozin vs placebo",
+          "analysis_population": "ITT",
+          "source_type": "text",
+          "page_number": 1,
+          "raw_text": "hazard ratio, 0.74; 95% CI, 0.65 to 0.85; P<0.001",
+          "confidence": "high"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.83,
+          "ci_lower": 0.71,
+          "ci_upper": 0.97,
+          "outcome": "CV death",
+          "timepoint": "median 18.2 months",
+          "comparison": "dapagliflozin vs placebo",
+          "analysis_population": "ITT",
+          "source_type": "table",
+          "page_number": 5,
+          "confidence": "high"
+        }
+      ],
+      "metadata": {
+        "journal": "NEJM",
+        "year": 2019,
+        "pmid": "31535829",
+        "pmc_id": "PMC6832437",
+        "doi": "10.1056/NEJMoa1911303",
+        "nct_number": "NCT03036124",
+        "therapeutic_area": "Heart Failure",
+        "agreement_rate": 1.0
+      }
+    }
+  ]
+}

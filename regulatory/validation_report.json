@@ -1,0 +1,1558 @@
+{
+  "system_name": "RCT Effect Estimate Extractor",
+  "system_version": "4.0.3",
+  "validation_date": "2026-02-01 08:32:40",
+  "validator": "Automated Validation Suite",
+  "total_tests": 82,
+  "passed_tests": 82,
+  "failed_tests": 0,
+  "pass_rate": 100.0,
+  "iq_results": {
+    "passed": 6,
+    "failed": 0,
+    "tests": [
+      {
+        "test_id": "IQ-001-01",
+        "passed": true,
+        "expected": "enhanced_extractor_v3.py exists",
+        "actual": "Found",
+        "execution_time_ms": 0,
+        "timestamp": "2026-02-01T08:31:47.797734",
+        "notes": ""
+      },
+      {
+        "test_id": "IQ-001-02",
+        "passed": true,
+        "expected": "ocr_preprocessor.py exists",
+        "actual": "Found",
+        "execution_time_ms": 0,
+        "timestamp": "2026-02-01T08:31:47.797947",
+        "notes": ""
+      },
+      {
+        "test_id": "IQ-001-03",
+        "passed": true,
+        "expected": "team_of_rivals.py exists",
+        "actual": "Found",
+        "execution_time_ms": 0,
+        "timestamp": "2026-02-01T08:31:47.798141",
+        "notes": ""
+      },
+      {
+        "test_id": "IQ-001-04",
+        "passed": true,
+        "expected": "verified_extraction_pipeline.py exists",
+        "actual": "Found",
+        "execution_time_ms": 0,
+        "timestamp": "2026-02-01T08:31:47.798344",
+        "notes": ""
+      },
+      {
+        "test_id": "IQ-002-01",
+        "passed": true,
+        "expected": "Pipeline imports successfully",
+        "actual": "Success",
+        "execution_time_ms": 0,
+        "timestamp": "2026-02-01T08:31:47.798361",
+        "notes": ""
+      },
+      {
+        "test_id": "IQ-002-02",
+        "passed": true,
+        "expected": "OCR Preprocessor imports successfully",
+        "actual": "Success",
+        "execution_time_ms": 0,
+        "timestamp": "2026-02-01T08:31:47.798375",
+        "notes": ""
+      }
+    ]
+  },
+  "oq_results": {
+    "passed": 58,
+    "failed": 0,
+    "tests": [
+      {
+        "test_id": "OQ-HR-001",
+        "passed": true,
+        "expected": "HR=0.75 (0.64-0.89)",
+        "actual": "HR=0.75 (0.64-0.89)",
+        "execution_time_ms": 328.63378524780273,
+        "timestamp": "2026-02-01T08:31:48.127069",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-HR-002",
+        "passed": true,
+        "expected": "HR=0.82 (0.71-0.95)",
+        "actual": "HR=0.82 (0.71-0.95)",
+        "execution_time_ms": 183.16078186035156,
+        "timestamp": "2026-02-01T08:31:48.310268",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-HR-003",
+        "passed": true,
+        "expected": "HR=0.68 (0.55-0.84)",
+        "actual": "HR=0.68 (0.55-0.84)",
+        "execution_time_ms": 212.89300918579102,
+        "timestamp": "2026-02-01T08:31:48.523189",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-HR-004",
+        "passed": true,
+        "expected": "HR=0.91 (0.83-0.99)",
+        "actual": "HR=0.91 (0.83-0.99)",
+        "execution_time_ms": 228.70659828186035,
+        "timestamp": "2026-02-01T08:31:48.751928",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-HR-005",
+        "passed": true,
+        "expected": "HR=0.77 (0.65-0.91)",
+        "actual": "HR=0.77 (0.65-0.91)",
+        "execution_time_ms": 220.8425998687744,
+        "timestamp": "2026-02-01T08:31:48.972802",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-HR-006",
+        "passed": true,
+        "expected": "HR=0.72 (0.61-0.85)",
+        "actual": "HR=0.72 (0.61-0.85)",
+        "execution_time_ms": 198.760986328125,
+        "timestamp": "2026-02-01T08:31:49.171594",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-HR-007",
+        "passed": true,
+        "expected": "HR=1.23 (1.05-1.44)",
+        "actual": "HR=1.23 (1.05-1.44)",
+        "execution_time_ms": 202.33702659606934,
+        "timestamp": "2026-02-01T08:31:49.373963",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-HR-008",
+        "passed": true,
+        "expected": "HR=0.69 (0.58-0.82)",
+        "actual": "HR=0.69 (0.58-0.82)",
+        "execution_time_ms": 198.69256019592285,
+        "timestamp": "2026-02-01T08:31:49.572686",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-HR-009",
+        "passed": true,
+        "expected": "HR=0.78 (0.67-0.91)",
+        "actual": "HR=0.78 (0.67-0.91)",
+        "execution_time_ms": 207.16428756713867,
+        "timestamp": "2026-02-01T08:31:49.779884",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-HR-010",
+        "passed": true,
+        "expected": "HR=1.15 (0.98-1.35)",
+        "actual": "HR=1.15 (0.98-1.35)",
+        "execution_time_ms": 200.79541206359863,
+        "timestamp": "2026-02-01T08:31:49.980718",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-OR-001",
+        "passed": true,
+        "expected": "OR=1.45 (1.12-1.88)",
+        "actual": "OR=1.45 (1.12-1.88)",
+        "execution_time_ms": 245.85580825805664,
+        "timestamp": "2026-02-01T08:31:50.226607",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-OR-002",
+        "passed": true,
+        "expected": "OR=0.72 (0.58-0.89)",
+        "actual": "OR=0.72 (0.58-0.89)",
+        "execution_time_ms": 250.86212158203125,
+        "timestamp": "2026-02-01T08:31:50.477509",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-OR-003",
+        "passed": true,
+        "expected": "OR=2.15 (1.62-2.85)",
+        "actual": "OR=2.15 (1.62-2.85)",
+        "execution_time_ms": 246.84500694274902,
+        "timestamp": "2026-02-01T08:31:50.724385",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-OR-004",
+        "passed": true,
+        "expected": "OR=0.89 (0.84-0.95)",
+        "actual": "OR=0.89 (0.84-0.95)",
+        "execution_time_ms": 229.2473316192627,
+        "timestamp": "2026-02-01T08:31:50.953664",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-OR-005",
+        "passed": true,
+        "expected": "OR=1.56 (1.21-2.01)",
+        "actual": "OR=1.56 (1.21-2.01)",
+        "execution_time_ms": 239.87722396850586,
+        "timestamp": "2026-02-01T08:31:51.193570",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-OR-006",
+        "passed": true,
+        "expected": "OR=1.82 (1.35-2.46)",
+        "actual": "OR=1.82 (1.35-2.46)",
+        "execution_time_ms": 286.0543727874756,
+        "timestamp": "2026-02-01T08:31:51.479654",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-OR-007",
+        "passed": true,
+        "expected": "OR=0.81 (0.67-0.98)",
+        "actual": "OR=0.81 (0.67-0.98)",
+        "execution_time_ms": 338.5598659515381,
+        "timestamp": "2026-02-01T08:31:51.818249",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-OR-008",
+        "passed": true,
+        "expected": "OR=15.3 (9.8-23.9)",
+        "actual": "OR=15.3 (9.8-23.9)",
+        "execution_time_ms": 314.45789337158203,
+        "timestamp": "2026-02-01T08:31:52.132742",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-RR-001",
+        "passed": true,
+        "expected": "RR=0.81 (0.7-0.94)",
+        "actual": "RR=0.81 (0.7-0.94)",
+        "execution_time_ms": 337.33057975769043,
+        "timestamp": "2026-02-01T08:31:52.470101",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-RR-002",
+        "passed": true,
+        "expected": "RR=0.65 (0.52-0.81)",
+        "actual": "RR=0.65 (0.52-0.81)",
+        "execution_time_ms": 313.0972385406494,
+        "timestamp": "2026-02-01T08:31:52.783238",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-RR-003",
+        "passed": true,
+        "expected": "RR=0.77 (0.69-0.85)",
+        "actual": "RR=0.77 (0.69-0.85)",
+        "execution_time_ms": 265.7170295715332,
+        "timestamp": "2026-02-01T08:31:53.048984",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-RR-004",
+        "passed": true,
+        "expected": "RR=0.85 (0.79-0.92)",
+        "actual": "RR=0.85 (0.79-0.92)",
+        "execution_time_ms": 295.13072967529297,
+        "timestamp": "2026-02-01T08:31:53.344156",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-RR-005",
+        "passed": true,
+        "expected": "RR=0.84 (0.74-0.95)",
+        "actual": "RR=0.84 (0.74-0.95)",
+        "execution_time_ms": 325.99449157714844,
+        "timestamp": "2026-02-01T08:31:53.670179",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-RR-006",
+        "passed": true,
+        "expected": "RR=1.28 (1.08-1.51)",
+        "actual": "RR=1.28 (1.08-1.51)",
+        "execution_time_ms": 296.2789535522461,
+        "timestamp": "2026-02-01T08:31:53.966492",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-MD-001",
+        "passed": true,
+        "expected": "MD=-3.2 (-4.1--2.3)",
+        "actual": "MD=-3.2 (-4.1--2.3)",
+        "execution_time_ms": 264.40930366516113,
+        "timestamp": "2026-02-01T08:31:54.230928",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-MD-002",
+        "passed": true,
+        "expected": "MD=8.2 (5.1-11.3)",
+        "actual": "MD=8.2 (5.1-11.3)",
+        "execution_time_ms": 307.5132369995117,
+        "timestamp": "2026-02-01T08:31:54.538471",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-MD-003",
+        "passed": true,
+        "expected": "MD=-5.2 (-7.1--3.3)",
+        "actual": "MD=-5.2 (-7.1--3.3)",
+        "execution_time_ms": 306.2431812286377,
+        "timestamp": "2026-02-01T08:31:54.844745",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-MD-004",
+        "passed": true,
+        "expected": "MD=-1.12 (-1.28--0.96)",
+        "actual": "MD=-1.12 (-1.28--0.96)",
+        "execution_time_ms": 254.0595531463623,
+        "timestamp": "2026-02-01T08:31:55.098834",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-MD-005",
+        "passed": true,
+        "expected": "MD=-2.5 (-3.1--1.9)",
+        "actual": "MD=-2.5 (-3.1--1.9)",
+        "execution_time_ms": 259.2635154724121,
+        "timestamp": "2026-02-01T08:31:55.358128",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-MD-006",
+        "passed": true,
+        "expected": "MD=-1.8 (-2.4--1.2)",
+        "actual": "MD=-1.8 (-2.4--1.2)",
+        "execution_time_ms": 287.13464736938477,
+        "timestamp": "2026-02-01T08:31:55.645294",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-SMD-001",
+        "passed": true,
+        "expected": "SMD=-0.62 (-0.81--0.42)",
+        "actual": "SMD=-0.62 (-0.81--0.42)",
+        "execution_time_ms": 317.14391708374023,
+        "timestamp": "2026-02-01T08:31:55.962466",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-SMD-002",
+        "passed": true,
+        "expected": "SMD=0.45 (0.28-0.62)",
+        "actual": "SMD=0.45 (0.28-0.62)",
+        "execution_time_ms": 302.62112617492676,
+        "timestamp": "2026-02-01T08:31:56.265118",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-SMD-003",
+        "passed": true,
+        "expected": "SMD=-0.35 (-0.52--0.18)",
+        "actual": "SMD=-0.35 (-0.52--0.18)",
+        "execution_time_ms": 304.5973777770996,
+        "timestamp": "2026-02-01T08:31:56.569745",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-SMD-004",
+        "passed": true,
+        "expected": "SMD=-0.88 (-1.03--0.74)",
+        "actual": "SMD=-0.88 (-1.03--0.74)",
+        "execution_time_ms": 305.7434558868408,
+        "timestamp": "2026-02-01T08:31:56.875521",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-SMD-005",
+        "passed": true,
+        "expected": "SMD=0.3 (0.26-0.34)",
+        "actual": "SMD=0.3 (0.26-0.34)",
+        "execution_time_ms": 299.9413013458252,
+        "timestamp": "2026-02-01T08:31:57.175501",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-IRR-001",
+        "passed": true,
+        "expected": "IRR=1.45 (1.22-1.72)",
+        "actual": "IRR=1.45 (1.22-1.72)",
+        "execution_time_ms": 275.1286029815674,
+        "timestamp": "2026-02-01T08:31:57.450665",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-ARD-001",
+        "passed": true,
+        "expected": "ARD=-2.3 (-3.8--0.8)",
+        "actual": "ARD=-2.3 (-3.8--0.8)",
+        "execution_time_ms": 271.3954448699951,
+        "timestamp": "2026-02-01T08:31:57.722091",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-NNT-001",
+        "passed": true,
+        "expected": "NNT=12 (8-24)",
+        "actual": "NNT=12.0 (8.0-24.0)",
+        "execution_time_ms": 281.6321849822998,
+        "timestamp": "2026-02-01T08:31:58.003751",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-RRR-001",
+        "passed": true,
+        "expected": "RRR=95.0 (90.3-97.6)",
+        "actual": "RRR=95.0 (90.3-97.6)",
+        "execution_time_ms": 314.26262855529785,
+        "timestamp": "2026-02-01T08:31:58.318047",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-OCR-001",
+        "passed": true,
+        "expected": "HR=0.74 (0.61-0.89)",
+        "actual": "HR=0.74 (0.61-0.89)",
+        "execution_time_ms": 298.6493110656738,
+        "timestamp": "2026-02-01T08:31:58.616743",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-OCR-002",
+        "passed": true,
+        "expected": "OR=1.56 (1.21-2.01)",
+        "actual": "OR=1.56 (1.21-2.01)",
+        "execution_time_ms": 301.9838333129883,
+        "timestamp": "2026-02-01T08:31:58.918762",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-OCR-003",
+        "passed": true,
+        "expected": "RR=0.81 (0.7-0.94)",
+        "actual": "RR=0.81 (0.7-0.94)",
+        "execution_time_ms": 332.11755752563477,
+        "timestamp": "2026-02-01T08:31:59.250907",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-OCR-004",
+        "passed": true,
+        "expected": "HR=0.74 (0.61-0.89)",
+        "actual": "HR=0.74 (0.61-0.89)",
+        "execution_time_ms": 381.8960189819336,
+        "timestamp": "2026-02-01T08:31:59.632833",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-OCR-005",
+        "passed": true,
+        "expected": "SMD=-0.51 (-0.71--0.31)",
+        "actual": "SMD=-0.51 (-0.71--0.31)",
+        "execution_time_ms": 596.9753265380859,
+        "timestamp": "2026-02-01T08:32:00.229862",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-LANG-001",
+        "passed": true,
+        "expected": "HR=0.78 (0.65-0.94)",
+        "actual": "HR=0.78 (0.65-0.94)",
+        "execution_time_ms": 404.8893451690674,
+        "timestamp": "2026-02-01T08:32:00.634779",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-LANG-002",
+        "passed": true,
+        "expected": "OR=1.45 (1.12-1.88)",
+        "actual": "OR=1.45 (1.12-1.88)",
+        "execution_time_ms": 388.486385345459,
+        "timestamp": "2026-02-01T08:32:01.023314",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-LANG-003",
+        "passed": true,
+        "expected": "HR=0.81 (0.69-0.95)",
+        "actual": "HR=0.81 (0.69-0.95)",
+        "execution_time_ms": 283.8771343231201,
+        "timestamp": "2026-02-01T08:32:01.307225",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-LANG-004",
+        "passed": true,
+        "expected": "HR=0.72 (0.58-0.89)",
+        "actual": "HR=0.72 (0.58-0.89)",
+        "execution_time_ms": 284.24668312072754,
+        "timestamp": "2026-02-01T08:32:01.591501",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-LANG-005",
+        "passed": true,
+        "expected": "HR=0.68 (0.55-0.84)",
+        "actual": "HR=0.68 (0.55-0.84)",
+        "execution_time_ms": 305.39512634277344,
+        "timestamp": "2026-02-01T08:32:01.896926",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-LANG-006",
+        "passed": true,
+        "expected": "HR=0.71 (0.59-0.86)",
+        "actual": "HR=0.71 (0.59-0.86)",
+        "execution_time_ms": 396.8508243560791,
+        "timestamp": "2026-02-01T08:32:02.293806",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-LANG-007",
+        "passed": true,
+        "expected": "HR=0.82 (0.71-0.95)",
+        "actual": "HR=0.82 (0.71-0.95)",
+        "execution_time_ms": 419.64149475097656,
+        "timestamp": "2026-02-01T08:32:02.713478",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-LANG-008",
+        "passed": true,
+        "expected": "HR=0.75 (0.62-0.91)",
+        "actual": "HR=0.75 (0.62-0.91)",
+        "execution_time_ms": 437.7171993255615,
+        "timestamp": "2026-02-01T08:32:03.151230",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-NEG-001",
+        "passed": true,
+        "expected": "No extraction",
+        "actual": "No extraction",
+        "execution_time_ms": 447.6444721221924,
+        "timestamp": "2026-02-01T08:32:03.598907",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-NEG-002",
+        "passed": true,
+        "expected": "No extraction",
+        "actual": "No extraction",
+        "execution_time_ms": 248.31819534301758,
+        "timestamp": "2026-02-01T08:32:03.847255",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-NEG-003",
+        "passed": true,
+        "expected": "No extraction",
+        "actual": "No extraction",
+        "execution_time_ms": 249.59731101989746,
+        "timestamp": "2026-02-01T08:32:04.096886",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-NEG-004",
+        "passed": true,
+        "expected": "No extraction",
+        "actual": "No extraction",
+        "execution_time_ms": 250.46634674072266,
+        "timestamp": "2026-02-01T08:32:04.347380",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-NEG-005",
+        "passed": true,
+        "expected": "No extraction",
+        "actual": "No extraction",
+        "execution_time_ms": 240.21530151367188,
+        "timestamp": "2026-02-01T08:32:04.587620",
+        "notes": ""
+      },
+      {
+        "test_id": "OQ-NEG-006",
+        "passed": true,
+        "expected": "No extraction",
+        "actual": "No extraction",
+        "execution_time_ms": 276.89433097839355,
+        "timestamp": "2026-02-01T08:32:04.864544",
+        "notes": ""
+      }
+    ],
+    "by_category": {
+      "HR Extraction": {
+        "passed": 10,
+        "failed": 0
+      },
+      "OR Extraction": {
+        "passed": 8,
+        "failed": 0
+      },
+      "RR Extraction": {
+        "passed": 6,
+        "failed": 0
+      },
+      "MD Extraction": {
+        "passed": 6,
+        "failed": 0
+      },
+      "SMD Extraction": {
+        "passed": 5,
+        "failed": 0
+      },
+      "IRR Extraction": {
+        "passed": 1,
+        "failed": 0
+      },
+      "ARD Extraction": {
+        "passed": 1,
+        "failed": 0
+      },
+      "NNT Extraction": {
+        "passed": 1,
+        "failed": 0
+      },
+      "RRR Extraction": {
+        "passed": 1,
+        "failed": 0
+      },
+      "OCR Correction": {
+        "passed": 5,
+        "failed": 0
+      },
+      "Multi-language": {
+        "passed": 8,
+        "failed": 0
+      },
+      "Negative Testing": {
+        "passed": 6,
+        "failed": 0
+      }
+    }
+  },
+  "pq_results": {
+    "passed": 18,
+    "failed": 0,
+    "tests": [
+      {
+        "test_id": "PQ-EDGE-001",
+        "passed": true,
+        "expected": "HR=1.0 (0.85-1.18)",
+        "actual": "HR=1.0 (0.85-1.18)",
+        "execution_time_ms": 246.12998962402344,
+        "timestamp": "2026-02-01T08:32:05.110837",
+        "notes": ""
+      },
+      {
+        "test_id": "PQ-EDGE-002",
+        "passed": true,
+        "expected": "HR=0.99 (0.97-1.01)",
+        "actual": "HR=0.99 (0.97-1.01)",
+        "execution_time_ms": 254.25410270690918,
+        "timestamp": "2026-02-01T08:32:05.365126",
+        "notes": ""
+      },
+      {
+        "test_id": "PQ-EDGE-003",
+        "passed": true,
+        "expected": "OR=15.0 (8.5-26.5)",
+        "actual": "OR=15.0 (8.5-26.5)",
+        "execution_time_ms": 251.42717361450195,
+        "timestamp": "2026-02-01T08:32:05.616592",
+        "notes": ""
+      },
+      {
+        "test_id": "PQ-EDGE-004",
+        "passed": true,
+        "expected": "OR=0.08 (0.02-0.32)",
+        "actual": "OR=0.08 (0.02-0.32)",
+        "execution_time_ms": 268.3088779449463,
+        "timestamp": "2026-02-01T08:32:05.884930",
+        "notes": ""
+      },
+      {
+        "test_id": "PQ-EDGE-005",
+        "passed": true,
+        "expected": "RR=4.25 (2.18-8.29)",
+        "actual": "RR=4.25 (2.18-8.29)",
+        "execution_time_ms": 250.47826766967773,
+        "timestamp": "2026-02-01T08:32:06.135439",
+        "notes": ""
+      },
+      {
+        "test_id": "PQ-EDGE-006",
+        "passed": true,
+        "expected": "SMD=1.25 (0.98-1.52)",
+        "actual": "SMD=1.25 (0.98-1.52)",
+        "execution_time_ms": 308.21681022644043,
+        "timestamp": "2026-02-01T08:32:06.443685",
+        "notes": ""
+      },
+      {
+        "test_id": "PQ-EDGE-007",
+        "passed": true,
+        "expected": "SMD=-2.15 (-2.58--1.72)",
+        "actual": "SMD=-2.15 (-2.58--1.72)",
+        "execution_time_ms": 263.54002952575684,
+        "timestamp": "2026-02-01T08:32:06.707253",
+        "notes": ""
+      },
+      {
+        "test_id": "PQ-EDGE-008",
+        "passed": true,
+        "expected": "RR=0.5 (0.1-2.5)",
+        "actual": "RR=0.5 (0.1-2.5)",
+        "execution_time_ms": 248.7020492553711,
+        "timestamp": "2026-02-01T08:32:06.955983",
+        "notes": ""
+      },
+      {
+        "test_id": "PQ-EDGE-009",
+        "passed": true,
+        "expected": "OR=0.85 (0.84-0.86)",
+        "actual": "OR=0.85 (0.84-0.86)",
+        "execution_time_ms": 258.27932357788086,
+        "timestamp": "2026-02-01T08:32:07.214298",
+        "notes": ""
+      },
+      {
+        "test_id": "PQ-EDGE-010",
+        "passed": true,
+        "expected": "HR=0.723 (0.618-0.846)",
+        "actual": "HR=0.723 (0.618-0.846)",
+        "execution_time_ms": 258.04615020751953,
+        "timestamp": "2026-02-01T08:32:07.472376",
+        "notes": ""
+      },
+      {
+        "test_id": "PQ-EDGE-011",
+        "passed": true,
+        "expected": "RR=1.05 (0.82-1.35)",
+        "actual": "RR=1.05 (0.82-1.35)",
+        "execution_time_ms": 258.2697868347168,
+        "timestamp": "2026-02-01T08:32:07.730674",
+        "notes": ""
+      },
+      {
+        "test_id": "PQ-EDGE-012",
+        "passed": true,
+        "expected": "SMD=-0.12 (-0.35-0.11)",
+        "actual": "SMD=-0.12 (-0.35-0.11)",
+        "execution_time_ms": 266.98851585388184,
+        "timestamp": "2026-02-01T08:32:07.997794",
+        "notes": ""
+      },
+      {
+        "test_id": "PQ-RW-001",
+        "passed": true,
+        "expected": "HR=0.75 (0.64-0.89)",
+        "actual": "HR=0.75 (0.64-0.89)",
+        "execution_time_ms": 205.62362670898438,
+        "timestamp": "2026-02-01T08:32:08.203445",
+        "notes": ""
+      },
+      {
+        "test_id": "PQ-RW-002",
+        "passed": true,
+        "expected": "RR=0.79 (0.77-0.81)",
+        "actual": "RR=0.79 (0.77-0.81)",
+        "execution_time_ms": 190.4435157775879,
+        "timestamp": "2026-02-01T08:32:08.393920",
+        "notes": ""
+      },
+      {
+        "test_id": "PQ-RW-003",
+        "passed": true,
+        "expected": "OR=0.72 (0.58-0.89)",
+        "actual": "OR=0.72 (0.58-0.89)",
+        "execution_time_ms": 154.64067459106445,
+        "timestamp": "2026-02-01T08:32:08.548580",
+        "notes": ""
+      },
+      {
+        "test_id": "PQ-RW-004",
+        "passed": true,
+        "expected": "SMD=-0.62 (-0.81--0.42)",
+        "actual": "SMD=-0.62 (-0.81--0.42)",
+        "execution_time_ms": 177.26993560791016,
+        "timestamp": "2026-02-01T08:32:08.725871",
+        "notes": ""
+      },
+      {
+        "test_id": "PQ-RW-005",
+        "passed": true,
+        "expected": "RR=0.68 (0.58-0.8)",
+        "actual": "RR=0.68 (0.58-0.8)",
+        "execution_time_ms": 253.56054306030273,
+        "timestamp": "2026-02-01T08:32:08.979451",
+        "notes": ""
+      },
+      {
+        "test_id": "PQ-REPRO-001",
+        "passed": true,
+        "expected": "All 100 iterations identical",
+        "actual": "1 unique results",
+        "execution_time_ms": 0,
+        "timestamp": "2026-02-01T08:32:40.456732",
+        "notes": ""
+      }
+    ]
+  },
+  "test_results": [
+    {
+      "test_id": "IQ-001-01",
+      "passed": true,
+      "expected": "enhanced_extractor_v3.py exists",
+      "actual": "Found",
+      "execution_time_ms": 0,
+      "timestamp": "2026-02-01T08:31:47.797734",
+      "notes": ""
+    },
+    {
+      "test_id": "IQ-001-02",
+      "passed": true,
+      "expected": "ocr_preprocessor.py exists",
+      "actual": "Found",
+      "execution_time_ms": 0,
+      "timestamp": "2026-02-01T08:31:47.797947",
+      "notes": ""
+    },
+    {
+      "test_id": "IQ-001-03",
+      "passed": true,
+      "expected": "team_of_rivals.py exists",
+      "actual": "Found",
+      "execution_time_ms": 0,
+      "timestamp": "2026-02-01T08:31:47.798141",
+      "notes": ""
+    },
+    {
+      "test_id": "IQ-001-04",
+      "passed": true,
+      "expected": "verified_extraction_pipeline.py exists",
+      "actual": "Found",
+      "execution_time_ms": 0,
+      "timestamp": "2026-02-01T08:31:47.798344",
+      "notes": ""
+    },
+    {
+      "test_id": "IQ-002-01",
+      "passed": true,
+      "expected": "Pipeline imports successfully",
+      "actual": "Success",
+      "execution_time_ms": 0,
+      "timestamp": "2026-02-01T08:31:47.798361",
+      "notes": ""
+    },
+    {
+      "test_id": "IQ-002-02",
+      "passed": true,
+      "expected": "OCR Preprocessor imports successfully",
+      "actual": "Success",
+      "execution_time_ms": 0,
+      "timestamp": "2026-02-01T08:31:47.798375",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-HR-001",
+      "passed": true,
+      "expected": "HR=0.75 (0.64-0.89)",
+      "actual": "HR=0.75 (0.64-0.89)",
+      "execution_time_ms": 328.63378524780273,
+      "timestamp": "2026-02-01T08:31:48.127069",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-HR-002",
+      "passed": true,
+      "expected": "HR=0.82 (0.71-0.95)",
+      "actual": "HR=0.82 (0.71-0.95)",
+      "execution_time_ms": 183.16078186035156,
+      "timestamp": "2026-02-01T08:31:48.310268",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-HR-003",
+      "passed": true,
+      "expected": "HR=0.68 (0.55-0.84)",
+      "actual": "HR=0.68 (0.55-0.84)",
+      "execution_time_ms": 212.89300918579102,
+      "timestamp": "2026-02-01T08:31:48.523189",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-HR-004",
+      "passed": true,
+      "expected": "HR=0.91 (0.83-0.99)",
+      "actual": "HR=0.91 (0.83-0.99)",
+      "execution_time_ms": 228.70659828186035,
+      "timestamp": "2026-02-01T08:31:48.751928",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-HR-005",
+      "passed": true,
+      "expected": "HR=0.77 (0.65-0.91)",
+      "actual": "HR=0.77 (0.65-0.91)",
+      "execution_time_ms": 220.8425998687744,
+      "timestamp": "2026-02-01T08:31:48.972802",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-HR-006",
+      "passed": true,
+      "expected": "HR=0.72 (0.61-0.85)",
+      "actual": "HR=0.72 (0.61-0.85)",
+      "execution_time_ms": 198.760986328125,
+      "timestamp": "2026-02-01T08:31:49.171594",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-HR-007",
+      "passed": true,
+      "expected": "HR=1.23 (1.05-1.44)",
+      "actual": "HR=1.23 (1.05-1.44)",
+      "execution_time_ms": 202.33702659606934,
+      "timestamp": "2026-02-01T08:31:49.373963",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-HR-008",
+      "passed": true,
+      "expected": "HR=0.69 (0.58-0.82)",
+      "actual": "HR=0.69 (0.58-0.82)",
+      "execution_time_ms": 198.69256019592285,
+      "timestamp": "2026-02-01T08:31:49.572686",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-HR-009",
+      "passed": true,
+      "expected": "HR=0.78 (0.67-0.91)",
+      "actual": "HR=0.78 (0.67-0.91)",
+      "execution_time_ms": 207.16428756713867,
+      "timestamp": "2026-02-01T08:31:49.779884",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-HR-010",
+      "passed": true,
+      "expected": "HR=1.15 (0.98-1.35)",
+      "actual": "HR=1.15 (0.98-1.35)",
+      "execution_time_ms": 200.79541206359863,
+      "timestamp": "2026-02-01T08:31:49.980718",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-OR-001",
+      "passed": true,
+      "expected": "OR=1.45 (1.12-1.88)",
+      "actual": "OR=1.45 (1.12-1.88)",
+      "execution_time_ms": 245.85580825805664,
+      "timestamp": "2026-02-01T08:31:50.226607",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-OR-002",
+      "passed": true,
+      "expected": "OR=0.72 (0.58-0.89)",
+      "actual": "OR=0.72 (0.58-0.89)",
+      "execution_time_ms": 250.86212158203125,
+      "timestamp": "2026-02-01T08:31:50.477509",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-OR-003",
+      "passed": true,
+      "expected": "OR=2.15 (1.62-2.85)",
+      "actual": "OR=2.15 (1.62-2.85)",
+      "execution_time_ms": 246.84500694274902,
+      "timestamp": "2026-02-01T08:31:50.724385",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-OR-004",
+      "passed": true,
+      "expected": "OR=0.89 (0.84-0.95)",
+      "actual": "OR=0.89 (0.84-0.95)",
+      "execution_time_ms": 229.2473316192627,
+      "timestamp": "2026-02-01T08:31:50.953664",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-OR-005",
+      "passed": true,
+      "expected": "OR=1.56 (1.21-2.01)",
+      "actual": "OR=1.56 (1.21-2.01)",
+      "execution_time_ms": 239.87722396850586,
+      "timestamp": "2026-02-01T08:31:51.193570",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-OR-006",
+      "passed": true,
+      "expected": "OR=1.82 (1.35-2.46)",
+      "actual": "OR=1.82 (1.35-2.46)",
+      "execution_time_ms": 286.0543727874756,
+      "timestamp": "2026-02-01T08:31:51.479654",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-OR-007",
+      "passed": true,
+      "expected": "OR=0.81 (0.67-0.98)",
+      "actual": "OR=0.81 (0.67-0.98)",
+      "execution_time_ms": 338.5598659515381,
+      "timestamp": "2026-02-01T08:31:51.818249",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-OR-008",
+      "passed": true,
+      "expected": "OR=15.3 (9.8-23.9)",
+      "actual": "OR=15.3 (9.8-23.9)",
+      "execution_time_ms": 314.45789337158203,
+      "timestamp": "2026-02-01T08:31:52.132742",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-RR-001",
+      "passed": true,
+      "expected": "RR=0.81 (0.7-0.94)",
+      "actual": "RR=0.81 (0.7-0.94)",
+      "execution_time_ms": 337.33057975769043,
+      "timestamp": "2026-02-01T08:31:52.470101",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-RR-002",
+      "passed": true,
+      "expected": "RR=0.65 (0.52-0.81)",
+      "actual": "RR=0.65 (0.52-0.81)",
+      "execution_time_ms": 313.0972385406494,
+      "timestamp": "2026-02-01T08:31:52.783238",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-RR-003",
+      "passed": true,
+      "expected": "RR=0.77 (0.69-0.85)",
+      "actual": "RR=0.77 (0.69-0.85)",
+      "execution_time_ms": 265.7170295715332,
+      "timestamp": "2026-02-01T08:31:53.048984",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-RR-004",
+      "passed": true,
+      "expected": "RR=0.85 (0.79-0.92)",
+      "actual": "RR=0.85 (0.79-0.92)",
+      "execution_time_ms": 295.13072967529297,
+      "timestamp": "2026-02-01T08:31:53.344156",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-RR-005",
+      "passed": true,
+      "expected": "RR=0.84 (0.74-0.95)",
+      "actual": "RR=0.84 (0.74-0.95)",
+      "execution_time_ms": 325.99449157714844,
+      "timestamp": "2026-02-01T08:31:53.670179",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-RR-006",
+      "passed": true,
+      "expected": "RR=1.28 (1.08-1.51)",
+      "actual": "RR=1.28 (1.08-1.51)",
+      "execution_time_ms": 296.2789535522461,
+      "timestamp": "2026-02-01T08:31:53.966492",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-MD-001",
+      "passed": true,
+      "expected": "MD=-3.2 (-4.1--2.3)",
+      "actual": "MD=-3.2 (-4.1--2.3)",
+      "execution_time_ms": 264.40930366516113,
+      "timestamp": "2026-02-01T08:31:54.230928",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-MD-002",
+      "passed": true,
+      "expected": "MD=8.2 (5.1-11.3)",
+      "actual": "MD=8.2 (5.1-11.3)",
+      "execution_time_ms": 307.5132369995117,
+      "timestamp": "2026-02-01T08:31:54.538471",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-MD-003",
+      "passed": true,
+      "expected": "MD=-5.2 (-7.1--3.3)",
+      "actual": "MD=-5.2 (-7.1--3.3)",
+      "execution_time_ms": 306.2431812286377,
+      "timestamp": "2026-02-01T08:31:54.844745",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-MD-004",
+      "passed": true,
+      "expected": "MD=-1.12 (-1.28--0.96)",
+      "actual": "MD=-1.12 (-1.28--0.96)",
+      "execution_time_ms": 254.0595531463623,
+      "timestamp": "2026-02-01T08:31:55.098834",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-MD-005",
+      "passed": true,
+      "expected": "MD=-2.5 (-3.1--1.9)",
+      "actual": "MD=-2.5 (-3.1--1.9)",
+      "execution_time_ms": 259.2635154724121,
+      "timestamp": "2026-02-01T08:31:55.358128",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-MD-006",
+      "passed": true,
+      "expected": "MD=-1.8 (-2.4--1.2)",
+      "actual": "MD=-1.8 (-2.4--1.2)",
+      "execution_time_ms": 287.13464736938477,
+      "timestamp": "2026-02-01T08:31:55.645294",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-SMD-001",
+      "passed": true,
+      "expected": "SMD=-0.62 (-0.81--0.42)",
+      "actual": "SMD=-0.62 (-0.81--0.42)",
+      "execution_time_ms": 317.14391708374023,
+      "timestamp": "2026-02-01T08:31:55.962466",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-SMD-002",
+      "passed": true,
+      "expected": "SMD=0.45 (0.28-0.62)",
+      "actual": "SMD=0.45 (0.28-0.62)",
+      "execution_time_ms": 302.62112617492676,
+      "timestamp": "2026-02-01T08:31:56.265118",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-SMD-003",
+      "passed": true,
+      "expected": "SMD=-0.35 (-0.52--0.18)",
+      "actual": "SMD=-0.35 (-0.52--0.18)",
+      "execution_time_ms": 304.5973777770996,
+      "timestamp": "2026-02-01T08:31:56.569745",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-SMD-004",
+      "passed": true,
+      "expected": "SMD=-0.88 (-1.03--0.74)",
+      "actual": "SMD=-0.88 (-1.03--0.74)",
+      "execution_time_ms": 305.7434558868408,
+      "timestamp": "2026-02-01T08:31:56.875521",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-SMD-005",
+      "passed": true,
+      "expected": "SMD=0.3 (0.26-0.34)",
+      "actual": "SMD=0.3 (0.26-0.34)",
+      "execution_time_ms": 299.9413013458252,
+      "timestamp": "2026-02-01T08:31:57.175501",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-IRR-001",
+      "passed": true,
+      "expected": "IRR=1.45 (1.22-1.72)",
+      "actual": "IRR=1.45 (1.22-1.72)",
+      "execution_time_ms": 275.1286029815674,
+      "timestamp": "2026-02-01T08:31:57.450665",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-ARD-001",
+      "passed": true,
+      "expected": "ARD=-2.3 (-3.8--0.8)",
+      "actual": "ARD=-2.3 (-3.8--0.8)",
+      "execution_time_ms": 271.3954448699951,
+      "timestamp": "2026-02-01T08:31:57.722091",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-NNT-001",
+      "passed": true,
+      "expected": "NNT=12 (8-24)",
+      "actual": "NNT=12.0 (8.0-24.0)",
+      "execution_time_ms": 281.6321849822998,
+      "timestamp": "2026-02-01T08:31:58.003751",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-RRR-001",
+      "passed": true,
+      "expected": "RRR=95.0 (90.3-97.6)",
+      "actual": "RRR=95.0 (90.3-97.6)",
+      "execution_time_ms": 314.26262855529785,
+      "timestamp": "2026-02-01T08:31:58.318047",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-OCR-001",
+      "passed": true,
+      "expected": "HR=0.74 (0.61-0.89)",
+      "actual": "HR=0.74 (0.61-0.89)",
+      "execution_time_ms": 298.6493110656738,
+      "timestamp": "2026-02-01T08:31:58.616743",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-OCR-002",
+      "passed": true,
+      "expected": "OR=1.56 (1.21-2.01)",
+      "actual": "OR=1.56 (1.21-2.01)",
+      "execution_time_ms": 301.9838333129883,
+      "timestamp": "2026-02-01T08:31:58.918762",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-OCR-003",
+      "passed": true,
+      "expected": "RR=0.81 (0.7-0.94)",
+      "actual": "RR=0.81 (0.7-0.94)",
+      "execution_time_ms": 332.11755752563477,
+      "timestamp": "2026-02-01T08:31:59.250907",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-OCR-004",
+      "passed": true,
+      "expected": "HR=0.74 (0.61-0.89)",
+      "actual": "HR=0.74 (0.61-0.89)",
+      "execution_time_ms": 381.8960189819336,
+      "timestamp": "2026-02-01T08:31:59.632833",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-OCR-005",
+      "passed": true,
+      "expected": "SMD=-0.51 (-0.71--0.31)",
+      "actual": "SMD=-0.51 (-0.71--0.31)",
+      "execution_time_ms": 596.9753265380859,
+      "timestamp": "2026-02-01T08:32:00.229862",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-LANG-001",
+      "passed": true,
+      "expected": "HR=0.78 (0.65-0.94)",
+      "actual": "HR=0.78 (0.65-0.94)",
+      "execution_time_ms": 404.8893451690674,
+      "timestamp": "2026-02-01T08:32:00.634779",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-LANG-002",
+      "passed": true,
+      "expected": "OR=1.45 (1.12-1.88)",
+      "actual": "OR=1.45 (1.12-1.88)",
+      "execution_time_ms": 388.486385345459,
+      "timestamp": "2026-02-01T08:32:01.023314",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-LANG-003",
+      "passed": true,
+      "expected": "HR=0.81 (0.69-0.95)",
+      "actual": "HR=0.81 (0.69-0.95)",
+      "execution_time_ms": 283.8771343231201,
+      "timestamp": "2026-02-01T08:32:01.307225",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-LANG-004",
+      "passed": true,
+      "expected": "HR=0.72 (0.58-0.89)",
+      "actual": "HR=0.72 (0.58-0.89)",
+      "execution_time_ms": 284.24668312072754,
+      "timestamp": "2026-02-01T08:32:01.591501",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-LANG-005",
+      "passed": true,
+      "expected": "HR=0.68 (0.55-0.84)",
+      "actual": "HR=0.68 (0.55-0.84)",
+      "execution_time_ms": 305.39512634277344,
+      "timestamp": "2026-02-01T08:32:01.896926",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-LANG-006",
+      "passed": true,
+      "expected": "HR=0.71 (0.59-0.86)",
+      "actual": "HR=0.71 (0.59-0.86)",
+      "execution_time_ms": 396.8508243560791,
+      "timestamp": "2026-02-01T08:32:02.293806",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-LANG-007",
+      "passed": true,
+      "expected": "HR=0.82 (0.71-0.95)",
+      "actual": "HR=0.82 (0.71-0.95)",
+      "execution_time_ms": 419.64149475097656,
+      "timestamp": "2026-02-01T08:32:02.713478",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-LANG-008",
+      "passed": true,
+      "expected": "HR=0.75 (0.62-0.91)",
+      "actual": "HR=0.75 (0.62-0.91)",
+      "execution_time_ms": 437.7171993255615,
+      "timestamp": "2026-02-01T08:32:03.151230",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-NEG-001",
+      "passed": true,
+      "expected": "No extraction",
+      "actual": "No extraction",
+      "execution_time_ms": 447.6444721221924,
+      "timestamp": "2026-02-01T08:32:03.598907",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-NEG-002",
+      "passed": true,
+      "expected": "No extraction",
+      "actual": "No extraction",
+      "execution_time_ms": 248.31819534301758,
+      "timestamp": "2026-02-01T08:32:03.847255",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-NEG-003",
+      "passed": true,
+      "expected": "No extraction",
+      "actual": "No extraction",
+      "execution_time_ms": 249.59731101989746,
+      "timestamp": "2026-02-01T08:32:04.096886",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-NEG-004",
+      "passed": true,
+      "expected": "No extraction",
+      "actual": "No extraction",
+      "execution_time_ms": 250.46634674072266,
+      "timestamp": "2026-02-01T08:32:04.347380",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-NEG-005",
+      "passed": true,
+      "expected": "No extraction",
+      "actual": "No extraction",
+      "execution_time_ms": 240.21530151367188,
+      "timestamp": "2026-02-01T08:32:04.587620",
+      "notes": ""
+    },
+    {
+      "test_id": "OQ-NEG-006",
+      "passed": true,
+      "expected": "No extraction",
+      "actual": "No extraction",
+      "execution_time_ms": 276.89433097839355,
+      "timestamp": "2026-02-01T08:32:04.864544",
+      "notes": ""
+    },
+    {
+      "test_id": "PQ-EDGE-001",
+      "passed": true,
+      "expected": "HR=1.0 (0.85-1.18)",
+      "actual": "HR=1.0 (0.85-1.18)",
+      "execution_time_ms": 246.12998962402344,
+      "timestamp": "2026-02-01T08:32:05.110837",
+      "notes": ""
+    },
+    {
+      "test_id": "PQ-EDGE-002",
+      "passed": true,
+      "expected": "HR=0.99 (0.97-1.01)",
+      "actual": "HR=0.99 (0.97-1.01)",
+      "execution_time_ms": 254.25410270690918,
+      "timestamp": "2026-02-01T08:32:05.365126",
+      "notes": ""
+    },
+    {
+      "test_id": "PQ-EDGE-003",
+      "passed": true,
+      "expected": "OR=15.0 (8.5-26.5)",
+      "actual": "OR=15.0 (8.5-26.5)",
+      "execution_time_ms": 251.42717361450195,
+      "timestamp": "2026-02-01T08:32:05.616592",
+      "notes": ""
+    },
+    {
+      "test_id": "PQ-EDGE-004",
+      "passed": true,
+      "expected": "OR=0.08 (0.02-0.32)",
+      "actual": "OR=0.08 (0.02-0.32)",
+      "execution_time_ms": 268.3088779449463,
+      "timestamp": "2026-02-01T08:32:05.884930",
+      "notes": ""
+    },
+    {
+      "test_id": "PQ-EDGE-005",
+      "passed": true,
+      "expected": "RR=4.25 (2.18-8.29)",
+      "actual": "RR=4.25 (2.18-8.29)",
+      "execution_time_ms": 250.47826766967773,
+      "timestamp": "2026-02-01T08:32:06.135439",
+      "notes": ""
+    },
+    {
+      "test_id": "PQ-EDGE-006",
+      "passed": true,
+      "expected": "SMD=1.25 (0.98-1.52)",
+      "actual": "SMD=1.25 (0.98-1.52)",
+      "execution_time_ms": 308.21681022644043,
+      "timestamp": "2026-02-01T08:32:06.443685",
+      "notes": ""
+    },
+    {
+      "test_id": "PQ-EDGE-007",
+      "passed": true,
+      "expected": "SMD=-2.15 (-2.58--1.72)",
+      "actual": "SMD=-2.15 (-2.58--1.72)",
+      "execution_time_ms": 263.54002952575684,
+      "timestamp": "2026-02-01T08:32:06.707253",
+      "notes": ""
+    },
+    {
+      "test_id": "PQ-EDGE-008",
+      "passed": true,
+      "expected": "RR=0.5 (0.1-2.5)",
+      "actual": "RR=0.5 (0.1-2.5)",
+      "execution_time_ms": 248.7020492553711,
+      "timestamp": "2026-02-01T08:32:06.955983",
+      "notes": ""
+    },
+    {
+      "test_id": "PQ-EDGE-009",
+      "passed": true,
+      "expected": "OR=0.85 (0.84-0.86)",
+      "actual": "OR=0.85 (0.84-0.86)",
+      "execution_time_ms": 258.27932357788086,
+      "timestamp": "2026-02-01T08:32:07.214298",
+      "notes": ""
+    },
+    {
+      "test_id": "PQ-EDGE-010",
+      "passed": true,
+      "expected": "HR=0.723 (0.618-0.846)",
+      "actual": "HR=0.723 (0.618-0.846)",
+      "execution_time_ms": 258.04615020751953,
+      "timestamp": "2026-02-01T08:32:07.472376",
+      "notes": ""
+    },
+    {
+      "test_id": "PQ-EDGE-011",
+      "passed": true,
+      "expected": "RR=1.05 (0.82-1.35)",
+      "actual": "RR=1.05 (0.82-1.35)",
+      "execution_time_ms": 258.2697868347168,
+      "timestamp": "2026-02-01T08:32:07.730674",
+      "notes": ""
+    },
+    {
+      "test_id": "PQ-EDGE-012",
+      "passed": true,
+      "expected": "SMD=-0.12 (-0.35-0.11)",
+      "actual": "SMD=-0.12 (-0.35-0.11)",
+      "execution_time_ms": 266.98851585388184,
+      "timestamp": "2026-02-01T08:32:07.997794",
+      "notes": ""
+    },
+    {
+      "test_id": "PQ-RW-001",
+      "passed": true,
+      "expected": "HR=0.75 (0.64-0.89)",
+      "actual": "HR=0.75 (0.64-0.89)",
+      "execution_time_ms": 205.62362670898438,
+      "timestamp": "2026-02-01T08:32:08.203445",
+      "notes": ""
+    },
+    {
+      "test_id": "PQ-RW-002",
+      "passed": true,
+      "expected": "RR=0.79 (0.77-0.81)",
+      "actual": "RR=0.79 (0.77-0.81)",
+      "execution_time_ms": 190.4435157775879,
+      "timestamp": "2026-02-01T08:32:08.393920",
+      "notes": ""
+    },
+    {
+      "test_id": "PQ-RW-003",
+      "passed": true,
+      "expected": "OR=0.72 (0.58-0.89)",
+      "actual": "OR=0.72 (0.58-0.89)",
+      "execution_time_ms": 154.64067459106445,
+      "timestamp": "2026-02-01T08:32:08.548580",
+      "notes": ""
+    },
+    {
+      "test_id": "PQ-RW-004",
+      "passed": true,
+      "expected": "SMD=-0.62 (-0.81--0.42)",
+      "actual": "SMD=-0.62 (-0.81--0.42)",
+      "execution_time_ms": 177.26993560791016,
+      "timestamp": "2026-02-01T08:32:08.725871",
+      "notes": ""
+    },
+    {
+      "test_id": "PQ-RW-005",
+      "passed": true,
+      "expected": "RR=0.68 (0.58-0.8)",
+      "actual": "RR=0.68 (0.58-0.8)",
+      "execution_time_ms": 253.56054306030273,
+      "timestamp": "2026-02-01T08:32:08.979451",
+      "notes": ""
+    },
+    {
+      "test_id": "PQ-REPRO-001",
+      "passed": true,
+      "expected": "All 100 iterations identical",
+      "actual": "1 unique results",
+      "execution_time_ms": 0,
+      "timestamp": "2026-02-01T08:32:40.456732",
+      "notes": ""
+    }
+  ],
+  "execution_time_seconds": 52.659467935562134,
+  "conclusion": "VALIDATION PASSED"
+}

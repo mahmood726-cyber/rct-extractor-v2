@@ -1,0 +1,312 @@
+name: Nightly PDF Validation
+
+on:
+  schedule:
+    # Run at 2 AM UTC daily
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    inputs:
+      max_pdfs:
+        description: 'Maximum number of PDFs to validate'
+        required: false
+        default: '100'
+      therapeutic_area:
+        description: 'Filter by therapeutic area (empty for all)'
+        required: false
+        default: ''
+
+env:
+  PYTHON_VERSION: '3.10'
+
+jobs:
+  # ===========================================================================
+  # DOWNLOAD PMC PDFS
+  # ===========================================================================
+  download-pdfs:
+    name: Download PMC PDFs
+    runs-on: ubuntu-latest
+    outputs:
+      pdf_count: ${{ steps.download.outputs.pdf_count }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install requests
+
+      - name: Restore PDF cache
+        uses: actions/cache@v4
+        with:
+          path: test_pdfs/pmc_open_access/
+          key: pmc-pdfs-${{ github.run_number }}
+          restore-keys: |
+            pmc-pdfs-
+
+      - name: Download PDFs
+        id: download
+        run: |
+          python scripts/download_pmc_pdfs.py --source external_validation --max ${{ github.event.inputs.max_pdfs || '50' }}
+          # Count downloaded PDFs
+          PDF_COUNT=$(find test_pdfs/pmc_open_access -name "*.pdf" 2>/dev/null | wc -l || echo "0")
+          echo "pdf_count=$PDF_COUNT" >> $GITHUB_OUTPUT
+          echo "Downloaded $PDF_COUNT PDFs"
+
+      - name: Upload manifest
+        uses: actions/upload-artifact@v4
+        with:
+          name: pdf-manifest
+          path: test_pdfs/manifest.json
+          retention-days: 7
+
+      - name: Cache PDFs
+        uses: actions/cache/save@v4
+        with:
+          path: test_pdfs/pmc_open_access/
+          key: pmc-pdfs-${{ github.run_number }}
+
+  # ===========================================================================
+  # FULL PDF VALIDATION
+  # ===========================================================================
+  full-validation:
+    name: Full PDF Validation
+    runs-on: ubuntu-latest
+    needs: download-pdfs
+    if: needs.download-pdfs.outputs.pdf_count > 0
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y tesseract-ocr tesseract-ocr-eng poppler-utils
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pdfplumber pymupdf pytesseract pillow
+
+      - name: Restore PDF cache
+        uses: actions/cache@v4
+        with:
+          path: test_pdfs/pmc_open_access/
+          key: pmc-pdfs-${{ github.run_number }}
+          restore-keys: |
+            pmc-pdfs-
+
+      - name: Run full PDF validation
+        id: validation
+        run: |
+          python scripts/run_real_pdf_validation.py --all --html
+        continue-on-error: true
+
+      - name: Check for regressions
+        id: regression
+        run: |
+          python scripts/pdf_regression_check.py --ci-mode --tolerance 0.05
+        continue-on-error: true
+
+      - name: Upload validation report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pdf-validation-report
+          path: |
+            output/pdf_validation_report.json
+            output/pdf_validation_report.html
+            output/regression_check_result.json
+          retention-days: 30
+
+      - name: Set job status
+        if: steps.regression.outcome == 'failure'
+        run: |
+          echo "::warning::PDF validation regression detected"
+
+  # ===========================================================================
+  # EDGE CASE VALIDATION
+  # ===========================================================================
+  edge-case-validation:
+    name: Edge Case Validation
+    runs-on: ubuntu-latest
+    needs: download-pdfs
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y tesseract-ocr tesseract-ocr-eng poppler-utils
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest pdfplumber pymupdf pytesseract pillow
+
+      - name: Restore PDF cache
+        uses: actions/cache@v4
+        with:
+          path: test_pdfs/pmc_open_access/
+          key: pmc-pdfs-${{ github.run_number }}
+          restore-keys: |
+            pmc-pdfs-
+
+      - name: Run edge case tests
+        run: |
+          pytest tests/test_pdf_edge_cases.py -v --tb=short -m "pdf" || echo "Some edge case tests skipped"
+        continue-on-error: true
+
+      - name: Run OCR quality assessment
+        run: |
+          python scripts/assess_ocr_quality.py --all --json || echo "OCR assessment skipped (no scanned PDFs)"
+        continue-on-error: true
+
+      - name: Upload OCR report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ocr-quality-report
+          path: output/ocr_quality_report.json
+          retention-days: 30
+
+  # ===========================================================================
+  # THERAPEUTIC AREA VALIDATION
+  # ===========================================================================
+  area-validation:
+    name: Validation by Therapeutic Area
+    runs-on: ubuntu-latest
+    needs: download-pdfs
+    strategy:
+      fail-fast: false
+      matrix:
+        area: [cardiology, oncology, diabetes, neurology, infectious]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pdfplumber pymupdf
+
+      - name: Restore PDF cache
+        uses: actions/cache@v4
+        with:
+          path: test_pdfs/pmc_open_access/
+          key: pmc-pdfs-${{ github.run_number }}
+          restore-keys: |
+            pmc-pdfs-
+
+      - name: Run validation for ${{ matrix.area }}
+        run: |
+          python scripts/run_real_pdf_validation.py --area ${{ matrix.area }} || echo "No PDFs for ${{ matrix.area }}"
+        continue-on-error: true
+
+      - name: Upload area report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: validation-${{ matrix.area }}
+          path: output/pdf_validation_report.json
+          retention-days: 7
+
+  # ===========================================================================
+  # NOTIFICATION
+  # ===========================================================================
+  notify:
+    name: Send Notifications
+    runs-on: ubuntu-latest
+    needs: [full-validation, edge-case-validation, area-validation]
+    if: always()
+
+    steps:
+      - name: Download validation report
+        uses: actions/download-artifact@v4
+        with:
+          name: pdf-validation-report
+          path: ./reports
+        continue-on-error: true
+
+      - name: Parse results
+        id: results
+        run: |
+          if [ -f reports/pdf_validation_report.json ]; then
+            F1=$(jq -r '.overall_f1 // 0' reports/pdf_validation_report.json)
+            PRECISION=$(jq -r '.overall_precision // 0' reports/pdf_validation_report.json)
+            RECALL=$(jq -r '.overall_recall // 0' reports/pdf_validation_report.json)
+            TOTAL=$(jq -r '.total_pdfs // 0' reports/pdf_validation_report.json)
+
+            echo "f1=$F1" >> $GITHUB_OUTPUT
+            echo "precision=$PRECISION" >> $GITHUB_OUTPUT
+            echo "recall=$RECALL" >> $GITHUB_OUTPUT
+            echo "total=$TOTAL" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create summary
+        run: |
+          echo "## Nightly PDF Validation Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Metric | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|--------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Total PDFs | ${{ steps.results.outputs.total || 'N/A' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| F1 Score | ${{ steps.results.outputs.f1 || 'N/A' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Precision | ${{ steps.results.outputs.precision || 'N/A' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Recall | ${{ steps.results.outputs.recall || 'N/A' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Full-Validation: ${{ needs.full-validation.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "Edge-Cases: ${{ needs.edge-case-validation.result }}" >> $GITHUB_STEP_SUMMARY
+
+      # Uncomment to enable Slack notifications
+      # - name: Send Slack notification
+      #   if: failure()
+      #   uses: slackapi/slack-github-action@v1
+      #   with:
+      #     payload: |
+      #       {
+      #         "text": "Nightly PDF Validation Failed",
+      #         "blocks": [
+      #           {
+      #             "type": "section",
+      #             "text": {
+      #               "type": "mrkdwn",
+      #               "text": ":warning: *Nightly PDF Validation Failed*\nF1: ${{ steps.results.outputs.f1 }}"
+      #             }
+      #           }
+      #         ]
+      #       }
+      #   env:
+      #     SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

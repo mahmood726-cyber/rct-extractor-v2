@@ -1,0 +1,65 @@
+{
+  "date": "2026-02-04T09:53:29.556010",
+  "pdfs": [
+    {
+      "filename": "PMC12381027.pdf",
+      "pmc_id": "PMC12381027",
+      "extractions_count": 8,
+      "ci_complete_count": 4
+    },
+    {
+      "filename": "PMC11978796.pdf",
+      "pmc_id": "PMC11978796",
+      "extractions_count": 2,
+      "ci_complete_count": 2
+    },
+    {
+      "filename": "PMC12383606.pdf",
+      "pmc_id": "PMC12383606",
+      "extractions_count": 1,
+      "ci_complete_count": 1
+    },
+    {
+      "filename": "PMC12673806.pdf",
+      "pmc_id": "PMC12673806",
+      "extractions_count": 4,
+      "ci_complete_count": 4
+    },
+    {
+      "filename": "PMC12799394.pdf",
+      "pmc_id": "PMC12799394",
+      "extractions_count": 11,
+      "ci_complete_count": 11
+    },
+    {
+      "filename": "PMC12618225.pdf",
+      "pmc_id": "PMC12618225",
+      "extractions_count": 4,
+      "ci_complete_count": 3
+    },
+    {
+      "filename": "PMC9619635.pdf",
+      "pmc_id": "PMC9619635",
+      "extractions_count": 3,
+      "ci_complete_count": 3
+    },
+    {
+      "filename": "PMC12672312.pdf",
+      "pmc_id": "PMC12672312",
+      "extractions_count": 1,
+      "ci_complete_count": 0
+    },
+    {
+      "filename": "PMC12002045.pdf",
+      "pmc_id": "PMC12002045",
+      "extractions_count": 5,
+      "ci_complete_count": 4
+    },
+    {
+      "filename": "PMC12707242.pdf",
+      "pmc_id": "PMC12707242",
+      "extractions_count": 4,
+      "ci_complete_count": 3
+    }
+  ]
+}

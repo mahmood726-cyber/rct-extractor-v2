@@ -1,0 +1,39 @@
+{
+  "version": "4.3.1",
+  "date": "2026-02-03",
+  "description": "Rigorous validation with negative controls and tighter tolerances",
+  "metrics": {
+    "recall": 0.903,
+    "recall_ci_lower": 0.805,
+    "recall_ci_upper": 0.955,
+    "precision_positive": 0.368,
+    "precision_combined": 0.359,
+    "ci_completion": 0.929,
+    "ci_completion_ci_lower": 0.830,
+    "ci_completion_ci_upper": 0.972,
+    "false_positive_rate_negative_controls": 0.133
+  },
+  "corpus": {
+    "total_trials": 49,
+    "by_difficulty": {
+      "easy": 28,
+      "moderate": 11,
+      "hard": 6,
+      "very_hard": 4
+    },
+    "negative_controls": 15
+  },
+  "targets": {
+    "recall": {"target": 0.70, "achieved": true},
+    "ci_completion": {"target": 0.80, "achieved": true},
+    "fp_rate_negative_controls": {"target": 0.30, "achieved": true},
+    "precision_combined": {"target": 0.50, "achieved": false, "note": "Extra extractions on positive controls due to secondary endpoints"}
+  },
+  "improvements_from_v4.3": {
+    "negative_context_filters": "Added 50+ patterns to filter protocol/methods/review text",
+    "hard_difficulty_trials": "Added 6 hard + 4 very_hard trials to balance corpus",
+    "negative_controls_dataset": "Created 15 negative control test cases",
+    "rales_rr_pattern": "Added pattern for 'relative risk of X, Y; 95 percent confidence interval' format",
+    "tighter_tolerances": "Implemented absolute tolerance (0.01 value, 0.02 CI) in addition to relative"
+  }
+}

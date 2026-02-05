@@ -1,0 +1,38 @@
+{
+  "version": "v4.3.6",
+  "date": "2026-02-04T13:39:03.988940",
+  "description": "Ground truth from abstracts of OA RCT PDFs",
+  "total_pdfs": 5,
+  "total_with_gt": 1,
+  "entries": [
+    {
+      "pmc_id": "PMC12368675",
+      "pmid": "40833694",
+      "title": "Statin Use in Patients With Advanced Prostate Cancer in the TITAN and SPARTAN Trials.",
+      "journal": "JAMA network open",
+      "year": 2025,
+      "effects": [
+        {
+          "effect_type": "HR",
+          "value": 0.54,
+          "ci_lower": 0.39,
+          "ci_upper": 0.74
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.65,
+          "ci_lower": 0.38,
+          "ci_upper": 1.13
+        },
+        {
+          "effect_type": "HR",
+          "value": 1.16,
+          "ci_lower": 0.76,
+          "ci_upper": 1.77
+        }
+      ],
+      "source": "abstract_extraction",
+      "abstract": "IMPORTANCE: The impact of statins on overall survival (OS) in patients with prostate cancer treated using intensified therapy with apalutamide is not fully understood.\nOBJECTIVE: To determine whether statin exposure was associated with OS and grade 3 or greater cardiac adverse events (AEs) in patients treated with apalutamide.\nDESIGN, SETTING, AND PARTICIPANTS: This cohort study used individual patient data from 2 multicenter phase 3 randomized clinical trials, SPARTAN (October 14, 2013, to Dece"
+    }
+  ]
+}

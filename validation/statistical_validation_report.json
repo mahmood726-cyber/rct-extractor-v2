@@ -1,0 +1,362 @@
+{
+  "timestamp": "2026-01-31T13:39:18.245534",
+  "version": "4.0.6",
+  "methodology": "Research Synthesis Methods compliant validation",
+  "total_trials": 103,
+  "development_set_size": 72,
+  "calibration_set_size": 31,
+  "random_seed": 42,
+  "overall_performance": {
+    "n_total": 103,
+    "n_correct": 100,
+    "n_extracted": 101,
+    "sensitivity": 0.9709,
+    "sensitivity_95ci_lower": 0.9178,
+    "sensitivity_95ci_upper": 0.99,
+    "extraction_rate": 0.9806,
+    "extraction_rate_95ci_lower": 0.9319,
+    "extraction_rate_95ci_upper": 0.9947,
+    "mean_absolute_error": 0.2941
+  },
+  "development_set": {
+    "n_total": 72,
+    "n_correct": 70,
+    "n_extracted": 71,
+    "sensitivity": 0.9722,
+    "sensitivity_95ci_lower": 0.9043,
+    "sensitivity_95ci_upper": 0.9923,
+    "extraction_rate": 0.9861,
+    "extraction_rate_95ci_lower": 0.9254,
+    "extraction_rate_95ci_upper": 0.9975,
+    "mean_absolute_error": 0.4183
+  },
+  "calibration_set": {
+    "n_total": 31,
+    "n_correct": 30,
+    "n_extracted": 30,
+    "sensitivity": 0.9677,
+    "sensitivity_95ci_lower": 0.8381,
+    "sensitivity_95ci_upper": 0.9943,
+    "extraction_rate": 0.9677,
+    "extraction_rate_95ci_lower": 0.8381,
+    "extraction_rate_95ci_upper": 0.9943,
+    "mean_absolute_error": 0.0
+  },
+  "stratified_by_year": [
+    {
+      "stratum": "2000-2004",
+      "n": 19,
+      "n_correct": 17,
+      "sensitivity": 0.8947,
+      "sensitivity_95ci_lower": 0.6861,
+      "sensitivity_95ci_upper": 0.9706
+    },
+    {
+      "stratum": "2005-2009",
+      "n": 14,
+      "n_correct": 14,
+      "sensitivity": 1.0,
+      "sensitivity_95ci_lower": 0.7847,
+      "sensitivity_95ci_upper": 1
+    },
+    {
+      "stratum": "2010-2014",
+      "n": 15,
+      "n_correct": 15,
+      "sensitivity": 1.0,
+      "sensitivity_95ci_lower": 0.7961,
+      "sensitivity_95ci_upper": 1
+    },
+    {
+      "stratum": "2015-2019",
+      "n": 36,
+      "n_correct": 35,
+      "sensitivity": 0.9722,
+      "sensitivity_95ci_lower": 0.8583,
+      "sensitivity_95ci_upper": 0.9951
+    },
+    {
+      "stratum": "2020-2025",
+      "n": 19,
+      "n_correct": 19,
+      "sensitivity": 1.0,
+      "sensitivity_95ci_lower": 0.8318,
+      "sensitivity_95ci_upper": 1
+    }
+  ],
+  "stratified_by_journal": [
+    {
+      "stratum": "Annals of Internal Medicine",
+      "n": 3,
+      "n_correct": 3,
+      "sensitivity": 1.0,
+      "sensitivity_95ci_lower": 0.4385,
+      "sensitivity_95ci_upper": 1
+    },
+    {
+      "stratum": "BMJ",
+      "n": 5,
+      "n_correct": 5,
+      "sensitivity": 1.0,
+      "sensitivity_95ci_lower": 0.5655,
+      "sensitivity_95ci_upper": 1
+    },
+    {
+      "stratum": "CHEST",
+      "n": 2,
+      "n_correct": 2,
+      "sensitivity": 1.0,
+      "sensitivity_95ci_lower": 0.3424,
+      "sensitivity_95ci_upper": 1
+    },
+    {
+      "stratum": "Circulation",
+      "n": 3,
+      "n_correct": 2,
+      "sensitivity": 0.6667,
+      "sensitivity_95ci_lower": 0.2077,
+      "sensitivity_95ci_upper": 0.9385
+    },
+    {
+      "stratum": "Gut",
+      "n": 2,
+      "n_correct": 2,
+      "sensitivity": 1.0,
+      "sensitivity_95ci_lower": 0.3424,
+      "sensitivity_95ci_upper": 1
+    },
+    {
+      "stratum": "JAMA",
+      "n": 5,
+      "n_correct": 5,
+      "sensitivity": 1.0,
+      "sensitivity_95ci_lower": 0.5655,
+      "sensitivity_95ci_upper": 1
+    },
+    {
+      "stratum": "Journal of Clinical Oncology",
+      "n": 4,
+      "n_correct": 4,
+      "sensitivity": 1.0,
+      "sensitivity_95ci_lower": 0.5101,
+      "sensitivity_95ci_upper": 1
+    },
+    {
+      "stratum": "Neurology",
+      "n": 2,
+      "n_correct": 2,
+      "sensitivity": 1.0,
+      "sensitivity_95ci_lower": 0.3424,
+      "sensitivity_95ci_upper": 1
+    },
+    {
+      "stratum": "New England Journal of Medicine",
+      "n": 64,
+      "n_correct": 63,
+      "sensitivity": 0.9844,
+      "sensitivity_95ci_lower": 0.9167,
+      "sensitivity_95ci_upper": 0.9972
+    },
+    {
+      "stratum": "The Lancet",
+      "n": 13,
+      "n_correct": 12,
+      "sensitivity": 0.9231,
+      "sensitivity_95ci_lower": 0.6669,
+      "sensitivity_95ci_upper": 0.9863
+    }
+  ],
+  "stratified_by_therapeutic_area": [
+    {
+      "stratum": "Cardiology",
+      "n": 42,
+      "n_correct": 40,
+      "sensitivity": 0.9524,
+      "sensitivity_95ci_lower": 0.8421,
+      "sensitivity_95ci_upper": 0.9868
+    },
+    {
+      "stratum": "Dermatology",
+      "n": 3,
+      "n_correct": 3,
+      "sensitivity": 1.0,
+      "sensitivity_95ci_lower": 0.4385,
+      "sensitivity_95ci_upper": 1
+    },
+    {
+      "stratum": "Endocrinology",
+      "n": 8,
+      "n_correct": 8,
+      "sensitivity": 1.0,
+      "sensitivity_95ci_lower": 0.6756,
+      "sensitivity_95ci_upper": 1
+    },
+    {
+      "stratum": "Gastroenterology",
+      "n": 4,
+      "n_correct": 4,
+      "sensitivity": 1.0,
+      "sensitivity_95ci_lower": 0.5101,
+      "sensitivity_95ci_upper": 1
+    },
+    {
+      "stratum": "Infectious Disease",
+      "n": 3,
+      "n_correct": 3,
+      "sensitivity": 1.0,
+      "sensitivity_95ci_lower": 0.4385,
+      "sensitivity_95ci_upper": 1
+    },
+    {
+      "stratum": "Nephrology",
+      "n": 5,
+      "n_correct": 5,
+      "sensitivity": 1.0,
+      "sensitivity_95ci_lower": 0.5655,
+      "sensitivity_95ci_upper": 1
+    },
+    {
+      "stratum": "Neurology",
+      "n": 4,
+      "n_correct": 4,
+      "sensitivity": 1.0,
+      "sensitivity_95ci_lower": 0.5101,
+      "sensitivity_95ci_upper": 1
+    },
+    {
+      "stratum": "Oncology",
+      "n": 14,
+      "n_correct": 13,
+      "sensitivity": 0.9286,
+      "sensitivity_95ci_lower": 0.6853,
+      "sensitivity_95ci_upper": 0.9873
+    },
+    {
+      "stratum": "Psychiatry",
+      "n": 6,
+      "n_correct": 6,
+      "sensitivity": 1.0,
+      "sensitivity_95ci_lower": 0.6097,
+      "sensitivity_95ci_upper": 1
+    },
+    {
+      "stratum": "Pulmonology",
+      "n": 6,
+      "n_correct": 6,
+      "sensitivity": 1.0,
+      "sensitivity_95ci_lower": 0.6097,
+      "sensitivity_95ci_upper": 1
+    },
+    {
+      "stratum": "Rheumatology",
+      "n": 4,
+      "n_correct": 4,
+      "sensitivity": 1.0,
+      "sensitivity_95ci_lower": 0.5101,
+      "sensitivity_95ci_upper": 1
+    },
+    {
+      "stratum": "Surgery",
+      "n": 4,
+      "n_correct": 4,
+      "sensitivity": 1.0,
+      "sensitivity_95ci_lower": 0.5101,
+      "sensitivity_95ci_upper": 1
+    }
+  ],
+  "stratified_by_effect_type": [
+    {
+      "stratum": "Absolute Risk Difference",
+      "n": 2,
+      "n_correct": 2,
+      "sensitivity": 1.0,
+      "sensitivity_95ci_lower": 0.3424,
+      "sensitivity_95ci_upper": 1
+    },
+    {
+      "stratum": "Hazard Ratio",
+      "n": 59,
+      "n_correct": 58,
+      "sensitivity": 0.9831,
+      "sensitivity_95ci_lower": 0.91,
+      "sensitivity_95ci_upper": 0.997
+    },
+    {
+      "stratum": "Incidence Rate Ratio",
+      "n": 2,
+      "n_correct": 2,
+      "sensitivity": 1.0,
+      "sensitivity_95ci_lower": 0.3424,
+      "sensitivity_95ci_upper": 1
+    },
+    {
+      "stratum": "Mean Difference",
+      "n": 6,
+      "n_correct": 6,
+      "sensitivity": 1.0,
+      "sensitivity_95ci_lower": 0.6097,
+      "sensitivity_95ci_upper": 1
+    },
+    {
+      "stratum": "Odds Ratio",
+      "n": 7,
+      "n_correct": 7,
+      "sensitivity": 1.0,
+      "sensitivity_95ci_lower": 0.6457,
+      "sensitivity_95ci_upper": 1
+    },
+    {
+      "stratum": "Relative Risk Reduction",
+      "n": 1,
+      "n_correct": 0,
+      "sensitivity": 0.0,
+      "sensitivity_95ci_lower": 0,
+      "sensitivity_95ci_upper": 0.7935
+    },
+    {
+      "stratum": "Risk Ratio",
+      "n": 24,
+      "n_correct": 23,
+      "sensitivity": 0.9583,
+      "sensitivity_95ci_lower": 0.7976,
+      "sensitivity_95ci_upper": 0.9926
+    },
+    {
+      "stratum": "Standardized Mean Difference",
+      "n": 2,
+      "n_correct": 2,
+      "sensitivity": 1.0,
+      "sensitivity_95ci_lower": 0.3424,
+      "sensitivity_95ci_upper": 1
+    }
+  ],
+  "calibration_analysis": {
+    "expected_calibration_error": 0.0097,
+    "maximum_calibration_error": 0.01,
+    "brier_score": 9.7e-05,
+    "n_samples": 31,
+    "calibration_bins": [
+      {
+        "bin_range": "0.0-0.1",
+        "n_samples": 1,
+        "mean_confidence": 0.0,
+        "observed_accuracy": 0.0,
+        "calibration_error": 0.0
+      },
+      {
+        "bin_range": "0.9-1.0",
+        "n_samples": 30,
+        "mean_confidence": 0.99,
+        "observed_accuracy": 1.0,
+        "calibration_error": 0.01
+      }
+    ]
+  },
+  "hosmer_lemeshow": {
+    "chi_square_statistic": 0.2554,
+    "p_value": 0.9682,
+    "degrees_of_freedom": 3,
+    "n_groups": 5,
+    "interpretation": "Model is well-calibrated (p > 0.05, fail to reject null)"
+  }
+}

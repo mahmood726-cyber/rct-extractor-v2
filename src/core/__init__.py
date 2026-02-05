@@ -43,6 +43,63 @@ from .ensemble import (
     generate_ensemble_report
 )
 
+from .unified_extractor import (
+    UnifiedExtractor,
+    EffectEstimate,
+    PDFExtractionResult,
+    extract_from_pdf
+)
+
+# v4.0 Verified Extraction Architecture
+from .proof_carrying_numbers import (
+    ProofCarryingNumber,
+    ProofCarryingExtraction,
+    ProofCertificate,
+    VerificationCheck,
+    CheckResult,
+    VerificationError,
+    create_verified_extraction,
+    run_all_checks
+)
+
+from .team_of_rivals import (
+    team_extract,
+    get_verified_extractions,
+    ConsensusResult,
+    CandidateExtraction,
+    ExtractorType,
+    ConsensusEngine,
+    PatternExtractor,
+    GrammarExtractor,
+    StateMachineExtractor,
+    ChunkExtractor,
+    Critic
+)
+
+from .v3_extractor_wrapper import V3ExtractorWrapper
+
+from .deterministic_verifier import (
+    verify_extraction,
+    is_verified,
+    DeterministicVerificationResult,
+    VerificationLevel,
+    DeterministicVerifier,
+    SymbolicVerifier,
+    PlausibilityVerifier,
+    CrossValueVerifier
+)
+
+from .verified_extraction_pipeline import (
+    verified_extract,
+    extract_to_dict,
+    extract_values,
+    VerifiedExtractionPipeline,
+    PipelineResult,
+    PipelineStatus,
+    BatchProcessor,
+    generate_verification_report
+)
+
 __all__ = [
     # Main extractor
     'RCTExtractor',
@@ -80,5 +137,56 @@ __all__ = [
     'MergedResult',
     'ExtractorResult',
     'ConfidenceGrade',
-    'generate_ensemble_report'
+    'generate_ensemble_report',
+
+    # Unified PDF extractor (v2.3)
+    'UnifiedExtractor',
+    'EffectEstimate',
+    'PDFExtractionResult',
+    'extract_from_pdf',
+
+    # v4.0 Verified Extraction Architecture
+    # Proof-Carrying Numbers
+    'ProofCarryingNumber',
+    'ProofCarryingExtraction',
+    'ProofCertificate',
+    'VerificationCheck',
+    'CheckResult',
+    'VerificationError',
+    'create_verified_extraction',
+    'run_all_checks',
+
+    # Team-of-Rivals
+    'team_extract',
+    'get_verified_extractions',
+    'ConsensusResult',
+    'CandidateExtraction',
+    'ExtractorType',
+    'ConsensusEngine',
+    'PatternExtractor',
+    'GrammarExtractor',
+    'StateMachineExtractor',
+    'ChunkExtractor',
+    'Critic',
+    'V3ExtractorWrapper',
+
+    # Deterministic Verifier
+    'verify_extraction',
+    'is_verified',
+    'DeterministicVerificationResult',
+    'VerificationLevel',
+    'DeterministicVerifier',
+    'SymbolicVerifier',
+    'PlausibilityVerifier',
+    'CrossValueVerifier',
+
+    # Verified Extraction Pipeline
+    'verified_extract',
+    'extract_to_dict',
+    'extract_values',
+    'VerifiedExtractionPipeline',
+    'PipelineResult',
+    'PipelineStatus',
+    'BatchProcessor',
+    'generate_verification_report',
 ]

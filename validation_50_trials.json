@@ -1,0 +1,28 @@
+{
+  "validation_date": "2026-02-01T08:56:27.468365",
+  "validation_source": "ClinicalTrials.gov (Author-Reported)",
+  "methodology": "CTG results are authoritative ground truth from trial investigators",
+  "parameters": {
+    "value_tolerance": 0.02,
+    "ci_tolerance": 0.05,
+    "trials_requested": 50,
+    "trials_validated": 0
+  },
+  "metrics": {
+    "total_ctg_effects": 0,
+    "total_extractions": 0,
+    "true_positives": 0,
+    "false_negatives": 0,
+    "false_positives": 0,
+    "sensitivity": 0.0,
+    "precision": 0.0,
+    "f1_score": 0.0,
+    "mean_absolute_error": 0.0,
+    "mean_relative_error_pct": 0.0,
+    "ci_detection_rate": 0.0,
+    "ci_accuracy": 0.0
+  },
+  "by_effect_type": {},
+  "by_condition": {},
+  "studies": []
+}

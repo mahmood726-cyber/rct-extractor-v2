@@ -1,0 +1,65 @@
+{
+  "export_date": "2026-01-31T14:44:38.177832",
+  "version": "4.0.6",
+  "total_trials": 156,
+  "by_year_block": {
+    "2000-2004": 23,
+    "2005-2009": 23,
+    "2010-2014": 21,
+    "2015-2019": 57,
+    "2020-2025": 32
+  },
+  "by_journal": {
+    "JAMA": 7,
+    "The Lancet": 27,
+    "New England Journal of Medicine": 98,
+    "Circulation": 3,
+    "BMJ": 6,
+    "Annals of Internal Medicine": 5,
+    "Journal of Clinical Oncology": 4,
+    "CHEST": 2,
+    "Gut": 2,
+    "Neurology": 2
+  },
+  "by_therapeutic_area": {
+    "Cardiology": 42,
+    "Endocrinology": 10,
+    "Oncology": 14,
+    "Neurology": 10,
+    "Psychiatry": 10,
+    "Infectious Disease": 10,
+    "Gastroenterology": 10,
+    "Pulmonology": 10,
+    "Rheumatology": 10,
+    "Nephrology": 10,
+    "Surgery": 10,
+    "Dermatology": 10
+  },
+  "by_effect_type": {
+    "Risk Ratio": 54,
+    "Hazard Ratio": 76,
+    "Odds Ratio": 11,
+    "Mean Difference": 8,
+    "Incidence Rate Ratio": 2,
+    "Absolute Risk Difference": 2,
+    "Standardized Mean Difference": 2,
+    "Relative Risk Reduction": 1
+  },
+  "schema": {
+    "id": "Sequential trial ID",
+    "trial_name": "Short trial name/acronym",
+    "year": "Publication year",
+    "year_block": "5-year block (e.g., 2015-2019)",
+    "journal": "Source journal",
+    "therapeutic_area": "Medical specialty",
+    "effect_type": "Type of effect measure",
+    "gold_standard": {
+      "point_estimate": "Effect estimate value",
+      "ci_lower": "Lower bound of 95% CI",
+      "ci_upper": "Upper bound of 95% CI"
+    },
+    "source_text": "Text containing the effect estimate",
+    "pmid": "PubMed ID (if available)",
+    "notes": "Additional notes"
+  }
+}

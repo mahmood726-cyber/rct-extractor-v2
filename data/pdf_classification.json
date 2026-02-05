@@ -1,0 +1,2772 @@
+{
+  "version": "phase1",
+  "date": "2026-02-03T18:47:48.803169",
+  "pdf_dir": "test_pdfs\\open_access_rcts",
+  "total_pdfs": 58,
+  "by_class": {
+    "A": 1,
+    "B": 43,
+    "C": 14,
+    "unclassified": 0
+  },
+  "pdfs": [
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC10052556.pdf",
+      "filename": "PMC10052556.pdf",
+      "pmc_id": "PMC10052556",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 34503,
+      "extractions": [
+        {
+          "effect_type": "RRR",
+          "value": 49.2,
+          "ci_lower": 15.6,
+          "ci_upper": 70.3,
+          "ci_complete": true,
+          "source_pattern": "vaccine\nefficacy against severe rotavirus gastroenteritis and any-severity rotavirus gastroenteritis"
+        },
+        {
+          "effect_type": "RRR",
+          "value": 62.2,
+          "ci_lower": 35.5,
+          "ci_upper": 79.0,
+          "ci_complete": true,
+          "source_pattern": "vaccine efficacy\nincreased to 62.2% (95% CI 35.5%-79.0%)"
+        },
+        {
+          "effect_type": "RR",
+          "value": 0.42,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "RR=0.42"
+        },
+        {
+          "effect_type": "RR",
+          "value": 0.46,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "RR=0.46"
+        },
+        {
+          "effect_type": "RR",
+          "value": 0.62,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "RR=0.62"
+        }
+      ],
+      "extraction_count": 5,
+      "ci_complete_count": 2,
+      "effect_types": [
+        "RRR",
+        "RR"
+      ],
+      "has_abstract": true,
+      "has_results_section": true,
+      "title_snippet": "Epidemiology and Infection Transporting monovalent rotavirus vaccine",
+      "suggested_class": "B",
+      "rct_indicator_count": 3,
+      "non_rct_indicator_count": 4,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC10148668.pdf",
+      "filename": "PMC10148668.pdf",
+      "pmc_id": "PMC10148668",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 33697,
+      "extractions": [],
+      "extraction_count": 0,
+      "ci_complete_count": 0,
+      "effect_types": [],
+      "has_abstract": false,
+      "has_results_section": true,
+      "title_snippet": "Since January 2020 Elsevier has created a COVID-19 resource centre with",
+      "suggested_class": "B",
+      "rct_indicator_count": 2,
+      "non_rct_indicator_count": 5,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC10160525.pdf",
+      "filename": "PMC10160525.pdf",
+      "pmc_id": "PMC10160525",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 62330,
+      "extractions": [
+        {
+          "effect_type": "RRR",
+          "value": 92.88,
+          "ci_lower": 70.12,
+          "ci_upper": 98.31,
+          "ci_complete": true,
+          "source_pattern": "efficacyof92.88%(95%CI70.12-98.31)"
+        },
+        {
+          "effect_type": "RRR",
+          "value": 95.0,
+          "ci_lower": 90.3,
+          "ci_upper": 97.6,
+          "ci_complete": true,
+          "source_pattern": "efficacy.Efficacyresultsregarding\nvaccine 95% (95% CI 90.3-97.6)"
+        },
+        {
+          "effect_type": "RRR",
+          "value": 92.28,
+          "ci_lower": 85.74,
+          "ci_upper": 95.82,
+          "ci_complete": true,
+          "source_pattern": "vaccine efficacy against symptomatic COVID-19 was 92.28% (95% CI 85.74-95.82)"
+        }
+      ],
+      "extraction_count": 3,
+      "ci_complete_count": 3,
+      "effect_types": [
+        "RRR"
+      ],
+      "has_abstract": false,
+      "has_results_section": true,
+      "title_snippet": "Articles",
+      "suggested_class": "B",
+      "rct_indicator_count": 5,
+      "non_rct_indicator_count": 6,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC10719107.pdf",
+      "filename": "PMC10719107.pdf",
+      "pmc_id": "PMC10719107",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 70297,
+      "extractions": [],
+      "extraction_count": 0,
+      "ci_complete_count": 0,
+      "effect_types": [],
+      "has_abstract": false,
+      "has_results_section": true,
+      "title_snippet": "nature medicine",
+      "suggested_class": "B",
+      "rct_indicator_count": 5,
+      "non_rct_indicator_count": 4,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC11066537.pdf",
+      "filename": "PMC11066537.pdf",
+      "pmc_id": "PMC11066537",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 78376,
+      "extractions": [
+        {
+          "effect_type": "RR",
+          "value": 2.72,
+          "ci_lower": 1.84,
+          "ci_upper": 4.11,
+          "ci_complete": true,
+          "source_pattern": "RR 2.72, 95% CI 1.84 to 4.11"
+        },
+        {
+          "effect_type": "RR",
+          "value": 5.0,
+          "ci_lower": 0.56,
+          "ci_upper": 236.49,
+          "ci_complete": true,
+          "source_pattern": "RR 5.0, 95% CI 0.56 to 236.49"
+        },
+        {
+          "effect_type": "RR",
+          "value": 1.47,
+          "ci_lower": 0.73,
+          "ci_upper": 3.04,
+          "ci_complete": true,
+          "source_pattern": "RR 1.47, 95% CI 0.73 to 3.04"
+        }
+      ],
+      "extraction_count": 3,
+      "ci_complete_count": 3,
+      "effect_types": [
+        "RR"
+      ],
+      "has_abstract": true,
+      "has_results_section": true,
+      "title_snippet": "Wellcome Open Research 2023, 8:182 Last updated: 03 MAY 2024",
+      "suggested_class": "C",
+      "rct_indicator_count": 5,
+      "non_rct_indicator_count": 3,
+      "classification": "C",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC11187303.pdf",
+      "filename": "PMC11187303.pdf",
+      "pmc_id": "PMC11187303",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 43448,
+      "extractions": [],
+      "extraction_count": 0,
+      "ci_complete_count": 0,
+      "effect_types": [],
+      "has_abstract": false,
+      "has_results_section": true,
+      "title_snippet": "TYPEClinicalTrial",
+      "suggested_class": "B",
+      "rct_indicator_count": 5,
+      "non_rct_indicator_count": 2,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC11303790.pdf",
+      "filename": "PMC11303790.pdf",
+      "pmc_id": "PMC11303790",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 48760,
+      "extractions": [],
+      "extraction_count": 0,
+      "ci_complete_count": 0,
+      "effect_types": [],
+      "has_abstract": false,
+      "has_results_section": true,
+      "title_snippet": "Article https://doi.org/10.1038/s41467-024-50802-2",
+      "suggested_class": "B",
+      "rct_indicator_count": 3,
+      "non_rct_indicator_count": 3,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC11512672.pdf",
+      "filename": "PMC11512672.pdf",
+      "pmc_id": "PMC11512672",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 60404,
+      "extractions": [],
+      "extraction_count": 0,
+      "ci_complete_count": 0,
+      "effect_types": [],
+      "has_abstract": false,
+      "has_results_section": true,
+      "title_snippet": "HHS Public Access",
+      "suggested_class": "B",
+      "rct_indicator_count": 4,
+      "non_rct_indicator_count": 2,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC11650871.pdf",
+      "filename": "PMC11650871.pdf",
+      "pmc_id": "PMC11650871",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 44925,
+      "extractions": [],
+      "extraction_count": 0,
+      "ci_complete_count": 0,
+      "effect_types": [],
+      "has_abstract": false,
+      "has_results_section": true,
+      "title_snippet": "Clinical Infectious Diseases",
+      "suggested_class": "B",
+      "rct_indicator_count": 2,
+      "non_rct_indicator_count": 5,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC11978796.pdf",
+      "filename": "PMC11978796.pdf",
+      "pmc_id": "PMC11978796",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 44508,
+      "extractions": [
+        {
+          "effect_type": "HR",
+          "value": 0.89,
+          "ci_lower": 0.8,
+          "ci_upper": 0.99,
+          "ci_complete": true,
+          "source_pattern": "HR=0.89 [0.80-0.99]"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.97,
+          "ci_lower": 0.8,
+          "ci_upper": 1.17,
+          "ci_complete": true,
+          "source_pattern": "HR=0.97; 0.80, 1.17"
+        }
+      ],
+      "extraction_count": 2,
+      "ci_complete_count": 2,
+      "effect_types": [
+        "HR"
+      ],
+      "has_abstract": false,
+      "has_results_section": true,
+      "title_snippet": "Article https://doi.org/10.1038/s41467-025-58721-6",
+      "suggested_class": "B",
+      "rct_indicator_count": 4,
+      "non_rct_indicator_count": 3,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12002045.pdf",
+      "filename": "PMC12002045.pdf",
+      "pmc_id": "PMC12002045",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 56086,
+      "extractions": [
+        {
+          "effect_type": "RR",
+          "value": 1.19,
+          "ci_lower": 1.03,
+          "ci_upper": 1.38,
+          "ci_complete": true,
+          "source_pattern": "RR, 1.19 [95% CI, 1.03-1.38]"
+        },
+        {
+          "effect_type": "RR",
+          "value": 0.87,
+          "ci_lower": 0.64,
+          "ci_upper": 1.19,
+          "ci_complete": true,
+          "source_pattern": "RR, 0.87 [95% CI, 0.64-1.19]"
+        },
+        {
+          "effect_type": "RR",
+          "value": 1.21,
+          "ci_lower": 0.94,
+          "ci_upper": 1.56,
+          "ci_complete": true,
+          "source_pattern": "RR, 1.21 [95% CI, 0.94-1.56]"
+        },
+        {
+          "effect_type": "RR",
+          "value": 1.05,
+          "ci_lower": 0.89,
+          "ci_upper": 1.24,
+          "ci_complete": true,
+          "source_pattern": "RR, 1.05 [95% CI, 0.89-1.24]"
+        },
+        {
+          "effect_type": "RR",
+          "value": 1.06,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "relative risk 1.06"
+        }
+      ],
+      "extraction_count": 5,
+      "ci_complete_count": 4,
+      "effect_types": [
+        "RR"
+      ],
+      "has_abstract": false,
+      "has_results_section": true,
+      "title_snippet": "Hypertension",
+      "suggested_class": "B",
+      "rct_indicator_count": 3,
+      "non_rct_indicator_count": 4,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12144549.pdf",
+      "filename": "PMC12144549.pdf",
+      "pmc_id": "PMC12144549",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 70788,
+      "extractions": [
+        {
+          "effect_type": "HR",
+          "value": 0.86,
+          "ci_lower": 0.77,
+          "ci_upper": 0.96,
+          "ci_complete": true,
+          "source_pattern": "hazard ratio, 0.86; 95% CI, 0.77-0.96"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.89,
+          "ci_lower": 0.71,
+          "ci_upper": 1.11,
+          "ci_complete": true,
+          "source_pattern": "hazard ratio, 0.89; 95% CI,\n0.71-1.11"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.84,
+          "ci_lower": 0.74,
+          "ci_upper": 0.95,
+          "ci_complete": true,
+          "source_pattern": "hazard ratio,\n0.84; 95% CI, 0.74-0.95"
+        }
+      ],
+      "extraction_count": 3,
+      "ci_complete_count": 3,
+      "effect_types": [
+        "HR"
+      ],
+      "has_abstract": true,
+      "has_results_section": true,
+      "title_snippet": "Circulation",
+      "suggested_class": "B",
+      "rct_indicator_count": 5,
+      "non_rct_indicator_count": 4,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12206259.pdf",
+      "filename": "PMC12206259.pdf",
+      "pmc_id": "PMC12206259",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 42425,
+      "extractions": [
+        {
+          "effect_type": "HR",
+          "value": 0.8,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "HR = 0.8"
+        },
+        {
+          "effect_type": "HR",
+          "value": 1.0,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "HR = 1.0"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.9,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "HR = 0.9"
+        },
+        {
+          "effect_type": "HR",
+          "value": 3.88,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "HR = 3.88"
+        }
+      ],
+      "extraction_count": 4,
+      "ci_complete_count": 0,
+      "effect_types": [
+        "HR"
+      ],
+      "has_abstract": true,
+      "has_results_section": true,
+      "title_snippet": "1341710",
+      "suggested_class": "B",
+      "rct_indicator_count": 2,
+      "non_rct_indicator_count": 4,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12266184.pdf",
+      "filename": "PMC12266184.pdf",
+      "pmc_id": "PMC12266184",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 49306,
+      "extractions": [
+        {
+          "effect_type": "IRR",
+          "value": 0.82,
+          "ci_lower": 0.62,
+          "ci_upper": 1.08,
+          "ci_complete": true,
+          "source_pattern": "rate ratio 0.82\n(95% CI 0.62-1.08"
+        },
+        {
+          "effect_type": "IRR",
+          "value": 0.78,
+          "ci_lower": 0.55,
+          "ci_upper": 1.09,
+          "ci_complete": true,
+          "source_pattern": "rate ratio 0.78, 95% CI 0.55-1.09"
+        },
+        {
+          "effect_type": "RR",
+          "value": 0.82,
+          "ci_lower": 0.62,
+          "ci_upper": 1.08,
+          "ci_complete": true,
+          "source_pattern": "rate ratio 0.82\n(95% CI 0.62-1.08"
+        },
+        {
+          "effect_type": "RR",
+          "value": 0.78,
+          "ci_lower": 0.55,
+          "ci_upper": 1.09,
+          "ci_complete": true,
+          "source_pattern": "rate ratio 0.78, 95% CI 0.55-1.09"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.75,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "hazard ratio 0.75"
+        }
+      ],
+      "extraction_count": 5,
+      "ci_complete_count": 4,
+      "effect_types": [
+        "RR",
+        "IRR",
+        "HR"
+      ],
+      "has_abstract": true,
+      "has_results_section": true,
+      "title_snippet": "Articles",
+      "suggested_class": "B",
+      "rct_indicator_count": 3,
+      "non_rct_indicator_count": 5,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12312311.pdf",
+      "filename": "PMC12312311.pdf",
+      "pmc_id": "PMC12312311",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 55183,
+      "extractions": [
+        {
+          "effect_type": "HR",
+          "value": 0.86,
+          "ci_lower": 0.55,
+          "ci_upper": 1.35,
+          "ci_complete": true,
+          "source_pattern": "HR 0.86, 95% CI 0.55-1.35"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.71,
+          "ci_lower": 0.44,
+          "ci_upper": 1.13,
+          "ci_complete": true,
+          "source_pattern": "HR 0.71, 95% CI 0.44-1.13"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.9,
+          "ci_lower": 0.56,
+          "ci_upper": 1.45,
+          "ci_complete": true,
+          "source_pattern": "HR 0.90, 95% CI 0.56-1.45"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.76,
+          "ci_lower": 0.44,
+          "ci_upper": 1.32,
+          "ci_complete": true,
+          "source_pattern": "HR 0.76, 95% CI 0.44-1.32"
+        },
+        {
+          "effect_type": "ARD",
+          "value": -15.18,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "risk difference -15.18%"
+        }
+      ],
+      "extraction_count": 5,
+      "ci_complete_count": 4,
+      "effect_types": [
+        "HR",
+        "ARD"
+      ],
+      "has_abstract": true,
+      "has_results_section": true,
+      "title_snippet": "Abdel Jawad et al. Cardiovascular Diabetology (2025) 24:307 Cardiovascular Diabetology",
+      "suggested_class": "B",
+      "rct_indicator_count": 5,
+      "non_rct_indicator_count": 5,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12355417.pdf",
+      "filename": "PMC12355417.pdf",
+      "pmc_id": "PMC12355417",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 46743,
+      "extractions": [],
+      "extraction_count": 0,
+      "ci_complete_count": 0,
+      "effect_types": [],
+      "has_abstract": true,
+      "has_results_section": true,
+      "title_snippet": "iScience",
+      "suggested_class": "B",
+      "rct_indicator_count": 4,
+      "non_rct_indicator_count": 2,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12381027.pdf",
+      "filename": "PMC12381027.pdf",
+      "pmc_id": "PMC12381027",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 49178,
+      "extractions": [
+        {
+          "effect_type": "HR",
+          "value": 1.05,
+          "ci_lower": 0.61,
+          "ci_upper": 1.81,
+          "ci_complete": true,
+          "source_pattern": "HR=1.05, 95% CI 0.61-1.81"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.94,
+          "ci_lower": 0.64,
+          "ci_upper": 1.37,
+          "ci_complete": true,
+          "source_pattern": "HR=0.94, 95% CI 0.64-1.37"
+        },
+        {
+          "effect_type": "HR",
+          "value": 1.11,
+          "ci_lower": 0.75,
+          "ci_upper": 1.65,
+          "ci_complete": true,
+          "source_pattern": "HR=1.11, 95% CI 0.75-1.65"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.93,
+          "ci_lower": 0.62,
+          "ci_upper": 1.4,
+          "ci_complete": true,
+          "source_pattern": "HR for PFS was 0.93 (95% CI 0.62-1.40"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.78,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "HR=0.78"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.62,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "HR=0.62"
+        },
+        {
+          "effect_type": "HR",
+          "value": 1.06,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "HR=1.06"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.59,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "HR=0.59"
+        }
+      ],
+      "extraction_count": 8,
+      "ci_complete_count": 4,
+      "effect_types": [
+        "HR"
+      ],
+      "has_abstract": false,
+      "has_results_section": true,
+      "title_snippet": "Article https://doi.org/10.1038/s41467-025-62678-x",
+      "suggested_class": "B",
+      "rct_indicator_count": 4,
+      "non_rct_indicator_count": 2,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12383606.pdf",
+      "filename": "PMC12383606.pdf",
+      "pmc_id": "PMC12383606",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 54260,
+      "extractions": [
+        {
+          "effect_type": "RRR",
+          "value": 79.5,
+          "ci_lower": 46.8,
+          "ci_upper": 92.1,
+          "ci_complete": true,
+          "source_pattern": "vaccine efficacy of 79.5%\n(95% CI 46.8-92.1)"
+        }
+      ],
+      "extraction_count": 1,
+      "ci_complete_count": 1,
+      "effect_types": [
+        "RRR"
+      ],
+      "has_abstract": false,
+      "has_results_section": true,
+      "title_snippet": "HHS Public Access",
+      "suggested_class": "C",
+      "rct_indicator_count": 5,
+      "non_rct_indicator_count": 3,
+      "classification": "C",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12396472.pdf",
+      "filename": "PMC12396472.pdf",
+      "pmc_id": "PMC12396472",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 58226,
+      "extractions": [
+        {
+          "effect_type": "RRR",
+          "value": 87.5,
+          "ci_lower": 6.4,
+          "ci_upper": 99.7,
+          "ci_complete": true,
+          "source_pattern": "vaccine efficacy was 87.5% (95% CI 6.4-99.7)"
+        },
+        {
+          "effect_type": "HR",
+          "value": 1.21,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "HR = 1.21"
+        },
+        {
+          "effect_type": "HR",
+          "value": 2.31,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "HR = 2.31"
+        }
+      ],
+      "extraction_count": 3,
+      "ci_complete_count": 1,
+      "effect_types": [
+        "RRR",
+        "HR"
+      ],
+      "has_abstract": false,
+      "has_results_section": true,
+      "title_snippet": "Articles",
+      "suggested_class": "C",
+      "rct_indicator_count": 4,
+      "non_rct_indicator_count": 4,
+      "classification": "C",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12398225.pdf",
+      "filename": "PMC12398225.pdf",
+      "pmc_id": "PMC12398225",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 54876,
+      "extractions": [
+        {
+          "effect_type": "HR",
+          "value": 0.3,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "HR: 0.30"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.45,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "hazard ratio 0.45"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.43,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "hazard ratio 0.43"
+        }
+      ],
+      "extraction_count": 3,
+      "ci_complete_count": 0,
+      "effect_types": [
+        "HR"
+      ],
+      "has_abstract": true,
+      "has_results_section": true,
+      "title_snippet": "HHS Public Access",
+      "suggested_class": "B",
+      "rct_indicator_count": 5,
+      "non_rct_indicator_count": 3,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12432284.pdf",
+      "filename": "PMC12432284.pdf",
+      "pmc_id": "PMC12432284",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 47189,
+      "extractions": [
+        {
+          "effect_type": "HR",
+          "value": 1.0,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "HR = 1."
+        }
+      ],
+      "extraction_count": 1,
+      "ci_complete_count": 0,
+      "effect_types": [
+        "HR"
+      ],
+      "has_abstract": true,
+      "has_results_section": true,
+      "title_snippet": "1356410",
+      "suggested_class": "B",
+      "rct_indicator_count": 3,
+      "non_rct_indicator_count": 3,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12449588.pdf",
+      "filename": "PMC12449588.pdf",
+      "pmc_id": "PMC12449588",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 49235,
+      "extractions": [
+        {
+          "effect_type": "MD",
+          "value": 5.17,
+          "ci_lower": -1.0,
+          "ci_upper": 11.34,
+          "ci_complete": true,
+          "source_pattern": "mean difference 5.17 (-1-11.34"
+        },
+        {
+          "effect_type": "OR",
+          "value": 1.002,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "OR=1.002"
+        },
+        {
+          "effect_type": "OR",
+          "value": 6.6,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "OR=6.600"
+        },
+        {
+          "effect_type": "OR",
+          "value": 1.001,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "OR=1.001"
+        },
+        {
+          "effect_type": "OR",
+          "value": 9.21,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "OR=9.210"
+        },
+        {
+          "effect_type": "OR",
+          "value": 0.37,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "OR=0.370"
+        }
+      ],
+      "extraction_count": 6,
+      "ci_complete_count": 1,
+      "effect_types": [
+        "MD",
+        "OR"
+      ],
+      "has_abstract": true,
+      "has_results_section": true,
+      "title_snippet": "IJMS",
+      "suggested_class": "C",
+      "rct_indicator_count": 4,
+      "non_rct_indicator_count": 3,
+      "classification": "C",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12457714.pdf",
+      "filename": "PMC12457714.pdf",
+      "pmc_id": "PMC12457714",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 48176,
+      "extractions": [],
+      "extraction_count": 0,
+      "ci_complete_count": 0,
+      "effect_types": [],
+      "has_abstract": false,
+      "has_results_section": true,
+      "title_snippet": "TYPEClinicalTrial",
+      "suggested_class": "B",
+      "rct_indicator_count": 5,
+      "non_rct_indicator_count": 5,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12459455.pdf",
+      "filename": "PMC12459455.pdf",
+      "pmc_id": "PMC12459455",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 43720,
+      "extractions": [
+        {
+          "effect_type": "MD",
+          "value": 3.1,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "mean difference\n3.1"
+        },
+        {
+          "effect_type": "MD",
+          "value": 21.6,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "mean difference = 21.6"
+        },
+        {
+          "effect_type": "MD",
+          "value": 24.4,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "mean difference = 24.4"
+        },
+        {
+          "effect_type": "MD",
+          "value": 12.6,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "mean difference = 12.6"
+        },
+        {
+          "effect_type": "MD",
+          "value": -2.7,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "mean difference = -2.70"
+        },
+        {
+          "effect_type": "MD",
+          "value": -2.28,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "mean difference = -2.28"
+        },
+        {
+          "effect_type": "MD",
+          "value": -2.79,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "mean difference = -2.79"
+        },
+        {
+          "effect_type": "SMD",
+          "value": 1.87,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "Cohen d = 1.87"
+        },
+        {
+          "effect_type": "SMD",
+          "value": 1.06,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "Cohen d = 1.06"
+        },
+        {
+          "effect_type": "SMD",
+          "value": 0.75,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "Cohen d = 0.75"
+        },
+        {
+          "effect_type": "SMD",
+          "value": 0.61,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "Cohen d = 0.61"
+        },
+        {
+          "effect_type": "SMD",
+          "value": 1.01,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "Cohen d = 1.01"
+        }
+      ],
+      "extraction_count": 12,
+      "ci_complete_count": 0,
+      "effect_types": [
+        "MD",
+        "SMD"
+      ],
+      "has_abstract": true,
+      "has_results_section": true,
+      "title_snippet": "Medicine",
+      "suggested_class": "C",
+      "rct_indicator_count": 2,
+      "non_rct_indicator_count": 2,
+      "classification": "C",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12550662.pdf",
+      "filename": "PMC12550662.pdf",
+      "pmc_id": "PMC12550662",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 45935,
+      "extractions": [],
+      "extraction_count": 0,
+      "ci_complete_count": 0,
+      "effect_types": [],
+      "has_abstract": false,
+      "has_results_section": true,
+      "title_snippet": "TheBritishJournalofPsychiatry(2025)",
+      "suggested_class": "C",
+      "rct_indicator_count": 4,
+      "non_rct_indicator_count": 3,
+      "classification": "C",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12586728.pdf",
+      "filename": "PMC12586728.pdf",
+      "pmc_id": "PMC12586728",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 44819,
+      "extractions": [],
+      "extraction_count": 0,
+      "ci_complete_count": 0,
+      "effect_types": [],
+      "has_abstract": true,
+      "has_results_section": true,
+      "title_snippet": "Empirical Studies on Research Ethics Issues",
+      "suggested_class": "B",
+      "rct_indicator_count": 1,
+      "non_rct_indicator_count": 4,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12593444.pdf",
+      "filename": "PMC12593444.pdf",
+      "pmc_id": "PMC12593444",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 48434,
+      "extractions": [],
+      "extraction_count": 0,
+      "ci_complete_count": 0,
+      "effect_types": [],
+      "has_abstract": true,
+      "has_results_section": true,
+      "title_snippet": "Original research",
+      "suggested_class": "B",
+      "rct_indicator_count": 3,
+      "non_rct_indicator_count": 3,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12605678.pdf",
+      "filename": "PMC12605678.pdf",
+      "pmc_id": "PMC12605678",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 57015,
+      "extractions": [
+        {
+          "effect_type": "MD",
+          "value": -0.16,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "mean difference -0.16"
+        },
+        {
+          "effect_type": "MD",
+          "value": -0.13,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "mean difference -0.13"
+        },
+        {
+          "effect_type": "MD",
+          "value": 0.0,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "mean difference 0.0"
+        }
+      ],
+      "extraction_count": 3,
+      "ci_complete_count": 0,
+      "effect_types": [
+        "MD"
+      ],
+      "has_abstract": true,
+      "has_results_section": true,
+      "title_snippet": "Journal of Clinical Periodontology",
+      "suggested_class": "C",
+      "rct_indicator_count": 2,
+      "non_rct_indicator_count": 4,
+      "classification": "C",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12611508.pdf",
+      "filename": "PMC12611508.pdf",
+      "pmc_id": "PMC12611508",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 36475,
+      "extractions": [
+        {
+          "effect_type": "RR",
+          "value": 1.214,
+          "ci_lower": 1.005,
+          "ci_upper": 1.467,
+          "ci_complete": true,
+          "source_pattern": "relative risk, 1.214; 95% CI, 1.005-1.467"
+        }
+      ],
+      "extraction_count": 1,
+      "ci_complete_count": 1,
+      "effect_types": [
+        "RR"
+      ],
+      "has_abstract": false,
+      "has_results_section": true,
+      "title_snippet": "Anesth Pain Med 2025;20:406-414",
+      "suggested_class": "C",
+      "rct_indicator_count": 5,
+      "non_rct_indicator_count": 4,
+      "classification": "C",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12618225.pdf",
+      "filename": "PMC12618225.pdf",
+      "pmc_id": "PMC12618225",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 73631,
+      "extractions": [
+        {
+          "effect_type": "HR",
+          "value": 2.64,
+          "ci_lower": 0.93,
+          "ci_upper": 7.56,
+          "ci_complete": true,
+          "source_pattern": "hazard ratio = 2.64, 95% CI: 0.93-7.56"
+        },
+        {
+          "effect_type": "OR",
+          "value": 2.52,
+          "ci_lower": 0.95,
+          "ci_upper": 6.68,
+          "ci_complete": true,
+          "source_pattern": "OR = 2.52, 95% CI: 0.95-6.68"
+        },
+        {
+          "effect_type": "OR",
+          "value": 1.6,
+          "ci_lower": 0.85,
+          "ci_upper": 3.02,
+          "ci_complete": true,
+          "source_pattern": "OR = 1.60 (95% CI: 0.85-3.02)"
+        },
+        {
+          "effect_type": "HR",
+          "value": 1.4,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "HR = 1.40"
+        }
+      ],
+      "extraction_count": 4,
+      "ci_complete_count": 3,
+      "effect_types": [
+        "OR",
+        "HR"
+      ],
+      "has_abstract": false,
+      "has_results_section": true,
+      "title_snippet": "nature medicine",
+      "suggested_class": "B",
+      "rct_indicator_count": 4,
+      "non_rct_indicator_count": 4,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12618492.pdf",
+      "filename": "PMC12618492.pdf",
+      "pmc_id": "PMC12618492",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 38959,
+      "extractions": [
+        {
+          "effect_type": "HR",
+          "value": 0.23,
+          "ci_lower": 0.06,
+          "ci_upper": 0.8,
+          "ci_complete": true,
+          "source_pattern": "hazard ratio for febrile events in the levofloxacin group versus the placebo group\nwas 0.23 (95% CI:"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.11,
+          "ci_lower": 0.01,
+          "ci_upper": 0.91,
+          "ci_complete": true,
+          "source_pattern": "hazard ratio for febrile neutropenia in the levofloxacin group versus the placebo group was\n0.11 (95"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.17,
+          "ci_lower": 0.05,
+          "ci_upper": 0.66,
+          "ci_complete": true,
+          "source_pattern": "HR 0.17, 95% CI, 0.05-0.66"
+        },
+        {
+          "effect_type": "HR",
+          "value": 3.89,
+          "ci_lower": 1.24,
+          "ci_upper": 12.21,
+          "ci_complete": true,
+          "source_pattern": "HR 3.89, 95% CI, 1.24 to 12.21"
+        },
+        {
+          "effect_type": "HR",
+          "value": 10.45,
+          "ci_lower": 1.15,
+          "ci_upper": 94.47,
+          "ci_complete": true,
+          "source_pattern": "HR 10.45, 95% CI, 1.15 to 94.47"
+        }
+      ],
+      "extraction_count": 5,
+      "ci_complete_count": 5,
+      "effect_types": [
+        "HR"
+      ],
+      "has_abstract": false,
+      "has_results_section": true,
+      "title_snippet": "www.nature.com/scientificreports",
+      "suggested_class": "B",
+      "rct_indicator_count": 4,
+      "non_rct_indicator_count": 2,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12620794.pdf",
+      "filename": "PMC12620794.pdf",
+      "pmc_id": "PMC12620794",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 40101,
+      "extractions": [
+        {
+          "effect_type": "MD",
+          "value": -0.67,
+          "ci_lower": -0.88,
+          "ci_upper": -0.45,
+          "ci_complete": true,
+          "source_pattern": "mean difference = -0.67 (95%CI: -0.88 to -0.45"
+        },
+        {
+          "effect_type": "MD",
+          "value": -1.03,
+          "ci_lower": -1.42,
+          "ci_upper": -0.65,
+          "ci_complete": true,
+          "source_pattern": "mean difference = -1.03 (95%CI: -1.42 to -0.65"
+        },
+        {
+          "effect_type": "MD",
+          "value": 1.4,
+          "ci_lower": 1.3,
+          "ci_upper": 1.5,
+          "ci_complete": true,
+          "source_pattern": "mean difference = 1.4 (95%CI: 1.3-1.5"
+        },
+        {
+          "effect_type": "MD",
+          "value": 332.0,
+          "ci_lower": 310.0,
+          "ci_upper": 352.0,
+          "ci_complete": true,
+          "source_pattern": "mean difference = 332 (95%CI: 310-352"
+        },
+        {
+          "effect_type": "MD",
+          "value": 0.32,
+          "ci_lower": 0.23,
+          "ci_upper": 0.42,
+          "ci_complete": true,
+          "source_pattern": "mean difference = 0.32 (0.23-0.42"
+        },
+        {
+          "effect_type": "MD",
+          "value": 0.14,
+          "ci_lower": 0.13,
+          "ci_upper": 0.15,
+          "ci_complete": true,
+          "source_pattern": "mean difference = 0.14 (0.13-0.15"
+        },
+        {
+          "effect_type": "RR",
+          "value": 0.21,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "RR = 0.21"
+        },
+        {
+          "effect_type": "RR",
+          "value": 0.35,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "RR = 0.35"
+        },
+        {
+          "effect_type": "RR",
+          "value": 0.66,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "RR = 0.66"
+        },
+        {
+          "effect_type": "RR",
+          "value": 0.37,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "RR = 0.37"
+        },
+        {
+          "effect_type": "SMD",
+          "value": -0.59,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "Cohen's d = -0.59"
+        },
+        {
+          "effect_type": "SMD",
+          "value": 3.56,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "Cohen's d = 3.56"
+        }
+      ],
+      "extraction_count": 12,
+      "ci_complete_count": 6,
+      "effect_types": [
+        "MD",
+        "SMD",
+        "RR"
+      ],
+      "has_abstract": true,
+      "has_results_section": true,
+      "title_snippet": "W J C P World Journal of",
+      "suggested_class": "A",
+      "rct_indicator_count": 5,
+      "non_rct_indicator_count": 1,
+      "classification": "A",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12634008.pdf",
+      "filename": "PMC12634008.pdf",
+      "pmc_id": "PMC12634008",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 63498,
+      "extractions": [
+        {
+          "effect_type": "MD",
+          "value": -0.5,
+          "ci_lower": -0.7,
+          "ci_upper": 0.95,
+          "ci_complete": true,
+          "source_pattern": "Mean difference -0.5 (-0.70 -0.95"
+        },
+        {
+          "effect_type": "MD",
+          "value": -1.13,
+          "ci_lower": -1.33,
+          "ci_upper": -0.92,
+          "ci_complete": true,
+          "source_pattern": "mean difference\n-1.13, 95% CI -1.33 to -0.92"
+        },
+        {
+          "effect_type": "MD",
+          "value": 1.14,
+          "ci_lower": 0.97,
+          "ci_upper": 1.32,
+          "ci_complete": true,
+          "source_pattern": "difference 1.14, 95% CI 0.97-1.32"
+        },
+        {
+          "effect_type": "MD",
+          "value": 1.5,
+          "ci_lower": 1.35,
+          "ci_upper": 1.66,
+          "ci_complete": true,
+          "source_pattern": "difference 1.50, 95% CI 1.35-1.66"
+        },
+        {
+          "effect_type": "MD",
+          "value": 0.35,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "mean difference 0.35"
+        }
+      ],
+      "extraction_count": 5,
+      "ci_complete_count": 4,
+      "effect_types": [
+        "MD"
+      ],
+      "has_abstract": true,
+      "has_results_section": true,
+      "title_snippet": "JMIR FORMATIVE RESEARCH Tyrrell et al",
+      "suggested_class": "B",
+      "rct_indicator_count": 2,
+      "non_rct_indicator_count": 2,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12634985.pdf",
+      "filename": "PMC12634985.pdf",
+      "pmc_id": "PMC12634985",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 65701,
+      "extractions": [
+        {
+          "effect_type": "RR",
+          "value": 1.13,
+          "ci_lower": 0.99,
+          "ci_upper": 1.3,
+          "ci_complete": true,
+          "source_pattern": "(RR 1.13; 95% CI 0.99-1.30)"
+        },
+        {
+          "effect_type": "RR",
+          "value": 1.19,
+          "ci_lower": 0.97,
+          "ci_upper": 1.46,
+          "ci_complete": true,
+          "source_pattern": "(RR 1.19; 95% CI 0.97-1.46)"
+        },
+        {
+          "effect_type": "RR",
+          "value": 1.16,
+          "ci_lower": 0.99,
+          "ci_upper": 1.37,
+          "ci_complete": true,
+          "source_pattern": "(RR 1.16; 95% CI 0.99-1.37)"
+        },
+        {
+          "effect_type": "RR",
+          "value": 1.24,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "RR = 1.24"
+        }
+      ],
+      "extraction_count": 4,
+      "ci_complete_count": 3,
+      "effect_types": [
+        "RR"
+      ],
+      "has_abstract": true,
+      "has_results_section": true,
+      "title_snippet": "Pain Ther (2025) 14:1765\u20131782",
+      "suggested_class": "B",
+      "rct_indicator_count": 4,
+      "non_rct_indicator_count": 5,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12670541.pdf",
+      "filename": "PMC12670541.pdf",
+      "pmc_id": "PMC12670541",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 46586,
+      "extractions": [
+        {
+          "effect_type": "HR",
+          "value": 0.64,
+          "ci_lower": 0.54,
+          "ci_upper": 0.75,
+          "ci_complete": true,
+          "source_pattern": "HR 0.64, 95% CI 0.54-0.75"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.61,
+          "ci_lower": 0.51,
+          "ci_upper": 0.72,
+          "ci_complete": true,
+          "source_pattern": "HR 0.61, 95% CI 0.51-0.72"
+        }
+      ],
+      "extraction_count": 2,
+      "ci_complete_count": 2,
+      "effect_types": [
+        "HR"
+      ],
+      "has_abstract": false,
+      "has_results_section": true,
+      "title_snippet": "ORIGINAL ARTICLE",
+      "suggested_class": "B",
+      "rct_indicator_count": 4,
+      "non_rct_indicator_count": 4,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12670988.pdf",
+      "filename": "PMC12670988.pdf",
+      "pmc_id": "PMC12670988",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 35780,
+      "extractions": [
+        {
+          "effect_type": "HR",
+          "value": 0.38,
+          "ci_lower": 0.21,
+          "ci_upper": 0.7,
+          "ci_complete": true,
+          "source_pattern": "hazard ratio, 0.38; 95% CI,\n0.21-0.70"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.362,
+          "ci_lower": 0.192,
+          "ci_upper": 0.681,
+          "ci_complete": true,
+          "source_pattern": "HR, 0.362; 95% CI, 0.192-0.681"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.387,
+          "ci_lower": 0.187,
+          "ci_upper": 0.798,
+          "ci_complete": true,
+          "source_pattern": "HR,0.387;95%CI,0.187-0.798"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.314,
+          "ci_lower": 0.163,
+          "ci_upper": 0.604,
+          "ci_complete": true,
+          "source_pattern": "HR,0.314;95%CI,0.163-0.604"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.383,
+          "ci_lower": 0.206,
+          "ci_upper": 0.711,
+          "ci_complete": true,
+          "source_pattern": "HR, 0.383; 95% CI, 0.206-0.711"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.424,
+          "ci_lower": 0.219,
+          "ci_upper": 0.822,
+          "ci_complete": true,
+          "source_pattern": "HR, 0.424; 95% CI, 0.219-0.822"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.472,
+          "ci_lower": 0.245,
+          "ci_upper": 0.907,
+          "ci_complete": true,
+          "source_pattern": "HR, 0.472; 95% CI, 0.245-0.907"
+        }
+      ],
+      "extraction_count": 7,
+      "ci_complete_count": 7,
+      "effect_types": [
+        "HR"
+      ],
+      "has_abstract": true,
+      "has_results_section": true,
+      "title_snippet": "- -",
+      "suggested_class": "B",
+      "rct_indicator_count": 1,
+      "non_rct_indicator_count": 5,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12672312.pdf",
+      "filename": "PMC12672312.pdf",
+      "pmc_id": "PMC12672312",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 47624,
+      "extractions": [
+        {
+          "effect_type": "MD",
+          "value": 1.82,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "mean difference: 1.82"
+        }
+      ],
+      "extraction_count": 1,
+      "ci_complete_count": 0,
+      "effect_types": [
+        "MD"
+      ],
+      "has_abstract": false,
+      "has_results_section": true,
+      "title_snippet": "TYPE Original Research",
+      "suggested_class": "B",
+      "rct_indicator_count": 3,
+      "non_rct_indicator_count": 4,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12673806.pdf",
+      "filename": "PMC12673806.pdf",
+      "pmc_id": "PMC12673806",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 49163,
+      "extractions": [
+        {
+          "effect_type": "HR",
+          "value": 0.89,
+          "ci_lower": 0.69,
+          "ci_upper": 1.15,
+          "ci_complete": true,
+          "source_pattern": "HR 0.89, 95% CI 0.69-1.15"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.78,
+          "ci_lower": 0.54,
+          "ci_upper": 1.13,
+          "ci_complete": true,
+          "source_pattern": "HR 0.78, 95% CI 0.54-1.13"
+        },
+        {
+          "effect_type": "OR",
+          "value": 6.77,
+          "ci_lower": 1.36,
+          "ci_upper": 33.75,
+          "ci_complete": true,
+          "source_pattern": "OR 6.77, 95% CI 1.36-33.75"
+        },
+        {
+          "effect_type": "OR",
+          "value": 2.99,
+          "ci_lower": 1.28,
+          "ci_upper": 6.96,
+          "ci_complete": true,
+          "source_pattern": "OR 2.99, 95% CI 1.28-6.96"
+        }
+      ],
+      "extraction_count": 4,
+      "ci_complete_count": 4,
+      "effect_types": [
+        "OR",
+        "HR"
+      ],
+      "has_abstract": false,
+      "has_results_section": true,
+      "title_snippet": "Articles",
+      "suggested_class": "B",
+      "rct_indicator_count": 5,
+      "non_rct_indicator_count": 4,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12673929.pdf",
+      "filename": "PMC12673929.pdf",
+      "pmc_id": "PMC12673929",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 39497,
+      "extractions": [
+        {
+          "effect_type": "MD",
+          "value": -4.69,
+          "ci_lower": -8.39,
+          "ci_upper": -1.007,
+          "ci_complete": true,
+          "source_pattern": "mean difference in ESS score change between the intervention and control groups at\n6months was -4.69"
+        }
+      ],
+      "extraction_count": 1,
+      "ci_complete_count": 1,
+      "effect_types": [
+        "MD"
+      ],
+      "has_abstract": true,
+      "has_results_section": true,
+      "title_snippet": "ERJOPENRESEARCH",
+      "suggested_class": "C",
+      "rct_indicator_count": 3,
+      "non_rct_indicator_count": 2,
+      "classification": "C",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12680170.pdf",
+      "filename": "PMC12680170.pdf",
+      "pmc_id": "PMC12680170",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 47479,
+      "extractions": [
+        {
+          "effect_type": "OR",
+          "value": 95.0,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "aOR 95"
+        },
+        {
+          "effect_type": "OR",
+          "value": 0.6,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "aOR 0.60"
+        },
+        {
+          "effect_type": "OR",
+          "value": 0.65,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "aOR 0.65"
+        },
+        {
+          "effect_type": "OR",
+          "value": 0.34,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "aOR 0.34"
+        }
+      ],
+      "extraction_count": 4,
+      "ci_complete_count": 0,
+      "effect_types": [
+        "OR"
+      ],
+      "has_abstract": true,
+      "has_results_section": true,
+      "title_snippet": "RESEARCH ARTICLE",
+      "suggested_class": "B",
+      "rct_indicator_count": 2,
+      "non_rct_indicator_count": 6,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12691396.pdf",
+      "filename": "PMC12691396.pdf",
+      "pmc_id": "PMC12691396",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 40929,
+      "extractions": [],
+      "extraction_count": 0,
+      "ci_complete_count": 0,
+      "effect_types": [],
+      "has_abstract": true,
+      "has_results_section": true,
+      "title_snippet": "Article",
+      "suggested_class": "C",
+      "rct_indicator_count": 2,
+      "non_rct_indicator_count": 1,
+      "classification": "C",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12691621.pdf",
+      "filename": "PMC12691621.pdf",
+      "pmc_id": "PMC12691621",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 53050,
+      "extractions": [
+        {
+          "effect_type": "RR",
+          "value": 0.56,
+          "ci_lower": 0.38,
+          "ci_upper": 0.82,
+          "ci_complete": true,
+          "source_pattern": "RR:0.56, 95% CI:0.38-0.82"
+        },
+        {
+          "effect_type": "RR",
+          "value": 2.28,
+          "ci_lower": 1.55,
+          "ci_upper": 3.34,
+          "ci_complete": true,
+          "source_pattern": "RR:2.28, 95% CI:1.55-3.34"
+        },
+        {
+          "effect_type": "RR",
+          "value": 0.42,
+          "ci_lower": 0.24,
+          "ci_upper": 0.73,
+          "ci_complete": true,
+          "source_pattern": "RR: 0.42; 95% CI: 0.24-0.73"
+        },
+        {
+          "effect_type": "RR",
+          "value": 0.6,
+          "ci_lower": 0.3,
+          "ci_upper": 1.19,
+          "ci_complete": true,
+          "source_pattern": "RR: 0.60, 95% CI: 0.30-1.19"
+        },
+        {
+          "effect_type": "RR",
+          "value": 0.54,
+          "ci_lower": 0.29,
+          "ci_upper": 1.0,
+          "ci_complete": true,
+          "source_pattern": "RR: 0.54, 95%\nCI: 0.29-1.00"
+        },
+        {
+          "effect_type": "RR",
+          "value": 0.55,
+          "ci_lower": 0.21,
+          "ci_upper": 1.44,
+          "ci_complete": true,
+          "source_pattern": "RR: 0.55, 95% CI: 0.21-1.44"
+        },
+        {
+          "effect_type": "MD",
+          "value": 9.31,
+          "ci_lower": 6.35,
+          "ci_upper": 12.27,
+          "ci_complete": true,
+          "source_pattern": "difference 9.31, 95% CI 6.35-12.27"
+        },
+        {
+          "effect_type": "MD",
+          "value": 0.89,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "mean difference 0.89"
+        },
+        {
+          "effect_type": "MD",
+          "value": 11.01,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "mean difference:11.01"
+        }
+      ],
+      "extraction_count": 9,
+      "ci_complete_count": 7,
+      "effect_types": [
+        "RR",
+        "MD"
+      ],
+      "has_abstract": true,
+      "has_results_section": true,
+      "title_snippet": "Drug Design, Development and Therapy",
+      "suggested_class": "B",
+      "rct_indicator_count": 5,
+      "non_rct_indicator_count": 2,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12700247.pdf",
+      "filename": "PMC12700247.pdf",
+      "pmc_id": "PMC12700247",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 47809,
+      "extractions": [
+        {
+          "effect_type": "HR",
+          "value": 3.51,
+          "ci_lower": 1.01,
+          "ci_upper": 12.16,
+          "ci_complete": true,
+          "source_pattern": "HR,3.51[95%CI,1.01-12.16]"
+        }
+      ],
+      "extraction_count": 1,
+      "ci_complete_count": 1,
+      "effect_types": [
+        "HR"
+      ],
+      "has_abstract": true,
+      "has_results_section": true,
+      "title_snippet": "ORIGINAL RESEARCH",
+      "suggested_class": "C",
+      "rct_indicator_count": 3,
+      "non_rct_indicator_count": 2,
+      "classification": "C",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12705423.pdf",
+      "filename": "PMC12705423.pdf",
+      "pmc_id": "PMC12705423",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 78379,
+      "extractions": [
+        {
+          "effect_type": "HR",
+          "value": 0.69,
+          "ci_lower": 0.55,
+          "ci_upper": 0.87,
+          "ci_complete": true,
+          "source_pattern": "hazard ratio 0.69; 95% CI 0.55-0.87"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.72,
+          "ci_lower": 0.56,
+          "ci_upper": 0.93,
+          "ci_complete": true,
+          "source_pattern": "hazard ratio 0.72; 95% CI 0.56-0.93"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.37,
+          "ci_lower": 0.29,
+          "ci_upper": 0.47,
+          "ci_complete": true,
+          "source_pattern": "hazard ratio 0.37; 95% CI 0.29-0.47"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.27,
+          "ci_lower": 0.14,
+          "ci_upper": 0.52,
+          "ci_complete": true,
+          "source_pattern": "hazard ratio 0.27; 95% CI 0.14-0.52"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.69,
+          "ci_lower": 0.55,
+          "ci_upper": 0.86,
+          "ci_complete": true,
+          "source_pattern": "hazard ratio 0.69; 95% confidence interval\n0.55-0.86"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.29,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "hazard ratio 0.29"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.4,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "hazard ratio 0.40"
+        }
+      ],
+      "extraction_count": 7,
+      "ci_complete_count": 5,
+      "effect_types": [
+        "HR"
+      ],
+      "has_abstract": false,
+      "has_results_section": true,
+      "title_snippet": "nature medicine",
+      "suggested_class": "B",
+      "rct_indicator_count": 2,
+      "non_rct_indicator_count": 6,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12705445.pdf",
+      "filename": "PMC12705445.pdf",
+      "pmc_id": "PMC12705445",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 74675,
+      "extractions": [
+        {
+          "effect_type": "HR",
+          "value": 0.79,
+          "ci_lower": 0.59,
+          "ci_upper": 1.04,
+          "ci_complete": true,
+          "source_pattern": "hazard ratio = 0.79 (95% confidence interval: 0.59-1.04"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.75,
+          "ci_lower": 0.51,
+          "ci_upper": 1.11,
+          "ci_complete": true,
+          "source_pattern": "hazard ratio = 0.75 (95% confidence interval: 0.51-1.11"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.63,
+          "ci_lower": 0.49,
+          "ci_upper": 0.8,
+          "ci_complete": true,
+          "source_pattern": "hazard ratio = 0.63 (95% confidence interval: 0.49-0.80"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.54,
+          "ci_lower": 0.41,
+          "ci_upper": 0.7,
+          "ci_complete": true,
+          "source_pattern": "hazard ratio = 0.54 (95% confidence interval: 0.41-0.70"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.44,
+          "ci_lower": 0.29,
+          "ci_upper": 0.68,
+          "ci_complete": true,
+          "source_pattern": "hazard ratio = 0.44 (95% confidence interval: 0.29-0.68"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.5,
+          "ci_lower": 0.36,
+          "ci_upper": 0.69,
+          "ci_complete": true,
+          "source_pattern": "hazard ratio = 0.50 (95% confidence interval: 0.36-0.69"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.55,
+          "ci_lower": 0.35,
+          "ci_upper": 0.86,
+          "ci_complete": true,
+          "source_pattern": "hazard ratio = 0.55 (95% confidence interval: 0.35-0.86"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.5,
+          "ci_lower": 0.39,
+          "ci_upper": 0.65,
+          "ci_complete": true,
+          "source_pattern": "hazard ratio = 0.50 (95% confidence interval: 0.39-0.65"
+        }
+      ],
+      "extraction_count": 8,
+      "ci_complete_count": 8,
+      "effect_types": [
+        "HR"
+      ],
+      "has_abstract": false,
+      "has_results_section": true,
+      "title_snippet": "nature medicine",
+      "suggested_class": "B",
+      "rct_indicator_count": 5,
+      "non_rct_indicator_count": 6,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12705465.pdf",
+      "filename": "PMC12705465.pdf",
+      "pmc_id": "PMC12705465",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 82817,
+      "extractions": [],
+      "extraction_count": 0,
+      "ci_complete_count": 0,
+      "effect_types": [],
+      "has_abstract": false,
+      "has_results_section": true,
+      "title_snippet": "nature medicine",
+      "suggested_class": "B",
+      "rct_indicator_count": 5,
+      "non_rct_indicator_count": 3,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12705593.pdf",
+      "filename": "PMC12705593.pdf",
+      "pmc_id": "PMC12705593",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 63068,
+      "extractions": [],
+      "extraction_count": 0,
+      "ci_complete_count": 0,
+      "effect_types": [],
+      "has_abstract": false,
+      "has_results_section": true,
+      "title_snippet": "TYPE ClinicalTrial",
+      "suggested_class": "C",
+      "rct_indicator_count": 4,
+      "non_rct_indicator_count": 3,
+      "classification": "C",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12707242.pdf",
+      "filename": "PMC12707242.pdf",
+      "pmc_id": "PMC12707242",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 58422,
+      "extractions": [
+        {
+          "effect_type": "OR",
+          "value": 0.36,
+          "ci_lower": 0.16,
+          "ci_upper": 0.77,
+          "ci_complete": true,
+          "source_pattern": "odds ratio, 0.36; 95% CI, 0.16-0.77"
+        },
+        {
+          "effect_type": "OR",
+          "value": 0.63,
+          "ci_lower": 0.4,
+          "ci_upper": 0.97,
+          "ci_complete": true,
+          "source_pattern": "odds ratio, 0.63; 95% CI, 0.40-0.97"
+        },
+        {
+          "effect_type": "OR",
+          "value": 1.75,
+          "ci_lower": 1.04,
+          "ci_upper": 3.06,
+          "ci_complete": true,
+          "source_pattern": "(OR, 1.75; 95% CI, 1.04-3.06"
+        },
+        {
+          "effect_type": "OR",
+          "value": 1.0,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "OR = 1.0"
+        }
+      ],
+      "extraction_count": 4,
+      "ci_complete_count": 3,
+      "effect_types": [
+        "OR"
+      ],
+      "has_abstract": false,
+      "has_results_section": true,
+      "title_snippet": "Drug Design, Development and Therapy",
+      "suggested_class": "B",
+      "rct_indicator_count": 5,
+      "non_rct_indicator_count": 2,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12714862.pdf",
+      "filename": "PMC12714862.pdf",
+      "pmc_id": "PMC12714862",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 53785,
+      "extractions": [
+        {
+          "effect_type": "HR",
+          "value": 0.39,
+          "ci_lower": 0.2,
+          "ci_upper": 0.73,
+          "ci_complete": true,
+          "source_pattern": "HR 0.39, 95% CI 0.20-0.73"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.42,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "HR=0.42"
+        }
+      ],
+      "extraction_count": 2,
+      "ci_complete_count": 1,
+      "effect_types": [
+        "HR"
+      ],
+      "has_abstract": false,
+      "has_results_section": true,
+      "title_snippet": "Signal Transduction and Targeted Therapy",
+      "suggested_class": "B",
+      "rct_indicator_count": 4,
+      "non_rct_indicator_count": 2,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12723918.pdf",
+      "filename": "PMC12723918.pdf",
+      "pmc_id": "PMC12723918",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 45623,
+      "extractions": [
+        {
+          "effect_type": "HR",
+          "value": 0.17,
+          "ci_lower": 0.02,
+          "ci_upper": 1.48,
+          "ci_complete": true,
+          "source_pattern": "HR of 0.17 (95% CI 0.02-1.48"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.45,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "HR = 0.45"
+        }
+      ],
+      "extraction_count": 2,
+      "ci_complete_count": 1,
+      "effect_types": [
+        "HR"
+      ],
+      "has_abstract": true,
+      "has_results_section": true,
+      "title_snippet": "Chen et al. BMC Medicine (2025) 23:688 BMC Medicine",
+      "suggested_class": "B",
+      "rct_indicator_count": 5,
+      "non_rct_indicator_count": 3,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12751528.pdf",
+      "filename": "PMC12751528.pdf",
+      "pmc_id": "PMC12751528",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 45634,
+      "extractions": [
+        {
+          "effect_type": "OR",
+          "value": 0.16,
+          "ci_lower": 0.07,
+          "ci_upper": 0.34,
+          "ci_complete": true,
+          "source_pattern": "odds ratio 0.16, 95% CI 0.07-0.34"
+        },
+        {
+          "effect_type": "OR",
+          "value": 2.24,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "odds ratio 2.24"
+        }
+      ],
+      "extraction_count": 2,
+      "ci_complete_count": 1,
+      "effect_types": [
+        "OR"
+      ],
+      "has_abstract": true,
+      "has_results_section": true,
+      "title_snippet": "Akoumianakis et al. BMC Medicine (2025) 23:694 BMC Medicine",
+      "suggested_class": "B",
+      "rct_indicator_count": 3,
+      "non_rct_indicator_count": 5,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12775159.pdf",
+      "filename": "PMC12775159.pdf",
+      "pmc_id": "PMC12775159",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 50338,
+      "extractions": [
+        {
+          "effect_type": "RR",
+          "value": 3.18,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "RR =3.18"
+        },
+        {
+          "effect_type": "OR",
+          "value": 2.57,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "OR =2.57"
+        },
+        {
+          "effect_type": "OR",
+          "value": 4.87,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "OR =4.87"
+        }
+      ],
+      "extraction_count": 3,
+      "ci_complete_count": 0,
+      "effect_types": [
+        "RR",
+        "OR"
+      ],
+      "has_abstract": false,
+      "has_results_section": true,
+      "title_snippet": "1193",
+      "suggested_class": "C",
+      "rct_indicator_count": 3,
+      "non_rct_indicator_count": 4,
+      "classification": "C",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12799394.pdf",
+      "filename": "PMC12799394.pdf",
+      "pmc_id": "PMC12799394",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 43240,
+      "extractions": [
+        {
+          "effect_type": "OR",
+          "value": 1.51,
+          "ci_lower": 0.85,
+          "ci_upper": 2.68,
+          "ci_complete": true,
+          "source_pattern": "OR 1.51, 95% CI 0.85-2.68"
+        },
+        {
+          "effect_type": "OR",
+          "value": 0.85,
+          "ci_lower": 0.71,
+          "ci_upper": 1.01,
+          "ci_complete": true,
+          "source_pattern": "(OR 0.85; 95% CI\n0.71-1.01)"
+        },
+        {
+          "effect_type": "OR",
+          "value": 2.03,
+          "ci_lower": 1.14,
+          "ci_upper": 3.63,
+          "ci_complete": true,
+          "source_pattern": "(OR 2.03; 95% CI\n1.14-3.63)"
+        },
+        {
+          "effect_type": "OR",
+          "value": 0.68,
+          "ci_lower": 0.5,
+          "ci_upper": 0.93,
+          "ci_complete": true,
+          "source_pattern": "(OR 0.68; 95% CI 0.50-0.93)"
+        },
+        {
+          "effect_type": "OR",
+          "value": 1.26,
+          "ci_lower": 0.87,
+          "ci_upper": 1.84,
+          "ci_complete": true,
+          "source_pattern": "(OR 1.26; 95% CI 0.87-1.84)"
+        },
+        {
+          "effect_type": "OR",
+          "value": 6.05,
+          "ci_lower": 3.02,
+          "ci_upper": 12.11,
+          "ci_complete": true,
+          "source_pattern": "(OR 6.05; 95% CI 3.02-12.11)"
+        },
+        {
+          "effect_type": "OR",
+          "value": 2.69,
+          "ci_lower": 1.09,
+          "ci_upper": 6.65,
+          "ci_complete": true,
+          "source_pattern": "(OR 2.69; 95% CI 1.09-6.65)"
+        },
+        {
+          "effect_type": "OR",
+          "value": 1.94,
+          "ci_lower": 1.27,
+          "ci_upper": 2.96,
+          "ci_complete": true,
+          "source_pattern": "(OR 1.94; 95% CI 1.27-2.96)"
+        },
+        {
+          "effect_type": "OR",
+          "value": 1.29,
+          "ci_lower": 1.03,
+          "ci_upper": 1.61,
+          "ci_complete": true,
+          "source_pattern": "(OR 1.29; 95% CI 1.03-1.61)"
+        },
+        {
+          "effect_type": "OR",
+          "value": 1.18,
+          "ci_lower": 0.96,
+          "ci_upper": 1.45,
+          "ci_complete": true,
+          "source_pattern": "(OR 1.18; 95% CI 0.96-1.45)"
+        },
+        {
+          "effect_type": "OR",
+          "value": 1.18,
+          "ci_lower": 0.87,
+          "ci_upper": 1.59,
+          "ci_complete": true,
+          "source_pattern": "(OR 1.18; 95% CI 0.87-1.59)"
+        }
+      ],
+      "extraction_count": 11,
+      "ci_complete_count": 11,
+      "effect_types": [
+        "OR"
+      ],
+      "has_abstract": true,
+      "has_results_section": true,
+      "title_snippet": "British Journal of Anaesthesia, 135 (6): 1770\u20141778 (2025)",
+      "suggested_class": "B",
+      "rct_indicator_count": 4,
+      "non_rct_indicator_count": 5,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12799424.pdf",
+      "filename": "PMC12799424.pdf",
+      "pmc_id": "PMC12799424",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 38895,
+      "extractions": [
+        {
+          "effect_type": "HR",
+          "value": 1.0,
+          "ci_lower": 0.81,
+          "ci_upper": 1.3,
+          "ci_complete": true,
+          "source_pattern": "HR, 1.0 (95% CI, 0.81-1.3)"
+        },
+        {
+          "effect_type": "HR",
+          "value": 1.3,
+          "ci_lower": 1.03,
+          "ci_upper": 1.64,
+          "ci_complete": true,
+          "source_pattern": "HR, 1.30 [1.03-1.64]"
+        },
+        {
+          "effect_type": "HR",
+          "value": 1.01,
+          "ci_lower": 0.81,
+          "ci_upper": 1.3,
+          "ci_complete": true,
+          "source_pattern": "HR, 1.01; 95% CI, 0.81-1.3"
+        },
+        {
+          "effect_type": "HR",
+          "value": 1.1,
+          "ci_lower": 0.85,
+          "ci_upper": 1.4,
+          "ci_complete": true,
+          "source_pattern": "HR, 1.1; 95% CI, 0.85-1.4"
+        }
+      ],
+      "extraction_count": 4,
+      "ci_complete_count": 4,
+      "effect_types": [
+        "HR"
+      ],
+      "has_abstract": true,
+      "has_results_section": true,
+      "title_snippet": "British Journal of Anaesthesia, 135 (6): 1618\u20141625 (2025)",
+      "suggested_class": "B",
+      "rct_indicator_count": 4,
+      "non_rct_indicator_count": 3,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12801554.pdf",
+      "filename": "PMC12801554.pdf",
+      "pmc_id": "PMC12801554",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 43403,
+      "extractions": [
+        {
+          "effect_type": "RR",
+          "value": 0.67,
+          "ci_lower": null,
+          "ci_upper": null,
+          "ci_complete": false,
+          "source_pattern": "RR = 0.67"
+        }
+      ],
+      "extraction_count": 1,
+      "ci_complete_count": 0,
+      "effect_types": [
+        "RR"
+      ],
+      "has_abstract": true,
+      "has_results_section": true,
+      "title_snippet": "Sun et al. BMC Anesthesiology (2026) 26:34 BMC Anesthesiology",
+      "suggested_class": "C",
+      "rct_indicator_count": 4,
+      "non_rct_indicator_count": 4,
+      "classification": "C",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12818972.pdf",
+      "filename": "PMC12818972.pdf",
+      "pmc_id": "PMC12818972",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 33494,
+      "extractions": [],
+      "extraction_count": 0,
+      "ci_complete_count": 0,
+      "effect_types": [],
+      "has_abstract": true,
+      "has_results_section": true,
+      "title_snippet": "ORIGINAL RESEARCH",
+      "suggested_class": "B",
+      "rct_indicator_count": 2,
+      "non_rct_indicator_count": 3,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12858542.pdf",
+      "filename": "PMC12858542.pdf",
+      "pmc_id": "PMC12858542",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 53010,
+      "extractions": [
+        {
+          "effect_type": "HR",
+          "value": 0.8,
+          "ci_lower": 0.7,
+          "ci_upper": 0.92,
+          "ci_complete": true,
+          "source_pattern": "HR 0.80 (95% CI 0.70-0.92)"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.79,
+          "ci_lower": 0.69,
+          "ci_upper": 0.9,
+          "ci_complete": true,
+          "source_pattern": "HR 0.79 (95% CI 0.69-0.90)"
+        },
+        {
+          "effect_type": "HR",
+          "value": 0.74,
+          "ci_lower": 0.58,
+          "ci_upper": 0.96,
+          "ci_complete": true,
+          "source_pattern": "HR 0.74 (95% CI 0.58-0.96)"
+        }
+      ],
+      "extraction_count": 3,
+      "ci_complete_count": 3,
+      "effect_types": [
+        "HR"
+      ],
+      "has_abstract": true,
+      "has_results_section": true,
+      "title_snippet": "Adv Ther (2026) 43:165\u2013183",
+      "suggested_class": "B",
+      "rct_indicator_count": 4,
+      "non_rct_indicator_count": 5,
+      "classification": "B",
+      "classification_method": "auto"
+    },
+    {
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC9619635.pdf",
+      "filename": "PMC9619635.pdf",
+      "pmc_id": "PMC9619635",
+      "therapeutic_area": "open_access_rcts",
+      "parse_success": true,
+      "text_length": 50765,
+      "extractions": [
+        {
+          "effect_type": "RRR",
+          "value": 82.7,
+          "ci_lower": 73.3,
+          "ci_upper": 88.8,
+          "ci_complete": true,
+          "source_pattern": "efficacy of 82.7% (95% CI, 73.3%-88.8%)"
+        },
+        {
+          "effect_type": "RRR",
+          "value": 76.3,
+          "ci_lower": 57.4,
+          "ci_upper": 86.8,
+          "ci_complete": true,
+          "source_pattern": "efficacy of 76.3% (95% CI, 57.4%-86.8%)"
+        },
+        {
+          "effect_type": "RRR",
+          "value": 82.5,
+          "ci_lower": 75.0,
+          "ci_upper": 87.7,
+          "ci_complete": true,
+          "source_pattern": "vaccine efficacy of evaluated, notably greater than those titers associated with\n82.5% (95% CI, 75.0"
+        }
+      ],
+      "extraction_count": 3,
+      "ci_complete_count": 3,
+      "effect_types": [
+        "RRR"
+      ],
+      "has_abstract": false,
+      "has_results_section": true,
+      "title_snippet": "Clinical Infectious Diseases",
+      "suggested_class": "B",
+      "rct_indicator_count": 3,
+      "non_rct_indicator_count": 4,
+      "classification": "B",
+      "classification_method": "auto"
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "version": "v4.3.6",
+  "date": "2026-02-04",
+  "description": "CI validation fix, CI deduplication, OA corpus acquisition, comprehensive validation",
+  "changes": [
+    "CI validation: strict bracketing (0.01 tolerance for ratios, replaces 5% multiplicative)",
+    "CI deduplication: each CI can only be assigned to one extraction via _ci_key()",
+    "Validated PDF verification: detected 12/15 PDFs were wrong articles",
+    "Wrong PDFs removed, 3 correct PDFs retained (LEADER, SPRINT, ACTT-1)",
+    "37 text snippets created from ground truth for pattern testing",
+    "Snippet validation: 97.7% recall, 90.9% CI accuracy on 39 trials",
+    "23 pytest regression tests (all passing)",
+    "Acquired 61 new OA RCT PDFs from BMC/PLOS/BMJ via PubMed search",
+    "Characterized 22 missing CIs: 18 IN_TABLE, 3 false extraction, 1 absent",
+    "Text-extractable CI ceiling: 99.4% (only 1 true miss in 175)"
+  ],
+  "corpus": {
+    "curated_open_access": 43,
+    "validated_rcts_correct": 3,
+    "oa_corpus_v2": 61,
+    "total_unique": 107,
+    "excluded_non_rct": 15,
+    "wrong_pdfs_removed": 12,
+    "snippet_trials": 39
+  },
+  "metrics": {
+    "curated_corpus": {
+      "total_pdfs": 46,
+      "extraction_rate": 1.0,
+      "total_extractions": 196,
+      "ci_completion_rate": 0.888,
+      "ci_direct": 128,
+      "ci_recovered_proximity": 46,
+      "ci_missing": 22,
+      "ci_missing_in_table": 18,
+      "ci_missing_false_extraction": 3,
+      "ci_missing_absent": 1,
+      "text_extractable_ci_ceiling": 0.994
+    },
+    "oa_corpus_v2": {
+      "total_pdfs": 61,
+      "with_extractions": 40,
+      "extraction_rate": 0.656,
+      "note": "21 no-extraction PDFs include non-RCTs (cross-sectional, MR, reviews, protocols)",
+      "total_extractions": 200,
+      "ci_completion_rate": 0.82,
+      "ci_recovered_proximity": 81,
+      "ci_missing": 36,
+      "by_effect_type": {
+        "HR": {"total": 67, "ci": 54, "rate": 0.81},
+        "OR": {"total": 94, "ci": 80, "rate": 0.85},
+        "RR": {"total": 25, "ci": 20, "rate": 0.80},
+        "MD": {"total": 3, "ci": 2, "rate": 0.67},
+        "SMD": {"total": 9, "ci": 8, "rate": 0.89},
+        "ARD": {"total": 2, "ci": 0, "rate": 0.0}
+      }
+    },
+    "combined": {
+      "total_pdfs": 107,
+      "with_extractions": 86,
+      "extraction_rate": 0.804,
+      "total_extractions": 396,
+      "ci_complete": 338,
+      "ci_completion_rate": 0.854,
+      "ci_recovered_proximity": 127,
+      "ci_missing": 58
+    },
+    "snippet_validation": {
+      "trials_tested": 39,
+      "gt_effects": 44,
+      "recall": 0.977,
+      "value_accuracy": 0.955,
+      "ci_accuracy": 0.909,
+      "trials_perfect": 38,
+      "trials_partial": 1,
+      "trials_missed": 0
+    },
+    "regression_tests": {
+      "total": 23,
+      "passed": 23,
+      "test_classes": [
+        "TestCIKeyFunction (3)",
+        "TestCIValidation (9)",
+        "TestCIRecovery (3)",
+        "TestFalsePositiveRejection (4)",
+        "TestCIDeduplication (2)",
+        "TestSnippetValidationBaseline (2)"
+      ]
+    }
+  },
+  "targets_vs_actual": {
+    "corpus_size": {"target": ">50", "actual": 107, "status": "PASS"},
+    "extraction_rate": {"target": ">70%", "actual": "80.4% combined, 100% curated", "status": "PASS"},
+    "ci_completion": {"target": ">80%", "actual": "85.4% combined, 88.8% curated", "status": "PASS"},
+    "snippet_recall": {"target": ">95%", "actual": "97.7%", "status": "PASS"},
+    "snippet_ci_accuracy": {"target": ">85%", "actual": "90.9%", "status": "PASS"}
+  },
+  "known_issues": {
+    "most_landmark_trials_not_oa": "37/48 trials from external_validation_dataset are NEJM/Lancet (paywalled)",
+    "declare_timi_miss": "DECLARE-TIMI 58 HR=0.83 not extracted from snippet (1/44 miss)",
+    "table_based_cis": "18/22 missing CIs in curated corpus are in tables only (not text-extractable)",
+    "oa_corpus_includes_non_rcts": "21/61 OA corpus v2 papers are not RCTs (observational, reviews, protocols)"
+  }
+}

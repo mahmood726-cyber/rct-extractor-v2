@@ -1,0 +1,19 @@
+{
+  "version": "1.0.0",
+  "created": "2026-02-01T00:00:00Z",
+  "description": "Initial baseline for PDF validation regression checking",
+  "source": "output/pdf_validation_report.json",
+  "overall_f1": 0.0,
+  "overall_precision": 0.0,
+  "overall_recall": 0.0,
+  "total_pdfs": 0,
+  "pdfs_processed": 0,
+  "by_therapeutic_area": {},
+  "by_effect_type": {},
+  "results": [],
+  "notes": [
+    "This is an initial placeholder baseline",
+    "Run 'python scripts/run_real_pdf_validation.py --all' to populate with real data",
+    "Then run 'python scripts/pdf_regression_check.py --update' to update the baseline"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "version": "v4.3.5",
+  "date": "2026-02-04",
+  "description": "Tightened CI proximity search, corpus curation, text preprocessor integration",
+  "changes": [
+    "CI proximity window reduced from 500 to 150 chars",
+    "CI label required for unlabeled patterns",
+    "Negative validation rejects CI belonging to different value",
+    "15 non-RCT papers excluded from corpus",
+    "Text preprocessor integrated (Unicode, dehyphenation, column reorder)",
+    "7 additional validated PDFs downloaded via FTP",
+    "10 PDFs designated as held-out test set",
+    "O(n^2) bug fixed in _build_blocks"
+  ],
+  "corpus": {
+    "curated_open_access": 43,
+    "validated_rcts": 15,
+    "total_unique": 58,
+    "excluded_non_rct": 15,
+    "held_out_test_set": 10
+  },
+  "metrics": {
+    "curated_corpus": {
+      "total_pdfs": 43,
+      "extraction_rate": 1.0,
+      "total_extractions": 184,
+      "ci_completion_rate": 0.908,
+      "ci_direct": 132,
+      "ci_recovered_proximity": 52
+    },
+    "full_corpus_with_validated": {
+      "total_pdfs": 58,
+      "extraction_rate": 0.793,
+      "total_extractions": 201,
+      "ci_completion_rate": 0.915,
+      "ci_direct": 132,
+      "ci_recovered_proximity": 52
+    }
+  },
+  "comparison_to_v434": {
+    "ci_proximity_window": "500 -> 150 chars",
+    "ci_completion_v434": 0.923,
+    "ci_completion_v435_curated": 0.908,
+    "false_positives_removed": 9,
+    "note": "0.908 is more trustworthy than 0.923 due to tighter validation"
+  }
+}

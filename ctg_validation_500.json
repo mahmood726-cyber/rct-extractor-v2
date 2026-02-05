@@ -1,0 +1,2516 @@
+{
+  "validation_date": "2026-02-01T09:20:09.442099",
+  "validation_source": "ClinicalTrials.gov (Author-Reported)",
+  "methodology": "CTG results are authoritative ground truth from trial investigators",
+  "parameters": {
+    "value_tolerance": 0.02,
+    "ci_tolerance": 0.05,
+    "trials_requested": 500,
+    "trials_validated": 300
+  },
+  "metrics": {
+    "total_ctg_effects": 13526,
+    "total_extractions": 2234,
+    "true_positives": 2228,
+    "false_negatives": 11298,
+    "false_positives": 0,
+    "sensitivity": 0.1647,
+    "precision": 1.0,
+    "f1_score": 0.2828,
+    "mean_absolute_error": 0.008786,
+    "mean_relative_error_pct": 0.0145,
+    "ci_detection_rate": 0.8612,
+    "ci_accuracy": 0.8626
+  },
+  "by_effect_type": {
+    "MD": {
+      "true_positives": 1187,
+      "false_negatives": 9692,
+      "total": 10879,
+      "sensitivity": 0.1091,
+      "mean_error_pct": -0.0007
+    },
+    "RR": {
+      "true_positives": 285,
+      "false_negatives": 1320,
+      "total": 1605,
+      "sensitivity": 0.1776,
+      "mean_error_pct": 0.0431
+    },
+    "OR": {
+      "true_positives": 110,
+      "false_negatives": 2,
+      "total": 112,
+      "sensitivity": 0.9821,
+      "mean_error_pct": 0.0
+    },
+    "HR": {
+      "true_positives": 23,
+      "false_negatives": 12,
+      "total": 35,
+      "sensitivity": 0.6571,
+      "mean_error_pct": 0.0
+    },
+    "ARD": {
+      "true_positives": 623,
+      "false_negatives": 272,
+      "total": 895,
+      "sensitivity": 0.6961,
+      "mean_error_pct": 0.041
+    }
+  },
+  "by_condition": {
+    "Pulmonary Disease, Chronic Obstructive": {
+      "true_positives": 280,
+      "total": 1456,
+      "sensitivity": 0.1923
+    },
+    "Crohn's Disease": {
+      "true_positives": 775,
+      "total": 1414,
+      "sensitivity": 0.5481
+    },
+    "Carcinoma, Midline": {
+      "true_positives": 0,
+      "total": 779,
+      "sensitivity": 0.0
+    },
+    "Rheumatoid Arthritis": {
+      "true_positives": 25,
+      "total": 652,
+      "sensitivity": 0.0383
+    },
+    "Psoriatic Arthritis": {
+      "true_positives": 12,
+      "total": 636,
+      "sensitivity": 0.0189
+    },
+    "Infections, Papillomavirus": {
+      "true_positives": 0,
+      "total": 508,
+      "sensitivity": 0.0
+    },
+    "Hypertension, Pulmonary": {
+      "true_positives": 24,
+      "total": 486,
+      "sensitivity": 0.0494
+    },
+    "Diabetes Mellitus, Type 2": {
+      "true_positives": 283,
+      "total": 468,
+      "sensitivity": 0.6047
+    },
+    "Kidney Transplantation": {
+      "true_positives": 160,
+      "total": 403,
+      "sensitivity": 0.397
+    },
+    "Non-Squamous Non-Small Cell Lung Cancer, Squamous Non-Small Cell Lung Cancer": {
+      "true_positives": 36,
+      "total": 331,
+      "sensitivity": 0.1088
+    }
+  },
+  "studies": [
+    {
+      "nct_id": "NCT01663987",
+      "title": "Investigate the Impact of Early Treatment Initiation With Tiotropium in Patients Recovering From Hospitalization for an Acute COPD Exacerbation 1",
+      "ctg_effects": 12,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02703324",
+      "title": "A Study of LY900014 Formulation in Participants With Type 1 Diabetes Mellitus Using Insulin Pumps",
+      "ctg_effects": 4,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT03770273",
+      "title": "Safety and Efficacy of Subcutaneous Sarilumab in Improving the Quality of Life in People With Indolent Systemic Mastocytosis",
+      "ctg_effects": 9,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02297438",
+      "title": "A Study Of Palbociclib (PD-0332991) + Letrozole VS. Placebo+ Letrozole For 1st Line Treatment Of Asian Postmenopausal Women With ER+/HER2- Advanced Breast Cancer [PALOMA-4]",
+      "ctg_effects": 175,
+      "extracted": 11,
+      "sensitivity": 0.0629,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT03506724",
+      "title": "Response to Anti-hypertensives in Pregnant and Postpartum Patients",
+      "ctg_effects": 9,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02235298",
+      "title": "Dapagliflozin Effects on Epicardial Fat",
+      "ctg_effects": 6,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT05299723",
+      "title": "The SleepWell Study - Chronotherapeutic Intervention to Improve Sleep Following ACS",
+      "ctg_effects": 12,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT00467298",
+      "title": "An Intervention to Improve Function in Severe Cardiopulmonary Illness",
+      "ctg_effects": 2,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02092662",
+      "title": "Objective Assessment of Upper Extremity Functioning of Stroke Patients Before and After Rehabilitation",
+      "ctg_effects": 4,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT06082843",
+      "title": "A Study to Test Whether Avenciguat Helps People With Liver Cirrhosis and High Blood Pressure in the Portal Vein (Main Vessel Going to the Liver) Who Had Bleeding in the Esophagus or Fluid Accumulation in the Belly",
+      "ctg_effects": 5,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02582242",
+      "title": "Comparing Efficacy and Safety of Thrice Daily Versus Twice Daily NovoMix\u00ae 30 (Biphasic Insulin Aspart 30) in Subjects With Type 2 Diabetes Inadequately Controlled With Basal Insulin",
+      "ctg_effects": 42,
+      "extracted": 1,
+      "sensitivity": 0.0238,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT01982955",
+      "title": "Tepotinib With Gefitinib in Participants With Locally Advanced or Metastatic NSCLC (INSIGHT)",
+      "ctg_effects": 97,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT00498485",
+      "title": "Use of Xyrem to Improve Sleep in Chronic Fatigue Syndrome",
+      "ctg_effects": 1,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT00904982",
+      "title": "Randomized Trial of Interventions to Improve Warfarin Adherence",
+      "ctg_effects": 1,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02252588",
+      "title": "The Effect of Chlorhexidine on the Oral and Lung Microbiota in Chronic Obstructive Pulmonary Disease",
+      "ctg_effects": 3,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01445613",
+      "title": "Carotid Artery Stenting Outcomes in the Standard Risk Population for Carotid Endarterectomy",
+      "ctg_effects": 4,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT04974723",
+      "title": "Real-world Effectiveness and Cardiovascular Safety Study of Abaloparatide in Postmenopausal Women",
+      "ctg_effects": 7,
+      "extracted": 3,
+      "sensitivity": 0.4286,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT01419080",
+      "title": "Patient-centered Outcomes Related to TReatment Practices in Peripheral Arterial Disease: Investigating Trajectories (PORTRAIT)",
+      "ctg_effects": 1,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT05046795",
+      "title": "Revefenacin in Chinese Subjects With Moderate to Very Severe Chronic Obstructive Pulmonary Disease(COPD)",
+      "ctg_effects": 14,
+      "extracted": 7,
+      "sensitivity": 0.5,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT01690299",
+      "title": "Phase 3b Safety and Efficacy Study of Apremilast to Treat Moderate to Severe Plaque-plaque Psoriasis",
+      "ctg_effects": 43,
+      "extracted": 14,
+      "sensitivity": 0.3256,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT02566317",
+      "title": "Stand & Move at Work",
+      "ctg_effects": 3,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT00999804",
+      "title": "Extension Study of Lapatinib Plus Herceptin With or Without Endocrine Therapy",
+      "ctg_effects": 10,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02411591",
+      "title": "A Study of Necitumumab and Abemaciclib in Participants With Non-Small Cell Lung Cancer (NSCLC)",
+      "ctg_effects": 9,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT00256750",
+      "title": "Belatacept Evaluation of Nephroprotection and Efficacy as First-line Immunosuppression (BENEFIT)",
+      "ctg_effects": 403,
+      "extracted": 160,
+      "sensitivity": 0.397,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT01754597",
+      "title": "Natriuretic Peptide Concentrations of B-type (BNP) During Anesthesia in Patients Previously Sensitized to Anthracyclines",
+      "ctg_effects": 3,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT05258747",
+      "title": "A Crossover Bioequivalence Study of Olaparib Tablets, 150 mg (Lek Pharmaceuticals d.d.) and Lynparza\u00ae (Olaparib) Tablets 150 mg (AstraZeneca Pharmaceuticals LP), in Patients With Breast Cancer Gene (BRCA) Mutated Ovarian Cancer, Recurrent Ovarian Cancer or Metastatic Breast Cancer",
+      "ctg_effects": 4,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT00513292",
+      "title": "Combination Chemotherapy and Paclitaxel Plus Trastuzumab in Treating Women With Palpable Breast Cancer That Can Be Removed by Surgery",
+      "ctg_effects": 14,
+      "extracted": 1,
+      "sensitivity": 0.0714,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT02746627",
+      "title": "Check It! Positive Psychology Intervention to Improve Adherence in Adolescents With T1D",
+      "ctg_effects": 7,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT04908449",
+      "title": "Pectointercostal Fascial Plane Block (PIFB) Alone Versus PIFB With Rectus Sheath Block (RSB) in Cardiac Surgery",
+      "ctg_effects": 12,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02556632",
+      "title": "Prophylactic Topical Agents in Reducing Radiation-Induced Dermatitis in Patients With Non-inflammatory Breast Cancer",
+      "ctg_effects": 4,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT00324805",
+      "title": "Chemotherapy With or Without Bevacizumab in Treating Patients With Stage IB, Stage II, or Stage IIIA Non-small Cell Lung Cancer That Was Removed By Surgery",
+      "ctg_effects": 3,
+      "extracted": 2,
+      "sensitivity": 0.6667,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT05224141",
+      "title": "Pembrolizumab/Vibostolimab (MK-7684A) or Atezolizumab in Combination With Chemotherapy in First Line Treatment of Extensive-Stage Small Cell Lung Cancer (MK-7684A-008/KEYVIBE-008)",
+      "ctg_effects": 7,
+      "extracted": 3,
+      "sensitivity": 0.4286,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT03364348",
+      "title": "4-1BB Agonist Monoclonal Antibody PF-05082566 With Trastuzumab Emtansine or Trastuzumab in Treating Patients With Advanced HER2-Positive Breast Cancer",
+      "ctg_effects": 14,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT04084574",
+      "title": "Diet and Hypertension Management in African Americans With Chronic Kidney Disease",
+      "ctg_effects": 27,
+      "extracted": 11,
+      "sensitivity": 0.4074,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT03690427",
+      "title": "The Cardiovascular Effects of Electronic Hookah Vaping",
+      "ctg_effects": 22,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02062463",
+      "title": "Study to Evaluate the Mastery of Inhaler Technique for Budesonide Formoterol (BF) SPIROMAX\u00ae as Compared to SYMBICORT\u00ae TURBOHALER\u00ae as Treatment for Adult Participants With Asthma",
+      "ctg_effects": 31,
+      "extracted": 2,
+      "sensitivity": 0.0645,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT02191891",
+      "title": "Xentuzumab (BI 836845) Plus Afatinib in Patients With Epidermal Growth Factor Receptor (EGFR) Mutant Non-small Cell Lung Cancer (NSCLC)",
+      "ctg_effects": 3,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01303796",
+      "title": "A Study of Oral Sapacitabine in Elderly Patients With Newly Diagnosed Acute Myeloid Leukemia",
+      "ctg_effects": 25,
+      "extracted": 1,
+      "sensitivity": 0.04,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT03446768",
+      "title": "Monitoring and Peer Support to Improve Treatment Adherence and Outcomes",
+      "ctg_effects": 5,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02754596",
+      "title": "Study Comparing Travoprost Intraocular Implants to Timolol Ophthalmic Solution",
+      "ctg_effects": 2,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT00265538",
+      "title": "Implementing Evidence Based Treatment of Hypertension",
+      "ctg_effects": 5,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT03727841",
+      "title": "Marizomib for Recurrent Low-Grade and Anaplastic Supratentorial, Infratentorial, and Spinal Cord Ependymoma",
+      "ctg_effects": 10,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02044510",
+      "title": "Urodynamic and Clinical Efficacy of Mirabegron for Neurogenic Bladder Patients",
+      "ctg_effects": 1,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01574248",
+      "title": "Effect of Bradykinin Receptor Antagonism on ACE Inhibitor-associated Angioedema",
+      "ctg_effects": 7,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01228149",
+      "title": "COSOPT-S\u00ae Treatment Versus Acetazolamide Before Trabeculectomy",
+      "ctg_effects": 24,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01606761",
+      "title": "A Study of CNTO 136 (Sirukumab), a Human Anti-IL-6 Monoclonal Antibody, Administered Subcutaneously, in Patients With Active Rheumatoid Arthritis Despite Anti-TNF-Alpha Therapy (SIRROUND-T)",
+      "ctg_effects": 13,
+      "extracted": 8,
+      "sensitivity": 0.6154,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT02059408",
+      "title": "Screen-and-treat Program for Chronic Kidney Disease- High Risk Persons",
+      "ctg_effects": 3,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT03086317",
+      "title": "Standard vs Ultrasound-assisted Catheter Thrombolysis for Submassive Pulmonary Embolism",
+      "ctg_effects": 23,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT00046891",
+      "title": "EGb761 in Maintaining Mental Clarity in Women Receiving Chemotherapy for Newly Diagnosed Breast Cancer",
+      "ctg_effects": 54,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT06142383",
+      "title": "A Proof of Concept and Dose-finding Study of XXB750 in Patients With Heart Failure",
+      "ctg_effects": 2,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT03446027",
+      "title": "Does Neuromuscular Electrical Stimulation Improve the Absolute Walking Distance in Patients With Intermittent Claudication Compared to Best Available Treatment?",
+      "ctg_effects": 41,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT03661723",
+      "title": "Pembrolizumab and Reirradiation in Bevacizumab Na\u00efve and Bevacizumab Resistant Recurrent Glioblastoma",
+      "ctg_effects": 8,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT03662659",
+      "title": "An Investigational Study of Immunotherapy Combinations With Chemotherapy in Patients With Gastric or Gastroesophageal Junction (GEJ) Cancers",
+      "ctg_effects": 46,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01156987",
+      "title": "Improved Breast MRI With SWIFT",
+      "ctg_effects": 1,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02751827",
+      "title": "Predicting Severe Toxicity of Targeted Therapies in Elderly Patients With Cancer",
+      "ctg_effects": 1,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01818804",
+      "title": "The Effect of n-3 Polyunsaturated Fatty Acids in Patients With Psoriatic Arthritis",
+      "ctg_effects": 3,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT03165045",
+      "title": "Changes in Health and Functional Status in Patients With Chronic Obstructive Pulmonary Disease During Therapy With Spiolto\u00ae Respimat\u00ae (AERIAL\u00ae)",
+      "ctg_effects": 9,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT00763035",
+      "title": "Comparison of Dobutamine and Regadenoson Stress Cardiac Magnetic Resonance (MR)",
+      "ctg_effects": 22,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT04881110",
+      "title": "Liraglutide and Peripheral Artery Disease",
+      "ctg_effects": 34,
+      "extracted": 17,
+      "sensitivity": 0.5,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT03838874",
+      "title": "Mepivacaine Versus Low-Dose Bupivacaine For Primary Total Hip and Knee Arthroplasty",
+      "ctg_effects": 9,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02409342",
+      "title": "A Study of Atezolizumab (MPDL3280A) Compared With a Platinum Agent (Cisplatin or Carboplatin) + (Pemetrexed or Gemcitabine) in Participants With Stage IV Non-Squamous or Squamous Non-Small Cell Lung Cancer (NSCLC) [IMpower110]",
+      "ctg_effects": 331,
+      "extracted": 36,
+      "sensitivity": 0.1088,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT02292082",
+      "title": "The Combination of Adductor Canal Block and Periarticular Injection. A Novel Technique for Patients Undergoing Total Knee Replacement (ACB PAI)",
+      "ctg_effects": 11,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT04249362",
+      "title": "Study of Durvalumab Following Radiation Therapy in Patients With Stage 3 Unresectable NSCLC Ineligible for Chemotherapy",
+      "ctg_effects": 56,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT03439514",
+      "title": "A Study of ARRY-371797 (PF-07265803) in Patients With Symptomatic Dilated Cardiomyopathy Due to a Lamin A/C Gene Mutation",
+      "ctg_effects": 171,
+      "extracted": 3,
+      "sensitivity": 0.0175,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT00890825",
+      "title": "AZD6244 in Combination With Docetaxel Versus Docetaxel Alone in KRAS Mutation Positive NSCLC Patients",
+      "ctg_effects": 17,
+      "extracted": 6,
+      "sensitivity": 0.3529,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT01119846",
+      "title": "A Study in Type 2 Diabetics of Single and Multiple Doses of Orally Administered GSK1292263 to Investigate the Safety, Tolerability, Pharmacokinetics and Pharmacodynamics",
+      "ctg_effects": 362,
+      "extracted": 230,
+      "sensitivity": 0.6354,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT01721291",
+      "title": "Inhaler Lung Deposition in Chronic Obstructive Pulmonary Disease (COPD)",
+      "ctg_effects": 1,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT03499899",
+      "title": "A Study of Efficacy and Safety of LAG525 in Combination With Spartalizumab, or With Spartalizumab and Carboplatin, or With Carboplatin, in Patients With Advanced Triple-negative Breast Cancer",
+      "ctg_effects": 46,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT04456686",
+      "title": "Chronic Pain Master Protocol (CPMP): A Study of LY3016859 in Participants With Osteoarthritis",
+      "ctg_effects": 20,
+      "extracted": 10,
+      "sensitivity": 0.5,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT02081014",
+      "title": "Safety and Efficacy Study of Mini-Dose Glucagon (G-Pen Mini) in Patients With Type 1 Diabetes",
+      "ctg_effects": 49,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01346774",
+      "title": "Preventing Urinary Tract Infection Post-Surgery",
+      "ctg_effects": 1,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT00181285",
+      "title": "Chest Wall Oscillation for Asthma and COPD Exacerbations Trial (COAT)",
+      "ctg_effects": 2,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01475461",
+      "title": "Phase 2 Study To Evaluate Safety And Efficacy Of Investigational Drug - PF04937319 In Patients With Type 2 Diabetes",
+      "ctg_effects": 92,
+      "extracted": 64,
+      "sensitivity": 0.6957,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT01788163",
+      "title": "Asia Pacific and Russia Diagnostic Study for EGFR Testing",
+      "ctg_effects": 155,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT05111041",
+      "title": "Smokeless Tobacco Cessation Intervention for Firefighters",
+      "ctg_effects": 11,
+      "extracted": 5,
+      "sensitivity": 0.4545,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT02156076",
+      "title": "A Blinded Study to Evaluate Effect on Atrial Fibrillation Burden in Patients With Paroxysmal Atrial Fibrillation",
+      "ctg_effects": 4,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02678442",
+      "title": "Endoscopic Ultrasound Guided Fine Needle Biopsy (EUS-FNB-SC) Using a Novel Fork Needle",
+      "ctg_effects": 7,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT03329079",
+      "title": "Engaging Rural Men With Mobile Technologies for Weight Loss",
+      "ctg_effects": 4,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01972776",
+      "title": "A Safety, Tolerability and Efficacy Study in Chronic Obstructive Pulmonary Disease (COPD) Patients With QBM076.",
+      "ctg_effects": 10,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01394276",
+      "title": "An Observational Study on RoActemra/Actemra (Tocilizumab) in Clinical Practice in Patients With Rheumatoid Arthritis (TRUST)",
+      "ctg_effects": 36,
+      "extracted": 15,
+      "sensitivity": 0.4167,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT00126438",
+      "title": "Meta-Iodobenzylguanidine (123I-mIBG) Scintigraphy Imaging in Patients With Heart Failure and Control Subjects Without Cardiovascular Disease",
+      "ctg_effects": 6,
+      "extracted": 3,
+      "sensitivity": 0.5,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT04771403",
+      "title": "Two Way Crossover Closed Loop Study MPC vs FMPD",
+      "ctg_effects": 11,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT04480424",
+      "title": "Study to Evaluate the Safety and Efficacy of High Dose Intravenous Immune Globulin (IVIG) Plus Standard Medical Treatment (SMT) Versus SMT Alone in Participants in Intensive Care Unit (ICU) With Coronavirus Disease (COVID-19)",
+      "ctg_effects": 46,
+      "extracted": 6,
+      "sensitivity": 0.1304,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT01682759",
+      "title": "A Study of the Safety and Efficacy of Omarigliptin (MK-3102) Compared With Glimepiride in Participants With Type 2 Diabetes Mellitus With Inadequate Glycemic Control on Metformin (MK-3102-016)",
+      "ctg_effects": 16,
+      "extracted": 8,
+      "sensitivity": 0.5,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT04082442",
+      "title": "Evolocumab in Patients With Acute MI",
+      "ctg_effects": 1,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02767011",
+      "title": "Tele-Health Electronic Monitoring to Reduce Post Discharge Complications and Surgical Site Infections",
+      "ctg_effects": 11,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT04420273",
+      "title": "Targeted Melanoma Detection With Skin Self-Examination During COVID-19 Restricted Physician Access",
+      "ctg_effects": 20,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT03933462",
+      "title": "A Study for the Assessment of the Benefits of a Novel Mesh Nebulizer in the Treatment of Patients With Stable COPD",
+      "ctg_effects": 21,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT03853473",
+      "title": "Prehabilitation of Frail Surgical Cancer Patients Using Remote Ischemic Preconditioning",
+      "ctg_effects": 2,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT04562896",
+      "title": "Iterative Design of Custom Dynamic Orthoses to Reduce Articular Contact Stress",
+      "ctg_effects": 26,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02634333",
+      "title": "Anti-VEGF Treatment for Prevention of PDR/DME",
+      "ctg_effects": 4,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01499511",
+      "title": "Anglo-Scandinavian Cardiac Outcomes Trial: Post Trial Follow-Up Study",
+      "ctg_effects": 5,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT04542070",
+      "title": "A Study to Evaluate Efficacy and Safety of Cabotegravir (CAB) Long Acting (LA) Plus (+) Rilpivirine (RPV) LA Versus BIKTARVY\u00ae (BIK) in Participants With Human Immunodeficiency Virus (HIV)-1 Who Are Virologically Suppressed",
+      "ctg_effects": 169,
+      "extracted": 3,
+      "sensitivity": 0.0178,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT05393245",
+      "title": "Safety of Tiotropium + Olodaterol in Chronic Obstructive Pulmonary Disease (COPD) Patients in Taiwan: a Non-interventional Study Based on the Taiwan National Health Insurance (NHI) Data",
+      "ctg_effects": 65,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT00981058",
+      "title": "First-line Treatment of Participants With Stage IV Squamous Non-Small Cell Lung Cancer With Necitumumab and Gemcitabine-Cisplatin",
+      "ctg_effects": 23,
+      "extracted": 4,
+      "sensitivity": 0.1739,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT03914326",
+      "title": "A Heart Disease Study of Semaglutide in Patients With Type 2 Diabetes",
+      "ctg_effects": 25,
+      "extracted": 1,
+      "sensitivity": 0.04,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT00231413",
+      "title": "Human Papilloma Virus Vaccine Immunogenicity and Safety Trial in Young Adult Women With GSK Bio's Novel HPV Vaccine.",
+      "ctg_effects": 340,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01347931",
+      "title": "In-home Evaluation of a Noninvasive Open Ventilation System in Patients With Severe Respiratory Insufficiency",
+      "ctg_effects": 5,
+      "extracted": 2,
+      "sensitivity": 0.4,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT02980978",
+      "title": "diEtitiaNs Helping pAtieNts CarE for Diabetes (ENHANCED)",
+      "ctg_effects": 5,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01559116",
+      "title": "Characterization of 24-hour Lung Function Profiles of Inhaled Tiotropium + Olodaterol Fixed Dose Combination in Patients Suffering From Chronic Obstructive Pulmonary Disease",
+      "ctg_effects": 80,
+      "extracted": 70,
+      "sensitivity": 0.875,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT04091360",
+      "title": "A Study of RPL554 Drug Administered by Metered Dose Inhaler to Treat Chronic Obstructive Pulmonary Disease",
+      "ctg_effects": 51,
+      "extracted": 34,
+      "sensitivity": 0.6667,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT03448406",
+      "title": "This Study Tests Empagliflozin in Patients With Chronic Heart Failure With Preserved Ejection Fraction (HFpEF). The Study Looks at How Far Patients Can Walk in 6 Minutes and at Their Heart Failure Symptoms.",
+      "ctg_effects": 44,
+      "extracted": 2,
+      "sensitivity": 0.0455,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT01205503",
+      "title": "Trial of Mesna to Prevent Doxorubicin-induced Plasma Protein Oxidation and Tumor Necrosis Factor Alpha (TNF-\u03b1) Release",
+      "ctg_effects": 18,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT04623008",
+      "title": "Using Mental Imagination to Prevent Excessive Gestational Weight Gain in Overweight and Obese Pregnant Women",
+      "ctg_effects": 33,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT00375518",
+      "title": "Study of Atorvastatin Versus Placebo to Reduce Cardiopulmonary Complications After Thoracic Surgery",
+      "ctg_effects": 2,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT04523220",
+      "title": "Study to Investigate the Safety of a Drug Called Osocimab at Low and High Doses in Adult Patients With Kidney Failure Requiring Regular Hemodialysis",
+      "ctg_effects": 4,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02688387",
+      "title": "A Phase 1 Relative Bioavailability Study of Ambrisentan and Tadalfil Fixed Dose Combination Tablets in Healthy Subjects",
+      "ctg_effects": 486,
+      "extracted": 24,
+      "sensitivity": 0.0494,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT04462289",
+      "title": "Electronic Proactive Outreach for Smokers With COPD",
+      "ctg_effects": 17,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02465567",
+      "title": "Study to Assess the Efficacy and Safety of PT010 Relative to PT003 and PT009 in Subjects With Moderate to Very Severe COPD (Ethos)",
+      "ctg_effects": 30,
+      "extracted": 24,
+      "sensitivity": 0.8,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT02362425",
+      "title": "Antioxidant Therapy in RYR1-Related Congenital Myopathy",
+      "ctg_effects": 83,
+      "extracted": 25,
+      "sensitivity": 0.3012,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT01035099",
+      "title": "RCT of Fixed vs Titrated Letrozole in Breast Cancer Patient Undergoing IVF",
+      "ctg_effects": 9,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT04741503",
+      "title": "Project Insight: Feasibility of a Breast Cancer Screening Decision Support Tool",
+      "ctg_effects": 59,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01685840",
+      "title": "Guiding Evidence Based Therapy Using Biomarker Intensified Treatment",
+      "ctg_effects": 102,
+      "extracted": 42,
+      "sensitivity": 0.4118,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT02682823",
+      "title": "Tocilizumab Real-Life Human Factors (RLHFs) Validation Study",
+      "ctg_effects": 158,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT04600921",
+      "title": "Ertugliflozin to Reduce Arrhythmic Burden in ICD/CRT patientS (ERASe-Trial) - a Phase III Study",
+      "ctg_effects": 16,
+      "extracted": 6,
+      "sensitivity": 0.375,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT03128060",
+      "title": "Expanding Access to Home-Based Palliative Care",
+      "ctg_effects": 8,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT04944290",
+      "title": "To Compare the Efficacy and Safety of Perrigo's Product to an FDA Approved Product for the Treatment of Glaucoma or Ocular Hypertension in Both Eyes",
+      "ctg_effects": 8,
+      "extracted": 4,
+      "sensitivity": 0.5,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT02056626",
+      "title": "Conditioned Pharmacotherapeutic Effects in Hypertension",
+      "ctg_effects": 3,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01127061",
+      "title": "Study of Exercise Training in Hypertrophic Cardiomyopathy",
+      "ctg_effects": 29,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT03557970",
+      "title": "JNJ-40346527 in Treating Participants With Relapsed or Refractory Acute Myeloid Leukemia",
+      "ctg_effects": 2,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02240238",
+      "title": "Combination Therapy With NC-6004 and Gemcitabine in Advanced Solid Tumors or Non-Small Cell Lung, Biliary and Bladder Cancer",
+      "ctg_effects": 18,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01970878",
+      "title": "Extension Study to Evaluate the Safety and Efficacy of PT003, PT001, and PT005 in Subjects With Moderate to Very Severe COPD, With Spiriva\u00ae Handihaler\u00ae (PINNACLE 3)",
+      "ctg_effects": 5,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01664910",
+      "title": "CMC-544 and Allogeneic Transplantation for CD22 Positive-Lymphoid Malignancies",
+      "ctg_effects": 5,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02532283",
+      "title": "A Study to Evaluate the Pharmacokinetics, Safety, and Antiviral Activity of JNJ-63623872 in Combination With Oseltamivir in Adult, and Elderly Hospitalized Participants With Influenza A Infection",
+      "ctg_effects": 95,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT05328973",
+      "title": "Intraoperative Aromatherapy Versus Placebo for Port-a-Cath Placement Under Monitored Anesthesia Care. A Randomized Controlled Trial",
+      "ctg_effects": 15,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02743780",
+      "title": "A Three Part Study of MGV354 in Ocular Hypertension or Glaucoma",
+      "ctg_effects": 17,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT04184791",
+      "title": "Computational Modeling of 60 Hz Subthalamic Nucleus Deep Brain Stimulation for Gait Disorder in Parkinson's Disease",
+      "ctg_effects": 11,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01994226",
+      "title": "Colchicine Or Naproxen Treatment for ACute gouT",
+      "ctg_effects": 1,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT03554018",
+      "title": "Ibuprofen With or Without Acetaminophen for Low Back Pain",
+      "ctg_effects": 3,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02349633",
+      "title": "Study For Patients With NSCLC EGFR Mutations (Del 19 or L858R +/- T790M)",
+      "ctg_effects": 147,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT00549770",
+      "title": "Efficacy and Safety of LCZ696A in Patients With Essential Hypertension",
+      "ctg_effects": 12,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT03670810",
+      "title": "A Study of Lasmiditan (LY573144) Over Four Migraine Attacks",
+      "ctg_effects": 95,
+      "extracted": 57,
+      "sensitivity": 0.6,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT00755326",
+      "title": "Dose Escalation Study Of Chinese Herbs In Osteoarthritis Of The Knee",
+      "ctg_effects": 3,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02292927",
+      "title": "Trimodal Prehabilitation for Aneurysm Surgery Study",
+      "ctg_effects": 2,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02674152",
+      "title": "Dose Finding Study of BI 836880 in Patients With Solid Tumors",
+      "ctg_effects": 4,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT03819764",
+      "title": "Cost-effectiveness of Forced Aerobic Exercise for Stroke Rehabilitation",
+      "ctg_effects": 140,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01531374",
+      "title": "Safety and Efficacy Continued Access Study of the Medtronic CoreValve\u00ae System in the Treatment of Symptomatic Severe Aortic Stenosis in Very High Risk Subjects and High Risk Subjects Who Need Aortic Valve Replacement",
+      "ctg_effects": 86,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT04003389",
+      "title": "A Study to Find Out How Safe Long-term Treatment With Fezolinetant is in Women With Hot Flashes Going Through Menopause",
+      "ctg_effects": 51,
+      "extracted": 18,
+      "sensitivity": 0.3529,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT00381706",
+      "title": "Combination Chemotherapy and Cetuximab in Treating Patients With Metastatic Esophageal Cancer or Gastroesophageal Junction Cancer",
+      "ctg_effects": 5,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02357147",
+      "title": "Study of the Safety and Efficacy of Amatuximab in Combination With Pemetrexed and Cisplatin in Subjects With Unresectable Malignant Pleural Mesothelioma (MPM)",
+      "ctg_effects": 2,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02205814",
+      "title": "Fasitibant Intra-articular Injection in Patients With Symptomatic Osteoarthritis of the Knee",
+      "ctg_effects": 12,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT00800254",
+      "title": "Early Neuromuscular Electrical Stimulation For Quadriceps Muscle Activation Deficits Following Total Knee Replacement",
+      "ctg_effects": 8,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01077154",
+      "title": "Study of Denosumab as Adjuvant Treatment for Women With High Risk Early Breast Cancer Receiving Neoadjuvant or Adjuvant Therapy (D-CARE)",
+      "ctg_effects": 10,
+      "extracted": 5,
+      "sensitivity": 0.5,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT02130635",
+      "title": "A Study to Evaluate the Safety, Tolerability, Pharmacokinetics, and Dose-Response Relationship of Multiple Doses of GSK2269557 Administered as a Dry Powder to Chronic Obstructive Pulmonary Disease (COPD) Patients",
+      "ctg_effects": 200,
+      "extracted": 36,
+      "sensitivity": 0.18,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT03785678",
+      "title": "Tenecteplase in Stroke Patients Between 4.5 and 24 Hours",
+      "ctg_effects": 24,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02258074",
+      "title": "The COMBINE Study: The CKD Optimal Management With BInders and NicotinamidE",
+      "ctg_effects": 2,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02468778",
+      "title": "SHIELD II Clinical Investigation",
+      "ctg_effects": 1,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT03326999",
+      "title": "Does Adding an Additional Numbing Medication Injection in the Thigh Help With Pain Control After Knee Replacement Surgery?",
+      "ctg_effects": 9,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02365649",
+      "title": "A Multicenter, Randomized, Double-Blind, Placebo-Controlled Study of ABT-494 for the Induction of Symptomatic and Endoscopic Remission in Subjects With Moderately to Severely Active Crohn's Disease Who Have Inadequately Responded to or Are Intolerant to Immunomodulators or Anti-TNF Therapy",
+      "ctg_effects": 1349,
+      "extracted": 781,
+      "sensitivity": 0.5745,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT01724060",
+      "title": "Effects of Obesity Treatments on Food Preferences and Metabolism",
+      "ctg_effects": 1,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01990209",
+      "title": "Orteronel as Monotherapy in Patients With Metastatic Breast Cancer (MBC) That Expresses the Androgen Receptor (AR)",
+      "ctg_effects": 37,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01754623",
+      "title": "GTX-RT in Borderline Resectable Pancreatic Cancer",
+      "ctg_effects": 1,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02764762",
+      "title": "Triple Combination Therapy in High Risk Crohn's Disease (CD)",
+      "ctg_effects": 1,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01294306",
+      "title": "MK2206 and Erlotinib Hydrochloride in Treating Patients With Advanced Non-Small Cell Lung Cancer Who Have Progressed After Previous Response to Erlotinib Hydrochloride Therapy",
+      "ctg_effects": 30,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT04029480",
+      "title": "Ertugliflozin Type 2 Diabetes Mellitus (T2DM) Pediatric Study (MK-8835/PF-04971729) (MK-8835-059)",
+      "ctg_effects": 20,
+      "extracted": 8,
+      "sensitivity": 0.4,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT01149772",
+      "title": "Adjusting to Chronic Conditions Using Education, Support, and Skills",
+      "ctg_effects": 18,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01469013",
+      "title": "Oral Baricitinib (LY3009104)Treatment in Japanese Participants With Active Rheumatoid Arthritis on Background Methotrexate Therapy",
+      "ctg_effects": 20,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01893320",
+      "title": "Study of Vosaroxin and Decitabine in Older Patients With Acute Myeloid Leukemia and High-risk Myelodysplastic Syndrome",
+      "ctg_effects": 1,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT05150210",
+      "title": "SP Thoracic IDE Study",
+      "ctg_effects": 2,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01038323",
+      "title": "Drug and Talk Therapy for Fibromyalgia",
+      "ctg_effects": 3,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01078623",
+      "title": "Efficacy and Safety of Two Fixed Dose Combinations of Aclidinium Bromide With Formoterol Fumarate",
+      "ctg_effects": 5,
+      "extracted": 2,
+      "sensitivity": 0.4,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT00758524",
+      "title": "A Study to Evaluate Efficacy and Safety of LCI699 in Participants With Essential Hypertension",
+      "ctg_effects": 65,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT03299816",
+      "title": "Five, Plus Nuts and Beans for Kidneys",
+      "ctg_effects": 6,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01981720",
+      "title": "Extension Study of PRX-102 for up to 60 Months",
+      "ctg_effects": 6,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01587703",
+      "title": "A Study to Investigate the Safety, Pharmacokinetics, Pharmacodynamics, and Clinical Activity of GSK525762 in Subjects With NUT Midline Carcinoma (NMC) and Other Cancers",
+      "ctg_effects": 779,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT03775109",
+      "title": "IL-1 Signal Inhibition in Alcoholic Hepatitis",
+      "ctg_effects": 48,
+      "extracted": 12,
+      "sensitivity": 0.25,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT01767688",
+      "title": "A Pharmacokinetic Study of MK-3102 in Participants With Impaired Hepatic Function (MK-3102-031)",
+      "ctg_effects": 12,
+      "extracted": 4,
+      "sensitivity": 0.3333,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT04307004",
+      "title": "Evaluating Novel Approaches for Estimating Awake and Sleep Blood Pressure",
+      "ctg_effects": 20,
+      "extracted": 4,
+      "sensitivity": 0.2,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT03010462",
+      "title": "Electric Field Navigated 1hz Rtms for Post-stroke Motor Recovery Trial",
+      "ctg_effects": 5,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01719380",
+      "title": "Study of LGX818 and Cetuximab or LGX818, BYL719, and Cetuximab in BRAF Mutant Metastatic Colorectal Cancer",
+      "ctg_effects": 35,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01431638",
+      "title": "Long-Term Safety and Tolerability of Canakinumab Prefilled Syringes in Frequently Flaring Acute Gouty Arthritis Patients",
+      "ctg_effects": 54,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT00146640",
+      "title": "Prednisone Timed-Release Tablet (TRT) Study: Modified-Release (MR) Formulation of Prednisone Compared to Standard Immediate-Release (IR) Prednisone in Participants With Rheumatoid Arthritis",
+      "ctg_effects": 4,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02967354",
+      "title": "[11C]5-Hydroxy-tryptophan PET for Assessment of Islet Mass in Type 2 Diabetes",
+      "ctg_effects": 5,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02122770",
+      "title": "Effects of Fluconazole and Itraconazole CYP3A-Mediated Inhibition on the Pharmacokinetics, Safety, and Tolerability of MLN4924 in Participants With Advanced Solid Tumors",
+      "ctg_effects": 63,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02512510",
+      "title": "Efficacy Study of Nebulized TD-4208 for Chronic Obstructive Pulmonary Disease (COPD)",
+      "ctg_effects": 6,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01583686",
+      "title": "CAR T Cell Receptor Immunotherapy Targeting Mesothelin for Patients With Metastatic Cancer",
+      "ctg_effects": 5,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01920568",
+      "title": "A Study to Compare Denosumab With Zoledronic Acid in Subjects With Bone Metastases From Solid Tumors",
+      "ctg_effects": 67,
+      "extracted": 3,
+      "sensitivity": 0.0448,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT01502761",
+      "title": "Intra-arterial Magnesium Administration for Acute Stroke",
+      "ctg_effects": 1,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT00994890",
+      "title": "A Long Term Study of the Safety of Tanezumab When Administered By Subcutaneous Injections",
+      "ctg_effects": 150,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02988817",
+      "title": "Enapotamab Vedotin (HuMax-AXL-ADC) Safety Study in Patients With Solid Tumors",
+      "ctg_effects": 79,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02741115",
+      "title": "Fontan Udenafil Exercise Longitudinal Assessment Trial",
+      "ctg_effects": 46,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02197078",
+      "title": "Active Surveillance Research Program for the Assessment of the Safety and the Effectiveness of Linagliptin",
+      "ctg_effects": 56,
+      "extracted": 48,
+      "sensitivity": 0.8571,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT03496298",
+      "title": "Effect of Efpeglenatide on Cardiovascular Outcomes",
+      "ctg_effects": 8,
+      "extracted": 3,
+      "sensitivity": 0.375,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT01879176",
+      "title": "Cytokine Removal in Cardiopulmonary Bypass Patients",
+      "ctg_effects": 7,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT03637296",
+      "title": "Adapting Critical Time Intervention to Support Inpatient Medical Care Transition",
+      "ctg_effects": 6,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01764659",
+      "title": "4D-CT for Pancreatic Adenocarcinoma in Radiotherapy Simulation",
+      "ctg_effects": 9,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02639182",
+      "title": "A Study of AGS-16C3F vs. Axitinib in Metastatic Renal Cell Carcinoma",
+      "ctg_effects": 11,
+      "extracted": 4,
+      "sensitivity": 0.3636,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT00508196",
+      "title": "Endothelial Function and Cardiac Output in RV Pacing",
+      "ctg_effects": 3,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02190721",
+      "title": "A Study to Evaluate 5 \u03bcg/kg Tbo-filgrastim in Infants, Children and Adolescents With Solid Tumors Without Bone Marrow Involvement",
+      "ctg_effects": 75,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01116427",
+      "title": "A Cooperative Clinical Study of Abatacept in Multiple Sclerosis",
+      "ctg_effects": 12,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT04560088",
+      "title": "Mindfulness to Reduce Loneliness in Older Caregivers",
+      "ctg_effects": 6,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT05850520",
+      "title": "A Study to Learn How Well a Higher Amount of Aflibercept Given as an Injection Into the Eye Works and How Safe it is in People With Reduced Vision Due to Swelling in the Macula, Central Part of the Retina Caused by a Blocked Vein in the Retina (Macula Edema Secondary to Retinal Vein Occlusion)",
+      "ctg_effects": 23,
+      "extracted": 8,
+      "sensitivity": 0.3478,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT04121741",
+      "title": "Singing and Cardiovascular Health in Older Adults",
+      "ctg_effects": 21,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02787863",
+      "title": "Clinical and Immunological Efficiency of Bacterial Vaccines at Adult Patients With Bronchopulmonary Pathology",
+      "ctg_effects": 102,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02368886",
+      "title": "Lower or Standard Dose Regorafenib in Treating Patients With Refractory Metastatic Colorectal Cancer",
+      "ctg_effects": 14,
+      "extracted": 3,
+      "sensitivity": 0.2143,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT04180696",
+      "title": "Mid-Q Response Study",
+      "ctg_effects": 25,
+      "extracted": 3,
+      "sensitivity": 0.12,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT05275920",
+      "title": "Building Electronic Tools To Enhance and Reinforce CArdiovascular REcommendations - Heart Failure (BETTER CARE-HF)",
+      "ctg_effects": 2,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01437540",
+      "title": "Safety and Tolerability of Aclidinium Bromide/Formoterol Fumarate Compared With Formoterol Fumarate in Patients With Moderate to Severe Chronic Obstructive Pulmonary Disease",
+      "ctg_effects": 17,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT00994682",
+      "title": "University of Texas H.S.C. San Antonio Pioglitazone in Non-Alcoholic Steatohepatitis Trial (UTHSCSA NASH Trial)",
+      "ctg_effects": 42,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02708680",
+      "title": "Randomized Phase 2 Study of Atezolizumab and Entinostat in Patients With aTN Breast Cancer With Phase 1b Lead In",
+      "ctg_effects": 7,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01841073",
+      "title": "Effect of Fermentable Carbohydrate on Glucose Homeostasis",
+      "ctg_effects": 2,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02586415",
+      "title": "Endovascular Therapy Following Imaging Evaluation for Ischemic Stroke 3",
+      "ctg_effects": 4,
+      "extracted": 1,
+      "sensitivity": 0.25,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT01507688",
+      "title": "Stroke Self-Management: Effect on Function and Stroke Specific Quality of Life",
+      "ctg_effects": 8,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02326155",
+      "title": "To Evaluate the Safety and Efficacy of Remsima\u2122 in Patients With Crohn's Disease (CD) or Ulcerative Colitis (UC)",
+      "ctg_effects": 65,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT00391092",
+      "title": "A Study of Avastin (Bevacizumab) in Combination With Herceptin (Trastuzumab)/Docetaxel in Patients With HER2 Positive Metastatic Breast Cancer.",
+      "ctg_effects": 82,
+      "extracted": 5,
+      "sensitivity": 0.061,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT05495997",
+      "title": "Cognitive Training in Parkinson's Disease",
+      "ctg_effects": 8,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT03293238",
+      "title": "Ultrasound Guided Knee Injections in Musculoskeletal Medicine",
+      "ctg_effects": 4,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT04619004",
+      "title": "HERTHENA-Lung01: Patritumab Deruxtecan in Subjects With Metastatic or Locally Advanced EGFR-mutated Non-Small Cell Lung Cancer",
+      "ctg_effects": 10,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT03028142",
+      "title": "The Effects of RPL554 in Addition to Tiotropium in COPD Patients",
+      "ctg_effects": 12,
+      "extracted": 7,
+      "sensitivity": 0.5833,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT02760277",
+      "title": "An Extension Study to Assess Vamorolone in Boys With Duchenne Muscular Dystrophy (DMD)",
+      "ctg_effects": 95,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02514447",
+      "title": "Trilaciclib (G1T28) in Patients With Previously Treated Extensive Stage SCLC Receiving Topotecan Chemotherapy",
+      "ctg_effects": 30,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT03768427",
+      "title": "Ezetimibe (EZ)/Atorvastatin (Ator) (MK-0653C) vs. Ator in Chinese Hypercholesterolemic Participants (MK-0653C-439)",
+      "ctg_effects": 4,
+      "extracted": 2,
+      "sensitivity": 0.5,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT03965052",
+      "title": "Safety and Tolerability of the Ophthalmic Solution PRO-179 Compared With Travatan\u00ae",
+      "ctg_effects": 20,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02671435",
+      "title": "A Study of Durvalumab (MEDI4736) and Monalizumab in Solid Tumors",
+      "ctg_effects": 64,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT00534638",
+      "title": "Effectiveness, Safety and Immunogenicity of GSK Biologicals' HPV Vaccine GSK580299 (Cervarix) Administered in Healthy Adolescents",
+      "ctg_effects": 168,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02246413",
+      "title": "Research Aimed at Improving Both Mood and Weight",
+      "ctg_effects": 43,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01280903",
+      "title": "Staying Active With Arthritis: RCT of Physical Activity for Older Adults With Osteoarthritis and Hypertension",
+      "ctg_effects": 44,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02951338",
+      "title": "PROPEL Randomized Trial",
+      "ctg_effects": 11,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT03354169",
+      "title": "Daytime vs. Delayed Eating Among Obese Individuals",
+      "ctg_effects": 3,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02225223",
+      "title": "Evaluation of t-RFA and RF-TVA Prior to/Following Radiation Therapy to Treat Painful Metastatic Vertebral Body Tumor(s)",
+      "ctg_effects": 5,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01906489",
+      "title": "20-Week Repeat Oral Dose Study of AKB-6548 in Participants With Chronic Kidney Disease and Anemia",
+      "ctg_effects": 87,
+      "extracted": 2,
+      "sensitivity": 0.023,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT00408603",
+      "title": "Safety and Efficacy Clinical Study of SNS-595 in Patients With Platinum-Resistant Ovarian Cancer",
+      "ctg_effects": 2,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT03563313",
+      "title": "The International Diabetes Closed Loop (iDCL) Trial: Clinical Acceptance of the Artificial Pancreas",
+      "ctg_effects": 48,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT04755660",
+      "title": "Home-based Resistance Training to Patients With Type 2 Diabetes",
+      "ctg_effects": 8,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01833026",
+      "title": "COPD Assessment and Management Bundle Versus Usual Care",
+      "ctg_effects": 1,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01986140",
+      "title": "Scalp Cooling to Prevent Chemo-induced Hair Loss",
+      "ctg_effects": 2,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT03382262",
+      "title": "Study to Compare Exposure of TA Following Administration of FX006 or TAcs in Patients With OA of the Shoulder or Hip",
+      "ctg_effects": 19,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT03511378",
+      "title": "Immunogenicity Assessment of Peg-filgrastim vs. Neulasta\u00ae as Adjunct to Chemotherapy in Patients With Breast Cancer",
+      "ctg_effects": 14,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT03689244",
+      "title": "A Study to Find Out if Selexipag is Effective and Safe in Patients With Chronic Thromboembolic Pulmonary Hypertension When the Disease is Inoperable or Persistent/Recurrent After Surgery and/or Interventional Treatment",
+      "ctg_effects": 2,
+      "extracted": 1,
+      "sensitivity": 0.5,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT01978938",
+      "title": "Efficacy and Safety Study of Eravacycline Compared With Levofloxacin in Complicated Urinary Tract Infections",
+      "ctg_effects": 9,
+      "extracted": 1,
+      "sensitivity": 0.1111,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT04107935",
+      "title": "Telemedicine for Reach, Education, Access and Treatment-ongoing",
+      "ctg_effects": 5,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01322009",
+      "title": "Overcoming Membrane Transporters to Improve CNS Drug Delivery - Improving Brain Antioxidants After Traumatic Brain Injury",
+      "ctg_effects": 2,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02729896",
+      "title": "A Study Evaluating Safety and Efficacy of Obinutuzumab, Polatuzumab Vedotin (Pola), and Atezolizumab (Atezo) in Participants With Relapsed or Refractory Follicular Lymphoma (FL) and Rituximab, Atezo, and Pola in Participants With Relapsed or Refractory Diffuse Large B-Cell Lymphoma (DLBCL)",
+      "ctg_effects": 37,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01244191",
+      "title": "Tivantinib Plus Erlotinib Versus Placebo Plus Erlotinib for the Treatment of Non-squamous, Non-small-cell Lung Cancer",
+      "ctg_effects": 64,
+      "extracted": 1,
+      "sensitivity": 0.0156,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT02038543",
+      "title": "Hydroxyproline Influence on Oxalate Metabolism",
+      "ctg_effects": 2,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01025284",
+      "title": "A Study for Participants With Small-Cell Lung Cancer",
+      "ctg_effects": 2,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02296138",
+      "title": "Comparing the Efficacy of Tiotropium + Olodaterol (5/5 \u00b5g) Fixed Dose Combination (FDC) Over Tiotropium 5\u00b5g in Reducing Moderate to Severe Exacerbations in Patients With Severe to Very Severe Chronic Obstructive Pulmonary Disease.",
+      "ctg_effects": 13,
+      "extracted": 7,
+      "sensitivity": 0.5385,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT02013674",
+      "title": "The TRansendocardial Stem Cell Injection Delivery Effects on Neomyogenesis STudy (The TRIDENT Study)",
+      "ctg_effects": 47,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT00585195",
+      "title": "A Study Of Oral PF-02341066, A C-Met/Hepatocyte Growth Factor Tyrosine Kinase Inhibitor, In Patients With Advanced Cancer",
+      "ctg_effects": 49,
+      "extracted": 2,
+      "sensitivity": 0.0408,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT01252563",
+      "title": "Amlodipine 10mg Drug Use Investigation",
+      "ctg_effects": 11,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02443324",
+      "title": "A Study of Ramucirumab Plus Pembrolizumab in Participants With Gastric or GEJ Adenocarcinoma, NSCLC, Transitional Cell Carcinoma of the Urothelium, or Biliary Tract Cancer",
+      "ctg_effects": 9,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT03952143",
+      "title": "A Study of LY900014 Compared to Insulin Lispro (Humalog) in Adults With Type 2 Diabetes",
+      "ctg_effects": 44,
+      "extracted": 18,
+      "sensitivity": 0.4091,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT00918723",
+      "title": "Vorinostat, Fludarabine Phosphate, Cyclophosphamide, and Rituximab in Treating Patients With Previously Untreated Chronic Lymphocytic Leukemia or Small Lymphocytic Lymphoma",
+      "ctg_effects": 1,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT04003610",
+      "title": "Pemigatinib + Pembrolizumab vs Pemigatinib Alone vs Standard of Care for Urothelial Carcinoma (FIGHT-205)",
+      "ctg_effects": 43,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02867813",
+      "title": "Further Cardiovascular Outcomes Research With PCSK9 Inhibition in Subjects With Elevated Risk Open-label Extension",
+      "ctg_effects": 12,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT04442464",
+      "title": "Intraocular Pressure in Ocular Hypertensives With Scleral Lens Wear",
+      "ctg_effects": 2,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT03136380",
+      "title": "Study of Danirixin in Japanese Healthy Elderly Male Subjects",
+      "ctg_effects": 228,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT04414644",
+      "title": "Randomized Study of Daytime vs. Delayed Eating: Effect on Weight and Metabolism",
+      "ctg_effects": 3,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02231177",
+      "title": "Pharmacokinetics and Safety of BI 1744 CL Plus Tiotropium Bromide in Chronic Obstructive Pulmonary Disease (COPD)",
+      "ctg_effects": 39,
+      "extracted": 10,
+      "sensitivity": 0.2564,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT00842361",
+      "title": "Comparison of NN5401 Versus Biphasic Insulin Aspart 30 on a Twice Daily Regimen in Subjects With Type 2 Diabetes Mellitus",
+      "ctg_effects": 15,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01548768",
+      "title": "RHYTHM (Formerly Escape II Myocardium)",
+      "ctg_effects": 9,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01136785",
+      "title": "Effects of Continuous Positive Airway Pressure (CPAP) Treatment on Glucose Control in Patients With Type 2 Diabetes",
+      "ctg_effects": 3,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT05525910",
+      "title": "Relative Bioavailability Study of Nirmatrelvir/Ritonavir 4 Different Fixed Dose Combination Tablets Relative to the Commercial Tablets in Healthy Participants",
+      "ctg_effects": 40,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01831076",
+      "title": "Preoperative Hormone Therapy for Postmenopausal Women With ER+ Clinical Stage T2-4 Tumors",
+      "ctg_effects": 1,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02969525",
+      "title": "A Study to Evaluate the Dose Response Based on the Efficacy, Safety and Tolerability of Bimekizumab in Subjects With Active Psoriatic Arthritis Which is a Type of Inflammatory Arthritis",
+      "ctg_effects": 633,
+      "extracted": 12,
+      "sensitivity": 0.019,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT02224755",
+      "title": "MOMENTUM 3 IDE Clinical Study Protocol",
+      "ctg_effects": 44,
+      "extracted": 1,
+      "sensitivity": 0.0227,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT00372112",
+      "title": "A Study To Assess The Safety And Tolerability Of GW642444 In Subjects With Chronic Obstructive Pulmonary Disease (COPD)",
+      "ctg_effects": 633,
+      "extracted": 116,
+      "sensitivity": 0.1833,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT01570868",
+      "title": "Ponatinib - Frontline for Chronic Myeloid Leukemia (CML) in Accelerated Phase (AP)",
+      "ctg_effects": 8,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT00485589",
+      "title": "A Study of Ocrelizumab in Combination With Methotrexate in Patients With Rheumatoid Arthritis Who Are Naive to Methotrexate (FILM)",
+      "ctg_effects": 7,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT03684408",
+      "title": "Radiofrequency Chip for Localization of Non-Palpable Breast Lesions",
+      "ctg_effects": 5,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01180478",
+      "title": "Comparison Study of Narrow Band Imaging Versus White Light Resection in Patients With Bladder Tumors/Cancer",
+      "ctg_effects": 21,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02533505",
+      "title": "Phase IV O2 Consumption Study in COPD Patients.",
+      "ctg_effects": 30,
+      "extracted": 15,
+      "sensitivity": 0.5,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT01350804",
+      "title": "Efficacy at 24 Weeks and Safety, Tolerability and Long Term Efficacy of Secukinumab (AIN457) in Patients With Active Rheumatoid Arthritis (RA) and an Inadequate Response to Anti-Tumor Necrosis Factor \u03b1 (Anti-TNF\u03b1) Agents (CAIN457F2309 and CAIN457F2309E1)",
+      "ctg_effects": 151,
+      "extracted": 2,
+      "sensitivity": 0.0132,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT02302807",
+      "title": "A Study of Atezolizumab Compared With Chemotherapy in Participants With Locally Advanced or Metastatic Urothelial Bladder Cancer [IMvigor211]",
+      "ctg_effects": 33,
+      "extracted": 3,
+      "sensitivity": 0.0909,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT05224258",
+      "title": "Evaluation of the MiniMed\u2122 780G System in Type 1 Adult and Pediatric Subjects Utilizing Insulin Fiasp\u00ae",
+      "ctg_effects": 11,
+      "extracted": 2,
+      "sensitivity": 0.1818,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT01743560",
+      "title": "An Open Label Study of Postmenopausal Women With Oestrogen Receptor Positive Locally Advanced or Metastatic Breast Cancer Treated With Everolimus (RAD001) With Exemestane, With Exploratory Epigenetic Marker Analysis",
+      "ctg_effects": 34,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT00661583",
+      "title": "Use of Ranibizumab With Mitomycin C During Trabeculectomy",
+      "ctg_effects": 6,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01286311",
+      "title": "Tailored Communication to Reduce Cardiovascular Risk",
+      "ctg_effects": 10,
+      "extracted": 5,
+      "sensitivity": 0.5,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT01693562",
+      "title": "A Phase 1/2 Study to Evaluate MEDI4736",
+      "ctg_effects": 141,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02330055",
+      "title": "Determination of the Predictors of Nocturnal Desaturation in Postpartum Women",
+      "ctg_effects": 13,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT00770224",
+      "title": "S0801 Iodine I 131 Tositumomab, Rituximab, and Combination Chemotherapy in Previously Untreated Stage II, Stage III, or Stage IV Follicular Non-Hodgkin Lymphoma",
+      "ctg_effects": 55,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02757352",
+      "title": "A Study of Ixekizumab (LY2439821) in Participants With Nonradiographic Axial Spondyloarthritis",
+      "ctg_effects": 89,
+      "extracted": 56,
+      "sensitivity": 0.6292,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT00077649",
+      "title": "A Study of PEGASYS (Peginterferon Alfa-2a (40KD)) in Combination With COPEGUS (Ribavirin) in Interferon-Naive Patients With Chronic Hepatitis C Infection (CHC).",
+      "ctg_effects": 58,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT03686215",
+      "title": "Investigation of Novel Surgical Imaging for Tumor Excision",
+      "ctg_effects": 5,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT03597568",
+      "title": "Resveratrol and Vascular Function in CKD",
+      "ctg_effects": 2,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT03086343",
+      "title": "A Phase 3 Study to Compare Upadacitinib to Abatacept in Subjects With Rheumatoid Arthritis on Stable Dose of Conventional Synthetic Disease- Modifying Antirheumatic Drugs (csDMARDs) Who Have an Inadequate Response or Intolerance to Biologic DMARDs",
+      "ctg_effects": 6,
+      "extracted": 2,
+      "sensitivity": 0.3333,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT00250497",
+      "title": "New Moves - Obesity Prevention Among Adolescent Girls",
+      "ctg_effects": 6,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02940860",
+      "title": "Iron Isomaltoside/Ferric Derisomaltose vs Iron Sucrose for Treatment of Iron Deficiency Anemia in Non-Dialysis-Dependent Chronic Kidney Disease",
+      "ctg_effects": 69,
+      "extracted": 28,
+      "sensitivity": 0.4058,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT03364647",
+      "title": "The Effect of Various Strength Training Protocols in ACL Reconstructed Participants",
+      "ctg_effects": 14,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01798992",
+      "title": "Effect of Beta-blockers on Structural Remodeling and Gene Expression in the Failing Human Heart",
+      "ctg_effects": 3,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02413320",
+      "title": "Neoadjuvant Study of Two Platinum Regimens in Triple Negative Breast Cancer",
+      "ctg_effects": 2,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT04181320",
+      "title": "A Multicentre European Study to Evaluate Granulox\u00ae Used in the Treatment Pathway of Predominantly Chronic Venous Leg Ulcers (VLUs).",
+      "ctg_effects": 2,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01610037",
+      "title": "Comparison of Long-term Safety of the Combination Product QVA149A Against Placebo and Standard of Care Treatment in Chronic Obstructive Pulmonary Disease Patients With Moderate to Severe Airflow Limitation",
+      "ctg_effects": 30,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT03236441",
+      "title": "Biochemical Effects of Remote Ischemic Pre-Conditioning on Contrast-induced Acute Kidney Injury",
+      "ctg_effects": 11,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT04948697",
+      "title": "A Study Investigating the Efficacy and Safety of Ociperlimab and Tislelizumab and BAT1706 Combinations in Patients With Advanced HCC",
+      "ctg_effects": 34,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT00158054",
+      "title": "COPES Phase I Randomized Controlled Trial of Treatment For Distress in Heart Disease Patients",
+      "ctg_effects": 4,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT03200574",
+      "title": "Behavior of Valve Leaflets Following Aortic Valve Implant",
+      "ctg_effects": 2,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01790113",
+      "title": "Arthrex Eclipse\u2122 Shoulder Prosthesis",
+      "ctg_effects": 1,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT01564368",
+      "title": "DWI in Assessing Treatment Response in Patients With Breast Cancer Receiving Neoadjuvant Chemotherapy",
+      "ctg_effects": 5,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT00720499",
+      "title": "Efficacy and Safety of 4 Weeks of Treatment With Orally Inhaled BI1744/Tiotropium Bromide in Patients With Chronic Obstructive Pulmonary Disease (COPD)",
+      "ctg_effects": 155,
+      "extracted": 39,
+      "sensitivity": 0.2516,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT02273323",
+      "title": "Flow Mediated Dilation in Response to Black Tea",
+      "ctg_effects": 17,
+      "extracted": 6,
+      "sensitivity": 0.3529,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT00388297",
+      "title": "Thyroid Therapy for Mild Thyroid Deficiency in Pregnancy",
+      "ctg_effects": 37,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT05736224",
+      "title": "Assessing a Natural Product Plus Bioadhesive Nanoparticle (BNP) Sunscreen",
+      "ctg_effects": 12,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT00680797",
+      "title": "Metabolic Effects of Androgenicity in Aging Men and Women",
+      "ctg_effects": 1,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT02332590",
+      "title": "Efficacy and Safety of Sarilumab and Adalimumab Monotherapy in Patients With Rheumatoid Arthritis (SARIL-RA-MONARCH)",
+      "ctg_effects": 287,
+      "extracted": 8,
+      "sensitivity": 0.0279,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT00806624",
+      "title": "DU-176b Phase 2 Dose Finding Study in Subjects With Non-valvular Atrial Fibrillation",
+      "ctg_effects": 4,
+      "extracted": 3,
+      "sensitivity": 0.75,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT02238639",
+      "title": "Pulmonary Embolism as a Cause of COPD Exacerbations",
+      "ctg_effects": 7,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    },
+    {
+      "nct_id": "NCT04156620",
+      "title": "Study to Demonstrate the Efficacy, Safety and Tolerability of an Intravenous Regimen of Secukinumab Compared to Placebo in Subjects With Active axSpA",
+      "ctg_effects": 19,
+      "extracted": 6,
+      "sensitivity": 0.3158,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT02384538",
+      "title": "A Phase 2a Study Evaluating the Safety and Efficacy of ABT-981 in Patients With Erosive Hand Osteoarthritis",
+      "ctg_effects": 49,
+      "extracted": 6,
+      "sensitivity": 0.1224,
+      "precision": 1.0
+    },
+    {
+      "nct_id": "NCT02650193",
+      "title": "A Study Of The Safety And Effects Of One Or More Doses Of HSP-130 Injected Under The Skin In Women With Breast Cancer That Has Not Spread To Distant Sites In The Body.",
+      "ctg_effects": 28,
+      "extracted": 0,
+      "sensitivity": 0.0,
+      "precision": 0
+    }
+  ]
+}

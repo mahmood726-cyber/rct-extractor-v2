@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PDF Validation Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #333; }
+        .summary { background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0; }
+        .metric { display: inline-block; margin: 10px 20px; }
+        .metric-value { font-size: 24px; font-weight: bold; color: #2196F3; }
+        .metric-label { color: #666; }
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background: #4CAF50; color: white; }
+        tr:nth-child(even) { background: #f9f9f9; }
+        .pass { color: green; }
+        .fail { color: red; }
+    </style>
+</head>
+<body>
+    <h1>PDF Validation Report</h1>
+    <p>Generated: 2026-02-01T16:05:04.966657</p>
+
+    <div class="summary">
+        <h2>Overall Metrics</h2>
+        <div class="metric">
+            <div class="metric-value">0.0%</div>
+            <div class="metric-label">Precision</div>
+        </div>
+        <div class="metric">
+            <div class="metric-value">0.0%</div>
+            <div class="metric-label">Recall</div>
+        </div>
+        <div class="metric">
+            <div class="metric-value">0.0%</div>
+            <div class="metric-label">F1 Score</div>
+        </div>
+        <div class="metric">
+            <div class="metric-value">5</div>
+            <div class="metric-label">PDFs Processed</div>
+        </div>
+    </div>
+
+    <h2>Results by PDF</h2>
+    <table>
+        <tr>
+            <th>Trial</th>
+            <th>Area</th>
+            <th>Expected</th>
+            <th>Extracted</th>
+            <th>TP</th>
+            <th>FP</th>
+            <th>FN</th>
+            <th>Precision</th>
+            <th>Recall</th>
+            <th>F1</th>
+        </tr>
+        <tr class="fail">
+            <td>PMC11419598</td>
+            <td>cardiology</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0.0%</td>
+            <td>0.0%</td>
+            <td>0.0%</td>
+        </tr>
+        <tr class="fail">
+            <td>PMC11566157</td>
+            <td>cardiology</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0.0%</td>
+            <td>0.0%</td>
+            <td>0.0%</td>
+        </tr>
+        <tr class="fail">
+            <td>PMC11785855</td>
+            <td>cardiology</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0.0%</td>
+            <td>0.0%</td>
+            <td>0.0%</td>
+        </tr>
+        <tr class="fail">
+            <td>PMC11817526</td>
+            <td>cardiology</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0.0%</td>
+            <td>0.0%</td>
+            <td>0.0%</td>
+        </tr>
+        <tr class="fail">
+            <td>PMC11840193</td>
+            <td>cardiology</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0.0%</td>
+            <td>0.0%</td>
+            <td>0.0%</td>
+        </tr>
+    </table>
+</body>
+</html>

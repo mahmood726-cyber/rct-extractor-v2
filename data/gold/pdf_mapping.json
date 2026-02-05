@@ -1,0 +1,137 @@
+{
+  "version": "1.0.0",
+  "description": "Mapping of gold standard entries to PDF files",
+  "generated": "2026-02-01T00:00:00Z",
+  "summary": {
+    "total_gold_entries": 207,
+    "entries_with_pdf": 0,
+    "entries_without_pdf": 207,
+    "coverage_percentage": 0.0
+  },
+  "gold_files": {
+    "real_trials.jsonl": {
+      "entries": 20,
+      "mappings": [
+        {"line": 1, "trial": "DAPA-HF", "nct_id": "NCT03036124", "pmc_id": "PMC6832437", "pdf": null, "status": "pending_download"},
+        {"line": 2, "trial": "EMPEROR-Reduced", "nct_id": "NCT03057977", "pmc_id": "PMC7592000", "pdf": null, "status": "pending_download"},
+        {"line": 3, "trial": "PARADIGM-HF", "nct_id": "NCT01035255", "pmc_id": "PMC4212585", "pdf": null, "status": "pending_download"},
+        {"line": 4, "trial": "EMPA-REG OUTCOME", "nct_id": "NCT01131676", "pmc_id": "PMC4631072", "pdf": null, "status": "pending_download"}
+      ],
+      "notes": "Primary cardiovascular trials from external validation dataset"
+    },
+    "oncology_trials.jsonl": {
+      "entries": 20,
+      "mappings": [
+        {"line": 1, "trial": "CheckMate 067", "nct_id": "NCT01844505", "pmc_id": "PMC5389545", "pdf": null, "status": "pending_download"},
+        {"line": 2, "trial": "KEYNOTE-024", "nct_id": "NCT02142738", "pmc_id": "PMC5101118", "pdf": null, "status": "pending_download"},
+        {"line": 3, "trial": "KEYNOTE-189", "nct_id": "NCT02578680", "pmc_id": "PMC6045956", "pdf": null, "status": "pending_download"}
+      ],
+      "notes": "Oncology trials - melanoma, NSCLC, breast cancer"
+    },
+    "diabetes_metabolic_trials.jsonl": {
+      "entries": 15,
+      "mappings": [],
+      "notes": "Diabetes and metabolic trials"
+    },
+    "infectious_disease_trials.jsonl": {
+      "entries": 15,
+      "mappings": [
+        {"line": 1, "trial": "ACTT-1", "nct_id": "NCT04280705", "pmc_id": "PMC7262788", "pdf": null, "status": "pending_download"}
+      ],
+      "notes": "Infectious disease trials including COVID-19"
+    },
+    "respiratory_autoimmune_trials.jsonl": {
+      "entries": 15,
+      "mappings": [
+        {"line": 1, "trial": "INPULSIS", "nct_id": "NCT01335464", "pmc_id": "PMC4140676", "pdf": null, "status": "pending_download"}
+      ],
+      "notes": "Respiratory and autoimmune trials"
+    },
+    "psychiatry_neurology_trials.jsonl": {
+      "entries": 15,
+      "mappings": [
+        {"line": 1, "trial": "CLARITY", "nct_id": "NCT00213135", "pmc_id": "PMC2858814", "pdf": null, "status": "pending_download"},
+        {"line": 2, "trial": "DEFINE", "nct_id": "NCT00420212", "pmc_id": "PMC3537689", "pdf": null, "status": "pending_download"}
+      ],
+      "notes": "Psychiatry and neurology trials - MS, depression"
+    },
+    "expanded_or_cases.jsonl": {
+      "entries": 14,
+      "mappings": [],
+      "notes": "Expanded odds ratio test cases"
+    },
+    "expanded_md_cases.jsonl": {
+      "entries": 14,
+      "mappings": [],
+      "notes": "Expanded mean difference test cases"
+    },
+    "expanded_rd_cases.jsonl": {
+      "entries": 14,
+      "mappings": [],
+      "notes": "Expanded risk difference test cases"
+    },
+    "multilang_cases.jsonl": {
+      "entries": 24,
+      "mappings": [],
+      "notes": "Multi-language extraction test cases"
+    },
+    "adversarial_cases.jsonl": {
+      "entries": 20,
+      "mappings": [],
+      "notes": "Adversarial edge cases for robustness testing"
+    },
+    "near_miss_adversarial.jsonl": {
+      "entries": 20,
+      "mappings": [],
+      "notes": "Near-miss patterns to test false positive rejection"
+    }
+  },
+  "pmc_to_gold": {
+    "PMC6832437": {"trial": "DAPA-HF", "gold_file": "real_trials.jsonl", "verified": false},
+    "PMC7592000": {"trial": "EMPEROR-Reduced", "gold_file": "real_trials.jsonl", "verified": false},
+    "PMC4212585": {"trial": "PARADIGM-HF", "gold_file": "real_trials.jsonl", "verified": false},
+    "PMC4631072": {"trial": "EMPA-REG OUTCOME", "gold_file": "real_trials.jsonl", "verified": false},
+    "PMC5507108": {"trial": "CANVAS Program", "gold_file": "real_trials.jsonl", "verified": false},
+    "PMC6298594": {"trial": "DECLARE-TIMI 58", "gold_file": "real_trials.jsonl", "verified": false},
+    "PMC7935678": {"trial": "SELECT", "gold_file": "real_trials.jsonl", "verified": false},
+    "PMC4985288": {"trial": "LEADER", "gold_file": "real_trials.jsonl", "verified": false},
+    "PMC5066594": {"trial": "SUSTAIN-6", "gold_file": "real_trials.jsonl", "verified": false},
+    "PMC5384230": {"trial": "FOURIER", "gold_file": "real_trials.jsonl", "verified": false},
+    "PMC6451651": {"trial": "ODYSSEY OUTCOMES", "gold_file": "real_trials.jsonl", "verified": false},
+    "PMC4689591": {"trial": "SPRINT", "gold_file": "real_trials.jsonl", "verified": false},
+    "PMC5648577": {"trial": "COMPASS", "gold_file": "real_trials.jsonl", "verified": false},
+    "PMC2829856": {"trial": "RE-LY", "gold_file": "real_trials.jsonl", "verified": false},
+    "PMC3175640": {"trial": "ARISTOTLE", "gold_file": "real_trials.jsonl", "verified": false},
+    "PMC3175645": {"trial": "ROCKET AF", "gold_file": "real_trials.jsonl", "verified": false},
+    "PMC6498475": {"trial": "CREDENCE", "gold_file": "real_trials.jsonl", "verified": false},
+    "PMC7536793": {"trial": "DAPA-CKD", "gold_file": "real_trials.jsonl", "verified": false},
+    "PMC7748110": {"trial": "FIDELIO-DKD", "gold_file": "real_trials.jsonl", "verified": false},
+    "PMC9794216": {"trial": "EMPA-KIDNEY", "gold_file": "real_trials.jsonl", "verified": false},
+    "PMC2664590": {"trial": "JUPITER", "gold_file": "real_trials.jsonl", "verified": false},
+    "PMC4508499": {"trial": "IMPROVE-IT", "gold_file": "real_trials.jsonl", "verified": false},
+    "PMC5389545": {"trial": "CheckMate 067", "gold_file": "oncology_trials.jsonl", "verified": false},
+    "PMC5101118": {"trial": "KEYNOTE-024", "gold_file": "oncology_trials.jsonl", "verified": false},
+    "PMC6045956": {"trial": "KEYNOTE-189", "gold_file": "oncology_trials.jsonl", "verified": false},
+    "PMC3324192": {"trial": "CLEOPATRA", "gold_file": "oncology_trials.jsonl", "verified": false},
+    "PMC6614614": {"trial": "POLO", "gold_file": "oncology_trials.jsonl", "verified": false},
+    "PMC5117596": {"trial": "MONALEESA-2", "gold_file": "oncology_trials.jsonl", "verified": false},
+    "PMC5117597": {"trial": "PALOMA-2", "gold_file": "oncology_trials.jsonl", "verified": false},
+    "PMC5762025": {"trial": "PACIFIC", "gold_file": "oncology_trials.jsonl", "verified": false},
+    "PMC5478149": {"trial": "OAK", "gold_file": "oncology_trials.jsonl", "verified": false},
+    "PMC5633812": {"trial": "ALEX", "gold_file": "oncology_trials.jsonl", "verified": false},
+    "PMC2858814": {"trial": "CLARITY", "gold_file": "psychiatry_neurology_trials.jsonl", "verified": false},
+    "PMC3537689": {"trial": "DEFINE", "gold_file": "psychiatry_neurology_trials.jsonl", "verified": false},
+    "PMC5297537": {"trial": "RA-BEAM", "gold_file": "respiratory_autoimmune_trials.jsonl", "verified": false},
+    "PMC7262788": {"trial": "ACTT-1", "gold_file": "infectious_disease_trials.jsonl", "verified": false},
+    "PMC4012629": {"trial": "GEMINI 1", "gold_file": "respiratory_autoimmune_trials.jsonl", "verified": false},
+    "PMC4140676": {"trial": "INPULSIS", "gold_file": "respiratory_autoimmune_trials.jsonl", "verified": false},
+    "PMC6561690": {"trial": "TRANSFORM-2", "gold_file": "psychiatry_neurology_trials.jsonl", "verified": false}
+  },
+  "status_definitions": {
+    "pending_download": "PDF not yet downloaded from PMC",
+    "downloaded": "PDF downloaded, awaiting gold standard verification",
+    "verified": "PDF and gold standard entries cross-validated",
+    "no_pmc_access": "Article not available in PMC Open Access"
+  },
+  "update_instructions": "Run 'python scripts/update_pdf_mapping.py' after downloading PDFs to update this file"
+}

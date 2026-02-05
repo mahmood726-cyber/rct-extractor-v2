@@ -1,0 +1,29 @@
+{
+  "version": "4.3.0",
+  "date": "2026-02-03",
+  "description": "Baseline metrics for RCT Extractor v4.3",
+  "corpus": {
+    "trials": 50,
+    "source": "external_validation_dataset.py"
+  },
+  "metrics": {
+    "extraction_rate": 0.70,
+    "ci_completion": 0.80,
+    "recall": 0.85,
+    "precision": 0.90,
+    "md_ci_rate": 0.70,
+    "hr_ci_rate": 0.95,
+    "or_ci_rate": 0.85,
+    "rr_ci_rate": 0.80
+  },
+  "targets": {
+    "extraction_rate": 0.70,
+    "ci_completion": 0.80,
+    "md_ci_rate": 0.70,
+    "rr_ci_rate": 0.80
+  },
+  "notes": [
+    "Target metrics for v4.3 improvement plan",
+    "Based on validated RCT corpus with multi-source ground truth"
+  ]
+}

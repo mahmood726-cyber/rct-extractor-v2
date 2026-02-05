@@ -1,0 +1,839 @@
+{
+  "version": "v4.3.7",
+  "created": "2026-02-05T18:54:42.211739",
+  "description": "Unified corpus manifest for all validated RCT PDFs",
+  "total_pdfs": 107,
+  "by_source": {
+    "curated": 43,
+    "validated": 3,
+    "oa_corpus_v2": 61
+  },
+  "excluded_non_rct": 15,
+  "pdfs": [
+    {
+      "pmc_id": "PMC10052556",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC10052556.pdf",
+      "pdf_size": 194101
+    },
+    {
+      "pmc_id": "PMC10160525",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC10160525.pdf",
+      "pdf_size": 534233
+    },
+    {
+      "pmc_id": "PMC11066537",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC11066537.pdf",
+      "pdf_size": 1458556
+    },
+    {
+      "pmc_id": "PMC11978796",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC11978796.pdf",
+      "pdf_size": 690720
+    },
+    {
+      "pmc_id": "PMC12002045",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12002045.pdf",
+      "pdf_size": 731291
+    },
+    {
+      "pmc_id": "PMC12144549",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12144549.pdf",
+      "pdf_size": 526211
+    },
+    {
+      "pmc_id": "PMC12206259",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12206259.pdf",
+      "pdf_size": 785050
+    },
+    {
+      "pmc_id": "PMC12266184",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12266184.pdf",
+      "pdf_size": 5705582
+    },
+    {
+      "pmc_id": "PMC12312311",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12312311.pdf",
+      "pdf_size": 3044072
+    },
+    {
+      "pmc_id": "PMC12381027",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12381027.pdf",
+      "pdf_size": 2092496
+    },
+    {
+      "pmc_id": "PMC12383606",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12383606.pdf",
+      "pdf_size": 322559
+    },
+    {
+      "pmc_id": "PMC12396472",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12396472.pdf",
+      "pdf_size": 1402669
+    },
+    {
+      "pmc_id": "PMC12398225",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12398225.pdf",
+      "pdf_size": 1307184
+    },
+    {
+      "pmc_id": "PMC12432284",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12432284.pdf",
+      "pdf_size": 1640249
+    },
+    {
+      "pmc_id": "PMC12449588",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12449588.pdf",
+      "pdf_size": 578800
+    },
+    {
+      "pmc_id": "PMC12459455",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12459455.pdf",
+      "pdf_size": 863152
+    },
+    {
+      "pmc_id": "PMC12605678",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12605678.pdf",
+      "pdf_size": 1377747
+    },
+    {
+      "pmc_id": "PMC12611508",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12611508.pdf",
+      "pdf_size": 491397
+    },
+    {
+      "pmc_id": "PMC12618225",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12618225.pdf",
+      "pdf_size": 5833217
+    },
+    {
+      "pmc_id": "PMC12618492",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12618492.pdf",
+      "pdf_size": 1555055
+    },
+    {
+      "pmc_id": "PMC12620794",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12620794.pdf",
+      "pdf_size": 852190
+    },
+    {
+      "pmc_id": "PMC12634008",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12634008.pdf",
+      "pdf_size": 463047
+    },
+    {
+      "pmc_id": "PMC12634985",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12634985.pdf",
+      "pdf_size": 1503816
+    },
+    {
+      "pmc_id": "PMC12670541",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12670541.pdf",
+      "pdf_size": 611967
+    },
+    {
+      "pmc_id": "PMC12670988",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12670988.pdf",
+      "pdf_size": 468493
+    },
+    {
+      "pmc_id": "PMC12672312",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12672312.pdf",
+      "pdf_size": 925344
+    },
+    {
+      "pmc_id": "PMC12673806",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12673806.pdf",
+      "pdf_size": 1529312
+    },
+    {
+      "pmc_id": "PMC12673929",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12673929.pdf",
+      "pdf_size": 492540
+    },
+    {
+      "pmc_id": "PMC12680170",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12680170.pdf",
+      "pdf_size": 801205
+    },
+    {
+      "pmc_id": "PMC12691621",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12691621.pdf",
+      "pdf_size": 2650088
+    },
+    {
+      "pmc_id": "PMC12700247",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12700247.pdf",
+      "pdf_size": 952623
+    },
+    {
+      "pmc_id": "PMC12705423",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12705423.pdf",
+      "pdf_size": 3156575
+    },
+    {
+      "pmc_id": "PMC12705445",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12705445.pdf",
+      "pdf_size": 6208165
+    },
+    {
+      "pmc_id": "PMC12707242",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12707242.pdf",
+      "pdf_size": 6376705
+    },
+    {
+      "pmc_id": "PMC12714862",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12714862.pdf",
+      "pdf_size": 1726595
+    },
+    {
+      "pmc_id": "PMC12723918",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12723918.pdf",
+      "pdf_size": 1668376
+    },
+    {
+      "pmc_id": "PMC12751528",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12751528.pdf",
+      "pdf_size": 1776808
+    },
+    {
+      "pmc_id": "PMC12775159",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12775159.pdf",
+      "pdf_size": 472175
+    },
+    {
+      "pmc_id": "PMC12799394",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12799394.pdf",
+      "pdf_size": 818054
+    },
+    {
+      "pmc_id": "PMC12799424",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12799424.pdf",
+      "pdf_size": 940295
+    },
+    {
+      "pmc_id": "PMC12801554",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12801554.pdf",
+      "pdf_size": 1434757
+    },
+    {
+      "pmc_id": "PMC12858542",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC12858542.pdf",
+      "pdf_size": 6369162
+    },
+    {
+      "pmc_id": "PMC9619635",
+      "source": "curated",
+      "pdf_path": "test_pdfs\\open_access_rcts\\PMC9619635.pdf",
+      "pdf_size": 1042287
+    },
+    {
+      "pmc_id": "PMC4689591",
+      "source": "validated",
+      "pdf_path": "test_pdfs\\validated_rcts\\PMC4689591.pdf",
+      "pdf_size": 725636
+    },
+    {
+      "pmc_id": "PMC4985288",
+      "source": "validated",
+      "pdf_path": "test_pdfs\\validated_rcts\\PMC4985288.pdf",
+      "pdf_size": 872644
+    },
+    {
+      "pmc_id": "PMC7262788",
+      "source": "validated",
+      "pdf_path": "test_pdfs\\validated_rcts\\PMC7262788.pdf",
+      "pdf_size": 599575
+    },
+    {
+      "pmc_id": "PMC10016240",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC10016240.pdf",
+      "pdf_size": 415526,
+      "title": "Prevalence of myocardial fibrosis among patients living with HIV and factors associated with a higher prevalence rate: protocol for a systematic review and meta-analysis.",
+      "journal": "BMJ open",
+      "year": 2023
+    },
+    {
+      "pmc_id": "PMC10351119",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC10351119.pdf",
+      "pdf_size": 2025053,
+      "title": "Assessment of cardio-renal-hepatic function in patients with valvular heart disease: a multi-biomarker approach-the cardio-renal-hepatic score.",
+      "journal": "BMC medicine",
+      "year": 2023
+    },
+    {
+      "pmc_id": "PMC10441703",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC10441703.pdf",
+      "pdf_size": 2055676,
+      "title": "An atlas of associations between 14 micronutrients and 22 cancer outcomes: Mendelian randomization analyses.",
+      "journal": "BMC medicine",
+      "year": 2023
+    },
+    {
+      "pmc_id": "PMC10496263",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC10496263.pdf",
+      "pdf_size": 1576705,
+      "title": "Establishing the relationships between adiposity and reproductive factors: a multivariable Mendelian randomization analysis.",
+      "journal": "BMC medicine",
+      "year": 2023
+    },
+    {
+      "pmc_id": "PMC10500913",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC10500913.pdf",
+      "pdf_size": 4056199,
+      "title": "Impact of gallstone disease on the risk of stroke and coronary artery disease: evidence from prospective observational studies and genetic analyses.",
+      "journal": "BMC medicine",
+      "year": 2023
+    },
+    {
+      "pmc_id": "PMC10542685",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC10542685.pdf",
+      "pdf_size": 2565877,
+      "title": "Real-world data emulating randomized controlled trials of non-vitamin K antagonist oral anticoagulants in patients with venous thromboembolism.",
+      "journal": "BMC medicine",
+      "year": 2023
+    },
+    {
+      "pmc_id": "PMC10557341",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC10557341.pdf",
+      "pdf_size": 1816886,
+      "title": "Investigating the causal interplay between sleep traits and risk of acute myocardial infarction: a Mendelian randomization study.",
+      "journal": "BMC medicine",
+      "year": 2023
+    },
+    {
+      "pmc_id": "PMC10684013",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC10684013.pdf",
+      "pdf_size": 942671,
+      "title": "Evaluation of point-of-care multiplex polymerase chain reaction in guiding antibiotic treatment of patients acutely admitted with suspected community-acquired pneumonia in Denmark: A multicentre randomised controlled trial.",
+      "journal": "PLoS medicine",
+      "year": 2023
+    },
+    {
+      "pmc_id": "PMC10854098",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC10854098.pdf",
+      "pdf_size": 1420217,
+      "title": "Comparison of long-term radial artery occlusion via distal vs. conventional transradial access (CONDITION): a randomized controlled trial.",
+      "journal": "BMC medicine",
+      "year": 2024
+    },
+    {
+      "pmc_id": "PMC10880284",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC10880284.pdf",
+      "pdf_size": 1150507,
+      "title": "Genetic investigation into the broad health implications of caffeine: evidence from phenome-wide, proteome-wide and metabolome-wide Mendelian randomization.",
+      "journal": "BMC medicine",
+      "year": 2024
+    },
+    {
+      "pmc_id": "PMC10910673",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC10910673.pdf",
+      "pdf_size": 1993205,
+      "title": "Plasma metabolites and risk of seven cancers: a two-sample Mendelian randomization study among European descendants.",
+      "journal": "BMC medicine",
+      "year": 2024
+    },
+    {
+      "pmc_id": "PMC10919027",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC10919027.pdf",
+      "pdf_size": 1137081,
+      "title": "Influence of lack of blinding on the estimation of medication-related harms: a retrospective cohort study of randomized controlled trials.",
+      "journal": "BMC medicine",
+      "year": 2024
+    },
+    {
+      "pmc_id": "PMC11008832",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC11008832.pdf",
+      "pdf_size": 2297185,
+      "title": "The effect of intravenous hyoscine butylbromide on slow progress in labor (BUSCLAB): A double-blind randomized placebo-controlled trial.",
+      "journal": "PLoS medicine",
+      "year": 2024
+    },
+    {
+      "pmc_id": "PMC11018286",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC11018286.pdf",
+      "pdf_size": 760516,
+      "title": "Cardiovascular outcomes 50 years after antenatal exposure to betamethasone: Follow-up of a randomised double-blind, placebo-controlled trial.",
+      "journal": "PLoS medicine",
+      "year": 2024
+    },
+    {
+      "pmc_id": "PMC11132442",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC11132442.pdf",
+      "pdf_size": 931027,
+      "title": "User-defined outcomes of the Danish cardiovascular screening (DANCAVAS) trial: A post hoc analyses of a population-based, randomised controlled trial.",
+      "journal": "PLoS medicine",
+      "year": 2024
+    },
+    {
+      "pmc_id": "PMC11198027",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC11198027.pdf",
+      "pdf_size": 1447899,
+      "title": "Effect of a multicomponent quality improvement strategy on sustained achievement of diabetes care goals and macrovascular and microvascular complications in South Asia at 6.5 years follow-up: Post hoc analyses of the CARRS randomized clinical trial.",
+      "journal": "PLoS medicine",
+      "year": 2024
+    },
+    {
+      "pmc_id": "PMC11233008",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC11233008.pdf",
+      "pdf_size": 962942,
+      "title": "Non-diabetes status after diagnosis of impaired glucose tolerance and risk of long-term death and vascular complications: A post hoc analysis of the Da Qing Diabetes Prevention Outcome Study.",
+      "journal": "PLoS medicine",
+      "year": 2024
+    },
+    {
+      "pmc_id": "PMC11256568",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC11256568.pdf",
+      "pdf_size": 3695082,
+      "title": "Is trofinetide a future treatment for Rett syndrome? A comprehensive systematic review and meta-analysis of randomized controlled trials.",
+      "journal": "BMC medicine",
+      "year": 2024
+    },
+    {
+      "pmc_id": "PMC11262657",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC11262657.pdf",
+      "pdf_size": 1046290,
+      "title": "Changing diagnostic criteria for gestational diabetes (CDC4G) in Sweden: A stepped wedge cluster randomised trial.",
+      "journal": "PLoS medicine",
+      "year": 2024
+    },
+    {
+      "pmc_id": "PMC11321229",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC11321229.pdf",
+      "pdf_size": 979009,
+      "title": "Daytime napping and the incidence of Parkinson's disease: a prospective cohort study with Mendelian randomization.",
+      "journal": "BMC medicine",
+      "year": 2024
+    },
+    {
+      "pmc_id": "PMC11328629",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC11328629.pdf",
+      "pdf_size": 647676,
+      "title": "Incidence and predictors of diabetic foot ulcer among patients with diabetes mellitus in a diabetic follow-up clinic in Central Ethiopia: a retrospective follow-up study.",
+      "journal": "BMJ open",
+      "year": 2024
+    },
+    {
+      "pmc_id": "PMC11361421",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC11361421.pdf",
+      "pdf_size": 1841557,
+      "title": "Comparison of oral anticoagulants for stroke prevention in atrial fibrillation using the UK clinical practice research Datalink Aurum: A reference trial (ARISTOTLE) emulation study.",
+      "journal": "PLoS medicine",
+      "year": 2024
+    },
+    {
+      "pmc_id": "PMC11392261",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC11392261.pdf",
+      "pdf_size": 1876023,
+      "title": "Evaluation of hydroxychloroquine or chloroquine for the prevention of COVID-19 (COPCOV): A double-blind, randomised, placebo-controlled trial.",
+      "journal": "PLoS medicine",
+      "year": 2024
+    },
+    {
+      "pmc_id": "PMC11438164",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC11438164.pdf",
+      "pdf_size": 1182676,
+      "title": "Bivalirudin versus heparin in patients with or without bail-out GPI use: a pre-specified subgroup analysis from the BRIGHT-4 trial.",
+      "journal": "BMC medicine",
+      "year": 2024
+    },
+    {
+      "pmc_id": "PMC11459883",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC11459883.pdf",
+      "pdf_size": 987902,
+      "title": "Consideration of factors of low accrual and methods for setting appropriate accrual periods: Japan Clinical Oncology Group study.",
+      "journal": "Trials",
+      "year": 2024
+    },
+    {
+      "pmc_id": "PMC11463109",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC11463109.pdf",
+      "pdf_size": 4519548,
+      "title": "Surgical interventions for degenerative lumbar spinal stenosis: a systematic review with network meta-analysis.",
+      "journal": "BMC medicine",
+      "year": 2024
+    },
+    {
+      "pmc_id": "PMC11469483",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC11469483.pdf",
+      "pdf_size": 1794339,
+      "title": "Methaemoglobin as a surrogate marker of primaquine antihypnozoite activity in Plasmodium vivax malaria: A systematic review and individual patient data meta-analysis.",
+      "journal": "PLoS medicine",
+      "year": 2024
+    },
+    {
+      "pmc_id": "PMC11470660",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC11470660.pdf",
+      "pdf_size": 2148761,
+      "title": "Harm effects in non-registered versus registered randomized controlled trials of medications: a retrospective cohort study of clinical trials.",
+      "journal": "BMC medicine",
+      "year": 2024
+    },
+    {
+      "pmc_id": "PMC11478879",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC11478879.pdf",
+      "pdf_size": 3020725,
+      "title": "Improving follow-up survey completion rates through pilot interventions in the All of Us Research Program: Results from a non-randomized intervention study.",
+      "journal": "PloS one",
+      "year": 2024
+    },
+    {
+      "pmc_id": "PMC11492945",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC11492945.pdf",
+      "pdf_size": 1705854,
+      "title": "Association between prophylactic closure of mucosal defect and delayed adverse events after endoscopic resection: a systematic review and meta-analysis.",
+      "journal": "BMJ open",
+      "year": 2024
+    },
+    {
+      "pmc_id": "PMC11498658",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC11498658.pdf",
+      "pdf_size": 540675,
+      "title": "Prevalence and associated factors of dyslipidemia in elderly people: Results from the Ardakan Cohort Study on Ageing, Iran.",
+      "journal": "PloS one",
+      "year": 2024
+    },
+    {
+      "pmc_id": "PMC11500901",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC11500901.pdf",
+      "pdf_size": 1178191,
+      "title": "The effect of protecting women against economic shocks to fight HIV in Cameroon, Africa: The POWER randomised controlled trial.",
+      "journal": "PLoS medicine",
+      "year": 2024
+    },
+    {
+      "pmc_id": "PMC11563424",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC11563424.pdf",
+      "pdf_size": 1247336,
+      "title": "Effectiveness of an Interactive Mobile Health Intervention (IMHI) to enhance the adoption of modern contraceptive methods during the early postpartum period among women in Northeast Ethiopia: A cluster Randomized Controlled Trial (RCT).",
+      "journal": "PloS one",
+      "year": 2024
+    },
+    {
+      "pmc_id": "PMC11563451",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC11563451.pdf",
+      "pdf_size": 1191393,
+      "title": "Postnatal cord care practices and associated factors in Arba Minch town, southern Ethiopia.",
+      "journal": "PloS one",
+      "year": 2024
+    },
+    {
+      "pmc_id": "PMC11573214",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC11573214.pdf",
+      "pdf_size": 3521588,
+      "title": "Perioperative administration of sub-anesthetic ketamine/esketamine for preventing postpartum depression symptoms: A trial sequential meta-analysis.",
+      "journal": "PloS one",
+      "year": 2024
+    },
+    {
+      "pmc_id": "PMC11581355",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC11581355.pdf",
+      "pdf_size": 1741414,
+      "title": "Assessment of scabies and its associated factors in Hawassa Zuria District, Southern Ethiopia: A cross-sectional study.",
+      "journal": "PloS one",
+      "year": 2024
+    },
+    {
+      "pmc_id": "PMC11588281",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC11588281.pdf",
+      "pdf_size": 832432,
+      "title": "Perceived social support and associated factors among older people living in metropolitan cities of northwest Ethiopia: A community-based cross-sectional study.",
+      "journal": "PloS one",
+      "year": 2024
+    },
+    {
+      "pmc_id": "PMC11593758",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC11593758.pdf",
+      "pdf_size": 753092,
+      "title": "Determining optimal timing of birth for women with chronic or gestational hypertension at term: The WILL (When to Induce Labour to Limit risk in pregnancy hypertension) randomised trial.",
+      "journal": "PLoS medicine",
+      "year": 2024
+    },
+    {
+      "pmc_id": "PMC11658396",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC11658396.pdf",
+      "pdf_size": 1623671,
+      "title": "Telomere length in relation to fecundability and use of assisted reproductive technologies: the Norwegian Mother, Father, and Child Cohort Study.",
+      "journal": "BMC medicine",
+      "year": 2024
+    },
+    {
+      "pmc_id": "PMC11658485",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC11658485.pdf",
+      "pdf_size": 552551,
+      "title": "Determinants of healthcare insurance coverage among women of reproductive age in Tanzania: A multilevel mixed effect analysis.",
+      "journal": "PloS one",
+      "year": 2024
+    },
+    {
+      "pmc_id": "PMC11658508",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC11658508.pdf",
+      "pdf_size": 1285528,
+      "title": "Effectiveness of home-based exercise for functional rehabilitation in older adults after hip fracture surgery: A systematic review and meta-analysis of randomized controlled trials.",
+      "journal": "PloS one",
+      "year": 2024
+    },
+    {
+      "pmc_id": "PMC11676525",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC11676525.pdf",
+      "pdf_size": 1289859,
+      "title": "Factors associated with essential newborn care practice among obstetric care providers in public hospitals in Gamo, Gofa, and Wolayta zones, southern Ethiopia: A facility-based cross-sectional study, 2022.",
+      "journal": "PloS one",
+      "year": 2024
+    },
+    {
+      "pmc_id": "PMC11676783",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC11676783.pdf",
+      "pdf_size": 821530,
+      "title": "The prevalence and associated factors of the minimum acceptable diet among children aged 6-23 months in Ethiopia: A community-based cross-sectional study.",
+      "journal": "PloS one",
+      "year": 2024
+    },
+    {
+      "pmc_id": "PMC11676830",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC11676830.pdf",
+      "pdf_size": 1383024,
+      "title": "Evaluating the safety and effectiveness of \u00ce\u00b1-blockers versus mirabegron for medical expulsive therapy in ureteral calculi: A Systematic review and meta-analysis.",
+      "journal": "PloS one",
+      "year": 2024
+    },
+    {
+      "pmc_id": "PMC11686989",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC11686989.pdf",
+      "pdf_size": 2601340,
+      "title": "Impaired pulmonary function increases the risk of gout: evidence from a large cohort study in the UK Biobank.",
+      "journal": "BMC medicine",
+      "year": 2024
+    },
+    {
+      "pmc_id": "PMC7011529",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC7011529.pdf",
+      "pdf_size": 1209604,
+      "title": "Effect of tuberculosis screening and retention interventions on early antiretroviral therapy mortality in Botswana: a stepped-wedge cluster randomized trial.",
+      "journal": "BMC medicine",
+      "year": 2020
+    },
+    {
+      "pmc_id": "PMC7580018",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC7580018.pdf",
+      "pdf_size": 815940,
+      "title": "Pulp repair response after the use of a dentin-pulp biostimulation membrane (BBio) in primary teeth: study protocol for a randomized clinical trial.",
+      "journal": "Trials",
+      "year": 2020
+    },
+    {
+      "pmc_id": "PMC7602829",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC7602829.pdf",
+      "pdf_size": 572775,
+      "title": "First-line support for assistance in breathing in children: statistical and health economic analysis plan for the FIRST-ABC trial.",
+      "journal": "Trials",
+      "year": 2020
+    },
+    {
+      "pmc_id": "PMC7670589",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC7670589.pdf",
+      "pdf_size": 784957,
+      "title": "Breast cancer risk factors and their effects on survival: a Mendelian randomisation study.",
+      "journal": "BMC medicine",
+      "year": 2020
+    },
+    {
+      "pmc_id": "PMC7848881",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC7848881.pdf",
+      "pdf_size": 767726,
+      "title": "Convalescent plasma therapy for COVID-19 patients: a protocol of a prospective meta-analysis of randomized controlled trials.",
+      "journal": "Trials",
+      "year": 2021
+    },
+    {
+      "pmc_id": "PMC8218529",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC8218529.pdf",
+      "pdf_size": 2264739,
+      "title": "Association of statin use in older people primary prevention group with risk of cardiovascular events and mortality: a systematic review and meta-analysis of observational studies.",
+      "journal": "BMC medicine",
+      "year": 2021
+    },
+    {
+      "pmc_id": "PMC8876785",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC8876785.pdf",
+      "pdf_size": 970748,
+      "title": "The impact of kidney function in patients on antithrombotic therapy: a post hoc subgroup analysis focusing on recurrent bleeding events from the AFIRE trial.",
+      "journal": "BMC medicine",
+      "year": 2022
+    },
+    {
+      "pmc_id": "PMC9096528",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC9096528.pdf",
+      "pdf_size": 234335,
+      "title": "Severe bronchopulmonary dysplasia in extremely premature infants: a scoping review protocol for identifying risk factors.",
+      "journal": "BMJ open",
+      "year": 2022
+    },
+    {
+      "pmc_id": "PMC9251919",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC9251919.pdf",
+      "pdf_size": 1833482,
+      "title": "A positive faecal immunochemical test result and its association with the incidence of rheumatoid arthritis, systemic lupus erythematosus, and psoriatic arthritis: an analysis of one-million national colorectal cancer screening programme results.",
+      "journal": "BMC medicine",
+      "year": 2022
+    },
+    {
+      "pmc_id": "PMC9264743",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC9264743.pdf",
+      "pdf_size": 1350496,
+      "title": "Generalizability and reach of a randomized controlled trial to improve oral health among home care recipients: comparing participants and nonparticipants at baseline and during follow-up.",
+      "journal": "Trials",
+      "year": 2022
+    },
+    {
+      "pmc_id": "PMC9360729",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC9360729.pdf",
+      "pdf_size": 1526133,
+      "title": "Atorvastatin for reduction of 28-day mortality in hospitalized COVID-19 patients: study protocol for a randomized, double-blinded, placebo-controlled, clinical trial.",
+      "journal": "Trials",
+      "year": 2022
+    },
+    {
+      "pmc_id": "PMC9661797",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC9661797.pdf",
+      "pdf_size": 1320023,
+      "title": "Optimal target of LDL cholesterol level for statin treatment: challenges to monotonic relationship with cardiovascular events.",
+      "journal": "BMC medicine",
+      "year": 2022
+    },
+    {
+      "pmc_id": "PMC9814460",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC9814460.pdf",
+      "pdf_size": 2256932,
+      "title": "",
+      "journal": "",
+      "year": null
+    },
+    {
+      "pmc_id": "PMC9898966",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC9898966.pdf",
+      "pdf_size": 1765824,
+      "title": "Glucagon-like peptide-1 receptor agonists and diabetic retinopathy: nationwide cohort and Mendelian randomization studies.",
+      "journal": "BMC medicine",
+      "year": 2023
+    },
+    {
+      "pmc_id": "PMC9974059",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC9974059.pdf",
+      "pdf_size": 1836216,
+      "title": "Comparative effectiveness of BNT162b2 and ChAdOx1 nCoV-19 vaccines against COVID-19.",
+      "journal": "BMC medicine",
+      "year": 2023
+    },
+    {
+      "pmc_id": "PMC9993583",
+      "source": "oa_corpus_v2",
+      "pdf_path": "test_pdfs\\oa_rct_corpus_v2\\PMC9993583.pdf",
+      "pdf_size": 1581683,
+      "title": "Circulating levels of micronutrients and risk of infections: a Mendelian randomization study.",
+      "journal": "BMC medicine",
+      "year": 2023
+    }
+  ]
+}
