@@ -1,0 +1,604 @@
+[
+  {
+    "study_id": "Moholdt 2012_2012",
+    "pmcid": "PMC3399826",
+    "category": "pattern_gap",
+    "details": "2 indicator patterns found, 0 Cochrane values in text",
+    "patterns_found": [
+      {
+        "pattern": "95%?\\s*(?:CI|confidence interval)\\s*[=:,]?\\s*[\\[(]?\\s*\\d+\\.\\",
+        "count": 5,
+        "examples": [
+          "95% confidence interval 21.8",
+          "95%\nCI (21.8",
+          "95% CI (219.6"
+        ]
+      },
+      {
+        "pattern": "\\d+\\.\\d+\\s*[\\[(]\\s*\\d+\\.\\d+\\s*,\\s*\\d+\\.\\d+\\s*[\\])]",
+        "count": 23,
+        "examples": [
+          "4.7 (2.9, 6.5)",
+          "3.8 (1.9, 5.7)",
+          "0.03 (20.02, 0.08)"
+        ]
+      }
+    ],
+    "cochrane_in_text": [],
+    "text_len": 30419,
+    "text_snippet": "ween patients randomized to home-based AIT compared to patients attending organized rehabilitation (95% confidence interval 21.8, 3.5). AIT patients reported good adherence to exercise training. Even though these first data indi"
+  },
+  {
+    "study_id": "Singhal 2015_2015",
+    "pmcid": "PMC4506013",
+    "category": "pattern_gap",
+    "details": "1 indicator patterns found, 0 Cochrane values in text",
+    "patterns_found": [
+      {
+        "pattern": "[pP]\\s*[=<>]\\s*0\\.\\d+",
+        "count": 14,
+        "examples": [
+          "P = 0.012",
+          "P = 0.58",
+          "P = 0.03"
+        ]
+      }
+    ],
+    "cochrane_in_text": [],
+    "text_len": 23037,
+    "text_snippet": "ildren from group B were steroid resistant. Mean time taken to  induce remission was significantly (P = 0.012) less in group A (10.25 \u00b1 2.41 days) than group B (12.55 \u00b1 1.44 days). One patient in group A had"
+  },
+  {
+    "study_id": "Zendedel 2015_2015",
+    "pmcid": "PMC4802087",
+    "category": "table_only",
+    "details": "Tables referenced, numbers present, but no effect patterns in text",
+    "text_len": 19704
+  },
+  {
+    "study_id": "Shapses 2004_2004",
+    "pmcid": "PMC4010554",
+    "category": "pattern_gap",
+    "details": "1 indicator patterns found, 0 Cochrane values in text",
+    "patterns_found": [
+      {
+        "pattern": "[pP]\\s*[=<>]\\s*0\\.\\d+",
+        "count": 9,
+        "examples": [
+          "P = 0.04",
+          "P < 0.05",
+          "P = 0.43"
+        ]
+      }
+    ],
+    "cochrane_in_text": [],
+    "text_len": 32432,
+    "text_snippet": "ss in the placebo group compared with the calcium-supplemented group (43.5 \u00b1 1.1 vs. 39.9 \u00b1 1.2 kg; P = 0.04). Differences in initial values were taken into account by using initial values as covariates in su"
+  },
+  {
+    "study_id": "Stanton 2015_2015",
+    "pmcid": "PMC4580545",
+    "category": "table_only",
+    "details": "Tables referenced, numbers present, but no effect patterns in text",
+    "text_len": 49167
+  },
+  {
+    "study_id": "Murphy 2010_2010",
+    "pmcid": "PMC5070604",
+    "category": "table_only",
+    "details": "Tables referenced, numbers present, but no effect patterns in text",
+    "text_len": 77587
+  },
+  {
+    "study_id": "Sczesny-Kaiser 2019_2019",
+    "pmcid": "PMC6450263",
+    "category": "pattern_gap",
+    "details": "1 indicator patterns found, 0 Cochrane values in text",
+    "patterns_found": [
+      {
+        "pattern": "[pP]\\s*[=<>]\\s*0\\.\\d+",
+        "count": 50,
+        "examples": [
+          "p > 0.05",
+          "p = 0.371",
+          "p = 0.331"
+        ]
+      }
+    ],
+    "cochrane_in_text": [],
+    "text_len": 61408,
+    "text_snippet": "wo- sided Student\u2019s unpaired t-test was carried out. Signi\ufb01cance was assumed at the 5% alpha level (p > 0.05). If no statistical e\ufb00ect for one therapy was present, repeated measurement analysis of variance (r"
+  },
+  {
+    "study_id": "Buesing 2015_2015",
+    "pmcid": "PMC4545867",
+    "category": "pattern_gap",
+    "details": "1 indicator patterns found, 0 Cochrane values in text",
+    "patterns_found": [
+      {
+        "pattern": "[pP]\\s*[=<>]\\s*0\\.\\d+",
+        "count": 36,
+        "examples": [
+          "p < 0.05",
+          "p <0.008",
+          "p <0.008"
+        ]
+      }
+    ],
+    "cochrane_in_text": [],
+    "text_len": 67518,
+    "text_snippet": "sis All values are presented as mean \u00b1 standard error of mean (SEM), and the alpha value was set at p < 0.05 to indicate statistical significance, unless noted otherwise. The differences in baseline gait para"
+  },
+  {
+    "study_id": "Enshaei 2014_2014",
+    "pmcid": "PMC4796415",
+    "category": "pattern_gap",
+    "details": "1 indicator patterns found, 0 Cochrane values in text",
+    "patterns_found": [
+      {
+        "pattern": "[pP]\\s*[=<>]\\s*0\\.\\d+",
+        "count": 14,
+        "examples": [
+          "P>0.05",
+          "P=0.02",
+          "P=0.001"
+        ]
+      }
+    ],
+    "cochrane_in_text": [],
+    "text_len": 19708,
+    "text_snippet": "is no significant difference between the two methods of primary surgical repair and rotation flap (P>0.05)  But in terms of the opening of the surgical wound, in primary surgical method, 5 patients (12.5%)"
+  },
+  {
+    "study_id": "Abdou 2018_2018",
+    "pmcid": "PMC6046679",
+    "category": "pattern_gap",
+    "details": "1 indicator patterns found, 0 Cochrane values in text",
+    "patterns_found": [
+      {
+        "pattern": "[pP]\\s*[=<>]\\s*0\\.\\d+",
+        "count": 4,
+        "examples": [
+          "p = 0.17",
+          "p = 0.597",
+          "p = 0.263"
+        ]
+      }
+    ],
+    "cochrane_in_text": [],
+    "text_len": 30769,
+    "text_snippet": "n the leuprolide acetate group. There was no signi\ufb01cant difference between both groups by 12 weeks (p = 0.17) (Table 2). Regarding back pain, both dienogest and leuprolide acetate were associated with highly"
+  },
+  {
+    "study_id": "Wang 2020_2020",
+    "pmcid": "PMC7389410",
+    "category": "pattern_gap",
+    "details": "1 indicator patterns found, 0 Cochrane values in text",
+    "patterns_found": [
+      {
+        "pattern": "[pP]\\s*[=<>]\\s*0\\.\\d+",
+        "count": 16,
+        "examples": [
+          "P<0.05",
+          "P>0.05",
+          "P<0.05"
+        ]
+      }
+    ],
+    "cochrane_in_text": [],
+    "text_len": 12959,
+    "text_snippet": "n \u65f6\u964d\u81f3\u6700\u4f4e\uff1b\u5bf9\u7167\u7ec4\u7ed9\u836f\u540e10\u2005min \u65f6\u9547\u9759\u8bc4\u5206\u6700\u4f4e\uff0c\u540e\u9010\u6e10 \u589e\u9ad8\uff0c40\u2005min\u300150\u2005min \u65f6\u8fbe\u6700\u9ad8\uff0c\u518d\u9010\u6e10\u964d\u4f4e\u3002\u4e24\u7ec4\u5404\u65f6\u95f4\u6bb5\u9547\u9759\u8bc4\u5206\u6bd4\u8f83\uff0c\u7ed9\u836f\u540e40\u2005min \u524d\u89c2\u5bdf\u7ec4\u9547\u9759\u8bc4\u5206 \u5747\u9ad8\u4e8e\u5bf9\u7167\u7ec4\uff08P<0.05\uff09\uff1b40~70\u2005min \u4e24\u7ec4\u9547\u9759\u8bc4\u5206\u6bd4\u8f83\u5dee\u5f02\u5747\u65e0\u7edf\u8ba1\u5b66\u610f\u4e49\uff08P>0.05\uff09\u3002\u89c2\u5bdf\u7ec4\u78c1\u5171\u632f\u68c0\u67e5\u6210 \u529f\u7387\uff0889%\uff09\u9ad8\u4e8e\u5bf9\u7167\u7ec4\uff0869%\uff0cP<0.05\uff09\u3002\u4e24\u7ec4\u4e0d\u826f\u53cd\u5e94\u6bd4\u8f83\uff0c\u5dee\u5f02\u65e0\u7edf\u8ba1\u5b66\u610f\u4e49\uff08P>0.05\uff09\u3002\u7ed3"
+  },
+  {
+    "study_id": "Talaty 2023_2023",
+    "pmcid": "PMC10552424",
+    "category": "pattern_gap",
+    "details": "1 indicator patterns found, 0 Cochrane values in text",
+    "patterns_found": [
+      {
+        "pattern": "[pP]\\s*[=<>]\\s*0\\.\\d+",
+        "count": 8,
+        "examples": [
+          "p=0.21",
+          "p<0.005",
+          "p=0.77"
+        ]
+      }
+    ],
+    "cochrane_in_text": [],
+    "text_len": 49053,
+    "text_snippet": "l- ysis to compare the five interval scale outcome variables  between modalities (CGT vs. Lokomat\u00ae, p=0.21, Pillai  Trace) nor any of the associated post-hoc ANOVAs to  compare individual differences were s"
+  },
+  {
+    "study_id": "Damineni 2016_2016",
+    "pmcid": "PMC5198403",
+    "category": "pattern_gap",
+    "details": "1 indicator patterns found, 0 Cochrane values in text",
+    "patterns_found": [
+      {
+        "pattern": "[pP]\\s*[=<>]\\s*0\\.\\d+",
+        "count": 4,
+        "examples": [
+          "p=0.206",
+          "p<0.001",
+          "p<0.001"
+        ]
+      }
+    ],
+    "cochrane_in_text": [],
+    "text_len": 21162,
+    "text_snippet": "type Group N=45  Mean Std. Deviation p-value Hb at the start  of treatment   (g/dl) FCM 8.710 0.835 p=0.206 ns Oral iron 8.907 0.617 Hb after 1 week of start of treatment  (g/dl) FCM 10.688 0.980 p<.001 hs O"
+  },
+  {
+    "study_id": "Carroll 2018_2018",
+    "pmcid": "PMC5866530",
+    "category": "pattern_gap",
+    "details": "1 indicator patterns found, 0 Cochrane values in text",
+    "patterns_found": [
+      {
+        "pattern": "[pP]\\s*[=<>]\\s*0\\.\\d+",
+        "count": 1,
+        "examples": [
+          "P=0.01"
+        ]
+      }
+    ],
+    "cochrane_in_text": [],
+    "text_len": 44780,
+    "text_snippet": "urine specimens  submitted that were negative for all drugs, including the Composite score (r=.25, P=0.01),  Carroll et al. Page 6 J Clin Psychiatry. Author manuscript; available in PMC 2019 January 01. Au"
+  },
+  {
+    "study_id": "Volo 2021_2021",
+    "pmcid": "PMC7354359",
+    "category": "table_only",
+    "details": "Tables referenced, numbers present, but no effect patterns in text",
+    "text_len": 34354
+  },
+  {
+    "study_id": "Aravind 2022_2022",
+    "pmcid": "PMC9028093",
+    "category": "pattern_gap",
+    "details": "1 indicator patterns found, 0 Cochrane values in text",
+    "patterns_found": [
+      {
+        "pattern": "\\d+\\.\\d+\\s*[\\[(]\\s*\\d+\\.\\d+\\s*,\\s*\\d+\\.\\d+\\s*[\\])]",
+        "count": 16,
+        "examples": [
+          "0.5 (0.4, 0.7)",
+          "0.7 (0.6, 0.8)",
+          "0.6 (0.5, 0.7)"
+        ]
+      }
+    ],
+    "cochrane_in_text": [],
+    "text_len": 88194,
+    "text_snippet": ") 7 60 (50, 90) 9 75 (53, 85) 9 70 (53, 78) 13 70 (53, 85) 10 80 (58, 90) EQ-5D-5L Health Utility 7 0.5 (0.4, 0.7) 8 0.7 (0.6, 0.8) 8 0.6 (0.5, 0.7) 7 0.6 (0.5, 0.8) 13 0.8 (0.6, 0.9) 13 0.7 (0.6, 0.8) 13 0.8 (0.5,"
+  },
+  {
+    "study_id": "Gunerhan 2009_2009",
+    "pmcid": "PMC2653369",
+    "category": "pattern_gap",
+    "details": "1 indicator patterns found, 0 Cochrane values in text",
+    "patterns_found": [
+      {
+        "pattern": "[pP]\\s*[=<>]\\s*0\\.\\d+",
+        "count": 6,
+        "examples": [
+          "P = 0.037",
+          "P = 0.037",
+          "P < 0.05"
+        ]
+      }
+    ],
+    "cochrane_in_text": [],
+    "text_len": 33277,
+    "text_snippet": "d after the nutritional protocol  only in the immunonutrition group (13.64 \u00b1 8.83  vs 15.98 \u00b1 8.66, P = 0.037). Groups were similar in  terms of CD4+, CD16+/56, and CD69+ prior to  the nutritional protocol; wh"
+  },
+  {
+    "study_id": "Hutchins 2019_2019",
+    "pmcid": "PMC6614855",
+    "category": "pattern_gap",
+    "details": "2 indicator patterns found, 0 Cochrane values in text",
+    "patterns_found": [
+      {
+        "pattern": "[pP]\\s*[=<>]\\s*0\\.\\d+",
+        "count": 8,
+        "examples": [
+          "P=0.03",
+          "P<0.05",
+          "P=0.03"
+        ]
+      },
+      {
+        "pattern": "\\d+\\.\\d+\\s*[\\[(]\\s*\\d+\\.\\d+\\s*,\\s*\\d+\\.\\d+\\s*[\\])]",
+        "count": 4,
+        "examples": [
+          "33.1 (20.1,51.5)",
+          "32.4 (18.4,60.4)",
+          "91.9 (59.8,149.0)"
+        ]
+      }
+    ],
+    "cochrane_in_text": [],
+    "text_len": 35695,
+    "text_snippet": "tion period than patients allocated to in\ufb01ltration (median 21 versus 25 mg IV Morphine equivalents, P=0.03). Opioid use was highest in the \ufb01rst 24 hrs after surgery, with less difference between the groups"
+  },
+  {
+    "study_id": "Clancy 2012_2012",
+    "pmcid": "PMC3746507",
+    "category": "pattern_gap",
+    "details": "2 indicator patterns found, 0 Cochrane values in text",
+    "patterns_found": [
+      {
+        "pattern": "\\d+\\.\\d+\\s*[\\[(]\\s*\\d+\\.\\d+\\s*[-\u2013\u2014to]+\\s*\\d+\\.\\d+\\s*[\\])]",
+        "count": 9,
+        "examples": [
+          "78.4 (48.8\u2013124.9)",
+          "78.4 (34.2\u2013104.5)",
+          "61.5 (35.2\u2013120.7)"
+        ]
+      },
+      {
+        "pattern": "[pP]\\s*[=<>]\\s*0\\.\\d+",
+        "count": 10,
+        "examples": [
+          "p=0.0013",
+          "p=0.62",
+          "p=0.0013"
+        ]
+      }
+    ],
+    "cochrane_in_text": [],
+    "text_len": 42740,
+    "text_snippet": ") 23 (19\u201331) 22 (16\u201334) 22 (19\u201331) 23 (16\u201331) 21 (19\u201327) 22 (16\u201334) FEV1 %predicted, median (range) 78.4 (48.8\u2013124.9) 78.4 (34.2\u2013104.5) 61.5 (35.2\u2013120.7) 61.5 (40.0\u2013128.3) 68.2 (37.9\u201399.1) 71 (34.2\u2013128.3) Sweat chlori"
+  },
+  {
+    "study_id": "Stettler 2015_2015",
+    "pmcid": "PMC4372512",
+    "category": "pattern_gap",
+    "details": "1 indicator patterns found, 0 Cochrane values in text",
+    "patterns_found": [
+      {
+        "pattern": "[pP]\\s*[=<>]\\s*0\\.\\d+",
+        "count": 4,
+        "examples": [
+          "p=0.03",
+          "p=0.095",
+          "p=0.048"
+        ]
+      }
+    ],
+    "cochrane_in_text": [],
+    "text_len": 52601,
+    "text_snippet": "33 subjects (5 practices) randomized to the control intervention  (\u22120.089, 95%CI: \u22120.170 to \u22120.008, p=0.03) with a \u22121.44 kg weight difference (95%CI: \u22122.98 to  +0.10 kg, p=0.095). The incidences of obesity"
+  },
+  {
+    "study_id": "Xue 2021_2021",
+    "pmcid": "PMC8654654",
+    "category": "pattern_gap",
+    "details": "1 indicator patterns found, 0 Cochrane values in text",
+    "patterns_found": [
+      {
+        "pattern": "[pP]\\s*[=<>]\\s*0\\.\\d+",
+        "count": 32,
+        "examples": [
+          "P < 0.05",
+          "P < 0.05",
+          "P < 0.05"
+        ]
+      }
+    ],
+    "cochrane_in_text": [],
+    "text_len": 45342,
+    "text_snippet": ".47 \u0003 139.61 mL, respectively) were signi\ufb01cantly higher than those in groups A (944.34 \u0003 130.88 mL, P < 0.05; and 712.45 \u0003 129.82mL, P < 0.05, respectively) or B (995.20 \u0003 154.00 mL, P < 0.05; and 757.20 \u0003 13"
+  },
+  {
+    "study_id": "Fagerlin 2011_2011",
+    "pmcid": "PMC3742062",
+    "category": "pattern_gap",
+    "details": "1 indicator patterns found, 0 Cochrane values in text",
+    "patterns_found": [
+      {
+        "pattern": "[pP]\\s*[=<>]\\s*0\\.\\d+",
+        "count": 19,
+        "examples": [
+          "p<0.001",
+          "p=0.076",
+          "p<0.001"
+        ]
+      }
+    ],
+    "cochrane_in_text": [],
+    "text_len": 33525,
+    "text_snippet": "hemoprevention drug. With the exception of their interest in looking for more information (F=34.86, p<0.001), the Time 1 control and intervention groups did not differ significantly in their behavioral inten"
+  },
+  {
+    "study_id": "Tonelli 2015_2015",
+    "pmcid": "PMC4409771",
+    "category": "pattern_gap",
+    "details": "2 indicator patterns found, 0 Cochrane values in text",
+    "patterns_found": [
+      {
+        "pattern": "[pP]\\s*[=<>]\\s*0\\.\\d+",
+        "count": 24,
+        "examples": [
+          "P > 0.99",
+          "P = 0.24",
+          "P = 0.09"
+        ]
+      },
+      {
+        "pattern": "\\d+\\.\\d+\\s*[\\[(]\\s*\\d+\\.\\d+\\s*,\\s*\\d+\\.\\d+\\s*[\\])]",
+        "count": 14,
+        "examples": [
+          "0.8 (0.7,0.9)",
+          "0.8 (0.7,0.8)",
+          "0.8 (0.7,0.8)"
+        ]
+      }
+    ],
+    "cochrane_in_text": [],
+    "text_len": 37382,
+    "text_snippet": "up and the two intervention groups at 90 days (control 23.9% vs combined intervention groups 23.9%, P > 0.99) or 180 days (18.6% vs 28.2%, P = 0.24). The proportion with low selenium status (blood level <121"
+  },
+  {
+    "study_id": "Gummersbach 2015_2015",
+    "pmcid": "PMC4335580",
+    "category": "pattern_gap",
+    "details": "5 indicator patterns found, 0 Cochrane values in text",
+    "patterns_found": [
+      {
+        "pattern": "(?:odds ratio|risk ratio|hazard ratio|relative risk|mean dif",
+        "count": 1,
+        "examples": [
+          "Odds ratio\n \n(9"
+        ]
+      },
+      {
+        "pattern": "(?:odds ratio|risk ratio|hazard ratio|relative risk|mean dif",
+        "count": 1,
+        "examples": [
+          "mean difference \nof 0"
+        ]
+      },
+      {
+        "pattern": "95%?\\s*(?:CI|confidence interval)\\s*[=:,]?\\s*[\\[(]?\\s*\\d+\\.\\",
+        "count": 11,
+        "examples": [
+          "95% CI 83.9",
+          "95% CI 83.9",
+          "95% CI: 5.18"
+        ]
+      },
+      {
+        "pattern": "\\d+\\.\\d+\\s*[\\[(]\\s*\\d+\\.\\d+\\s*[-\u2013\u2014to]+\\s*\\d+\\.\\d+\\s*[\\])]",
+        "count": 46,
+        "examples": [
+          "0.86 (0.77\u20130.92)",
+          "0.85 (0.75\u20130.91)",
+          "0.85 (0.71\u20130.93)"
+        ]
+      },
+      {
+        "pattern": "[pP]\\s*[=<>]\\s*0\\.\\d+",
+        "count": 17,
+        "examples": [
+          "p = 0.060",
+          "p = 0.014",
+          "p = 0.260"
+        ]
+      }
+    ],
+    "cochrane_in_text": [],
+    "text_len": 44830,
+    "text_snippet": "82 (0.64\u20130.93) 0.83 (0.71\u20130.90) 0.97 (0.77\u20131.00) 0.88 (0.66\u20130.96) 0.89 (0.79\u20130.94) 0.72 (0.49\u20130.88) Odds ratio   (95%  confidence interval)  0.99 (0.92\u20131.07)  1.11 (0.43\u20132.85)  1.50 (0.45\u20134.94)  1.68 (0.53\u20135.28)  1."
+  },
+  {
+    "study_id": "Habib 2017_2017",
+    "pmcid": "PMC5439031",
+    "category": "table_only",
+    "details": "Tables referenced, numbers present, but no effect patterns in text",
+    "text_len": 59230
+  },
+  {
+    "study_id": "Ozga-Hess 2019_2019",
+    "pmcid": "PMC6791779",
+    "category": "table_only",
+    "details": "Tables referenced, numbers present, but no effect patterns in text",
+    "text_len": 65211
+  },
+  {
+    "study_id": "Barth 2011_2011",
+    "pmcid": "PMC3109880",
+    "category": "pattern_gap",
+    "details": "1 indicator patterns found, 0 Cochrane values in text",
+    "patterns_found": [
+      {
+        "pattern": "95%?\\s*(?:CI|confidence interval)\\s*[=:,]?\\s*[\\[(]?\\s*\\d+\\.\\",
+        "count": 1,
+        "examples": [
+          "95%\nCI 3.2"
+        ]
+      }
+    ],
+    "cochrane_in_text": [],
+    "text_len": 31504,
+    "text_snippet": "\u0003 4.1 (95% confidence interval [CI] 2\u20134.5) unit decrease in QMGS for the IVIg group and 4.7 \u0003 4.9 (95% CI 3.2\u20136.2) unit change for the PLEX group (p \u0002 0.13) as shown in table 2. Responders, defined as those wh"
+  },
+  {
+    "study_id": "Schroeder 2024_2024",
+    "pmcid": "PMC12802626",
+    "category": "pattern_gap",
+    "details": "3 indicator patterns found, 0 Cochrane values in text",
+    "patterns_found": [
+      {
+        "pattern": "95%?\\s*(?:CI|confidence interval)\\s*[=:,]?\\s*[\\[(]?\\s*\\d+\\.\\",
+        "count": 3,
+        "examples": [
+          "95% CI (3.12",
+          "95% CI (3.05",
+          "95% CI\n3.12"
+        ]
+      },
+      {
+        "pattern": "\\d+\\.\\d+\\s*[\\[(]\\s*\\d+\\.\\d+\\s*[-\u2013\u2014to]+\\s*\\d+\\.\\d+\\s*[\\])]",
+        "count": 14,
+        "examples": [
+          "22.7\n(19.8\u201325.6)",
+          "20.8 (17.8\u201323.8)",
+          "60.0 (53.0\u201382.3)"
+        ]
+      },
+      {
+        "pattern": "[pP]\\s*[=<>]\\s*0\\.\\d+",
+        "count": 1,
+        "examples": [
+          "P > 0.05"
+        ]
+      }
+    ],
+    "cochrane_in_text": [],
+    "text_len": 66303,
+    "text_snippet": "a signi\ufb01cant TIME e\ufb00ect during the early period within the ERT and DRT arms at \u03b1 = 0.05 [\u03b2 = 5.50, 95% CI (3.12; 7.88) and \u03b2 = 5.56, 95% CI (3.05; 8.06)]. Change leveled o\ufb00thereafter. The GROUPxTIME interaction"
+  },
+  {
+    "study_id": "Choi 2023_2023",
+    "pmcid": "PMC10179394",
+    "category": "pattern_gap",
+    "details": "1 indicator patterns found, 0 Cochrane values in text",
+    "patterns_found": [
+      {
+        "pattern": "[pP]\\s*[=<>]\\s*0\\.\\d+",
+        "count": 18,
+        "examples": [
+          "p = 0.03",
+          "p > 0.10",
+          "p = 0.01"
+        ]
+      }
+    ],
+    "cochrane_in_text": [],
+    "text_len": 50649,
+    "text_snippet": "ked examiners. Mean 2-year-normalized AL elongations in the OK and SV groups differed signi\ufb01cantly (p = 0.03) and were 0.37 \u00b1 0.37 mm and 0.60 \u00b1 0.41 mm, respectively. OK-mediated myopia control ef\ufb01cacy was 3"
+  },
+  {
+    "study_id": "Kooncumchoo 2021_2021",
+    "pmcid": "PMC8750435",
+    "category": "pattern_gap",
+    "details": "1 indicator patterns found, 0 Cochrane values in text",
+    "patterns_found": [
+      {
+        "pattern": "[pP]\\s*[=<>]\\s*0\\.\\d+",
+        "count": 19,
+        "examples": [
+          "p < 0.001",
+          "p < 0.05",
+          "p < 0.001"
+        ]
+      }
+    ],
+    "cochrane_in_text": [],
+    "text_len": 38448,
+    "text_snippet": "ared with baseline, the total FMA-LE scores signi\ufb01cantly increased in both groups (F(4,112) = 75.5; p < 0.001; effect size (ES) = 0.73), then the statistical approach with the t-test started to increase at 2 w"
+  }
+]

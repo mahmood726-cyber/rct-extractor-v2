@@ -2,8 +2,17 @@
 External Validation Dataset for RCT Extractor v2.16
 ====================================================
 
+WARNING — DATA LEAKAGE (P0-1):
+This dataset was labelled "external validation" but was iteratively used to
+tune extractor regex patterns (see git history for pattern additions matched
+to failures on this set). Performance metrics computed on this dataset are
+therefore TRAINING-SET metrics and must NOT be cited as independent validation.
+
+To obtain unbiased performance estimates, evaluate on a truly held-out corpus
+that was never consulted during pattern development.
+
 Contains 120+ real clinical trial references with manually curated
-effect estimates for external validation.
+effect estimates.
 
 Sources:
 - PubMed Central Open Access (PMC)
@@ -21,7 +30,6 @@ Each entry includes:
 from dataclasses import dataclass, field
 from typing import List, Optional, Dict, Tuple
 from enum import Enum
-import random
 
 
 class ExtractionDifficulty(Enum):

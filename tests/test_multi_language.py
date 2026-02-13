@@ -137,21 +137,32 @@ class TestMultiLangExtractor:
         """Test German HR extraction"""
         text = "Hazard Ratio 0,78 (95%-KI 0,65-0,94)"
         results = self.extractor.extract(text, language='de')
-        # Note: may not extract if pattern doesn't match exactly
-        # This tests the infrastructure works
         assert isinstance(results, list)
+        # Should extract at least one result with the correct value
+        if results:
+            values = [r.point_estimate if hasattr(r, 'point_estimate') else r.get('value') for r in results]
+            assert any(abs(v - 0.78) < 0.01 for v in values if v is not None), \
+                f"Expected value ~0.78, got {values}"
 
     def test_french_rr_extraction(self):
         """Test French RR extraction"""
         text = "Risque relatif 0,82 (IC 95% 0,71-0,95)"
         results = self.extractor.extract(text, language='fr')
         assert isinstance(results, list)
+        if results:
+            values = [r.point_estimate if hasattr(r, 'point_estimate') else r.get('value') for r in results]
+            assert any(abs(v - 0.82) < 0.01 for v in values if v is not None), \
+                f"Expected value ~0.82, got {values}"
 
     def test_spanish_or_extraction(self):
         """Test Spanish OR extraction"""
         text = "Razón de momios 2,15 (IC 95% 1,62-2,85)"
         results = self.extractor.extract(text, language='es')
         assert isinstance(results, list)
+        if results:
+            values = [r.point_estimate if hasattr(r, 'point_estimate') else r.get('value') for r in results]
+            assert any(abs(v - 2.15) < 0.01 for v in values if v is not None), \
+                f"Expected value ~2.15, got {values}"
 
     def test_auto_language_detection(self):
         """Test automatic language detection during extraction"""
@@ -161,6 +172,10 @@ class TestMultiLangExtractor:
         """
         results = self.extractor.extract(german_text, language='auto')
         assert isinstance(results, list)
+        if results:
+            values = [r.point_estimate if hasattr(r, 'point_estimate') else r.get('value') for r in results]
+            assert any(abs(v - 0.74) < 0.01 for v in values if v is not None), \
+                f"Expected value ~0.74, got {values}"
 
     def test_ocr_config_german(self):
         """Test OCR config for German"""
@@ -207,23 +222,27 @@ class TestMultiLangPatterns:
 
     def test_german_hr_pattern(self):
         """Test German HR pattern in main extractor"""
-        # The main extractor should also handle European formats
         text = "HR 0.78 (95%-KI 0.65-0.94)"
         results = self.extractor.extract(text)
-        # Should extract with IC pattern if available
         assert isinstance(results, list)
+        assert len(results) >= 1, "Should extract HR from German KI format"
+        assert abs(results[0].point_estimate - 0.78) < 0.01
 
     def test_french_ic_pattern(self):
         """Test French IC pattern"""
         text = "HR 0.82 (IC 95% 0.71-0.95)"
         results = self.extractor.extract(text)
         assert isinstance(results, list)
+        assert len(results) >= 1, "Should extract HR from French IC format"
+        assert abs(results[0].point_estimate - 0.82) < 0.01
 
     def test_spanish_ic_pattern(self):
         """Test Spanish IC pattern"""
         text = "OR 2.15 (IC 95% 1.62-2.85)"
         results = self.extractor.extract(text)
         assert isinstance(results, list)
+        assert len(results) >= 1, "Should extract OR from Spanish IC format"
+        assert abs(results[0].point_estimate - 2.15) < 0.01
 
 
 class TestLanguageIndicators:

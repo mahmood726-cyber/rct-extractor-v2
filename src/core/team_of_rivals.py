@@ -20,6 +20,7 @@ Consensus:
 
 import re
 import math
+import threading
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from typing import List, Dict, Optional, Tuple, Any, Set
@@ -54,10 +55,10 @@ class CandidateExtraction:
             return False
         if abs(self.value - other.value) > tolerance:
             return False
-        if self.ci_lower and other.ci_lower:
+        if self.ci_lower is not None and other.ci_lower is not None:
             if abs(self.ci_lower - other.ci_lower) > tolerance:
                 return False
-        if self.ci_upper and other.ci_upper:
+        if self.ci_upper is not None and other.ci_upper is not None:
             if abs(self.ci_upper - other.ci_upper) > tolerance:
                 return False
         return True
@@ -118,9 +119,15 @@ class BaseExtractor(ABC):
         replacements = {
             '\u00b7': '.', '\u2013': '-', '\u2014': '-',
             '\u2212': '-', '–': '-', '—': '-', '·': '.',
+            '\u037e': ';', '\uff1b': ';',  # Greek question mark, fullwidth semicolon
+            '\u00a0': ' ', '\u202f': ' ',  # Non-breaking spaces
         }
         for old, new in replacements.items():
             text = text.replace(old, new)
+        # European decimal: 0,74 -> 0.74 (not thousands: 1,234)
+        # Exclude bracket contexts like [12,14] (reference numbers)
+        # Exclude decimal pairs like 1.05,2.05 (CI bounds) via (?<!\.\d) lookbehind
+        text = re.sub(r'(?<!\[)(?<!\.\d)(\d),(\d{1,2})(?!\d)(?!\])', r'\1.\2', text)
         return ' '.join(text.split())
 
     def check_negative_context(self, text: str, match_start: int, match_end: int) -> bool:
@@ -154,14 +161,14 @@ class PatternExtractor(BaseExtractor):
             r'hazard\s*ratio[,;:\s=]+(\d+\.?\d*)[;,]\s*(?:95%?\s*)?(?:CI|confidence)[,:\s\[]+(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
             r'hazard\s*ratio[,;:\s=]+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
             r'hazard\s*ratio\s+(?:of|was|for\s+\w+\s+was)\s+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
-            r'hazard\s*ratio\s+(?:for\s+)?[\w\s]+?(?:was|is)\s+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
+            r'hazard\s*ratio\s+(?:for\s+)?[\w\s]{1,80}?(?:was|is)\s+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
             # Abbreviation formats
             r'\bHR\b[,;:\s=]+(\d+\.?\d*)\s*[\(\[]\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*[-–—,]\s*(\d+\.?\d*)\s*[\)\]]',
             r'\bHR\b[,;:\s=]+(\d+\.?\d*)[;,]\s*(?:95%?\s*)?(?:CI)[,:\s]+(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
             r'\bHR\b[=:,\s]+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:confidence\s*interval|CI)[:\s]*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
             r'\bHR\b[:\s]+(\d+\.?\d*)[;,]\s*(?:95%?\s*)?confidence\s*interval[:\s]+(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
             r'\bHR\b\s+was\s+(\d+\.?\d*)[,;]\s*with\s+(?:95%?\s*)?CI\s+of\s+(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
-            r'\bHR\b\s+(?:for\s+)?[\w\s]+?:\s*(\d+\.?\d*)\s*\(\s*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)\s*\)',
+            r'\bHR\b\s+(?:for\s+)?[\w\s]{1,80}?:\s*(\d+\.?\d*)\s*\(\s*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)\s*\)',
             r'\(HR[,;]\s*(\d+\.?\d*)[;,]\s*(?:95%?\s*)?CI[,:\s]+(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)\)',
             r'\bHR\b\s*=\s*(\d+\.?\d*)\s*\(\s*(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)\s*\)',
             r'\(HR[=:\s]+(\d+\.?\d*)[;,]\s*(?:95%?\s*)?CI[:\s]*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)\)',
@@ -170,7 +177,7 @@ class PatternExtractor(BaseExtractor):
             r'hazard\s*ratio[,;:\s=]+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*[,]\s*(\d+\.?\d*)\s*\)',
             r'[Hh]azard\s*ratio\s*=\s*(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:confidence\s*interval|CI)[:\s]*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
             r'relative\s+hazard[,;:\s=]+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
-            r'\bHR\b\s+(?:for\s+)?[\w\s]+?was\s+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
+            r'\bHR\b\s+(?:for\s+)?[\w\s]{1,80}?was\s+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
             r'[Aa]djusted\s+(?:HR|hazard\s*ratio)[,;:\s=]+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
             r'\baHR\b[,;:\s=]+(\d+\.?\d*)\s*[\(\[]\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*[-–—,]\s*(\d+\.?\d*)\s*[\)\]]',
             r'\bHR\b[,;:\s=]+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?CI\s*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)\s*[;,]\s*[nN]\s*=\s*\d+',
@@ -189,14 +196,14 @@ class PatternExtractor(BaseExtractor):
         'OR': [
             r'odds\s*ratio[,;:\s=]+(\d+\.?\d*)[;,]\s*(?:95%?\s*)?(?:CI|confidence)[,:\s]+(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
             r'odds\s*ratio[,;:\s=]+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
-            r'odds\s*ratio\s+(?:of|was|for\s+[\w\s]+?was)\s+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
+            r'odds\s*ratio\s+(?:of|was|for\s+[\w\s]{1,80}?was)\s+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
             r'\bOR\b[,;:\s=]+(\d+\.?\d*)\s*[\(\[]\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*[-–—,]\s*(\d+\.?\d*)\s*[\)\]]',
             r'\bOR\b[=:\s]+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?CI[:\s]*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
             r'\bOR\b\s+(\d+\.?\d*)\s*\(\s*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)\s*\)',
             r'\bOR\b\s*=\s*(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?confidence\s*interval[:\s]*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
             r'\bOR\b:\s*(\d+\.?\d*)[;,]\s*(?:95%?\s*)?CI[:\s]+(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
             r'\(OR\s+(\d+\.?\d*)[;,]\s*(?:95%?\s*)?CI\s+(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)\)',
-            r'odds\s*ratio\s+(?:for\s+)?[\w\s]+?(?:was|is)\s+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
+            r'odds\s*ratio\s+(?:for\s+)?[\w\s]{1,80}?(?:was|is)\s+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
             r'[Aa]djusted\s+(?:OR|odds\s*ratio)[,;:\s=]+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
             r'\baOR\b[,;:\s=]+(\d+\.?\d*)\s*[\(\[]\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*[-–—,]\s*(\d+\.?\d*)\s*[\)\]]',
             r'\bOR\b[,;:\s=]+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*[,]\s*(\d+\.?\d*)\s*\)',
@@ -216,7 +223,7 @@ class PatternExtractor(BaseExtractor):
             r'(?:relative\s+)?risk\s*ratio[,;:\s=]+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
             r'\bRR\b[,;:\s=]+(\d+\.?\d*)\s*[\(\[]\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*[-–—,]\s*(\d+\.?\d*)\s*[\)\]]',
             r'rate\s*ratio[,;:\s=]+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
-            r'\bRR\b\s+(?:for\s+)?[\w\s]+?was\s+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
+            r'\bRR\b\s+(?:for\s+)?[\w\s]{1,80}?was\s+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
             r'relative\s+risk\s+(?:of|was)\s+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
             r'\bRR\b\s+(\d+\.?\d*)\s*\(\s*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)\s*\)',
             r'relative\s+risk[,;]\s*(\d+\.?\d*)[;,]\s*(?:95%?\s*)?CI[,:\s]+(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
@@ -229,7 +236,7 @@ class PatternExtractor(BaseExtractor):
             r'relative\s+risk\s+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?CI\s+(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
             r'relative\s+risk\s+(\d+\.?\d*)\s*\(\s*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)\s*\)',
             r'(?:summary|pooled|overall)\s+relative\s+risk\s+(\d+\.?\d*)\s*\(\s*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
-            r'\bRR\b\s+(?:for\s+[\w\s]+\s+)?was\s+(\d+\.?\d*)\s*\(\s*(\d+\.?\d*)\s+to\s+(\d+\.?\d*)',
+            r'\bRR\b\s+(?:for\s+[\w\s]{1,80}\s+)?was\s+(\d+\.?\d*)\s*\(\s*(\d+\.?\d*)\s+to\s+(\d+\.?\d*)',
             r'\bRR\b\s+(\d+\.?\d*)\s*\[\s*(?:95%?\s*)?CI[:\s]+(\d+\.?\d*)\s*,\s*(\d+\.?\d*)\s*\]',
             r'\bRR\s*=\s*(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?CI\s+(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
             r'relative\s+risk[:\s]+(\d+\.?\d*)\s*\(\s*(\d+\.?\d*)\s*,\s*(\d+\.?\d*)\s*\)',
@@ -349,6 +356,21 @@ class GrammarExtractor(BaseExtractor):
         'NUMBER': r'-?\d+\.?\d*',  # Must be AFTER CI_LABEL
     }
 
+    # Pre-compiled token regexes (avoids recompilation per character position)
+    _COMPILED_TOKENS = None
+    _COMPILED_TOKENS_LOCK = threading.Lock()
+
+    @classmethod
+    def _get_compiled_tokens(cls):
+        if cls._COMPILED_TOKENS is None:
+            with cls._COMPILED_TOKENS_LOCK:
+                if cls._COMPILED_TOKENS is None:  # Double-checked locking
+                    cls._COMPILED_TOKENS = [
+                        (token_type, re.compile(pattern, re.IGNORECASE))
+                        for token_type, pattern in cls.TOKENS.items()
+                    ]
+        return cls._COMPILED_TOKENS
+
     EFFECT_MAP = {
         'hr': 'HR', 'hazard ratio': 'HR', 'hazardratio': 'HR',
         'or': 'OR', 'odds ratio': 'OR', 'oddsratio': 'OR',
@@ -388,11 +410,11 @@ class GrammarExtractor(BaseExtractor):
         """Tokenize text into (type, value, start, end) tuples"""
         tokens = []
         pos = 0
+        compiled = self._get_compiled_tokens()
 
         while pos < len(text):
             match = None
-            for token_type, pattern in self.TOKENS.items():
-                regex = re.compile(pattern, re.IGNORECASE)
+            for token_type, regex in compiled:
                 match = regex.match(text, pos)
                 if match:
                     tokens.append((token_type, match.group(), match.start(), match.end()))
@@ -484,13 +506,9 @@ class GrammarExtractor(BaseExtractor):
         # Validate
         if ci_lower is not None and ci_upper is not None:
             if ci_lower > ci_upper:
-                return None
+                ci_lower, ci_upper = ci_upper, ci_lower
             if not (ci_lower <= value <= ci_upper):
-                # Try swapping
-                if ci_upper <= value <= ci_lower:
-                    ci_lower, ci_upper = ci_upper, ci_lower
-                else:
-                    return None
+                return None
 
         char_end = tokens[pos - 1][3] if pos > start else char_start + 10
         source = text[char_start:char_end]
@@ -551,16 +569,12 @@ class StateMachineExtractor(BaseExtractor):
         text = self.normalize_text(text)
         extractions = []
 
-        # Tokenize into words and numbers
-        tokens = re.findall(r'[a-zA-Z]+|\d+\.?\d*|[()[\],;:=\-]', text)
-
-        # Track character positions
-        char_positions = []
-        pos = 0
-        for token in tokens:
-            idx = text.find(token, pos)
-            char_positions.append(idx)
-            pos = idx + len(token)
+        # Tokenize into words and numbers (including negative), tracking exact positions
+        # Lookbehind ensures '-' is only treated as negative sign when NOT after digit/paren
+        token_pattern = re.compile(r'[a-zA-Z]+|(?<![0-9)])-\d+\.?\d*|\d+\.?\d*|[()[\],;:=\-]')
+        matches = list(token_pattern.finditer(text))
+        tokens = [m.group() for m in matches]
+        char_positions = [m.start() for m in matches]
 
         i = 0
         while i < len(tokens):
@@ -612,8 +626,9 @@ class StateMachineExtractor(BaseExtractor):
                 if self._is_number(tokens[i]):
                     value = float(tokens[i])
                     state = State.VALUE
-                elif token in [',', ';', ':', '=', '95', '%', 'CI', 'CONFIDENCE', 'INTERVAL']:
-                    pass  # Skip
+                elif token in [',', ';', ':', '=', '95', '%', 'CI', 'CONFIDENCE', 'INTERVAL',
+                               'FOR', 'OF', 'WAS', 'IS', 'THE', 'A']:
+                    pass  # Skip connective words
                 else:
                     state = State.ERROR
 
@@ -809,16 +824,23 @@ class Critic:
         if len(candidates) == 1:
             return candidates[0], ["Single candidate, accepted"]
 
-        # Group by value
-        value_groups: Dict[float, List[CandidateExtraction]] = {}
+        # Group by value (tolerance-based: values within 0.5% or 0.005 absolute)
+        value_groups: List[List[CandidateExtraction]] = []
         for c in candidates:
-            key = round(c.value, 3)
-            if key not in value_groups:
-                value_groups[key] = []
-            value_groups[key].append(c)
+            placed = False
+            for group in value_groups:
+                ref = group[0].value
+                tol = max(abs(ref) * 0.005, 0.005)
+                if abs(c.value - ref) <= tol:
+                    group.append(c)
+                    placed = True
+                    break
+            if not placed:
+                value_groups.append([c])
 
-        # Find most agreed value
-        best_group = max(value_groups.values(), key=len)
+        # Sort groups by size (desc), then by confidence of first member (desc) for tie-breaking
+        value_groups.sort(key=lambda g: (len(g), max(c.extractor_confidence for c in g)), reverse=True)
+        best_group = value_groups[0]
 
         if len(best_group) > len(candidates) / 2:
             # Majority agrees on value
@@ -826,7 +848,7 @@ class Critic:
             notes.append(f"Majority ({len(best_group)}/{len(candidates)}) agree on value {best.value}")
 
             # Validate CI if present
-            if best.ci_lower and best.ci_upper:
+            if best.ci_lower is not None and best.ci_upper is not None:
                 if not (best.ci_lower <= best.value <= best.ci_upper):
                     notes.append("WARNING: Point estimate outside CI")
 
@@ -836,7 +858,7 @@ class Critic:
         notes.append("No majority agreement, applying heuristics")
 
         # Prefer extractions with CI
-        with_ci = [c for c in candidates if c.ci_lower and c.ci_upper]
+        with_ci = [c for c in candidates if c.ci_lower is not None and c.ci_upper is not None]
         if with_ci:
             candidates = with_ci
             notes.append(f"Filtered to {len(with_ci)} candidates with CI")
@@ -916,7 +938,10 @@ class ConsensusEngine:
         return results
 
     def _group_extractions(self, all_extractions: Dict[ExtractorType, List[CandidateExtraction]]) -> List[List[CandidateExtraction]]:
-        """Group extractions that refer to the same effect estimate"""
+        """Group extractions that refer to the same effect estimate.
+
+        Uses sort + sweep to avoid O(n²) all-pairs comparison.
+        """
         all_candidates = []
         for extractions in all_extractions.values():
             all_candidates.extend(extractions)
@@ -924,28 +949,34 @@ class ConsensusEngine:
         if not all_candidates:
             return []
 
-        # Group by overlapping character ranges and matching values
-        groups = []
-        used = set()
+        # Sort by char_start for efficient overlap detection
+        indexed = sorted(enumerate(all_candidates), key=lambda x: x[1].char_start)
 
-        for i, c1 in enumerate(all_candidates):
+        groups: List[List[CandidateExtraction]] = []
+        used: Set[int] = set()
+
+        for idx, (i, c1) in enumerate(indexed):
             if i in used:
                 continue
 
             group = [c1]
             used.add(i)
+            group_end = c1.char_end
 
-            for j, c2 in enumerate(all_candidates):
+            # Only check candidates that could overlap or match (sorted by start)
+            for j, c2 in indexed[idx + 1:]:
                 if j in used:
                     continue
-
-                # Check if same extraction (overlapping or matching values)
-                overlaps = not (c1.char_end < c2.char_start or c2.char_end < c1.char_start)
-                matches = c1.matches(c2)
-
-                if overlaps or matches:
+                # Check if c2 matches any existing group member (not just seed)
+                matches_any = any(member.matches(c2) for member in group)
+                if c2.char_start > group_end and not matches_any:
+                    # Past the overlap window and no value match — done with this group
+                    break
+                overlaps = c2.char_start <= group_end
+                if overlaps or matches_any:
                     group.append(c2)
                     used.add(j)
+                    group_end = max(group_end, c2.char_end)
 
             groups.append(group)
 
@@ -956,27 +987,31 @@ class ConsensusEngine:
         extractor_types = set(c.extractor for c in group)
         total_extractors = len(self.extractors)
 
-        # Find agreeing extractors
-        value_counts: Dict[float, Set[ExtractorType]] = {}
+        # Find agreeing extractors (tolerance-based clustering, not rounding)
+        value_groups: List[Tuple[float, Set[ExtractorType]]] = []
         for c in group:
-            key = round(c.value, 3)
-            if key not in value_counts:
-                value_counts[key] = set()
-            value_counts[key].add(c.extractor)
+            placed = False
+            for i, (ref_val, ext_set) in enumerate(value_groups):
+                if abs(c.value - ref_val) <= max(abs(ref_val) * 0.005, 0.005):
+                    ext_set.add(c.extractor)
+                    placed = True
+                    break
+            if not placed:
+                value_groups.append((c.value, {c.extractor}))
 
         # Find best value (most agreement)
-        best_value = max(value_counts.keys(), key=lambda k: len(value_counts[k]))
-        agreeing = value_counts[best_value]
+        best_ref, agreeing = max(value_groups, key=lambda g: len(g[1]))
         disagreeing = extractor_types - agreeing
 
         # Get the best extraction for this value
-        best_candidates = [c for c in group if round(c.value, 3) == best_value]
+        best_candidates = [c for c in group
+                           if abs(c.value - best_ref) <= max(abs(best_ref) * 0.005, 0.005)]
 
         # Check if Pattern extractor agrees (critical for low FPR)
         pattern_agrees = ExtractorType.PATTERN in agreeing
 
-        # Use critic if disagreement
-        if len(disagreeing) > 0 or len(agreeing) < total_extractors:
+        # Use critic only when there is actual value disagreement
+        if len(disagreeing) > 0:
             best_extraction, critic_notes = self.critic.review(best_candidates, "")
             needs_critic = True
         else:
@@ -996,7 +1031,7 @@ class ConsensusEngine:
             agreeing_extractors=list(agreeing),
             disagreeing_extractors=list(disagreeing),
             agreement_ratio=agreement_ratio,
-            is_unanimous=(agreement_ratio == 1.0 and len(agreeing) == total_extractors),
+            is_unanimous=(len(disagreeing) == 0 and len(agreeing) == len(extractor_types)),
             needs_critic=needs_critic,
             critic_notes=critic_notes,
         )

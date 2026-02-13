@@ -1,0 +1,168 @@
+{
+  "version": "5.1.0",
+  "created": "2026-02-07T00:00:00Z",
+  "description": "Gold standard PDF split for v5.1 validation. 20 development + 10 held-out. Held-out set must NOT be used for pattern development.",
+
+  "development": {
+    "description": "20 PDFs for iterative pattern improvement and failure analysis",
+    "pdfs": [
+      {
+        "source": "open_access_rcts",
+        "file": "PMC10052556.pdf",
+        "specialty": "infectious"
+      },
+      {
+        "source": "open_access_rcts",
+        "file": "PMC10148668.pdf",
+        "specialty": "mixed"
+      },
+      {
+        "source": "open_access_rcts",
+        "file": "PMC10160525.pdf",
+        "specialty": "mixed"
+      },
+      {
+        "source": "open_access_rcts",
+        "file": "PMC11066537.pdf",
+        "specialty": "mixed"
+      },
+      {
+        "source": "open_access_rcts",
+        "file": "PMC11187303.pdf",
+        "specialty": "mixed"
+      },
+      {
+        "source": "open_access_rcts",
+        "file": "PMC12002045.pdf",
+        "specialty": "mixed"
+      },
+      {
+        "source": "open_access_rcts",
+        "file": "PMC12266184.pdf",
+        "specialty": "mixed"
+      },
+      {
+        "source": "open_access_rcts",
+        "file": "PMC12355417.pdf",
+        "specialty": "mixed"
+      },
+      {
+        "source": "open_access_rcts",
+        "file": "PMC12457714.pdf",
+        "specialty": "mixed"
+      },
+      {
+        "source": "open_access_rcts",
+        "file": "PMC12593444.pdf",
+        "specialty": "mixed"
+      },
+      {
+        "source": "oa_rct_corpus_v2",
+        "file": "PMC10016240.pdf",
+        "specialty": "mixed"
+      },
+      {
+        "source": "oa_rct_corpus_v2",
+        "file": "PMC10351119.pdf",
+        "specialty": "mixed"
+      },
+      {
+        "source": "real_pdfs/cardiology",
+        "file": "PMC11850749.pdf",
+        "specialty": "cardiology"
+      },
+      {
+        "source": "real_pdfs/cardiology",
+        "file": "PMC12341882.pdf",
+        "specialty": "cardiology"
+      },
+      {
+        "source": "real_pdfs/respiratory",
+        "file": "PMC10026740.pdf",
+        "specialty": "respiratory"
+      },
+      {
+        "source": "real_pdfs/respiratory",
+        "file": "PMC10034355.pdf",
+        "specialty": "respiratory"
+      },
+      {
+        "source": "real_pdfs/diabetes",
+        "file": "PMC10695721.pdf",
+        "specialty": "diabetes"
+      },
+      {
+        "source": "real_pdfs/diabetes",
+        "file": "PMC10695716.pdf",
+        "specialty": "diabetes"
+      },
+      {
+        "source": "real_pdfs/oncology",
+        "file": "PMC12717364.pdf",
+        "specialty": "oncology"
+      },
+      {
+        "source": "real_pdfs/infectious",
+        "file": "PMC10005913.pdf",
+        "specialty": "infectious"
+      }
+    ]
+  },
+
+  "held_out": {
+    "description": "10 PDFs NEVER to be used for pattern development. First use in Phase 6 validation only.",
+    "locked": true,
+    "pdfs": [
+      {
+        "source": "open_access_rcts",
+        "file": "PMC12620794.pdf",
+        "specialty": "mixed"
+      },
+      {
+        "source": "open_access_rcts",
+        "file": "PMC12634008.pdf",
+        "specialty": "mixed"
+      },
+      {
+        "source": "open_access_rcts",
+        "file": "PMC12700247.pdf",
+        "specialty": "mixed"
+      },
+      {
+        "source": "oa_rct_corpus_v2",
+        "file": "PMC10441703.pdf",
+        "specialty": "mixed"
+      },
+      {
+        "source": "oa_rct_corpus_v2",
+        "file": "PMC10500913.pdf",
+        "specialty": "mixed"
+      },
+      {
+        "source": "real_pdfs/cardiology",
+        "file": "PMC11840193.pdf",
+        "specialty": "cardiology"
+      },
+      {
+        "source": "real_pdfs/oncology",
+        "file": "PMC12750417.pdf",
+        "specialty": "oncology"
+      },
+      {
+        "source": "real_pdfs/diabetes",
+        "file": "PMC12784090.pdf",
+        "specialty": "diabetes"
+      },
+      {
+        "source": "real_pdfs/respiratory",
+        "file": "PMC10045420.pdf",
+        "specialty": "respiratory"
+      },
+      {
+        "source": "real_pdfs/infectious",
+        "file": "PMC10011807.pdf",
+        "specialty": "infectious"
+      }
+    ]
+  }
+}

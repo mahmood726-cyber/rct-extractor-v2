@@ -339,10 +339,12 @@ class TestEffectExtraction:
 
     def test_extract_from_noisy_text(self, noisy_ocr_text):
         """Test extraction from noisy OCR text"""
-        # Very noisy text may not parse completely
         results = extract_effect_from_ocr(noisy_ocr_text)
-        # Just verify no crash - noisy text may or may not extract
         assert isinstance(results, list)
+        # After OCR correction, should recover the value
+        if results:
+            assert any(abs(r['value'] - 0.74) < 0.02 for r in results), \
+                f"Expected recovery of ~0.74 from noisy OCR, got {[r['value'] for r in results]}"
 
     def test_extract_multiple_effects(self):
         """Test extracting multiple effects"""
@@ -405,9 +407,12 @@ class TestEdgeCases:
     def test_fragmented_text(self, degraded_ocr_text):
         """Test handling fragmented OCR text"""
         results = extract_effect_from_ocr(degraded_ocr_text)
-        # May or may not extract depending on pattern match
-        # Just ensure no crash
         assert isinstance(results, list)
+        # Fragmented "HR 0 74 (95% CI 0.65 - 0 85)" is unlikely to parse,
+        # but verify no crash and document expected limitation
+        # If it does parse, values should be reasonable
+        for r in results:
+            assert 0.01 <= r['value'] <= 100, f"Implausible value from degraded OCR: {r['value']}"
 
 
 # =============================================================================

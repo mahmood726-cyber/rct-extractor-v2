@@ -164,7 +164,7 @@ class TestBornDigitalFlow:
         pdfs_dir = test_pdfs_dir / "gold_standard" / "pdfs"
 
         for trial_name, annotation in gold_standard_annotations.items():
-            pdf_path = pdfs_dir / annotation["pdf_filename"]
+            pdf_path = pdfs_dir / annotation["pdf_file"]
             if not pdf_path.exists():
                 continue
 
@@ -413,7 +413,7 @@ class TestValidationMetrics:
         pdfs_dir = test_pdfs_dir / "gold_standard" / "pdfs"
 
         for trial_name, annotation in gold_standard_annotations.items():
-            pdf_path = pdfs_dir / annotation["pdf_filename"]
+            pdf_path = pdfs_dir / annotation["pdf_file"]
             if not pdf_path.exists():
                 continue
 

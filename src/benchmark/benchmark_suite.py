@@ -139,19 +139,13 @@ class BenchmarkSuite:
 
     @property
     def e2_bridge(self):
-        """JS extractor bridge (E2)"""
-        if self._e2_bridge is None:
-            from ..bridges.js_extractor_bridge import JSExtractorBridge
-            self._e2_bridge = JSExtractorBridge()
-        return self._e2_bridge
+        """JS extractor bridge (E2) — archived in v5.0"""
+        raise NotImplementedError("JS bridge archived in v5.0. Use core extractors.")
 
     @property
     def e3_bridge(self):
-        """Wasserstein bridge (E3)"""
-        if self._e3_bridge is None:
-            from ..bridges.wasserstein_bridge import WassersteinBridge
-            self._e3_bridge = WassersteinBridge()
-        return self._e3_bridge
+        """Wasserstein bridge (E3) — archived in v5.0"""
+        raise NotImplementedError("Wasserstein bridge archived in v5.0. Use core extractors.")
 
     @property
     def e4_bridge(self):

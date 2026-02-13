@@ -467,18 +467,39 @@ def calculate_nnt_from_rd(rd: float, rd_ci_low: Optional[float] = None, rd_ci_hi
         'source_rd': rd
     }
 
-    # Calculate CI for NNT (note: bounds swap because 1/x is monotonically decreasing)
+    # Calculate CI for NNT
+    # When RD CI crosses zero, NNT CI is discontinuous (NNTB -> inf -> NNTH)
+    # and cannot be expressed as a simple interval
     if rd_ci_low is not None and rd_ci_high is not None:
         if rd_ci_low != 0 and rd_ci_high != 0:
-            if abs(rd) > 1:
-                nnt_high = abs(100 / rd_ci_low) if rd_ci_low != 0 else float('inf')
-                nnt_low = abs(100 / rd_ci_high) if rd_ci_high != 0 else float('inf')
-            else:
-                nnt_high = abs(1 / rd_ci_low) if rd_ci_low != 0 else float('inf')
-                nnt_low = abs(1 / rd_ci_high) if rd_ci_high != 0 else float('inf')
+            # Check if CI crosses zero (signs differ)
+            ci_crosses_zero = (rd_ci_low < 0 < rd_ci_high) or (rd_ci_high < 0 < rd_ci_low)
 
-            result['nnt_ci_low'] = round(min(nnt_low, nnt_high))
-            result['nnt_ci_high'] = round(max(nnt_low, nnt_high))
+            if ci_crosses_zero:
+                # NNT CI is discontinuous -- report NNTB and NNTH bounds separately
+                result['ci_crosses_null'] = True
+                result['nnt_ci_warning'] = (
+                    'RD CI crosses zero; NNT CI is discontinuous '
+                    '(NNTB to infinity to NNTH). Simple interval not valid.'
+                )
+                # Report the finite bound from each side
+                if abs(rd) > 1:
+                    result['nntb_bound'] = round(abs(100 / min(rd_ci_low, rd_ci_high)))
+                    result['nnth_bound'] = round(abs(100 / max(rd_ci_low, rd_ci_high)))
+                else:
+                    result['nntb_bound'] = round(abs(1 / min(rd_ci_low, rd_ci_high)))
+                    result['nnth_bound'] = round(abs(1 / max(rd_ci_low, rd_ci_high)))
+            else:
+                # Both CI bounds same sign -- standard inversion is valid
+                if abs(rd) > 1:
+                    nnt_high = abs(100 / rd_ci_low) if rd_ci_low != 0 else float('inf')
+                    nnt_low = abs(100 / rd_ci_high) if rd_ci_high != 0 else float('inf')
+                else:
+                    nnt_high = abs(1 / rd_ci_low) if rd_ci_low != 0 else float('inf')
+                    nnt_low = abs(1 / rd_ci_high) if rd_ci_high != 0 else float('inf')
+
+                result['nnt_ci_low'] = round(min(nnt_low, nnt_high))
+                result['nnt_ci_high'] = round(max(nnt_low, nnt_high))
 
     return result
 

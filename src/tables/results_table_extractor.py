@@ -2,6 +2,10 @@
 Results Table Extractor for RCT Extractor v2
 =============================================
 
+STATUS: ORPHANED — This module is never imported by production code.
+The main extraction pipeline (enhanced_extractor_v3.py) handles table
+text inline. Consider integrating or removing.
+
 Extracts effect estimates (HR, OR, RR, RD, MD) from tables in PDF documents
 using OCR and structural analysis.
 

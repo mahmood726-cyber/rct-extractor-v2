@@ -9,6 +9,8 @@ from pathlib import Path
 # Add src to path for testing
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
+from pydantic import ValidationError
+
 from src.core.models import (
     BinaryOutcome, HazardRatioCI, OddsRatioCI, RiskRatioCI,
     MeanDifference, Provenance, ReviewSeverity
@@ -45,36 +47,34 @@ class TestValidateBinaryOutcome:
         assert len(error_issues) == 0
 
     def test_events_greater_than_n(self):
-        """Events > n should fail"""
-        outcome = BinaryOutcome(
-            arm_id="treatment",
-            events=150,
-            n=100,
-            provenance=Provenance(
-                pdf_file="test.pdf",
-                page_number=1,
-                raw_text="150/100",
-                extraction_method="test"
+        """Events > n should fail at construction (pydantic model_validator)"""
+        with pytest.raises(ValidationError, match="events.*cannot exceed n"):
+            BinaryOutcome(
+                arm_id="treatment",
+                events=150,
+                n=100,
+                provenance=Provenance(
+                    pdf_file="test.pdf",
+                    page_number=1,
+                    raw_text="150/100",
+                    extraction_method="test"
+                )
             )
-        )
-        issues = validate_binary_outcome(outcome)
-        assert any(i.code == "EVENTS_GT_N" for i in issues)
 
     def test_negative_n(self):
-        """Negative n should fail"""
-        outcome = BinaryOutcome(
-            arm_id="treatment",
-            events=50,
-            n=-100,
-            provenance=Provenance(
-                pdf_file="test.pdf",
-                page_number=1,
-                raw_text="50/-100",
-                extraction_method="test"
+        """Negative n should fail at construction (pydantic field constraint)"""
+        with pytest.raises(ValidationError, match="greater than 0"):
+            BinaryOutcome(
+                arm_id="treatment",
+                events=50,
+                n=-100,
+                provenance=Provenance(
+                    pdf_file="test.pdf",
+                    page_number=1,
+                    raw_text="50/-100",
+                    extraction_method="test"
+                )
             )
-        )
-        issues = validate_binary_outcome(outcome)
-        assert any(i.code == "N_NOT_POSITIVE" for i in issues)
 
     def test_percentage_mismatch(self):
         """Percentage mismatch should warn"""
@@ -115,52 +115,49 @@ class TestValidateHazardRatio:
         assert len(error_issues) == 0
 
     def test_negative_hr(self):
-        """Negative HR should fail"""
-        hr = HazardRatioCI(
-            hr=-0.75,
-            ci_low=0.65,
-            ci_high=0.87,
-            provenance=Provenance(
-                pdf_file="test.pdf",
-                page_number=1,
-                raw_text="HR -0.75",
-                extraction_method="test"
+        """Negative HR should fail at construction (pydantic field constraint)"""
+        with pytest.raises(ValidationError, match="greater than 0"):
+            HazardRatioCI(
+                hr=-0.75,
+                ci_low=0.65,
+                ci_high=0.87,
+                provenance=Provenance(
+                    pdf_file="test.pdf",
+                    page_number=1,
+                    raw_text="HR -0.75",
+                    extraction_method="test"
+                )
             )
-        )
-        issues = validate_hazard_ratio(hr)
-        assert any(i.code == "HR_NOT_POSITIVE" for i in issues)
 
     def test_inverted_ci(self):
-        """CI lower >= upper should fail"""
-        hr = HazardRatioCI(
-            hr=0.75,
-            ci_low=0.87,
-            ci_high=0.65,  # Inverted!
-            provenance=Provenance(
-                pdf_file="test.pdf",
-                page_number=1,
-                raw_text="HR 0.75 (95% CI 0.87-0.65)",
-                extraction_method="test"
+        """CI lower >= upper should fail at construction (pydantic model_validator)"""
+        with pytest.raises(ValidationError, match="CI lower.*must be < upper"):
+            HazardRatioCI(
+                hr=0.75,
+                ci_low=0.87,
+                ci_high=0.65,  # Inverted!
+                provenance=Provenance(
+                    pdf_file="test.pdf",
+                    page_number=1,
+                    raw_text="HR 0.75 (95% CI 0.87-0.65)",
+                    extraction_method="test"
+                )
             )
-        )
-        issues = validate_hazard_ratio(hr)
-        assert any(i.code == "CI_INVERTED" for i in issues)
 
     def test_hr_outside_ci(self):
-        """HR outside CI should fail"""
-        hr = HazardRatioCI(
-            hr=0.50,  # Outside CI
-            ci_low=0.65,
-            ci_high=0.87,
-            provenance=Provenance(
-                pdf_file="test.pdf",
-                page_number=1,
-                raw_text="HR 0.50 (95% CI 0.65-0.87)",
-                extraction_method="test"
+        """HR outside CI should fail at construction (pydantic model_validator)"""
+        with pytest.raises(ValidationError, match="HR.*must be within CI"):
+            HazardRatioCI(
+                hr=0.50,  # Outside CI
+                ci_low=0.65,
+                ci_high=0.87,
+                provenance=Provenance(
+                    pdf_file="test.pdf",
+                    page_number=1,
+                    raw_text="HR 0.50 (95% CI 0.65-0.87)",
+                    extraction_method="test"
+                )
             )
-        )
-        issues = validate_hazard_ratio(hr)
-        assert any(i.code == "HR_OUTSIDE_CI" for i in issues)
 
     def test_pvalue_ci_mismatch(self):
         """P-value inconsistent with CI should warn"""

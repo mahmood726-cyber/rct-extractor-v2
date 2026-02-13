@@ -3,6 +3,11 @@ Phase 0 Schema: Minimal, Unambiguous Extraction Schema
 
 Based on Al-Fātiḥah Principle 1: "Start with intention"
 Lock this schema early; everything else is "later".
+
+STATUS: ORPHANED — Only imported by extraction_validators.py (also orphaned).
+The main extractor (enhanced_extractor_v3.py) uses its own Extraction dataclass.
+This parallel type system was part of an earlier design iteration.
+Consider unifying with the main types or removing.
 """
 
 from dataclasses import dataclass, field
@@ -220,7 +225,7 @@ class RCTExtraction:
     pdf_path: str
     pdf_hash: str  # SHA256 of PDF content for reproducibility
     extraction_timestamp: str = field(default_factory=lambda: datetime.now().isoformat())
-    extractor_version: str = "4.3.5"
+    extractor_version: str = "5.0.0"
 
     # Trial identification
     trial_id: ExtractedValue = field(default_factory=lambda: ExtractedValue(None, status=ExtractionStatus.MISSING))

@@ -83,6 +83,8 @@ class NumericParser:
         r'hazard\s*ratio\s+of\s+(\d+[·.]?\d*)\s*\(\s*(\d+[·.]?\d*)%?\s*CI[,:\s]*(\d+[·.]?\d*)\s*(?:to|[-–])\s*(\d+[·.]?\d*)',
         # Pattern: "hazard ratio in the X group was VALUE (95% confidence interval [CI], LOW to HIGH"
         r'hazard\s*ratio\s+in\s+the\s+[\w\-]+\s+group\s+was\s+(\d+[·.]?\d*)\s*\(\s*(\d+[·.]?\d*)%?\s*confidence\s+interval\s+\[?CI\]?[,:\s]*(\d+[·.]?\d*)\s*(?:to|[-–])\s*(\d+[·.]?\d*)',
+        # HR bracket format: "HR = 0.75 [95% CI: 0.62-0.90]"
+        r'(?:HR|hazard\s*ratio)[,;:\s=]*(\d+\.?\d*)\s*\[(\d+\.?\d*)%?\s*CI[,:\s]*(\d+\.?\d*)\s*[-–to]+\s*(\d+\.?\d*)\]',
         # Standard formats
         r'(?:HR|hazard\s*ratio)[,;:\s=]*(\d+\.?\d*)\s*[;,]?\s*(?:\(?(\d+\.?\d*)%?\s*CI[,:\s]*)?(\d+\.?\d*)\s*[-–to]+\s*(\d+\.?\d*)',
         r'(?:hazard\s*ratio)[,;:\s]*(\d+\.?\d*)[;,]\s*(\d+\.?\d*)%?\s*confidence\s*interval\s*\[?CI\]?[,:\s]*(\d+\.?\d*)\s*(?:to|-|–)\s*(\d+\.?\d*)',
@@ -188,6 +190,8 @@ class NumericParser:
     EVENTS_PATTERNS = [
         # 100/500 (20%)
         r'(\d+)\s*/\s*(\d+)\s*\((\d+\.?\d*)%?\)',
+        # "187 deaths (7.5%)" or "100 events (20%)"
+        r'(\d+)\s+\w+\s*\((\d+\.?\d*)%\)',
         # 100 (20%) or 100 of 500
         r'(\d+)\s*(?:\((\d+\.?\d*)%\)|\s+of\s+(\d+))',
         # n=100, events=20
@@ -264,15 +268,37 @@ class NumericParser:
             if match:
                 groups = match.groups()
                 try:
-                    # Pattern: events/total
                     if '/' in match.group(0):
+                        # Pattern: events/total (percentage)
                         events = int(groups[0])
                         n = int(groups[1])
-                        pct = float(groups[2]) if groups[2] else (events / n * 100)
+                        pct = float(groups[2]) if len(groups) > 2 and groups[2] else (events / n * 100)
                         return {
                             'events': events,
                             'n': n,
                             'percentage': pct,
+                            'raw_match': match.group(0),
+                            'span': (match.start(), match.end())
+                        }
+                    elif '%' in match.group(0) and len(groups) >= 2 and groups[1]:
+                        # Pattern: "187 deaths (7.5%)" — events + percentage, no total
+                        events = int(groups[0])
+                        pct = float(groups[1])
+                        return {
+                            'events': events,
+                            'n': None,
+                            'percentage': pct,
+                            'raw_match': match.group(0),
+                            'span': (match.start(), match.end())
+                        }
+                    elif 'of' in match.group(0).lower() and len(groups) >= 3 and groups[2]:
+                        # Pattern: "100 of 500"
+                        events = int(groups[0])
+                        n = int(groups[2])
+                        return {
+                            'events': events,
+                            'n': n,
+                            'percentage': events / n * 100,
                             'raw_match': match.group(0),
                             'span': (match.start(), match.end())
                         }

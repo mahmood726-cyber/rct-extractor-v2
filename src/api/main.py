@@ -26,12 +26,12 @@ import sys
 import json
 import tempfile
 import hashlib
+import logging
 from pathlib import Path
 from typing import List, Optional, Dict, Any
 from datetime import datetime
 
-# Add parent to path for imports
-sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+logger = logging.getLogger(__name__)
 
 try:
     from fastapi import FastAPI, HTTPException, UploadFile, File, Query
@@ -43,8 +43,16 @@ except ImportError:
     HAS_FASTAPI = False
     print("FastAPI not installed. Run: pip install fastapi uvicorn python-multipart")
 
-# Import extractors
-from src.core.enhanced_extractor_v3 import EnhancedExtractor, Extraction, EffectType, AutomationTier
+# Import extractors — try relative imports first, fall back to absolute
+try:
+    from ..core.enhanced_extractor_v3 import EnhancedExtractor, Extraction, EffectType, AutomationTier
+    from .. import __version__
+except ImportError:
+    from src.core.enhanced_extractor_v3 import EnhancedExtractor, Extraction, EffectType, AutomationTier
+    from src import __version__
+
+# Maximum PDF upload size: 50 MB
+MAX_PDF_SIZE_BYTES = 50 * 1024 * 1024
 
 
 # =============================================================================
@@ -53,7 +61,7 @@ from src.core.enhanced_extractor_v3 import EnhancedExtractor, Extraction, Effect
 
 class ExtractionRequest(BaseModel):
     """Request body for text extraction"""
-    text: str = Field(..., description="Text to extract effects from")
+    text: str = Field(..., description="Text to extract effects from", max_length=500_000)
     include_raw: bool = Field(False, description="Include raw extraction details")
 
 
@@ -134,17 +142,17 @@ def create_app() -> "FastAPI":
     app = FastAPI(
         title="RCT Extractor API",
         description="Extract effect estimates (HR, OR, RR, MD, SMD) from RCT publications",
-        version="4.1.0",
+        version=__version__,
         docs_url="/docs",
         redoc_url="/redoc",
     )
 
-    # CORS middleware
+    # CORS middleware — do not use allow_origins=["*"] with credentials
     app.add_middleware(
         CORSMiddleware,
         allow_origins=["*"],
-        allow_credentials=True,
-        allow_methods=["*"],
+        allow_credentials=False,
+        allow_methods=["GET", "POST"],
         allow_headers=["*"],
     )
 
@@ -189,7 +197,7 @@ def create_app() -> "FastAPI":
 
         return HealthResponse(
             status="healthy",
-            version="4.1.0",
+            version=__version__,
             timestamp=datetime.utcnow().isoformat(),
             components=components
         )
@@ -246,11 +254,12 @@ def create_app() -> "FastAPI":
                 extraction_count=len(extractions),
                 extractions=extractions,
                 processing_time_ms=round(processing_time, 2),
-                version="4.1.0"
+                version=__version__
             )
 
         except Exception as e:
-            raise HTTPException(status_code=500, detail=str(e))
+            logger.exception("Extraction failed")
+            raise HTTPException(status_code=500, detail="Internal extraction error")
 
     @app.post("/extract/pdf", response_model=ExtractResponse, tags=["Extraction"])
     async def extract_from_pdf(
@@ -271,12 +280,20 @@ def create_app() -> "FastAPI":
 
         try:
             # Import PDF parser
-            from src.pdf.pdf_parser import PDFParser
+            try:
+                from ..pdf.pdf_parser import PDFParser
+            except ImportError:
+                from src.pdf.pdf_parser import PDFParser
             parser = PDFParser()
 
             # Save uploaded file temporarily
             with tempfile.NamedTemporaryFile(delete=False, suffix='.pdf') as tmp:
                 content = await file.read()
+                if len(content) > MAX_PDF_SIZE_BYTES:
+                    raise HTTPException(
+                        status_code=413,
+                        detail=f"PDF exceeds maximum size of {MAX_PDF_SIZE_BYTES // (1024*1024)} MB"
+                    )
                 tmp.write(content)
                 tmp_path = tmp.name
 
@@ -319,7 +336,7 @@ def create_app() -> "FastAPI":
                     extraction_count=len(extractions),
                     extractions=extractions,
                     processing_time_ms=round(processing_time, 2),
-                    version="4.1.0"
+                    version=__version__
                 )
 
             finally:
@@ -332,7 +349,8 @@ def create_app() -> "FastAPI":
                 detail="PDF parsing not available. Install pdfplumber."
             )
         except Exception as e:
-            raise HTTPException(status_code=500, detail=str(e))
+            logger.exception("PDF extraction failed")
+            raise HTTPException(status_code=500, detail="Internal PDF extraction error")
 
     @app.post("/validate", response_model=ValidationResponse, tags=["Validation"])
     async def validate_extraction(request: ValidationRequest):
@@ -437,7 +455,8 @@ def create_app() -> "FastAPI":
         except HTTPException:
             raise
         except Exception as e:
-            raise HTTPException(status_code=500, detail=str(e))
+            logger.exception("Validation failed")
+            raise HTTPException(status_code=500, detail="Internal validation error")
 
     @app.get("/stats", tags=["System"])
     async def get_stats():

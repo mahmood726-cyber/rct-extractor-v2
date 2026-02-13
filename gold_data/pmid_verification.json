@@ -1,0 +1,919 @@
+[
+  {
+    "study_id": "Wafa_2022",
+    "pmid": "36000435",
+    "pmcid": "PMC9496423",
+    "verify": {
+      "paper_type": "UNKNOWN",
+      "relevance": "NO_MATCH (0/2 keywords: ['endometrial', 'thickness'])",
+      "verdict": "CHECK_MANUALLY",
+      "title": "Frequency of Arrhythmias and Postural Orthostatic Tachycardia Syndrome in Patients With Marfan Syndrome: A Nationwide Inpatient Study.",
+      "pub_types": [
+        "Journal Article",
+        "Research Support, Non-U.S. Gov't"
+      ]
+    }
+  },
+  {
+    "study_id": "Bracken_2014",
+    "pmid": "25193157",
+    "pmcid": "PMC4261642",
+    "verify": {
+      "paper_type": "RCT",
+      "relevance": "NO_MATCH (0/2 keywords: ['successful', 'abortion'])",
+      "verdict": "RCT_WRONG_OUTCOME",
+      "title": "Induction of labour in pre-eclamptic women: a randomised trial comparing the Foley balloon catheter with oral misoprostol.",
+      "pub_types": [
+        "Comparative Study",
+        "Journal Article",
+        "Randomized Controlled Trial",
+        "Research Support, Non-U.S. Gov't"
+      ]
+    }
+  },
+  {
+    "study_id": "Anderson_2010",
+    "pmid": "21118913",
+    "pmcid": "PMC3019086",
+    "verify": {
+      "paper_type": "REVIEW/META",
+      "relevance": "NO_MATCH (0/8 keywords: ['psychosocial', 'interventions', 'inactive', 'global', 'mental'])",
+      "verdict": "WRONG_REVIEW",
+      "title": "Pharmacological considerations for tenofovir and emtricitabine to prevent HIV infection.",
+      "pub_types": [
+        "Journal Article",
+        "Research Support, N.I.H., Extramural",
+        "Research Support, Non-U.S. Gov't",
+        "Review"
+      ]
+    }
+  },
+  {
+    "study_id": "Hilliard_2012",
+    "pmid": "23260831",
+    "pmcid": "PMC4467546",
+    "verify": {
+      "paper_type": "UNKNOWN",
+      "relevance": "NO_MATCH (0/3 keywords: ['length', 'hospital', 'stay'])",
+      "verdict": "CHECK_MANUALLY",
+      "title": "Predictors of deteriorations in diabetes management and control in adolescents with type 1 diabetes.",
+      "pub_types": [
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ]
+    }
+  },
+  {
+    "study_id": "Moore_2016",
+    "pmid": "28503015",
+    "pmcid": "PMC5423677",
+    "verify": {
+      "paper_type": "LIKELY_RCT",
+      "relevance": "NO_MATCH (0/4 keywords: ['balance', '(berg', 'balance', 'scale)'])",
+      "verdict": "RCT_WRONG_OUTCOME",
+      "title": "Development and Pilot Randomized Control Trial of a Drama Program to Enhance Well-being Among Older Adults.",
+      "pub_types": [
+        "Journal Article"
+      ]
+    }
+  },
+  {
+    "study_id": "Durand_2020",
+    "pmid": "33251173",
+    "pmcid": "PMC7676153",
+    "verify": {
+      "paper_type": "PROTOCOL",
+      "relevance": "NO_MATCH (0/4 keywords: ['change', 'respiratory', 'rate', 'hour'])",
+      "verdict": "WRONG_PROTOCOL",
+      "title": "Effect of an Appearance-Based vs. a Health-Based Sun-Protective Intervention on French Summer Tourists' Behaviors in a Cluster Randomized Crossover Trial: The PRISME Protocol.",
+      "pub_types": [
+        "Clinical Trial Protocol",
+        "Journal Article",
+        "Research Support, Non-U.S. Gov't"
+      ]
+    }
+  },
+  {
+    "study_id": "Ahamed_2019",
+    "pmid": "31507544",
+    "pmcid": "PMC6714547",
+    "verify": {
+      "paper_type": "UNKNOWN",
+      "relevance": "NO_MATCH (0/2 keywords: ['clinical', 'response'])",
+      "verdict": "CHECK_MANUALLY",
+      "title": "Genomic and Proteomic Characterizations of",
+      "pub_types": [
+        "Journal Article"
+      ]
+    }
+  },
+  {
+    "study_id": "Keene_2022",
+    "pmid": "36424115",
+    "pmcid": "PMC9693648",
+    "verify": {
+      "paper_type": "RCT",
+      "relevance": "WEAK (1/9 keywords)",
+      "verdict": "RCT_WRONG_OUTCOME",
+      "title": "Progressive exercise versus best practice advice for adults aged 50 years or over after ankle fracture: the AFTER pilot randomised controlled trial.",
+      "pub_types": [
+        "Randomized Controlled Trial",
+        "Multicenter Study",
+        "Journal Article",
+        "Research Support, Non-U.S. Gov't"
+      ]
+    }
+  },
+  {
+    "study_id": "Irmak_2012",
+    "pmid": "22676860",
+    "pmcid": "PMC3413567",
+    "verify": {
+      "paper_type": "REVIEW/META",
+      "relevance": "NO_MATCH (0/5 keywords: ['intensity', 'musculoskeletal', 'symptoms', '(pain', 'overall)'])",
+      "verdict": "WRONG_REVIEW",
+      "title": "Integration of maternal genome into the neonate genome through breast milk mRNA transcripts and reverse transcriptase.",
+      "pub_types": [
+        "Journal Article",
+        "Review"
+      ]
+    }
+  },
+  {
+    "study_id": "Fagerlin_2011",
+    "pmid": "21442198",
+    "pmcid": "PMC3742062",
+    "verify": {
+      "paper_type": "RCT",
+      "relevance": "NO_MATCH (0/4 keywords: ['informed', 'values-choice', 'congruence', 'studies'])",
+      "verdict": "RCT_WRONG_OUTCOME",
+      "title": "Women's interest in taking tamoxifen and raloxifene for breast cancer prevention: response to a tailored decision aid.",
+      "pub_types": [
+        "Journal Article",
+        "Randomized Controlled Trial",
+        "Research Support, N.I.H., Extramural",
+        "Research Support, Non-U.S. Gov't",
+        "Research Support, U.S. Gov't, Non-P.H.S."
+      ]
+    }
+  },
+  {
+    "study_id": "Papay_2014",
+    "pmid": "25037206",
+    "pmcid": "PMC4155050",
+    "verify": {
+      "paper_type": "RCT",
+      "relevance": "RELEVANT (2/3 keywords)",
+      "verdict": "GOOD",
+      "title": "Naltrexone for impulse control disorders in Parkinson disease: a placebo-controlled study.",
+      "pub_types": [
+        "Journal Article",
+        "Randomized Controlled Trial",
+        "Research Support, N.I.H., Extramural",
+        "Research Support, Non-U.S. Gov't",
+        "Research Support, U.S. Gov't, Non-P.H.S."
+      ]
+    }
+  },
+  {
+    "study_id": "Hirono_2019",
+    "pmid": "29697455",
+    "pmcid": "PMC6325750",
+    "verify": {
+      "paper_type": "RCT",
+      "relevance": "WEAK (4/10 keywords)",
+      "verdict": "RCT_WRONG_OUTCOME",
+      "title": "Modified Blumgart Mattress Suture Versus Conventional Interrupted Suture in Pancreaticojejunostomy During Pancreaticoduodenectomy: Randomized Controlled Trial.",
+      "pub_types": [
+        "Comparative Study",
+        "Journal Article",
+        "Randomized Controlled Trial"
+      ]
+    }
+  },
+  {
+    "study_id": "Sawaki_2008",
+    "pmid": "18780885",
+    "pmcid": "PMC3234527",
+    "verify": {
+      "paper_type": "RCT",
+      "relevance": "NO_MATCH (0/2 keywords: ['death', 'cause'])",
+      "verdict": "RCT_WRONG_OUTCOME",
+      "title": "Constraint-induced movement therapy results in increased motor map area in subjects 3 to 9 months after stroke.",
+      "pub_types": [
+        "Journal Article",
+        "Multicenter Study",
+        "Randomized Controlled Trial",
+        "Research Support, N.I.H., Extramural"
+      ]
+    }
+  },
+  {
+    "study_id": "Tada_2022",
+    "pmid": "36507736",
+    "pmcid": "PMC9744071",
+    "verify": {
+      "paper_type": "REVIEW/META",
+      "relevance": "WEAK (1/3 keywords)",
+      "verdict": "WRONG_REVIEW",
+      "title": "Ultrasound guidance versus landmark method for peripheral venous cannulation in adults.",
+      "pub_types": [
+        "Journal Article",
+        "Research Support, Non-U.S. Gov't",
+        "Systematic Review"
+      ]
+    }
+  },
+  {
+    "study_id": "Hutchins_2019",
+    "pmid": "32010324",
+    "pmcid": "PMC6966199",
+    "verify": {
+      "paper_type": "LIKELY_RCT",
+      "relevance": "NO_MATCH (0/4 keywords: ['postoperative', 'pain', '(vas)', 'hours'])",
+      "verdict": "RCT_WRONG_OUTCOME",
+      "title": "Aged garlic extract reduces left ventricular myocardial mass in patients with diabetes: A prospective randomized controlled double-blind study.",
+      "pub_types": [
+        "Journal Article"
+      ]
+    }
+  },
+  {
+    "study_id": "DeOliveira_2011",
+    "pmid": "21480768",
+    "pmcid": "PMC3193941",
+    "verify": {
+      "paper_type": "UNKNOWN",
+      "relevance": "NO_MATCH (0/4 keywords: ['postoperative', 'pain', '(vas)', 'hours'])",
+      "verdict": "CHECK_MANUALLY",
+      "title": "An ear punch model for studying the effect of radiation on wound healing.",
+      "pub_types": [
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ]
+    }
+  },
+  {
+    "study_id": "Mun_2019",
+    "pmid": "31110911",
+    "pmcid": "PMC6504128",
+    "verify": {
+      "paper_type": "LIKELY_RCT",
+      "relevance": "NO_MATCH (0/1 keywords: ['balance'])",
+      "verdict": "RCT_WRONG_OUTCOME",
+      "title": "A Phase I/II Placebo-Controlled Randomized Pilot Clinical Trial of Recombinant Deoxyribonuclease (DNase) Eye Drops Use in Patients With Dry Eye Disease.",
+      "pub_types": [
+        "Journal Article"
+      ]
+    }
+  },
+  {
+    "study_id": "McDonald_2015",
+    "pmid": "26203094",
+    "pmcid": "PMC4548161",
+    "verify": {
+      "paper_type": "RCT",
+      "relevance": "NO_MATCH (0/7 keywords: ['mean', 'number', 'colds', 'urtis', 'developed'])",
+      "verdict": "RCT_WRONG_OUTCOME",
+      "title": "Daily Zinc but Not Multivitamin Supplementation Reduces Diarrhea and Upper Respiratory Infections in Tanzanian Infants: A Randomized, Double-Blind, Placebo-Controlled Clinical Trial.",
+      "pub_types": [
+        "Journal Article",
+        "Randomized Controlled Trial",
+        "Research Support, N.I.H., Extramural"
+      ]
+    }
+  },
+  {
+    "study_id": "Takeyama_2020",
+    "pmid": "33158239",
+    "pmcid": "PMC7662815",
+    "verify": {
+      "paper_type": "LIKELY_RCT",
+      "relevance": "NO_MATCH (0/2 keywords: ['repeat', 'surgery'])",
+      "verdict": "RCT_WRONG_OUTCOME",
+      "title": "A Health Guidance App to Improve Motivation, Adherence to Lifestyle Changes and Indicators of Metabolic Disturbances among Japanese Civil Servants.",
+      "pub_types": [
+        "Journal Article",
+        "Research Support, Non-U.S. Gov't"
+      ]
+    }
+  },
+  {
+    "study_id": "Moore_2005",
+    "pmid": "16354303",
+    "pmcid": "PMC1343572",
+    "verify": {
+      "paper_type": "REVIEW/META",
+      "relevance": "NO_MATCH (0/4 keywords: ['breastfeeding', 'status', 'month', 'birth'])",
+      "verdict": "WRONG_REVIEW",
+      "title": "Indirect comparison of interventions using published randomised trials: systematic review of PDE-5 inhibitors for erectile dysfunction.",
+      "pub_types": [
+        "Comparative Study",
+        "Journal Article",
+        "Systematic Review"
+      ]
+    }
+  },
+  {
+    "study_id": "Palve_2020",
+    "pmid": "32076905",
+    "pmcid": "PMC7138780",
+    "verify": {
+      "paper_type": "UNKNOWN",
+      "relevance": "NO_MATCH (0/1 keywords: ['reintervention'])",
+      "verdict": "CHECK_MANUALLY",
+      "title": "Sentinel node tumor burden in prediction of prognosis in melanoma patients.",
+      "pub_types": [
+        "Journal Article",
+        "Research Support, Non-U.S. Gov't"
+      ]
+    }
+  },
+  {
+    "study_id": "Khanna_2020",
+    "pmid": "36147433",
+    "pmcid": "PMC9485775",
+    "verify": {
+      "paper_type": "LIKELY_RCT",
+      "relevance": "NO_MATCH (0/2 keywords: ['all-cause', 'mortality'])",
+      "verdict": "RCT_WRONG_OUTCOME",
+      "title": "Quadratus lumborum block versus transversus abdominis plane block for post Caesarean analgesia: A randomized prospective controlled study.",
+      "pub_types": [
+        "Journal Article"
+      ]
+    }
+  },
+  {
+    "study_id": "Van de Ven_2014",
+    "pmid": "25540720",
+    "pmcid": "PMC4270437",
+    "verify": {
+      "paper_type": "UNKNOWN",
+      "relevance": "NO_MATCH (0/2 keywords: ['rate', 'falls'])",
+      "verdict": "CHECK_MANUALLY",
+      "title": "Antibiotic susceptibility and molecular epidemiology of",
+      "pub_types": [
+        "Journal Article"
+      ]
+    }
+  },
+  {
+    "study_id": "Hanson_2016",
+    "pmid": "27280016",
+    "pmcid": "PMC4898300",
+    "verify": {
+      "paper_type": "PROTOCOL",
+      "relevance": "WEAK (1/6 keywords)",
+      "verdict": "WRONG_PROTOCOL",
+      "title": "Dose-response of spinal manipulation for cervicogenic headache: study protocol for a randomized controlled trial.",
+      "pub_types": [
+        "Journal Article"
+      ]
+    }
+  },
+  {
+    "study_id": "Jiang_2020",
+    "pmid": "33954169",
+    "pmcid": "PMC8067773",
+    "verify": {
+      "paper_type": "REVIEW/META",
+      "relevance": "NO_MATCH (0/4 keywords: ['postoperative', 'pain', '(vas)', 'hours'])",
+      "verdict": "WRONG_REVIEW",
+      "title": "Manual Acupuncture or Combination with Vitamin B to Treat Diabetic Peripheral Neuropathy: A Systematic Review and Meta-Analysis of Randomized Controlled Trials.",
+      "pub_types": [
+        "Journal Article",
+        "Meta-Analysis",
+        "Systematic Review"
+      ]
+    }
+  },
+  {
+    "study_id": "Xu Yumei_2013",
+    "pmid": "25077110",
+    "pmcid": "PMC3986013",
+    "verify": {
+      "paper_type": "LIKELY_RCT",
+      "relevance": "NO_MATCH (0/4 keywords: ['balance', '(berg', 'balance', 'scale)'])",
+      "verdict": "RCT_WRONG_OUTCOME",
+      "title": "Prescribing patterns of novel oral anticoagulants following regulatory approval for atrial fibrillation in Ontario, Canada: a\u00a0population-based descriptive analysis.",
+      "pub_types": [
+        "Journal Article"
+      ]
+    }
+  },
+  {
+    "study_id": "Rajanbabu_2019",
+    "pmid": "31649397",
+    "pmcid": "PMC6798625",
+    "verify": {
+      "paper_type": "LIKELY_RCT",
+      "relevance": "RELEVANT (3/4 keywords)",
+      "verdict": "GOOD",
+      "title": "Efficacy of laparoscopic-guided transversus abdominis plane block for patients undergoing robotic-assisted gynaecologic surgery: A randomised control trial.",
+      "pub_types": [
+        "Journal Article"
+      ]
+    }
+  },
+  {
+    "study_id": "Brito_2020",
+    "pmid": "32692022",
+    "pmcid": "PMC8015289",
+    "verify": {
+      "paper_type": "UNKNOWN",
+      "relevance": "NO_MATCH (0/2 keywords: ['short-term', 'complications'])",
+      "verdict": "CHECK_MANUALLY",
+      "title": "Reproduction of",
+      "pub_types": [
+        "Journal Article"
+      ]
+    }
+  },
+  {
+    "study_id": "Jin_2016",
+    "pmid": "27616903",
+    "pmcid": "PMC5005362",
+    "verify": {
+      "paper_type": "REVIEW/META",
+      "relevance": "NO_MATCH (0/2 keywords: ['all-cause', 'death'])",
+      "verdict": "WRONG_REVIEW",
+      "title": "Ginseng consumption and risk of cancer: A meta-analysis.",
+      "pub_types": [
+        "Journal Article"
+      ]
+    }
+  },
+  {
+    "study_id": "Oyo-Ita_2021",
+    "pmid": "34529714",
+    "pmcid": "PMC8445457",
+    "verify": {
+      "paper_type": "RCT",
+      "relevance": "NO_MATCH (0/5 keywords: ['reception', 'dtp3', 'penta', 'vaccine', 'year'])",
+      "verdict": "RCT_WRONG_OUTCOME",
+      "title": "Cost-effectiveness analysis of an intervention project engaging\u00a0Traditional and Religious Leaders to improve uptake of childhood immunization in southern Nigeria.",
+      "pub_types": [
+        "Journal Article",
+        "Randomized Controlled Trial",
+        "Research Support, Non-U.S. Gov't"
+      ]
+    }
+  },
+  {
+    "study_id": "Habib_2017",
+    "pmid": "28495264",
+    "pmcid": "PMC5439031",
+    "verify": {
+      "paper_type": "RCT",
+      "relevance": "RELEVANT (4/7 keywords)",
+      "verdict": "GOOD",
+      "title": "Community engagement and integrated health and polio immunisation campaigns in conflict-affected areas of Pakistan: a cluster randomised controlled trial.",
+      "pub_types": [
+        "Journal Article",
+        "Randomized Controlled Trial"
+      ]
+    }
+  },
+  {
+    "study_id": "Kumar_2013",
+    "pmid": "26730057",
+    "pmcid": "PMC4692952",
+    "verify": {
+      "paper_type": "LIKELY_RCT",
+      "relevance": "NO_MATCH (0/1 keywords: ['death'])",
+      "verdict": "RCT_WRONG_OUTCOME",
+      "title": "Randomised Controlled Trial of Day-Case Laparoscopic Cholecystectomy vs Routine Laparoscopic Cholecystectomy.",
+      "pub_types": [
+        "Journal Article"
+      ]
+    }
+  },
+  {
+    "study_id": "van Rumste_2014",
+    "pmid": "25540720",
+    "pmcid": "PMC4270437",
+    "verify": {
+      "paper_type": "UNKNOWN",
+      "relevance": "NO_MATCH (0/4 keywords: ['live', 'birth', 'rate', 'woman'])",
+      "verdict": "CHECK_MANUALLY",
+      "title": "Antibiotic susceptibility and molecular epidemiology of",
+      "pub_types": [
+        "Journal Article"
+      ]
+    }
+  },
+  {
+    "study_id": "Zou_2022",
+    "pmid": "36569016",
+    "pmcid": "PMC9782940",
+    "verify": {
+      "paper_type": "UNKNOWN",
+      "relevance": "NO_MATCH (0/8 keywords: ['maternal', 'pain', 'during', '2-hours', 'post-episiotomy'])",
+      "verdict": "CHECK_MANUALLY",
+      "title": "Comparative effectiveness of first-line therapies for eradication of antibiotic-resistant",
+      "pub_types": [
+        "Journal Article"
+      ]
+    }
+  },
+  {
+    "study_id": "Chung_2022",
+    "pmid": "36569462",
+    "pmcid": "PMC9780006",
+    "verify": {
+      "paper_type": "RCT",
+      "relevance": "NO_MATCH (0/2 keywords: ['erectile', 'function'])",
+      "verdict": "RCT_WRONG_OUTCOME",
+      "title": "Reduced Opioid Consumption with Pericapsular Nerve Group Block for Hip Surgery: A Randomized, Double-Blind, Placebo-Controlled Trial.",
+      "pub_types": [
+        "Randomized Controlled Trial",
+        "Journal Article",
+        "Research Support, Non-U.S. Gov't"
+      ]
+    }
+  },
+  {
+    "study_id": "Siddiqi_2020",
+    "pmid": "32652969",
+    "pmcid": "PMC7353686",
+    "verify": {
+      "paper_type": "RCT",
+      "relevance": "WEAK (2/5 keywords)",
+      "verdict": "RCT_WRONG_OUTCOME",
+      "title": "Effect of vaccine reminder and tracker bracelets on routine childhood immunization coverage and timeliness in urban Pakistan (2017-18): a randomized controlled trial.",
+      "pub_types": [
+        "Journal Article",
+        "Randomized Controlled Trial"
+      ]
+    }
+  },
+  {
+    "study_id": "Toker_2019",
+    "pmid": "31836201",
+    "pmcid": "PMC9391862",
+    "verify": {
+      "paper_type": "RCT",
+      "relevance": "NO_MATCH (0/4 keywords: ['postoperative', 'pain', '(vas)', 'hours'])",
+      "verdict": "RCT_WRONG_OUTCOME",
+      "title": "[Comparison of pressure-controlled volume-guaranteed ventilation and volume-controlled ventilation in obese patients during gynecologic laparoscopic surgery in the Trendelenburg position].",
+      "pub_types": [
+        "Comparative Study",
+        "Journal Article",
+        "Randomized Controlled Trial"
+      ]
+    }
+  },
+  {
+    "study_id": "Feltner_2009",
+    "pmid": "19228175",
+    "pmcid": "PMC6494008",
+    "verify": {
+      "paper_type": "RCT",
+      "relevance": "WEAK (1/4 keywords)",
+      "verdict": "RCT_WRONG_OUTCOME",
+      "title": "Clinical evaluation of the Daily Assessment of Symptoms-Anxiety (DAS-A): a new instrument to assess the onset of symptomatic improvement in generalized anxiety disorder.",
+      "pub_types": [
+        "Journal Article",
+        "Multicenter Study",
+        "Randomized Controlled Trial",
+        "Research Support, Non-U.S. Gov't"
+      ]
+    }
+  },
+  {
+    "study_id": "Yan_2021",
+    "pmid": "35185539",
+    "pmcid": "PMC8855037",
+    "verify": {
+      "paper_type": "REVIEW/META",
+      "relevance": "NO_MATCH (0/3 keywords: [\"client's\", 'health', 'behaviour'])",
+      "verdict": "WRONG_REVIEW",
+      "title": "Bupleuri radix for Acute Uncomplicated Respiratory Tract Infection: A Systematic Review of Randomized Controlled Trials.",
+      "pub_types": [
+        "Journal Article",
+        "Review"
+      ]
+    }
+  },
+  {
+    "study_id": "Delroy_2013",
+    "pmid": "23632800",
+    "pmcid": "PMC3824218",
+    "verify": {
+      "paper_type": "RCT",
+      "relevance": "WEAK (1/4 keywords)",
+      "verdict": "RCT_WRONG_OUTCOME",
+      "title": "The use of transvaginal synthetic mesh for anterior vaginal wall prolapse repair: a randomized controlled trial.",
+      "pub_types": [
+        "Comparative Study",
+        "Journal Article",
+        "Randomized Controlled Trial"
+      ]
+    }
+  },
+  {
+    "study_id": "Shi_2012",
+    "pmid": "23326136",
+    "pmcid": "PMC3544033",
+    "verify": {
+      "paper_type": "RCT",
+      "relevance": "NO_MATCH (0/2 keywords: ['proteinuria', '(upcr)'])",
+      "verdict": "RCT_WRONG_OUTCOME",
+      "title": "Comparison between air and carbon dioxide insufflation in the endoscopic submucosal excavation of gastrointestinal stromal tumors.",
+      "pub_types": [
+        "Comparative Study",
+        "Journal Article",
+        "Randomized Controlled Trial",
+        "Research Support, Non-U.S. Gov't"
+      ]
+    }
+  },
+  {
+    "study_id": "Marigold_2005",
+    "pmid": "15743283",
+    "pmcid": "PMC3226796",
+    "verify": {
+      "paper_type": "RCT",
+      "relevance": "WEAK (3/9 keywords)",
+      "verdict": "RCT_WRONG_OUTCOME",
+      "title": "Exercise leads to faster postural reflexes, improved balance and mobility, and fewer falls in older persons with chronic stroke.",
+      "pub_types": [
+        "Clinical Trial",
+        "Journal Article",
+        "Randomized Controlled Trial",
+        "Research Support, Non-U.S. Gov't"
+      ]
+    }
+  },
+  {
+    "study_id": "Santos_2020",
+    "pmid": "33536927",
+    "pmcid": "PMC7848817",
+    "verify": {
+      "paper_type": "LIKELY_RCT",
+      "relevance": "NO_MATCH (0/9 keywords: ['pain', 'intensity', 'reported', 'child', 'hours'])",
+      "verdict": "RCT_WRONG_OUTCOME",
+      "title": "Whole-Body Vibration Exercise in Different Postures on Handgrip Strength in Healthy Women: A Cross-Over Study.",
+      "pub_types": [
+        "Journal Article"
+      ]
+    }
+  },
+  {
+    "study_id": "Beiranvand_2014",
+    "pmid": "25610472",
+    "pmcid": "PMC4291124",
+    "verify": {
+      "paper_type": "LIKELY_RCT",
+      "relevance": "WEAK (2/6 keywords)",
+      "verdict": "RCT_WRONG_OUTCOME",
+      "title": "The Effects of Skin-to-Skin Contact on Temperature and Breastfeeding Successfulness in Full-Term Newborns after Cesarean Delivery.",
+      "pub_types": [
+        "Journal Article"
+      ]
+    }
+  },
+  {
+    "study_id": "Bomyea_2015",
+    "pmid": "26114901",
+    "pmcid": "PMC4532583",
+    "verify": {
+      "paper_type": "RCT",
+      "relevance": "WEAK (2/6 keywords)",
+      "verdict": "RCT_WRONG_OUTCOME",
+      "title": "Interference control training for PTSD: A randomized controlled trial of a novel computer-based intervention.",
+      "pub_types": [
+        "Journal Article",
+        "Randomized Controlled Trial",
+        "Research Support, Non-U.S. Gov't"
+      ]
+    }
+  },
+  {
+    "study_id": "Crotty_2019",
+    "pmid": "30794284",
+    "pmcid": "PMC6503935",
+    "verify": {
+      "paper_type": "RCT",
+      "relevance": "WEAK (1/10 keywords)",
+      "verdict": "RCT_WRONG_OUTCOME",
+      "title": "Should we provide outreach rehabilitation to very old people living in Nursing Care Facilities after a hip fracture? A randomised controlled trial.",
+      "pub_types": [
+        "Journal Article",
+        "Randomized Controlled Trial",
+        "Research Support, Non-U.S. Gov't"
+      ]
+    }
+  },
+  {
+    "study_id": "Singh_2018",
+    "pmid": "32435317",
+    "pmcid": "PMC7223775",
+    "verify": {
+      "paper_type": "LIKELY_RCT",
+      "relevance": "NO_MATCH (0/10 keywords: ['rate', 'postoperative', 'pancreatic', 'fistula', '(grade'])",
+      "verdict": "RCT_WRONG_OUTCOME",
+      "title": "Comparative Effectiveness of Caregiver Training in Mindfulness-Based Positive Behavior Support (MBPBS) and Positive Behavior Support (PBS) in a Randomized Controlled Trial.",
+      "pub_types": [
+        "Journal Article"
+      ]
+    }
+  },
+  {
+    "study_id": "Gupta_2014",
+    "pmid": "26225034",
+    "pmcid": "PMC4518793",
+    "verify": {
+      "paper_type": "LIKELY_RCT",
+      "relevance": "NO_MATCH (0/4 keywords: ['awareness', 'prolapse', '(0.5', 'years)'])",
+      "verdict": "RCT_WRONG_OUTCOME",
+      "title": "A Comparative Pilot Study to Evaluate the Adjunctive Role of Levosulpride with Trigger Point Injection Therapy in the Management of Myofascial Pain Syndrome of Orofacial Region.",
+      "pub_types": [
+        "Journal Article"
+      ]
+    }
+  },
+  {
+    "study_id": "Berry_2013",
+    "pmid": "24386475",
+    "pmcid": "PMC3873460",
+    "verify": {
+      "paper_type": "LIKELY_RCT",
+      "relevance": "NO_MATCH (0/3 keywords: ['proportion', 'undecided', 'studies'])",
+      "verdict": "RCT_WRONG_OUTCOME",
+      "title": "Preterm birth has sex-specific effects on autonomic modulation of heart rate variability in adult sheep.",
+      "pub_types": [
+        "Journal Article",
+        "Research Support, Non-U.S. Gov't"
+      ]
+    }
+  },
+  {
+    "study_id": "Ara_2018",
+    "pmid": "29660858",
+    "pmcid": "PMC6055706",
+    "verify": {
+      "paper_type": "RCT",
+      "relevance": "NO_MATCH (0/3 keywords: ['interincisal', 'distance', '(mm)'])",
+      "verdict": "RCT_WRONG_OUTCOME",
+      "title": "Peer counselling improves breastfeeding practices: A cluster randomized controlled trial in urban Bangladesh.",
+      "pub_types": [
+        "Journal Article",
+        "Randomized Controlled Trial",
+        "Research Support, Non-U.S. Gov't"
+      ]
+    }
+  },
+  {
+    "study_id": "Jandaghi_2021",
+    "pmid": "35036254",
+    "pmcid": "PMC8752821",
+    "verify": {
+      "paper_type": "LIKELY_RCT",
+      "relevance": "NO_MATCH (0/2 keywords: ['gait', 'velocity'])",
+      "verdict": "RCT_WRONG_OUTCOME",
+      "title": "Stroke Patients Showed Improvements in Balance in Response to Visual Restriction Exercise.",
+      "pub_types": [
+        "Journal Article"
+      ]
+    }
+  },
+  {
+    "study_id": "Rodrigues_2023",
+    "pmid": "38200908",
+    "pmcid": "PMC10778902",
+    "verify": {
+      "paper_type": "REVIEW/META",
+      "relevance": "NO_MATCH (0/5 keywords: ['(change', 'from', 'baseline', '(mm))', 'months'])",
+      "verdict": "WRONG_REVIEW",
+      "title": "Electro-Acupuncture Effects Measured by Functional Magnetic Resonance Imaging-A Systematic Review of Randomized Clinical Trials.",
+      "pub_types": [
+        "Journal Article",
+        "Review"
+      ]
+    }
+  },
+  {
+    "study_id": "Moschonis_2019",
+    "pmid": "30917561",
+    "pmcid": "PMC6471646",
+    "verify": {
+      "paper_type": "RCT",
+      "relevance": "NO_MATCH (0/3 keywords: ['reduction', 'stabilisation', 'maintenance'])",
+      "verdict": "RCT_WRONG_OUTCOME",
+      "title": "Assessment of the Effectiveness of a Computerised Decision-Support Tool for Health Professionals for the Prevention and Treatment of Childhood Obesity. Results from a Randomised Controlled Trial.",
+      "pub_types": [
+        "Journal Article",
+        "Randomized Controlled Trial"
+      ]
+    }
+  },
+  {
+    "study_id": "Ahmadi_2013",
+    "pmid": "24303417",
+    "pmcid": "PMC3846241",
+    "verify": {
+      "paper_type": "LIKELY_RCT",
+      "relevance": "NO_MATCH (0/1 keywords: ['success'])",
+      "verdict": "RCT_WRONG_OUTCOME",
+      "title": "The effect of adenotonsillectomy on pediatric nocturnal enuresis: a prospective cohort study.",
+      "pub_types": [
+        "Journal Article"
+      ]
+    }
+  },
+  {
+    "study_id": "Cooke_2006",
+    "pmid": "16846342",
+    "pmcid": "PMC2586965",
+    "verify": {
+      "paper_type": "RCT",
+      "relevance": "NO_MATCH (0/3 keywords: ['motor', 'function', 'scales'])",
+      "verdict": "RCT_WRONG_OUTCOME",
+      "title": "Effect of rhPDGF-BB delivery on mediators of periodontal wound repair.",
+      "pub_types": [
+        "Journal Article",
+        "Randomized Controlled Trial",
+        "Research Support, N.I.H., Extramural",
+        "Research Support, Non-U.S. Gov't"
+      ]
+    }
+  },
+  {
+    "study_id": "Allen_2018",
+    "pmid": "30580268",
+    "pmcid": "PMC6318540",
+    "verify": {
+      "paper_type": "PROTOCOL",
+      "relevance": "RELEVANT (1/2 keywords)",
+      "verdict": "WRONG_PROTOCOL",
+      "title": "A randomised controlled trial to assess whether prehabilitation improves fitness in patients undergoing neoadjuvant treatment prior to oesophagogastric cancer surgery: study protocol.",
+      "pub_types": [
+        "Journal Article",
+        "Randomized Controlled Trial",
+        "Research Support, Non-U.S. Gov't",
+        "Equivalence Trial"
+      ]
+    }
+  },
+  {
+    "study_id": "Beulen_2016",
+    "pmid": "27189020",
+    "pmcid": "PMC5027684",
+    "verify": {
+      "paper_type": "RCT",
+      "relevance": "RELEVANT (2/4 keywords)",
+      "verdict": "GOOD",
+      "title": "The effect of a decision aid on informed decision-making in the era of non-invasive prenatal testing: a randomised controlled trial.",
+      "pub_types": [
+        "Journal Article",
+        "Randomized Controlled Trial",
+        "Research Support, Non-U.S. Gov't"
+      ]
+    }
+  },
+  {
+    "study_id": "Coentrao_2012",
+    "pmid": "22916962",
+    "pmcid": "PMC3476986",
+    "verify": {
+      "paper_type": "RCT",
+      "relevance": "RELEVANT (1/2 keywords)",
+      "verdict": "GOOD",
+      "title": "Effects of starting hemodialysis with an arteriovenous fistula or central venous catheter compared with peritoneal dialysis: a retrospective cohort study.",
+      "pub_types": [
+        "Comparative Study",
+        "Journal Article"
+      ]
+    }
+  },
+  {
+    "study_id": "Hernandez_2021",
+    "pmid": "35832701",
+    "pmcid": "PMC9266791",
+    "verify": {
+      "paper_type": "REVIEW/META",
+      "relevance": "WEAK (4/9 keywords)",
+      "verdict": "WRONG_REVIEW",
+      "title": "Efficacy of early treatment with hydroxychloroquine in people with mild to moderate COVID-19: a systematic review and meta-analysis.",
+      "pub_types": [
+        "Journal Article",
+        "Review"
+      ]
+    }
+  },
+  {
+    "study_id": "Raj Kumawat_2024",
+    "pmid": "39211679",
+    "pmcid": "PMC11361459",
+    "verify": {
+      "paper_type": "LIKELY_RCT",
+      "relevance": "NO_MATCH (0/6 keywords: ['exclusive', 'breastfeeding', 'hospital', 'discharge', 'month'])",
+      "verdict": "RCT_WRONG_OUTCOME",
+      "title": "Effects of Local Wound Infiltration Post-Mastectomy Using Bupivacaine Alone, Bupivacaine With Ketamine, and Bupivacaine With Dexmedetomidine: A Randomized Double-Blind Study.",
+      "pub_types": [
+        "Journal Article"
+      ]
+    }
+  }
+]

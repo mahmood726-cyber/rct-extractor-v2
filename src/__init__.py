@@ -1,5 +1,5 @@
 """
-RCT Extractor v2 - Meta-analysis grade clinical trial data extraction
+RCT Extractor - Meta-analysis grade clinical trial data extraction
 """
 
-__version__ = "2.0.0"
+__version__ = "5.0.0"

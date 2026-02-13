@@ -1,0 +1,13 @@
+{
+  "total_evaluated": 200,
+  "with_cochrane_ref": 199,
+  "counts": {
+    "match": 21,
+    "extracted_no_match": 97,
+    "no_extraction": 81,
+    "no_cochrane_ref": 1,
+    "error": 0
+  },
+  "match_rate": 0.10552763819095477,
+  "extraction_rate": 0.592964824120603
+}

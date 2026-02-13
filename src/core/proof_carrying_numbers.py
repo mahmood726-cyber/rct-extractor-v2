@@ -15,7 +15,7 @@ import math
 from dataclasses import dataclass, field
 from typing import List, Optional, Dict, Any
 from enum import Enum
-from datetime import datetime
+from datetime import datetime, timezone
 
 
 class VerificationStatus(Enum):
@@ -68,8 +68,8 @@ class ProofCertificate:
     agreement_count: int = 0
     total_extractors: int = 0
 
-    # Metadata
-    timestamp: str = field(default_factory=lambda: datetime.now().isoformat())
+    # Metadata — use UTC for reproducibility
+    timestamp: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
     integrity_hash: str = ""
 
     @property
@@ -93,9 +93,11 @@ class ProofCertificate:
 
     @property
     def has_consensus(self) -> bool:
-        """Majority of extractors agreed"""
-        if self.total_extractors == 0:
-            return True  # Single extractor case
+        """Majority of extractors agreed (requires at least 1 extractor)"""
+        if self.total_extractors <= 0:
+            return False  # No extractors = no consensus
+        if self.total_extractors == 1:
+            return self.agreement_count >= 1
         return self.agreement_count > self.total_extractors / 2
 
     def add_check(self, check: VerificationCheck):
@@ -134,13 +136,20 @@ class ProofCarryingNumber:
     certificate: ProofCertificate
 
     def __post_init__(self):
-        """Compute integrity hash"""
-        if not self.certificate.integrity_hash:
-            self.certificate.integrity_hash = self._compute_hash()
+        """Always compute integrity hash (prevents pre-set forgery)"""
+        self.certificate.integrity_hash = self._compute_hash()
 
     def _compute_hash(self) -> str:
-        """Compute integrity hash of value + source"""
-        content = f"{self.value}|{self.certificate.source_text}|{self.certificate.char_start}"
+        """Compute integrity hash of value + source + positions + extraction method + checks"""
+        checks_str = "|".join(
+            f"{c.name}:{c.result.value}" for c in self.certificate.checks
+        ) if self.certificate.checks else "no_checks"
+        content = (
+            f"{self.value}|{self.certificate.source_text}"
+            f"|{self.certificate.char_start}|{self.certificate.char_end}"
+            f"|{self.certificate.extraction_method}"
+            f"|{checks_str}"
+        )
         return hashlib.sha256(content.encode()).hexdigest()[:16]
 
     @property
@@ -244,7 +253,7 @@ class ProofCarryingExtraction:
         if self.standard_error:
             result['standard_error'] = self.standard_error.value
 
-        if self.p_value:
+        if self.p_value is not None:
             result['p_value'] = self.p_value
 
         if self.master_certificate:
@@ -257,9 +266,9 @@ class ProofCarryingExtraction:
 # VERIFICATION CHECKS
 # =============================================================================
 
-def check_ci_contains_point(value: float, ci_lower: float, ci_upper: float) -> VerificationCheck:
-    """Verify point estimate is within CI"""
-    passed = ci_lower <= value <= ci_upper
+def check_ci_contains_point(value: float, ci_lower: float, ci_upper: float, tolerance: float = 0.01) -> VerificationCheck:
+    """Verify point estimate is within CI (with tolerance for rounding)"""
+    passed = (ci_lower - tolerance) <= value <= (ci_upper + tolerance)
 
     return VerificationCheck(
         name="CI_CONTAINS_POINT",
@@ -272,8 +281,8 @@ def check_ci_contains_point(value: float, ci_lower: float, ci_upper: float) -> V
 
 
 def check_ci_ordered(ci_lower: float, ci_upper: float) -> VerificationCheck:
-    """Verify CI bounds are correctly ordered"""
-    passed = ci_lower < ci_upper
+    """Verify CI bounds are correctly ordered (equal bounds allowed for heavily rounded CIs)"""
+    passed = ci_lower <= ci_upper
 
     return VerificationCheck(
         name="CI_ORDERED",
@@ -382,8 +391,9 @@ def check_p_value_consistency(effect_type: str, ci_lower: float, ci_upper: float
     consistent = ci_excludes_null == p_significant
 
     # Allow borderline cases (p close to 0.05, CI close to null)
+    # Tolerance matches deterministic_verifier.py: 0.03-0.07
     if not consistent:
-        if 0.04 <= p_value <= 0.06:  # Borderline p-value
+        if 0.03 <= p_value <= 0.07:  # Borderline p-value
             consistent = True  # Don't fail on borderline
         elif effect_type in ['HR', 'OR', 'RR', 'IRR']:
             if 0.95 <= ci_lower <= 1.05 or 0.95 <= ci_upper <= 1.05:  # CI close to 1
@@ -447,7 +457,7 @@ def check_ci_width_reasonable(effect_type: str, value: float,
 
     if effect_type in ['HR', 'OR', 'RR', 'IRR']:
         # For ratios, check width relative to value
-        relative_width = ci_width / value if value > 0 else float('inf')
+        relative_width = ci_width / value if value > 0 else ci_width
 
         # Typical range: 0.1 to 5.0 (10% to 500% of point estimate)
         reasonable = 0.05 <= relative_width <= 10.0
@@ -562,6 +572,8 @@ def create_verified_extraction(
     se_pcn = None
     try:
         if effect_type in ['HR', 'OR', 'RR', 'IRR']:
+            if ci_lower <= 0 or ci_upper <= 0:
+                raise ValueError("Cannot log non-positive CI bounds for ratio measure")
             se_value = (math.log(ci_upper) - math.log(ci_lower)) / (2 * 1.96)
         else:
             se_value = (ci_upper - ci_lower) / (2 * 1.96)

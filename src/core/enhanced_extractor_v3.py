@@ -1,12 +1,13 @@
 """
-Enhanced Effect Estimate Extractor v4.0.6
-=========================================
+Enhanced Effect Estimate Extractor
+===================================
 
-Major improvements for full automation:
-1. 100% sensitivity on 39-trial validation set
-2. Well-calibrated confidence (ECE < 0.05 target)
+Features:
+1. Pattern-based extraction with 180+ regex patterns
+2. Heuristic confidence scoring (not empirically calibrated)
 3. Tiered automation framework
 4. Production-ready output formats
+5. OCR error correction (Cl->CI, O->0, l->1 in numeric contexts)
 
 v4.0.6 Pattern Fixes:
 - Oncology semicolon + "to" format (KEYNOTE-024, POLO, etc.)
@@ -16,6 +17,14 @@ v4.0.6 Pattern Fixes:
 - Subject-comma HR format (KEYNOTE-189)
 - OR comma-before-CI format (RA-BEAM)
 - Mean difference with units (INPULSIS)
+
+VALIDATION WARNING (P0-1):
+The regex patterns in this module were iteratively tuned against a dataset
+(data/external_validation_dataset.py) that was treated as "held-out" but in
+practice was used for repeated refinement. This means reported sensitivity/
+specificity figures from that dataset are optimistic (training-set metrics).
+Independent external validation on a truly unseen corpus is required before
+citing any accuracy claims.
 """
 
 import re
@@ -40,14 +49,15 @@ class EffectType(Enum):
     MD = "MD"       # Mean Difference
     SMD = "SMD"     # Standardized Mean Difference
     WMD = "WMD"     # Weighted Mean Difference
+    GMR = "GMR"     # Geometric Mean Ratio
 
 
 class AutomationTier(Enum):
-    """Automation confidence tiers"""
-    FULL_AUTO = "full_auto"       # No human review needed (98%+ accuracy)
-    SPOT_CHECK = "spot_check"     # Random 10% sampling (95-98% accuracy)
-    VERIFY = "verify"             # Quick human verification (85-95% accuracy)
-    MANUAL = "manual"             # Full manual review needed (<85% accuracy)
+    """Automation confidence tiers (heuristic, NOT empirically validated)"""
+    FULL_AUTO = "full_auto"       # No human review needed (high confidence)
+    SPOT_CHECK = "spot_check"     # Random sampling recommended
+    VERIFY = "verify"             # Quick human verification recommended
+    MANUAL = "manual"             # Full manual review needed (low confidence)
 
 
 @dataclass
@@ -92,6 +102,10 @@ class Extraction:
     normalized_ci_lower: Optional[float] = None
     normalized_ci_upper: Optional[float] = None
 
+    # Primary outcome detection (v5.1)
+    is_primary: bool = False
+    primary_score: float = 0.0
+
 
 class EnhancedExtractor:
     """
@@ -130,6 +144,16 @@ class EnhancedExtractor:
         '\u2002': ' ',   # En space
         '\u2003': ' ',   # Em space
         '−': '-',        # Unicode minus (common in PDFs)
+        # v5.0.1: PDF confusable characters
+        '\u037e': ';',   # Greek question mark (visually identical to semicolon)
+        '\uff1b': ';',   # Fullwidth semicolon
+        '\uff1a': ':',   # Fullwidth colon
+        '\uff0c': ',',   # Fullwidth comma
+        '\u2018': "'",   # Left single quotation mark
+        '\u2019': "'",   # Right single quotation mark
+        '\u201c': '"',   # Left double quotation mark
+        '\u201d': '"',   # Right double quotation mark
+        '\ufeff': '',    # BOM (zero-width no-break space)
     }
 
     # ==========================================================================
@@ -168,14 +192,12 @@ class EnhancedExtractor:
         r'\bhypothetical\b',
         r'\bsuppose\s+we\s+are\s+planning',
 
-        # Review/citation language
+        # Review/citation language (only reject clear citations of OTHER studies)
         r'\bin\s+(?:the\s+)?[\w-]+\s+(?:trial|study)[,;]\s+\w+\s+(?:showed|reported|found)',
         r'\bprevious(?:ly)?\s+(?:reported|published|shown)',
         r'\boriginal\s+trial\s+reported',
-        r'\bpooled\s+(?:analysis|estimate|data)',
-        r'\bmeta-analy(?:sis|tic)',
-        r'\bsystematic\s+review',
-        r'\bwe\s+pooled\b',
+        # Note: meta-analysis/systematic review/pooled patterns REMOVED (v5.0.1)
+        # Meta-analyses report valid pooled estimates that should be extracted
 
         # Observational study markers
         r'\bretrospective\s+cohort',
@@ -209,6 +231,20 @@ class EnhancedExtractor:
         r'\bsports\s+(?:analytics|statistics)',
         r'\bforeclosure\b',
         r'\bportfolio\b',
+        r'\bwin\s+probability',
+        r'\bruns\s+scored\b',
+        r'\bplayoff\b',
+
+        # Additional citation patterns (tightly scoped to avoid rejecting valid results)
+        r'\btrial\s+extended\b',
+        r'\bcurrent\s+guidelines\s+recommend',
+        # Note: cochrane, SUCRA, network MA, umbrella review, IPD MA patterns REMOVED (v5.0.1)
+        # These paper types contain valid pooled effect estimates
+
+        # Guideline language
+        r'\bclass\s+[IV]+[,;]\s+level\s+[A-C]',
+        r'\brecommended?\s+for\s+all\s+patients',
+        r'\bESC\s+guideline',
     ]
 
     # Compile negative context patterns for efficiency
@@ -220,29 +256,36 @@ class EnhancedExtractor:
         # "hazard ratio, 0.86; 95.02% CI, 0.74 to 0.99" - non-standard CI percentage (EMPA-REG)
         r'hazard\s*ratio[,;:\s]+(\d+\.?\d*)\s*[;,]\s*\d+\.?\d*%?\s*CI[,:\s]+(\d+\.?\d*)\s+to\s+(\d+\.?\d*)',
         # "HR for death, 0.49; 95% CI, 0.38 to 0.64" - comma after subject (KEYNOTE-189)
-        r'\bHR\s+for\s+[\w\s]+?,\s*(\d+\.?\d*)\s*[;,]\s*(?:95%?\s*)?CI[,:\s]+(\d+\.?\d*)\s+to\s+(\d+\.?\d*)',
+        r'\bHR\s+for\s+[\w\s]{1,80}?,\s*(\d+\.?\d*)\s*[;,]\s*(?:95%?\s*)?CI[,:\s]+(\d+\.?\d*)\s+to\s+(\d+\.?\d*)',
 
         # Standard formats
         r'hazard\s*ratio[,;:\s=]+(\d+\.?\d*)[;,]\s*(?:95%?\s*)?(?:CI|confidence)[,:\s\[]+(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
         r'hazard\s*ratio[,;:\s=]+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
         r'hazard\s*ratio\s+(?:of|was|for\s+\w+\s+was)\s+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
+        # v5.4: "hazard ratio 0.12 [95% CI 0.0024-6.18]" - square bracket CI
+        # PMC12527752: "hazardratio0.12[95%CI0.0024-6.18]"
+        r'hazard\s*ratio[,;:\s=]+(\d+\.?\d*)\s*\[\s*(?:95%?\s*)?CI[,:\s]+(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)\s*\]',
 
         # "The hazard ratio for X was Y (CI)" - extended context
-        r'hazard\s*ratio\s+(?:for\s+)?[\w\s]+?(?:was|is)\s+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
+        r'hazard\s*ratio\s+(?:for\s+)?[\w\s]{1,80}?(?:was|is)\s+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
 
-        # Abbreviation formats
-        r'\bHR\b[,;:\s=]+(\d+\.?\d*)\s*[\(\[]\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*[-–—,]\s*(\d+\.?\d*)\s*[\)\]]',
-        r'\bHR\b[,;:\s=]+(\d+\.?\d*)[;,]\s*(?:95%?\s*)?(?:CI)[,:\s]+(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
-        r'\bHR\b[=:,\s]+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:confidence\s*interval|CI)[:\s]*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
+        # Abbreviation formats (CI/KI/IC for English/German/French-Spanish-Italian-Portuguese)
+        # Handles both "95% CI" and "IC 95%" orderings
+        r'\bHR\b[,;:\s=]+(\d+\.?\d*)\s*[\(\[]\s*(?:(?:IC|KI)\s+)?(?:95%?[\s-]*)?(?:CI|KI|IC)?[,:\s]*(\d+\.?\d*)\s*[-–—,]\s*(\d+\.?\d*)\s*[\)\]]',
+        r'\bHR\b[,;:\s=]+(\d+\.?\d*)[;,]\s*(?:(?:IC|KI)\s+)?(?:95%?[\s-]*)?(?:CI|KI|IC)[,:\s]+(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
+        r'\bHR\b[=:,\s]+(\d+\.?\d*)\s*\(\s*(?:(?:IC|KI)\s+)?(?:95%?[\s-]*)?(?:confidence\s*interval|CI|KI|IC)[:\s]*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
 
         # "HR 0.61; 95% confidence interval 0.51 to 0.72" - semicolon + full words
         r'\bHR\b[:\s]+(\d+\.?\d*)[;,]\s*(?:95%?\s*)?confidence\s*interval[:\s]+(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
+
+        # "HR 0.87 (95% confidence interval [CI], 0.78 to 0.97)" - full words with [CI] bracket
+        r'\bHR\b[\s,;=]+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?confidence\s*interval\s*(?:\[CI\])?\s*[,:\s]+(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
 
         # "The HR was 0.82, with 95% CI of 0.71 to 0.95"
         r'\bHR\b\s+was\s+(\d+\.?\d*)[,;]\s*with\s+(?:95%?\s*)?CI\s+of\s+(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
 
         # "HR for X: 0.83 (0.71-0.97)" - colon after context
-        r'\bHR\b\s+(?:for\s+)?[\w\s]+?:\s*(\d+\.?\d*)\s*\(\s*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)\s*\)',
+        r'\bHR\b\s+(?:for\s+)?[\w\s]{1,80}?:\s*(\d+\.?\d*)\s*\(\s*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)\s*\)',
 
         # "(HR, 0.69; 95% CI, 0.57 to 0.84)" - comma after HR
         r'\(HR[,;]\s*(\d+\.?\d*)[;,]\s*(?:95%?\s*)?CI[,:\s]+(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)\)',
@@ -253,7 +296,7 @@ class EnhancedExtractor:
         # "HR=0.68; 95% CI: 0.55, 0.84" - equals with semicolon and comma CI
         r'\bHR\b\s*=\s*(\d+\.?\d*)\s*[;,]\s*(?:95%?\s*)?CI[:\s]+(\d+\.?\d*)\s*,\s*(\d+\.?\d*)',
         # "hazard ratio for death: 0.69 (0.58-0.82)" - context colon before value
-        r'hazard\s*ratio\s+(?:for\s+)?[\w\s]+?:\s*(\d+\.?\d*)\s*\(\s*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)\s*\)',
+        r'hazard\s*ratio\s+(?:for\s+)?[\w\s]{1,80}?:\s*(\d+\.?\d*)\s*\(\s*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)\s*\)',
 
         # Parenthetical prefix
         r'\(HR[=:\s]+(\d+\.?\d*)[;,]\s*(?:95%?\s*)?CI[:\s]*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)\)',
@@ -275,11 +318,16 @@ class EnhancedExtractor:
         r'relative\s+hazard[,;:\s=]+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
 
         # Extended context (was/for patterns)
-        r'\bHR\b\s+(?:for\s+)?[\w\s]+?was\s+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
+        r'\bHR\b\s+(?:for\s+)?[\w\s]{1,80}?was\s+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
 
         # Adjusted HR
         r'[Aa]djusted\s+(?:HR|hazard\s*ratio)[,;:\s=]+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
         r'\baHR\b[,;:\s=]+(\d+\.?\d*)\s*[\(\[]\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*[-–—,]\s*(\d+\.?\d*)\s*[\)\]]',
+        # v5.3: "aHR 0.16; 95% CI: 0.06-0.46" - semicolon+CI format (PMC10037513)
+        r'\baHR\b[,;:\s=]+(\d+\.?\d*)\s*[;,]\s*(?:95%?\s*)?CI[:\s]+(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
+
+        # v5.3.1: "HR=0.88, 95% CI=[0.70, 1.10]" - bracket-equals-comma format
+        r'\b[ac]?HR\b\s*=\s*(\d+\.?\d*)\s*,\s*(?:95%?\s*)?CI\s*=\s*\[\s*(\d+\.?\d*)\s*,\s*(\d+\.?\d*)\s*\]',
 
         # Unadjusted HR
         r'[Uu]nadjusted\s+(?:HR|hazard\s*ratio)[,;:\s=]+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
@@ -300,6 +348,10 @@ class EnhancedExtractor:
 
         # "(hazard ratio, 0.87; 95% confidence interval [CI], 0.78 to 0.97)" - in parentheses
         r'\(hazard\s*ratio[,;:\s]+(\d+\.?\d*)[;,]\s*(?:95%?\s*)?confidence\s+interval\s*\[CI\][,:\s]+(\d+\.?\d*)\s+to\s+(\d+\.?\d*)',
+
+        # v5.0.1: "hazard ratio [HR] 0.87; 95% confidence interval [CI]: 0.78-0.97"
+        # Handles [HR] bracket notation after "hazard ratio" and dash separator
+        r'hazard\s*ratio\s*(?:\[HR\])?\s*[,;:\s]+(\d+\.?\d*)[;,]\s*(?:95%?\s*)?confidence\s+interval\s*(?:\[CI\])?\s*[,:\s]+(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
 
         # "HR, 0.87; 95% confidence interval [CI], 0.78 to 0.97" - abbreviated HR
         r'\bHR\b[,;:\s]+(\d+\.?\d*)[;,]\s*(?:95%?\s*)?confidence\s+interval\s*\[CI\][,:\s]+(\d+\.?\d*)\s+to\s+(\d+\.?\d*)',
@@ -353,13 +405,12 @@ class EnhancedExtractor:
 
         # ADDITIONAL PATTERNS for remaining failures
         # "adjusted hazard ratio for X was 0.76 (95% CI: 0.63, 0.91)" - comma in CI
-        r'hazard\s*ratio\s+(?:for\s+[\w\s]+\s+)?was\s+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?CI[:\s]+(\d+\.?\d*)\s*,\s*(\d+\.?\d*)',
+        r'hazard\s*ratio\s+(?:for\s+[\w\s]{1,80}\s+)?was\s+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?CI[:\s]+(\d+\.?\d*)\s*,\s*(\d+\.?\d*)',
 
         # "hazard ratio for X was estimated at 0.85, with a 95% CI from 0.73 to 0.98"
-        r'hazard\s*ratio\s+(?:for\s+[\w\s]+\s+)?was\s+estimated\s+at\s+(\d+\.?\d*)[,;]\s*with\s+(?:a\s+)?(?:95%?\s*)?CI\s+from\s+(\d+\.?\d*)\s+to\s+(\d+\.?\d*)',
+        r'hazard\s*ratio\s+(?:for\s+[\w\s]{1,80}\s+)?was\s+estimated\s+at\s+(\d+\.?\d*)[,;]\s*with\s+(?:a\s+)?(?:95%?\s*)?CI\s+from\s+(\d+\.?\d*)\s+to\s+(\d+\.?\d*)',
 
-        # "unadjusted hazard ratio was 1.15 with 95% CI of 0.98 to 1.35"
-        r'hazard\s*ratio\s+was\s+(\d+\.?\d*)\s+with\s+(?:95%?\s*)?CI\s+of\s+(\d+\.?\d*)\s+to\s+(\d+\.?\d*)',
+        # (duplicate removed — already at line 346)
 
         # "HR 0.67, 95% CI 0.58 to 0.77" - comma after value, no parentheses, "to" format
         r'\bHR\b\s+(\d+\.?\d*)\s*,\s*(?:95%?\s*)?CI\s+(\d+\.?\d*)\s+to\s+(\d+\.?\d*)',
@@ -416,6 +467,45 @@ class EnhancedExtractor:
         r'\bHR\b\s*=\s*(\d+\.?\d*)\s*,\s*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
         # "(HR: 0.74, 95% CI: 0.65 to 0.85)" - parenthetical with colons
         r'\(\s*HR:\s*(\d+\.?\d*)\s*,\s*(?:95%?\s*)?CI:\s*(\d+\.?\d*)\s+to\s+(\d+\.?\d*)\s*\)',
+
+        # =================================================================
+        # v5.0: REAL-PDF GAP CLOSURE
+        # =================================================================
+        # "HR 0.67 [0.50-0.88]" - square bracket CI without CI label
+        r'\bHR\b[,;:\s=]+(\d+\.?\d*)\s*\[\s*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)\s*\]',
+        # "HR: 2.89 (95% CI 2.28–3.67)" - colon after HR, space, then standard (CI)
+        r'\bHR\b:\s*(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?CI\s*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)\s*\)',
+        r'\bHR\b:\s*(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?CI\s+(\d+\.?\d*)\s+to\s+(\d+\.?\d*)\s*\)',
+        # "HR: 1.03, 95% CI: 1.01-1.04" - colon after HR, comma before CI
+        r'\bHR\b:\s*(\d+\.?\d*)\s*,\s*(?:95%?\s*)?(?:CI|ci)[:\s]+(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
+        # "HR = 2.4; 95%CL:1.5-3.6" - CL (Confidence Limits)
+        r'\bHR\b[,;:\s=]+(\d+\.?\d*)\s*[;,]\s*(?:95%?\s*)?CL[:\s]+(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
+        r'\bHR\b[,;:\s=]+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?CL[:\s]*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)\s*\)',
+        # "HR 0.50, CI 0.29-0.88" - bare CI without 95% prefix
+        r'\bHR\b[,;:\s=]+(\d+\.?\d*)\s*,\s*CI\s+(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
+        # "HR 1.03 (CI 95% 0.83-1.28)" - reversed CI 95% ordering
+        r'\bHR\b[,;:\s=]+(\d+\.?\d*)\s*\(\s*CI\s*95%?\s*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)\s*\)',
+        # "HR: 0.98; 95% CI: 0.97-0.99" - colon after HR, semicolon before CI
+        r'\bHR\b:\s*(\d+\.?\d*)\s*;\s*(?:95%?\s*)?CI[:\s]+(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
+        # "HR: 1.47; 95% CI: 1.05, 2.05" - semicolon before CI, comma-separated bounds
+        r'\bHR\b:\s*(\d+\.?\d*)\s*;\s*(?:95%?\s*)?CI[:\s]+(\d+\.?\d*)\s*,\s*(\d+\.?\d*)',
+        # "HR = 0.63, 95% CI = 0.43, 0.91" - equals in CI, comma-separated bounds
+        r'\bHR\b\s*=\s*(\d+\.?\d*)\s*,\s*(?:95%?\s*)?CI\s*=\s*(\d+\.?\d*)\s*,\s*(\d+\.?\d*)',
+        # IC with semicolon separator: "IC: 1.47;2.77"
+        r'\bHR\b[,;:\s=]+(\d+\.?\d*)\s*[\[\(]\s*(?:95%?\s*)?IC[:\s]*(\d+\.?\d*)\s*[;,]\s*(\d+\.?\d*)\s*[\]\)]',
+        # v5.0.1: Semicolons as CI bound separators
+        # "HR:0.84 [95% CI: 0.81; 0.88]" or "(95%CI: 1.66; 2.33)"
+        r'\bHR\b[,;:\s=]+(\d+\.?\d*)\s*[\[\(]\s*(?:95%?\s*)?CI[:\s]*(\d+\.?\d*)\s*;\s*(\d+\.?\d*)\s*[\]\)]',
+        # "HR: 1.97 [95%: 1.86; 4.21]" - 95% without CI label, semicolon separator
+        r'\bHR\b[,;:\s=]+(\d+\.?\d*)\s*[\[\(]\s*95%?\s*[:\s]+(\d+\.?\d*)\s*[;,]\s*(\d+\.?\d*)\s*[\]\)]',
+        # "HR: 1.66; 95% CI: 1.08-2.55" - semicolon before CI (already covered by line 474, but ensure colon-only format too)
+        r'\bHR\b[,;:\s]+(\d+\.?\d*)\s*;\s*(?:95%?\s*)?CI[:\s]+(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
+        # "HR=2.08, 95%CI 1.37-3.18" - comma then CI without colon
+        r'\bHR\b\s*=\s*(\d+\.?\d*)\s*,\s*(?:95%?\s*)?CI\s+(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
+        # v5.7: "HR 16.128; 95% CI[1.431-181.778]" - bracket right after CI, no space (Coentrao_2012)
+        r'\bHR\b\s+(\d+\.?\d*)\s*[;,]\s*(?:95%?\s*)?CI\s*\[\s*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)\s*\]',
+        # v5.7: "HR 16.128; 95% CI[1.431, 181.778]" - comma-separated in brackets
+        r'\bHR\b\s+(\d+\.?\d*)\s*[;,]\s*(?:95%?\s*)?CI\s*\[\s*(\d+\.?\d*)\s*,\s*(\d+\.?\d*)\s*\]',
     ]
 
     # Odds Ratio patterns (25+ variants)
@@ -428,7 +518,7 @@ class EnhancedExtractor:
 
         r'odds\s*ratio[,;:\s=]+(\d+\.?\d*)[;,]\s*(?:95%?\s*)?(?:CI|confidence)[,:\s]+(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
         r'odds\s*ratio[,;:\s=]+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
-        r'odds\s*ratio\s+(?:of|was|for\s+[\w\s]+?was)\s+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
+        r'odds\s*ratio\s+(?:of|was|for\s+[\w\s]{1,80}?was)\s+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
         r'\bOR\b[,;:\s=]+(\d+\.?\d*)\s*[\(\[]\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*[-–—,]\s*(\d+\.?\d*)\s*[\)\]]',
         r'\bOR\b[=:\s]+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?CI[:\s]*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
         r'\bOR\b\s+(\d+\.?\d*)\s*\(\s*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)\s*\)',
@@ -443,7 +533,7 @@ class EnhancedExtractor:
         r'\(OR\s+(\d+\.?\d*)[;,]\s*(?:95%?\s*)?CI\s+(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)\)',
 
         # "The odds ratio for X was Y"
-        r'odds\s*ratio\s+(?:for\s+)?[\w\s]+?(?:was|is)\s+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
+        r'odds\s*ratio\s+(?:for\s+)?[\w\s]{1,80}?(?:was|is)\s+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
 
         # Adjusted OR
         r'[Aa]djusted\s+(?:OR|odds\s*ratio)[,;:\s=]+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
@@ -458,6 +548,9 @@ class EnhancedExtractor:
         # Recovery pattern
         r'\bOR\b\s*(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?CI[:\s]*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
 
+        # v5.3.1: "OR=3.73, 95% CI=[1.01, 13.82]" - bracket-equals-comma format
+        r'\bOR\b\s*=\s*(\d+\.?\d*)\s*,\s*(?:95%?\s*)?CI\s*=\s*\[\s*(\d+\.?\d*)\s*,\s*(\d+\.?\d*)\s*\]',
+
         # "odds ratio 0.81 (0.67, 0.98)" - comma in CI with full words
         r'odds\s*ratio[,;:\s=]+(\d+\.?\d*)\s*\(\s*(\d+\.?\d*)\s*[,]\s*(\d+\.?\d*)\s*\)',
 
@@ -469,13 +562,19 @@ class EnhancedExtractor:
         r'\(\s*OR\s*,\s*(\d+\.?\d*)\s*;\s*(?:95%?\s*)?CI\s*,?\s*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
 
         # "Adjusted OR for X: 1.89 (95% CI 1.42 to 2.51)"
-        r'[Aa]djusted\s+OR\s+for\s+[\w\s]+:\s*(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?CI\s+(\d+\.?\d*)\s+to\s+(\d+\.?\d*)',
+        r'[Aa]djusted\s+OR\s+for\s+[\w\s]{1,80}:\s*(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?CI\s+(\d+\.?\d*)\s+to\s+(\d+\.?\d*)',
 
         # "odds ratio was 0.62 [0.48, 0.80]" - square brackets with comma
         r'odds\s*ratio\s+(?:was\s+)?(\d+\.?\d*)\s*\[\s*(\d+\.?\d*)\s*,\s*(\d+\.?\d*)\s*\]',
 
         # "OR=3.15 (2.21-4.49)" - equals sign, no space
         r'\bOR\s*=\s*(\d+\.?\d*)\s*\(\s*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)\s*\)',
+
+        # "OR 1.45; 95% CI 1.12-1.88" - semicolon before CI, no brackets
+        r'\bOR\b\s+(\d+\.?\d*)\s*;\s*(?:95%?\s*)?CI[:\s]+(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
+
+        # "OR = 0.61; 95% CI: 0.40-0.93" - equals + semicolon before CI
+        r'\bOR\s*=\s*(\d+\.?\d*)\s*;\s*(?:95%?\s*)?CI[:\s]+(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
 
         # v4.3.3: "OR=0.97; 0.80, 1.17" - semicolon then CI without label
         r'\bOR\s*=\s*(\d+\.?\d*)\s*[;,]\s*(\d+\.?\d*)\s*[,–-]\s*(\d+\.?\d*)',
@@ -521,8 +620,8 @@ class EnhancedExtractor:
         r'[Rr]azão\s+de\s+chances\s+(\d+[.,]?\d*)\s*\(\s*(?:IC\s*)?(?:95%?[\s-]*)?\s*[:\s]*(\d+[.,]?\d*)\s*[-–—]\s*(\d+[.,]?\d*)',
         # German/Dutch: OR with KI/BI - handle "95%-KI" format
         r'\bOR\b\s+(\d+[.,]?\d*)\s*\(\s*(?:95%?[\s-]*)?(?:KI|BI)[:\s]*(\d+[.,]?\d*)\s*[-–—]\s*(\d+[.,]?\d*)',
-        # Generic IC pattern (French/Spanish/Italian/Portuguese)
-        r'\bOR\b\s+(\d+[.,]?\d*)\s*\(\s*(?:95%?[\s-]*)?IC[:\s]*(\d+[.,]?\d*)\s*[-–—]\s*(\d+[.,]?\d*)',
+        # Generic IC pattern (French/Spanish/Italian/Portuguese) - handles both "IC 95%" and "95% IC"
+        r'\bOR\b\s+(\d+[.,]?\d*)\s*\(\s*(?:IC\s+)?(?:95%?[\s-]*)?(?:IC)?[:\s]*(\d+[.,]?\d*)\s*[-–—]\s*(\d+[.,]?\d*)',
 
         # =================================================================
         # ASIAN LANGUAGE OR PATTERNS
@@ -581,17 +680,51 @@ class EnhancedExtractor:
         r'\(\s*OR\s*=\s*(\d+\.?\d*)\s*;\s*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)\s*\)',
         # "95% CI for OR: 1.12-1.88" with separate value - capture CI only, look behind for value
         # This needs special handling - skip for now
+
+        # =================================================================
+        # v5.0: REAL-PDF GAP CLOSURE (OR)
+        # =================================================================
+        # "OR 1.44 [1.11-1.86]" - square bracket CI without label
+        r'\bOR\b[,;:\s=]+(\d+\.?\d*)\s*\[\s*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)\s*\]',
+        # "OR, 2.62; 95% CI, 1.66-4.15" - OR with comma before value
+        r'\bOR\b\s*,\s*(\d+\.?\d*)\s*;\s*(?:95%?\s*)?CI[,:\s]+(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
+        r'\bOR\b\s*,\s*(\d+\.?\d*)\s*;\s*(?:95%?\s*)?CI[,:\s]+(\d+\.?\d*)\s+to\s+(\d+\.?\d*)',
+        # "OR = 0.63, 95% CI = 0.43, 0.91" - CI with equals, comma-separated bounds
+        r'\bOR\b\s*=\s*(\d+\.?\d*)\s*,\s*(?:95%?\s*)?CI\s*=\s*(\d+\.?\d*)\s*,\s*(\d+\.?\d*)',
+        # "OR 0.50, CI 0.29-0.88" - bare CI without 95%
+        r'\bOR\b[,;:\s=]+(\d+\.?\d*)\s*,\s*CI\s+(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
+        # "OR: 1.03, 95% ci: 1.01-1.04" - lowercase ci
+        r'\bOR\b:\s*(\d+\.?\d*)\s*,\s*(?:95%?\s*)?(?:CI|ci)[:\s]+(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
+        # CL (Confidence Limits)
+        r'\bOR\b[,;:\s=]+(\d+\.?\d*)\s*[;,]\s*(?:95%?\s*)?CL[:\s]+(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
+        # OR 1.99 [95% CI 1.1-3.6] - square brackets WITH CI label
+        r'\bOR\b\s+(\d+\.?\d*)\s*\[\s*(?:95%?\s*)?CI\s+(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)\s*\]',
+        # IC with semicolon: "IC: 1.47;2.77"
+        r'\bOR\b[,;:\s=]+(\d+\.?\d*)\s*[\[\(]\s*(?:95%?\s*)?IC[:\s]*(\d+\.?\d*)\s*[;,]\s*(\d+\.?\d*)\s*[\]\)]',
+        # "odds ratio = 2.02 [95% IC: 1.47;2.77]"
+        r'odds\s*ratio\s*=\s*(\d+\.?\d*)\s*\[\s*(?:95%?\s*)?IC[:\s]*(\d+\.?\d*)\s*[;,]\s*(\d+\.?\d*)\s*\]',
+        # CI 95% reversed ordering: "(CI 95% 0.83-1.28)"
+        r'\bOR\b[,;:\s=]+(\d+\.?\d*)\s*\(\s*CI\s*95%?\s*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)\s*\)',
+        # v5.0.1: Semicolons as CI bound separators
+        # "OR 1.15 [0.88; 1.52]" or "(95% CI: 0.81; 0.88)"
+        r'\bOR\b[,;:\s=]+(\d+\.?\d*)\s*[\[\(]\s*(?:95%?\s*)?CI[:\s]*(\d+\.?\d*)\s*;\s*(\d+\.?\d*)\s*[\]\)]',
+        # "OR 1.97 [95%: 1.86; 4.21]" - 95% without CI label
+        r'\bOR\b[,;:\s=]+(\d+\.?\d*)\s*[\[\(]\s*95%?\s*[:\s]+(\d+\.?\d*)\s*[;,]\s*(\d+\.?\d*)\s*[\]\)]',
+        # "OR: 1.47 (1.05, 2.05)" - parenthesized comma-separated (already partially covered)
+        r'\bOR\b:\s*(\d+\.?\d*)\s*\(\s*(\d+\.?\d*)\s*,\s*(\d+\.?\d*)\s*\)',
     ]
 
     # Risk Ratio / Relative Risk patterns (25+ variants)
     RR_PATTERNS = [
         # v4.3.1: "relative risk of death, 0.70; 95 percent confidence interval, 0.60 to 0.82" (RALES format)
-        r'relative\s+risk\s+of\s+[\w\s]+,\s*(\d+\.?\d*)\s*[;,]\s*(?:95\s+)?percent\s+confidence\s+interval[,:\s]+(\d+\.?\d*)\s+to\s+(\d+\.?\d*)',
+        # v5.8: also matches after normalization: "relative risk of death, 0.70; 95% CI, 0.60 to 0.82"
+        r'relative\s+risk\s+of\s+[\w\s]{1,80},\s*(\d+\.?\d*)\s*[;,]\s*(?:95\s+)?percent\s+confidence\s+interval[,:\s]+(\d+\.?\d*)\s+to\s+(\d+\.?\d*)',
+        r'relative\s+risk\s+of\s+[\w\s]{1,80},\s*(\d+\.?\d*)\s*[;,]\s*(?:95%?\s*)?CI[,:\s]+(\d+\.?\d*)\s*(?:to|[-\u2013\u2014])\s*(\d+\.?\d*)',
         r'relative\s+risk[,;:\s=]+(\d+\.?\d*)[;,]\s*(?:95%?\s*)?(?:CI|confidence)[,:\s]+(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
         r'(?:relative\s+)?risk\s*ratio[,;:\s=]+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
         r'\bRR\b[,;:\s=]+(\d+\.?\d*)\s*[\(\[]\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*[-–—,]\s*(\d+\.?\d*)\s*[\)\]]',
         r'rate\s*ratio[,;:\s=]+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
-        r'\bRR\b\s+(?:for\s+)?[\w\s]+?was\s+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
+        r'\bRR\b\s+(?:for\s+)?[\w\s]{1,80}?was\s+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
         r'relative\s+risk\s+(?:of|was)\s+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
         r'\bRR\b\s+(\d+\.?\d*)\s*\(\s*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)\s*\)',
 
@@ -603,6 +736,9 @@ class EnhancedExtractor:
 
         # "RR: 1.15; 95% CI: 1.02-1.30"
         r'\bRR\b:\s*(\d+\.?\d*)[;,]\s*(?:95%?\s*)?CI[:\s]+(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
+
+        # v5.3.1: "RR=0.65, 95% CI=[0.52, 0.81]" - bracket-equals-comma format
+        r'\bRR\b\s*=\s*(\d+\.?\d*)\s*,\s*(?:95%?\s*)?CI\s*=\s*\[\s*(\d+\.?\d*)\s*,\s*(\d+\.?\d*)\s*\]',
 
         # "(RR 0.82; 95% CI 0.73-0.92)"
         r'\(RR\s+(\d+\.?\d*)[;,]\s*(?:95%?\s*)?CI\s+(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)\)',
@@ -625,7 +761,12 @@ class EnhancedExtractor:
         # "relative risk 0.65 (0.52 to 0.81)" - simple with "to"
         r'relative\s+risk\s+(\d+\.?\d*)\s*\(\s*(\d+\.?\d*)\s+to\s+(\d+\.?\d*)\s*\)',
         # "risk ratio 0.77; 95% CI, 0.69 to 0.85" - semicolon before CI
-        r'risk\s+ratio\s+(\d+\.?\d*)\s*[;,]\s*(?:95%?\s*)?CI[,:\s]+(\d+\.?\d*)\s+to\s+(\d+\.?\d*)',
+        # v5.4: also handles "risk ratio, 0.67; 95% CI, 0.46-0.98" (comma after ratio, PMC12074564)
+        r'risk\s+ratio[,;:\s]+(\d+\.?\d*)\s*[;,]\s*(?:95%?\s*)?CI[,:\s]+(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
+        # v5.7: "risk ratio: 1.22; 95% CI: 1.03, 1.44" - comma-separated CI bounds (Bracken_2014)
+        r'(?:adjusted\s+)?risk\s+ratio[,;:\s]+(\d+\.?\d*)\s*[;,]\s*(?:95%?\s*)?CI[,:\s]+(\d+\.?\d*)\s*,\s*(\d+\.?\d*)',
+        # v5.7: "relative risk: 1.22; 95% CI: 1.03, 1.44" - same with "relative risk"
+        r'(?:adjusted\s+)?relative\s+risk[,;:\s]+(\d+\.?\d*)\s*[;,]\s*(?:95%?\s*)?CI[,:\s]+(\d+\.?\d*)\s*,\s*(\d+\.?\d*)',
         # "adjusted RR was 1.28 (95% CI 1.08-1.51)"
         r'[Aa]djusted\s+RR\s+was\s+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?CI\s+(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
         # "RR 0.68 (95% CI 0.58 to 0.80)" - standard with "to"
@@ -643,6 +784,9 @@ class EnhancedExtractor:
         # v4.3.3: "RR = 0.78, 95% CI 0.65-0.95" - comma before CI
         r'\bRR\s*=\s*(\d+\.?\d*)\s*,\s*(?:95%?\s*)?CI\s+(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
 
+        # "RR = 0.61; 95% CI: 0.40-0.93" - semicolon before CI, colon after CI
+        r'\bRR\s*=\s*(\d+\.?\d*)\s*;\s*(?:95%?\s*)?CI[:\s]+(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
+
         # "rate ratio 0.78, 95% CI 0.65-0.95"
         r'rate\s+ratio\s+(\d+\.?\d*)\s*,\s*(?:95%?\s*)?CI\s+(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
         r'rate\s+ratio\s+(\d+\.?\d*)\s*,\s*(?:95%?\s*)?CI\s+(\d+\.?\d*)\s+to\s+(\d+\.?\d*)',
@@ -651,14 +795,14 @@ class EnhancedExtractor:
         r'(?:summary|pooled|overall)\s+relative\s+risk\s+(\d+\.?\d*)\s*\(\s*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
 
         # "hospitalization: relative risk 0.72 (0.61-0.85)" - context colon
-        r'[\w\s]+:\s*relative\s+risk\s+(\d+\.?\d*)\s*\(\s*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
+        r'[\w\s]{1,80}:\s*relative\s+risk\s+(\d+\.?\d*)\s*\(\s*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
 
         # NEW PATTERNS for held-out test cases
         # "Risk ratio for X: 0.71 (95% CI, 0.58-0.87)"
-        r'[Rr]isk\s+ratio\s+for\s+[\w\s]+:\s*(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?CI[,:\s]+(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
+        r'[Rr]isk\s+ratio\s+for\s+[\w\s]{1,80}:\s*(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?CI[,:\s]+(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
 
         # "The RR for X was 0.83 (0.72 to 0.96; P=0.01)"
-        r'\bRR\b\s+(?:for\s+[\w\s]+\s+)?was\s+(\d+\.?\d*)\s*\(\s*(\d+\.?\d*)\s+to\s+(\d+\.?\d*)',
+        r'\bRR\b\s+(?:for\s+[\w\s]{1,80}\s+)?was\s+(\d+\.?\d*)\s*\(\s*(\d+\.?\d*)\s+to\s+(\d+\.?\d*)',
 
         # "Relative risk of hospitalization was significantly reduced: RR 0.68 [95% CI: 0.55, 0.84]"
         r'\bRR\b\s+(\d+\.?\d*)\s*\[\s*(?:95%?\s*)?CI[:\s]+(\d+\.?\d*)\s*,\s*(\d+\.?\d*)\s*\]',
@@ -677,6 +821,11 @@ class EnhancedExtractor:
 
         # "RR 0.77; 95% CI, 0.69 to 0.85" - semicolon then "to" format
         r'\bRR\b\s+(\d+\.?\d*)\s*[;,]\s*(?:95%?\s*)?CI[,:\s]+(\d+\.?\d*)\s+to\s+(\d+\.?\d*)',
+        # v5.5: "RR 0.19; 95% CI 0.08-0.46" - semicolon then dash format (Bracken_2014)
+        r'\bRR\b\s+(\d+\.?\d*)\s*[;,]\s*(?:95%?\s*)?CI[,:\s]+(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
+        # v5.4: "RR : 0.81 CI: 0.72–0.91" - colon after RR, dash CI, optional 95%
+        # PMC12487220: "RR : 0.81 CI: 0.72–0.91)"
+        r'\bRR\b\s*[,:]\s*(\d+\.?\d*)\s*[;,]?\s*(?:95%?\s*)?CI[,:\s]+(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
         # "(RR 0.77, 95% CI 0.69-0.85)" - parentheses with comma after value
         r'\(RR\s+(\d+\.?\d*)\s*,\s*(?:95%?\s*)?CI\s+(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)\)',
         # "RR 0.85 (0.79 to 0.92)" - simple format with "to", no CI label
@@ -741,6 +890,38 @@ class EnhancedExtractor:
         r'pooled\s+RR\s+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?CI\s+(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
         # "(RR: 0.82; CI: 0.68-0.98)" - parenthetical with colons
         r'\(\s*RR:\s*(\d+\.?\d*)\s*;\s*CI:\s*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)\s*\)',
+
+        # =================================================================
+        # v5.0: REAL-PDF GAP CLOSURE (RR)
+        # =================================================================
+        # "RR 0.50 [0.29-0.88]" - square bracket CI without label
+        r'\bRR\b[,;:\s=]+(\d+\.?\d*)\s*\[\s*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)\s*\]',
+        # "RR, 0.50; 95% CI, 0.29-0.88" - comma before value
+        r'\bRR\b\s*,\s*(\d+\.?\d*)\s*;\s*(?:95%?\s*)?CI[,:\s]+(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
+        # "RR 0.50, CI 0.29-0.88" - bare CI without 95%
+        r'\bRR\b[,;:\s=]+(\d+\.?\d*)\s*,\s*CI\s+(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
+        # CL (Confidence Limits)
+        r'\bRR\b[,;:\s=]+(\d+\.?\d*)\s*[;,]\s*(?:95%?\s*)?CL[:\s]+(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
+        # "RR: 1.03, 95% CI: 1.01-1.04" - colon after RR
+        r'\bRR\b:\s*(\d+\.?\d*)\s*,\s*(?:95%?\s*)?(?:CI|ci)[:\s]+(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
+        # "RR: 1.03 (95% CI 1.01-1.04)" - colon after RR with parenthetical CI
+        r'\bRR\b:\s*(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?CI\s+(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)\s*\)',
+        # "RR = 0.63, 95% CI = 0.43, 0.91" - CI with equals
+        r'\bRR\b\s*=\s*(\d+\.?\d*)\s*,\s*(?:95%?\s*)?CI\s*=\s*(\d+\.?\d*)\s*,\s*(\d+\.?\d*)',
+        # "RR 1.03 (CI 95% 0.83-1.28)" - reversed CI 95% ordering
+        r'\bRR\b[,;:\s=]+(\d+\.?\d*)\s*\(\s*CI\s*95%?\s*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)\s*\)',
+        # IC with semicolon: "RR 1.02 (IC 95% 0.81;1.30)"
+        r'\bRR\b[,;:\s=]+(\d+\.?\d*)\s*[\[\(]\s*(?:95%?\s*)?IC[:\s]*(\d+\.?\d*)\s*[;,]\s*(\d+\.?\d*)\s*[\]\)]',
+        # "relative risk reduction" / RRR patterns
+        r'\bRRR\b\s*=\s*(\d+\.?\d*)\s*\[\s*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)\s*\]',
+        r'\bRRR\b\s*=\s*(\d+\.?\d*)\s*\(\s*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)\s*\)',
+        # v5.0.1: Semicolons as CI bound separators
+        # "RR 1.42 [1.07; 1.88]"
+        r'\bRR\b[,;:\s=]+(\d+\.?\d*)\s*[\[\(]\s*(?:95%?\s*)?CI[:\s]*(\d+\.?\d*)\s*;\s*(\d+\.?\d*)\s*[\]\)]',
+        # "RR 1.46 [95%: 1.09; 1.96]" - 95% without CI label
+        r'\bRR\b[,;:\s=]+(\d+\.?\d*)\s*[\[\(]\s*95%?\s*[:\s]+(\d+\.?\d*)\s*[;,]\s*(\d+\.?\d*)\s*[\]\)]',
+        # "RR: 0.87; 95% CI: 0.73-1.03" - colon + semicolon
+        r'\bRR\b:\s*(\d+\.?\d*)\s*;\s*(?:95%?\s*)?CI[:\s]+(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
     ]
 
     # Incidence Rate Ratio patterns
@@ -770,6 +951,38 @@ class EnhancedExtractor:
         r'(?:exacerbation|AECOPD)\s+(?:rate\s+)?(?:reduction|relative\s+rate)[:\s]+(\d+\.?\d*)%?\s*\(\s*(?:95%?\s*)?CI\s+(\d+\.?\d*)%?\s+to\s+(\d+\.?\d*)%?',
         # IRR for exacerbations
         r'\bIRR\b\s+(?:for\s+)?(?:exacerbation|AECOPD)[:\s]+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?CI\s+(\d+\.?\d*)\s+to\s+(\d+\.?\d*)',
+    ]
+
+    # =================================================================
+    # Geometric Mean Ratio patterns (v5.2) — vaccine/immunogenicity trials
+    # NOTE: Extract ONLY GMR (ratio between arms), NOT individual GMT values.
+    # Evidence: PMC10011807 (vaccine RCTs report GMR with CI)
+    # =================================================================
+    GMR_PATTERNS = [
+        # "geometric mean ratio 1.23 (95% CI 1.05-1.44)" / "geometric means ratio ..."
+        r'geometric\s+means?\s+ratio[,;:\s=]+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
+        # "geometric mean ratio was/of 1.23 (95% CI 1.05-1.44)"
+        r'geometric\s+means?\s+ratio\s+(?:was|of)\s+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
+        # "GMR: 0.95 (95% CI 0.87-1.04)"
+        r'\bGMR\b[,;:\s=]+(\d+\.?\d*)\s*[\(\[]\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*(?:to|[-–—,])\s*(\d+\.?\d*)\s*[\)\]]',
+        # "GMR 1.15 (1.02 to 1.30)"
+        r'\bGMR\b\s+(\d+\.?\d*)\s*\(\s*(\d+\.?\d*)\s+to\s+(\d+\.?\d*)\s*\)',
+        # "GMR was/of 1.12 (95% CI, 0.98-1.28)"
+        r'\bGMR\b\s+(?:was|of)\s+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
+        # "GMR=1.08 (0.95-1.23)"
+        r'\bGMR\s*=\s*(\d+\.?\d*)\s*\(\s*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)\s*\)',
+        # "GMR=1.08; 95% CI: 0.95-1.23"
+        r'\bGMR\s*=\s*(\d+\.?\d*)\s*;\s*(?:95%?\s*)?CI[:\s]+(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
+        # "geometric mean ratio: 2.05 [95% CI 1.45-2.90]"
+        r'geometric\s+means?\s+ratio[:\s]+(\d+\.?\d*)\s*\[\s*(?:95%?\s*)?CI[:\s]*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)\s*\]',
+        # "GMR (95% CI): 1.15 (1.02-1.30)"
+        r'\bGMR\b\s*\((?:95%?\s*)?CI\)\s*[:\s]+(\d+\.?\d*)\s*\(\s*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)\s*\)',
+    ]
+
+    # GMR value-only patterns (for vaccine trials without CI)
+    GMR_VALUE_ONLY_PATTERNS = [
+        r'\bGMR\b[,;:\s=]+(\d+\.?\d*)\b',
+        r'geometric\s+means?\s+ratio[,;:\s=]+(\d+\.?\d*)\b',
     ]
 
     # Standardized Mean Difference (check BEFORE MD)
@@ -814,7 +1027,7 @@ class EnhancedExtractor:
         r'\bSMD\b\s+(-?\d+\.?\d*)\s*,\s*(?:95%?\s*)?CI\s+(-?\d+\.?\d*)\s*[-–—]\s*(-?\d+\.?\d*)',
 
         # Context patterns with colon
-        r'[\w\s]+:\s*(?:SMD|standardized\s+mean\s+difference)\s+(-?\d+\.?\d*)\s*\(\s*(-?\d+\.?\d*)\s*[-–—]\s*(-?\d+\.?\d*)',
+        r'[\w\s]{1,80}:\s*(?:SMD|standardized\s+mean\s+difference)\s+(-?\d+\.?\d*)\s*\(\s*(-?\d+\.?\d*)\s*[-–—]\s*(-?\d+\.?\d*)',
 
         # "small/medium/large effect: SMD X (Y-Z)"
         r'(?:small|medium|large)\s+effect:\s*SMD\s+(-?\d+\.?\d*)\s*\(\s*(-?\d+\.?\d*)\s*[-–—]\s*(-?\d+\.?\d*)',
@@ -829,10 +1042,10 @@ class EnhancedExtractor:
         r'[Hh]edges\'?\s*g:\s*(-?\d+\.?\d*)\s*\(\s*(-?\d+\.?\d*)\s*(?:to|[-–—])\s*(-?\d+\.?\d*)',
 
         # Context pattern "teacher expectancy: SMD 0.12 (95% CI -0.02 to 0.26)"
-        r'[\w\s]+:\s*SMD\s+(-?\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?\s*(-?\d+\.?\d*)\s*(?:to|[-–—])\s*(-?\d+\.?\d*)',
+        r'[\w\s]{1,80}:\s*SMD\s+(-?\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?\s*(-?\d+\.?\d*)\s*(?:to|[-–—])\s*(-?\d+\.?\d*)',
 
         # "depression: SMD -0.48 (95% CI -0.68 to -0.28)"
-        r'[\w\s]+:\s*(?:SMD|standardized\s+mean\s+difference)\s+(-?\d+\.?\d*)\s*\(\s*(?:95%?\s*)?CI\s*(-?\d+\.?\d*)\s*to\s*(-?\d+\.?\d*)',
+        r'[\w\s]{1,80}:\s*(?:SMD|standardized\s+mean\s+difference)\s+(-?\d+\.?\d*)\s*\(\s*(?:95%?\s*)?CI\s*(-?\d+\.?\d*)\s*to\s*(-?\d+\.?\d*)',
 
         # NEW PATTERNS for held-out test cases
         # "Effect on X: standardized mean difference -0.52 (95% CI -0.71 to -0.33)"
@@ -845,7 +1058,7 @@ class EnhancedExtractor:
         r'\bSMD\b\s*=\s*(-?\d+\.?\d*)\s*\(\s*(?:95%?\s*)?CI[:\s]+(-?\d+\.?\d*)\s+to\s+(-?\d+\.?\d*)',
 
         # "Hedges' g for X was -0.67 (-0.89, -0.45)"
-        r'[Hh]edges\'?\s*g\s+(?:for\s+[\w\s]+\s+)?was\s+(-?\d+\.?\d*)\s*\(\s*(-?\d+\.?\d*)\s*,\s*(-?\d+\.?\d*)\s*\)',
+        r'[Hh]edges\'?\s*g\s+(?:for\s+[\w\s]{1,80}\s+)?was\s+(-?\d+\.?\d*)\s*\(\s*(-?\d+\.?\d*)\s*,\s*(-?\d+\.?\d*)\s*\)',
         # "Hedges' g -0.35 (-0.52 to -0.18)" - simple with "to"
         r'[Hh]edges\'?\s*g\s+(-?\d+\.?\d*)\s*\(\s*(-?\d+\.?\d*)\s+to\s+(-?\d+\.?\d*)\s*\)',
         # "The pooled standardized mean difference was -0.62 (95% CI -0.81 to -0.42)"
@@ -915,6 +1128,9 @@ class EnhancedExtractor:
         # "MD = -2.1 (-3.2 to -1.0)"
         r'\bMD\b\s*=\s*(-?\d+\.?\d*)\s*\(\s*(-?\d+\.?\d*)\s*(?:to|[-–—])\s*(-?\d+\.?\d*)\s*\)',
 
+        # v5.3.1: "MD=-2.1, 95% CI=[-3.2, -1.0]" - bracket-equals-comma format
+        r'\bMD\b\s*=\s*(-?\d+\.?\d*)\s*,\s*(?:95%?\s*)?CI\s*=\s*\[\s*(-?\d+\.?\d*)\s*,\s*(-?\d+\.?\d*)\s*\]',
+
         # Simple "MD -1.5 (95% CI -2.3 to -0.7)"
         r'\bMD\b\s+(-?\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?\s*(-?\d+\.?\d*)\s*(?:to|[-–—])\s*(-?\d+\.?\d*)',
 
@@ -934,17 +1150,17 @@ class EnhancedExtractor:
         r'\bdifference\s+(-?\d+\.?\d*)\s*(?:mmHg|mg/?dL|kg|%|points?|mm)?\s*\(\s*(-?\d+\.?\d*)\s*(?:to|[-–—])\s*(-?\d+\.?\d*)',
 
         # Context colon pattern "blood pressure: MD X"
-        r'[\w\s]+:\s*MD\s+(-?\d+\.?\d*)\s*(?:\w+)?\s*\(\s*(?:95%?\s*)?(?:CI)?\s*(-?\d+\.?\d*)\s*(?:to|[-–—])\s*(-?\d+\.?\d*)',
+        r'[\w\s]{1,80}:\s*MD\s+(-?\d+\.?\d*)\s*(?:\w+)?\s*\(\s*(?:95%?\s*)?(?:CI)?\s*(-?\d+\.?\d*)\s*(?:to|[-–—])\s*(-?\d+\.?\d*)',
 
         # NEW PATTERNS for held-out test cases
         # "Change in systolic BP: mean difference -8.4 mmHg (95% CI: -10.2 to -6.6)"
         r'mean\s+difference\s+(-?\d+\.?\d*)\s*(?:mmHg|mg/?dL|kg|%|L|mL|points?)?\s*\(\s*(?:95%?\s*)?CI[:\s]+(-?\d+\.?\d*)\s+to\s+(-?\d+\.?\d*)',
 
         # "The MD for X was -1.8 points (-2.4, -1.2)"
-        r'\bMD\b\s+(?:for\s+[\w\s]+\s+)?was\s+(-?\d+\.?\d*)\s*(?:points?)?\s*\(\s*(-?\d+\.?\d*)\s*,\s*(-?\d+\.?\d*)\s*\)',
+        r'\bMD\b\s+(?:for\s+[\w\s]{1,80}\s+)?was\s+(-?\d+\.?\d*)\s*(?:points?)?\s*\(\s*(-?\d+\.?\d*)\s*,\s*(-?\d+\.?\d*)\s*\)',
 
         # "Mean difference in X was 4.2 (95% CI 2.1-6.3)"
-        r'[Mm]ean\s+difference\s+(?:in\s+[\w\s]+\s+)?was\s+(-?\d+\.?\d*)\s*(?:\w+)?\s*\(\s*(?:95%?\s*)?CI\s+(-?\d+\.?\d*)\s*[-–—]\s*(-?\d+\.?\d*)',
+        r'[Mm]ean\s+difference\s+(?:in\s+[\w\s]{1,80}\s+)?was\s+(-?\d+\.?\d*)\s*(?:\w+)?\s*\(\s*(?:95%?\s*)?CI\s+(-?\d+\.?\d*)\s*[-–—]\s*(-?\d+\.?\d*)',
 
         # "FEV1 improved by MD=0.15 L [0.08 to 0.22]"
         r'\bMD\s*=\s*(-?\d+\.?\d*)\s*(?:\w+)?\s*\[\s*(-?\d+\.?\d*)\s+to\s+(-?\d+\.?\d*)\s*\]',
@@ -979,7 +1195,7 @@ class EnhancedExtractor:
         r'\bMD\b\s+(-?\d+\.?\d*)\s*(?:mm\s*Hg)?\s*\(\s*(?:95%?\s*)?CI[:\s]+(-?\d+\.?\d*)\s+to\s+(-?\d+\.?\d*)',
 
         # "Mean difference in eGFR was 4.2 mL/min/1.73m2 (95% CI 2.1-6.3)" - with complex unit
-        r'[Mm]ean\s+difference\s+(?:in\s+[\w\s]+\s+)?was\s+(-?\d+\.?\d*)\s*(?:[\w/\d\.]+)?\s*\(\s*(?:95%?\s*)?CI\s+(-?\d+\.?\d*)\s*[-–—]\s*(-?\d+\.?\d*)',
+        r'[Mm]ean\s+difference\s+(?:in\s+[\w\s]{1,80}\s+)?was\s+(-?\d+\.?\d*)\s*(?:[\w/\d\.]+)?\s*\(\s*(?:95%?\s*)?CI\s+(-?\d+\.?\d*)\s*[-–—]\s*(-?\d+\.?\d*)',
 
         # "Mean difference -2.3 mm Hg (95% Cl: -3.1 to -1.5)" - OCR with Cl instead of CI
         r'[Mm]ean\s+difference\s+(-?\d+\.?\d*)\s*(?:mm\s*Hg|mg/?dL|kg|%|L|mL)?\s*\(\s*(?:95%?\s*)?Cl[:\s]+(-?\d+\.?\d*)\s+to\s+(-?\d+\.?\d*)',
@@ -987,11 +1203,24 @@ class EnhancedExtractor:
         # More OCR patterns with Cl
         r'[Mm]ean\s+difference\s+(-?\d+\.?\d*)\s*(?:mm\s*Hg)?\s*\(\s*(?:95%?\s*)?(?:CI|Cl)[:\s]+(-?\d+\.?\d*)\s+to\s+(-?\d+\.?\d*)',
 
+        # v5.8: "difference in means between groups was 4.0 (95% CI, 2.1-5.9)" (Chung_2022)
+        r'difference\s+in\s+means?\s+(?:between\s+\w+\s+)?was\s+(-?\d+\.?\d*)\s*\(\s*(?:95%?\s*)?CI[,:\s]+(-?\d+\.?\d*)\s*(?:to|[-\u2013\u2014])\s*(-?\d+\.?\d*)',
+        # v5.8: "estimate -3.61; (CI, -7.01, -0.22)" and "estimate -3.57; CI (-5.85, -1.30)" (Berry_2013)
+        r'\bestimate\s+(-?\d+\.?\d*)\s*[;,]\s*\(?\s*(?:95%?\s*)?CI\s*[,:\s(]+(-?\d+\.?\d*)\s*(?:to|[,])\s*(-?\d+\.?\d*)',
+        # v5.8: "X units (95% CI, lo to hi)" — generic labeled value with CI (Berry_2013)
+        r'(-?\d+\.?\d*)\s*(?:units?|points?|%)\s*(?:reduction\s*)?\(\s*(?:95%?\s*)?CI[,:\s]+(-?\d+\.?\d*)\s+to\s+(-?\d+\.?\d*)',
+        # v5.8: "mean change in X score of 6.8 (95% CI, 4.4-8.2)" — "change" as alternative to "difference" (Chung_2022)
+        r'mean\s+change\s+(?:in\s+[\w\s-]{1,80}\s+)?(?:of\s+)?(-?\d+\.?\d*)\s*\(\s*(?:95%?\s*)?CI[,:\s]+(-?\d+\.?\d*)\s*(?:to|[-\u2013\u2014])\s*(-?\d+\.?\d*)',
+
         # v4.3 ADDITIONS - Semicolon format without parentheses
         # "mean difference -4.0; 95% CI, -7.31 to -0.64" - semicolon + comma format
-        r'mean\s+difference\s+(-?\d+\.?\d*)\s*[;,]\s*(?:95%?\s*)?CI[,:\s]+(-?\d+\.?\d*)\s+to\s+(-?\d+\.?\d*)',
+        # v5.4: also handles "mean difference,-1.58;95%CI:-2.05to-1.10" (run-together, PMC12815721)
+        r'mean\s+difference[,;:\s]+(-?\d+\.?\d*)\s*[;,]\s*(?:95%?\s*)?CI[,:\s]+(-?\d+\.?\d*)\s+to\s+(-?\d+\.?\d*)',
         # "MD -4.0; 95% CI, -7.31 to -0.64" - abbreviated semicolon format
         r'\bMD\b\s+(-?\d+\.?\d*)\s*[;,]\s*(?:95%?\s*)?CI[,:\s]+(-?\d+\.?\d*)\s+to\s+(-?\d+\.?\d*)',
+        # v5.4: "MD: -2.5; 95% CI: -3.3 to -1.7" - colon after MD + semicolon before CI
+        # PMC12023657
+        r'\bMD\b[:\s]+(-?\d+\.?\d*)\s*[;,]\s*(?:95%?\s*)?CI[,:\s]+(-?\d+\.?\d*)\s+to\s+(-?\d+\.?\d*)',
 
         # v4.0.3 ADDITIONS
         # "MD -2.5 kg, 95% CI -3.1 to -1.9" - units then comma then CI (no parentheses)
@@ -1044,6 +1273,24 @@ class EnhancedExtractor:
         r'mean\s+(?:reduction|increase|improvement|change)\s+(?:of\s+)?(-?\d+\.?\d*)\s*(?:kg|mmHg|%|L|mL|points?)?\s*\(\s*(?:95%?\s*)?CI\s+(-?\d+\.?\d*)\s+to\s+(-?\d+\.?\d*)',
 
         # =================================================================
+        # v5.3: Square bracket CI patterns (PMC12719702 — diabetes RCTs)
+        # =================================================================
+        # "difference -16.5 [95% CI -31.6 to -1.4]" - square brackets
+        r'\bdifference\s+(-?\d+\.?\d*)\s*\[\s*(?:95%?\s*)?CI[:\s]+(-?\d+\.?\d*)\s+to\s+(-?\d+\.?\d*)\s*%?\s*\]',
+        # "difference -7.2 kg [95% CI -10.5 to -3.9 kg]" - units + square brackets
+        r'\bdifference\s+(-?\d+\.?\d*)\s*(?:kg|%|mmHg|mg/?dL|L|mL|kcal/?day|units?/?day)?\s*\[\s*(?:95%?\s*)?CI[:\s]+(-?\d+\.?\d*)\s+to\s+(-?\d+\.?\d*)\s*(?:kg|%|mmHg|mg/?dL|L|mL|kcal/?day|units?/?day)?\s*\]',
+        # "difference -35.1% [95% CI -46.5 to -21.3%; P = 0.0002]" - percentage square brackets
+        r'\bdifference\s+(-?\d+\.?\d*)%\s*\[\s*(?:95%?\s*)?CI[:\s]+(-?\d+\.?\d*)\s+to\s+(-?\d+\.?\d*)%?\s*[;\]]',
+        # "treatment difference of -8.7 kg (95% CI -12.0 to -5.5 kg)" - "of" before value
+        r'(?:treatment\s+)?difference\s+of\s+(-?\d+\.?\d*)\s*(?:kg|%|mmHg|mg/?dL|L|mL|kcal/?day)?\s*\(\s*(?:95%?\s*)?CI[:\s]+(-?\d+\.?\d*)\s+to\s+(-?\d+\.?\d*)',
+        # "mean difference -0.4% [95% CI -0.7 to 0.0%]" - percentage square brackets
+        r'mean\s+difference\s+(-?\d+\.?\d*)%?\s*\[\s*(?:95%?\s*)?CI[:\s]+(-?\d+\.?\d*)\s+to\s+(-?\d+\.?\d*)%?\s*\]',
+        # "between-group difference was -29% (95% CI -40 to -15%)" - percentage difference with CI
+        r'between-?group\s+difference\s+(?:was\s+)?(-?\d+\.?\d*)%?\s*\(\s*(?:95%?\s*)?CI[:\s]+(-?\d+\.?\d*)%?\s+to\s+(-?\d+\.?\d*)%?',
+        # "difference -429 kcal/day [95% CI -852 to -5 kcal/day]" - complex units
+        r'\bdifference\s+(-?\d+\.?\d*)\s*[\w/]+\s*\[\s*(?:95%?\s*)?CI[:\s]+(-?\d+\.?\d*)\s+to\s+(-?\d+\.?\d*)',
+
+        # =================================================================
         # MULTI-LANGUAGE MD PATTERNS
         # =================================================================
         # German: Mittlere Differenz (MD with KI = Konfidenzintervall)
@@ -1092,6 +1339,33 @@ class EnhancedExtractor:
         r'mean\s+difference\s+was\s+(-?\d+\.?\d*)\s*\(\s*(?:95%?\s*)?CI[:\s]+(-?\d+\.?\d*)\s*,\s*(-?\d+\.?\d*)',
         # "net difference: -1.5 (-2.8 to -0.2)" - net difference variant
         r'net\s+difference[:\s]+(-?\d+\.?\d*)\s*\(\s*(-?\d+\.?\d*)\s+to\s+(-?\d+\.?\d*)\s*\)',
+
+        # =================================================================
+        # v6.0 ADDITIONS - Mega gold standard pattern gap closure
+        # =================================================================
+        # Semicolon-separated CIs: "95% CI (3.12; 7.88)" or "95% CI: 3.12; 7.88"
+        # Common in European medical journals
+        r'\bMD\b[,;:\s=]+(-?\d+\.?\d*)\s*[\(\[]\s*(?:95%?\s*)?CI[:\s]*(-?\d+\.?\d*)\s*;\s*(-?\d+\.?\d*)\s*[\)\]]',
+        r'mean\s+difference[,;:\s=]+(-?\d+\.?\d*)\s*[\(\[]\s*(?:95%?\s*)?CI[:\s]*(-?\d+\.?\d*)\s*;\s*(-?\d+\.?\d*)\s*[\)\]]',
+        r'\bdifference[,;:\s=]+(-?\d+\.?\d*)\s*[\(\[]\s*(?:95%?\s*)?CI[:\s]*(-?\d+\.?\d*)\s*;\s*(-?\d+\.?\d*)\s*[\)\]]',
+        # "MD 5.50; 95% CI (3.12; 7.88)" — semicolon before CI label, semicolon inside CI
+        r'\bMD\b\s+(-?\d+\.?\d*)\s*[;,]\s*(?:95%?\s*)?CI\s*[\(\[]\s*(-?\d+\.?\d*)\s*;\s*(-?\d+\.?\d*)\s*[\)\]]',
+        # "MD 5.50, 95% CI (3.12; 7.88)" — comma before CI label
+        r'mean\s+difference\s+(-?\d+\.?\d*)\s*[;,]\s*(?:95%?\s*)?CI\s*[\(\[]\s*(-?\d+\.?\d*)\s*;\s*(-?\d+\.?\d*)\s*[\)\]]',
+
+        # Value-before-CI format: "(-0.089; 95% CI: -0.170 to -0.008)"
+        # After normalization: comma becomes semicolon before "95% CI"
+        r'\(\s*(-?\d+\.?\d*)\s*[;,]\s*(?:95%?\s*)?CI[:\s]+(-?\d+\.?\d*)\s+to\s+(-?\d+\.?\d*)\s*\)',
+        r'\(\s*(-?\d+\.?\d*)\s*[;,]\s*(?:95%?\s*)?CI[:\s]+(-?\d+\.?\d*)\s*[-\u2013\u2014]\s*(-?\d+\.?\d*)\s*\)',
+        # Without parentheses: "-0.089, 95%CI: -0.170 to -0.008"
+        r'(-?\d+\.?\d*)\s*[;,]\s*(?:95%?\s*)?CI[:\s]+(-?\d+\.?\d*)\s+to\s+(-?\d+\.?\d*)',
+
+        # "mean difference of X points (95% CI: lo-hi)" — "of" between label and value
+        r'mean\s+difference\s+of\s+(-?\d+\.?\d*)\s*(?:points?)?\s*\(\s*(?:95%?\s*)?CI[:\s]+(-?\d+\.?\d*)\s*[-\u2013\u2014]\s*(-?\d+\.?\d*)',
+        # Same but with "to" separator
+        r'mean\s+difference\s+of\s+(-?\d+\.?\d*)\s*(?:points?)?\s*\(\s*(?:95%?\s*)?CI[:\s]+(-?\d+\.?\d*)\s+to\s+(-?\d+\.?\d*)',
+        # Same but with comma-separated CI
+        r'mean\s+difference\s+of\s+(-?\d+\.?\d*)\s*(?:points?)?\s*\(\s*(?:95%?\s*)?CI[:\s]+(-?\d+\.?\d*)\s*,\s*(-?\d+\.?\d*)',
 
         # =================================================================
         # v4.2.0 ADDITIONS - Square bracket CI patterns (from real PDF analysis)
@@ -1230,6 +1504,12 @@ class EnhancedExtractor:
         # "absolute risk reduction 2.8% (1.5%-4.1%)" - hyphen format
         r'absolute\s+risk\s+reduction\s+(-?\d+\.?\d*)%\s*\(\s*(-?\d+\.?\d*)%?\s*[-–—]\s*(-?\d+\.?\d*)%\)',
 
+        # "absolute difference of 7.5 percentage points (95% CI, -11.7 to 26.7)"
+        r'(?:absolute\s+)?difference\s+of\s+(-?\d+\.?\d*)\s*(?:percentage\s+points?|%)\s*\(\s*(?:95%?\s*)?CI[,:\s]+(-?\d+\.?\d*)\s*(?:to|[-–—])\s*(-?\d+\.?\d*)',
+
+        # "difference of 28.9 percentage points (95% CI, 9.6-48.2)" - dash format
+        r'difference\s+of\s+(-?\d+\.?\d*)\s*(?:percentage\s+points?)\s*\(\s*(?:95%?\s*)?CI[,:\s]+(-?\d+\.?\d*)\s*[-–—]\s*(-?\d+\.?\d*)',
+
         # "ARR 3.5% (95% CI 1.8% to 5.2%)"
         r'\bARR\b\s+(-?\d+\.?\d*)%\s*\(\s*95%\s*CI\s*(-?\d+\.?\d*)%\s*to\s*(-?\d+\.?\d*)%\)',
 
@@ -1237,7 +1517,7 @@ class EnhancedExtractor:
         r'risk\s+difference:\s*(-?\d+\.?\d*)%\s*\(\s*(-?\d+\.?\d*)%\s*to\s*(-?\d+\.?\d*)%\)',
 
         # "mortality difference: -2.1% (95% CI -3.8% to -0.4%)"
-        r'[\w\s]+difference:\s*(-?\d+\.?\d*)%\s*\(\s*(?:95%\s*CI\s*)?(-?\d+\.?\d*)%\s*to\s*(-?\d+\.?\d*)%\)',
+        r'[\w\s]{1,80}difference:\s*(-?\d+\.?\d*)%\s*\(\s*(?:95%\s*CI\s*)?(-?\d+\.?\d*)%\s*to\s*(-?\d+\.?\d*)%\)',
 
         # "event rate difference -4.5% (-7.2% to -1.8%)"
         r'(?:event\s+)?rate\s+difference\s+(-?\d+\.?\d*)%\s*\(\s*(-?\d+\.?\d*)%\s*to\s*(-?\d+\.?\d*)%\)',
@@ -1253,7 +1533,7 @@ class EnhancedExtractor:
         r'[Rr]isk\s+difference[:\s]+(-?\d+\.?\d*)%?\s*\(\s*(?:95%?\s*)?CI[,:\s]+(-?\d+\.?\d*)%?\s+to\s+(-?\d+\.?\d*)%?',
 
         # "Absolute difference in response rate was 12.3% (7.8%, 16.8%)"
-        r'[Aa]bsolute\s+difference\s+(?:in\s+[\w\s]+\s+)?was\s+(-?\d+\.?\d*)%?\s*\(\s*(-?\d+\.?\d*)%?\s*,\s*(-?\d+\.?\d*)%?',
+        r'[Aa]bsolute\s+difference\s+(?:in\s+[\w\s]{1,80}\s+)?was\s+(-?\d+\.?\d*)%?\s*\(\s*(-?\d+\.?\d*)%?\s*,\s*(-?\d+\.?\d*)%?',
 
         # "Event rate difference: -2.8% (95% CI -4.5% to -1.1%)"
         r'[Ee]vent\s+rate\s+difference[:\s]+(-?\d+\.?\d*)%?\s*\(\s*(?:95%?\s*)?CI\s+(-?\d+\.?\d*)%?\s+to\s+(-?\d+\.?\d*)%?',
@@ -1272,6 +1552,15 @@ class EnhancedExtractor:
         r'efficacy\s+(?:against\s+)?[^0-9]*?was\s+(\d+\.?\d*)%\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)%?\s*[-–—]\s*(\d+\.?\d*)%?\s*\)',
         # "Vaccine efficacy against symptomatic COVID-19 was 95.0% (95% CI, 90.3%-97.6%)"
         r'[Vv]accine\s+efficacy\s+.{0,50}?was\s+(\d+\.?\d*)%\s*\(\s*(?:95%?\s*)?CI\s*,?\s*(\d+\.?\d*)%?\s*[-–—]\s*(\d+\.?\d*)%?\s*\)',
+        # v5.3: VE (Vaccine Efficacy) abbreviation — maps to RRR
+        # "VE was 98.8% (95% CI 91.3-99.8%)" or "VE was 98.8% (95% CI, 91.3-99.8)"
+        r'\bVE\b\s+(?:was\s+)?(\d+\.?\d*)%?\s*\(\s*(?:95%?\s*)?CI[,:\s]+(\d+\.?\d*)%?\s*[-–—]\s*(\d+\.?\d*)%?\s*\)',
+        # "VE: 95.2% (88.1-98.3)" or "VE = 95.2% (88.1-98.3)"
+        r'\bVE\b[,;:\s=]+(\d+\.?\d*)%?\s*[\(\[]\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)%?\s*[-–—]\s*(\d+\.?\d*)%?\s*[\)\]]',
+        # "VE of 96.1% (95% CI, 93.1–98.1%)"
+        r'\bVE\b\s+of\s+(\d+\.?\d*)%?\s*\(\s*(?:95%?\s*)?CI[,:\s]+(\d+\.?\d*)%?\s*[-–—]\s*(\d+\.?\d*)%?\s*\)',
+        # "VE (95% CI): 95.2% (88.1-98.3)" — label prefix format
+        r'\bVE\b\s*\(95%?\s*CI\)\s*[:\s]+(\d+\.?\d*)%?\s*\(\s*(\d+\.?\d*)%?\s*[-–—]\s*(\d+\.?\d*)%?\s*\)',
     ]
 
     # NNT/NNH patterns
@@ -1385,6 +1674,7 @@ class EnhancedExtractor:
         EffectType.RRR: (0.0, 100.0),     # Can be percentage
         EffectType.NNT: (1.0, 10000),
         EffectType.NNH: (1.0, 10000),
+        EffectType.GMR: (0.01, 100.0),   # Geometric Mean Ratio (like RR)
     }
 
     def __init__(self):
@@ -1394,6 +1684,7 @@ class EnhancedExtractor:
             EffectType.HR: self.HR_PATTERNS,
             EffectType.OR: self.OR_PATTERNS,
             EffectType.IRR: self.IRR_PATTERNS,  # Check IRR BEFORE RR (contains "rate ratio")
+            EffectType.GMR: self.GMR_PATTERNS,  # Check GMR BEFORE RR (geometric mean ratio)
             EffectType.RR: self.RR_PATTERNS,
             EffectType.ARD: self.ARD_PATTERNS,  # Check ARD BEFORE MD to catch "absolute risk difference"
             EffectType.MD: self.MD_PATTERNS,
@@ -1410,6 +1701,7 @@ class EnhancedExtractor:
             EffectType.SMD: self.SMD_VALUE_ONLY_PATTERNS,
             EffectType.ARD: self.ARD_VALUE_ONLY_PATTERNS,
             EffectType.IRR: self.IRR_VALUE_ONLY_PATTERNS,
+            EffectType.GMR: self.GMR_VALUE_ONLY_PATTERNS,
         }
 
         # Calibration thresholds (tuned for automation)
@@ -1423,7 +1715,7 @@ class EnhancedExtractor:
             re.IGNORECASE
         )
 
-    def _has_negative_context(self, text: str, match_start: int, context_window: int = 200) -> bool:
+    def _has_negative_context(self, text: str, match_start: int, context_window: int = 500) -> bool:
         """
         Check if extraction appears in a negative context (v4.3.1).
 
@@ -1449,21 +1741,140 @@ class EnhancedExtractor:
         """Normalize unicode and special characters"""
         for old, new in self.NORMALIZATIONS.items():
             text = text.replace(old, new)
-        # European decimal format (0,74 -> 0.74)
-        text = re.sub(r'(\d),(\d)', r'\1.\2', text)
+
+        # v5.4: Convert comma before CI label to semicolon BEFORE European decimal conversion
+        # "HR=0.468,95%CI" -> "HR=0.468; 95%CI" (prevents "8,9" -> "8.9" corruption)
+        # PMC12608838: "HR=0.468,95%CI,0.320-0.683"
+        text = re.sub(r'(\d),\s*(95%?\s*CI)', r'\1; \2', text, flags=re.IGNORECASE)
+        # v5.4: Insert space in "95%CI" -> "95% CI" (needed for bracket CI patterns)
+        # PMC12527752: "[95%CI0.0024-6.18]"
+        text = re.sub(r'(\d+%)(CI\b)', r'\1 \2', text)
+        # v5.4: Normalize "CI = " to "CI: " so patterns match uniformly
+        # PMC12705426: "OR = 4.0; 95% CI = 1.4–11.3"
+        text = re.sub(r'\bCI\s*=\s*', 'CI: ', text, flags=re.IGNORECASE)
+
+        # European decimal format (0,74 -> 0.74) — only when followed by
+        # 1-2 digits (not 3+, which indicates thousands separator like 1,234)
+        # Exclude bracket contexts like [12,14] (reference numbers)
+        # Exclude decimal pairs like 1.05,2.05 (CI bounds) via (?<!\.\d) lookbehind
+        text = re.sub(r'(?<!\[)(?<!\.\d)(\d),(\d{1,2})(?!\d)(?!\])', r'\1.\2', text)
 
         # v4.3.3: Normalize line breaks in effect patterns
         # "HR\n= 0.8" -> "HR = 0.8"
         # "mean difference\n3.1" -> "mean difference 3.1"
         # "mean\ndifference" -> "mean difference"
-        text = re.sub(r'(HR|OR|RR|MD|SMD|ARD|IRR|hazard ratio|odds ratio|relative risk|risk difference)\s*\n\s*', r'\1 ', text, flags=re.IGNORECASE)
+        text = re.sub(r'(HR|OR|RR|MD|SMD|ARD|IRR|GMR|VE|hazard ratio|odds ratio|relative risk|risk difference|geometric means? ratio|vaccine efficacy)\s*\n\s*', r'\1 ', text, flags=re.IGNORECASE)
         text = re.sub(r'mean\s*\n\s*difference', 'mean difference', text, flags=re.IGNORECASE)
+        text = re.sub(r'geometric\s*\n\s*mean', 'geometric mean', text, flags=re.IGNORECASE)
+        # v6.0: "mean difference\nof 0.37" -> "mean difference of 0.37"
+        text = re.sub(r'(difference)\s*\n\s*(of\s+)', r'\1 \2', text, flags=re.IGNORECASE)
+        # v6.0: "Odds ratio\n \n(95%" -> "Odds ratio (95%" (table header join)
+        text = re.sub(r'((?:odds|risk|hazard)\s+ratio)\s*\n\s*\n?\s*\(', r'\1 (', text, flags=re.IGNORECASE)
         # Also handle "=\n" and ";\n" patterns
         text = re.sub(r'\n\s*=\s*', ' = ', text)
         text = re.sub(r'=\s*\n\s*', '= ', text)
         text = re.sub(r';\s*\n\s*', '; ', text)
         # "HR=0.78,\n95% CI" -> "HR=0.78, 95% CI"
         text = re.sub(r',\s*\n\s*(95%?\s*CI)', r', \1', text, flags=re.IGNORECASE)
+
+        # v5.0: Join CI bounds split across lines (multi-column PDF artifacts)
+        # "CI: 0.97-\n0.99)" -> "CI: 0.97-0.99)"
+        text = re.sub(r'((?:CI|IC|KI|CL|confidence\s{0,3}interval)\s{0,3}[,::\s]{0,3}\d+\.?\d*\s*[-])\s*\n\s*(\d+\.?\d*)', r'\1\2', text, flags=re.IGNORECASE)
+        # "CI:\n0.97-0.99" or "CI:\n1.66; 2.33" -> "CI: 0.97-0.99"
+        text = re.sub(r'((?:CI|IC|KI|CL)\s*[,:]\s*)\n\s*(\d)', r'\1 \2', text, flags=re.IGNORECASE)
+        # "95%\nCI" -> "95% CI"
+        text = re.sub(r'(\d+%)\s*\n\s*(CI|IC|KI|CL)\b', r'\1 \2', text, flags=re.IGNORECASE)
+        # "[95%CI:\n1.66" -> "[95%CI: 1.66"
+        text = re.sub(r'(\[\s*(?:95%?\s*)?(?:CI|IC|KI)[:;\s]*)\n\s*(\d)', r'\1 \2', text, flags=re.IGNORECASE)
+
+        # v5.0.1: Rejoin hyphenated words at line breaks (letters only, not digits)
+        # "confi-\ndence" -> "confidence", "inter-\nval" -> "interval"
+        text = re.sub(r'([a-zA-Z])-\n\s*([a-zA-Z])', r'\1\2', text)
+
+        # v5.4: Strip bracket abbreviation aliases after full names
+        # "risk ratio [RR], 0.67" -> "risk ratio 0.67" (PMC12074564)
+        # "hazard ratio [HR]:" -> "hazard ratio:"
+        # "odds ratio [OR]" -> "odds ratio"
+        text = re.sub(r'((?:hazard|odds|risk|relative|rate|incidence|mean)\s+(?:ratio|difference|reduction))\s*\[(?:HR|OR|RR|RD|IRR|MD|ARD|ARR|SMD|WMD|GMR)\]', r'\1', text, flags=re.IGNORECASE)
+        # Also handle "confidence interval [CI]" -> "confidence interval"
+        text = re.sub(r'(confidence\s+interval)\s*\[CI\]', r'\1', text, flags=re.IGNORECASE)
+
+        # v5.3: Split run-together statistical terms (broken PDF spacing, e.g. PMC10059741)
+        # "oddsratioof4.17" -> "odds ratio of4.17", "hazardratio0.88" -> "hazard ratio 0.88"
+        run_together = [
+            (r'oddsratio', 'odds ratio'),
+            (r'hazardratio', 'hazard ratio'),
+            (r'riskratio', 'risk ratio'),
+            (r'riskreduction', 'risk reduction'),
+            (r'riskdifference', 'risk difference'),
+            (r'rateratio', 'rate ratio'),
+            (r'incidencerate', 'incidence rate'),
+            (r'meandifference', 'mean difference'),
+            (r'relativerisk', 'relative risk'),
+            (r'confidenceinterval', 'confidence interval'),
+            (r'vaccineefficacy', 'vaccine efficacy'),
+            (r'geometricmean(?:s?)ratio', 'geometric mean ratio'),
+        ]
+        for pattern, replacement in run_together:
+            text = re.sub(pattern, replacement, text, flags=re.IGNORECASE)
+        # Split "of"/"was" stuck between letters and digits (run-together PDF text)
+        # "ratioof4.17" -> "ratio of 4.17", "was98.8" -> "was 98.8"
+        text = re.sub(r'(?<=[a-z])of(?=\d)', ' of ', text)
+        text = re.sub(r'(?<=[a-z])was(?=\d)', ' was ', text)
+        # Strip "of" between ratio/reduction and digits for pattern matching
+        # "ratio of 4.17" -> "ratio 4.17" (patterns use [,;:\s=]+ not "of")
+        # NOTE: "difference" excluded — "difference of" patterns exist in MD_PATTERNS
+        text = re.sub(r'(ratio|reduction)\s+of\s+(?=\d)', r'\1 ', text, flags=re.IGNORECASE)
+
+        # v5.0.1: Insert space between effect type abbreviation and digit (broken PDF spacing)
+        # "HR0.88" -> "HR 0.88", "(HR0.88" -> "(HR 0.88"
+        text = re.sub(r'\b(HR|OR|RR|MD|SMD|ARD|IRR|GMR|VE|aHR)(\d)', r'\1 \2', text)
+        # v5.8: Normalize "confidence interval" -> "CI" for consistent pattern matching
+        # Handles: "95% confidence interval", "95 percent confidence interval", "confidence interval"
+        text = re.sub(r'(\d{2})\s*(?:%|percent)\s*confidence\s+interval', r'\1% CI', text, flags=re.IGNORECASE)
+        text = re.sub(r'\bconfidence\s+interval\b', 'CI', text, flags=re.IGNORECASE)
+
+        # v5.8: Normalize leading-dot decimals (e.g., "-.22" -> "-0.22", ".05" -> "0.05")
+        # Common in medical papers; must come after hyphen-join to avoid false matches
+        text = re.sub(r'(?<![0-9])(-?)\.(\d)', r'\g<1>0.\2', text)
+
+        # v5.3: Insert space between statistical words and digits (run-together PDF text)
+        # "ratio4.17" -> "ratio 4.17", "difference3.1" -> "difference 3.1"
+        text = re.sub(r'(ratio|difference|reduction|efficacy)(\d)', r'\1 \2', text, flags=re.IGNORECASE)
+        # v5.3: Insert space between digit.decimal and run-together words
+        # "4.17inthevaccinatedgroup" -> "4.17 inthevaccinatedgroup"
+        # Exclude scientific notation: "1.5e10" should NOT be split
+        text = re.sub(r'(\d+\.\d+)(?![eE]\d)([a-zA-Z]{3,})', r'\1 \2', text)
+        # v5.3: Insert space between letter and opening paren (run-together PDF)
+        # "group(95%" -> "group (95%"
+        text = re.sub(r'([a-zA-Z])\((\d{2,3}%)', r'\1 (\2', text)
+        # v5.3: Strip run-together junk text between value and CI parenthesis
+        # "ratio 4.17 inthevaccinatedgroup (95%CI:" -> "ratio 4.17 (95%CI:"
+        # Anchored to statistical term to avoid stripping legitimate context
+        text = re.sub(r'((?:ratio|difference|reduction|efficacy)\s+\d+\.?\d*)\s+[a-z]{3,80}\s*\((\d{2,3}%\s*CI)', r'\1 (\2', text, flags=re.IGNORECASE)
+
+        # v5.4: Split "to" stuck between digits in CI bounds (run-together PDF text)
+        # "-2.05to-1.10" -> "-2.05 to -1.10" (PMC12815721)
+        text = re.sub(r'(\d)to(-?\d)', r'\1 to \2', text)
+
+        # v5.2: Insert space between digit and opening paren/bracket before CI label (broken PDF spacing)
+        # "0.88(95%CI" -> "0.88 (95%CI", "1.05(95%" -> "1.05 (95%"
+        text = re.sub(r'(\d)\((\d{2,3}%)', r'\1 (\2', text)
+        # v5.4: "0.12[95%CI" -> "0.12 [95%CI" (square bracket variant)
+        # PMC12527752: "hazard ratio 0.12[95%CI0.0024-6.18]"
+        text = re.sub(r'(\d)\[(\d{2,3}%)', r'\1 [\2', text)
+        # v5.3.1: Also handle percent sign before CI paren
+        # "38.9%(95%CI" -> "38.9% (95%CI"
+        text = re.sub(r'(\d%)\((\d{2,3}%)', r'\1 (\2', text)
+        # v5.3.1: Insert space between %CI and digit (run-together PDF)
+        # "95%CI11.4%" -> "95%CI 11.4%", "%CI0.98" -> "%CI 0.98"
+        text = re.sub(r'(%CI)(\d)', r'\1 \2', text)
+
+        # v5.5: Insert space between CI/IC label and digit (run-together PDF text)
+        # After "95%CI" -> "95% CI" split (line 1703), "CI0.08" remains stuck.
+        # "CI0.08" -> "CI 0.08", "CI:0.08" -> "CI: 0.08"
+        # Also handles IC (French/Spanish), KI (German), CL (confidence limits)
+        text = re.sub(r'\b(CI|IC|KI|CL)([-]?\d)', r'\1 \2', text)
 
         return text
 
@@ -1478,6 +1889,7 @@ class EnhancedExtractor:
         Returns:
             List of Extraction objects with confidence scores and automation tiers
         """
+        text = correct_ocr_errors(text)
         text = self.normalize_text(text)
         results = []
         seen = set()
@@ -1548,6 +1960,135 @@ class EnhancedExtractor:
                         except (ValueError, IndexError):
                             continue
 
+        # Third pass: tabular regression table format
+        # Detects "OR 95%CI pValue" column headers followed by data rows
+        tabular_results = self._extract_tabular_effects(text, seen, seen_values)
+        results.extend(tabular_results)
+
+        return results
+
+    def _extract_tabular_effects(self, text: str, seen: set, seen_values: set) -> list:
+        """
+        Extract effects from regression table formats where the effect type
+        appears as a column header (e.g., "Factor OR 95%CI pValue") followed
+        by data rows with values.
+
+        v5.6: Handles compressed PDF text from logistic/Cox regression tables.
+        """
+        results = []
+
+        # Map header labels to effect types
+        header_map = {
+            'OR': EffectType.OR,
+            'aOR': EffectType.OR,
+            'HR': EffectType.HR,
+            'aHR': EffectType.HR,
+            'RR': EffectType.RR,
+            'aRR': EffectType.RR,
+            'IRR': EffectType.IRR,
+        }
+
+        # Pattern: "{label} 95%CI pValue" as column header, then data rows
+        # Captures the section after the header until next table/section break
+        for label, etype in header_map.items():
+            header_pat = re.compile(
+                r'\b' + re.escape(label) + r'\s+95%?\s*CI\s+p\s*[Vv]alue\b'
+                r'(.{5,800}?)(?=\b(?:doi|Fig\.?\s*\d|Table\s+\d|Discussion|Conclusion|Reference)\b|\Z)',
+                re.IGNORECASE | re.DOTALL
+            )
+            for hm in header_pat.finditer(text):
+                section = hm.group(1)
+                # Extract rows: {text} {value} {lower}–{upper} {p_value}
+                row_pat = re.compile(
+                    r'(\d+\.?\d+)\s+(\d+\.?\d+)\s*[-\u2013\u2014]\s*(\d+\.?\d+)\s+(\d+\.\d+)'
+                )
+                for rm in row_pat.finditer(section):
+                    try:
+                        value = float(rm.group(1))
+                        ci_low = float(rm.group(2))
+                        ci_high = float(rm.group(3))
+                        p_val = float(rm.group(4))
+
+                        # Dedup
+                        key = (etype.value, round(value, 3), round(ci_low, 3), round(ci_high, 3))
+                        if key in seen:
+                            continue
+                        seen.add(key)
+
+                        vkey = (etype.value, round(value, 3))
+                        if vkey in seen_values:
+                            continue
+                        seen_values.add(vkey)
+
+                        # Build source text for provenance
+                        abs_start = hm.start() + rm.start()
+                        abs_end = hm.start() + rm.end()
+                        source = f"{label} {rm.group(0)}"
+
+                        extraction = self._create_extraction(
+                            etype, value, ci_low, ci_high,
+                            source, abs_start, abs_end
+                        )
+
+                        if extraction.is_plausible:
+                            results.append(extraction)
+
+                    except (ValueError, IndexError):
+                        continue
+
+        # v6.0: Handle "Odds ratio (95% CI)" / "Risk ratio (95% CI)" header format
+        # Gummersbach 2015: "Odds ratio (95% CI)" header then "0.99 (0.92-1.07)" rows
+        full_name_map = {
+            'odds ratio': EffectType.OR,
+            'risk ratio': EffectType.RR,
+            'relative risk': EffectType.RR,
+            'hazard ratio': EffectType.HR,
+            'rate ratio': EffectType.IRR,
+        }
+        for name, etype in full_name_map.items():
+            # Match header like "Odds ratio (95% CI)" or "Odds ratio\n(95% confidence interval)"
+            header_pat = re.compile(
+                r'\b' + name + r'\s*\(\s*(?:95%?\s*)?(?:CI|confidence\s+interval)\s*\)'
+                r'(.{5,2000}?)(?=\b(?:doi|Fig\.?\s*\d|Table\s+\d|Discussion|Conclusion|Reference|Note)\b|\Z)',
+                re.IGNORECASE | re.DOTALL
+            )
+            for hm in header_pat.finditer(text):
+                section = hm.group(1)
+                # Extract rows: value (lower-upper) with optional p-value
+                row_pat = re.compile(
+                    r'(\d+\.?\d+)\s*\(\s*(\d+\.?\d+)\s*[-\u2013\u2014]\s*(\d+\.?\d+)\s*\)'
+                )
+                for rm in row_pat.finditer(section):
+                    try:
+                        value = float(rm.group(1))
+                        ci_low = float(rm.group(2))
+                        ci_high = float(rm.group(3))
+
+                        key = (etype.value, round(value, 3), round(ci_low, 3), round(ci_high, 3))
+                        if key in seen:
+                            continue
+                        seen.add(key)
+
+                        vkey = (etype.value, round(value, 3))
+                        if vkey in seen_values:
+                            continue
+                        seen_values.add(vkey)
+
+                        abs_start = hm.start() + rm.start()
+                        abs_end = hm.start() + rm.end()
+                        source = f"{name} {rm.group(0)}"
+
+                        extraction = self._create_extraction(
+                            etype, value, ci_low, ci_high,
+                            source, abs_start, abs_end
+                        )
+
+                        if extraction.is_plausible:
+                            results.append(extraction)
+
+                    except (ValueError, IndexError):
+                        continue
+
         return results
 
     def _create_extraction(
@@ -1572,8 +2113,8 @@ class EnhancedExtractor:
         if not is_plausible:
             warnings.append("IMPLAUSIBLE_VALUE")
 
-        # CI consistency check
-        if not (ci_low < value < ci_high):
+        # CI consistency check (non-strict: value may equal a CI boundary due to rounding)
+        if not (ci_low <= value <= ci_high):
             is_plausible = False
             warnings.append("CI_INCONSISTENT")
 
@@ -1723,7 +2264,7 @@ class EnhancedExtractor:
             return False
 
         # CI bounds check
-        if ci_low >= ci_high:
+        if ci_low > ci_high:
             return False
 
         # CI contains value
@@ -1731,7 +2272,7 @@ class EnhancedExtractor:
             return False
 
         # For ratios, CI lower bound should be positive
-        if effect_type in [EffectType.HR, EffectType.OR, EffectType.RR, EffectType.IRR]:
+        if effect_type in [EffectType.HR, EffectType.OR, EffectType.RR, EffectType.IRR, EffectType.GMR]:
             if ci_low <= 0:
                 return False
 
@@ -1772,24 +2313,21 @@ class EnhancedExtractor:
                 score += 0.05
         else:
             ci_width = abs(ci_high - ci_low)
-            if ci_width < abs(value) * 2:
+            if ci_width < max(abs(value), 1.0) * 2:
                 score += 0.05
 
         return min(1.0, score)
 
     def _calibrate_confidence(self, raw_confidence: float) -> float:
         """
-        Apply calibration based on empirical validation.
+        Apply heuristic confidence adjustment (NOT empirical calibration).
 
-        Calibration is tuned to achieve:
-        - High confidence (>0.98) for well-formatted, plausible extractions
-        - Medium confidence (0.85-0.98) for standard extractions
-        - Low confidence (<0.85) for edge cases
+        This is a hand-tuned piecewise linear mapping, not a fitted
+        calibration model (e.g. Platt scaling or isotonic regression).
+        For empirical calibration, use ConfidenceCalibrator from
+        confidence_calibration.py after fitting on validation data.
         """
-        # Calibration based on pattern quality and validation results
-        # Higher raw confidence maps to higher calibrated confidence
-
-        # Piecewise linear calibration
+        # Heuristic piecewise linear adjustment
         if raw_confidence >= 0.95:
             # High quality extraction - map to automation tier
             calibrated = 0.90 + (raw_confidence - 0.95) * 2.0  # 0.95->0.90, 1.0->1.0
@@ -1840,10 +2378,13 @@ def calculate_se_from_ci(
         Tuple[float, str]: (standard_error, method)
     """
     # Get z-value for CI level (1.96 for 95% CI)
-    z_value = 1.96 if ci_level == 0.95 else 2.576 if ci_level == 0.99 else 1.645
+    Z_TABLE = {0.80: 1.282, 0.90: 1.645, 0.95: 1.96, 0.99: 2.576}
+    z_value = Z_TABLE.get(ci_level)
+    if z_value is None:
+        return None, "unavailable"
 
     try:
-        if effect_type in [EffectType.HR, EffectType.OR, EffectType.RR, EffectType.IRR]:
+        if effect_type in [EffectType.HR, EffectType.OR, EffectType.RR, EffectType.IRR, EffectType.GMR]:
             # Log scale for ratios
             if ci_lower <= 0 or ci_upper <= 0:
                 return None, "unavailable"
@@ -1865,7 +2406,8 @@ def normalize_ard(
     value: float,
     ci_low: float,
     ci_high: float,
-    source_text: str
+    source_text: str,
+    full_context: str = ""
 ) -> Tuple[float, float, float, str]:
     """
     Normalize Absolute Risk Difference to decimal scale (0-1).
@@ -1873,11 +2415,18 @@ def normalize_ard(
     Detects if the input is in percentage format (e.g., -3.2%) or
     decimal format (e.g., -0.032) and converts to decimal.
 
+    For ambiguous cases (small values with no explicit % indicator),
+    marks the scale as "ambiguous" so downstream consumers can flag
+    the extraction for review.
+
     Returns:
         Tuple: (normalized_value, normalized_ci_low, normalized_ci_high, original_scale)
     """
     # Check for percentage indicators
     is_percentage = False
+
+    # Combine source text and surrounding context for indicator search
+    search_text = source_text + " " + full_context
 
     # Check source text for % symbol
     if '%' in source_text:
@@ -1885,15 +2434,23 @@ def normalize_ard(
     # Check magnitude - percentages typically have absolute value > 1
     elif abs(value) > 1.0 or abs(ci_low) > 1.0 or abs(ci_high) > 1.0:
         is_percentage = True
-    # Check for "percentage points" or "percent" in text
-    elif any(term in source_text.lower() for term in ['percentage', 'percent', 'pct']):
+    # Check for "percentage points" or "percent" in wider context
+    elif any(term in search_text.lower() for term in [
+        'percentage', 'percent', 'pct', 'percentage point',
+        'per cent', 'pp ', 'p.p.'
+    ]):
         is_percentage = True
 
     if is_percentage:
         # Convert percentage to decimal
         return value / 100, ci_low / 100, ci_high / 100, "percentage"
     else:
-        # Already in decimal format
+        # For small ARD values (|value| < 0.1), this is likely already decimal.
+        # For values between 0.1 and 1.0 without explicit indicators, the scale
+        # is ambiguous: could be 0.5 (50%) or 0.005 (0.5%). Mark as ambiguous.
+        max_abs = max(abs(value), abs(ci_low), abs(ci_high))
+        if 0.1 <= max_abs <= 1.0 and '%' not in search_text:
+            return value, ci_low, ci_high, "ambiguous_decimal"
         return value, ci_low, ci_high, "decimal"
 
 
@@ -2042,6 +2599,10 @@ P_VALUE_PATTERNS = [
     r'[Pp]\s*<\s*0?\.\d+',
     r'significance\s*[=:]\s*(0\.\d+)',
     r'\([Pp]\s*[=<]\s*(0\.\d+)\)',
+    # Scientific notation: P = 1.2e-5, P < 10^-6, P < 1 x 10^-4
+    r'[Pp]\s*[=<>]\s*(\d+\.?\d*)\s*[×xX]\s*10\s*[-–—^]\s*(\d+)',
+    r'[Pp]\s*[=<>]\s*(\d+\.?\d*)[eE][-–—](\d+)',
+    r'[Pp]\s*[=<>]\s*10\s*[-–—^]\s*(\d+)',
 ]
 
 
@@ -2051,11 +2612,31 @@ def extract_p_value(text: str) -> Optional[float]:
         match = re.search(pattern, text, re.IGNORECASE)
         if match:
             try:
-                # Find the numeric part
-                p_str = re.search(r'0?\.\d+', match.group(0))
+                matched = match.group(0)
+                # Scientific notation: "1.2e-5", "1 x 10^-4", "10^-6"
+                sci_match = re.search(
+                    r'(\d+\.?\d*)\s*[×xXeE]\s*10?\s*[-–—^]\s*(\d+)', matched
+                )
+                if sci_match:
+                    base = float(sci_match.group(1))
+                    exp = int(sci_match.group(2))
+                    p_val = base * (10 ** -exp)
+                    if 0 <= p_val <= 1:
+                        return p_val
+                    continue
+                # "10^-6" form (no coefficient)
+                ten_match = re.search(r'10\s*[-–—^]\s*(\d+)', matched)
+                if ten_match and not sci_match:
+                    exp = int(ten_match.group(1))
+                    p_val = 10 ** -exp
+                    if 0 <= p_val <= 1:
+                        return p_val
+                    continue
+                # Standard decimal
+                p_str = re.search(r'0?\.\d+', matched)
                 if p_str:
                     p_val = float(p_str.group(0))
-                    if 0 < p_val < 1:
+                    if 0 <= p_val <= 1:
                         return p_val
             except ValueError:
                 continue
@@ -2078,8 +2659,10 @@ def correct_ocr_errors(text: str) -> str:
     result = text
 
     # Step 1: CI spelling corrections
-    result = re.sub(r'\bCl\b', 'CI', result)
-    result = re.sub(r'95%\s*Cl', '95% CI', result)
+    # Only correct Cl→CI when followed by statistical context (numbers, brackets, colons)
+    # to avoid corrupting chemistry terms like "serum Cl" or "Cl-"
+    result = re.sub(r'95%\s*Cl\b', '95% CI', result)
+    result = re.sub(r'\bCl\s*(?=[\d([\-:,])', 'CI ', result)
 
     # Step 2: Number corrections in decimal contexts
     # O instead of 0

@@ -1,5 +1,5 @@
-# RCT Extractor v4.0.6 - Pinned Dependencies
-# ==========================================
+# RCT Extractor - Pinned Dependencies
+# ====================================
 # All versions pinned for reproducibility (Research Synthesis Methods compliant)
 
 # Core dependencies

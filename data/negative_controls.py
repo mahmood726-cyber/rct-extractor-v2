@@ -5,6 +5,17 @@ Negative Controls Dataset for RCT Extractor
 Contains text samples that should NOT produce effect extractions.
 Used to measure false positive rate (precision denominator).
 
+NOTE: Many of these texts DO contain valid effect-estimate strings
+(e.g. "HR 0.76 (0.59-0.97)" in NC003). The extractor must reject
+them using NEGATIVE_CONTEXT_PATTERNS (protocol language, review
+citations, observational markers, etc.). If a negative control is
+extracted, it means the context-filter is incomplete — NOT that the
+control is wrong.
+
+Current set: 20 controls.  With 0/20 false positives the 95% Clopper-
+Pearson upper bound on FPR is 16.1%. To push below 5% requires >=59
+controls with 0 FPs. Expanding this dataset is a priority.
+
 Categories:
 1. Protocol papers (no results)
 2. Secondary/post-hoc analyses (derived effects)

@@ -1,0 +1,70 @@
+{
+  "version": "v4.3.7",
+  "date": "2026-02-05",
+  "description": "Float truncation fix, false positive removal, precision measurement, unified manifest",
+  "changes_from_v436": [
+    "_ci_key: int(x*10000) -> int(round(x*10000)), fixes 5% of float values (JUPITER, CheckMate 067 affected)",
+    "Value-only patterns: added \\b(?!\\s*%) guard to prevent 'aOR 95% CI' -> OR=95 false positive",
+    "OR=95 false positive eliminated from PMC12680170 (was misparse of 'aOR 95% CI')",
+    "Curated corpus: 196->183 extractions (13 false positives removed by % guard)",
+    "25 regression tests (2 new truncation tests), all passing",
+    "Unified corpus manifest: data/unified_corpus_manifest.json (107 PDFs)",
+    "Precision measured: 98.5% on curated corpus (3/196 false positives pre-fix)"
+  ],
+  "metrics": {
+    "combined": {
+      "total_pdfs": 107,
+      "with_extractions": 86,
+      "extraction_rate": 0.804,
+      "total_extractions": 395,
+      "ci_complete": 338,
+      "ci_completion_rate": 0.856,
+      "ci_recovered_proximity": 127,
+      "ci_missing": 57
+    },
+    "curated_corpus": {
+      "total_pdfs": 46,
+      "extraction_rate": 1.0,
+      "total_extractions": 183,
+      "ci_completion_rate": 0.89,
+      "ci_recovered_proximity": 46,
+      "precision": 0.985,
+      "note": "13 fewer extractions than v4.3.6 due to % guard removing false positives"
+    },
+    "oa_corpus_v2": {
+      "total_pdfs": 61,
+      "with_extractions": 40,
+      "extraction_rate": 0.656,
+      "total_extractions": 200,
+      "ci_completion_rate": 0.82,
+      "ci_recovered_proximity": 81
+    },
+    "validated_rcts": {
+      "total_pdfs": 3,
+      "extraction_rate": 1.0,
+      "total_extractions": 12,
+      "ci_completion_rate": 1.0
+    },
+    "snippet_validation": {
+      "recall": 0.977,
+      "value_accuracy": 0.955,
+      "ci_accuracy": 0.909
+    },
+    "regression_tests": {
+      "total": 25,
+      "passed": 25
+    }
+  },
+  "bugs_fixed": {
+    "_ci_key_truncation": "int(0.69*10000)=6899, now int(round(0.69*10000))=6900. Affected JUPITER and CheckMate 067 CIs.",
+    "or_95_false_positive": "Pattern 'aOR 95% CI' was parsed as OR=95.0. Fixed with \\b(?!\\s*%) negative lookahead.",
+    "percent_guard": "All HR/OR/RR value-only patterns now reject values followed by % (e.g., 'HR 95%' no longer extracted as HR=95)"
+  },
+  "known_remaining_issues": {
+    "table_cis": "18/22 missing CIs in curated corpus are in tables (text extraction ceiling)",
+    "declare_timi": "HR=0.83 from DECLARE-TIMI 58 still not extracted from snippet",
+    "oa_non_rcts": "21/61 OA corpus v2 papers have 0 extractions (many are not RCTs)",
+    "no_primary_outcome_ranking": "Extractor returns all effects, no way to identify primary outcome",
+    "ard_broken": "ARD: 0% CI completion (2 extractions, 0 CI)"
+  }
+}

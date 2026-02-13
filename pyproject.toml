@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "rct-extractor"
-version = "2.0.0"
+dynamic = ["version"]
 description = "Meta-analysis grade RCT data extraction from clinical trial PDFs"
 readme = "README.md"
 license = {text = "MIT"}
@@ -37,9 +37,17 @@ dependencies = [
     "pydantic>=2.0",
     "pyyaml>=6.0",
     "rapidfuzz>=3.0",
+    "numpy>=1.24",
+    "scipy>=1.10",
 ]
 
+
 [project.optional-dependencies]
+api = [
+    "fastapi>=0.100",
+    "uvicorn>=0.22",
+    "python-multipart>=0.0.6",
+]
 pdf = [
     "pdfplumber>=0.9",
     "pymupdf>=1.22",
@@ -48,19 +56,18 @@ ocr = [
     "pytesseract>=0.3",
     "pillow>=9.0",
 ]
-ml = [
-    "torch>=2.0",
-    "transformers>=4.30",
-    "timm>=0.9",
+validation = [
+    "requests>=2.28",
 ]
 all = [
+    "fastapi>=0.100",
+    "uvicorn>=0.22",
+    "python-multipart>=0.0.6",
     "pdfplumber>=0.9",
     "pymupdf>=1.22",
     "pytesseract>=0.3",
     "pillow>=9.0",
-    "torch>=2.0",
-    "transformers>=4.30",
-    "timm>=0.9",
+    "requests>=2.28",
 ]
 dev = [
     "pytest>=7.0",
@@ -78,6 +85,9 @@ Homepage = "https://github.com/rct-extractor/rct-extractor-v2"
 Documentation = "https://github.com/rct-extractor/rct-extractor-v2#readme"
 Repository = "https://github.com/rct-extractor/rct-extractor-v2"
 
+[tool.setuptools.dynamic]
+version = {attr = "src.__version__"}
+
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["src*", "configs*"]
@@ -91,6 +101,7 @@ target-version = ['py39', 'py310', 'py311']
 
 [tool.ruff]
 line-length = 100
+target-version = "py39"
 select = ["E", "F", "W", "I", "N", "D", "UP", "B"]
 ignore = ["D100", "D104", "D107"]
 
@@ -103,4 +114,25 @@ ignore_missing_imports = true
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 python_files = ["test_*.py"]
-addopts = "-v --tb=short"
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short --strict-markers -ra"
+markers = [
+    "unit: Unit tests (fast, isolated)",
+    "integration: Integration tests (slower, uses real components)",
+    "pdf: PDF-specific tests (requires PDF files)",
+    "slow: Long-running tests (skipped by default)",
+    "ocr: OCR-related tests (requires Tesseract)",
+    "gold: Gold standard validation tests",
+    "regulatory: Regulatory validation tests (IQ/OQ/PQ)",
+    "multilang: Multi-language/non-English PDF tests",
+]
+minversion = "7.0"
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::PendingDeprecationWarning",
+]
+log_cli = true
+log_cli_level = "WARNING"
+log_cli_format = "%(asctime)s %(levelname)s %(message)s"
+log_cli_date_format = "%H:%M:%S"

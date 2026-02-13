@@ -4,7 +4,7 @@ All extracted data must conform to these schemas.
 """
 
 from __future__ import annotations
-from pydantic import BaseModel, Field, field_validator, model_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 from typing import Optional, List, Literal, Union
 from enum import Enum
 from datetime import datetime
@@ -170,6 +170,7 @@ class HazardRatioCI(BaseModel):
 
 class OddsRatioCI(BaseModel):
     """Odds ratio with confidence interval"""
+    model_config = ConfigDict(populate_by_name=True)
     or_value: float = Field(..., gt=0, alias="or")
     ci_low: float = Field(..., gt=0)
     ci_high: float = Field(..., gt=0)
@@ -181,6 +182,8 @@ class OddsRatioCI(BaseModel):
     def validate_ci(self):
         if self.ci_low >= self.ci_high:
             raise ValueError(f'CI lower ({self.ci_low}) must be < upper ({self.ci_high})')
+        if not (self.ci_low <= self.or_value <= self.ci_high):
+            raise ValueError(f'OR ({self.or_value}) must be within CI [{self.ci_low}, {self.ci_high}]')
         return self
 
 
@@ -192,6 +195,14 @@ class RiskRatioCI(BaseModel):
     ci_level: float = Field(default=0.95)
     p_value: Optional[float] = Field(None, ge=0, le=1)
     provenance: Provenance
+
+    @model_validator(mode='after')
+    def validate_ci(self):
+        if self.ci_low >= self.ci_high:
+            raise ValueError(f'CI lower ({self.ci_low}) must be < upper ({self.ci_high})')
+        if not (self.ci_low <= self.rr <= self.ci_high):
+            raise ValueError(f'RR ({self.rr}) must be within CI [{self.ci_low}, {self.ci_high}]')
+        return self
 
 
 class MeanDifference(BaseModel):
@@ -295,7 +306,7 @@ class ExtractionOutput(BaseModel):
 
     # Source
     source_pdf: str
-    extraction_version: str = "2.0.0"
+    extraction_version: str = "5.0.0"
     extraction_timestamp: datetime = Field(default_factory=datetime.utcnow)
 
     # Metadata

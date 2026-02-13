@@ -3,13 +3,18 @@ Extraction Validators - Catch Silent Wrongness
 
 Based on Al-Fātiḥah Principle 4: "Accountability"
 Hard validators catch impossible values. Soft validators flag inconsistencies.
+
+STATUS: ORPHANED — This module is not imported by any production code.
+It depends on extraction_schema.py (also orphaned). The main extractor
+(enhanced_extractor_v3.py) has its own inline validation.
+Consider integrating these validators into the main pipeline or removing.
 """
 
 from typing import List, Tuple, Optional
 from dataclasses import dataclass
 import math
 
-from src.core.extraction_schema import (
+from .extraction_schema import (
     RCTExtraction, Outcome, EffectInputs, TrialArm,
     ExtractedValue, ExtractionStatus
 )

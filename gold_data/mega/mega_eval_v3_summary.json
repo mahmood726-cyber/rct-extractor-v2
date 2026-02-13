@@ -1,0 +1,43 @@
+{
+  "total_evaluated": 1193,
+  "with_cochrane_ref": 1158,
+  "counts": {
+    "match": 298,
+    "extracted_no_match": 332,
+    "no_extraction": 528,
+    "no_cochrane_ref": 32,
+    "error": 3
+  },
+  "method_counts": {
+    "direct_10pct": 37,
+    "direct_5pct": 130,
+    "cross_OR_vs_OR_15pct": 3,
+    "direct_25pct_sametype": 2,
+    "reciprocal_10pct": 17,
+    "cross_OR_vs_OR": 24,
+    "signflip_10pct": 12,
+    "computed_SMD_10pct": 1,
+    "cross_MD_vs_OR": 3,
+    "computed_OR_10pct": 8,
+    "cross_RR_vs_OR": 3,
+    "cross_HR_vs_OR": 3,
+    "reciprocal_15pct": 7,
+    "cross_MD_vs_SMD": 5,
+    "cross_HR_vs_RR": 1,
+    "cross_MD_vs_MD": 8,
+    "direct_20pct_sametype": 5,
+    "cross_OR_vs_RR": 2,
+    "direct_15pct_nulltype": 9,
+    "signflip_15pct": 4,
+    "direct_15pct_sametype": 5,
+    "cross_HR_vs_OR_15pct": 2,
+    "cross_SMD_vs_SMD": 1,
+    "computed_RD_10pct": 2,
+    "cross_MD_vs_SMD_15pct": 2,
+    "cross_SMD_vs_MD": 1,
+    "cross_RR_vs_RR": 1
+  },
+  "match_rate": 0.25734024179620035,
+  "extraction_rate": 0.5440414507772021,
+  "new_matches": 68
+}

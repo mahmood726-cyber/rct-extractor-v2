@@ -53,6 +53,10 @@ output/*.json
 
 # Large data / corpus (not tracked in git)
 test_pdfs/
+gold_data/mega/pdfs/
+gold_data/mega/review_refs_cache.json
+gold_data/mega/mega_studies.jsonl
+output/debug_*.txt
 
 # Windows artifacts
 nul

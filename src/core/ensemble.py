@@ -155,7 +155,9 @@ class ValueValidator:
 
         Returns:
             (is_plausible, confidence_multiplier)
-            confidence_multiplier: 1.0 = typical, 0.7 = unusual, 0.5 = very unusual
+            confidence_multiplier is a heuristic scaling factor (NOT a probability):
+            1.0 = typical range, 0.7 = unusual but possible, 0.5 = very unusual,
+            0.0 = implausible (rejected). Used to down-weight automation confidence.
         """
         # Get ranges
         plausible_range = cls.PLAUSIBLE_RANGES.get(measure_type, (0.01, 100))
@@ -299,12 +301,10 @@ def values_agree(
     if abs(v1 - v2) <= abs_tolerance:
         return True
 
-    # Check relative tolerance
-    if v1 != 0:
-        rel_diff = abs(v1 - v2) / abs(v1)
-        return rel_diff <= rel_tolerance
-
-    return False
+    # Check relative tolerance using symmetric denominator
+    denom = max(abs(v1), abs(v2), 1e-10)
+    rel_diff = abs(v1 - v2) / denom
+    return rel_diff <= rel_tolerance
 
 
 def values_agree_with_outcome(
@@ -333,7 +333,8 @@ def values_agree_with_outcome(
         return False, None
 
     # Calculate HR difference
-    hr_diff = abs(r1.value - r2.value) / max(r1.value, 0.01)
+    denom = max(abs(r1.value), abs(r2.value), 0.01)
+    hr_diff = abs(r1.value - r2.value) / denom
 
     # Check outcome text match
     outcome_score = OutcomeTextMatcher.outcomes_match(
@@ -353,9 +354,11 @@ def values_agree_with_outcome(
     ci_low_diff = 0
     ci_high_diff = 0
     if r1.ci_low and r2.ci_low:
-        ci_low_diff = abs(r1.ci_low - r2.ci_low) / max(r1.ci_low, 0.01)
+        ci_low_denom = max(abs(r1.ci_low), abs(r2.ci_low), 0.01)
+        ci_low_diff = abs(r1.ci_low - r2.ci_low) / ci_low_denom
     if r1.ci_high and r2.ci_high:
-        ci_high_diff = abs(r1.ci_high - r2.ci_high) / max(r1.ci_high, 0.01)
+        ci_high_denom = max(abs(r1.ci_high), abs(r2.ci_high), 0.01)
+        ci_high_diff = abs(r1.ci_high - r2.ci_high) / ci_high_denom
 
     # Adaptive CI tolerance based on outcome match
     effective_ci_tol = ci_tolerance
@@ -491,8 +494,8 @@ def calculate_confidence_grade(
     Returns:
         ConfidenceGrade
     """
-    # Check for failures first
-    if has_disagreement:
+    # Grade F only when majority does NOT agree (not for any pairwise mismatch)
+    if has_disagreement and agreement_count < 2:
         return ConfidenceGrade.F
 
     # Grade A: 3+ agree + verified + provenance
@@ -694,7 +697,8 @@ class EnsembleMerger:
 
         # Get best Wasserstein grade
         wasserstein_grades = [r.wasserstein_grade for r in results if r.wasserstein_grade]
-        best_wasserstein = min(wasserstein_grades, default=None) if wasserstein_grades else None
+        GRADE_ORDER = {'A': 0, 'B': 1, 'C': 2, 'D': 3}
+        best_wasserstein = min(wasserstein_grades, key=lambda g: GRADE_ORDER.get(g, 99)) if wasserstein_grades else None
 
         # Check for provenance
         has_provenance = any(r.has_provenance for r in results)
@@ -710,6 +714,8 @@ class EnsembleMerger:
                         has_disagreement = True
                         merged.disagreement_details = f"Values differ: {values}"
                         break
+                if has_disagreement:
+                    break
 
         # Select best value
         best = select_best_value(results, self.prefer_verified)

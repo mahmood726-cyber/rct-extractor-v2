@@ -3,7 +3,8 @@ Deterministic Verification Engine for RCT Extractor v4.0
 =========================================================
 
 QWED-style formal verification of extracted values.
-Uses SymPy for symbolic mathematics and proves relationships.
+Uses SymPy (optional) for symbolic mathematics and proves relationships.
+Falls back to pure-math implementation when SymPy is not installed.
 
 Verification Types:
 1. Mathematical consistency (CI bounds, SE, p-values)
@@ -104,7 +105,7 @@ class SymbolicVerifier:
 
     def verify_ci_ordered(self, ci_lower: float, ci_upper: float) -> Constraint:
         """Verify CI bounds are correctly ordered"""
-        is_satisfied = ci_lower < ci_upper
+        is_satisfied = ci_lower <= ci_upper
 
         return Constraint(
             name="CI_ORDERED",
@@ -295,7 +296,7 @@ class PlausibilityVerifier:
         'IRR': {'min': 0.01, 'max': 100.0, 'null': 1.0},
         'MD': {'min': -1000.0, 'max': 1000.0, 'null': 0.0},
         'SMD': {'min': -10.0, 'max': 10.0, 'null': 0.0},
-        'ARD': {'min': -1.0, 'max': 1.0, 'null': 0.0},  # Decimal scale
+        'ARD': {'min': -100.0, 'max': 100.0, 'null': 0.0},  # Allows both decimal and percentage scale
         'NNT': {'min': 1.0, 'max': 10000.0, 'null': None},
         'NNH': {'min': 1.0, 'max': 10000.0, 'null': None},
     }
@@ -538,9 +539,13 @@ class DeterministicVerifier:
             proofs.append(self.proof_builder.build_se_proof(effect_type, ci_lower, ci_upper, calculated_se))
 
         # Determine overall level
-        critical_satisfied = all(
-            c.is_satisfied for c in constraints
+        evaluated_critical = [
+            c for c in constraints
             if c.is_critical and c.is_satisfied is not None
+        ]
+        critical_satisfied = (
+            len(evaluated_critical) > 0
+            and all(c.is_satisfied for c in evaluated_critical)
         )
 
         has_violations = any(
