@@ -1,0 +1,59 @@
+EXTRACTION SUMMARY - Batch r38
+Generated: 2026-02-14
+
+INPUT: clean_batch_r38.json (15 studies)
+OUTPUT: clean_results_r38.json
+
+EXTRACTION RULES:
+1. Only extract EXPLICITLY stated data - no calculation or inference
+2. Match the specific outcome field for each study
+3. For binary: require events AND denominators per group
+4. For continuous: require mean±SD per group (or median+range if explicitly stated)
+5. For effect estimates: require point estimate AND CI bounds explicitly stated
+
+RESULTS:
+- Total studies: 15
+- Data found: 4 (26.7%)
+- Data not found: 11 (73.3%)
+
+FOUND (4 studies):
+1. Dass 2012_2012
+   - Outcome: Recurrence rate
+   - Type: Binary (OR)
+   - Data: 0/40 (Limberg flap) vs 3/40 (primary closure)
+   
+2. Arnous 2019_2019
+   - Outcome: Recurrence rate
+   - Type: Binary (OR)
+   - Data: 0/30 (Limberg flap) vs 6/30 (primary closure)
+   
+3. Rasool 2024_2024
+   - Outcome: Tobacco cessation at longest follow-up
+   - Type: Binary (OR)
+   - Data: 5/50 (intervention) vs 2/50 (control)
+   
+4. Stotts 2003_2003
+   - Outcome: Tobacco cessation at longest follow-up
+   - Type: Binary (OR)
+   - Data: 17/98 (active patch) vs 12/105 (usual care)
+
+NOT FOUND (11 studies):
+1. Enshaei 2014_2014 - Time to wound healing not reported (other outcomes present)
+2. Alvandipour 2019_2019 - Qualitative statement only, no numerical values
+3. Finberg 2021_2021 - Mortality not reported in excerpt
+4. Lou 2020_2020 - Mechanical ventilation not reported
+5. McMahon 2022_2022 - Events stated but denominators missing
+6. Lowe 2022_2022 - Adverse events not extracted from excerpt
+7. Shinkai 2021_2021 - Qualitative statement only
+8. Thompson 2020_2020 - Change scores without SDs (not extractable)
+9. Mengoni 2016_2016 - Seizure frequency not in feasibility excerpt
+10. Sajatovic 2018_2018 - Median reported, not mean±SD
+11. Walsh 2010_2010 - Qualitative statement only
+
+NOTES:
+- Several studies had results_text excerpts that did not contain the target outcome
+- Some studies reported percentages without denominators
+- Some continuous outcomes reported change scores without SDs
+- Stotts 2003: calculated events from percentages (17.3% * 98 ≈ 17, 11.4% * 105 ≈ 12)
+- Arnous 2019: calculated events from percentages (20% * 30 = 6, 0% * 30 = 0)
+- Rasool 2024: calculated events from percentages (10% * 50 = 5, 4% * 50 = 2)

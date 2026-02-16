@@ -1,0 +1,42 @@
+=== TANAKA 2018 ===
+Results: Of the 112 randomized participants, 93 (83.0%) and 81 (72.3%) completed 8-week and 
+12-week visits, respectively. Intention-to-treat analysis demonstrated significantly larger 8-week 
+weight loss in the coaching group (−1.4 kg; 95% confidence interval [CI]: −2.0, −0.8 kg) than 
+that in the control group (−0.1 kg; 95% CI: −0.6, 0.4 kg). Significantly larger improvements 
+in triglyceride and glycated hemoglobin A1c levels were also obtained in the coaching group. 
+These benefits, except for the triglyceride level, were maintained until week 12. The frequent 
+upload of meal photos was associated with a larger 8-week weight loss in a dose–response 
+fashion (P-value for trend <0.001).
+Conclusion: This smartphone-delivered commercial weight loss program characterized as 
+dietary coaching via group chat resulted in modest but significant weight loss. Facilitating 
+participants’ active involvement in the program is necessary to achieve greater health 
+benefits.
+Keywords: specific health guidance, technology-enhanced program, meal photo upload
+Introduction
+Body weight loss and its maintenance remain important challenges in clinical and 
+public health settings.1,2 Most of the clinical guidelines for obesity recommend 
+dietary restriction as a first-line treatment option before proceeding to more intensive 
+modalities such as pharmacotherapy and bariatric surgery.2–5 In public health practices, 
+weight control via dietary modification is also highly recommended. In April 2008, 
+
+=== JOTHINATH 2021 ===
+Results—Among the 1,459 participants allocated to STC (N=509) or PCC 
+(N=950), there were no differences in clinical and demographic characteristics. Self-reported 
+prevalences were available for HIV (42%), HCV (57%), and prior tuberculosis (17%). Study 
+retention at 6, 12, 18, and 24 months was as 91%, 85%, 80%, and 74%, respectively.
+Conclusion—PWID have a high prevalence of medical comorbidities and integrating OAT into 
+primary care settings has the potential to improve the health of PWID. Findings from this study 
+can help guide implementation of integrated care in Ukraine and throughout similar low-resource, 
+high-burden countries in the Eastern European and Central Asian region.
+Keywords
+Opioid Agonist Therapies (OAT); People who inject drugs (PWID); Opioids; integrated care; 
+Implementation science; Ukraine
+1. Introduction
+Despite reductions in HIV globally, HIV incidence and mortality are increasing in the 
+Eastern Europe and Central Asian (EECA) region. Like other EECA countries, Ukraine’s 
+HIV epidemic is concentrated among people who inject drugs (PWID). The majority 
+of PWID in Ukraine use illicit opioids and meet the diagnostic criteria of opioid use 
+disorder.1 PWID experience poor health outcomes, including HIV, HCV, and tuberculosis 
+comorbidities, overdose, hospitalizations,2–4 and increased morbidity and mortality, mostly 
+from diseases that can be screened for and managed in primary care settings.5,6
+Maintenance with opioid agonist therapies (OAT) using me

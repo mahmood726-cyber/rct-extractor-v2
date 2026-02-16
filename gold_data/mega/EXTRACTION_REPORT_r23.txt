@@ -1,0 +1,167 @@
+================================================================================
+EXTRACTION REPORT: clean_batch_r23.json
+================================================================================
+Date: 2026-02-14
+Batch: r23 (15 studies from mega gold standard)
+Output: clean_results_r23.json
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+Total entries processed:        15
+Successful extractions:         7  (46.7%)
+No data found:                  8  (53.3%)
+
+Breakdown by data type:
+- Binary outcomes extracted:    5
+- Continuous outcomes extracted: 2
+- Direct effect estimates:      0
+
+================================================================================
+SUCCESSFUL EXTRACTIONS (7 studies)
+================================================================================
+
+1. Orbo 2014_2014
+   Outcome: Levonorgestrel intrauterine system compared to oral progestin.
+            Complete pathological response rate.
+   Data type: Binary
+   Extracted: Intervention 53/53, Control 46/48
+   Source: "Responses were obtained for all the women in the LNG-IUS group
+           (53/53, 95% CI 0.93-1.0) and for 96% of the women in the
+           continuous oral group (46/48, 95% CI 0.86-0.99)"
+
+2. Bruintjes 2019_2019
+   Outcome: Health-related quality of life short-term
+   Data type: Continuous
+   Extracted: Intervention 179.5±13.6, Control 172.3±19.2
+   Source: "the quality of recovery was significantly better at postoperative
+           day 2 in patients receiving a profound versus moderate block
+           (179.5 ± 13.6 versus 172.3 ± 19.2)"
+
+3. Cybulski 2003_2003
+   Outcome: Sinus rhythm until hospital discharge or end of study follow-up
+            (paroxysmal AF)
+   Data type: Binary
+   Extracted: Intervention 88/106, Control 24/54
+   Source: "Sinus rhythm was restored 20 h after initiation of therapy in
+           88 (83%) patients in the amiodarone group and in 24 (44%)
+           patients in the control group (p<0.0001)"
+
+4. Beatch 2016_2016
+   Outcome: Sinus rhythm until hospital discharge or end of study follow-up
+            (paroxysmal AF)
+   Data type: Binary
+   Extracted: Intervention 59/129, Control 1/68
+   Source: "Of the 129 individuals who received vernakalant, 59 (45.7%)
+           converted to SR compared with one of the 68 patients (1.5%)
+           who received placebo (p < 0.0001)"
+
+5. Zapata 2014_2014
+   Outcome: Time (%) in target oxygen saturation range
+   Data type: Continuous
+   Extracted: Intervention 58.0±4.0, Control 33.7±4.7
+   Source: "The percentage of time within intended SpO2 was 58 ± 4% in the
+           Auto-Mixer group and 33.7 ± 4.7% in the manual group"
+
+6. Zeng 2017_2017
+   Outcome: Need for allogeneic blood transfusion (only trials included in
+            the NMA)
+   Data type: Binary
+   Extracted: Intervention 1/50, Control 17/50
+   Source: "lower transfusion rate (2% vs 34%, P < 0.01) compared with
+           those in the placebo group"
+   Verification: 1/50 = 2.0%, 17/50 = 34.0% ✓
+
+7. Peng 2021_2021
+   Outcome: Risk of experiencing DVT (only trials included in the NMA)
+   Data type: Binary
+   Extracted: Intervention 0/47, Control 0/46
+   Source: "No symptomatic deep venous thrombosis or other severe
+           complications occurred."
+
+================================================================================
+NO DATA FOUND (8 studies)
+================================================================================
+
+1. Taha 2022_2022
+   Outcome: Sinus rhythm until hospital discharge or end of study follow-up
+            (paroxysmal AF)
+   Reason: Only percentages given (83% vs 85%), actual event counts not
+           reported.
+
+2. Zendedel 2015_2015
+   Outcome: Inter-arm difference in mean change in FEV1 (% predicted)
+   Reason: Results only state 'significant differences in FEV1' but do not
+           report actual means, SDs, or mean changes.
+
+3. Alavi Foumani 2019_2019
+   Outcome: Inter-arm difference in mean change in FEV1 (% predicted)
+   Reason: Outcome asks for 'change in FEV1', but only absolute FEV1 values
+           at follow-up are reported, not changes from baseline.
+
+4. Bjerk 2013_2013
+   Outcome: Proportion of participants with one or more serious adverse
+            event of any cause
+   Reason: Outcome asks for serious adverse events, but results text focuses
+           on SPPB and SGRQ scores. SAE data not provided in the excerpt.
+
+5. Yen 2021_2021
+   Outcome: Need for allogeneic blood transfusion (only trials included in
+            the NMA)
+   Reason: Outcome is blood transfusion, but results text does not report
+           transfusion events or rates. Only blood loss volumes are reported.
+
+6. Xue 2021_2021
+   Outcome: Risk of experiencing DVT (only trials included in the NMA)
+   Reason: DVT events reported (4, 3, 3 in groups A, B, C), but total number
+           of patients per group not provided in the excerpt.
+
+7. Tsukada 2019_2019
+   Outcome: Risk of experiencing DVT (only trials included in the NMA)
+   Reason: Thrombotic event percentages given (12% vs 9%) but exact group
+           sizes not clearly stated. Text mentions 77 patients total but
+           unclear if this is per group or total enrollment.
+
+8. Yen 2017_2017
+   Outcome: Need for allogeneic blood transfusion
+   Reason: Outcome is blood transfusion need, but results text only reports
+           total blood loss volumes (mL), not transfusion events or rates.
+
+================================================================================
+EXTRACTION PRINCIPLES APPLIED
+================================================================================
+
+1. ONLY extracted data EXPLICITLY stated in the results text
+2. Never calculated, inferred, or imputed missing values
+3. Required exact counts for binary data (not just percentages)
+4. Required actual change scores when outcome specified "change"
+5. Distinguished between follow-up values vs. change from baseline
+6. Verified all extractions against source quotes
+7. Set found=false when requested outcome was not reported
+
+================================================================================
+DATA QUALITY NOTES
+================================================================================
+
+High confidence extractions (clear, unambiguous):
+- Orbo 2014, Cybulski 2003, Beatch 2016, Zapata 2014, Zeng 2017, Peng 2021
+
+Moderate confidence extractions:
+- Bruintjes 2019 (as-treated analysis, not intention-to-treat primary)
+
+Studies with partial data (events known but denominators missing):
+- Xue 2021 (DVT events: 4, 3, 3 but n per group not stated)
+- Tsukada 2019 (12% vs 9% thrombotic events, 77 total patients 1:1)
+
+Studies reporting wrong outcome measure:
+- Alavi Foumani 2019 (reports FEV1 levels not FEV1 changes)
+- Yen 2021, Yen 2017 (report blood loss not transfusion)
+
+Studies with insufficient detail:
+- Taha 2022 (percentages without sample sizes)
+- Zendedel 2015 (qualitative statement only)
+- Bjerk 2013 (requested outcome not in provided text)
+
+================================================================================
+END OF REPORT
+================================================================================

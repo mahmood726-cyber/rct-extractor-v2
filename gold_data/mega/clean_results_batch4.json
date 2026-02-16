@@ -1,0 +1,220 @@
+[
+  {
+    "study_id": "Wang 2020_2020",
+    "found": true,
+    "effect_type": "MD",
+    "point_estimate": null,
+    "ci_lower": null,
+    "ci_upper": null,
+    "intervention_mean": 3.7,
+    "intervention_sd": 0.7,
+    "intervention_n": 35,
+    "control_mean": 3.4,
+    "control_sd": 0.6,
+    "control_n": 35,
+    "source_quote": "Table 2: 30 min: observation 3.7±0.7, control 3.4±0.6 (n=35 each)",
+    "reasoning": "Sedation scores at 30 minutes post-administration from Table 2"
+  },
+  {
+    "study_id": "Pang 2005_2005",
+    "found": false,
+    "effect_type": "NONE",
+    "point_estimate": null,
+    "ci_lower": null,
+    "ci_upper": null,
+    "source_quote": "",
+    "reasoning": "Berg Balance Scale values not found in provided text excerpt"
+  },
+  {
+    "study_id": "Stuart 2019_2019",
+    "found": false,
+    "effect_type": "NONE",
+    "point_estimate": null,
+    "ci_lower": null,
+    "ci_upper": null,
+    "source_quote": "There were no serious adverse events",
+    "reasoning": "States no serious AEs occurred but no event counts provided for all adverse events"
+  },
+  {
+    "study_id": "Tang 2023_2023",
+    "found": false,
+    "effect_type": "NONE",
+    "point_estimate": null,
+    "ci_lower": null,
+    "ci_upper": null,
+    "source_quote": "",
+    "reasoning": "Pain VAS values found but cannot clearly identify intervention vs control groups from excerpt"
+  },
+  {
+    "study_id": "Abdou 2018_2018",
+    "found": false,
+    "effect_type": "NONE",
+    "point_estimate": null,
+    "ci_lower": null,
+    "ci_upper": null,
+    "source_quote": "",
+    "reasoning": "Pain VAS mean±SD values found but group labels not clear in excerpt"
+  },
+  {
+    "study_id": "Aravind 2022_2022",
+    "found": false,
+    "effect_type": "NONE",
+    "point_estimate": null,
+    "ci_lower": null,
+    "ci_upper": null,
+    "source_quote": "",
+    "reasoning": "ADL scale values not found in provided text excerpt"
+  },
+  {
+    "study_id": "Wolter 2002_2002",
+    "found": false,
+    "effect_type": "NONE",
+    "point_estimate": null,
+    "ci_lower": null,
+    "ci_upper": null,
+    "source_quote": "",
+    "reasoning": "FEV1 values not found in provided text excerpt"
+  },
+  {
+    "study_id": "Clement 2006_2006",
+    "found": false,
+    "effect_type": "NONE",
+    "point_estimate": null,
+    "ci_lower": null,
+    "ci_upper": null,
+    "source_quote": "",
+    "reasoning": "FEV1 values not found in provided text excerpt"
+  },
+  {
+    "study_id": "Corral-Gudino 2021_2021",
+    "found": true,
+    "effect_type": "RR",
+    "point_estimate": null,
+    "ci_lower": null,
+    "ci_upper": null,
+    "intervention_events": 14,
+    "intervention_n": 35,
+    "control_events": 14,
+    "control_n": 29,
+    "source_quote": "14 of 29 patients (48%) in the SOC group and 14 of 35 (40%) in the MP group",
+    "reasoning": "Composite endpoint counts clearly stated; MP=methylprednisolone (intervention), SOC=standard of care (control)"
+  },
+  {
+    "study_id": "Fernández-Serrano 2011_2011",
+    "found": false,
+    "effect_type": "NONE",
+    "point_estimate": null,
+    "ci_lower": null,
+    "ci_upper": null,
+    "source_quote": "No differences in mortality were found among groups",
+    "reasoning": "States no difference in mortality but specific death counts not provided"
+  },
+  {
+    "study_id": "Ghanei 2021_2021",
+    "found": false,
+    "effect_type": "NONE",
+    "point_estimate": null,
+    "ci_lower": null,
+    "ci_upper": null,
+    "source_quote": "no significant differences in the number of deaths",
+    "reasoning": "States no significant differences in deaths but specific counts not provided in excerpt"
+  },
+  {
+    "study_id": "Mohamed 2023_2023",
+    "found": true,
+    "effect_type": "RR",
+    "point_estimate": null,
+    "ci_lower": null,
+    "ci_upper": null,
+    "intervention_events": 15,
+    "intervention_n": 53,
+    "control_events": 19,
+    "control_n": 53,
+    "source_quote": "triple therapy, 28.3% vs. control, 35.8%; n=53 in each group",
+    "reasoning": "In-hospital mortality at 60 days: computed events from percentages (28.3% of 53 = 15, 35.8% of 53 = 19)"
+  },
+  {
+    "study_id": "Jamshidi 2021_2021",
+    "found": false,
+    "effect_type": "NONE",
+    "point_estimate": null,
+    "ci_lower": null,
+    "ci_upper": null,
+    "source_quote": "In-hospital death occurred in 10.3% of patients who received combination therapy and 37.9% in control group",
+    "reasoning": "Mortality percentages reported but total sample sizes not found in provided excerpt"
+  },
+  {
+    "study_id": "Tongyoo 2016_2016",
+    "found": false,
+    "effect_type": "NONE",
+    "point_estimate": null,
+    "ci_lower": null,
+    "ci_upper": null,
+    "source_quote": "197 patients randomized to either hydrocortisone (n=98) or placebo (n=99)",
+    "reasoning": "Study reports 28-day survival as hazard ratio (HR 0.80) but not raw death counts"
+  },
+  {
+    "study_id": "Yildiz 2002_2002",
+    "found": false,
+    "effect_type": "NONE",
+    "point_estimate": null,
+    "ci_lower": null,
+    "ci_upper": null,
+    "source_quote": "mortality rates among patients with occult adrenal insufficiencies were 40% in steroid therapy group and 55.6% in standard therapy group",
+    "reasoning": "Mortality rates reported only for subgroup (occult adrenal insufficiency), not overall study; overall mortality counts not provided"
+  },
+  {
+    "study_id": "Dorresteijn 2008_2008",
+    "found": true,
+    "effect_type": "RR",
+    "point_estimate": null,
+    "ci_lower": null,
+    "ci_upper": null,
+    "intervention_events": 5,
+    "intervention_n": 12,
+    "control_events": 1,
+    "control_n": 12,
+    "source_quote": "Seven of the 12 patients in the MMF group and 11 of the 12 patients in the CsA group remained in complete remission",
+    "reasoning": "Relapse at 12 months: MMF group 5 relapsed (12-7=5), CsA group 1 relapsed (12-11=1)"
+  },
+  {
+    "study_id": "Mathew 2020_2022",
+    "found": false,
+    "effect_type": "NONE",
+    "point_estimate": null,
+    "ci_lower": null,
+    "ci_upper": null,
+    "source_quote": "",
+    "reasoning": "Relapse data not found in provided text excerpt"
+  },
+  {
+    "study_id": "Clarke-Moloney 2014_2014",
+    "found": false,
+    "effect_type": "NONE",
+    "point_estimate": null,
+    "ci_lower": null,
+    "ci_upper": null,
+    "source_quote": "",
+    "reasoning": "Reulceration data not found in provided text excerpt"
+  },
+  {
+    "study_id": "Wintzen 2007_2007",
+    "found": false,
+    "effect_type": "NONE",
+    "point_estimate": null,
+    "ci_lower": null,
+    "ci_upper": null,
+    "source_quote": "",
+    "reasoning": "Epworth Sleepiness Scale improvement data not found in provided text excerpt"
+  },
+  {
+    "study_id": "Costa 2018_2018",
+    "found": false,
+    "effect_type": "NONE",
+    "point_estimate": null,
+    "ci_lower": null,
+    "ci_upper": null,
+    "source_quote": "",
+    "reasoning": "Late-onset invasive infection data not found in provided text excerpt"
+  }
+]

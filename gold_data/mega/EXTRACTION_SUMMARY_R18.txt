@@ -1,0 +1,111 @@
+================================================================================
+EXTRACTION SUMMARY FOR BATCH R18
+================================================================================
+
+Total entries: 15
+Found data: 7 (46.7%)
+No data: 8 (53.3%)
+
+================================================================================
+ENTRIES WITH DATA FOUND:
+================================================================================
+
+1. Vidrine 2012_2012 - Tobacco use cessation (binary)
+   Effect type: OR
+   Estimate: 4.3 [1.9, 9.8]
+   Sample sizes: CPI n=236 vs UC n=238
+   Quote: "participants in the CPI group were 4.3 (95% CI = 1.9, 9.8) times
+          more likely to be abstinent (7 day) compared with those in the UC group"
+   Note: Direct OR with CI reported, but raw event counts not stated
+
+2. Mussulman 2018_2018 - Tobacco use cessation (binary)
+   Effect type: NONE
+   Rates: 45.5% vs 14.3% at 6 months
+   Quote: "Verified abstinent rates were 45.5% in warm handoff versus 14.3%
+          in fax referral at 6 months (not significant)."
+   Note: Rates reported but group sizes not stated (25 total, 24 completed)
+
+3. Stanton 2015_2015 - Tobacco use cessation (binary)
+   Effect type: NONE
+   Rates: 8% vs 11% at 6mo, 6% vs 7% at 12mo
+   Quote: "Seven-day PPA rates reached 8% versus 11% at 6 months and 6% versus
+          7% at 12 months, for Aurora and ESC, respectively"
+   Note: N=302 total but group sizes not stated
+
+4. Gobbi 2013_2013 - Comparisons for relapse (12 months)
+   Effect type: NONE
+   Binary data: IFNB 2/9 vs NTZ 0/10 (relapses)
+   Quote: "78% of IFNB treated patients remained relapse free (NTZ group: 100%)"
+   Note: Calculated from percentages and sample sizes
+
+5. Cai 2016_2016 - Anti-TNF alpha versus placebo (binary)
+   Effect type: NONE
+   Binary data: Adalimumab 263/338 vs Placebo 10/87 (PASI 75 response)
+   Quote: "placebo 11.5% (10/87); adalimumab 77.8% (263/338; P < 0.001)"
+   Note: PASI 75 response, raw counts explicitly stated
+
+6. Khaled 2019_2019 - Cardiac T2* value (ms) (continuous)
+   Effect type: MD
+   Continuous data: Amlodipine 43.25±5.35 ms (n=20) vs Placebo ? (n=20)
+   Quote: "the amlodipine increased the myocardial T2* from 40.63±5.45 ms at
+          baseline to 43.25±5.35 ms (p<0.001)"
+   Note: Only amlodipine endpoint reported, placebo endpoint not stated
+
+7. Sharifi 2016_2016 - Normalisation of vitamin D levels (continuous)
+   Effect type: MD
+   Continuous data: Vit D 6.7±4.5 vs Placebo 11.4±5.5 mm/h (ESR, not VD)
+   Quote: "ESR decreased significantly in Vitamin D group (Before: 12.4±6.1
+          vs 12.1±5.3 mm/h, P=0.77; after: 6.7±4.5 vs 11.4±5.5 mm/h, P<0.001)"
+   Note: Outcome is VD normalization but only ESR data found. VD endpoint not reported.
+
+================================================================================
+ENTRIES WITH NO DATA FOUND:
+================================================================================
+
+1. Kim 2018_2018 - Incidence of arrhythmias
+   Reason: Outcome is arrhythmias but text discusses smoking cessation
+
+2. Humfleet 2013_2013 - Tobacco use cessation (binary)
+   Reason: 3-arm trial, rates 15-29%, no pairwise comparison
+
+3. Shelley 2015_2015 - Tobacco use cessation (binary)
+   Reason: Outcome is cessation but text reports adherence only (56% adherent)
+
+4. Reich 2020_2015 - Fumaric acid esters versus methotrexate (binary)
+   Reason: Outcome is FAE vs MTX but text discusses secukinumab vs placebo
+
+5. Wei 2013_2013 - All-cause mortality (binary)
+   Reason: Outcome is mortality but text discusses BP measurement protocols
+
+6. Hoj 2005_2005 - Death
+   Reason: Outcome is death but text reports PPH rates only
+
+7. Bafutto 2020_2020 - Normalisation of vitamin D levels (continuous)
+   Reason: 3-arm trial, VD increase noted but no mean±SD endpoints
+
+8. Ratanasukon 2012_2012 - Mean change in BCVA (continuous)
+   Reason: Text states no difference found but no specific values reported
+
+================================================================================
+DATA QUALITY NOTES:
+================================================================================
+
+Complete extractions (all required fields): 2/15 (13.3%)
+  - Gobbi 2013 (binary: 2/9 vs 0/10)
+  - Cai 2016 (binary: 263/338 vs 10/87)
+
+Partial extractions (some fields missing): 5/15 (33.3%)
+  - Vidrine 2012: OR+CI but no raw counts
+  - Mussulman 2018: rates but no group sizes
+  - Stanton 2015: rates but no group sizes
+  - Khaled 2019: intervention endpoint only
+  - Sharifi 2016: wrong outcome (ESR not VD)
+
+Common issues:
+  - Outcome mismatch (results discuss different outcome than specified)
+  - Multi-arm trials without pairwise data
+  - Percentages reported without denominator
+  - Within-group changes without between-group endpoint comparison
+  - Abstract/partial results sections missing key data
+
+================================================================================

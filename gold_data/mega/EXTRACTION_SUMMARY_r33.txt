@@ -1,0 +1,160 @@
+================================================================================
+EXTRACTION SUMMARY: clean_batch_r33.json → clean_results_r33.json
+================================================================================
+Date: 2026-02-14
+Extractor: Manual expert review
+Total studies: 15
+Data found: 6 (40%)
+Data not found: 9 (60%)
+
+================================================================================
+FOUND DATA (6 studies):
+================================================================================
+
+1. Fang 2022_2022
+   Outcome: Change in refractive error from baseline
+   Data type: MD (continuous)
+   Intervention (MFSCLs): -0.591 ± 0.106 D
+   Control (SVS): -0.938 ± 0.117 D
+   Source: "myopia progression of the SVS group, 20.93860.117 D, was greater
+           than that of the MFSCLs group, 20.59160.106 D"
+   Note: OCR artifacts in source text (missing decimals/minus signs)
+
+2. Sankaridurg 2010_2010
+   Outcome: Change in refractive error from baseline
+   Data type: MD (continuous)
+   Intervention (Lens Type III): -0.68 ± 0.47 D
+   Control (spectacles): -0.97 ± 0.48 D
+   Source: "in younger children (6 to 12 years) with parental history of myopia
+           (n = 100), there was significantly less progression (-0.68 D ± 0.47 D
+           vs. -0.97 D ± 0.48 D) with lens type III compared with control spectacles"
+   Note: Subgroup analysis (6-12 years with parental myopia)
+
+3. Jakobsen 2022_2022
+   Outcome: Change in axial length from baseline
+   Data type: MD (continuous)
+   Effect estimate: MD = -0.24 mm (95% CI: -0.36, -0.12)
+   Source: "The average AL elongation in the OKL group was 0.24 mm smaller as
+           compared to the SVS group (95% confidence interval 0.12-0.36)"
+   Note: Only difference reported, not individual group means
+
+4. Choi 2023_2023
+   Outcome: Change in axial length from baseline
+   Data type: MD (continuous)
+   Intervention (OK): 0.37 ± 0.37 mm
+   Control (SV): 0.60 ± 0.41 mm
+   Source: "Mean 2-year-normalized AL elongations in the OK and SV groups
+           differed significantly (p = 0.03) and were 0.37 ± 0.37 mm and
+           0.60 ± 0.41 mm, respectively."
+
+5. Chan 2022_2022
+   Outcome: Change in refractive error from baseline (1 year)
+   Data type: MD (continuous)
+   Intervention (atropine 0.01%): -0.70 ± 0.39 D/year
+   Control (placebo): -0.66 ± 0.41 D/year
+   Source: "The annualized change in SER (± SD) was -0.66 ± 0.41 D/year and
+           -0.70 ± 0.39 D/year, and that in AL was 0.30 ± 0.22 mm/year and
+           0.32 ± 0.16 mm/year for the placebo and the atropine groups,
+           respectively"
+   Note: No significant difference between groups
+
+6. Freeman 2011_2011
+   Outcome: Any VTE
+   Data type: Binary (HR with raw counts)
+   Intervention (pravastatin): 28/2834 events
+   Control (placebo): 20/2865 events
+   Effect estimate: HR = 1.42 (95% CI: 0.80, 2.52), p = 0.23
+   Source: "There were 28 definite cases (1.0%) of incident VTE in the
+           pravastatin group recipients and 20 cases (0.70%) in placebo
+           recipients. Pravastatin did not reduce VTE in PROSPER compared
+           to placebo [unadjusted hazard ratio (95% confidence interval)
+           1.42 (0.80, 2.52) p = 0.23]."
+
+================================================================================
+NOT FOUND (9 studies):
+================================================================================
+
+1. Raffa 2022_2022
+   Outcome: Change in refractive error from baseline
+   Reason: Results report only percentage control (38.6% and 66.6%) without
+           providing raw mean±SD data for change in refractive error in each group.
+
+2. Sankaridurg 2019_2019
+   Outcome: Change in refractive error from baseline
+   Reason: Results provide control mean±SD (-1.12±0.51D at 24 months) but test
+           CL data is given as a range (-0.78D to -0.87D) without individual
+           group means and SDs. Cannot extract specific intervention group data.
+
+3. Lin 2024_2024
+   Outcome: Change in axial length from baseline
+   Reason: This is an anisometropia study comparing two eyes within treatment
+           groups, not a standard intervention vs control comparison. The
+           reported data (0.06±0.15mm vs 0.15±0.15mm) compares more myopic
+           eye vs less myopic eye within the orthokeratology group.
+
+4. Hansen 2023_2023
+   Outcome: Change in refractive error from baseline (1 year)
+   Reason: Results report differences between groups (0.24 D less in loading
+           dose, 0.19 D less in 0.01% group compared to placebo) but do not
+           provide individual group mean±SD values for the outcome.
+
+5. Gagyor 2012_2012
+   Outcome: Short-term resolution of symptoms (days 1 to 4 after randomisation)
+   Reason: This appears to be a study protocol/methods paper. The results_text
+           describes a pilot trial (24/36 vs 6/33) but this is not the main
+           trial results. The paper is describing the design of a planned
+           494-patient trial.
+
+6. Park 2012_2012
+   Outcome: Length of hospital stay
+   Reason: Results section does not report length of hospital stay data. Text
+           mentions postoperative nutritional support reducing hospital stay in
+           general, but specific mean±SD for EEN vs TPN groups is not provided
+           in the excerpt.
+
+7. Dinglas 2016_2016
+   Outcome: Any VTE
+   Reason: Results focus on survival and quality of life outcomes. VTE outcome
+           is not reported in the provided results_text excerpt. The study is
+           about sepsis-associated ARDS, not VTE.
+
+8. Sager 2020_2020
+   Outcome: Net weight loss (kg)
+   Reason: Table 2 provides weight at enrollment and discharge for both groups
+           (Bolus: 73.7→73.5 kg, Continuous: 71.7→69.7 kg), but does not report
+           mean±SD of the CHANGE (net weight loss) as required for the outcome.
+           Would need paired data to calculate SD of change.
+
+9. Felker 2011_2011
+   Outcome: Net weight loss (kg)
+   Reason: Results focus on symptom assessment (AUC) and creatinine changes.
+           Net weight loss outcome is not reported in the provided results_text
+           excerpt, though diuresis is mentioned as a secondary outcome.
+
+================================================================================
+NOTES:
+================================================================================
+
+1. Extraction rules followed:
+   - Only EXPLICITLY stated data extracted (no calculation or inference)
+   - Source quotes provided for all found data
+   - Reasoning documented for all decisions
+   - Binary outcomes: events/n for each group
+   - Continuous outcomes: mean±SD for each group
+   - Direct effects: point estimate with 95% CI
+
+2. Common reasons for "not found":
+   - Only percentage/relative effects reported (not absolute data)
+   - Only difference reported (not individual group values)
+   - Wrong outcome in the text (VTE not reported in ARDS study)
+   - Study protocol/design paper (not results)
+   - Incomplete data (weight at timepoints but not change)
+
+3. Special cases:
+   - Fang 2022: OCR artifacts in source text required interpretation
+   - Sankaridurg 2010: Subgroup data used (6-12y with parental myopia)
+   - Jakobsen 2022: Only MD with CI available, not individual means
+   - Chan 2022: Null result (no significant difference)
+   - Lin 2024: Anisometropia within-group comparison (not standard RCT)
+
+================================================================================

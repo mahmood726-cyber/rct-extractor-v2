@@ -1,0 +1,145 @@
+================================================================================
+BATCH R41 EXTRACTION SUMMARY
+================================================================================
+Input file: clean_batch_r41.json
+Output file: clean_results_r41.json
+Extraction date: 2026-02-14
+
+Total studies: 15
+Found data: 3
+Not found: 12
+
+================================================================================
+EXTRACTED DATA (3 studies with complete numerical outcome data)
+================================================================================
+
+1. Breheny 2020_2020 (zBMI short-term)
+   Effect type: MD
+   Point estimate: -0.036
+   95% CI: [-0.085, 0.013]
+   Source: "adjusted mean difference (MD) in BMIz (intervention-control)
+           was -0.036 (95% CI: -0.085 to 0.013, p = 0.146)"
+   Reasoning: Explicitly stated MD for BMI z-score at 12 months with 95% CI.
+              This is the overall ITT result.
+
+2. Muller 2019_2019 (zBMI medium-term)
+   Effect type: MD
+   Point estimate: -0.17
+   95% CI: [-0.24, -0.09]
+   Source: "A significantly lower increase in the mean BMI Z-score
+           (estimate of difference in mean change: -0.17; 95% confidence
+           interval (CI): -0.24 to -0.09; p < 0.001)"
+   Reasoning: Explicitly stated difference in mean change for BMI Z-score
+              with 95% CI from the abstract.
+
+3. Rerksuppaphol 2017_2017 (BMI short-term)
+   Effect type: MD
+   Point estimate: -0.84
+   95% CI: [null, null]
+   Source: "Children in the control group had a significantly higher increase
+           in net BMI gains than those in the intervention group
+           (1.24kg/m2 vs. 0.40kg/m2, p-value=0.027)"
+   Reasoning: Results report net BMI gains: intervention 0.40 kg/m2,
+              control 1.24 kg/m2. MD = 0.40 - 1.24 = -0.84 kg/m2.
+              No CI provided, only p-value.
+
+================================================================================
+NOT FOUND SUMMARY (12 studies)
+================================================================================
+
+Studies where numerical outcome data could NOT be extracted:
+
+1. Ketelhut 2022_2022 (BMI short-term)
+   Reason: Results report CMJ, ST, and SRT changes with p-values and effect
+           sizes, but no explicit BMI numerical data for intervention vs
+           control groups at short-term follow-up.
+
+2. Diaz-Castro 2021_2021 (BMI short-term)
+   Reason: Results section focuses on molecular markers (adipsin, osteocrin,
+           NGF, BDNF) and academic performance. No explicit BMI values
+           reported.
+
+3. Lazaar 2007_2007 (BMI short-term)
+   Reason: Abstract explicitly states BMI was NOT affected by intervention
+           in girls. For boys, only BMI z-score was affected (p<0.001),
+           but no raw BMI values provided.
+
+4. Howe 2011_2011 (BMI medium-term)
+   Reason: Abstract mentions 'significant reduction in BMI' but provides
+           no numerical values. Results text does not report actual BMI
+           values for intervention vs control.
+
+5. Khan 2014_2014 (BMI medium-term)
+   Reason: Study reports percentage fat mass (%FM) and percentage central
+           fat mass (%CFM) as outcomes, not BMI.
+
+6. Martinez-Vizcaino 2014_2014 (BMI medium-term)
+   Reason: Abstract explicitly states 'BMI...was not modified by the
+           intervention.' Results report changes in other measures but
+           no BMI numerical data.
+
+7. Annesi 2016_2016 (BMI short-term)
+   Reason: Results text describes BMI measurement methodology but does not
+           report numerical BMI outcomes for intervention vs control groups.
+
+8. Yin 2012_2012 (zBMI medium-term)
+   Reason: Study reports percent body fat (%BF) and cardiorespiratory
+           fitness (CRF) as primary outcomes. No BMI z-score values reported.
+
+9. Chen 2010_2010 (BMI short-term)
+   Reason: Abstract and results state 'significant effect...in decreasing
+           body mass index' but provide no numerical BMI values.
+
+10. Duncan 2019_2019 (BMI short-term)
+    Reason: Results report significant intervention effect for BMI at T2
+            (p=0.020) but no numerical BMI values provided, only p-value.
+
+11. Nollen 2014_2014 (BMI short-term)
+    Reason: Abstract and results explicitly state 'No differences were
+            observed for...BMI.' No numerical BMI data provided.
+
+12. Hull 2018_2018 (BMI short-term)
+    Reason: Results explicitly state 'BMI-Z growth rate...did not differ'
+            between groups at short-term follow-up. No numerical BMI-Z
+            values provided.
+
+================================================================================
+CATEGORIZATION OF NON-EXTRACTION REASONS
+================================================================================
+
+No numerical data reported (despite significance claims): 5 studies
+  - Ketelhut 2022, Howe 2011, Annesi 2016, Chen 2010, Duncan 2019
+
+No significant effect reported: 4 studies
+  - Lazaar 2007, Martinez-Vizcaino 2014, Nollen 2014, Hull 2018
+
+Different outcome measured (not BMI/zBMI): 3 studies
+  - Diaz-Castro 2021, Khan 2014, Yin 2012
+
+================================================================================
+EXTRACTION RULES APPLIED
+================================================================================
+
+1. ONLY extract EXPLICITLY stated data - never calculate or infer
+2. The "outcome" field determines which specific outcome to extract
+3. If numerical data not found, set found=false
+4. Provide source_quote and reasoning for all decisions
+5. For binary outcomes: extract intervention_events/n, control_events/n
+6. For continuous outcomes: extract intervention_mean/sd, control_mean/sd
+7. For direct effects: extract point_estimate, ci_lower, ci_upper
+
+================================================================================
+KEY FINDINGS
+================================================================================
+
+- Success rate: 3/15 (20%) - numerical outcome data successfully extracted
+- Main barriers to extraction:
+  * Numerical values not reported (5 studies)
+  * No significant effect, no data provided (4 studies)
+  * Different outcome measured than requested (3 studies)
+
+- All 3 successful extractions were for MD (mean difference)
+- 2/3 had complete 95% CI
+- 1/3 had point estimate only (no CI)
+
+================================================================================

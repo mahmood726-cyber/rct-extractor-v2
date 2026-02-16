@@ -1,0 +1,123 @@
+================================================================================
+BATCH R51 EXTRACTION SUMMARY
+================================================================================
+Date: 2026-02-14
+Input: clean_batch_r51.json (15 studies)
+Output: clean_results_r51.json
+
+EXTRACTION RULES:
+- Only extract EXPLICITLY stated numerical data
+- Never calculate or infer values
+- Provide source_quote and reasoning for all decisions
+
+================================================================================
+RESULTS: 7/15 FOUND (46.7%)
+================================================================================
+
+FOUND (7 studies):
+------------------
+
+1. Johansson 2020_2020 - BMI (z-score) Change
+   - MD = -0.24
+   - Intervention mean = -0.23, Control mean = 0.01
+   - No SDs provided
+   - Source: "At 6 months the intervention group had a greater reduction of
+     0.24 units in BMI SDS than standard care (−0.23 vs. 0.01, p = 0.002)."
+
+2. Jarbandhan 2022_2022 - Disability (DASH)
+   - MD = -9.8
+   - Raw group means not provided (only difference)
+   - Source: "UE function (-9.8 ± 15.2, p = 0.04) improved in the IG compared
+     to no change in the CG."
+
+3. Vidmar 2023_2023 - BMI (z-score) Change
+   - MD = -1.29 [95% CI: -1.82, -0.76]
+   - Overall effect (no between-group difference)
+   - Source: "All adolescents (n = 161) lost weight over 24-weeks (−1.29%,
+     [−1.82, −0.76], p < 0.0001), with no significant weight loss difference
+     between groups (p = 0.3)."
+
+4. Acheampong 2018_2018 - Blood pressure (systolic)
+   - POST-treatment values
+   - Intervention: 126.20 ± 7.82 mmHg
+   - Control: 142.13 ± 8.00 mmHg
+   - Source: Tables showing pre-post values for combined exercise vs
+     conventional groups
+
+5. Faggiani 2022_2022 - Functional status (HHS)
+   - Intervention (DAA): 87 points
+   - Control (DLA): 83 points
+   - No SDs provided, p=0.71 (not significant)
+   - Source: "functional outcomes (HHS: DLA 83 points vs DAA 87 points;
+     p = 0,71)."
+
+6. Sahr 2021_2021 - Vaping cessation at 6 months
+   - Intervention (vape-taper+behavioral): 6/8 (75%)
+   - Control (self-guided): 4/9 (44.4%)
+   - Source: "At 6 months... 6 of 8 (75%) vape-taper + behavioral support arm,
+     and 4 of 9 (44.4%) self-guided arm self-reported being vape-free and
+     nicotine-free."
+
+7. Ball 2024_2024 - HRQoL (Oxford Hip Score at 120 days)
+   - MD = -1.23 [95% CI: -3.96, 1.49]
+   - p=0.37 (not significant)
+   - Source: "Primary outcome: little evidence of a difference in OHS at 120
+     days; adjusted mean difference (SPAIRE—lateral) −1.23 (95% CI −3.96 to
+     1.49, p=0.37)."
+
+NOT FOUND (8 studies):
+----------------------
+
+1. Norman 2016_2016 - BMI (kg/m2)
+   - Only p-value provided, no numerical BMI values
+
+2. Abraham 2015_2015 - BMI (kg/m2)
+   - No numerical BMI values, only qualitative statement
+
+3. Likhitweerawong 2021_2021 - BMI (z-score) Change
+   - No numerical BMI z-score values, only qualitative comparison
+
+4. Dean 2018_2018 - Disability
+   - No numerical disability values in results_text excerpt
+
+5. Rizvi 2023_2023 - Blood pressure (systolic)
+   - No numerical systolic BP values in results_text excerpt
+
+6. Vahlberg 2021_2021 - Walking speed (comfortable)
+   - 6-minute walk test reported (30m difference)
+   - "No difference" in 10-meter walk time mentioned
+   - BUT no numerical walking speed (m/s) values provided
+
+7. Saxer 2018_2018 - Mortality (4-24 months)
+   - States "mortality was higher in AMIS-group"
+   - BUT no numerical counts (events/n) provided
+
+8. Klein 2024_2024 - Vaping cessation (3-6 months)
+   - Results section only shows baseline/recruitment data
+   - No cessation outcome data in excerpt
+
+================================================================================
+DATA TYPES BREAKDOWN
+================================================================================
+Found extractions:
+- Binary outcomes:  1 (Sahr 2021)
+- Continuous data:  3 (Acheampong 2018, Faggiani 2022, Johansson 2020)
+- MD only:          3 (Jarbandhan 2022, Vidmar 2023, Ball 2024)
+
+Effect types:
+- MD: 6 studies
+- RR: 1 study
+
+Confidence intervals provided: 2 studies (Vidmar 2023, Ball 2024)
+
+================================================================================
+NOTES
+================================================================================
+1. Many studies provide only p-values or qualitative statements without
+   numerical estimates
+2. Some studies report mean differences but not raw group means/SDs
+3. Abstract/results excerpts may not contain full outcome data
+4. Several studies would likely have data in tables not captured in text
+5. The 46.7% extraction rate reflects conservative "explicit only" rule
+
+================================================================================
