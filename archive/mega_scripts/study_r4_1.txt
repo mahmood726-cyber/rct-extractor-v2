@@ -1,0 +1,111 @@
+Study ID: Locatelli 2014_2014
+Outcome: Death (all causes)
+Data type: binary
+
+================================================================================
+RESULTS TEXT:
+================================================================================
+
+Results. At Week 16 (the end of the 4-week placebo-controlled
+withdrawal period), serum phosphorus level was 0.43 mmol/L
+(1.32 mg/dL) lower with colestilan than placebo (P < 0.001;
+primary end point). Serum LDL-C level was also lower with
+colestilan than with placebo (P < 0.001). Both colestilan and
+sevelamer produced signiﬁcant reductions from baseline in
+serum phosphorus levels (P < 0.001), maintained for 1 year,
+and the proportion of patients achieving target levels of ≤1.78
+mmol/L (5.5 mg/dL) or ≤1.95 mmol/L (6.0 mg/dL) at study
+end were similar (65.3 and 73.3%, respectively, for colestilan,
+and 66.9 and 77.4%, respectively, for sevelamer). Serum
+calcium level remained stable in the colestilan group but
+tended to increase slightly in the sevelamer group (end-of-
+study increase of 0.035 mmol/L over baseline). Both binders
+produced similar reductions from baseline in LDL-C level (P
+< 0.001), and responder rates after 1 year, using a target
+of <1.83 mmol/L (70 mg/dL) or <2.59 mmol/L (100 mg/dL)
+were similar in both groups (50.7 and 85.3% for colestilan and
+54.0 and 80.6% for sevelamer). Colestilan was generally well
+tolerated.
+Conclusions. Colestilan is effective and safe for the treatment
+of hyperphosphataemia in patients with CKD 5D, and affords
+similar long-term phosphorus and cholesterol reductions/re-
+sponder rates to sevelamer.
+Keywords: chronic kidney disease, colestilan, hyperphospha-
+taemia, placebo, sevelamer
+INTRODUCTION
+In patients with chronic kidney disease (CKD), hyperpho-
+sphataemia plays a role in the development of secondary
+hyperparathyroidism, CKD-bone mineral disorder and soft
+tissue and vascular calciﬁcation [1–3], and is associated with
+an increased risk of cardiovascular disease and death [4, 5].
+Treatment with oral phosphate binders, which act by binding
+dietary phosphate in the intestines to prevent its absorption,
+often forms part of the management strategy to reduce and
+control serum phosphorus levels in patients with advanced
+CKD [6]. Data from observational studies suggest that the use
+of phosphate binders prolongs survival in patients receiving
+haemodialysis [7–9].
+Phosphate binders are theoretically all effective at lowering
+phosphorus levels. However, factors such as pill burden and
+compliance impact on the efﬁcacy achieved in practice, and
+ORIGINAL ARTICLE
+© The Author 2013. Published by Oxford University Press on behalf of ERA-
+EDTA. This is an Open Access article distributed under the terms of the Creative
+Commons Attribution Non-Commercial License (http://creativecommons.org/
+licenses/by-nc/3.0/), which permits noncommercial re-use, distribution, and
+reproduction in any medium, provided the original work is properly cited. For
+commercial re-use, please contact journals.permissions@oup.com
+1061
+
+other characteristics, such as safety and tolerability, or add-
+itional beneﬁcial effects, may help determine the choice of
+agent [10]. For example, it has been reported on many occa-
+sions that calcium-based phosphate binders can increase the
+risk of calcium overload and vascular calciﬁcation [2, 11, 12],
+whereas
+non-calcium-based
+phosphate
+binders
+such
+as
+sevelamer or lanthanum reduce the risk of hypercalcaemia
+[13], and potentially of vascular calciﬁcation [14–16].
+Sevelamer has also been shown to improve the lipid proﬁle
+in patients with CKD on dialysis (CKD 5D) compared with
+calcium-based binders [17, 18]. Dyslipidaemia is common in
+patients with CKD, and may contribute to the risk of cardio-
+vascular disease in some patients [19]. Moreover, CKD is itself
+considered to be a coronary heart disease risk-equivalent, and
+it is recommended that lipid disorders are treated in such pa-
+tients [20–22].
+Colestilan is a new, non-absorbable, non-calcium, non-
+metal, anion-exchange resin that binds both phosphorus and
+bile acids in the gastrointestinal tract [23]. Short-term, ﬁxed-
+dose, phase III clinical trials in dialysis patients have shown
+that colestilan is effective at lowering both serum phosphorus
+and low-density lipoprotein levels [24].
+The current study was undertaken to evaluate the effects of
+short-term titrated colestilan versus placebo on serum phos-
+phorus and lipid levels in patients with CKD 5D, and to evalu-
+ate the safety and efﬁcacy of colestilan over a 1-year period
+with sevelamer as a comparator arm. The study comprised two
+main parts. The primary aim of the initial short-term phase
+(where, following a 12-week open-label titration period, pa-
+tients were randomized in a double-blind manner to continue
+on
+colestilan
+treatment
+or
+swap
+to
+placebo)
+was
+to
+demonstrate that colestilan was superior to placebo in the
+control of serum phosphorus levels in patients with CKD 5D
+and hyperphosphataemia. The primary aim of the subsequent
+extension phase was to evaluate the long-term safety and toler-
+ability of colestilan. Secondary aims included an assessment of
+the long-term efﬁcacy of colestilan with regard to hyper-
+phosphataemia and dyslipidaemia, and a comparison of the
+e

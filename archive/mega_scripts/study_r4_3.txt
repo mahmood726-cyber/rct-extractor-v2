@@ -1,0 +1,83 @@
+Study ID: Han 2016_2016
+Outcome: Independent walking at end of intervention phase, all electromechanical devices used (critical outcome)
+Data type: binary
+
+================================================================================
+RESULTS TEXT:
+================================================================================
+
+Results: Both groups exhibited signiﬁcant functional recovery in all clinical outcome measures after the 4-week intervention.
+However, peak aerobic capacity, peak heart rate, exercise tolerance test duration, and baPWV improved only in the RAGT group,
+and the improvements in baPWV and peak aerobic capacity were more noticeable in the RAGT group than in the control group.
+Conclusion: Robot-assisted gait therapy combined with conventional rehabilitation therapy represents an effective method for
+reversing arterial stiffness and improving peak aerobic capacity in subacute stroke patients with totally dependent ambulation.
+However, further large-scale studies with longer term follow-up periods are warranted to measure the effects of RAGT on secondary
+prevention after stroke.
+Abbreviations: ADL = activities of daily living, ANOVA = analysis of variance, BBS = Berg balance scale, BMI = body mass
+index, BWS = body-weight support, baPWV = brachial–ankle pulse wave velocity, CV = cardiovascular, cfPWV = carotid–femoral
+PWV, DBP = diastolic blood pressure, ETT = exercise tolerance test, FAC = functional ambulation category, GF = guidance force,
+HR = heart rate, HTN = hypertension, FMA-LL = lower limb score in the Fugl–Meyer Assessment, NDT = neurodevelopmental
+techniques, VO2 = oxygen consumption, HRpeak = peak heart rate, PT = physiotherapy, PWV = pulse wave velocity, RT =
+rehabilitation therapy, rpm = revolutions per minute, RAGT = robot-assisted gait therapy, RAGT+PT = RAGT in combination with
+physical therapy, SBP = systolic blood pressure, K-MBI = The Korean version of the Modiﬁed Barthel Index, W = watt.
+Keywords: cardiopulmonary ﬁtness, recovery of function, robot-assisted gait training, stroke, vascular stiffness
+Editor: Bernhard Schaller.
+This study was supported by a grant from Inha University.
+The authors have no conﬂicts of interest to disclose.
+Supplemental Digital Content is available for this article.
+a Department of Rehabilitation Medicine, Jeju National University Hospital, Jeju National University College of Medicine, Jeju, b Department of Physical & Rehabilitation
+Medicine, Inha University, School of Medicine, Inha University Hospital, Incheon, Republic of Korea, c Department of Rehabilitation Medicine, CHA Bundang Medical
+Center, CHA University, Seongnam.
+∗Correspondence: Myeong Ok Kim, Department of Physical & Rehabilitation Medicine, Inha University Hospital, 27, Inhang-Ro, Jung-Gu, Incheon 400-711, Republic of
+Korea (e-mail: rmkmo@inha.ac.kr)
+Copyright © 2016 the Author(s). Published by Wolters Kluwer Health, Inc. All rights reserved.
+This is an open access article distributed under the Creative Commons Attribution-NoDerivatives License 4.0, which allows for redistribution, commercial and non-
+commercial, as long as it is passed along unchanged and in whole, with credit to the author.
+Medicine (2016) 95:41(e5078)
+Received: 6 May 2016 / Received in ﬁnal form: 9 September 2016 / Accepted: 12 September 2016
+http://dx.doi.org/10.1097/MD.0000000000005078
+Clinical Trial/Experimental Study
+Medicine
+®
+OPEN
+1
+
+1. Introduction
+Stroke is a common cause of death worldwide,[1] and gait
+impairment after stroke can decrease functional independence,
+limit activities of daily living (ADL) and social participation, and
+reduce the quality of life.[2] Furthermore, stroke survivors remain
+at high risk for cardiovascular (CV)-related morbidity including
+recurrent stroke, myocardial infarction, and sudden cardiac
+death.[3,4] Recurrent strokes constitute 29% of all strokes in the
+United States of America,[5] and the cumulative 5-year recurrence
+rate for brain infarction is 42% for men and 24% for women.[6]
+Functional deﬁcits after stroke may aggravate physical inactivity
+and lead to a deconditioned state, which might exacerbate CV
+ﬁtness or decrease long-term prognosis.[7–9]
+Therefore, task-oriented rehabilitation therapy for recovery of
+independent walking is a primary goal of poststroke rehabilita-
+tion. This type of therapy ranges from physical therapist-
+dependent mobility-related tasks that address key impairments
+and
+functional
+limitations
+to
+tasks
+employing
+specialized
+equipment using partial weight bearing treadmills, motorized
+aquatic treadmills, and novel robotic orthosis.
+Atherosclerosis and arterial stiffness contribute signiﬁcantly to
+the pathophysiology of CV diseases. Arterial stiffness is closely
+related to impaired arterial compliance and is an independent
+predictor of atherosclerosis, CV mortality, fatal and nonfatal
+coronary events, and fatal strokes.[10–12] Pulse wave velocity
+(PWV) is a marker of arterial stiffness.[13] Measurement of
+carotid–femoral PWV (cfPWV) is thought to represent central
+artery stiffness and to have prognostic value for development of
+CV-related morbidity and mortality.[14] On the other hand,
+brachial–ankle PWV (baPWV) has been developed as an
+alternative method for assessing arterial stiffness.[15] Measure-
+ment of baPWV records brachial and tibial artery waveforms via
+an a

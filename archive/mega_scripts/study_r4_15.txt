@@ -1,0 +1,206 @@
+Study ID: Kooncumchoo 2021_2021
+Outcome: Walking velocity (metres per second) at end of intervention phase
+Data type: continuous
+
+================================================================================
+RESULTS TEXT:
+================================================================================
+
+Results
+Thirty participants completed gait performance training (15 overground training as
+conventional PT and 15 I-Walk training). All the baselines between both groups were not
+statistically different, as shown in Table 1.
+
+Int. J. Environ. Res. Public Health 2022, 19, 224
+5 of 11
+Table 1. General characteristics in conventional PT and I-Walk gait training in chronic stroke.
+Characteristics
+Mean ± SD/Frequency
+p-Value
+I-Walk (n = 15)
+Conventional PT (n = 15)
+Age (years)
+64.33 ± 7.68
+63.53 ± 12.16
+0.709
+Weight (kg)
+61.94 ± 9.27
+61.73 ± 12.63
+0.631
+Height (cm)
+163.07 ± 8.70
+162.33 ± 8.46
+0.988
+Duration after stroke (years)
+6.57 ± 3.57
+5.60 ± 5.65
+0.580
+10 MWT (m/s)
+0.48 ± 0.19
+0.41 ± 0.17
+0.315
+6 MWT (m)
+126.73 ± 57.61
+116.33 ± 55.69
+0.619
+TUG (s)
+27.79 ± 16.31
+32.50 ± 18.04
+0.460
+Total FMA-LE (scores)
+85.60 ± 10.15
+93.00 ± 11.62
+0.074
+Sex (Male:Female)
+10:5
+10:5
+Pathology (Ischemia:Hemorrhage)
+11:4
+13:2
+Weak side (Right:Left)
+7:8
+7:8
+Underlying diseases
+(no disease:1 disease:2 diseases:≥3 diseases)
+0:7:3:5
+1:2:6:6
+PT: Physical therapy, 10 MWT: 10-meter walk test, 6 MWT: 6-minute walk test, TUG: Timed Up and Go, FMA-LE:
+Fugl-Meyer assessment of lower extremity.
+3.1. Effects of Gait Performance Training Measured Using the Fugl-Meyer Assessment of Lower
+Extremity Scores in I-Walk and Conventional PT Training
+Six sub-scores of the FMA of lower extremity (FMA-LE) scores of the participants who
+trained with I-Walk and the overground method are shown in Table 2. Compared with
+baseline, the total FMA-LE scores signiﬁcantly increased in both groups (F(4,112) = 75.5;
+p < 0.001; effect size (ES) = 0.73), then the statistical approach with the t-test started to
+increase at 2 weeks (p < 0.05). Meanwhile, the total motor function in both groups signiﬁ-
+cantly increased (F(4,112) = 88.8; p < 0.001; ES = 0.76), while it began to increase at 2 weeks
+for the I-Walk group (p < 0.05). There was a main time effect in lower limb sensation
+for both groups in the present study with a repeated measure ANOVA (F(4,112) = 13.9;
+p < 0.001; ES = 0.33). The conventional PT was signiﬁcantly higher in lower limb sensation,
+which began at 2 weeks (p < 0.05), but the I-Walk group started to increase at 4 weeks
+(p < 0.05). Unexpectedly, the passive joint motion sub-score signiﬁcantly increased only in
+the conventional PT group (F(4,112) = 16.9; p < 0.001; ES = 0.38). No signiﬁcant change was
+observed for the joint pain sub-score.
+In the comparison across groups, no difference was observed in the four lower ex-
+tremity sub-scores (coordination/speed, total motor function, sensation, joint pain). Two
+sub-scores (lower extremity and passive joint motion) in the I-Walk group were higher than
+the conventional PT score at baseline (p < 0.05). However, conventional PT tended to gain
+in passive joint motion compared to I-Walk.
+3.2. Effect of Gait Performance, Dynamic Balance, and Gait Speed in Chronic Stroke
+Figure 3 illustrates that both groups significantly improved in the 6 MWT (F(4,112) = 39.6;
+p < 0.001; ES = 0.59) (Figure 3A) and the TUG (F(4,112) = 22.1; p < 0.001; ES = 0.44)
+(Figure 3B) over 8 weeks compared to the baseline. They gradually began to change af-
+ter 2 weeks, and the interaction effect of 6 MWT was found (F(4,112) = 4.0; p = 0.004;
+ES = 0.13). There was no group difference in 6 MWT (F(1,28) = 208.4; p = 0.38; ES = 0.03)
+and TUG (F(1,28) = 107.3; p = 0.36; ES = 0.03). The gait speed of the 10-meter distance in
+both groups signiﬁcantly began to change at 4 weeks (F(1,28) = 50.0; p < 0.001; ES = 0.64)
+(Figure 3C). The gait speed was the single parameter that was signiﬁcantly higher in the
+I-Walk than in the conventional PT at 6 and 8 weeks (F(1,28) = 5.9; p = 0.022; ES = 0.17)
+(Figure 3C).
+
+Int. J. Environ. Res. Public Health 2022, 19, 224
+6 of 11
+Table 2. Changes of lower extremity impairment scores during 8-week gait training compared within
+(compared with baseline) and across groups (Conventional PT and I-Walk) in chronic stroke.
+Fugl-Meyer Assessment-Lower
+Extremity (Scores)
+I-Walk (n = 15)
+Conventional PT (n = 15)
+p-Value across Group
+Mean ± SD
+p-Value
+Mean ± SD
+p-Value
+Total FMA-LE (86)
+baseline
+71.00 ± 6.72
+66.60 ± 6.71
+0.083
+2-week
+72.67 ± 6.32
+0.012
+70.20 ± 4.55
+0.002
+0.230
+4-week
+74.60 ± 5.44
+<0.001
+72.20 ± 4.96
+<0.001
+0.217
+6-week
+77.20 ± 5.89
+<0.001
+74.53 ± 4.60
+<0.001
+0.177
+8-week
+78.67 ± 5.45
+<0.001
+75.73 ± 4.43
+<0.001
+0.117
+Lower extremity (28)
+baseline
+18.40 ± 4.14
+15.60 ± 2.92
+0.042
+2-week
+19.26 ± 4.06
+0.039
+17.73 ± 2.05
+<0.001
+0.202
+4-week
+20.26 ± 3.57
+<0.001
+18.60 ± 1.99
+<0.001
+0.126
+6-week
+22.00 ± 3.25
+<0.001
+20.13 ± 2.55
+<0.001
+0.092
+8-week
+23.06 ± 3.01
+<0.001
+20.86 ± 2.66
+<0.001
+0.043
+Coordination/speed (6)
+baseline
+3.60 ± 1.40
+3.40 ± 1.18
+0.676
+2-week
+3.66 ± 1.34
+0.543
+3.40 ± 1.24
+1.000
+0.577
+4-week
+4.13 ± 1.24
+0.039
+3.93 ± 1.62
+0.039
+0.708
+6-week
+4.60 ± 1.24
+0.001
+4.26 ± 1.33
+0.004
+0.485
+8-week
+4.93 ± 1.27
+<0.001
+4.60 ± 1.18
+<0.001
+0.465
+Total motor function (34)
+baseline
+22.00 ± 5.07
+19.33 ± 3.81
+0.115
+2-we

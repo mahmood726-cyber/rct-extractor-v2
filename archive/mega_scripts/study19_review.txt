@@ -1,0 +1,111 @@
+Study ID: Wintzen 2007_2007
+Outcome: Mean improvement in the Epworth Sleepiness Scale
+Data Type: None
+
+===ABSTRACT===
+Abstract
+We performed a
+double-blind placebo-controlled
+crossover study in 13 patients with
+myotonic dystrophy to address the
+question whether modaﬁnil,
+known to improve hypersomno-
+lence in myotonic dystrophy, may
+improve levels of activity as well.
+We used the Epworth Sleepiness
+Scale as a measure of hypersom-
+nolence and a structured interview
+of the patient and the partner or
+housemate as a measure of activ-
+ity. We additionally used a
+restricted form of the RAND-36 to
+relate a possible improvement of
+activity to perceived general
+health. We conﬁrmed earlier
+positive ﬁndings of modaﬁnil
+regarding reduced somnolence
+(p = 0.015), but no signiﬁcant
+effects were seen regarding activity
+levels (p = 0.2 for patients’ self-
+reports and 0.5 for partners’
+reports).
+j Key words myotonic dystro-
+phy Æ modaﬁnil Æ hypersomnolen-
+ce Æ levels of activity Æ RAND-36
+ORIGINAL COMMUNICATION
+J Neurol (2007) 254:26–28
+DOI 10.1007/s00415-006-0186-z
+JON 2186
+A.R. Wintzen (&) Æ G.J. Lammers
+J.G. van Dijk
+Dept. of Neurology and Clinical
+Neurophysiology
+Leiden University Medical Centre
+LUMC 9600, 2300RC Leiden
+The Netherlands
+E-Mail: axelwintzen@hetnet.nl
+
+activities. Three patients were employed in highly
+responsible jobs. The remaining patients had been
+considered unﬁt for normal paid employment for
+reasons related to their disorder. They were mainly
+involved in housekeeping. With the exception of two
+elderly men with considerable weakness of the legs,
+weakness had little impact on activities of
+
+===RESULTS===
+Results
+All patients completed the trial. Medication compli-
+ance was good: only three patients had omitted one
+dose each. The only reported side effect was slight
+headache in one patient using modaﬁnil. Ten pa-
+tients doubled the dose of both modaﬁnil and pla-
+cebo after the ﬁrst week, meaning that results largely
+concern a daily dose of 400 mg modaﬁnil. More
+often than not both patients (67%) and their part-
+ners/housemates (77%) correctly guessed when they
+had been taking either modaﬁnil or Placebo, usually
+on the basis of a decreased sleepiness’ and/or in-
+creased activity’.
+The structured interview regarding activity and
+actions did not show signiﬁcant differences between
+modaﬁnil and placebo (p = 0.2 for patients and
+p = 0.5 for partners/housemates).
+The RAND-36 questionnaires revealed a poor
+perception of general health for the whole group with
+a mean value of 29 points out of 100 (range 0–50) on
+the General Health rating.
+The ratings were virtually identical for each patient
+over the four assessments (p = 1,Wilcoxon test). The
+perception of Role Limitations varied widely: mean 66
+out of 100 (range 0–100). A medication related change
+was not observed (p = 0.7, Wilcoxon test). This also
+held
+for
+the
+perception
+of
+Social
+Functioning
+(p = 0.6),
+Vitality
+(p = 0.2)
+and
+Mental
+Health
+(p = 0.5). The ESS revealed a signiﬁcant improvement
+with modaﬁnil, in that the mean score decreased from
+10.5 (range: 3–18) to 6.8 points (range: 1–15); for
+placebo the corresponding values were 10.5 (range: 3–
+18) and 10.7 (range: 2–17) points (p = 0.015, Wilco-
+xon test). There was no suggestion of a difference in
+outcome between patients with high and those with
+low scores. There was no signiﬁcant relationship be-
+tween the increase in activity/actions as perceived by
+the patient/ partner and indicated by the structured
+interview, and changes in perceived hypersomnolence
+as measured by the ESS (p = 0.38, Spearman’s test).
+27
+
+Discussion
+The present study conﬁrmed the beneﬁcial ef

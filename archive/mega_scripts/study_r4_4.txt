@@ -1,0 +1,75 @@
+Study ID: Forrester 2014_2014
+Outcome: Walking velocity (metres per second) at end of intervention phase
+Data type: continuous
+
+================================================================================
+RESULTS TEXT:
+================================================================================
+
+Results—Both groups walked faster at discharge, however the robot group improved more in
+percent change of temporal symmetry (p=0.032) and also of step length symmetry (p=0.038), with
+longer nonparetic step lengths in the robot (133%) vs. stretching (31%) groups. Paretic ankle
+control improved in the robot group, with increased peak (p≤ 0.001) and mean (p≤ 0.01) angular
+speeds, and increased movement smoothness (p≤ 0.01). There were no adverse events.
+Conclusion—Though limited by small sample size and restricted entry criteria, our findings
+suggest that modular lower extremity robotics during early sub-acute hospitalization is well
+tolerated and improves ankle motor control and gait patterning.
+INTRODUCTION
+There is now convergent evidence that central nervous system (CNS) injuries can be at least
+partially offset through experience dependent plasticity in the neural networks that control
+movements.1–3 However, motor practice with the affected limb(s) is needed to shape the
+emergent networks. This notion of time on task, along with goal setting and performance
+feedback, is a fundamental principle of motor learning.4 The goal of central neural
+reorganization sub-serving functional movement has been associated with repetitive, goal-
+oriented practice using the impaired limb.5–9 Thus high-volume task-oriented training has
+been a major research focus for restoring motor function in individuals with hemiparetic
+stroke.
+The use of robotic devices to augment usual therapy has gained considerable attention
+because it could offer a platform to achieve many of the objectives inherent to motor
+learning.10,11 Along with capabilities for individualized programming and precise
+measurement, robots can enable thousands of goal-oriented movements with performance
+feedback. In the area of robotic gait therapy post-stroke, most studies have targeted whole
+body locomotor training to promote task specificity.12–18 In contrast, modular robotics
+directed at single joints19–24 or limbs invites a focus on addressing impairments in
+underlying motor control and learning, while affording opportunities to explore effects on
+gait. Potential for transfer to locomotor performance is reported in recent studies of robotic
+ankle training in chronic stroke.25,26 Given these positive results in chronic hemiparesis, one
+might hypothesize that an ideal time to push the CNS toward more effective reorganization
+is during the earlier periods of sub-acute stroke recovery when the biological milieu may be
+poised for remodeling. While there are concerns based on rodent models and with human
+participants that imposing too much activity too early after stroke may be detrimental, 27–30
+Forrester et al.
+Page 2
+Neurorehabil Neural Repair. Author manuscript; available in PMC 2015 September 01.
+NIH-PA Author Manuscript
+NIH-PA Author Manuscript
+NIH-PA Author Manuscript
+
+recent evidence suggests that initiating robotic therapy 48-hours after stroke, including with
+lower extremity (LE) robotics, is not harmful and may accelerate functional gains.31–34
+Thus, our objective is to investigate if there are measurable benefits from providing modular
+LE robotics early in the recovery period.
+Here we report initial results on the feasibility and efficacy of a modular, impedance-
+controlled ankle robot 24 (“anklebot”) in the early sub-acute phase of stroke. The first goal
+was to determine how well patients in the rehabilitation hospital setting would tolerate daily
+use of anklebot and how well this protocol would mesh with usual inpatient care. We also
+determined if daily anklebot training improves paretic ankle motor control and spatio-
+temporal gait parameters in patients that initially have at least a trace of ankle muscle
+activation, compared to controls receiving dose-matched amounts of manual stretching of
+the paretic ankle.
+METHODS
+Subjects
+A convenience sample of consecutive patients with hemiparetic stroke and at least trace
+activation of paretic plantar- or dorsi-flexors (PF-DF), and who were available to participate
+five days weekly, was recruited from the inpatient Stroke Unit at the University of Maryland
+Rehabilitation & Orthopedics Institute (UMROI). Recruitment and informed consent
+procedures were approved by University of Maryland, Baltimore Institutional Review
+Board, Baltimore Veterans Affairs Research and Development Committee, Massachusetts
+Institute of Technology Committee on the Use of Humans as Experimental Subjects, and the
+Medical Executive Committee for UMROI.
+Inclusion criteria included (1) first ischemic or hemorrhagic stroke; (2) residual LE
+hemiparesis involving the ankle, defined by manual muscle testing (strength range grade 1/5
+to 4/5, capable of generating at least trace muscle activation in PF-DF; (3) adequate
+language and neurocognitive function (e.g., follow two-step commands) to participate in
+training, testing, and to give informed consent; and (4) clinical, neurological, and
+hemodynamic stability to sit in the chair for 30–60 min

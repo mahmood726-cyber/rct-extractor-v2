@@ -1,0 +1,83 @@
+Study ID: Louie 2021_2021
+Outcome: Independent walking at end of intervention phase, all electromechanical devices used (critical outcome)
+Data type: binary
+
+================================================================================
+RESULTS TEXT:
+================================================================================
+
+Results:  Thirty-six patients with stroke (mean 39 days post-stroke) were randomized (Exoskeleton = 19, Usual Care 
+= 17). On intention-to-treat analysis, no significant between-group differences were found in the primary or second-
+ary outcomes at post-intervention or after 6 months. Five participants randomized to the Exoskeleton group did not 
+receive the protocol as planned and thus exploratory as-treated and per-protocol analyses were undertaken. The 
+as-treated analysis found that those adhering to exoskeleton-based physical therapy regained independent walking 
+earlier (p = 0.03) and had greater gait speed (p = 0.04) and 6MWT (p = 0.03) at 6 months; however, these differences 
+were not significant in the per-protocol analysis. No serious adverse events were reported.
+© The Author(s) 2021. Open Access This article is licensed under a Creative Commons Attribution 4.0 International License, which 
+permits use, sharing, adaptation, distribution and reproduction in any medium or format, as long as you give appropriate credit to the 
+original author(s) and the source, provide a link to the Creative Commons licence, and indicate if changes were made. The images or 
+other third party material in this article are included in the article’s Creative Commons licence, unless indicated otherwise in a credit line 
+to the material. If material is not included in the article’s Creative Commons licence and your intended use is not permitted by statutory 
+regulation or exceeds the permitted use, you will need to obtain permission directly from the copyright holder. To view a copy of this 
+licence, visit http://​creat​iveco​mmons.​org/​licen​ses/​by/4.​0/. The Creative Commons Public Domain Dedication waiver (http://​creat​iveco​
+mmons.​org/​publi​cdoma​in/​zero/1.​0/) applies to the data made available in this article, unless otherwise stated in a credit line to the data.
+Open Access
+*Correspondence:  janice.eng@ubc.ca
+1 Department of Physical Therapy, University of British Columbia, 
+212‑2177 Wesbrook Mall, Vancouver, BC V6T 1Z3, Canada
+Full list of author information is available at the end of the article
+
+Page 2 of 12
+Louie et al. J NeuroEngineering Rehabil          (2021) 18:149 
+Background
+Recovering the ability to walk is commonly cited by 
+patients with stroke as a top priority of both rehabilita-
+tion and research efforts [1, 2]. Besides predicting long-
+term mobility and community reintegration after stroke 
+[3, 4], walking outcomes are also associated with cogni-
+tive performance, post-stroke depression, and quality 
+of life [5–7]. With implications for so many post-stroke 
+outcomes, refining rehabilitation efforts to optimize the 
+timeliness and degree of walking recovery after stroke 
+remains a top priority.
+It is recommended that early stroke rehabilitation 
+should be goal-oriented, repetitive, progressive, and 
+task-specific to take advantage of neuroplastic recovery 
+and make gains in mobility and walking [8, 9]. However, 
+dependent patients requiring substantial assistance from 
+one or two therapists are the least likely to achieve these 
+guidelines and take very few steps during stroke rehabili-
+tation; studies observing inpatient stroke rehabilitation 
+have reported as low as 8  minutes of physical activity 
+and progression from 6 to only 16 completed steps dur-
+ing physical therapy [10, 11]. Even with the introduction 
+of body weight-supported treadmill training in stroke 
+rehabilitation and promising findings for walking recov-
+ery, the physical demand of having multiple therapists 
+involved to assist moving the lower extremities has lim-
+ited its clinical application [12, 13]. With such minimal 
+levels of walking practice, it is unsurprising that nearly 
+half of patients admitted for stroke are discharged from 
+rehabilitation without the ability to walk independently 
+[14], which in turn influences meaningful outcomes such 
+as discharge location and return-to-work [4, 15]. Conse-
+quently, it is those patients who are more impaired and 
+unable to walk independently who should be the target 
+of novel interventions and research [16]. Repetition and 
+progression should be included as key components of 
+such efforts.
+Powered exoskeletons have been commercially devel-
+oped to assist and automate overground walking for 
+individuals with lower extremity weakness. Such devices 
+strap around the lower limbs and generate joint motion 
+using embedded motors. They may allow patients to 
+achieve the higher duration and repetition of stepping 
+practice recommended for stroke rehabilitation, while 
+offloading therapists’ physical burden. However, previous 
+research of treadmill-based robotic devices [e.g., Loko-
+mat (Hocoma, Zurich, Switzerland)] has found mixed 
+results for gait recovery; several randomized trials did 
+not did not find superior effects of robotic training on 
+walking outcomes [17, 18], yet several reviews have 
+found improved walking independence [19, 20]. Pow-
+ered exoskeletons may offer more re

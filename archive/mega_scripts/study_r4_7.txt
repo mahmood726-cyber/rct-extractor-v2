@@ -1,0 +1,73 @@
+Study ID: Molteni 2021_2021
+Outcome: Independent walking at end of intervention phase, all electromechanical devices used (critical outcome)
+Data type: binary
+
+================================================================================
+RESULTS TEXT:
+================================================================================
+
+Results: The
+6MWT increased in both groups, which was conﬁrmed by both frequentist and Bayesian analyses.
+Similar outcomes were registered in the MI-AL, 10MWT, mBI, and MAS-AL. The FAC and WHS
+showed a signiﬁcant number of subjects improving in functional and community ambulation in both
+groups at T2. Conclusions: The clinical effects of o-RAGT were similar to conventional gait training
+in subacute stroke subjects. The results obtained in this study are encouraging and suggest future
+clinical trials on the topic.
+Keywords: stroke; robot-assisted gait training; exoskeleton device; neurologic gait disorders; rehabil-
+itation
+1. Introduction
+Approximately 65% of stroke survivors suffer from sensory, motor, and cognitive
+impairment, as well as a reduced ability to perform self-care and participate in social and
+community activities, with a negative impact on their autonomy and quality of life [1,2].
+Overground Robot-Assisted Gait Training (o-RAGT) is a recent cutting-edge neurorehabili-
+tation treatment based on the Wearable Powered Exoskeleton (WPE) which helps a subject
+to walk over a hard surface in a clinical environment [3]. The WPE assists the movement
+Brain Sci. 2021, 11, 104. https://doi.org/10.3390/brainsci11010104
+https://www.mdpi.com/journal/brainsci
+
+Brain Sci. 2021, 11, 104
+2 of 14
+of the lower limbs through a preprogrammed physiological gait pattern while the steps
+are triggered by the therapist or by the user with a weight shift-based trigger. High-tech
+WPEs are able to emulate overground human neuromotor control of locomotion, and they
+can provide early, intensive, and speciﬁc gait training. The o-RAGT could represent an
+innovative solution, compared with conventional gait training, since it provides intensive
+overground gait training even in subjects who are not able to maintain an upright position.
+In severely impaired walking subjects, it induces a coordinated, multisensory motor control
+stimulation and provides proprioceptive input to subjects during limb loading—which is
+associated with visual motor control—in order to properly navigate an exercise setting [4].
+These features make the WPE a device that engages the subject and stimulates the mecha-
+nisms of visual exploration and motor coordination. Since these mechanisms are crucial
+for the restoration of motor control, o-RAGT could be considered a rehabilitation treatment
+which generates a more complex and controlled multisensory stimulation of the subject
+and which may modify the plasticity of neural connections through the experience of
+movement [5]. Moreover, the WPE not only moves the lower limb with a physiological
+gait pattern, but it also exhibits close cognitive and physical interaction with the subject [6].
+The role of human–robot cognitive interaction in rehabilitation is to allow the patient
+to understand the potential of the robot, fully rely on the robot, and control the robot’s
+movements (when the steps are triggered by the patient with a weight shift-based trigger).
+For these reasons, the analysis of the usability and acceptance of o-RAGT is important to
+assess this human–robot cognitive interaction.
+The literature on robotic gait training in neurological subjects includes a consistent
+number of Randomized Controlled Trials (RCTs) and systematic reviews [7–9]. Although
+well-established clinical outcomes have been obtained with treadmill-based robots [10–12],
+few early studies on o-RAGT have been published, with encouraging preliminary results
+obtained from limited sample sizes [3,4]. Speciﬁcally, the effects of o-RAGT in chronic
+stroke subjects were studied by a number of small RCTs that reported promising neuro-
+physiological effects [13] and improvements in functional status [14], spatiotemporal gait
+parameters [15,16], and cardiopulmonary metabolic energy efﬁciency during walking [15].
+On the other hand, subacute stroke subjects have received limited attention [17], even
+though rehabilitation in this phase has been identiﬁed as an important prognostic factor
+for a positive clinical outcome, and early verticalization and gait training seem to enhance
+beneﬁcial neuroplasticity and cognitive and functional recovery. Encouraging preliminary
+results on o-RAGT in subacute stroke subjects were found in terms of the recovery of
+independent walking [18,19] and locomotor functions [20–22]. However, the WPEs are
+increasingly being used in clinical practice, and their efﬁcacy needs to be studied. The
+purpose of this study was to assess the efﬁcacy of employing an overground WPE for
+gait training in subacute stroke subjects, investigating the clinical effects compared to
+conventional gait training.
+2. Materials and Methods
+A multicenter, randomized, per-protocol controlled trial (NCT03395717) was carried
+out with a group of subjects who satisﬁed the following criteria: a ﬁrst cerebral stroke
+(diagnosis conﬁrmed by computed tomography scan or magnetic resonance imaging) with
+a Total Anterior Circulation Infarct (TACI), Partial Anterior

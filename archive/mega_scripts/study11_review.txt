@@ -1,0 +1,97 @@
+Study ID: Ghanei 2021_2021
+Outcome: 28-day all-cause mortality
+Data Type: binary
+
+===ABSTRACT===
+Abstract 
+Background:  We performed a multicenter, randomized open-label trial in patients with moderate to severe Covid-19 
+treated with a range of possible treatment regimens. Methods: Patients were randomly assigned to one of three regi‑
+men groups at a ratio of 1:1:1. The primary outcome of this study was admission to the intensive care unit. Secondary 
+outcomes were intubation, in-hospital mortality, time to clinical recovery, and length of hospital stay (LOS). Between 
+April 13 and August 9, 2020, a total of 336 patients were randomly assigned to receive one of the 3 treatment regi‑
+mens including group I (hydroxychloroquine stat, prednisolone, azithromycin and naproxen; 120 patients), group II 
+(hydroxychloroquine stat, azithromycin and naproxen; 116 patients), and group III (hydroxychloroquine and lopinavir/
+ritonavir (116 patients). The mean LOS in patients receiving prednisolone was 5.5 in the modified intention-to-treat 
+(mITT) population and 4.4 days in the per-protocol (PP) population compared with 6.4 days (mITT population) and 5.8 
+days (PP population) in patients treated with Lopinavir/Ritonavir.
+Results:  The mean LOS was significantly lower in the mITT and PP populations who received prednisolone compared 
+with populations treated with Lopinavir/Ritonavir (p = 0.028; p = 0.0007). We observed no significant differences in 
+the number of deaths, ICU admission, and need for mechanical ventilation between the Modified ITT and per-proto‑
+col populations treated w
+
+===RESULTS===
+Results:  The mean LOS was significantly lower in the mITT and PP populations who received prednisolone compared 
+with populations treated with Lopinavir/Ritonavir (p = 0.028; p = 0.0007). We observed no significant differences in 
+the number of deaths, ICU admission, and need for mechanical ventilation between the Modified ITT and per-proto‑
+col populations treated with prednisolone and Lopinavir/Ritonavir, although these outcomes were better in the arm 
+treated with prednisolone. The time to clinical recovery was similar in the modified ITT and per-protocol populations 
+treated with prednisolone, lopinavir/ritonavir, and azithromycin (P = 0.335; P = 0.055; p = 0.291; p = 0.098).
+Conclusion:  The results of the present study show that therapeutic regimen (regimen I) with low dose prednisolone 
+was superior to other regimens in shortening the length of hospital stay in patients with moderate to severe COVID-
+19. The steroid sparing effect may be utilized to increase the effectiveness of corticosteroids in the management of 
+diabetic patients by decreasing the dosage.
+© The Author(s) 2021. Open Access This article is licensed under a Creative Commons Attribution 4.0 International License, which 
+permits use, sharing, adaptation, distribution and reproduction in any medium or format, as long as you give appropriate credit to the 
+original author(s) and the source, provide a link to the Creative Commons licence, and indicate if changes were made. The images or 
+other third party material in this article are included in the article’s Creative Commons licence, unless indicated otherwise in a credit line 
+to the material. If material is not included in the article’s Creative Commons licence and your intended use is not permitted by statutory 
+regulation or exceeds the permitted use, you will need to obtain permission directly from the copyright holder. To view a copy of this 
+licence, visit http://​creat​iveco​mmons.​org/​licen​ses/​by/4.​0/. The Creative Commons Public Domain Dedication waiver (http://​creat​iveco​
+mmons.​org/​publi​cdoma​in/​zero/1.​0/) applies to the data made available in this article, unless otherwise stated in a credit line to the data.
+Open Access
+*Correspondence:  mghaneister@gmail.com
+1 Chemical Injuries Center, Systems Biology and Poisoning Institute, 
+Baqiyatallah University of Medical Sciences, MollaSadra St., Tehran, Iran
+Full list of author information is available at the end of the article
+
+Page 2 of 14
+Ghanei et al. Respir Res          (2021) 22:245 
+Background
+Coronavirus disease-19 (COVID-19) has resulted in a 
+global pandemic. The disease is associated with a series 
+of clinical settings from asymptomatic infections to mild 
+and severe manifestations, contributing to a significant 
+morbidity and mortality, as well as strain on intensive 
+care unit (ICU) capacity [1–3].
+As the pandemic progresses, overwhelming body of 
+evidence regarding the pathological pattern of the disease 
+and the potential impact of immunomodulatory strate-
+gies [4] has suggested that cytokine storm may be the 
+main cause of disease progression (the severity and clini-
+cal outcomes) leading to lung injury and organ failure [5].
+Supportive and adjuvant therapy have been recom-
+mended for the treatment of COVID-19 due to the 
+absence of specific treatments such as antivirals. The 
+histological pattern of pulmonary edema, hyaline mem-
+brane formation, and acute fibrinous and organizing 
+pneumonia (AFOP) which characterize acute lung injury 
+of the disease [6–8] suggest that timely and appropriate 
+use of corticosteroid may be beneficial in patients with 
+severe disease.
+The severity and pathophysiology of the disease have 
+been linked to hyperinflammation, therefore, a combi-
+nation therapy of off-label drugs such as immunosup-
+pressor/immunomodulator, 
+inflammatory 
+cytokines 
+antagonists, and nonsteroidal anti-inflammatory drugs 
+(NSAIDs) may be of utmost importance in mitigating the 
+potential effects of cytokine storm in the inflammation-
+driven damaging phases of COVID-19.
+Corticosteroids suppress inflammation-induced lung 
+injury by inhibiting lung inflammation in critically 
+ill patients [9–11]. On February 6th, 2020, research-
+ers from Edinburgh published a short review of clinical 
+data regarding the outcomes of corticosteroid therapy 
+in respiratory diseases [12]. They concluded that there is 
+no clinical data that supports the use of corticosteroids 
+in COVID-19 patients. This was recapitulated by WHO 
+who discouraged the use of steroids in Covid-19. Rapidly, 
+the response from physicians from Wuhan and Beijing 
+appeared. They opposed the liberal use of corticosteroids 
+and recommend short courses of corticosteroids at low-
+to-moderate dose, used prudently, for the most severely 
+ill patients [13]. The most robust evidence supporting the 
+use of corticosteroids therapy came from the COVID-
+19 RECOVERY Trial. In this trial, the 28-day mortal-
+ity rate for COVID-19 patients requiring either invasive 

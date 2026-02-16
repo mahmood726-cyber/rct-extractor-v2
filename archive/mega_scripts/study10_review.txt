@@ -1,0 +1,105 @@
+Study ID: Fernández-Serrano 2011_2011
+Outcome: 28-day all-cause mortality
+Data Type: binary
+
+===ABSTRACT===
+Abstract
+Introduction: The benefit of corticosteroids as adjunctive treatment in patients with severe community-acquired
+pneumonia (CAP) requiring hospital admission remains unclear. This study aimed to evaluate the impact of
+corticosteroid treatment on outcomes in patients with CAP.
+Methods: This was a prospective, double-blind and randomized study. All patients received treatment with
+ceftriaxone plus levofloxacin and methyl-prednisolone (MPDN) administered randomly and blindly as an initial
+bolus, followed by a tapering regimen, or placebo.
+Results: Of the 56 patients included in the study, 28 (50%) were treated with concomitant corticosteroids. Patients
+included in the MPDN group show a more favourable evolution of the pO2/FiO2 ratio and faster decrease of fever,
+as well as greater radiological improvement at seven days. The time to resolution of morbidity was also
+significantly shorter in this group. Six patients met the criteria for mechanical ventilation (MV): five in the placebo
+group (22.7%) and one in the MPDN group (4.3%). The duration of MV was 13 days (interquartile range 7 to 26
+days) for the placebo group and three days for the only case in the MPDN group. The differences did not reach
+statistical significance. Interleukin (IL)-6 and C-reactive protein (CRP) showed a significantly quicker decrease after 24
+h of treatment among patients treated with MPDN. No differences in mortality were found among groups.
+Conclusions: MPDN treatment, in combination with antibi
+
+===RESULTS===
+Results: Of the 56 patients included in the study, 28 (50%) were treated with concomitant corticosteroids. Patients
+included in the MPDN group show a more favourable evolution of the pO2/FiO2 ratio and faster decrease of fever,
+as well as greater radiological improvement at seven days. The time to resolution of morbidity was also
+significantly shorter in this group. Six patients met the criteria for mechanical ventilation (MV): five in the placebo
+group (22.7%) and one in the MPDN group (4.3%). The duration of MV was 13 days (interquartile range 7 to 26
+days) for the placebo group and three days for the only case in the MPDN group. The differences did not reach
+statistical significance. Interleukin (IL)-6 and C-reactive protein (CRP) showed a significantly quicker decrease after 24
+h of treatment among patients treated with MPDN. No differences in mortality were found among groups.
+Conclusions: MPDN treatment, in combination with antibiotics, improves respiratory failure and accelerates the
+timing of clinical resolution of severe CAP needing hospital admission.
+Trial Registration: International Standard Randomized Controlled Trials Register, ISRCTN22426306.
+Introduction
+Despite advances in diagnostic methods and antibiotic
+treatment, community-acquired pneumonia (CAP)
+remains an important cause of mortality [1-3]. In the
+industrialized countries, CAP is the sixth highest cause
+of mortality and the first among infectious diseases.
+Although mortality in patients with CAP fell dramati-
+cally with the introduction of antibiotics in the 1950s,
+since then it has remained relatively stable. Current ser-
+ies report an overall mortality rate of 8 to 15% [4-6].
+A recent study [7] of the factors associated with early
+death in patients with CAP reinforces the classical con-
+cept that some deaths were not due to failure to eradi-
+cate the microorganism causing CAP, but are closely
+related to inadequate host response [8]. Excessive cyto-
+kine response in patients with severe CAP has been
+linked in many previous studies with deleterious effects
+and poor prognosis [9-13].
+In this context, the use of immunomodulation appears
+to be an appealing option for improving prognosis in
+CAP. Theoretically, an anti-inflammatory treatment
+given prior to antibiotic therapy could prevent an exces-
+sive inflammatory response, improving the prognosis of
+more severe episodes of CAP. Therefore, the use of cor-
+ticosteroids as an adjunct therapy for pneumonia has
+* Correspondence: jodorca@bellvitgehospital.cat
+1Respiratory Medicine Department, Hospital Universitari de Bellvitge, Institut
+d’Investigació Biomèdica de Bellvitge (IDIBELL), University of Barcelona, Feixa
+Llarga s/n, L’Hospitalet de Llobregat 08907, Barcelona, Spain
+Full list of author information is available at the end of the article
+Fernández-Serrano et al. Critical Care 2011, 15:R96
+http://ccforum.com/content/15/2/R96
+© 2011 Fernández-Serrano et al.; licensee BioMed Central Ltd. This is an open access article distributed under the terms of the Creative
+Commons Attribution License (http://creativecommons.org/licenses/by/2.0), which permits unrestricted use, distribution, and
+reproduction in any medium, provided the original work is properly cited.
+
+been a matter of debate [14-16]. Corticosteroids are
+known to reduce the production of the main inflamma-
+tory cytokines (TNFa, IL-1b, IL-8, and IL-6), and the
+subsequent recruitment of inflammatory cells into the
+alveolar space leading to a more equilibrated response.
+Here we conducted a prospective, randomized, double
+blind, placebo-controlled trial to analyse whether a cor-
+ticosteroid therapy, administered in the form of a
+methyl-prednisolone bolus given prior to antibiotic
+treatment followed by sustained infusion for nine days,
+was able to modulate the inflammatory response and
+clinical outcome of selected hospital-admitted CAP
+patients presenting respiratory failure and extensive
+radiological consolidations.
+Materials and methods
+Setting, study design and subjects
+This study was conducted at the Hospital Universitari
+de Bellvitge, a 900-bed hospital in Barcelona, Spain,
+which serves a population of about 1,100,000 people.
+The study was prospective, double-blind and rando-
+mized. Patients admitted to the hospital with CAP, and
+who met the selection criteria and agreed to participate
+in the study, were assigned to receive either placebo or
+methyl-prednisolone (MPDN) in combination with
+empirical antibiotic treatment.
+CAP was diagnosed according to conventional criteria
+previously reported elsewhere [9]. Inclusion criteria
+were: 1) extensive radiological consolidations (comple-
+tely affecting at least two lobes); and 2) respiratory fail-
+ure (pO2/FiO2 <300). Exclusion criteria included: 1) age
+<18 years and >75 years; 2) no written informed consent
+available; 3) known hypersensitivity to steroids; 4) ster-
+oid treatment in the previous 48 h; 5) need for steroid
+treatment for any reason (asthma, chronic obstructive
+pulmonary disease

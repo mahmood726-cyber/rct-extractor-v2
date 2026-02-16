@@ -1,0 +1,92 @@
+Study ID: Schroeder 2024_2024
+Outcome: Independent walking at end of intervention phase, all electromechanical devices used (critical outcome)
+Data type: None
+
+================================================================================
+RESULTS TEXT:
+================================================================================
+
+Results: A trend toward earlier reacquisition of walking independence favoring
+ERT with UC over UC was not accompanied by diﬀerences in FM-LE, WBA,
+or DCA (ﬁrst objective). Thereafter, DRT with UC did not yield any signiﬁcant
+changes relative to UC, such that no between-group diﬀerences were found
+favoring restorative eﬀects of ERT over DRT (second objective).
+Conclusion:
+This pilot trial shows the feasibility of investigating a wearable
+exoskeleton as an adjunct therapy in subacute stroke. Nevertheless, our
+preliminary ﬁndings suggest that motor recovery of lower limb muscle synergies
+Frontiers in Stroke
+01
+frontiersin.org
+
+Schr¨oder et al.
+10.3389/fstro.2024.1379083
+was not enhanced by 4 weeks of robotic training to reduce compensations with
+the less-aﬀected side, irrespective of the timing of application.
+Trial registration: ClinicalTrials.gov, identiﬁer: NCT03727919.
+KEYWORDS
+stroke, lower extremity, postural balance, walking, robotics, clinical trial, exoskeleton
+Introduction
+Approximately 65%−80% of stroke survivors eventually regain
+the ability to walk independently within the ﬁrst 3–6 months
+poststroke (Jorgensen et al., 1995; Veerbeek et al., 2011; Kennedy
+et al., 2021). However, spontaneous neurological recovery from
+motor impairments aﬀecting the lower limb (e.g., abnormal muscle
+synergies) seems to plateau within 5–8 weeks poststroke, which
+parallels recovery courses observed for the paretic upper limb
+(Duncan et al., 1994; Kwakkel et al., 2006; Schroder et al., 2023).
+In most cases, motor recovery is incomplete and synergistic
+muscular co-activation persists when performing functional tasks
+as standing and walking (Garland et al., 2007; Buurke et al., 2008).
+As a consequence, people with stroke typically prefer asymmetric
+postures (Laufer et al., 2003; Garland et al., 2007; Roerdink
+et al., 2009) and stepping patterns (Kwakkel and Wagenaar, 2002;
+Patterson et al., 2015) to regain independence by compensating
+with the less-aﬀected limb. The critical recovery period is associated
+with enhanced levels of neuroplasticity (Murphy and Corbett, 2009;
+Zeiler, 2019). This suggests an ideal time to deliver impairment-
+focused rehabilitation therapies. Therefore, the question arises as
+to whether patients who are unable to walk at onset can be trained
+to enhance lower limb motor recovery and promote a normal,
+symmetrical gait if motor training is delivered in a timely manner
+according to the principle “the earlier, the better.”
+Exoskeleton-type robots may be an ideal therapeutic tool
+for addressing the abovementioned question. These devices are
+designed to provide more task-speciﬁc practice (Louie and Eng,
+2016; Schroder et al., 2019), which is an important requirement
+for improving walking (Veerbeek et al., 2014; Hornby, 2022),
+while also “normalizing” hemiparetic gait by mimicking the
+symmetrical step trajectories of able-bodied controls (Hidler et al.,
+2008; van Kammen et al., 2017). However, despite a trend
+favoring robotic training as an adjunct therapy to usual care (UC)
+for achieving walking independence within the ﬁrst 3 months
+poststroke (Schroder et al., 2019; Mehrholz et al., 2020), hardly
+any exoskeleton trials completed their intervention within the
+critical recovery period of the ﬁrst 5–8 weeks poststroke. Moreover,
+Abbreviations: BBS-stand, standing unsupported item of the Berg Balance
+Scale; CI, conﬁdence interval; CPASS, Critical Period After Stroke Study;
+DCA, dynamic control asymmetry; DRT, delayed robotic training; EPOS,
+Early Prediction of Outcome after Stroke; ERT, early robotic training;
+FAC, Functional Ambulation Category; FM-LE, Fugl-Meyer Lower Extremity
+motor score; MI-LE, Motricity Index Lower Extremity score; SRRR, Stroke
+Recovery and Rehabilitation Roundtable; UC, usual care; WBA, weight-
+bearing asymmetry.
+trials often lack objective biomechanical outcomes that reﬂect
+quality of movement (Nedergard et al., 2021), such as re-emergence
+of interlimb symmetry in center-of-pressure measures reﬂecting
+balance control (Roerdink et al., 2009; Roelofs et al., 2018) or
+spatiotemporal stepping parameters (Patterson et al., 2010, 2015)
+as hallmark features of a normative bipedal gait. The ﬁrst, second,
+and third Stroke Recovery and Rehabilitation Roundtables (SRRR)
+of the International Stroke Recovery and Rehabilitation Alliance1
+(Bernhardt et al., 2017; Kwakkel et al., 2017, 2019; Van Criekinge
+et al., 2024) recommend applying these so-called performance
+assays in trials to distinguish task improvements achieved by
+behavioral restitution from compensation, thereby contributing to
+our understanding of interaction eﬀects between spontaneous and
+learning-dependent recovery induced by early-delivered therapies.
+Acknowledging the lack of early-starting exoskeleton trials,
+this pilot study was conducted. In addition to exploring the
+feasibility of using the Ekso GT R⃝wearable exoskeleton for
+overground training (Louie and Eng, 2016; Louie et al., 2020,
+2021) in a primary inpatient rehabilita

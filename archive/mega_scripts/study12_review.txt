@@ -1,0 +1,47 @@
+Study ID: Mohamed 2023_2023
+Outcome: 28-day all-cause mortality
+Data Type: binary
+
+===ABSTRACT===
+ABSTRACT—Purpose: The aim of the study is to evaluate the effect of combined hydrocortisone, vitamin C, and thiamine (triple
+therapy) on the mortality of patients with septic shock. Methods: This multicenter, open-label, two-arm parallel-group, random-
+ized controlled trial was conducted in four intensive care units in Qatar. Adult patients diagnosed with septic shock requiring nor-
+epinephrine at a rate of ≥0.1 μg/kg/min for ≥6 h were randomized to a triple therapy group or a control group. The primary out-
+come was in-hospital mortality at 60 days or at discharge, whichever occurred first. Secondary outcomes included time to death,
+change in Sequential Organ Failure Assessment (SOFA) score at 72 h of randomization, intensive care unit length of stay, hos-
+pital length of stay, and vasopressor duration. Results: A total of 106 patients (53 in each group) were enrolled in this study. The
+study was terminated early because of a lack of funding. The median baseline SOFA score was 10 (interquartile range, 8–12).
+The primary outcomes were similar between the two groups (triple therapy, 28.3% vs. control, 35.8%; P = 0.41). Vasopressor
+duration among the survivors was similar between the two groups (triple therapy, 50 h vs. control, 58 h; P = 0.44). Other second-
+ary and safety endpoints were similar between the two groups. Conclusion: Triple therapy did not improve in-hospital mortality
+at 60 days in critically ill patients with septic shock or reduce the vasopressor duration or S
+
+===RESULTS===
+Results: A total of 106 patients (53 in each group) were enrolled in this study. The
+study was terminated early because of a lack of funding. The median baseline SOFA score was 10 (interquartile range, 8–12).
+The primary outcomes were similar between the two groups (triple therapy, 28.3% vs. control, 35.8%; P = 0.41). Vasopressor
+duration among the survivors was similar between the two groups (triple therapy, 50 h vs. control, 58 h; P = 0.44). Other second-
+ary and safety endpoints were similar between the two groups. Conclusion: Triple therapy did not improve in-hospital mortality
+at 60 days in critically ill patients with septic shock or reduce the vasopressor duration or SOFA score at 72 h. Trial Registration:
+ClinicalTrials.gov identifier: NCT03380507. Registered on December 21, 2017.
+KEYWORDS—Ascorbic acid; hydrocortisone; septic shock; thiamine; vitamin C
+BACKGROUND
+Despite recent medical advances, sepsis and septic shock re-
+main major causes of death (1,2). Approximately 20% of deaths
+worldwide are associated with sepsis (2). In addition, mortality
+from septic shock is approximately 30%–40% as reported in a re-
+cent meta-analysis of 71 studies (3). There is an ongoing effort to
+identify novel therapies or repurposed medications to improve
+outcomes in patients with sepsis and septic shock.
+Low plasma levels of ascorbic acid (vitamin C) have been as-
+sociated with multiorgan dysfunction in critically ill patients
+(4–6). Several studies have demonstrated the safety and benefits
+of using vitamin C to treat critically ill patients, including a
+dose-dependent decrease in the Sequential Organ Failure Assess-
+ment (SOFA) score, lower vasopressor doses and duration, and
+lower fluid resuscitation requirements (7–10).
+A small study demonstrated that septic shock is associated
+with thiamine deficiency (11). Donnino et al. showed that intrave-
+nous thiamine decreased lactate levels and mortality in a sub-
+group of patients with thiamine deficiency, but this finding was
+n

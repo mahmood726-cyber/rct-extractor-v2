@@ -1,0 +1,35 @@
+Study ID: Jamshidi 2021_2021
+Outcome: Hospital mortality
+Data Type: binary
+
+===ABSTRACT===
+
+
+===RESULTS===
+Results: The decline in procalcitonin, lactate, and leukocyte count 72 h after the initiation 
+of treatment was significantly greater in the intervention as compared to the control group. The intervention group has a significantly 
+lower sequential organ failure assessment score 72 h after treatment (P < 0.001). The mean duration of vasopressor dependency was 
+shorter in the intervention group (P = 0.039). In‑hospital death occurred in 10.3% of the patients who received combination therapy 
+and 37.9% in the control group (P = 0.014). Conclusion: The administration of the triple combination of hydrocortisone, thiamine, 
+and Vitamin C appeared to be effective in improving the clinical outcomes of patients with septic shock and of reducing vasopressor 
+requirements with a significant increase in the rate of improvement of sepsis biomarkers.
+Key words: Biomarkers, hydrocortisone, randomized controlled trial, septic shock, thiamine, Vitamin C
+Address for correspondence: Dr. Mohammad Reza Zeraati, Department of Anesthesiology and Critical Care Medicine, Ayatollah Mousavi Hospital, 
+Zanjan University of Medical Sciences, Zanjan, Iran.
+E‑mail: mohammadrezazeraati@zums.ac.ir
+Submitted: 07‑Jan‑2020; Revised: 30‑Jul‑2020; Accepted: 20-Jan-2021; Published: 31-Jul-2021
+Original Article
+Access this article online
+Quick Response Code:
+Website: 
+www.jmsjournal.net
+DOI: 
+10.4103/jrms.JRMS_593_19
+How to cite this article: Jamshidi MR, Zeraati MR, Forouzanfar B, Tahrekhani M, Motamed N. Effects of triple combination of hydrocortisone, thiamine, 
+and Vitamin C on clinical outcome in patients with septic shock: A single-center randomized controlled trial. J Res Med Sci 2021;26:47.
+This is an open access journal, and articles are 
+distributed under the terms of the Creative Commons 
+Attribution‑NonCommercial‑ShareAlike 4.0 License, which 
+allows others to remix, tweak, and build upon the work 
+non‑commercially, as long as appropriate credit is given and 
+the new creations are licensed un

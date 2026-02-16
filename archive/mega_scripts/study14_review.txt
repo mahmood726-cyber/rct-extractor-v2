@@ -1,0 +1,42 @@
+Study ID: Tongyoo 2016_2016
+Outcome: 28-day all-cause mortality
+Data Type: binary
+
+===ABSTRACT===
+Abstract
+Background: Authors of recent meta-analyses have reported that prolonged glucocorticoid treatment is associated
+with significant improvements in patients with severe pneumonia or acute respiratory distress syndrome (ARDS) of
+multifactorial etiology. A prospective randomized trial limited to patients with sepsis-associated ARDS is lacking. The
+objective of our study was to evaluate the efficacy of hydrocortisone treatment in sepsis-associated ARDS.
+Methods: In this double-blind, single-center (Siriraj Hospital, Bangkok), randomized, placebo-controlled trial, we
+recruited adult patients with severe sepsis within 12 h of their meeting ARDS criteria. Patients were randomly assigned
+(1:1 ratio) to receive either hydrocortisone 50 mg every 6 h or placebo. The primary endpoint was 28-day all-cause
+mortality; secondary endpoints included survival without organ support on day 28.
+Results: Over the course of 4 years, 197 patients were randomized to either hydrocortisone (n = 98) or placebo (n = 99)
+and were included in this intention-to-treat analysis. The treatment group had significant improvement in the ratio of
+partial pressure of oxygen in arterial blood to fraction of inspired oxygen and lung injury score (p = 0.01), and similar
+timing to removal of vital organ support (HR 0.74, 95 % CI 0.51–1.07; p = 0.107). After adjustment for significant covariates,
+day 28 survival was similar for the whole group (HR 0.80, 95 % CI 0.46–1.41; p = 0.44) and for the larger subgroup (n =
+
+===RESULTS===
+Results: Over the course of 4 years, 197 patients were randomized to either hydrocortisone (n = 98) or placebo (n = 99)
+and were included in this intention-to-treat analysis. The treatment group had significant improvement in the ratio of
+partial pressure of oxygen in arterial blood to fraction of inspired oxygen and lung injury score (p = 0.01), and similar
+timing to removal of vital organ support (HR 0.74, 95 % CI 0.51–1.07; p = 0.107). After adjustment for significant covariates,
+day 28 survival was similar for the whole group (HR 0.80, 95 % CI 0.46–1.41; p = 0.44) and for the larger subgroup (n = 126)
+with Acute Physiology and Chronic Health Evaluation II score <25 (HR 0.57, 95 % CI 0.24–1.36; p = 0.20). With the exception
+of hyperglycemia (80.6 % vs. 67.7 %; p = 0.04), the rate of adverse events was similar. Hyperglycemia had no
+impact on outcome.
+Conclusions: In sepsis-associated ARDS, hydrocortisone treatment was associated with a significant
+improvement in pulmonary physiology, but without a significant survival benefit.
+Trial registration: ClinicalTrials.gov identifier NCT01284452. Registered on 18 January 2011.
+Keywords: ARDS, Septic shock, Severe sepsis, Hydrocortisone, Glucocorticoid treatment, Randomized trial
+* Correspondence: surat_ty@yahoo.co.uk
+1Faculty of Medicine, Siriraj Hospital, Mahidol University, No. 2, Prannok Road,
+Bangkoknoi, Bangkok 10700, Thailand
+Full list of author information is available at the end of the article
+© 2016 The Author(s). Open Access This article is distributed under the terms of the Creative Commons Attribution 4.0
+International License (http://creativecommons.org/licenses/by/4.0/), which permits unrestricted use, distribution, and
+reproduction in any medium, provided you give appropriate credit to the original author(s) and the source, provide a link to
+the Creative Commons license, and indicate if changes were made. The Creative Commons Public Domain Dedication waiver
+(http://creativecommons.org/publicdomain/zero/1.0/

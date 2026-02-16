@@ -1,0 +1,89 @@
+Study ID: Kang 2021_2021
+Outcome: Walking velocity (metres per second) at end of intervention phase
+Data type: continuous
+
+================================================================================
+RESULTS TEXT:
+================================================================================
+
+Results: In the SUBAR group, MAS and step length were signiﬁcantly improved between pre- and posttreatment measurements
+(Dmean±SD: 1.1±1.6 and 5.5±7.6, P=.019 and .016, respectively). The SUBAR group improved the stride length and step
+length of the affected limb but not signiﬁcantly. The control group had signiﬁcant improvements in the BBS, MAS, and stride length
+between pre- and posttreatment measurements (Dmean±SD: 3.5±4.6, 0.8±1.5, and 6.5±9.5; P=.004, .031, and .035,
+respectively). The BBS improved more in the control group than in the SUBAR group. There were no other differences between the
+SUBAR group and the control group.
+Conclusion: Our results suggest that SUBAR-assisted gait training improved gait parameters in patients with chronic stroke.
+However, there was no signiﬁcant difference in most outcome measures compared to conventional physiotherapy. Further research
+is warranted to measure the effects of SUBAR-assisted gait training.
+Abbreviations: 10MWT = 10 meter walk test, BBS = Berg Balance Scale, BWSTT = body-weight supported treadmill training,
+FAC = functional ambulation category, GEMS = gait enhancing and motivating system, MAS = Modiﬁed Ashworth Scale, MI =
+Motricity Index.
+Keywords: gait, neurological rehabilitation, robotics, stroke
+1. Introduction
+Annually, 15 million people worldwide have a stroke. Of these, 5
+million people become permanently disabled.[1] Patients with a
+stroke experience many disabilities that cause serious health
+problems and much burden to their families. Half of the patients
+are unable to walk immediately after a stroke, and one third of
+the patients are unable to walk at 3 months after a stroke.[2,3]
+Reduction in gait function severely limits activities of daily living
+and social activity. Therefore, the recovery of walking ability is
+the primary goal in stroke patients.[4,5]
+Physical therapy aims to improve balance, gait, and movement
+through manual therapy conducted by physical therapists.[6]
+Such treatment is burdensome for therapists who are small in
+stature or weak in strength. Sometimes, therapists do not meet the
+patient’s needs and impede recovery potential.[7] The use of
+rehabilitation robots can provide repetitive, interactive, high-
+intensity, and task-speciﬁc limb treatment.[6]
+There have been several research studies on robot-assisted gait
+training in stroke patients. Westlake et al[8] found that body-
+weight supported treadmill training (BWSTT) with Lokomat, an
+exoskeleton-type robot, is associated with similar improvement
+in walking speed compared with manually assisted BWSTT. Also,
+Kelley et al[9] showed that Lokomat and overground gait training
+groups had no differences at postintervention and 3-month
+follow-up except in the Fugl–Meyer Lower Extremity Motor
+Editor: Wen-Jun Tu.
+This research was supported by a grant of the Korea Health Technology R&D
+Project through the Korea Health Industry Development Institute (KHIDI), funded
+by the Ministry of Health & Welfare, Republic of Korea (grant number
+HI17C2410).
+The authors have no conﬂicts of interest to disclose.
+The datasets generated during and/or analyzed during the current study are not
+publicly available, but are available from the corresponding author on reasonable
+request.
+a Department of Rehabilitation Medicine, Asan Medical Center, 88 Olympic-ro 43-
+gil, Songpa-gu, Seoul, Korea, b University of Ulsan College of Medicine, 88
+Olympic-ro 43-gil, Songpa-gu, Seoul, Korea, c Asan Laboratory for Rehabilitation
+Robot Biomedical Engineering Institute, Asan Institute for Life Sciences, 88
+Olympic-ro 43-gil, Songpa-gu, Seoul, Korea.
+∗Correspondence: Min Ho Chun, Department of Rehabilitation Medicine, Asan
+Medical Center, Seoul, Korea (e-mail: mhchun@amc.seoul.kr).
+Copyright © 2021 the Author(s). Published by Wolters Kluwer Health, Inc.
+This is an open access article distributed under the terms of the Creative
+Commons Attribution-Non Commercial License 4.0 (CCBY-NC), where it is
+permissible to download, share, remix, transform, and buildup the work provided
+it is properly cited. The work cannot be used commercially without permission
+from the journal.
+How to cite this article: Kang CJ, Chun MH, Lee J, Lee JY. Effects of robot
+(SUBAR)-assisted gait training in patients with chronic stroke: randomized
+controlled trial. Medicine 2021;100:48(e27974).
+Received: 29 June 2020 / Received in ﬁnal form: 27 October 2021 / Accepted: 9
+November 2021
+http://dx.doi.org/10.1097/MD.0000000000027974
+Clinical Trial/Experimental Study
+Medicine
+®
+OPEN
+1
+
+score and Barthel Index, which were more improved with
+Lokomat-assisted gait training than overground gait training.
+According to the Cochrane Review, robot-assisted gait training
+with physiotherapy in acute stroke patients is more beneﬁcial
+for independent walking than physiotherapy alone, but not for
+walking velocity or walking capacity.[10]
+Previous treadmill-based robots provide gait training in a static
+environment, such as a ﬁxed and conﬁned area, and take up a
+lo

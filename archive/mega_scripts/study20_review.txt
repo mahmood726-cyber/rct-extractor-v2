@@ -1,0 +1,67 @@
+Study ID: Costa 2018_2018
+Outcome: Late-onset invasive infection
+Data Type: binary
+
+===ABSTRACT===
+Abstract
+Background: Human milk (HM) is the best feeding for premature infants. When own mother’s milk (OMM) is
+insufficient or unavailable, pasteurized donor human milk (PDHM) and preterm formula (PF) are the alternative
+nutritional sources, but the benefits of donor milk over formula are not defined. This study aimed to assess
+whether, in the absence of OMM, the PF could guarantee a feeding tolerance not inferior to that seen with the use
+of PDHM during the first two weeks of life of very preterm infants.
+Methods: Infants with gestational age (GA) of ≤32 weeks who started enteral feeding within the first 7 days of life
+were randomized to receive PDHM or PF as a supplement to the OMM insufficient or unavailable. The primary
+outcome was the day of life when full enteral feeding (FEF) of 150 mL/Kg/d was achieved.
+Results: Seventy infants were randomized, 35 in the PF group (GA 30.2 ± 1.7 weeks; BW 1342 ± 275 g), 35 in the
+PDHM group (GA 30 ± 1.9 weeks; BW 1365 ± 332 g). The time to achieve FEF was the same for infants fed with PF
+and for infants fed with PDHM (12.3 ± 7.0 days vs 12.8 ± 6.5).
+Conclusions: This trial shows that PF could be a valid alternative for the early feeding of very preterm infants when
+OMM is insufficient or unavailable.
+Trial registration: UMIN000013922. Date of formal registration: December 31, 2014.
+Keywords: Feeding tolerance, Pasteurized donor human milk, Preterm formula, Very preterm infant
+Background
+Human milk (HM) is the best feeding for infants,
+
+===RESULTS===
+Results: Seventy infants were randomized, 35 in the PF group (GA 30.2 ± 1.7 weeks; BW 1342 ± 275 g), 35 in the
+PDHM group (GA 30 ± 1.9 weeks; BW 1365 ± 332 g). The time to achieve FEF was the same for infants fed with PF
+and for infants fed with PDHM (12.3 ± 7.0 days vs 12.8 ± 6.5).
+Conclusions: This trial shows that PF could be a valid alternative for the early feeding of very preterm infants when
+OMM is insufficient or unavailable.
+Trial registration: UMIN000013922. Date of formal registration: December 31, 2014.
+Keywords: Feeding tolerance, Pasteurized donor human milk, Preterm formula, Very preterm infant
+Background
+Human milk (HM) is the best feeding for infants, espe-
+cially for the premature high-risk infants [1, 2].
+After preterm delivery, the own mother’s milk (OMM)
+is not always available because many mothers produce
+insufficient milk to meet their infant’s needs. It has been
+found that only 27% of mothers were able to sustain
+their lactation to meet the needs of their premature infants
+throughout the hospitalization [3]. Results from an Italian
+study showed that 55.8% of infants with BW of < 1500 g
+discharged from intensive care unit are fed with exclusive,
+predominant or complementary HM, but only 3.1% of
+these infants are discharged at home with OMM [4]. Simi-
+larly, a survey carried out on 97 United States neonatal in-
+tensive
+care
+units
+revealed
+that
+42%
+of
+very
+low
+birthweight infants receive human milk mixed with fortifier
+or formula and only 6% are discharged on exclusive human
+milk [5].
+When OMM is insufficient or unavailable, pasteurized
+donor human milk (PDHM) and preterm formula (PF)
+are the alternative sources of enteral feeding for prema-
+ture infants. PDHM is stated as the most appropriate
+alternative to promote feeding tolerance [6], although it
+seems that PDHM does not have the same benefits of
+OMM. This is because the process of pasteurization re-
+duces the content and function of some host defence
+proteins and cellular elements [3, 7]. P

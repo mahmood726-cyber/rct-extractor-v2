@@ -1,0 +1,119 @@
+Study ID: Corral-Gudino 2021_2021
+Outcome: 28-day all-cause mortality
+Data Type: binary
+
+===ABSTRACT===
+
+
+===RESULTS===
+Results A total of 91 patients were screened, and 64
+were randomized (mean age70± 12 years). In the ITT
+analysis, 14 of 29 patients (48%) in the SOC group and
+14 of 35 (40%) in the MP group suffered the composite
+endpoint (40% versus 20% in patients under 72 years
+and 67% versus 48% in those over 72 years; p= 0.25).
+In the PP analysis, patients on MP had a signiﬁcantly
+lower risk of experiencing the composite endpoint
+(age-adjusted risk ratio 0.42; 95% conﬁdence interval,
+CI 0.20–0.89; p= 0.043).
+Conclusion The planned sample size was not achieved,
+and our results should therefore be interpreted with
+caution. The use of MP had no signiﬁcant effect on
+the primary endpoint in ITT analysis; however, the PP
+analysis showed a beneﬁcial effect due to MP, which
+consistent with other published trials support the use
+of glucocorticoids in severe cases of COVID-19.
+Keywords Glucocorticoids · SARS-CoV-2 · Mortality ·
+Coronavirus Infections · Humans
+Introduction
+It has been generally admitted that corticosteroid
+therapy should not be routinely recommended in
+cases of viral pneumonia because the steroids might
+exacerbate lung injury [1].
+This is the reason why
+guidance from the World Health Organization (WHO)
+at the start of the SARS-CoV-2 (COVID-19) pandemic
+advised against systematic use of corticosteroids in
+COVID-19 patients [2].
+The rapid clinical deterioration of severely ill
+COVID-19 patients with viral pneumonia progresses
+into a disorder similar to the acute respiratory dis-
+tress syndrome (ARDS) with multiple organ failure
+and death [3, 4]. The association of increasing inter-
+leukin (IL) levels and very high acute phase reactants
+[5–9] act as signals for a highly systemic inﬂammatory
+response. These two ﬁndings in COVID-19 patients
+have led clinicians to question the recommendations
+against using corticosteroids. Besides, the potential
+beneﬁt of corticosteroids in ARDS due to other causes
+has prompted interest in using them in COVID-19
+[10]. During the ﬁrst month of the pandemic, several
+authors
+recommended
+prescribing
+corticosteroids
+based on anecdotal observations and retrospective
+uncontrolled series of patients [11–14]. In contrast,
+other studies argued that corticosteroids may be dele-
+terious and cause delayed viral clearance in COVID-
+19 patients [15] as was also found in SARS patients
+[16].
+On 17 July 2020, the RECOVERY trial was published
+[17] in which glucocorticoid use showed a clear ben-
+eﬁcial effect in patients with COVID-19 who were on
+mechanical ventilation at the time of randomization
+in the United Kingdom (UK). Other studies have con-
+ﬁrmed a decrease in the number of ventilator-free
+days (CoDEX [18]) after steroid administration.
+In
+addition, two studies of critically ill patients (CAPE-
+COVID [19] and REMAP-CAP-COVID [20]) showed
+a tendency for improvement in patients receiving cor-
+ticosteroids; however, both were stopped early after
+the RECOVERY publication. In contrast, METCOVID
+[21] did not show differences in mortality after a short
+course of methylprednisolone (MP). The evidence for
+the association of systemic corticosteroids with a re-
+duction in critically ill COVID patient mortality has
+been summarized in two systematic reviews [22, 23].
+The RECOVERY trial results showed a modest ben-
+eﬁt of corticosteroids in less severely ill patients re-
+ceiving oxygen without invasive mechanical ventila-
+tion (IMV). No beneﬁts from the use of corticosteroids
+were found in patients without respiratory support on
+admission.
+The lack of data in patients with moderate to se-
+vere disease but not yet requiring intensive care or
+mechanical respiratory support prompted us to re-
+port the results of a planned interim analysis of the
+patients who are included in our study to date. Data
+are needed to perform meta-analyses to better char-
+acterize the glucocorticoid outcomes in this subgroup
+of patients who show evidence of moderate to severe
+lung disease and a marked inﬂammatory response but
+still do not require mechanical ventilation.
+Patients, material and methods
+Study design
+GLUCOCOVID is a randomized, open-label, con-
+trolled, two-arm, parallel-group, trial conducted at
+ﬁve hospitals in Spain (Hospital Universitario Mar-
+qués de Valdecilla, Hospital Universitario Río Hort-
+ega, Hospital El Bierzo, Hospital Laredo, and Hospital
+Sierrallana). The study was designed to address the
+efﬁcacy of adding MP to standard therapy in patients
+with moderate to severe COVID-19.
+We designed a pragmatic, randomized trial. In ad-
+dition to the randomized trial, we also collected data
+from patients who had not been randomized either
+because the patient had a treatment preference or be-
+cause their doctor preferred a speciﬁc treatment. The
+304
+Short course corticosteroids in COVID-19
+K
+
+original article
+data from the patients included in this preference arm
+were analyzed separately from the data of the patients
+included in the randomized clinical trial. The reason
+for including this preference arm was an attempt to
+av

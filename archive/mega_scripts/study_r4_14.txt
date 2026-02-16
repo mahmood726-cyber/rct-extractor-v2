@@ -1,0 +1,185 @@
+Study ID: Kim 2020_2020
+Outcome: Walking velocity (metres per second) at end of intervention phase
+Data type: continuous
+
+================================================================================
+RESULTS TEXT:
+================================================================================
+
+Results are expressed 
+as means ± standard deviations. The significance level was set at p < 0.05.
+Figure 2.   The placement of channels and probes for functional near-infrared spectroscopy.
+
+5
+Vol.:(0123456789)
+Scientific Reports |        (2020) 10:12461  | 
+https://doi.org/10.1038/s41598-020-69367-3
+www.nature.com/scientificreports/
+Results
+Primary outcome measures. 
+Table 3 presents the regional cortical activities of the E-RAGT and BWST 
+groups during the overground gait test before and after intervention. No significant Group × Time interaction 
+in cortical activity was noted in any region. The cortical activity of the SMC, SMA, and PMC on the affected 
+hemisphere showed no significant Group × Time interaction (F = 0.112, 0.024, 0.106; p = 0.741, 0.878, 0.747; par-
+tial η2 = 0.004, 0.001, 0.004, respectively) and no significant main effects for any group (F = 0.177, 2.594, 0.760; 
+p = 0.677, 0.119, 0.391; partial η2 = 0.007, 0.091, 0.028, respectively), however, significant main effects were 
+observed for time (F = 4.864, 9.294, 6.601; p = 0.036, 0.005, 0.016; partial η2 = 0.158, 0.263, 0.202, respectively). In 
+the E-RAGT group, significant within-group differences between pre-test and post-test were noted for the activ-
+ity of the SMC (p = 0.016), SMA (p = 0.022), and PMC (p = 0.009) over the affected hemisphere. However, in the 
+BWST group, no significant differences were observed in any region between pre-test and post-test.
+Secondary outcome measures. 
+Table 4 presents the clinical measurements of the E-RAGT and BWST 
+groups at three time points: pre-test, mid-test, and post-test. For FMA values, there was a significant Group × Time 
+interaction (F = 4.892; p = 0.011; partial η2 = 0.158). However, there was no significant effect of Group × Time in 
+the TUG or 10MWT results. In the E-RAGT group, significant within-group differences between pre-test and 
+post-test were noted for FMA (p < 0.001), TUG (p = 0.001), and 10MWT (p = 0.024). In the BWST group, the 
+FMA (p = 0.013), TUG (p = 0.004), and 10MWT (p = 0.019) scores significantly improved after intervention.
+Table 3.   Regional cortical activity (mM·cm) during gait in the E-RAGT and BWST groups. At baseline, there 
+were no significant differences between the E-RAGT and BWST groups for any variable. E-RAGT​ end-effector 
+robot-assisted gait training, BWST bodyweight-supported treadmill training, AH affected hemisphere, UH 
+unaffected hemisphere, SMC primary sensorimotor cortex, SMA supplementary motor area, PMC premotor 
+cortex, pre-SMA pre-supplementary motor area, PFC prefrontal cortex. *Significant within-group difference, 
+based on paired t-test, p < 0.05. a Mean ± standard deviation.
+Group
+Pre-test
+Post-test
+Within-group p-value
+ANOVA p-value
+Group
+Time
+Interaction
+AH SMC
+E-RAGT​
+0.00494 ± 0.00257a
+0.00912 ± 0.00205
+0.016*
+0.677
+0.036
+0.741
+BWST
+0.00714 ± 0.00280
+0.01022 ± 0.00421
+0.470
+UH SMC
+E-RAGT​
+0.00580 ± 0.00335
+0.00798 ± 0.00207
+0.363
+0.405
+0.709
+0.566
+BWST
+0.01085 ± 0.00365
+0.01038 ± 0.00449
+0.730
+AH SMA
+E-RAGT​
+0.00574 ± 0.00387
+0.01075 ± 0.00370
+0.022*
+0.119
+0.005
+0.878
+BWST
+0.00041 ± 0.00176
+0.00410 ± 0.00217
+0.124
+UH SMA
+E-RAGT​
+0.00796 ± 0.00369
+0.00880 ± 0.00188
+0.397
+0.050
+0.575
+0.817
+BWST
+0.00066 ± 0.00196
+0.00266 ± 0.00359
+0.551
+AH PMC
+E-RAGT​
+0.00340 ± 0.00236
+0.00913 ± 0.00228
+0.009*
+0.391
+0.016
+0.747
+BWST
+0.00139 ± 0.00175
+0.00583 ± 0.00355
+0.363
+UH PMC
+E-RAGT​
+0.00820 ± 0.00282
+0.00838 ± 0.00209
+0.683
+0.474
+0.323
+0.380
+BWST
+0.00451 ± 0.00182
+0.00735 ± 0.00315
+0.245
+AH pre-SMA
+E-RAGT​
+0.00395 ± 0.00338
+0.00887 ± 0.00201
+0.109
+0.879
+0.092
+0.619
+BWST
+0.00566 ± 0.00305
+0.00838 ± 0.00407
+0.331
+UH pre-SMA
+E-RAGT​
+0.00229 ± 0.00335
+0.00614 ± 0.00226
+0.177
+0.484
+0.404
+0.567
+BWST
+0.00775 ± 0.00411
+0.00848 ± 0.00645
+0.551
+AH PFC
+E-RAGT​
+0.00575 ± 0.00223
+0.00721 ± 0.00170
+0.331
+0.312
+0.536
+0.819
+BWST
+0.00327 ± 0.00192
+0.00395 ± 0.00311
+0.975
+UH PFC
+E-RAGT​
+0.00629 ± 0.00239
+0.00680 ± 0.00283
+0.730
+0.948
+0.731
+0.946
+BWST
+0.00593 ± 0.00234
+0.00670 ± 0.00356
+0.925
+
+6
+Vol:.(1234567890)
+Scientific Reports |        (2020) 10:12461  | 
+https://doi.org/10.1038/s41598-020-69367-3
+www.nature.com/scientificreports/
+Discussion
+The present investigation is the first randomised clinical trial to emphasise the comparative effects of long-term 
+E-RAGT and BWST interventions on cortical activity and gait function in individuals with hemiparetic stroke. 
+We found no significant difference between the E-RAGT and BWST groups for cortical activity in any region. 
+However, the E-RAGT intervention led to significant improvements in SMC, SMA, and PMC activity on the 
+affected hemisphere between pre-test and post-test. In contrast, the BWST intervention showed no significant dif-
+ference in cortical activity between pre-test and post-test. Clinical outcomes, including FMA, TUG, and 10MWT 
+scores, were improved after intervention in both groups, but only the FMA score showed a significantly greater 
+improvement in the E-RAGT group than in the BWST group. 

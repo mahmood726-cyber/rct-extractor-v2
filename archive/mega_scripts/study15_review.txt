@@ -1,0 +1,57 @@
+Study ID: Yildiz 2002_2002
+Outcome: 28-day all-cause mortality
+Data Type: binary
+
+===ABSTRACT===
+Abstract
+Introduction The aim of the study was to assess the prognostic importance of basal cortisol
+concentrations and cortisol response to corticotropin, and to determine the effects of physiological
+dose steroid therapy on mortality in patients with sepsis.
+Methods Basal cortisol level and corticotropin stimulation test were performed within 24 hours in all
+patients. One group (20 patients) received standard therapy for sepsis and physiological-dose steroid
+therapy for 10 days; the other group (20 patients) received only standard therapy for sepsis. Basal cortisol
+level was measured on the 14th day in patients who recovered. The outcome of sepsis was compared.
+Results Only Sequential Organ Failure Assessment (SOFA) score was found related to mortality,
+independent from other factors in multivariate analysis. No significant difference was found between
+the changes in the percentage of SOFA scores of the steroid therapy group and the standard therapy
+group in survivors, nor between the groups in basal and peak cortisol levels, cortisol response to
+corticotropin test and mortality. The mortality rates among patients with occult adrenal insufficiencies
+were 40% in the steroid therapy group and 55.6% in the standard therapy group.
+Discussion There was a trend towards a decrease in the mortality rates of the patients with sepsis
+who received physiological-dose steroid therapy. In the advancing process from sepsis to septic
+shock, adrenal insufficiency was not frequent as suppose
+
+===RESULTS===
+Results Only Sequential Organ Failure Assessment (SOFA) score was found related to mortality,
+independent from other factors in multivariate analysis. No significant difference was found between
+the changes in the percentage of SOFA scores of the steroid therapy group and the standard therapy
+group in survivors, nor between the groups in basal and peak cortisol levels, cortisol response to
+corticotropin test and mortality. The mortality rates among patients with occult adrenal insufficiencies
+were 40% in the steroid therapy group and 55.6% in the standard therapy group.
+Discussion There was a trend towards a decrease in the mortality rates of the patients with sepsis
+who received physiological-dose steroid therapy. In the advancing process from sepsis to septic
+shock, adrenal insufficiency was not frequent as supposed. There was a trend (that did not reach
+significance) towards a decrease in the mortality rates of the patients with sepsis who received
+physiological-dose steroid therapy.
+Keywords adrenal insufficiencies, cortisol, occult adrenal insufficiencies, physiological-dose steroid therapy, sepsis
+Received: 5 October 2001
+Revisions requested: 5 December 2001
+Revisions received: 27 January 2002
+Accepted: 2 April 2002
+Published: 19 April 2002
+Critical Care 2002, 6:251-258
+This article is online at http://ccforum.com/content/6/3/251
+© 2002 Yildiz et al., licensee BioMed Central Ltd
+(Print ISSN 1364-8535; Online ISSN 1466-609X)
+
+Critical Care    June 2002 Vol 6 No 3
+Yildiz et al.
+Steroid therapy in patients with sepsis is still controversial.
+In the 1960s, stress doses of hydrocortisone for the treat-
+ment of sepsis were investigated, but no advantages could
+be shown in a double-blind multicenter study [8]. This led
+to the discontinuation of steroid replacement therapy for
+sepsis. In the 1970s, therapy with pharmacological doses
+of glucocorticoids was widely used in patients with sepsis
+and septic shock. The most compelling evidence in favor of
+corticosteroid trea

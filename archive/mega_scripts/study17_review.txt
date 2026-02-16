@@ -1,0 +1,48 @@
+Study ID: Mathew 2020_2022
+Outcome: Relapse by 12 months
+Data Type: binary
+
+===ABSTRACT===
+Abstract
+Background  Rituximab and tacrolimus are therapies reserved for patients with frequently relapsing or steroid-dependent 
+nephrotic syndrome who have failed conventional steroid-sparing agents. Given their toxicities, demonstrating non-inferiority 
+of rituximab to tacrolimus may enable choice between these medications.
+Methods  This investigator-initiated, single-center, open-label, pilot randomized controlled trial examined the non-inferiority 
+of two doses of intravenous (IV) rituximab given one-week apart to oral therapy with tacrolimus (1:1 allocation), in maintain-
+ing sustained remission over 12 months follow-up, in patients with difficult-to-treat steroid-sensitive nephrotic syndrome, 
+defined as frequently relapsing or steroid-dependent disease that had failed ≥ 2 steroid-sparing strategies. Secondary outcomes 
+included frequency of relapses, proportion with frequent relapses, time to relapse and frequent relapses, and adverse events 
+(CTRI/2018/11/016342).
+Results  Baseline characteristics were comparable for 41 patients randomized to receive rituximab (n = 21) or tacrolimus 
+(n = 20). While 55% of patients in each limb were in sustained remission at 1 year, non-inferiority of rituximab to tacroli-
+mus was not demonstrated (mean difference 0%; 95% CI – 30.8%, 30.8%; non-inferiority limit – 20%; P = 0.50). Frequent 
+relapses were more common in patients administered rituximab compared to tacrolimus (risk difference 30%, 95% CI 7.0, 
+53.0, P = 0.023). Both grou
+
+===RESULTS===
+Results  Baseline characteristics were comparable for 41 patients randomized to receive rituximab (n = 21) or tacrolimus 
+(n = 20). While 55% of patients in each limb were in sustained remission at 1 year, non-inferiority of rituximab to tacroli-
+mus was not demonstrated (mean difference 0%; 95% CI – 30.8%, 30.8%; non-inferiority limit – 20%; P = 0.50). Frequent 
+relapses were more common in patients administered rituximab compared to tacrolimus (risk difference 30%, 95% CI 7.0, 
+53.0, P = 0.023). Both groups showed similar reductions in relapse rates and prednisolone use. Common adverse events were 
+infusion-related with rituximab and gastrointestinal symptoms with tacrolimus.
+Conclusions  Therapy with rituximab was not shown to be non-inferior to 12-months treatment with tacrolimus in maintain-
+ing remission in patients with difficult-to-treat steroid-sensitive nephrotic syndrome. Frequent relapses were more common 
+with rituximab. While effective, both agents require close monitoring for adverse events.
+Keywords  Children · Frequently relapsing nephrotic syndrome · Rituximab · Tacrolimus · Steroid dependence
+Introduction
+Approximately 40–50% of patients with steroid-sensitive 
+nephrotic syndrome have frequently relapsing or steroid-
+dependent disease. These patients are considered for therapy 
+with steroid-sparing agents because of the morbidities asso-
+ciated with relapses and the risk of corticosteroid toxicity 
+[1]. While the recent Kidney Disease: Improving Global 
+Outcomes (KDIGO) clinical practice guidelines suggest lev-
+amisole or cyclophosphamide as preferred agents in patients 
+with frequent relapses, they advise that the choice of the 
+glucocorticoid-sparing agent in steroid dependence should 
+be guided by patient and physician preference, likely adher-
+ence to therapy, and adverse effects, costs and availability 
+of the medication [2]. In many regions of the world, patients 
+with frequent relapses or steroid dependence usually receive 
+initial therapy 

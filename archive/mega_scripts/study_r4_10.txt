@@ -1,0 +1,70 @@
+Study ID: Choi 2022_2022
+Outcome: Walking velocity (metres per second) at end of intervention phase
+Data type: continuous
+
+================================================================================
+RESULTS TEXT:
+================================================================================
+
+results
+than did the non-robot group (p < 0.5). TUG was signiﬁcantly shorter in robot groups A, B, and
+C than in the non-robot group (p < 0.5). The BBS scores for robot group A improved signiﬁcantly
+more than did those for robot groups B and C and the non-robot group (p < 0.5), indicating that
+robot-assisted gait training with body weight support effectively improved the gait of stroke patients.
+Keywords: stroke; body weight support; robot-assisted gait training
+1. Introduction
+According to the Global Burden of Disease, the number of deaths due to stroke per
+100,000 people is 42.56 [1]. Moreover, 3.3 million die due to ischemic stroke annually,
+ranking second among causes of death [1]. One in four people above 25 years of age
+worldwide will experience a stroke in their lifetime, and the stroke incidence is increasing
+annually [1,2], resulting in a global burden of more than USD 891 billion [1].
+Stroke is deﬁned as a clinical manifestation of a sudden onset of local or global
+impairment of brain function due to vascular causes that can last more than 24 h or even
+result in death [3]. Neurological and functional defects persist after experiencing strokes [2].
+Daily living ability is reduced owing to balance and gait problems that result from muscle
+weakness, motor control, pain, stiffness, and poor balance ability [2,4], while the risk of
+falls is increased by the impediment of mobility recovery.
+Gait disturbance is the biggest obstacle limiting the daily activities of stroke patients [5].
+Abnormal gait patterns appear after stroke onset, and walking distance is also limited [6].
+Most patients display slow walking speeds and decreased endurance [6]. The decrease
+and loss of walking ability cause long-term disability in stroke patients, making treatment
+difﬁcult [7] and, thus, making walking one of the most important treatment goals in the
+rehabilitation of stroke patients. Gait recovery after neurological damage is the primary
+goal of rehabilitation, and signiﬁcant time and effort are required to improve gait ability.
+Neurodevelopment treatment (NDT) is a well-known treatment for the recovery of
+patients with neurological deﬁcits and gait disorders after stroke, the goal of which is to
+convert abnormal movements into normal movements [8–10].
+Int. J. Environ. Res. Public Health 2022, 19, 5814. https://doi.org/10.3390/ijerph19105814
+https://www.mdpi.com/journal/ijerph
+
+Int. J. Environ. Res. Public Health 2022, 19, 5814
+2 of 9
+Body-weight-supported treadmill training has traditionally been used for gait reha-
+bilitation [11,12]. In this training, one or more therapists partially assist the patient in
+supporting their weight and then guide the patient’s movements and gait on a tread-
+mill [13]. Body weight-supported treadmill training offers numerous advantages in patient
+gait rehabilitation because gait motion becomes more accurate and repetitive than before
+body weight support [14]. However, body-weight-supported treadmill training entails
+a great deal of physical labor and a high risk of injury because the therapist alone must
+support the patient’s weight [15].
+Robot-assisted gait training supplements the limitations of NDT and body-weight-
+supported treadmill training [10,16]. In robot-assisted training, the patient’s body weight is
+supported by a harness system, eliminating the need for therapist assistance, as in body-
+weight-supported treadmill training [16]. Robot-assisted gait training is characterized by
+repeatability and accuracy [17]. The repeatability is achieved by thoroughly controlling
+the range of motion and stride length of the hip, knee, and ankle joints through robot
+hardware [17,18]. Once the robot hardware is set, treatment continues in the same training
+environment with repeatability unless the therapist intervenes as part of the treatment [19].
+Accuracy is achieved through the robotic exoskeleton, as it is set on the patient according
+to the size suitable for the patient’s individual physical characteristics [19]. Furthermore,
+the therapist can provide precise stimulation by controlling the hardware of the robot.
+Based on such repeatability and accuracy, the robot-assisted gait-training device affects
+the coordination between the lower extremities in the gait of hemiplegic patients, thereby
+affecting postural control and adaptation and improving the patient’s gait [20,21]. Fur-
+thermore, the robot hardware allows control of the treadmill, harness system, and robot
+frame so that various techniques can be applied to the patient based on their needs [19].
+Such a device can prevent fatigue and injuries in therapists and provide a wide range
+of gait-training environments for patients [13,20]. Furthermore, the robot offers effective
+treatment by providing precise, repetitive motions and a joint range of motion by control-
+ling the robot’s hardware [17,22]. However, clear treatment guidelines have not yet been
+devised for robot-assisted gait training. There are no speciﬁc guidelines for the adjus

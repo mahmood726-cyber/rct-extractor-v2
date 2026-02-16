@@ -1,0 +1,92 @@
+Study ID: Gandolfi 2019_2019
+Outcome: Walking velocity (metres per second) at end of intervention phase
+Data type: continuous
+
+================================================================================
+RESULTS TEXT:
+================================================================================
+
+Results: There was a non-signiﬁcant main effect of group on primary and secondary
+outcomes. A signiﬁcant Time × Group interaction was measured on 6-min walking test
+(p = 0.013) and on posturographic outcomes (p = 0.005). Post hoc within-group analysis
+showed only in the EG a signiﬁcant reduction of sway area and the CoP length on
+compliant surface in the eyes-closed and dome conditions.
+Frontiers in Neuroscience | www.frontiersin.org
+1
+October 2019 | Volume 13 | Article 1143
+
+Gandolﬁet al.
+Robot-Assisted Training for Postural Control
+Conclusion: Postural control disorders in patients with chronic stroke may be
+ameliorated by robot-assisted stair climbing training and sensory integration balance
+training. The robot-assisted stair climbing training contributed to improving sensorimotor
+integration processes on compliant surfaces. Clinical trial registration (NCT03566901).
+Keywords: sensory feedback, proprioception, postural balance, motor skill disorders, sensory function
+INTRODUCTION
+Postural control disturbances are one of the leading causes
+of disability in stroke patients, leading to problems with
+transferring, maintaining body position, mobility, and walking
+(Bruni et al., 2018). Therefore, the recovery of postural control
+is one of the main goals of post-stroke patients. Various and
+mixed components (i.e., weakness, joint limitation, alteration of
+tone, loss of movement coordination and sensory organization
+components) can aﬀect postural control. Indeed, the challenge is
+to determine the relative weight placed on each of these factors
+and their interaction to plan speciﬁc rehabilitation programs
+(Bonan et al., 2004).
+The two functional goals of postural control are postural
+orientation and equilibrium. The former involves the active
+alignment of the trunk and head to gravity, the base of
+support, visual surround and an internal reference. The
+latter involves the coordination of movement strategies to
+stabilize the center of body mass during self-initiated and
+externally triggered stability perturbations. Postural control
+during static and dynamic conditions requires a complex
+interaction between musculoskeletal and neural systems (Horak,
+2006). Musculoskeletal components include biomechanical
+constraints such as the joint range of motion, muscle properties
+and limits of stability (Horak, 2006). Neural components
+include sensory and perceptual processes, motor processes
+involved in organizing muscles into neuromuscular synergies,
+and higher-level processes essential to plan and execute actions
+requiring postural control (Shumway-Cook and Woollacott,
+2012). A disorder in any of these systems may aﬀect postural
+control during static (in quite stance) and dynamic (gait) tasks
+and increase the risk of falling (Horak, 2006).
+Literature emphasized the role of impairments of sensory
+input integration from visual, somatosensory and vestibular
+systems in leading to postural control disorders in post-
+stroke patients (Bonan et al., 2004; Smania et al., 2008).
+Healthy persons rely on somatosensory (70%), vision (10%) and
+vestibular (20%) information when standing on a ﬁrm base of
+support in a well-lit environment (Peterka, 2002). Conversely,
+in quite stance on an unstable surface, they increase sensory
+weighting to vestibular and vision information as they decrease
+their dependence on surface somatosensory inputs for postural
+orientation (Peterka, 2002). Bonan et al. (2004) investigate
+whether post-stroke postural control disturbances may be
+caused by the inability to select the pertinent somatosensory,
+vestibular or visual information. Forty patients with hemiplegia
+after a single hemisphere chronic stroke (at least 12 months)
+performed computerized dynamic posturography to assess the
+patient’s ability to use sensory inputs separately and to suppress
+inaccurate inputs in case of sensory conﬂict. Six sensory
+conditions were assessed by an equilibrium score, as a measure
+of body stability. Results show that patients with hemiplegia
+seem to rely mostly on visual input. In conditions of altered
+somatosensory information, with visual deprivation or visuo-
+vestibular conﬂict, the patient’s performance was signiﬁcantly
+lower than healthy subjects. The mechanism of this excessive
+visual reliance remains unclear. However, higher-level inability
+to select the appropriate sensory input rather than to elementary
+sensory impairment has been advocated as a potential mechanism
+of action (Bonan et al., 2004).
+Sensory strategies and sensory reweighting processes are
+essential to generate eﬀective movement strategies (ankle, hip,
+and stepping strategies) which can be resolved through feed-back
+or feed-forward postural adjustments. The cerebral cortex shapes
+these postural responses both directly via corticospinal loops
+and indirectly via the brainstem centers (Jacobs and Horak,
+2007). Moreover, the cerebellar- and basal ganglia-cortical loop
+is responsible for adapting postural responses according to prior
+experience and for optimi

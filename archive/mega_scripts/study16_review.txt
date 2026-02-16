@@ -1,0 +1,84 @@
+Study ID: Dorresteijn 2008_2008
+Outcome: Relapse at 12 months
+Data Type: binary
+
+===ABSTRACT===
+Abstract We performed a multi-centre randomized con-
+trolled trial to compare the efficacy of mycophenolate
+mofetil (MMF) to that of cyclosporine A (CsA) in treating
+children with frequently relapsing nephrotic syndrome and
+biopsy-proven minimal change disease. Of the 31 random-
+ized initially selected patients, seven were excluded. The
+remaining 24 children received either MMF 1200 mg/m2
+per day (n=12) or CsA 4–5 mg/kg per day (n=12) during a
+12-month period. Of the 12 patients in the MMF group, two
+discontinued the study medication. Evaluation of the
+changes from the baseline glomerular filtration rate showed
+an overall significant difference in favour of MMF over the
+treatment period (p=0.03). Seven of the 12 patients in the
+MMF group and 11 of the 12 patients in the CsA group
+remained in complete remission during the entire study
+period. Relapse rate in the MMF group was 0.83/year
+compared to 0.08/year in the CsA group (p=0.08). None of
+the patients reported diarrhea. Pharmacokinetic profiles of
+mycophenolic acid were performed in seven patients. The
+patient with the lowest area under the curve had three
+relapses within 6 months. In children with frequently
+relapsing minimal change nephrotic syndrome, MMF has
+a favourable side effect profile compared to CsA; however,
+there is a tendency towards a higher relapse risk in patients
+treated with MMF.
+Keywords Child . Cyclosporine . Frequent relapsing .
+Mycophenolate mofetil . Nephrotic syndrome
+Introduction
+Nephrotic syndrome 
+
+===RESULTS===
+results from several uncontrolled studies have
+recently suggested a positive effect of the relatively new
+immunosuppressive drug mycophenolate mofetil (MMF) in
+preventing relapses in children with frequently relapsing
+Pediatr Nephrol (2008) 23:2013–2020
+DOI 10.1007/s00467-008-0899-6
+E. M. Dorresteijn (*): J. Nauta: A. J. van der Heijden
+Department of Pediatric Nephrology,
+Erasmus Medical Center/Sophia Children’s Hospital,
+Dr Molewaterplein 60,
+3015 GJ Rotterdam, the Netherlands
+e-mail: e.dorresteijn@erasmusmc.nl
+J. E. Kist-van Holthe
+Department of Pediatric Nephrology,
+Leiden University Medical Center,
+Leiden, the Netherlands
+E. N. Levtchenko
+Department of Pediatric Nephrology,
+University Hospital Leuven,
+Leuven, Belgium
+W. C. J. Hop
+Department of Epidemiology and Biostatistics,
+Erasmus Medical Center Rotterdam,
+Rotterdam, the Netherlands
+
+nephrotic syndrome due to minimal changes and various
+other nephropathies [12–21]. Mycophenolate mofetil inhibits
+inosine monophosphate dehydrogenase, an enzyme required
+for the de novo pathway of purine synthesis which, in turn, is
+essential for the proliferation of B and T lymphocytes. In
+contrast with CsA, MMF has no known nephrotoxic side
+effects. To the best of our knowledge, there are currently no
+randomized controlled studies comparing the efficacy of
+MMF and CsA in treating nephrotic syndrome in children or
+adults. Furthermore, pharmacokinetic profiles of MMF in
+children are scarce and mainly concern renal transplant
+recipients using multiple drugs [22, 23].
+We performed a randomized controlled trial to study the
+efficacy and side effects of MMF compared to CsA in
+children with frequently relapsing nephrotic syndrome and
+biopsy proven minimal change disease.
+Methods
+General outline of the study
+This was a multi-centre randomized controlled trial aimed
+at studying the efficacy and side effects of MMF compared
+to CsA in children with frequently relapsing nephrotic
+syndrome. We also performed a pharmacokinetic study of
+MMF. P

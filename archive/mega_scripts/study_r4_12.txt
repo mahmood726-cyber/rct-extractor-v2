@@ -1,0 +1,95 @@
+Study ID: Calabrò 2018_2018
+Outcome: Walking velocity (metres per second) at end of intervention phase
+Data type: continuous
+
+================================================================================
+RESULTS TEXT:
+================================================================================
+
+Results: A significant effect size was found in the EGT-induced improvement in the 10 m walking test (d = 0.9, p < 0.001),
+CSE in the affected side (d = 0.7, p = 0.001), SMI in the affected side (d = 0.5, p = 0.03), overall gait quality
+(d = 0.8, p = 0.001), hip and knee muscle activation (d = 0.8, p = 0.001), and FPEC (d = 0.8, p = 0.001). The
+strengthening of FPEC (r = 0.601, p < 0.001), the increase of SMI in the affected side (r = 0.554, p < 0.001), and
+the decrease of SMI in the unaffected side (r = −0.540, p < 0.001) were the most important factors correlated with the
+clinical improvement.
+Conclusions: Ekso™gait training seems promising in gait rehabilitation for post-stroke patients, besides OGT. Our study
+proposes a putative neurophysiological basis supporting Ekso™after-effects. This knowledge may be useful to
+plan highly patient-tailored gait rehabilitation protocols.
+Trial registration: ClinicalTrials.gov, NCT03162263.
+Keywords: Ekso™, Wearable exoskeleton, Plasticity, Stroke recovery, Effective connectivity
+* Correspondence: salbro77@tiscali.it
+1IRCCS Centro Neurolesi “Bonino-Pulejo”, S.S. 113, Contrada Casazza, 98124
+Messina, Italy
+Full list of author information is available at the end of the article
+© The Author(s). 2018 Open Access This article is distributed under the terms of the Creative Commons Attribution 4.0
+International License (http://creativecommons.org/licenses/by/4.0/), which permits unrestricted use, distribution, and
+reproduction in any medium, provided you give appropriate credit to the original author(s) and the source, provide a link to
+the Creative Commons license, and indicate if changes were made. The Creative Commons Public Domain Dedication waiver
+(http://creativecommons.org/publicdomain/zero/1.0/) applies to the data made available in this article, unless otherwise stated.
+Calabrò et al. Journal of NeuroEngineering and Rehabilitation  (2018) 15:35 
+https://doi.org/10.1186/s12984-018-0377-8
+
+Background
+Most of the patients with stroke experience a restriction
+of their mobility. Gait impairment after stroke mainly
+depends on deficits in functional ambulation capacity,
+balance, walking velocity, cadence, stride length, and
+muscle activation pattern, resulting in a longer gait cycle
+duration and lower than normal stance/swing ratio in
+the affected side, paralleled by a shorter gait cycle dur-
+ation and a higher than normal stance/swing ratio in the
+unaffected side [1].
+Conventional gait training often offers non-completely
+satisfactory results. Specifically, patients with stroke re-
+ceiving intensive gait training with or without body
+weight support (BWS) may not improve in walking abil-
+ity more than those who are not receiving the same
+treatment (with the exception of walking speed and en-
+durance) [2–5]. Moreover, only patients with stroke who
+are able to walk benefit most from such an intervention
+[2–5]. Therefore, there is growing effort to increase the
+efficacy of gait rehabilitation for stroke patients by using
+advanced technical devices. Neurorobotic devices, in-
+cluding robotic-assisted gait training (RAGT) with BWS,
+result in a more likely achievement of independent walk-
+ing when coupled with overground gait training (OGT)
+in patients with stroke. Specifically, RAGT combined
+with OGT has an additional beneficial effect on func-
+tional ambulation outcomes, although depending on the
+duration and intensity of RAGT [6, 7]. Further, RAGT
+requires a more active subject participation in gait train-
+ing as compared to the traditional OGT, which is a vital
+feature of gait rehabilitation [7, 8].
+Even though no substantial differences have been re-
+ported among the different types of RAGT devices [9], a
+main problem with neurorobotic devices is the provision
+for the patient of a real-world setting ambulation [10,
+11]. To this end, wearable powered exoskeletons, e.g.,
+the Ekso™(Ekso™Bionics, Richmond, CA, USA), have
+been designed to improve OGT in neurologic patients.
+Notwithstanding, the efficacy of wearable powered
+exoskeletons in improving functional ambulation cap-
+acity
+(including
+gait
+pattern,
+step
+length,
+walking
+speed and endurance, balance and coordination) has
+not been definitively proven, and any further benefit
+in terms of gait performance remains to be con-
+firmed. However, a recent study showed that Ekso™
+could improve functional ambulation capacity in pa-
+tients with sub-acute and chronic stroke [12]. There-
+fore, a first aim of our study was to assess whether
+Ekso™is useful in improving functional ambulation
+capacity and gait performance in chronic post-stroke
+patients compared to conventional OGT.
+The neurophysiologic mechanisms harnessed by pow-
+ered exoskeletons to favor the recovery of functional
+ambulation capacity are still unclear. It is argued that
+the efficacy of neurorobotics in improving functional am-
+bulation capacity depends on the high frequency and in-
+tensity of repetition of task-oriented movements [13]. This
+could guarantee a potentially s

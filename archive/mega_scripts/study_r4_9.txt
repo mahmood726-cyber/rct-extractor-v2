@@ -1,0 +1,99 @@
+Study ID: Westlake 2009_2009
+Outcome: Walking velocity (metres per second) at end of intervention phase
+Data type: continuous
+
+================================================================================
+RESULTS TEXT:
+================================================================================
+
+Results: No significant differences in primary outcomes were revealed between Lokomat and
+manual groups as a result of training. However, within the Lokomat group, self-selected walk speed,
+paretic step length ratio, and four of the six secondary measures improved (p = 0.04–0.05, effect
+sizes = 0.19–0.60). Within the manual group, only balance scores improved (p = 0.02, effect size =
+0.57). Group differences between fast and slow training groups were not revealed (p ≥0.28).
+Conclusion: Results suggest that Lokomat training may have advantages over manual-BWSTT
+following a modest intervention dose in chronic hemiparetic persons and further, that our training
+speeds produce similar gait improvements. Suggestions for a larger randomized controlled trial
+with optimal study parameters are provided.
+Background
+Stroke is the leading cause of serious, chronic disability
+in the United States and Canada. While two-thirds of
+people who suffer a stroke regain ambulatory function,
+the resulting gait pattern is typically asymmetrical, slow,
+and metabolically inefficient [1,2]. These characteristics
+are associated with difficulty advancing and bearing
+weight through the more affected limb, leading to
+instability and an increased risk of falls [3]. Secondary
+impairments, including muscle disuse and reduced
+Page 1 of 11
+(page number not for citation purposes)
+BioMed Central
+Open Access
+
+cardiorespiratory capacity, often contribute to further
+functional declines in gait. Hence, improved walking is
+one of the most frequently articulated goals of rehabi-
+litation and interventions that effectively enhance
+locomotor function are essential to improve quality of
+life for many stroke survivors and their families [4,5].
+Nevertheless, the effectiveness of locomotor training still
+remains unclear and the need to conduct randomized
+controlled trials to definitively answer this question is
+paramount. To best determine the key parameters of
+such a large-scale study, preliminary data must first be
+collected in the form of a pilot study.
+Manually-assisted body-weight supported treadmill
+training (BWSTT) is a contemporary approach to gait
+rehabilitation wherein an individual walks on a tread-
+mill with body-weight partially supported by an over-
+head harness. One to three therapists/trainers manually
+facilitate hemiparetic limb and trunk control in an effort
+to normalize upright, reciprocal stepping and dynamic
+postural control. Advantages of this approach are that
+little to no ambulatory function is required to initiate
+locomotion and early post-stroke training effects are
+transferred to improvements in overground gait includ-
+ing: symmetry, speed, and endurance as well as motor
+impairment and balance scores [6,7]. These positive
+outcomes can be maintained even at 6 months post-
+locomotor training [8]. However, because locomotor
+training involves repetition of hundreds of steps within
+one session, facilitation of a symmetrical, patterned gait
+can be very labor intensive for both therapist(s) and
+participant and further, presents a non-trivial risk of
+injury to the trainers. Moreover, the repetition of
+kinematically consistent stepping patterns is hindered
+by inconsistencies in motor performance of the thera-
+pists assisting movement. Conflicting evidence within 15
+randomized controlled trials comparing BWSTT and
+traditional gait training (i.e. overground gait training,
+motor relearning) in persons post-stroke highlight the
+difficulty in interpreting the effectiveness of manually
+applied cues during repetitive stepping [9].
+In response to the challenges presented in administering
+manual-BWSTT, robotic devices, such as the Lokomat®
+(Hocoma, Inc., Zurich, Switzerland), have recently
+emerged as a means to automate locomotor training in
+neurorehabilitation. Using robotic assistance, an exoske-
+leton facilitates a bilaterally symmetrical gait pattern as
+the individual actively attempts to advance each limb
+while walking on the treadmill. The preprogrammed
+walking pattern corresponds with normal gait kinematics
+including: gait cycle timing (i.e. stance vs. swing phase),
+inter-limb and inter-joint coordination, appropriate
+limb loading, and afferent signaling [10]. Animal models
+have demonstrated that afferent signals derived from
+limb movement and loading converge at the level of the
+spinal cord to trigger and control locomotor pattern
+generators (LPGs) [11,12]. Previous work in persons
+with spinal cord injuries underscores the importance of
+the accuracy of relevant timed peripheral inputs to
+induce changes in locomotor function [13]. Accordingly,
+the rhythmic and repetitive stepping pattern provided by
+robotic assistance, combined with active limb loading
+and kinematic consistency has been shown to promote
+plasticity of LPGs at the spinal cord level [14] as well as
+supraspinal structures [15]. Still, despite recent interest
+in automated locomotor training, there remains very
+little evidence to support the superiority of this
+technique over trad

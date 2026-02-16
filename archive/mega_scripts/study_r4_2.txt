@@ -1,0 +1,92 @@
+Study ID: Buesing 2015_2015
+Outcome: Walking velocity (metres per second) at end of intervention phase
+Data type: continuous
+
+================================================================================
+RESULTS TEXT:
+================================================================================
+
+Results: After training, significant improvements in gait parameters were observed in both training groups
+compared to baseline, including an increase in velocity and cadence, a decrease in swing time on the impaired
+side, a decrease in double support time, an increase in stride length on impaired and non-impaired sides, and an
+increase in step length on impaired and non-impaired sides. No significant differences were observed between
+training groups; except for SMA group, step length on the impaired side increased significantly during
+self-selected walking speed trials and spatial asymmetry decreased significantly during fast-velocity walking trials.
+Conclusions: SMA and FTST interventions provided similar, significant improvements in spatiotemporal gait
+parameters; however, the SMA group showed additional improvements across more parameters at various
+time points. These results indicate that the SMA® device could be a useful therapeutic tool to improve
+spatiotemporal parameters and contribute to improved functional mobility in stroke survivors. Further research
+is needed to determine the feasibility of using this device in a home setting vs a clinic setting, and whether
+such home use provides continued benefits.
+Trial registration: This study is registered under the title “Development of walk assist device to improve
+community ambulation” and can be located in clinicaltrials.gov with the study identifier: NCT01994395.
+* Correspondence: a-jayaraman@northwestern.edu
+†Equal contributors
+2Max Nader Lab for Rehabilitation Technologies and Outcomes Research,
+Rehabilitation Institute of Chicago, 345 E. Superior St, Chicago, IL 60611, USA
+Full list of author information is available at the end of the article
+JNER
+JOURNAL OF NEUROENGINEERING
+AND REHABILITATION
+© 2015 Buesing et al. Open Access This article is distributed under the terms of the Creative Commons Attribution 4.0
+International License (http://creativecommons.org/licenses/by/4.0/), which permits unrestricted use, distribution, and
+reproduction in any medium, provided you give appropriate credit to the original author(s) and the source, provide a
+link to the Creative Commons license, and indicate if changes were made. The Creative Commons Public Domain
+Dedication waiver (http://creativecommons.org/publicdomain/zero/1.0/) applies to the data made available in this
+article, unless otherwise stated.
+Buesing et al. Journal of NeuroEngineering and Rehabilitation  (2015) 12:69 
+DOI 10.1186/s12984-015-0062-0
+
+Introduction
+Stroke is the leading cause of adult-onset disability. Re-
+cent studies estimate that stroke affects about 795,000
+people in the U.S. each year, resulting in a prevalence of
+over 6.4 million stroke survivors [1, 2]. In the U.S.,
+stroke results in an estimated annual cost of $53.9 bil-
+lion, of which $36.5 billion reflects direct healthcare
+costs and the remainder is due to loss of productivity
+[3]. Recent statistics project an exponential increase in
+the global burden of stroke in the decades to come, par-
+ticularly in low and middle-income countries [4]. With
+the high prevalence of stroke and costly demands of
+care,
+determining
+the
+most
+effective
+and
+efficient
+methods for stroke rehabilitation is critically important
+to reduce the overall burden stroke places on the health-
+care system and on individual lives.
+The goal of post-stroke rehabilitation is to reintegrate
+individuals back to their highest level of function for
+employment and social and community participation
+[5]. A large proportion of stroke survivors (up to 80 %)
+experience considerable gait deficits, limiting their cap-
+acity for community ambulation [6]. Studies have shown
+that after stroke, individuals demonstrate changes in
+two important gait parameters, velocity and symmetry.
+Velocity is known to decrease, while spatial and tem-
+poral gait parameters show pronounced asymmetries.
+Gait velocity following stroke has been found to range
+from 18 to 103 cm/s [7–10], whereas the average for
+healthy adults is 140 cm/s [11]. More than 50 % of indi-
+viduals with chronic disability after stroke are known to
+exhibit temporal and spatial gait asymmetries [12].
+Typical asymmetry characteristics after stroke include
+larger swing time / smaller swing time and/or larger
+stance time/ smaller stance time (i.e., temporal asym-
+metry) [12–14] and a larger step length /smaller step
+length (i.e., spatial asymmetry) [15].
+A commonly expressed goal of stroke survivors is to
+ambulate with a more normal gait pattern and increased
+gait velocity [16]. In order to address this goal, gait train-
+ing is typically a major part of the rehabilitation process.
+Several studies provide evidence of significant progress in
+gait velocity through physical therapy [6, 17–20]; how-
+ever, there is limited evidence for significant improve-
+ments in spatial and temporal asymmetries (i.e. cadence,
+step time, step length, stride length, swing time, stance
+time, and double support time) following the rehabilita-
+tion proce
