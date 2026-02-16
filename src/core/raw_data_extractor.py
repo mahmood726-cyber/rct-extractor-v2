@@ -198,6 +198,16 @@ _EVENTS_OF_N_PATTERN = re.compile(
     re.IGNORECASE,
 )
 
+# v6.2: "(X/N)" format without percentage — common in results text
+_EVENTS_SLASH_N_PAREN = re.compile(
+    r'\(\s*(\d+)\s*/\s*(\d+)\s*\)',
+)
+
+# v6.2: "X/N" bare format (no parens, no percentage)
+_EVENTS_SLASH_N_BARE = re.compile(
+    r'(?<!\d[.])(\d+)\s*/\s*(\d+)(?!\s*%)',
+)
+
 
 def extract_binary_two_group(text: str) -> List[RawDataExtraction]:
     """
@@ -253,7 +263,7 @@ def extract_binary_two_group(text: str) -> List[RawDataExtraction]:
                 )
                 results.append(ext)
 
-    # Strategy 3: Table rows with two events/N values
+    # Strategy 3: Table rows with two events/N values (with percentage)
     for line in text.split('\n'):
         ms = list(_EVENTS_N_PCT_PATTERN.finditer(line))
         if len(ms) == 2:
@@ -268,6 +278,57 @@ def extract_binary_two_group(text: str) -> List[RawDataExtraction]:
                     confidence=0.6,
                 )
                 results.append(ext)
+
+    # Strategy 4: Two (X/N) patterns within proximity (up to 200 chars apart)
+    # Common format: "treatment (92/155) ... placebo (87/164)"
+    # Often split across lines in PDF text, so search full text not per-line
+    paren_matches = list(_EVENTS_SLASH_N_PAREN.finditer(text))
+    seen_pairs = set()  # avoid duplicate pairs
+    for i, m1 in enumerate(paren_matches):
+        e1, n1 = int(m1.group(1)), int(m1.group(2))
+        if e1 > n1 or n1 < 5:
+            continue
+        for m2 in paren_matches[i+1:]:
+            gap = m2.start() - m1.end()
+            if gap > 200:
+                break  # too far apart
+            if gap < 0:
+                continue
+            e2, n2 = int(m2.group(1)), int(m2.group(2))
+            if e2 > n2 or n2 < 5:
+                continue
+            pair_key = (e1, n1, e2, n2)
+            if pair_key in seen_pairs:
+                continue
+            seen_pairs.add(pair_key)
+            src = text[m1.start():m2.end()]
+            ext = RawDataExtraction(
+                arm1=ArmData(events=e1, n=n1),
+                arm2=ArmData(events=e2, n=n2),
+                data_type="binary",
+                source_text=src[:200],
+                confidence=0.5,
+            )
+            results.append(ext)
+
+    # Strategy 5: "X/N vs Y/N" bare format (no parens, no percentage)
+    vs_bare = re.compile(
+        r'(\d+)\s*/\s*(\d+)\s*'
+        r'(?:vs\.?|versus|compared\s+(?:to|with)|and)\s*'
+        r'(\d+)\s*/\s*(\d+)',
+        re.IGNORECASE
+    )
+    for m in vs_bare.finditer(text):
+        e1, n1, e2, n2 = int(m.group(1)), int(m.group(2)), int(m.group(3)), int(m.group(4))
+        if e1 <= n1 and e2 <= n2 and n1 >= 5 and n2 >= 5:
+            ext = RawDataExtraction(
+                arm1=ArmData(events=e1, n=n1),
+                arm2=ArmData(events=e2, n=n2),
+                data_type="binary",
+                source_text=m.group(0)[:200],
+                confidence=0.7,
+            )
+            results.append(ext)
 
     return results
 

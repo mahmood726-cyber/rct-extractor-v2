@@ -20,10 +20,24 @@ PDF_DIR = "C:/Users/user/rct-extractor-v2/gold_data/mega/pdfs"
 sys.path.insert(0, "C:/Users/user/rct-extractor-v2")
 from src.pdf.pdf_parser import PDFParser
 
+# Build PMCID -> filename lookup (PDFs named Author_Year_Year_PMCID.pdf)
+_PMCID_TO_FILE = {}
+if os.path.isdir(PDF_DIR):
+    for fname in os.listdir(PDF_DIR):
+        if fname.endswith(".pdf"):
+            # Extract PMCID from filename like "Abbate_2020_2020_PMC7335541.pdf"
+            for part in fname.replace(".pdf", "").split("_"):
+                if part.startswith("PMC") and part[3:].isdigit():
+                    _PMCID_TO_FILE[part] = fname
+                    break
+
 
 def get_pdf_text(pmcid):
     """Extract full text from a PDF."""
-    pdf_path = os.path.join(PDF_DIR, f"{pmcid}.pdf")
+    fname = _PMCID_TO_FILE.get(pmcid)
+    if not fname:
+        return None
+    pdf_path = os.path.join(PDF_DIR, fname)
     if not os.path.exists(pdf_path):
         return None
     try:

@@ -72,6 +72,13 @@ from .primary_outcome_detector import PrimaryOutcomeDetector
 from .raw_data_extractor import extract_raw_data
 from .effect_calculator import compute_effect_from_raw_data, ComputedEffect
 
+# Import advanced extraction (v6.3: ML tables, OCR, LLM)
+try:
+    from .advanced_extraction import AdvancedExtractionPipeline, AdvancedExtraction
+    HAS_ADVANCED = True
+except ImportError:
+    HAS_ADVANCED = False
+
 logger = logging.getLogger(__name__)
 
 
@@ -136,6 +143,8 @@ class PDFExtractionPipeline:
         aggressive_ocr_correction: bool = True,
         skip_non_rct: bool = False,
         extract_tables: bool = True,
+        enable_advanced: bool = False,
+        enable_llm: bool = False,
     ):
         """
         Initialize the PDF extraction pipeline.
@@ -146,12 +155,15 @@ class PDFExtractionPipeline:
             aggressive_ocr_correction: Apply aggressive OCR error correction
             skip_non_rct: Skip extraction for papers classified as non-RCT (exclude)
             extract_tables: Extract effect estimates from tables and merge with text
+            enable_advanced: Enable advanced extraction (Table Transformer + OCR)
+            enable_llm: Enable LLM-based extraction (non-deterministic, UNCERTIFIED)
         """
         self.extract_diagnostics = extract_diagnostics
         self.ocr_threshold = ocr_threshold
         self.aggressive_ocr_correction = aggressive_ocr_correction
         self.skip_non_rct = skip_non_rct
         self.extract_tables = extract_tables
+        self.enable_advanced = enable_advanced
 
         # Initialize components
         self.effect_extractor = EnhancedExtractor()
@@ -163,6 +175,19 @@ class PDFExtractionPipeline:
 
         # Table extraction (optional)
         self.table_effect_extractor = TableEffectExtractor() if (extract_tables and HAS_TABLE_EXTRACTOR) else None
+
+        # v6.3: Advanced extraction (Table Transformer + OCR + LLM)
+        self.advanced_pipeline = None
+        if enable_advanced and HAS_ADVANCED:
+            try:
+                self.advanced_pipeline = AdvancedExtractionPipeline(
+                    enable_table_transformer=True,
+                    enable_ocr=True,
+                    enable_llm=enable_llm,
+                )
+                logger.info("Advanced extraction pipeline initialized")
+            except Exception as e:
+                logger.warning(f"Failed to init advanced pipeline: {e}")
 
         if HAS_PDF_PARSER:
             self.pdf_parser = PDFParser(ocr_threshold=ocr_threshold)
@@ -327,20 +352,68 @@ class PDFExtractionPipeline:
                     result.warnings.append(f"Table extraction failed: {e}")
                     logger.warning(f"Table extraction failed for {pdf_path}: {e}")
 
-            # v5.9: Raw data extraction fallback — when no labeled effects found,
-            # try to extract raw two-group data and compute effects
-            if not result.effect_estimates:
-                try:
-                    computed = self._extract_computed_effects(full_text)
-                    if computed:
+            # v6.2: Always run raw data extraction and merge computed effects.
+            # Previously only ran as fallback when no labeled effects found,
+            # but many PDFs have the Cochrane value computed from raw 2x2 data
+            # that doesn't appear as a stated effect estimate in text.
+            try:
+                computed = self._extract_computed_effects(full_text)
+                if computed:
+                    if result.effect_estimates:
+                        result.effect_estimates = self._merge_text_and_table_effects(
+                            result.effect_estimates, computed
+                        )
+                        result.warnings.append(
+                            f"{len(computed)} additional effects computed from raw data"
+                        )
+                    else:
                         result.effect_estimates = computed
                         result.warnings.append(
                             f"No labeled effects found; {len(computed)} computed from raw data"
                         )
-                        logger.info(f"Raw data fallback: {len(computed)} computed effects")
+                    logger.info(f"Raw data extraction: {len(computed)} computed effects")
+            except Exception as e:
+                result.warnings.append(f"Raw data extraction failed: {e}")
+                logger.warning(f"Raw data extraction failed for {pdf_path}: {e}")
+
+            # v6.3: Advanced extraction (Table Transformer + OCR + LLM)
+            if self.advanced_pipeline and not result.effect_estimates:
+                try:
+                    advanced_results = self.advanced_pipeline.extract_from_pdf(
+                        pdf_path, existing_text=full_text
+                    )
+                    if advanced_results:
+                        # Convert AdvancedExtraction to Extraction objects
+                        for adv in advanced_results:
+                            try:
+                                if adv.effect_type and adv.effect_type in EffectType.__members__:
+                                    etype = EffectType[adv.effect_type]
+                                else:
+                                    continue  # Skip unknown effect types
+                            except (KeyError, AttributeError):
+                                continue
+                            ci = ConfidenceInterval(
+                                lower=adv.ci_lower,
+                                upper=adv.ci_upper,
+                                level=0.95
+                            ) if adv.ci_lower is not None and adv.ci_upper is not None else None
+                            extraction = Extraction(
+                                effect_type=etype,
+                                point_estimate=adv.point_estimate,
+                                ci=ci,
+                                source_text=f"[{adv.method.upper()}] {adv.source_text[:150]}",
+                                calibrated_confidence=adv.confidence,
+                                has_complete_ci=ci is not None,
+                            )
+                            result.effect_estimates.append(extraction)
+                        result.warnings.append(
+                            f"Advanced extraction: {len(advanced_results)} from "
+                            f"{set(a.method for a in advanced_results)}"
+                        )
+                        logger.info(f"Advanced extraction: {len(advanced_results)} effects")
                 except Exception as e:
-                    result.warnings.append(f"Raw data extraction failed: {e}")
-                    logger.warning(f"Raw data extraction failed for {pdf_path}: {e}")
+                    result.warnings.append(f"Advanced extraction failed: {e}")
+                    logger.warning(f"Advanced extraction failed for {pdf_path}: {e}")
 
             # Primary outcome detection (v5.1)
             if result.effect_estimates:
@@ -468,9 +541,12 @@ class PDFExtractionPipeline:
 
             # Convert ComputedEffect to Extraction (main extractor's type)
             try:
-                etype = EffectType[result.effect_type] if result.effect_type in EffectType.__members__ else EffectType.UNKNOWN
+                if result.effect_type and result.effect_type in EffectType.__members__:
+                    etype = EffectType[result.effect_type]
+                else:
+                    continue  # Skip unknown effect types
             except (KeyError, AttributeError):
-                etype = EffectType.UNKNOWN
+                continue
 
             ci = ConfidenceInterval(
                 lower=result.ci_lower,

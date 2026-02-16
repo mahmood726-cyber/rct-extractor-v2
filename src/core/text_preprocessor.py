@@ -180,6 +180,13 @@ class TextPreprocessor:
             for old, new in self.UNICODE_MAP.items():
                 line.text = line.text.replace(old, new)
 
+            # v6.2: Remove (cid:X) PDF artifacts — font embedding failures
+            # Common in PMC PDFs; (cid:N) replaces actual characters (dashes, spaces, etc.)
+            # Between digits, CID is almost always a dash (en-dash in ranges: "166(cid:1)171")
+            line.text = re.sub(r'(\d)\(cid:\d+\)(\d)', r'\1-\2', line.text)
+            # All other CID: replace with space (safest default)
+            line.text = re.sub(r'\(cid:\d+\)', ' ', line.text)
+
             # Normalize whitespace
             line.text = re.sub(r'[ \t]+', ' ', line.text)
             line.text = line.text.strip()
