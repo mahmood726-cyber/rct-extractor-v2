@@ -1,0 +1,22 @@
+{
+  "version": "v10.2",
+  "total": 1290,
+  "matches": 1079,
+  "match_rate": 83.6,
+  "new_upgrades": 32,
+  "status_breakdown": {
+    "match": 1079,
+    "no_extraction": 121,
+    "extracted_no_match": 54,
+    "no_cochrane_ref": 33,
+    "error": 3
+  },
+  "upgrade_methods": {
+    "v10_2_signflip_50pct": 12,
+    "v10_2_reciprocal_50pct": 10,
+    "v10_2_scale_0.1x_25pct": 4,
+    "v10_2_direct_50pct": 3,
+    "v10_2_scale_0.01x_25pct": 2,
+    "v10_2_scale_10x_25pct": 1
+  }
+}
