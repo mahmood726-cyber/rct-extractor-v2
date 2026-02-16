@@ -1,0 +1,14 @@
+{
+  "version": "v7.0",
+  "total_entries": 1290,
+  "total_with_cochrane": 1254,
+  "matches": 479,
+  "match_rate": 38.2,
+  "no_extraction": 436,
+  "extracted_no_match": 339,
+  "no_cochrane_ref": 33,
+  "error": 3,
+  "llm_new_matches": 42,
+  "llm_upgraded": 56,
+  "llm_entries_processed": 873
+}

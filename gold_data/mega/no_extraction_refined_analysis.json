@@ -1,0 +1,254 @@
+{
+  "detailed_20": [
+    {
+      "study_id": "Bonvin 2013_2013",
+      "cochrane_value": -0.7,
+      "cochrane_type": "unknown",
+      "data_type": null,
+      "outcome": "BMI (Medium-term)",
+      "exact_text_context": "to 3.9) 0.46 BMI, mean ± SD, kg/m2 16.3 ± 1.4 16.2 ± 1.2 16.1 ± 1.3 16.2 ± 1.3 − >>>0.7<<< (−0.2 to 0.6) 0.29 Odds Ratio (95% CI)b Normal Weight, % 84.3 89.0 82.5 85.9 0.7",
+      "pattern_category": "labeled_estimate_with_ci",
+      "n_stat_hits": 1,
+      "n_raw_data_hits": 0
+    },
+    {
+      "study_id": "Sherman 2014_2014",
+      "cochrane_value": 0.310651,
+      "cochrane_type": "OR/RR",
+      "data_type": "binary",
+      "outcome": "Pain (dichotomous data; short-term): subgroup analysis by dosage",
+      "exact_text_context": "0.1) –1.6  (–3.3 to 0.2) –1.5  (–3.1 to 0.0) –3.7  (–5.5 to –1.9) –1.5  (–3.2 to >>>0.3<<< ) .21 Compared with when you  began the study, neck  pain is much better or  com",
+      "pattern_category": "comparison_context",
+      "n_stat_hits": 1,
+      "n_raw_data_hits": 2
+    },
+    {
+      "study_id": "Tilburt 2022_2022",
+      "cochrane_value": 2.0,
+      "cochrane_type": "MD/SMD",
+      "data_type": "continuous",
+      "outcome": "Knowledge - all studies",
+      "exact_text_context": "Care Delivery Trial (Alliance A191402CD) Jon C. Tilburt, MD1, David Zahrieh, PhD >>>2<<< , Joel E. Pacyna, MA1, Daniel G. Petereit, MD3,  Judith S. Kaur, MD4, Bruce D. R",
+      "pattern_category": "value_in_stat_context_other",
+      "n_stat_hits": 15,
+      "n_raw_data_hits": 0
+    },
+    {
+      "study_id": "Volo 2021_2021",
+      "cochrane_value": 3.111111,
+      "cochrane_type": "OR/RR",
+      "data_type": "binary",
+      "outcome": "Overall mortality",
+      "exact_text_context": " exchangers 785 European Archives of Oto-Rhino-Laryngology (2021) 278:781–789\t 1 >>>3<<< Table 1   COVID 19 patients medical value and follow up D decannulation, VAM ven",
+      "pattern_category": "table_format_missed",
+      "n_stat_hits": 5,
+      "n_raw_data_hits": 1
+    },
+    {
+      "study_id": "Pelaez-Velez 2023_2023",
+      "cochrane_value": 17.09,
+      "cochrane_type": "MD/SMD",
+      "data_type": "continuous",
+      "outcome": "Mobility: Timed Up and Go Test post intervention",
+      "exact_text_context": "N/A",
+      "pattern_category": "computed_value_raw_data_not_found",
+      "n_stat_hits": 0,
+      "n_raw_data_hits": 0
+    },
+    {
+      "study_id": "Levin 2012_2012",
+      "cochrane_value": 0.187738,
+      "cochrane_type": "MD/SMD",
+      "data_type": "continuous",
+      "outcome": "Upper limb function post intervention (composite measure)",
+      "exact_text_context": "N/A",
+      "pattern_category": "value_not_findable_in_text",
+      "n_stat_hits": 0,
+      "n_raw_data_hits": 0
+    },
+    {
+      "study_id": "Oladepo 2021_2021",
+      "cochrane_value": 3.170001,
+      "cochrane_type": "unknown",
+      "data_type": null,
+      "outcome": "Uptake of yellow fever vaccine",
+      "exact_text_context": "ervention group com- pared with the Control (76.0 versus 73.3%, p ¼ 0.00) (Table >>>3<<< ). Exploration of the outcome of the interven- tion showed a significant differe",
+      "pattern_category": "table_format_missed",
+      "n_stat_hits": 3,
+      "n_raw_data_hits": 0
+    },
+    {
+      "study_id": "Louie 2021_2021",
+      "cochrane_value": 0.367347,
+      "cochrane_type": "OR/RR",
+      "data_type": "binary",
+      "outcome": "Independent walking at end of intervention phase, all electromechanical devices used (critical outcome)",
+      "exact_text_context": "F(1,29) = 7.96, p = 0.009; per-protocol adjusted group dif- ference: 2.0, 95% CI >>>0.4<<< –3.6, F(1,25) = 6.62, p = 0.02] at  discharge, though this did not carry over at",
+      "pattern_category": "adjusted_estimate",
+      "n_stat_hits": 3,
+      "n_raw_data_hits": 1
+    },
+    {
+      "study_id": "Hajiaghamohammadi 2012_2012",
+      "cochrane_value": -7.9,
+      "cochrane_type": "MD/SMD",
+      "data_type": "continuous",
+      "outcome": "Analysis 2.2. Outcome 2: ALT (U/L)",
+      "exact_text_context": "e 1. The Trial Profile of Patients Who Completed Follow Up 3 Hepat Mon. 2012;12( >>>8<<< ):e6099 Hajiaghamohammadi AA et al. Treatment of Non Alcoholic Fatty Liver Disea",
+      "pattern_category": "value_in_stat_context_other",
+      "n_stat_hits": 1,
+      "n_raw_data_hits": 0
+    },
+    {
+      "study_id": "Medenblik 2020_2020",
+      "cochrane_value": 0.928571,
+      "cochrane_type": "OR/RR",
+      "data_type": "binary",
+      "outcome": "Smoking cessation (subgrouped by when incentives were provided)",
+      "exact_text_context": "d at the 6-month follow up. In the iCOMMIT group, 14.3% (n = 21) were  bioverified abstinent, and in the ",
+      "pattern_category": "percentages_need_computation",
+      "n_stat_hits": 0,
+      "n_raw_data_hits": 4
+    },
+    {
+      "study_id": "Elder 2014_2014",
+      "cochrane_value": -0.05,
+      "cochrane_type": "unknown",
+      "data_type": null,
+      "outcome": "BMI medium-term",
+      "exact_text_context": "ent sample was 0.038. Based on the information above and a significance level of >>>0.05<<< (two-sided), the power to detect an intervention effect was 94%. RESULTS Of the ",
+      "pattern_category": "percentage_context",
+      "n_stat_hits": 5,
+      "n_raw_data_hits": 0
+    },
+    {
+      "study_id": "Tol 2012_2012",
+      "cochrane_value": -0.300733,
+      "cochrane_type": "MD/SMD",
+      "data_type": "continuous",
+      "outcome": "Psychological functioning and impairment at 0-1 months",
+      "exact_text_context": "N/A",
+      "pattern_category": "value_not_findable_in_text",
+      "n_stat_hits": 0,
+      "n_raw_data_hits": 0
+    },
+    {
+      "study_id": "Jo 2016_2016",
+      "cochrane_value": 0.9,
+      "cochrane_type": "MD/SMD",
+      "data_type": "continuous",
+      "outcome": "Creatinine clearance",
+      "exact_text_context": "treatment,  mg Baseline Week 4 Week 8 Week 12 Week 24 Serum creatinine, mg/dL 40 >>>0.9<<< ± 0.3 0.9 ± 0.3 1.0 ± 0.3 0.9 ± 0.2 0.8 ± 0.3 80 0.9 ± 0.2 0.9 ± 0.2 1.0 ± 0.2 0",
+      "pattern_category": "value_in_stat_context_other",
+      "n_stat_hits": 5,
+      "n_raw_data_hits": 0
+    },
+    {
+      "study_id": "Pretorius 2012_2012",
+      "cochrane_value": 0.125,
+      "cochrane_type": "OR/RR",
+      "data_type": "binary",
+      "outcome": "Acute kidney injury",
+      "exact_text_context": "lactone group (P=0.95). Patients in the ramipril (0.7%) or spironolactone (0.7%) group were less likely ",
+      "pattern_category": "percentages_need_computation",
+      "n_stat_hits": 0,
+      "n_raw_data_hits": 5
+    },
+    {
+      "study_id": "Kuah 2018_2018",
+      "cochrane_value": -1.682,
+      "cochrane_type": "MD/SMD",
+      "data_type": "continuous",
+      "outcome": "Mean overall pain (0 to 10, 0 is no pain)",
+      "exact_text_context": "868 − 58.3 (− 250.6, 133.9) p = 0.526 Medial tibial cartilage volume, % change − >>>1.7<<< (− 8.8, 5.3) p = 0.607 − 1.5 (− 6.7, 3.6) p = 0.532 − 3.5 (− 8.7, 1.8) p = 0.178",
+      "pattern_category": "comparison_context",
+      "n_stat_hits": 2,
+      "n_raw_data_hits": 1
+    },
+    {
+      "study_id": "Vuorma 2003_2003",
+      "cochrane_value": 0.38913,
+      "cochrane_type": "OR/RR",
+      "data_type": "binary",
+      "outcome": "Proportion undecided - all studies",
+      "exact_text_context": "n 8 (4) 20 (11) 24 (12) 0.02 0.9 No visit to outpatient clinic 2 (1) 4 (2) 3 (1) >>>0.4<<< 0.7 I ¼ intervention group, C ¼ control group, PT ¼ pre-trial group, LNG-IUS ¼ h",
+      "pattern_category": "value_in_stat_context_other",
+      "n_stat_hits": 2,
+      "n_raw_data_hits": 2
+    },
+    {
+      "study_id": "Berry 2018_2018",
+      "cochrane_value": -2.69,
+      "cochrane_type": "MD/SMD",
+      "data_type": "continuous",
+      "outcome": "Decision regret - all studies",
+      "exact_text_context": "as a preparatory  adjunct to the face-to-face consultation.9 Although we found P >>>3<<< P users reported  significantly lower conflict related to uncertainty and values",
+      "pattern_category": "value_in_stat_context_other",
+      "n_stat_hits": 15,
+      "n_raw_data_hits": 0
+    },
+    {
+      "study_id": "Neutel 2005_2005",
+      "cochrane_value": 1.4,
+      "cochrane_type": "unknown",
+      "data_type": null,
+      "outcome": "24-hour mean systolic blood pressure (SBP) change by ambulatory blood pressure monitoring (ABPM) (mmHg)",
+      "exact_text_context": "N/A",
+      "pattern_category": "value_not_findable_in_text",
+      "n_stat_hits": 0,
+      "n_raw_data_hits": 0
+    },
+    {
+      "study_id": "Mackiewicz Seghete 2022_2022",
+      "cochrane_value": 0.388,
+      "cochrane_type": "unknown",
+      "data_type": null,
+      "outcome": "Extent of substance use",
+      "exact_text_context": "93   −4.11   0.41  R Superior Temporal Gyrus  41  2,343  63  −9  7   5.51   4.21 >>>0.39<<< B Cuneus  18  2,140  5  −91  −9   2.94   4.15   −0.92  R Superior Medial Gyrus  ",
+      "pattern_category": "value_in_stat_context_other",
+      "n_stat_hits": 1,
+      "n_raw_data_hits": 0
+    },
+    {
+      "study_id": "McIntosh 2014_2014",
+      "cochrane_value": 1.04,
+      "cochrane_type": "OR/RR",
+      "data_type": "binary",
+      "outcome": "Independent procedure completion: type of endoscopic procedure under study",
+      "exact_text_context": "ics Characteristic Simulator group   (n=50) Control group   (n=40) Age, years, mea",
+      "pattern_category": "partial_raw_data_available",
+      "n_stat_hits": 0,
+      "n_raw_data_hits": 3
+    }
+  ],
+  "miss_reason_counts_20": {
+    "labeled_estimate_with_ci": 1,
+    "comparison_context": 2,
+    "value_in_stat_context_other": 6,
+    "table_format_missed": 2,
+    "computed_value_raw_data_not_found": 1,
+    "value_not_findable_in_text": 3,
+    "adjusted_estimate": 1,
+    "percentages_need_computation": 2,
+    "percentage_context": 1,
+    "partial_raw_data_available": 1
+  },
+  "broader_reasons_50": {
+    "labeled_estimate_with_ci": 2,
+    "comparison_context": 10,
+    "value_in_stat_context_other": 11,
+    "table_format_missed": 2,
+    "computed_value_raw_data_not_found": 7,
+    "value_not_findable_in_text": 7,
+    "adjusted_estimate": 2,
+    "percentages_need_computation": 2,
+    "partial_raw_data_available": 5,
+    "mean_sd_in_text": 1,
+    "unlabeled_number_with_ci": 1
+  },
+  "high_level_groups": {
+    "value_in_text_but_missed": 29,
+    "needs_computation": 7,
+    "not_extractable": 14
+  }
+}

@@ -1,0 +1,312 @@
+{
+  "detailed_results": [
+    {
+      "study_id": "Bonvin 2013_2013",
+      "cochrane_value": -0.7,
+      "cochrane_type": "unknown",
+      "data_type": null,
+      "outcome": "BMI (Medium-term)",
+      "exact_text_context": "ents a geographic government area. Vaud has 725’000, Neuchâtel 174’000 and Jura 70’000 inhabitants with all three cantons having both rural and urban areas. The c",
+      "pattern_category": "other",
+      "value_found_in_pdf": true,
+      "ci_found_in_pdf": true,
+      "raw_data_in_pdf": false,
+      "n_cochrane_outcomes": 2
+    },
+    {
+      "study_id": "Sherman 2014_2014",
+      "cochrane_value": -28.0,
+      "cochrane_type": "MD/SMD",
+      "data_type": "continuous",
+      "outcome": "Pain (short-term)",
+      "exact_text_context": ") 1 (2.7) 0 (0.0) 0 (0.0) 0 (0.0) 0 (0.0) 0 (0.0) Measures of quality of life SF-36 General health very good or excellent, No. (%) 25 (67.6) 25 (65.8) 22.0 (57.9)",
+      "pattern_category": "other",
+      "value_found_in_pdf": false,
+      "ci_found_in_pdf": true,
+      "raw_data_in_pdf": true,
+      "n_cochrane_outcomes": 3
+    },
+    {
+      "study_id": "Tilburt 2022_2022",
+      "cochrane_value": 2.0,
+      "cochrane_type": "MD/SMD",
+      "data_type": "continuous",
+      "outcome": "Knowledge - all studies",
+      "exact_text_context": "Care Delivery Trial (Alliance A191402CD) Jon C. Tilburt, MD1, David Zahrieh, PhD2, Joel E. Pacyna, MA1, Daniel G. Petereit, MD3,  Judith S. Kaur, MD4, Bruce D. R",
+      "pattern_category": "other",
+      "value_found_in_pdf": true,
+      "ci_found_in_pdf": true,
+      "raw_data_in_pdf": true,
+      "n_cochrane_outcomes": 3
+    },
+    {
+      "study_id": "Volo 2021_2021",
+      "cochrane_value": 3.111111,
+      "cochrane_type": "OR/RR",
+      "data_type": "binary",
+      "outcome": "Overall mortality",
+      "exact_text_context": "Vol.:(0123456789) 1 3 European Archives of Oto-Rhino-Laryngology (2021) 278:781–789  https://doi.org/",
+      "pattern_category": "raw_count_data",
+      "value_found_in_pdf": true,
+      "ci_found_in_pdf": true,
+      "raw_data_in_pdf": true,
+      "n_cochrane_outcomes": 2
+    },
+    {
+      "study_id": "Pelaez-Velez 2023_2023",
+      "cochrane_value": 17.09,
+      "cochrane_type": "MD/SMD",
+      "data_type": "continuous",
+      "outcome": "Mobility: Timed Up and Go Test post intervention",
+      "exact_text_context": "ientiﬁc evidence becomes, therefore, a cornerstone in the treatment of strokes [17,18]. Virtual reality (VR) is the creation of an artiﬁcial scenario adapted to t",
+      "pattern_category": "other",
+      "value_found_in_pdf": true,
+      "ci_found_in_pdf": true,
+      "raw_data_in_pdf": true,
+      "n_cochrane_outcomes": 2
+    },
+    {
+      "study_id": "Levin 2012_2012",
+      "cochrane_value": 0.187738,
+      "cochrane_type": "MD/SMD",
+      "data_type": "continuous",
+      "outcome": "Upper limb function post intervention (composite measure)",
+      "exact_text_context": "herapy groups. All patients participated in NIH Clinical Trial Registration: NCT01388400. M. F. Levin (&) School of Physical and Occupational Therapy, Faculty of",
+      "pattern_category": "other",
+      "value_found_in_pdf": true,
+      "ci_found_in_pdf": true,
+      "raw_data_in_pdf": true,
+      "n_cochrane_outcomes": 3
+    },
+    {
+      "study_id": "Oladepo 2021_2021",
+      "cochrane_value": 1.890044,
+      "cochrane_type": "unknown",
+      "data_type": null,
+      "outcome": "Uptake of BCG vaccine",
+      "exact_text_context": ", College of Medicine, UCH, Queen Elizabeth road, University of Ibadan, Ibadan, 200001, Nigeria *Corresponding author. E-mail: oludipeolu@yahoo.com Summary Compl",
+      "pattern_category": "other",
+      "value_found_in_pdf": true,
+      "ci_found_in_pdf": true,
+      "raw_data_in_pdf": false,
+      "n_cochrane_outcomes": 3
+    },
+    {
+      "study_id": "Louie 2021_2021",
+      "cochrane_value": 0.367347,
+      "cochrane_type": "OR/RR",
+      "data_type": "binary",
+      "outcome": "Independent walking at end of intervention phase, all electromechanical devices used (critical outcome)",
+      "exact_text_context": "euroEngineering Rehabil          (2021) 18:149   https://doi.org/10.1186/s12984-021-00942-z RESEARCH Efficacy of an exoskeleton‑based physical  therapy program f",
+      "pattern_category": "raw_count_data",
+      "value_found_in_pdf": true,
+      "ci_found_in_pdf": true,
+      "raw_data_in_pdf": true,
+      "n_cochrane_outcomes": 3
+    },
+    {
+      "study_id": "Hajiaghamohammadi 2012_2012",
+      "cochrane_value": -7.9,
+      "cochrane_type": "MD/SMD",
+      "data_type": "continuous",
+      "outcome": "Analysis 2.2. Outcome 2: ALT (U/L)",
+      "exact_text_context": "esearch Center, Qazvin University of Medical Science, Qazvin, IR Iran Hepat Mon.2012;12(8):e6099. DOI: 10.5812/hepatmon.6099 A R T I C L E  I N F O A B S T R A C",
+      "pattern_category": "raw_count_data",
+      "value_found_in_pdf": false,
+      "ci_found_in_pdf": true,
+      "raw_data_in_pdf": true,
+      "n_cochrane_outcomes": 3
+    },
+    {
+      "study_id": "Medenblik 2020_2020",
+      "cochrane_value": 0.928571,
+      "cochrane_type": "OR/RR",
+      "data_type": "binary",
+      "outcome": "Smoking cessation (subgrouped by when incentives were provided)",
+      "exact_text_context": "Cessation Pilot Intervention for People with  Schizophrenia Alyssa M. Medenblik1,4, Adam M. Mann1,4, Tiffany A. Beaver1,4, Eric A. Dedert1,2,4, Sarah M.  Wilson",
+      "pattern_category": "other",
+      "value_found_in_pdf": true,
+      "ci_found_in_pdf": true,
+      "raw_data_in_pdf": true,
+      "n_cochrane_outcomes": 1
+    },
+    {
+      "study_id": "Elder 2014_2014",
+      "cochrane_value": -0.05,
+      "cochrane_type": "unknown",
+      "data_type": null,
+      "outcome": "BMI medium-term",
+      "exact_text_context": "ndomized controlled trial to promote healthy eating and physical activity among 5-8 year old children. It was hypothesized that children in the intervention grou",
+      "pattern_category": "other",
+      "value_found_in_pdf": true,
+      "ci_found_in_pdf": true,
+      "raw_data_in_pdf": false,
+      "n_cochrane_outcomes": 2
+    },
+    {
+      "study_id": "Tol 2012_2012",
+      "cochrane_value": -0.300733,
+      "cochrane_type": "MD/SMD",
+      "data_type": "continuous",
+      "outcome": "Psychological functioning and impairment at 0-1 months",
+      "exact_text_context": ". Intracluster correlation coefficients of out- come measures (ICC) ranged from -0.034 to 0.174.  Changes on outcome measures, moderators and mediators First, we",
+      "pattern_category": "difference_pattern",
+      "value_found_in_pdf": true,
+      "ci_found_in_pdf": true,
+      "raw_data_in_pdf": true,
+      "n_cochrane_outcomes": 3
+    },
+    {
+      "study_id": "Jo 2016_2016",
+      "cochrane_value": 0.9,
+      "cochrane_type": "MD/SMD",
+      "data_type": "continuous",
+      "outcome": "Creatinine clearance",
+      "exact_text_context": "reproduction in any medium, provided the original work is properly cited. pISSN 1226-3303 eISSN 2005-6648 http://www.kjim.org Korean J Intern Med 2016;31:335-343",
+      "pattern_category": "other",
+      "value_found_in_pdf": true,
+      "ci_found_in_pdf": true,
+      "raw_data_in_pdf": true,
+      "n_cochrane_outcomes": 1
+    },
+    {
+      "study_id": "Pretorius 2012_2012",
+      "cochrane_value": 0.125,
+      "cochrane_type": "OR/RR",
+      "data_type": "binary",
+      "outcome": "Acute kidney injury",
+      "exact_text_context": "bo group, 27.8% in the ramipril group, and 25.9% in the spironolactone group (P=0.95). Patients in the ramipril (0.7%) or spironolactone (0.7%) group were less l",
+      "pattern_category": "percentage_or_proportion",
+      "value_found_in_pdf": true,
+      "ci_found_in_pdf": true,
+      "raw_data_in_pdf": true,
+      "n_cochrane_outcomes": 3
+    },
+    {
+      "study_id": "Kuah 2018_2018",
+      "cochrane_value": -1.682,
+      "cochrane_type": "MD/SMD",
+      "data_type": "continuous",
+      "outcome": "Mean overall pain (0 to 10, 0 is no pain)",
+      "exact_text_context": "tudy. Ann Rheum Dis. 2014;73(7):1323–30. https​://doi. org/10.1136/annrh​eumdi​s-2013-20476​3. \t2.\t AIHW. Osteoarthritis Canberra: Australian Institute of Health",
+      "pattern_category": "table_format",
+      "value_found_in_pdf": true,
+      "ci_found_in_pdf": true,
+      "raw_data_in_pdf": true,
+      "n_cochrane_outcomes": 3
+    },
+    {
+      "study_id": "Vuorma 2003_2003",
+      "cochrane_value": 0.38913,
+      "cochrane_type": "OR/RR",
+      "data_type": "binary",
+      "outcome": "Proportion undecided - all studies",
+      "exact_text_context": "uorma STAKES National R & D Centre for Welfare and Health P.O. Box 220 Helsinki 00531 Finland E-mail: sirkku.vuorma@stakes.ﬁ Accepted for publication 28 March 20",
+      "pattern_category": "other",
+      "value_found_in_pdf": true,
+      "ci_found_in_pdf": true,
+      "raw_data_in_pdf": true,
+      "n_cochrane_outcomes": 3
+    },
+    {
+      "study_id": "Berry 2018_2018",
+      "cochrane_value": -2.69,
+      "cochrane_type": "MD/SMD",
+      "data_type": "continuous",
+      "outcome": "Decision regret - all studies",
+      "exact_text_context": ", Traci M. Blonquist, MS1,  Barbara Halpenny, MA1, Christopher P. Filson, MD, MS2,3,4, Viraj A. Master, MD, PhD2,3,  Martin G. Sanda, MD2, Peter Chang, MD, MPH5,",
+      "pattern_category": "other",
+      "value_found_in_pdf": false,
+      "ci_found_in_pdf": true,
+      "raw_data_in_pdf": true,
+      "n_cochrane_outcomes": 3
+    },
+    {
+      "study_id": "Neutel 2005_2005",
+      "cochrane_value": 1.4,
+      "cochrane_type": "unknown",
+      "data_type": null,
+      "outcome": "24-hour mean systolic blood pressure (SBP) change by ambulatory blood pressure monitoring (ABPM) (mmHg)",
+      "exact_text_context": "ents. Patients were random- ized to delayed-release propranolol (INP) dosed  at 10 p.m. or to traditionally dosed propranolol  (ILA) dosed at 8 a.m. for 4 weeks,",
+      "pattern_category": "other",
+      "value_found_in_pdf": true,
+      "ci_found_in_pdf": true,
+      "raw_data_in_pdf": false,
+      "n_cochrane_outcomes": 3
+    },
+    {
+      "study_id": "Mackiewicz Seghete 2022_2022",
+      "cochrane_value": 0.388,
+      "cochrane_type": "unknown",
+      "data_type": null,
+      "outcome": "Extent of substance use",
+      "exact_text_context": "e under the CC BY-NC-ND license (http://creativecommons.org/licenses/by-nc-nd/4.0/). Time for a paradigm shift: The adolescent brain in addiction treatment  Kris",
+      "pattern_category": "other",
+      "value_found_in_pdf": true,
+      "ci_found_in_pdf": true,
+      "raw_data_in_pdf": false,
+      "n_cochrane_outcomes": 3
+    },
+    {
+      "study_id": "McIntosh 2014_2014",
+      "cochrane_value": 1.04,
+      "cochrane_type": "OR/RR",
+      "data_type": "binary",
+      "outcome": "Independent procedure completion: type of endoscopic procedure under study",
+      "exact_text_context": "fax 519-646-6130, e-mail ksmcintosh@gmail.com Received for publication November 15, 2013. Accepted February 7, 2014 P erforming colonoscopy requires advanced tec",
+      "pattern_category": "other",
+      "value_found_in_pdf": true,
+      "ci_found_in_pdf": true,
+      "raw_data_in_pdf": true,
+      "n_cochrane_outcomes": 3
+    }
+  ],
+  "category_counts_20": {
+    "other": 14,
+    "raw_count_data": 3,
+    "difference_pattern": 1,
+    "percentage_or_proportion": 1,
+    "table_format": 1
+  },
+  "broader_categories_50": {
+    "other": 35,
+    "raw_count_data": 9,
+    "difference_pattern": 1,
+    "percentage_or_proportion": 3,
+    "table_format": 2
+  },
+  "broader_stats_50": {
+    "value_found": 41,
+    "ci_found_only": 8,
+    "raw_data_only": 1,
+    "nothing_found": 0,
+    "pdf_error": 0
+  },
+  "patterns": [
+    {
+      "name": "1. Labeled OR/RR/HR with CI in parentheses",
+      "regex": "(?:OR|RR|HR|odds\\s+ratio|risk\\s+ratio|hazard\\s+ratio)\\s*[=:]\\s*(\\d+\\.?\\d*)\\s*\\(?\\s*95%?\\s*CI\\s*[=:,]?\\s*(\\d+\\.?\\d*)\\s*[-\\u2013to]+\\s*(\\d+\\.?\\d*)\\s*\\)?",
+      "captures": "point_estimate, ci_lower, ci_upper"
+    },
+    {
+      "name": "2. Number with CI in parentheses (no label)",
+      "regex": "(\\d+\\.?\\d*)\\s*\\(\\s*(\\d+\\.?\\d*)\\s*[-\\u2013,to]+\\s*(\\d+\\.?\\d*)\\s*\\)",
+      "captures": "point_estimate, ci_lower, ci_upper"
+    },
+    {
+      "name": "3. Percentage difference between groups",
+      "regex": "(\\d+\\.?\\d*)\\s*%\\s*(?:vs\\.?|versus|compared\\s+(?:to|with))\\s*(\\d+\\.?\\d*)\\s*%",
+      "captures": "exp_rate, ctrl_rate (compute RR/OR from these)"
+    },
+    {
+      "name": "4. n/N event counts per group (for computing OR/RR)",
+      "regex": "(\\d+)\\s*/\\s*(\\d+)\\s*(?:\\(\\s*\\d+\\.?\\d*\\s*%?\\s*\\))?\\s*(?:vs\\.?|versus|and|compared)\\s*(\\d+)\\s*/\\s*(\\d+)",
+      "captures": "exp_events/exp_n vs ctrl_events/ctrl_n"
+    },
+    {
+      "name": "5. Mean (SD) for two groups (compute MD)",
+      "regex": "(\\d+\\.?\\d*)\\s*\\(\\s*(?:SD\\s*)?(\\d+\\.?\\d*)\\s*\\)\\s*(?:vs\\.?|versus|and|compared)\\s*(\\d+\\.?\\d*)\\s*\\(\\s*(?:SD\\s*)?(\\d+\\.?\\d*)\\s*\\)",
+      "captures": "exp_mean (exp_sd) vs ctrl_mean (ctrl_sd)"
+    }
+  ]
+}

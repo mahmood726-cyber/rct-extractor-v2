@@ -1,0 +1,330 @@
+============================================================================
+CI-BASED MATCHING ANALYSIS FOR RCT EXTRACTOR v8.1
+============================================================================
+
+--- Dataset Overview ---
+  match: 570
+  no_extraction: 421
+  extracted_no_match: 263
+  no_cochrane_ref: 33
+  error: 3
+  TOTAL: 1290
+
+============================================================================
+SECTION 1: CI DATA AVAILABILITY
+============================================================================
+
+  match (n=570):
+    Extracted has any CI:  0 (0.0%)
+    Extracted has both CI: 0 (0.0%)
+    Cochrane has CI:       570 (100.0%)
+
+  extracted_no_match (n=263):
+    Extracted has any CI:  0 (0.0%)
+    Extracted has both CI: 0 (0.0%)
+    Cochrane has CI:       263 (100.0%)
+
+  no_extraction (n=421):
+    Extracted has any CI:  0 (0.0%)
+    Extracted has both CI: 0 (0.0%)
+    Cochrane has CI:       421 (100.0%)
+
+  no_cochrane_ref (n=33):
+    Extracted has any CI:  0 (0.0%)
+    Extracted has both CI: 0 (0.0%)
+    Cochrane has CI:       0 (0.0%)
+
+  error (n=3):
+    Extracted has any CI:  0 (0.0%)
+    Extracted has both CI: 0 (0.0%)
+    Cochrane has CI:       0 (0.0%)
+
+FINDING: The extractor currently extracts ZERO confidence intervals.
+         CI-based matching is IMPOSSIBLE with current extraction output.
+
+============================================================================
+SECTION 2: EXTRACTED POINT ESTIMATE vs COCHRANE CI BOUNDS
+  (Does the extractor extract a CI bound instead of the point estimate?)
+============================================================================
+
+  Tolerance 5%:
+    PE matches CI_lower: 5
+    PE matches CI_upper: 9
+    PE matches either:   13
+
+  Tolerance 10%:
+    PE matches CI_lower: 10
+    PE matches CI_upper: 18
+    PE matches either:   27
+
+  Tolerance 15%:
+    PE matches CI_lower: 15
+    PE matches CI_upper: 26
+    PE matches either:   39
+
+  --- Examples at 15%% tolerance ---
+    Yonkers 2015_2015: ext_PE=1.22, coch_lower=1.2342, rel_dist=0.0115
+      coch_effect=2.800431, ext_type=EffectType.MD, outcome=Insomnia or sleep disturbance
+    Kuppermann 2014_2014: ext_PE=1.95, coch_lower=2.2665, rel_dist=0.1396
+      coch_effect=5.4, ext_type=EffectType.OR, outcome=Knowledge - all studies
+    Kumar 2017_2017: ext_PE=0.83, coch_lower=0.7884, rel_dist=0.0528
+      coch_effect=2.060606, ext_type=EffectType.OR, outcome=Quit at longest follow-up (6 + months)
+    Mathew 2020_2022: ext_PE=0.04, coch_lower=0.0378, rel_dist=0.0580
+      coch_effect=0.333333, ext_type=EffectType.MD, outcome=Adverse events
+    Meaume 2009_2009: ext_PE=2.32, coch_upper=2.2049, rel_dist=0.0522
+      coch_effect=1.102941, ext_type=EffectType.OR, outcome=Side effects
+    Kashyap 2018_2018: ext_PE=0.75, coch_upper=0.7274, rel_dist=0.0310
+      coch_effect=0.011742, ext_type=EffectType.OR, outcome=Function-disability (short-term)
+    Chen 2023_2023: ext_PE=4.38, coch_upper=4.2651, rel_dist=0.0269
+      coch_effect=1.4, ext_type=EffectType.MD, outcome=Constipation
+    Gandolfi 2019_2019: ext_PE=0.3100000000000023, coch_upper=0.3167, rel_dist=0.0212
+      coch_effect=0.058, ext_type=EffectType.MD, outcome=Walking velocity (metres per second) at follow-up
+    Artom 2019_2019: ext_PE=-1.77, coch_lower=-1.6695, rel_dist=0.0602
+      coch_effect=-0.580988, ext_type=EffectType.MD, outcome=Quality of life (short-term) - psychotherapy vs ac
+    Guo 2022_2022: ext_PE=1.0, coch_upper=0.9717, rel_dist=0.0291
+      coch_effect=0.222222, ext_type=EffectType.MD, outcome=Glycaemic events
+    Lely 2022_2022: ext_PE=0.74, coch_upper=0.8593, rel_dist=0.1388
+      coch_effect=0.087777, ext_type=EffectType.SMD, outcome=Reduction in anxiety severity
+    Westover 2013_2013: ext_PE=4.32, coch_upper=3.8263, rel_dist=0.1290
+      coch_effect=1.5, ext_type=EffectType.OR, outcome=Diastolic blood pressure
+    Mastroleo 2010_2010: ext_PE=0.64, coch_upper=0.5916, rel_dist=0.0819
+      coch_effect=0.276, ext_type=EffectType.MD, outcome=Extent of substance use
+    Brown 2015_2015: ext_PE=0.76, coch_upper=0.7839, rel_dist=0.0305
+      coch_effect=0.388, ext_type=EffectType.HR, outcome=Extent of substance use
+    Aharonovich 2017_2017: ext_PE=0.44, coch_upper=0.5165, rel_dist=0.1481
+      coch_effect=0.052, ext_type=EffectType.OR, outcome=Retention in treatment
+
+  Tolerance 25%:
+    PE matches CI_lower: 25
+    PE matches CI_upper: 42
+    PE matches either:   65
+
+============================================================================
+SECTION 3: CLOSEST MISS DISTRIBUTION (extracted_no_match)
+============================================================================
+
+Entries with closest_miss: 252 / 263
+
+Percentile distribution of |rel_distance|:
+  p  0: 0.3000
+  p  5: 0.3773
+  p 10: 0.5396
+  p 25: 0.8043
+  p 50: 1.3537
+  p 75: 6.0447
+  p 90: 27.3333
+  p 95: 52.4369
+  p100: 25704.1282
+
+Bucket distribution:
+  [0.00, 0.25): 0 (0.0%)
+  [0.25, 0.50): 22 (8.7%)
+  [0.50, 0.75): 36 (14.3%)
+  [0.75, 1.00): 35 (13.9%)
+  [1.00, 2.00): 48 (19.0%)
+  [2.00, 5.00): 40 (15.9%)
+  [5.00, 10.00): 19 (7.5%)
+  [10.00, inf): 52 (20.6%)
+
+FINDING: Min closest miss = 0.30 (30%). The matching algorithm already
+         exhausted tolerances up to ~25-35%%. These are fundamentally wrong
+         extractions, not near-misses.
+
+============================================================================
+SECTION 4: THEORETICAL CI MATCHING (if extractor extracted CIs)
+============================================================================
+
+Among 570 matched entries:
+  Multiple cochrane outcomes: 468
+  Duplicate cochrane effects: 128 (CI would disambiguate)
+
+============================================================================
+SECTION 5: CROSS-TRANSFORMATION ANALYSIS (extracted_no_match)
+============================================================================
+
+Transformation matches (5%% tolerance, extracted_no_match):
+  direct: 0 studies
+  sign_flip: 1 studies
+  reciprocal: 5 studies
+  scale_10x: 1 studies
+  scale_0.1x: 12 studies
+  scale_100x: 1 studies
+  scale_0.01x: 2 studies
+  TOTAL unique: 22
+
+NOTE: Existing matching already tries these transforms. If they appear
+here, type-checking or guard conditions prevented the match.
+
+  sign_flip examples:
+    Lowe 2022_2022: ext_PE=-1.0, coch_eff=0.990874, outcome=All adverse events
+
+  reciprocal examples:
+    Vodermaier 2009_2009: ext_PE=-0.1200000000000001, coch_eff=-8.000000, outcome=Decisional conflict - uninformed - all studies
+    Jamshidi 2021_2021: ext_PE=5.0, coch_eff=0.200000, outcome=Hospital mortality
+    Weil 2012_2012: ext_PE=1.45, coch_eff=0.666667, outcome=Death: any cause
+    Artom 2019_2019: ext_PE=-1.77, coch_eff=-0.580988, outcome=Quality of life (short-term) - psychotherapy vs ac
+    Gelotte 2019_2019: ext_PE=2.0, coch_eff=0.491228, outcome=Withdrawals due to adverse effects
+
+  scale_10x examples:
+    Jolly 2009_2009: ext_PE=0.14, coch_eff=1.416667, outcome=All-cause mortality up to 12 months' follow-up
+
+  scale_0.1x examples:
+    Madden 2020_2020: ext_PE=13.0, coch_eff=1.242236, outcome=Proportion undecided - all studies
+    Halpern 2015_2015: ext_PE=13.2, coch_eff=1.388889, outcome=Smoking cessation (subgrouped by when incentives w
+    Jedel 2022_2022: ext_PE=9.800000000000004, coch_eff=1.000000, outcome=Number of patients completing program
+    Borsari 2012_2012: ext_PE=0.97, coch_eff=0.095000, outcome=Extent of substance use
+    Stein 2010_2010: ext_PE=1.96, coch_eff=0.201000, outcome=Extent of substance use
+
+============================================================================
+SECTION 6: CI AS VALIDATION SIGNAL (for existing matches)
+============================================================================
+
+Ambiguous outcome risk in matched entries:
+  Entries with >1 cochrane effect within 10% of matched: 122
+  (21.4% of matches -- CI could disambiguate)
+
+============================================================================
+SECTION 7: SUMMARY AND RECOMMENDATIONS
+============================================================================
+
+1. CI-BASED MATCHING IS NOT VIABLE WITH CURRENT EXTRACTION OUTPUT
+   - Extractor extracts 0 CI values across all 1,290 entries
+   - Without extracted CIs, nothing to match against cochrane CIs
+
+2. POINT ESTIMATE vs CI BOUND CONFUSION IS MINOR
+   - Only 13 entries (5.0%%) have ext PE within 5%% of a cochrane CI bound
+   - Only 39 entries (14.8%%) at 15%% tolerance
+   - Most are coincidental numeric proximity, not systematic errors
+
+3. THE 263 EXTRACTED_NO_MATCH ENTRIES ARE FAR FROM ANY COCHRANE VALUE
+   - Minimum closest miss: 30% relative distance
+   - Median closest miss: 135% relative distance
+   - 63% of misses are >100% away from any cochrane value
+   - These are fundamentally wrong extractions, not near-misses
+
+4. ESTIMATED INCREMENTAL MATCHES FROM CI-BASED MATCHING: ~0-5
+   Even if CIs were extracted and a CI-matching layer added:
+   - The 263 no-match entries have wrong PEs (>30%% off)
+   - If PE is wrong, CIs likely come from different results too
+   - At best, CI matching might rescue a handful of edge cases
+
+5. BETTER INVESTMENT OF EFFORT:
+   a) Improve extraction for 421 no_extraction entries
+   b) Improve LLM quality for 263 extracted_no_match entries
+   c) Use CI extraction as VALIDATION signal (confirm correct match)
+   d) 122 matched entries have ambiguous outcomes --
+      CI matching could confirm correct outcome selection
+
+============================================================================
+SECTION 8: DETAILED EXAMPLES - PE MATCHING CI BOUNDS (within 5%%)
+============================================================================
+
+  Study: Yonkers 2015_2015
+    Extracted: PE=1.22, type=EffectType.MD
+    Cochrane:  effect=2.800431, CI=[1.234233, 6.354079]
+    Match:     PE ~ CI_lower (1.2342), rel_dist=0.0115
+    Outcome:   Insomnia or sleep disturbance
+
+  Study: Kashyap 2018_2018
+    Extracted: PE=0.75, type=EffectType.OR
+    Cochrane:  effect=0.011742, CI=[-0.703943, 0.727427]
+    Match:     PE ~ CI_upper (0.7274), rel_dist=0.0310
+    Outcome:   Function-disability (short-term)
+
+  Study: Chen 2023_2023
+    Extracted: PE=4.38, type=EffectType.MD
+    Cochrane:  effect=1.4, CI=[0.459539, 4.265142]
+    Match:     PE ~ CI_upper (4.2651), rel_dist=0.0269
+    Outcome:   Constipation
+
+  Study: Gandolfi 2019_2019
+    Extracted: PE=0.3100000000000023, type=EffectType.MD
+    Cochrane:  effect=0.058, CI=[-0.200699, 0.316699]
+    Match:     PE ~ CI_upper (0.3167), rel_dist=0.0212
+    Outcome:   Walking velocity (metres per second) at follow-up
+
+  Study: Guo 2022_2022
+    Extracted: PE=1.0, type=EffectType.MD
+    Cochrane:  effect=0.222222, CI=[0.050819, 0.971737]
+    Match:     PE ~ CI_upper (0.9717), rel_dist=0.0291
+    Outcome:   Glycaemic events
+
+  Study: Brown 2015_2015
+    Extracted: PE=0.76, type=EffectType.HR
+    Cochrane:  effect=0.388, CI=[-0.007913, 0.783913]
+    Match:     PE ~ CI_upper (0.7839), rel_dist=0.0305
+    Outcome:   Extent of substance use
+
+  Study: Brown 2015_2015
+    Extracted: PE=0.81, type=EffectType.HR
+    Cochrane:  effect=0.388, CI=[-0.007913, 0.783913]
+    Match:     PE ~ CI_upper (0.7839), rel_dist=0.0333
+    Outcome:   Extent of substance use
+
+  Study: Alexandrou 2023_2023
+    Extracted: PE=0.31, type=EffectType.MD
+    Cochrane:  effect=0.1478, CI=[-0.027225, 0.322825]
+    Match:     PE ~ CI_upper (0.3228), rel_dist=0.0397
+    Outcome:   Fruit and vegetable intake
+
+  Study: Alexandrou 2023_2023
+    Extracted: PE=0.31, type=EffectType.MD
+    Cochrane:  effect=0.1478, CI=[-0.027225, 0.322825]
+    Match:     PE ~ CI_upper (0.3228), rel_dist=0.0397
+    Outcome:   Fruit and vegetable intake - sensitivity analysis - primary outcome
+
+  Study: Alexandrou 2023_2023
+    Extracted: PE=0.31, type=EffectType.MD
+    Cochrane:  effect=0.1478, CI=[-0.027225, 0.322825]
+    Match:     PE ~ CI_upper (0.3228), rel_dist=0.0397
+    Outcome:   Fruit and vegetable intake - sensitivity analysis - missing data
+
+  Study: Buxeda 2019_2019
+    Extracted: PE=1.62, type=EffectType.IRR
+    Cochrane:  effect=1.141426, CI=[0.784966, 1.659758]
+    Match:     PE ~ CI_upper (1.6598), rel_dist=0.0240
+    Outcome:   Cancer incidence
+
+  Study: Dahne 2020_2020
+    Extracted: PE=0.87, type=EffectType.OR
+    Cochrane:  effect=2.484323, CI=[0.896568, 6.883872]
+    Match:     PE ~ CI_lower (0.8966), rel_dist=0.0296
+    Outcome:   Smoking cessation
+
+  Study: Dahne 2020_2020
+    Extracted: PE=6.61, type=EffectType.OR
+    Cochrane:  effect=2.484323, CI=[0.896568, 6.883872]
+    Match:     PE ~ CI_upper (6.8839), rel_dist=0.0398
+    Outcome:   Smoking cessation
+
+  Study: McMahon 2022_2022
+    Extracted: PE=3.43, type=EffectType.MD
+    Cochrane:  effect=1.571268, CI=[0.713156, 3.461911]
+    Match:     PE ~ CI_upper (3.4619), rel_dist=0.0092
+    Outcome:   Need for admission to hospital (if ambulatory)
+
+  Study: McMahon 2022_2022
+    Extracted: PE=3.43, type=EffectType.MD
+    Cochrane:  effect=1.571268, CI=[0.713156, 3.461911]
+    Match:     PE ~ CI_upper (3.4619), rel_dist=0.0092
+    Outcome:   Need for admission to hospital (if ambulatory) – fixed-effect model
+
+  Study: Yu 2023_2023
+    Extracted: PE=0.3913347309573725, type=EffectType.OR
+    Cochrane:  effect=0.85, CI=[0.397396, 1.818086]
+    Match:     PE ~ CI_lower (0.3974), rel_dist=0.0153
+    Outcome:   Disease-free survival
+
+  Study: Gray 2012_2012
+    Extracted: PE=-1.7999999999999972, type=EffectType.MD
+    Cochrane:  effect=-0.5, CI=[-1.734846, 0.734846]
+    Match:     PE ~ CI_lower (-1.7348), rel_dist=0.0376
+    Outcome:   Change in intraocular pressure (IOP) mmHg
+
+  Study: Kamidani 2021_2021
+    Extracted: PE=1.46, type=EffectType.OR
+    Cochrane:  effect=27.692308, CI=[1.524754, 502.942567]
+    Match:     PE ~ CI_lower (1.5248), rel_dist=0.0425
+    Outcome:   Severe maternal morbidity – hysterectomy (non-randomised studies)
+
+Total PE-to-CI-bound matches (5% tolerance): 18

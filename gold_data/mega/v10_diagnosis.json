@@ -1,0 +1,675 @@
+{
+  "no_extraction_categories": {
+    "not_found": 13,
+    "difference_context": 2,
+    "labeled_OR": 11,
+    "plain_number": 25,
+    "reciprocal_found": 14,
+    "signflip_found": 10,
+    "mean_sd_context": 5
+  },
+  "close_misses": [
+    {
+      "study_id": "Thomson 2007_2007",
+      "ext_val": 0.33,
+      "ext_type": "OR",
+      "coch_val": 0.56,
+      "coch_type": "continuous",
+      "distance": 0.41071428571428575
+    },
+    {
+      "study_id": "Begley 2011_2011",
+      "ext_val": 0.53,
+      "ext_type": "MD",
+      "coch_val": 0.807482,
+      "coch_type": "binary",
+      "distance": 0.3436386198082434
+    },
+    {
+      "study_id": "Brandon 2017_2017",
+      "ext_val": 0.55,
+      "ext_type": "SMD",
+      "coch_val": 0.934426,
+      "coch_type": "binary",
+      "distance": 0.411403364204335
+    },
+    {
+      "study_id": "Winhusen 2010_2010",
+      "ext_val": 1.1,
+      "ext_type": "OR",
+      "coch_val": 1.7,
+      "coch_type": "continuous",
+      "distance": 0.35294117647058815
+    },
+    {
+      "study_id": "Stein 2017_2017",
+      "ext_val": 3.96,
+      "ext_type": "OR",
+      "coch_val": 2.677239,
+      "coch_type": "binary",
+      "distance": 0.4791357813030513
+    },
+    {
+      "study_id": "Tovar 2023_2023",
+      "ext_val": 0.5,
+      "ext_type": "SMD",
+      "coch_val": 0.82,
+      "coch_type": null,
+      "distance": 0.39024390243902435
+    },
+    {
+      "study_id": "Levin 2011_2011",
+      "ext_val": 2.0,
+      "ext_type": "MD",
+      "coch_val": 2.924051,
+      "coch_type": "binary",
+      "distance": 0.31601740188526123
+    },
+    {
+      "study_id": "Lupianez-Perez 2015_2015",
+      "ext_val": 1.99,
+      "ext_type": "MD",
+      "coch_val": 1.455742,
+      "coch_type": "binary",
+      "distance": 0.3670004712373483
+    },
+    {
+      "study_id": "Hoj 2005_2005",
+      "ext_val": 2.0,
+      "ext_type": "MD",
+      "coch_val": 3.009063,
+      "coch_type": null,
+      "distance": 0.3353412673646248
+    },
+    {
+      "study_id": "Jaques 2022_2022",
+      "ext_val": 0.5,
+      "ext_type": "HR",
+      "coch_val": 0.79469,
+      "coch_type": "binary",
+      "distance": 0.37082384325963585
+    },
+    {
+      "study_id": "Baek 2019_2019",
+      "ext_val": 1.0,
+      "ext_type": "MD",
+      "coch_val": 1.47379,
+      "coch_type": "binary",
+      "distance": 0.32147727966670964
+    },
+    {
+      "study_id": "Lin 2024_2024",
+      "ext_val": -0.1179,
+      "ext_type": "MD",
+      "coch_val": -0.2,
+      "coch_type": null,
+      "distance": 0.41050000000000003
+    },
+    {
+      "study_id": "Soul 2021_2021",
+      "ext_val": 0.27,
+      "ext_type": "MD",
+      "coch_val": 0.197531,
+      "coch_type": "binary",
+      "distance": 0.3668740602740836
+    },
+    {
+      "study_id": "Bradley 2014_2014",
+      "ext_val": 0.57,
+      "ext_type": "OR",
+      "coch_val": 0.87,
+      "coch_type": null,
+      "distance": 0.34482758620689663
+    }
+  ],
+  "transform_recoverable": [
+    {
+      "study_id": "Williams 2013_2013",
+      "transform": "reciprocal",
+      "distance": 0.09665763324299918,
+      "ext_val": 0.58,
+      "coch_val": 2.7
+    },
+    {
+      "study_id": "Konno 2016_2016",
+      "transform": "signflip",
+      "distance": 0.4893617021276595,
+      "ext_val": 1.0,
+      "coch_val": -4.7
+    },
+    {
+      "study_id": "Kumar 2017_2017",
+      "transform": "reciprocal",
+      "distance": 0.41530827479467985,
+      "ext_val": 0.83,
+      "coch_val": 2.060606
+    },
+    {
+      "study_id": "Pang 2005_2005",
+      "transform": "signflip",
+      "distance": 0.4999999999999946,
+      "ext_val": 1.0999999999999943,
+      "coch_val": 4.84375
+    },
+    {
+      "study_id": "Clement 2006_2006",
+      "transform": "reciprocal",
+      "distance": 0.2870012870012869,
+      "ext_val": 0.37,
+      "coch_val": 2.1
+    },
+    {
+      "study_id": "Yildiz 2002_2002",
+      "transform": "reciprocal",
+      "distance": 0.2822970095691985,
+      "ext_val": 2.09,
+      "coch_val": 0.666667
+    },
+    {
+      "study_id": "Mathew 2020_2022",
+      "transform": "reciprocal",
+      "distance": 0.4230763461532693,
+      "ext_val": 0.04,
+      "coch_val": 0.333333
+    },
+    {
+      "study_id": "Meaume 2009_2009",
+      "transform": "signflip",
+      "distance": 0.18333333333333332,
+      "ext_val": 0.49,
+      "coch_val": 1.102941
+    },
+    {
+      "study_id": "Kuntz 2018_2018",
+      "transform": "signflip",
+      "distance": 0.329315261062358,
+      "ext_val": 0.16666666666666666,
+      "coch_val": -0.994009
+    },
+    {
+      "study_id": "Phadke 2016_2016",
+      "transform": "signflip",
+      "distance": 0.2569258399185535,
+      "ext_val": 0.8627450980392157,
+      "coch_val": -5.1
+    },
+    {
+      "study_id": "Youn 2021_2021",
+      "transform": "reciprocal",
+      "distance": 0.17638893300347377,
+      "ext_val": 5.0,
+      "coch_val": 0.121437
+    },
+    {
+      "study_id": "Mikocka-Walus 2015_2015",
+      "transform": "reciprocal",
+      "distance": 0.44128354947782295,
+      "ext_val": -1.0,
+      "coch_val": -0.049559
+    },
+    {
+      "study_id": "Mastroleo 2010_2010",
+      "transform": "reciprocal",
+      "distance": 0.35068308139836896,
+      "ext_val": 0.64,
+      "coch_val": 0.276
+    },
+    {
+      "study_id": "Bernstein 2009_2009",
+      "transform": "reciprocal",
+      "distance": 0.33545986177565124,
+      "ext_val": 3.3,
+      "coch_val": 0.456
+    },
+    {
+      "study_id": "Murphy 2018_2018",
+      "transform": "reciprocal",
+      "distance": 0.06837606837606831,
+      "ext_val": -4.0,
+      "coch_val": -0.234
+    },
+    {
+      "study_id": "Silveira 2019_2019",
+      "transform": "reciprocal",
+      "distance": 0.48087452459008095,
+      "ext_val": 7.32,
+      "coch_val": 4.0
+    },
+    {
+      "study_id": "Seid 2010_2010",
+      "transform": "reciprocal",
+      "distance": 0.16684860610230898,
+      "ext_val": 4.05,
+      "coch_val": 1.033872
+    },
+    {
+      "study_id": "Moriya 2015_2015",
+      "transform": "reciprocal",
+      "distance": 0.40092222710210124,
+      "ext_val": 1.5,
+      "coch_val": 4.894737
+    },
+    {
+      "study_id": "Vidrine 2012_2012",
+      "transform": "reciprocal",
+      "distance": 0.2112299650833613,
+      "ext_val": 1.7600000000000051,
+      "coch_val": 0.720339
+    },
+    {
+      "study_id": "Zhou 2021_2021",
+      "transform": "reciprocal",
+      "distance": 0.35897435897435903,
+      "ext_val": 0.78,
+      "coch_val": 2.0
+    },
+    {
+      "study_id": "Marsden 2018_2018",
+      "transform": "reciprocal",
+      "distance": 0.26739926739926745,
+      "ext_val": 0.31,
+      "coch_val": 0.875
+    },
+    {
+      "study_id": "Mimiaga 2019_2019",
+      "transform": "signflip",
+      "distance": 0.37024921210670314,
+      "ext_val": 0.25,
+      "coch_val": 0.634921
+    },
+    {
+      "study_id": "McKee 2007_2007",
+      "transform": "reciprocal",
+      "distance": 0.38425920224622245,
+      "ext_val": -0.10000000000000142,
+      "coch_val": 0.81203
+    },
+    {
+      "study_id": "He 2020_2020",
+      "transform": "signflip",
+      "distance": 0.358974358974359,
+      "ext_val": -2.0,
+      "coch_val": 3.12
+    },
+    {
+      "study_id": "Poalelungi 2021_2021",
+      "transform": "reciprocal",
+      "distance": 0.37681157424910766,
+      "ext_val": 0.2,
+      "coch_val": 2.444444
+    },
+    {
+      "study_id": "Meng 2015_2015",
+      "transform": "reciprocal",
+      "distance": 0.3392869100775982,
+      "ext_val": 1.0,
+      "coch_val": 0.373333
+    },
+    {
+      "study_id": "Nayak 2021_2021",
+      "transform": "reciprocal",
+      "distance": 0.4457377230905665,
+      "ext_val": 1.86,
+      "coch_val": 1.03
+    },
+    {
+      "study_id": "Nambi 2023_2023",
+      "transform": "signflip",
+      "distance": 0.15413533834586476,
+      "ext_val": 0.5,
+      "coch_val": -12.9
+    },
+    {
+      "study_id": "Gavin 2020_2020",
+      "transform": "reciprocal",
+      "distance": 0.41502454697395,
+      "ext_val": 0.89,
+      "coch_val": 2.947368
+    },
+    {
+      "study_id": "Littleton 2016_2016",
+      "transform": "reciprocal",
+      "distance": 0.08633079520109456,
+      "ext_val": -3.93,
+      "coch_val": 0.179791
+    },
+    {
+      "study_id": "Mohammadi 2018_2018",
+      "transform": "signflip",
+      "distance": 0.42857142857142866,
+      "ext_val": 1.0,
+      "coch_val": -0.7
+    },
+    {
+      "study_id": "Nakata 2022_2022",
+      "transform": "signflip",
+      "distance": 0.4117647058823529,
+      "ext_val": 1.0,
+      "coch_val": 5.5
+    },
+    {
+      "study_id": "Yao 2020_2020",
+      "transform": "reciprocal",
+      "distance": 0.3907987685278005,
+      "ext_val": 1.14,
+      "coch_val": 0.602187
+    },
+    {
+      "study_id": "Gamez 2019_2019",
+      "transform": "reciprocal",
+      "distance": 0.24242424242424246,
+      "ext_val": 2.0,
+      "coch_val": 0.66
+    },
+    {
+      "study_id": "Komori 2016_2016",
+      "transform": "signflip",
+      "distance": 0.38596475069247826,
+      "ext_val": -1.0,
+      "coch_val": 1.628571
+    },
+    {
+      "study_id": "Dias 2008_2008",
+      "transform": "signflip",
+      "distance": 0.47004142057885057,
+      "ext_val": 0.34,
+      "coch_val": -0.231286
+    },
+    {
+      "study_id": "Kato 2022_2022",
+      "transform": "signflip",
+      "distance": 0.06666666666666667,
+      "ext_val": -2.0,
+      "coch_val": 3.75
+    },
+    {
+      "study_id": "Dinglas 2016_2016",
+      "transform": "signflip",
+      "distance": 0.1347698005982506,
+      "ext_val": -0.009999999999999898,
+      "coch_val": 0.881236
+    },
+    {
+      "study_id": "Goertz 2017_2017",
+      "transform": "reciprocal",
+      "distance": 0.2698408873769728,
+      "ext_val": 1.5,
+      "coch_val": 0.913043
+    },
+    {
+      "study_id": "Abroms 2014_2014",
+      "transform": "reciprocal",
+      "distance": 0.49554921562332044,
+      "ext_val": 1.4,
+      "coch_val": 0.301194
+    },
+    {
+      "study_id": "Ebbert 2010_2010",
+      "transform": "reciprocal",
+      "distance": 0.36363613223132085,
+      "ext_val": 2.0,
+      "coch_val": 0.785714
+    },
+    {
+      "study_id": "Dale 2007_2007",
+      "transform": "reciprocal",
+      "distance": 0.3217289752430397,
+      "ext_val": 1.7,
+      "coch_val": 0.867257
+    },
+    {
+      "study_id": "Rosario 2012_2012",
+      "transform": "signflip",
+      "distance": 0.19047619047619052,
+      "ext_val": 0.25,
+      "coch_val": -0.4
+    },
+    {
+      "study_id": "Kubik 2021_2021",
+      "transform": "signflip",
+      "distance": 0.4000000000000001,
+      "ext_val": 0.06,
+      "coch_val": -1.4
+    },
+    {
+      "study_id": "Gustafson 2019_2019",
+      "transform": "reciprocal",
+      "distance": 0.17423616845582135,
+      "ext_val": 0.040000000000000036,
+      "coch_val": -0.7
+    },
+    {
+      "study_id": "Gonzalez-Ortega 2021_2021",
+      "transform": "reciprocal",
+      "distance": 0.09064455114215059,
+      "ext_val": -2.091,
+      "coch_val": -4.74
+    },
+    {
+      "study_id": "Griffiths 2016_2016",
+      "transform": "reciprocal",
+      "distance": 0.39135727328058423,
+      "ext_val": -0.31,
+      "coch_val": -5.3
+    },
+    {
+      "study_id": "Kumar Rai 2022_2022",
+      "transform": "reciprocal",
+      "distance": 0.4436219941121854,
+      "ext_val": 0.2,
+      "coch_val": 1.096154
+    }
+  ],
+  "examples": [
+    {
+      "study_id": "Juthani-Mehta 2010_2010",
+      "category": "difference_context",
+      "cochrane_value": 0.980769,
+      "cochrane_type": "binary",
+      "context": " cranberry juice has demonstrated reductions in bacteriuria.1\u20133 However, daily ingestion of large volumes of cranberry j"
+    },
+    {
+      "study_id": "Fagerlin 2011_2011",
+      "category": "labeled_OR",
+      "cochrane_value": 8.966057,
+      "cochrane_type": "binary",
+      "context": " Nair6, Daniel F. Hayes7, Cheryl Wiese4, and Peter A. Ubel8,9 1Ann Arbor VA HSR&D Center for Practice Management and Out"
+    },
+    {
+      "study_id": "Allen 2010_2010",
+      "category": "labeled_OR",
+      "cochrane_value": 6.0,
+      "cochrane_type": "continuous",
+      "context": "arkers Prev. Author manuscript; available in PMC 2015 April 06. Published in final edited form as: Cancer Epidemiol Biom"
+    },
+    {
+      "study_id": "Case 2019_2019",
+      "category": "plain_number",
+      "cochrane_value": 11.1,
+      "cochrane_type": "continuous",
+      "context": "stent scale. In questionnaire 3, questions 1, 2, 7, 10, and 11 were reweighted so that a low number corresponded with hi"
+    },
+    {
+      "study_id": "Cox 2019_2019",
+      "category": "reciprocal_found",
+      "cochrane_value": 1.2,
+      "cochrane_type": "continuous",
+      "context": "8 percentage point [CI, \u22126.5 to 8.0 percentage points]; P = 0.84).  Postintervention 1-year prognostic estimates by inte"
+    },
+    {
+      "study_id": "Durand 2021_2021",
+      "category": "reciprocal_found",
+      "cochrane_value": 1.4,
+      "cochrane_type": "continuous",
+      "context": "  health literacyb Anxiety (T0, T2, T3, T4) \u20130.53 (\u20131.77 to 0.72) .41 0.14 (\u20130.62 to 0.91) .72 Integration of health car"
+    },
+    {
+      "study_id": "Hanson 2011_2011",
+      "category": "plain_number",
+      "cochrane_value": 8.9,
+      "cochrane_type": "continuous",
+      "context": "%, p=0.08). Tube feeding was rare in both groups even after 9 months (1 intervention vs. 3 control, p=0.34). Limitations"
+    },
+    {
+      "study_id": "Lewis 2010_2010",
+      "category": "reciprocal_found",
+      "cochrane_value": 1.107384,
+      "cochrane_type": "binary",
+      "context": "5.9 42 22.2     65 to 69 16 3.6 5 3.6 15 7.9     70 to 82 4 0.9 0 0.0 3 1.6 Race     White/Caucasian 356 80.9 84 60.9 14"
+    },
+    {
+      "study_id": "Lepore 2012_2012",
+      "category": "labeled_OR",
+      "cochrane_value": 6.9,
+      "cochrane_type": "continuous",
+      "context": "or a cancer that would never become clinically apparent (6, 7). Medical experts and professional organizations send mixe"
+    },
+    {
+      "study_id": "Manne 2020_2020",
+      "category": "labeled_OR",
+      "cochrane_value": 11.14,
+      "cochrane_type": "continuous",
+      "context": " indicate more worry. Reasons for CPM were meas- ured by an 11-item scale developed after a review of  the qualitative a"
+    },
+    {
+      "study_id": "Tilburt 2022_2022",
+      "category": "plain_number",
+      "cochrane_value": 2.0,
+      "cochrane_type": "continuous",
+      "context": "(Alliance A191402CD) Jon C. Tilburt, MD1, David Zahrieh, PhD2, Joel E. Pacyna, MA1, Daniel G. Petereit, MD3,  Judith S. "
+    },
+    {
+      "study_id": "De Achaval 2012_2012",
+      "category": "signflip_found",
+      "cochrane_value": -11.4,
+      "cochrane_type": "continuous",
+      "context": "5) 50.0 (18.4) 50.7 (15.2) 45.7 (18.6) KOOS Symptom * 42.4 (11.2) 41.6 (10.8) 45.3 (11.5) 40.3 (10.7) KOOS Function in D"
+    },
+    {
+      "study_id": "Partin 2004_2004",
+      "category": "plain_number",
+      "cochrane_value": 0.898268,
+      "cochrane_type": "binary",
+      "context": "may recommend  that you have a prostate biopsy (True/False) 0.91 0.86 0.87 .09 Treatment complications Loss of sexual fu"
+    },
+    {
+      "study_id": "Zhang 2019_2019",
+      "category": "mean_sd_context",
+      "cochrane_value": 0.333333,
+      "cochrane_type": null,
+      "context": "uare test Group A Group B Age (y) 48.7\u00b115.2 53.1\u00b114.6 0.397 0.329 0.968 0.323 Sex (female/male) 18/5 17/6 0.730 Body mas"
+    },
+    {
+      "study_id": "Kim 2014_2014",
+      "category": "reciprocal_found",
+      "cochrane_value": 0.254525,
+      "cochrane_type": "continuous",
+      "context": "vious studies on gross motor exercise  using object grasping4) and task-oriented training focused  on specific functiona"
+    },
+    {
+      "study_id": "Tang 2023_2023",
+      "category": "signflip_found",
+      "cochrane_value": -0.05,
+      "cochrane_type": "continuous",
+      "context": "cores of the control group were 0.78\u2009\u00b1\u20090.8, 3.9\u2009\u00b1\u20091.84, P\u2009<\u20090.05, respec- tively; the VAS and Kupperman scores of the ob"
+    },
+    {
+      "study_id": "Abdou 2018_2018",
+      "category": "signflip_found",
+      "cochrane_value": -1.37,
+      "cochrane_type": "continuous",
+      "context": ".343 0.732 VAS of back pain 45.91 \u00b1 3.33 46.68 \u00b1 3.29 t = - 1.358 0.177 VAS of dyspareunia 36.53 \u00b1 3.87 34.98 \u00b1 4.96 t ="
+    },
+    {
+      "study_id": "Aravind 2022_2022",
+      "category": "plain_number",
+      "cochrane_value": -2.0,
+      "cochrane_type": "continuous",
+      "context": "01), Pembroke Regional Hospital Research Ethics Board  (2017-002), Western University Health Science Research Ethics Boa"
+    },
+    {
+      "study_id": "Fern\u00e1ndez-Serrano 2011_2011",
+      "category": "plain_number",
+      "cochrane_value": 1.0,
+      "cochrane_type": "binary",
+      "context": "onia: a randomized controlled trial Silvia Fern\u00e1ndez-Serrano1, Jordi Dorca1,2*, Carolina Garcia-Vidal3,4, N\u00faria Fern\u00e1nde"
+    },
+    {
+      "study_id": "Ghanei 2021_2021",
+      "category": "plain_number",
+      "cochrane_value": 0.632184,
+      "cochrane_type": "binary",
+      "context": " (%) \u00a0Never-smoker 38 (82.6) 36 (70.6) 32 (72.7) 106 (75.2) 0.625 \u00a0Current smoker 2 (4.4) 6 (11.8) 5 (11.4) 13 (9.2) \u00a0Ex"
+    },
+    {
+      "study_id": "Wintzen 2007_2007",
+      "category": "plain_number",
+      "cochrane_value": 4.01485,
+      "cochrane_type": null,
+      "context": "n there is virtually no weakness [1]. Recent reports [2, 3, 4] have demonstrated that moda\ufb01nil has a bene\ufb01cial effect on"
+    },
+    {
+      "study_id": "Costa 2018_2018",
+      "category": "plain_number",
+      "cochrane_value": 2.5,
+      "cochrane_type": "binary",
+      "context": "he protein/caloric ratio of the PDHM as well of the OMM was 2.5 g of protein/ 100 Kcal [19]. The primary outcome of the "
+    },
+    {
+      "study_id": "Mehani 2013_2013",
+      "category": "plain_number",
+      "cochrane_value": 0.2,
+      "cochrane_type": null,
+      "context": "rnal dimensions at diastole and systole (p = 0.5, 0.8, 0.1, 0.2, and 0.4, respectively). Dropout and clinical events The"
+    },
+    {
+      "study_id": "Gary 2010_2010",
+      "category": "labeled_OR",
+      "cochrane_value": -10.1,
+      "cochrane_type": "continuous",
+      "context": "uscript  diagnostic psychiatric interview for DSM-IV and ICD-10. J Clin Psychiatr. 1998; 59(Suppl 20): 22\u201333. 53. Guyatt"
+    },
+    {
+      "study_id": "Peng 2018_2018",
+      "category": "signflip_found",
+      "cochrane_value": -0.674526,
+      "cochrane_type": "continuous",
+      "context": " 0.003 Exp 2.27 (0.884) 2.28 (0.889) 2.29 (0.890) Con 2.14 (0.677) 2.18 (0.697) 2.18 (0.697) LVEF 1 0.001 0.002 2 0.717 "
+    },
+    {
+      "study_id": "Abdelnaby 2010_2010",
+      "category": "plain_number",
+      "cochrane_value": 1.9,
+      "cochrane_type": "continuous",
+      "context": "Ar-Go-Me 0.75 6 0.55A 0.65 6 0.64A 0.90 6 0.56A N-Me 4.20 6 1.93A 4.70 6 2.05A 1.40 6 0.69B SN-Mp 1.50 6 0.51A 1.40 6 0."
+    },
+    {
+      "study_id": "Greco 2016_2016",
+      "category": "plain_number",
+      "cochrane_value": 1.110763,
+      "cochrane_type": "binary",
+      "context": "led, simple randomization list with allocation as- signment 1.1. Therefore, 118 patients were planned to receive a froze"
+    },
+    {
+      "study_id": "Minase\u00a02019_2019",
+      "category": "mean_sd_context",
+      "cochrane_value": 2.62,
+      "cochrane_type": "continuous",
+      "context": "0 1.54 \u00b1 0.77 0.037* 0.756 B-Vert T (mm) \u22120.38 \u00b1 3.2 0.23 \u00b1 2.58 2.85 \u00b1 1.51 0.003** 0.819 Id-Vert T (mm) \u22120.23 \u00b1 3.8 0."
+    },
+    {
+      "study_id": "Ge 2012_2012",
+      "category": "plain_number",
+      "cochrane_value": 0.5,
+      "cochrane_type": "continuous",
+      "context": "d to activate the expander twice a day with a quarter turn (0.5 mm/d) until the desired transverse width was achieved. T"
+    },
+    {
+      "study_id": "Canturk 2015_2015",
+      "category": "reciprocal_found",
+      "cochrane_value": 0.22,
+      "cochrane_type": "continuous",
+      "context": "-OP, u 17.56 3.42 19.34 2.91 .151 S-Go, mm 66.92 4.91 65.25 4.53 .359 N-Me, mm 102.74 6.30 101.89 4.60 .684 Dental measu"
+    }
+  ]
+}
