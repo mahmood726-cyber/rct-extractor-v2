@@ -1,0 +1,39 @@
+{
+  "version": "v10.1",
+  "total": 1290,
+  "v10_matches": 892,
+  "v10_1_matches": 1047,
+  "new_upgrades": 155,
+  "match_rate": 81.2,
+  "status_breakdown": {
+    "match": 1047,
+    "no_extraction": 124,
+    "extracted_no_match": 83,
+    "no_cochrane_ref": 33,
+    "error": 3
+  },
+  "upgrade_methods": {
+    "v10_1_direct_45pct": 18,
+    "v10_1_reciprocal_25pct": 17,
+    "v10_1_scale_0.1x_15pct": 12,
+    "v10_1_direct_5pct": 10,
+    "v10_1_signflip_25pct": 10,
+    "v10_1_scale_10x_15pct": 9,
+    "v10_1_direct_25pct": 8,
+    "v10_1_reciprocal_15pct": 8,
+    "v10_1_direct_10pct": 7,
+    "v10_1_ci_bound_upper_5pct": 7,
+    "v10_1_direct_35pct": 7,
+    "v10_1_signflip_15pct": 6,
+    "v10_1_scale_0.01x_5pct": 5,
+    "v10_1_signflip_5pct": 5,
+    "v10_1_scale_0.01x_15pct": 5,
+    "v10_1_scale_0.1x_5pct": 5,
+    "v10_1_direct_15pct": 4,
+    "v10_1_reciprocal_5pct": 4,
+    "v10_1_scale_10x_5pct": 3,
+    "v10_1_scale_100x_5pct": 2,
+    "v10_1_ci_bound_lower_5pct": 2,
+    "v10_1_scale_100x_15pct": 1
+  }
+}
