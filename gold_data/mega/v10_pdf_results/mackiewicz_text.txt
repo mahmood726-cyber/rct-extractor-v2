@@ -1,0 +1,2478 @@
+=== PAGE 1 ===
+NeuroImage: Clinical 34 (2022) 102960
+Available online 8 February 2022
+2213-1582/© 2022 Published by Elsevier Inc. This is an open access article under the CC BY-NC-ND license (http://creativecommons.org/licenses/by-nc-nd/4.0/).
+Time for a paradigm shift: The adolescent brain in addiction treatment 
+Kristen L. Mackiewicz Seghete a, Francesca M. Filbey b, Karen A. Hudson c, Benedict Hyun c, 
+Sarah W. Feldstein Ewing c,* 
+a Oregon Health & Science University, Department of Psychiatry, 3181 SW Sam Jackson Park Rd, M/C UHN80R1, Portland, OR 97239, USA 
+b Center for BrainHealth, School of Behavioral and Brain Sciences, The University of Texas at Dallas, 2200 West Mockingbird Lane, Dallas, TX 75235, USA 
+c Departments of Psychology and Interdisciplinary Neuroscience, University of Rhode Island, 130 Flagg Rd, Kingston, RI 02881 USA   
+A R T I C L E  I N F O   
+Keywords: 
+Adolescent 
+Addiction 
+Treatment 
+MRI 
+Therapist language 
+A B S T R A C T   
+Objective: One route to improve adolescent addiction treatment outcomes is to use translational approaches to 
+help identify developmental neuroscience mechanisms that undergird active treatment ingredients and advance 
+adolescent behavior change. 
+Methods: This sample included 163 adolescents (ages 15–19) randomized to motivational interviewing (MI) vs. 
+brief adolescent mindfulness (BAM). Youth completed an fMRI paradigm assessing adolescent brain response to 
+therapist language (complex reflection vs. mindful; complex reflection vs. confront; mindful vs. confront) at pre- 
+(prior to the completion of the full intervention) and post-treatment (at 3-month follow-up) and behavioral 
+measures at 3, 6 and 12 months. 
+Results: Youth in both treatment groups showed significant problem drinking reductions at 3 and 6 months, but 
+MI youth demonstrated significantly better treatment outcomes than BAM youth at 12 months. We observed 
+several significant treatment group differences (MI > BAM) in neural response to therapist language, including at 
+pre-treatment when examining complex reflection vs. mindful, and complex reflection vs. confront (e.g., superior 
+temporal gyrus, lingual gyrus); and at post-treatment when examining mindful vs. confront (e.g., supplementary 
+motor area; middle frontal gyrus). When collapsed across treatment groups (MI + BAM), we observed significant 
+differences by time, with youth showing a pattern of brain change in response to complex reflection vs. mindful, 
+and complex reflection vs. confront (e.g., precuneus; postcentral gyrus). There was no evidence of a significant 
+group × time interaction. However, brain change in response to therapist language (complex reflection vs. 
+confront) in regions such as middle frontal gyrus, was associated with reductions in problem drinking at 12 
+months. Yet, few treatment group differences were observed. 
+Conclusions: These data underscore the need to better understand therapist language and it’s impact on the 
+developing brain, in order to inform and aggregate the most impactful elements of addiction treatment for future 
+treatment development for adolescents.   
+1. Introduction 
+Adolescence is a unique developmental period. During this neuro­
+developmental phase, youth in many regions of the globe are encour­
+aged to begin taking responsibility for more “adult” decisions (e.g., 
+driving, dating, unsupervised social events), decisions that often include 
+drinking. Yet, the brain regions responsible for weighing consequences, 
+judging costs and benefits, and self-regulating are still very much in 
+development during this period (Luna et al., 2010). This matters because 
+data suggest that alcohol use during adolescence may be neurotoxic 
+(Feldstein Ewing et al., 2014a). In turn, drinking, particularly in high- 
+risk patterns like binge drinking, may negatively influence adoles­
+cents’ neurodevelopmental trajectory, subsequently placing adolescents 
+at greater risk for sustained patterns of alcohol use and related problems 
+as they transition into adulthood (Nguyen-Louie et al., 2018). 
+Definitions of addiction are being increasingly revised to reflect the 
+nature of use in this age group. Historically, categorizations of alcohol 
+abuse/dependence as defined through standard mental health diag­
+nostic criteria (e.g., DSM; APA, 2013) were observed to clinically be 
+poor fits with the nature of alcohol addiction observed in this age group 
+* Corresponding author at: Prochaska Endowed Professor, University of Rhode Island, 130 Flagg Rd, Kingston, RI 02881, USA. 
+E-mail addresses: mackiewi@ohsu.edu (K.L. Mackiewicz Seghete), Francesca.filbey@utdallas.edu (F.M. Filbey), feldsteinewing@uri.edu (K.A. Hudson), 
+hudsonk@uri.edu (B. Hyun), feldsteinewing@uri.edu (S.W. Feldstein Ewing).  
+Contents lists available at ScienceDirect 
+NeuroImage: Clinical 
+journal homepage: www.elsevier.com/locate/ynicl 
+https://doi.org/10.1016/j.nicl.2022.102960 
+Received 4 June 2021; Received in revised form 29 December 2021; Accepted 6 February 2022   
+
+=== PAGE 2 ===
+NeuroImage: Clinical 34 (2022) 102960
+2
+(Clark, 2004). More recent calls have encouraged the use of “problem 
+drinking” as the best representation of alcohol addiction (and its reso­
+lution) in this age group (Silvers et al., 2019). This is because problem 
+drinking represents one of the most robust metrics of “interference in 
+functioning”, which more accurately captures the manifestation of 
+addiction in this age group, largely revolving around the adverse impact 
+that drinking has upon social/peer, school/academic, work, and family 
+spheres (Silvers et al., 2019). 
+Not only do youth exhibit high levels of problem drinking (Johnston 
+et al., 2018), but unlike their adult counterparts, adolescents engaged in 
+problem drinking are even more unlikely to seek, receive, or complete 
+indicated alcohol treatment (Lipari et al., 2016). Thus, improving the 
+effectiveness of brief behavioral alcohol treatments is integral to 
+decreasing problem drinking and related harms for this age group. While 
+existing addiction treatments show promise, they are not universally 
+effective (Silvers et al., 2019). Even among the strongest evidence-based 
+addiction treatments for this age group, including motivational inter­
+viewing (MI) (Miller and Rollnick, 2013), effect sizes for adolescents 
+suggest that there is still room for improvement (Feldstein Ewing et al., 
+2016a). 
+One reason for the lower effect sizes observed for treatment out­
+comes in this age group is likely due to differences in the developing 
+brain (Silvers et al., 2019). To that end, the adolescent brain is gaining 
+increased recognition for its unique structure and function throughout 
+this developmental stretch (Giedd, 2015). And, data indicate different 
+patterns of neural response between adults and adolescents within some 
+types of behavioral addictions treatment, including MI (Feldstein Ewing 
+et al., 2011, 2013). However, this line of research has only begun. 
+Early translational data support the empirical relationship between 
+neural response to task conditions of adolescent within-session client 
+language [youth statements in favor of changing behavior (change talk) 
+vs. youth statements in favor of not making behavioral changes (sustain 
+talk)] and post-treatment behavior change (Feldstein Ewing et al., 2011, 
+2013). Studies have showed the capacity of brief (2 session) behavioral 
+addiction treatments to reduce adolescent substance use. These studies 
+reflect that, in contrast to adults, adolescents show a distinctly different 
+pattern of neural activation, with greater BOLD response to task con­
+ditions of adolescent within-session client language (change talk >
+sustain talk) in areas important to self-awareness (e.g., precuneus and 
+posterior cingulate cortex; PCC), rather than the pattern of meso­
+cortiocolimbic reward response during task conditions of within-session 
+client language (sustain talk > change talk) observed among adults. 
+Moreover, youth engaged in problem drinking who naturally 
+generated their own client language with a therapist in the context of a 
+real-world session with a behavioral addiction therapist show signifi­
+cantly greater BOLD response in task conditions of their own naturally- 
+generated change talk and naturally-generated sustain talk as compared 
+with youth who read and recorded an ecologically-valid, pre-provided 
+script of change talk and sustain talk, but did not meet with a behavioral 
+addiction therapist prior to the scan (Feldstein Ewing et al., 2014b). 
+These data indicate two important patterns: first, the importance of 
+engaging in a true therapeutic exchange with a skilled therapist, as 
+parallel levels of neural activation were not observed in the absence of 
+this therapeutic exchange. Second, overlaid with other findings in this 
+area (Feldstein Ewing et al., 2017), these data point to a unique pattern 
+of neural response, likely to subserve a different developmentally- 
+specific pattern of neurocognitive response to addiction treatment 
+within the period of adolescence (Silvers et al., 2019). 
+In terms of potential neural substrates of brief adolescent mindful­
+ness (BAM), nascent work in this area has suggested that reward, 
+learning/memory, interoception, executive control, and stress response 
+may serve as mechanisms of neural response for adults engaged in 
+mindfulness as a treatment for alcohol addiction (e.g., Becker et al., 
+2017; Witkiewitz et al., 2013). Yet, the adolescent literature in this area 
+is quite limited. We could find no peer-reviewed, empirical studies 
+examining neural mechanisms of mindfulness as a treatment for 
+adolescent alcohol addiction. In turn, our hypotheses for these brain 
+mechanisms were informed by the extant adult literature. Critically, 
+following the translational neurodevelopmental literature in MI, we 
+anticipated that neural networks of adolescent brain response to BAM 
+would likely be disparate from the networks observed among adults 
+(Silvers et al., 2019). 
+Emerging adolescent translational data in the sphere of mood and 
+anxiety disorders has indicated that mindfulness (mindfulness-based 
+cognitive therapy for children) may catalyze response within the fronto- 
+parietal and cingulo-opercular networks via modulation of global effi­
+ciency and characteristic path length, along with enhanced functional 
+connectivity of frontal and limbic areas within the default mode and 
+cingulo-opercular networks (Qin et al., 2021). Similarly, two separate 
+studies of children and adolescents who received a mindfulness-based 
+intervention [mindfulness training; Training for Awareness, Resil­
+ience, and Action (TARA), respectively] also showed significant im­
+provements in terms of stress, anxiety symptoms, anhedonia, and 
+negative affect subserved by right amygdala (Bauer et al., 2019; 
+Tymofiyeva et al., 2021). Among youth without behavioral disorders, 
+mindfulness interventions (self-compassion) correlated with activation 
+in right posterior cingulate cortex/precuneus during an emotional face 
+recognition task, which notably comprise a similar set of behavioral and 
+neurocognitive activities relevant to participation and success within 
+behavioral therapy (Liu et al., 2020). 
+Overall, given that default mode network (DMN) is composed of 
+subnetworks highly interconnected to the inherent cognitive processes 
+involved in behavioral therapy (e.g., memory, understanding others’ 
+minds) (Bathelt and Geurts, 2021), and the early data showing the 
+involvement of DMN-related regions (e.g. precuneus, posterior cingulate 
+cortex) among early studies of both MI and other mindfulness ap­
+proaches, we posited response within DMN for both the MI and BAM 
+interventions. However, due to the early stage of this field of research in 
+the overall translational sphere (Ray et al., 2021), and among adoles­
+cents specifically (Silvers et al., 2019), we were not able to anticipate or 
+propose potential differences in DMN response between these two 
+adolescent interventions. 
+Despite early work suggesting a relationship between therapist lan­
+guage and adolescents’ unique pattern of processing of addiction 
+treatment within self-reflection networks (Feldstein Ewing et al., 
+2016b), the field continues to need a randomized controlled trial (RCT) 
+where youth are randomized to empirically-supported behavioral ad­
+dictions treatments, and followed at more distal post-treatment time­
+points (e.g., 3, 6, and 12 months), to illuminate how adolescent brain 
+response may operate as a mechanism connecting salient within-session 
+active ingredients (e.g., task conditions of therapist language) with 
+treatment response (e.g., problem drinking reductions). This is impor­
+tant, given adolescents’ likely neurodevelopmentally-specific response 
+to indicated behavioral addiction treatments (Silvers et al., 2019). 
+In this study, we thus employed an innovative translational design, 
+integrating a neuroimaging (fMRI) paradigm within an RCT. We ran­
+domized adolescents engaged in problem drinking to two empirically- 
+supported behavioral treatments for adolescent addiction (MI and 
+BAM). Directly in line with our prior adolescent translational research 
+designs (e.g., Feldstein Ewing et al., 2016c; Feldstein Ewing et al., 2013; 
+Feldstein Ewing et al., 2014b), we conducted an fMRI task prior to the 
+completion of the full intervention (henceforth referred to as “pre- 
+treatment”) and at post-treatment in order to examine youths’ change in 
+brain response to our target mechanism (therapist language), and its 
+impact on their behavioral treatment response post-treatment (problem 
+drinking). We proposed that youth would show greater behavior change 
+in the MI vs. BAM intervention. In tandem, we expected that youth 
+would show greater neural change in the precuneus/PCC to task con­
+ditions of specific therapist language (complex reflection > mindful; 
+mindful > confront), and that this would be associated with problem 
+drinking reductions post-treatment at 3, 6, and 12 months. Via this 
+design, we hoped to disaggregate how adolescent brains respond to task 
+K.L. Mackiewicz Seghete et al.                                                                                                                                                                                                               
+
+=== PAGE 3 ===
+NeuroImage: Clinical 34 (2022) 102960
+3
+conditions of therapist language in the context of behavioral addiction 
+treatment. Further, we aimed to determine how that neural response 
+may serve as a mechanism between salient active ingredients in addic­
+tion treatment and real-world adolescent behavior change in youth once 
+they leave the therapist’s office. Ultimately, the goal of this study was to 
+begin to pave the way for new translational studies in the field of 
+adolescent addiction. 
+2. Materials and methods 
+2.1. Experimental design 
+This was a translational design, integrating a neuroimaging (fMRI) 
+paradigm within an RCT for adolescent addiction with two behavioral 
+treatment arms, motivational interviewing (MI) and mindfulness (BAM). 
+All study procedures were conducted with University Institutional 
+Committee on Human Subjects approval, and a federal Certificate of 
+Confidentiality. 
+Youth were randomized to receive time-matched individual sessions 
+of MI or BAM focused on reducing drinking, and an fMRI paradigm to 
+assess the impact of neural processing of active ingredients of adolescent 
+addiction treatment (here, therapist language). Youth completed the 
+pre-treatment behavioral assessment and the first treatment session 
+during their first appointment. Approximately one week later, youth 
+completed the first scan, immediately followed by their second treat­
+ment session. The post-treatment scan occurred 3 months after the first 
+scan. All youth also completed behavioral follow ups at 3-, 6-, and 12- 
+months post-treatment. All youth received two one-hour intervention 
+sessions, spaced to provide youth an opportunity to practice newly ac­
+quired skills in the intervening weekend. All analyzed participants 
+(100%) attended both treatment sessions. 
+2.2. Participants 
+This sample included N = 163 adolescents (age: M = 18.71, range: 
+15.07–19.98) recruited through community outreach in a northwestern 
+metropolitan area (Table 1). Eligible youth were 14–19 years of age and 
+were currently engaged in problem drinking (following previous 
+adolescent addiction studies, defined as ≥1 binge drinking episode 
+during prior 2 months) (Feldstein Ewing et al., 2015). Exclusion criteria 
+included left-handedness, >3 past-month non-tobacco- or cannabis- 
+substance use events (e.g., methamphetamine), evidence of brain 
+injury/illness or neurological disorder including psychosis, loss of con­
+sciousness ≥2 min, and/or MRI contraindications. Participants were 
+breathalyzed to ensure BrAC = 0 and provided a urine drug screen 
+before all study visits to corroborate self-report. Youth age 18 provided 
+informed independent consent, while informed parent consent/adoles­
+cent assent was obtained for youth under age 18. Project staff ran­
+domized participants to treatment condition (MI or BAM) via coin toss. 
+Post-hoc examination following randomization reflected that treatment 
+groups (MI vs. BAM) did not differ based on cannabis or nicotine use (p’s 
+= 0.77 and 0.64, respectively). Youth received up to $250 for partici­
+pation in the study. 
+2.3. Adolescent alcohol treatments 
+Building upon prior work, which had largely used single-treatment 
+arm within-subjects designs (Feldstein Ewing et al., 2016c; Feldstein 
+Ewing et al., 2013), adolescents were randomized to one of two 
+empirically supported behavioral treatments for addiction, MI and BAM 
+. Participants across both conditions discussed factors relevant to 
+problem drinking and received two individual 60-minute sessions of 1:1 
+treatment contact. Both conditions were time-matched to ensure 
+equivalent duration of therapist contact. All sessions took place in a 
+confidential room at the university dedicated to this purpose. 
+2.3.1. Therapist training and monitoring 
+In line with prior RCT approaches by this team (e.g., Feldstein Ewing 
+et al., 2015), we ensured distinction of therapeutic content via a six-step 
+approach. First, all interventions were manualized (manuals are avail­
+able upon request to senior author). Second, therapists were distinct 
+across conditions. Specifically, they were assigned to, trained in, and 
+conducted only one of the two intervention approaches. Third, all 
+therapists were carefully trained in their own intervention-specific 
+training group prior to conducting their assigned intervention. Fourth, 
+all intervention sessions were audiorecorded with participant permis­
+sion. Fifth, random segments from the audiorecorded interventions were 
+reviewed with the senior author during weekly therapist supervision 
+(also separate by condition) to ensure treatment fidelity, prevent ther­
+apist drift, and maintain integrity of the interventions. Sixth, we utilized 
+a final fidelity metric to ensure the distinction of each intervention. 
+2.3.2. Intervention fidelity and distinction 
+In line with previous adolescent behavioral RCTs including our own 
+(e.g., Bryan et al., 2018; Feldstein Ewing et al., 2015), immediately 
+following each intervention, all study therapists completed a fidelity 
+measure (Chawla et al., 2010; Feldstein Ewing et al., 2012) to assess the 
+presence of key elements of each intervention (range: 6–30, with 6 as 
+“strongly agree” and 30 as “strongly disagree”). As expected, therapists 
+showed distinction across interventions; MI therapists reported signifi­
+cantly more use of MI elements as compared to BAM elements (t(74) =
+-48.18, p < .001), and BAM therapists reported significantly more use of 
+BAM elements as compared to MI elements (t(85) = 3.69, p < .001). This 
+aligns with our prior adolescent RCTs, reflecting our team’s capacity to 
+ensure fidelity and distinction across adolescent intervention ap­
+proaches (e.g., Bryan et al., 2018; Feldstein Ewing et al., 2015). 
+2.3.3. Motivational interviewing (MI) 
+The goal of the MI treatment was to introduce, for the first time for 
+many youth, a conversation about alcohol use, and the personally- 
+experienced consequences of problem drinking. Following the 
+empirically-supported approach for MI with non-treatment-seeking ad­
+olescents, this manualized treatment (Feldstein Ewing et al., 2009) 
+explored youths’ stories around their substance use, the factors in 
+youths’ lives that support problem drinking (e.g., what they like about 
+drinking, aspects of their immediate community that facilitate drink­
+ing), and the consequences of their recent or previous problem drinking 
+(e.g., getting in trouble at school; getting in trouble with parents). Youth 
+Table 1 
+Participant demographics and adolescent treatment outcomes.   
+Motivational 
+Interviewing (N ¼
+77) 
+Brief Adolescent 
+Mindfulness (N ¼ 86) 
+p 
+Age 
+18.93 (0.96) 
+18.51 (1.11) 
+p =
+.011 
+(Range =
+15.07–19.98 
+years)    
+Sex at birth    
+Female 
+61.0% 
+67.4% 
+p =
+.394 
+Male 
+39.0% 
+32.6% 
+Race/Ethnicitya    
+Non-Hispanic White 
+76.6% 
+77.9%  
+African-American 
+1.3% 
+8.1%  
+Native Hawaiian/ 
+Pacific Islander 
+2.6% 
+4.7%  
+Asian American 
+16.9% 
+17.4%  
+American Indian/ 
+Alaska Native 
+2.6% 
+4.7%  
+Latinx 
+19.5% 
+10.5%  
+Other 
+2.6% 
+3.5%   
+a Race/ethnicity items were check all that apply and may not sum to 100% 
+within group. 
+K.L. Mackiewicz Seghete et al.                                                                                                                                                                                                               
+
+=== PAGE 4 ===
+NeuroImage: Clinical 34 (2022) 102960
+4
+were provided personalized feedback about how their problem drinking 
+compared to age-matched norms in the U.S. The ultimate goal of the MI 
+sessions was to engage youth in a thoughtful conversation about their 
+problem drinking and the implications that their problem drinking may 
+have on their lives, with an eye to bolstering and supporting youths’ own 
+inherent drive for behavior change. 
+2.3.4. Brief adolescent mindfulness (BAM) 
+The goal of the BAM treatment was to introduce, also novel for many 
+youth, a conversation about what BAM is, and ways that it might be 
+personally-relevant to adolescents’ current experiences. Following 
+empirically supported approaches for BAM (Crane et al., 2017), this 
+manualized treatment (Feldstein Ewing and Somohano, 2015) intro­
+duced concepts of eastern thought in a manner articulated to adolescents 
+specifically, and aligned to their phase of socio-cognitive development. 
+This included a discussion of factors in the youth’s life that could be 
+positively impacted by using or engaging mindful approaches (e.g., 
+current experiences of stress or adversity) and a link to how mindful 
+approaches might be applicable or relevant to the adolescent’s problem 
+drinking. The ultimate goal was to engage youth in a thoughtful con­
+versation about BAM and how eastern thought and mindful approaches 
+could unburden some aspects of their current lived experiences; this 
+treatment aimed to demystify basic BAM practice and introduce it as a 
+tool to help adolescents navigate current experienced stresses and dif­
+ficulties, including their problem drinking. 
+2.4. Measurements 
+2.4.1. Target treatment outcome: Problem drinking 
+Participants completed several questionnaires, including an evalua­
+tion of demographic factors. In line with recent calls (Silvers et al., 
+2019), the target treatment outcome for this study was problem drink­
+ing, measured by the Rutgers Alcohol Problems Index (RAPI; White and 
+Labouvie, 1989). The RAPI is a well-validated 23-item self-report mea­
+sure for adolescents (e.g., “Missed out on things because you spend too 
+much money on alcohol”). Response options for each item (Never, 1–2 
+times, 3–5 times, 6–10 times, More than 10 times) were coded and summed 
+for a total score at each timepoint (pre-treatment; 3, 6, and 12 months 
+post-treatment). 
+Objective biological measures were collected at each study visit; a 
+breathalyzer estimated blood alcohol content (BrAC) and a urine sample 
+(Alere iCup, 10 panel; Abbot) provided an immediate screen for 
+cannabis, amphetamine, barbiturates, benzodiazepines, methamphet­
+amine, opiates, oxycodone, and MDMA. The use of biometrics in this 
+study served as a safety screen to ensure that participations were not 
+intoxicated at the time of MRI data collection, which could interfere 
+with participant safety and the integrity of the MRI data. Biometric data 
+were not, on their own, utilized as a data collection tool in this study. 
+Fig. 1. fMRI Paradigm Examining Task Conditions. Neural In-Session Language Examination (NILE).  
+K.L. Mackiewicz Seghete et al.                                                                                                                                                                                                               
+
+=== PAGE 5 ===
+NeuroImage: Clinical 34 (2022) 102960
+5
+2.5. fMRI data acquisition and processing 
+2.5.1. fMRI task 
+Fig. 1 represents the schematic of the fMRI task utilized to examine 
+brain activation in response to task conditions. In the Neural In-Session 
+Language Task (NILE) task, youth were re-presented their therapist’s 
+voice and words in the imaging environment. Specifically, youth saw/ 
+heard n = 60 therapist statements. One third (n = 20) aligned with the 
+approach/content of their assigned behavioral treatment condition. For 
+example, youth in the MI condition heard n = 20 complex reflections 
+capturing therapist language intended to bolster and support youths’ 
+internal motivation to change (e.g., “You are worried that you might lose 
+your friends because of your drinking”). Similarly, youth in the BAM 
+condition heard n = 20 mindful statements capturing therapist language 
+intended to foster non-judgmental acceptance (e.g., “You are noticing 
+that your drinking is starting to change”). The final comparison condition 
+was designed to capture the nature of provider interactions that youth 
+often receive in traditional adolescent addiction counseling, emergency 
+and/or urgent care treatment settings, assessed here in the confront 
+condition (e.g. “Your drinking is starting to get out of control!”) Practically, 
+in addition to the aligned content (complex reflections for MI youth; 
+mindful statements for BAM youth), each youth was presented with a 
+“matched” set of comparison statements. As an example, youth in the MI 
+condition also received a parallel set of n = 20 mindful statements stated 
+in the voice of their study therapist. Further, youth in the BAM condition 
+also received a parallel set of n = 20 complex reflections stated in the 
+voice of their study therapist. All youth received n = 20 confront 
+statements stated in the voice of their study therapist. All statements 
+presented to youth were recorded by their treating study therapist, and 
+every effort was made to match statements in content, length, and 
+format. 
+Immediately following the first session, study therapists made an 
+explicit effort to match the semantic correspondence between the client 
+and statement therapists for each trial; with the therapist statement 
+directly responding to the overall content and nature of their initial 
+meeting. MI therapists began by selecting “complex reflections” for the 
+individualized NILE task, which were then matched with mindful and 
+confront statements that had parallel content. Similarly, BAM therapists 
+began by selecting mindful statements for the individualized NILE task, 
+which were then matched with complex reflections and mindful state­
+ments that had parallel content. To be consistent with the youths’ 
+clinical experience with the study therapist, all therapist statements 
+were then audio-recorded by the study therapist in preparation for the 
+fMRI paradigm. In other words, therapists selected their statements for 
+the NILE task to be responsive to the content and nature of their therapy 
+session, which were then recorded specifically for the experiment. 
+In line with prior approaches by this study team (e.g., Feldstein 
+Ewing et al., 2016c; Feldstein Ewing et al., 2013; Feldstein Ewing et al., 
+2014b), all participants did not receive the same set of statements. 
+Rather, they received unique statements specifically articulated to their 
+therapeutic exchange, recorded by their treating therapist. However, all 
+participants received the same set of individually-articulated statements 
+at their pre- and post-treatment scans, in order to facilitate our evalua­
+tion of their change in neural response to the proposed therapeutic 
+active ingredients (here, therapist language). 
+Participants received one 13-minute run of the task, presented using 
+Presentation (https://www.neurobs.com/), which consisted of 60 trials, 
+each beginning with a 500 ms “listen” cue, followed by the individual­
+ized text and audio of the therapist statements for each youth (for 5,000 
+ms). Trials were separated with jittered fixations 4,000–10,000 ms in 
+length. Condition and fixation orders (during the ITI) were optimized 
+using Optimize X (http://www.bobspunt.com/easy-optimize-x/), with 
+no condition presented for more than two consecutive trials, and all 
+therapist language randomized within each condition before each run. 
+2.5.2. MRI scan procedure 
+During the MRI, participants had a high-resolution anatomical scan 
+prior to completing the fMRI task. Stimuli were back-projected and 
+viewed with a mirror mounted on a head coil. Participants wore MRI- 
+compatible electrostatic ear bud headphones to hear auditory stimuli. 
+Foam padding was used to constrain head motion. Youth completed a 
+series of validation checks to ensure task engagement, including a sound 
+check to verify that they were able to hear the audio statements and a 
+visual check to ensure that they could see the presented statements. 
+Youth were also asked to report the percent of fMRI task statements that 
+they could hear clearly to ensure effective audio delivery and participant 
+engagement. Only youth who heard (and were able to engage in) ≥80% 
+of the task were included in imaging analyses. 
+2.5.3. MRI data acquisition 
+Data were acquired on a Siemens 3 Tesla Prisma scanner (Siemens 
+Medical Solutions, Erlangen, Germany) at the Advanced Imaging 
+Research Center (AIRC) with a Siemens 32-channel head coil. A high- 
+resolution, T1-weighted anatomical scan was collected for alignment 
+and normalization of functional images for each participant (176 slices 
+1 mm isotropic, matrix = 256×256, TR/TE/TI = 2500/2.88/1060 ms, 
+flip angle = 8◦, pixel bandwidth = 240 Hz); volumes were acquired with 
+Volumetric Navigators (vNAVS) to correct for intra-scan motion. The 
+whole-brain fMRI task scan was acquired using a T2*-weighted echo­
+planar (EPI) sequence (2.4 mm isotropic, matrix = 90x90, TR/TE = 800/ 
+30 ms, flip angle = 52◦, field of view = 216 mm, slices = 60) so that 
+middle volume aligned with the subject’s inter-commissural line (AC- 
+PC). A pair of field maps were acquired, with phase encoding direction 
+reversed, to correct for distortions. Scanning parameters optimized 
+BOLD signal quality while maximizing whole brain coverage. 
+2.5.4. fMRI Pre-processing 
+fMRI and anatomical images were analyzed using Analysis of Func­
+tional NeuroImages (AFNI) software package (https://afni.nimh.nih. 
+gov/afni/version AFNI_18.2.04). The T1-weighted anatomical images 
+were manually segmented, producing a skull-stripped image. A sec­
+ondary segmentation and warping was applied using @SSwarper to 
+skull-strip images to refine segmentation and conform to Montreal 
+Neurological Institute stereotactic space (MNI152 2009). Using AFNI’s 
+afni_proc.py script, a processing pipeline was generated to discard the 
+first 6 EPI volumes, implement slice time correction, correct for distor­
+tions using the field map pairs, register fMRI volumes to the minimum 
+outlier, align and warp volumes to template space provided by 
+anatomical transformation, apply spatial smoothing using a Gaussian 
+filter (5 mm full-width-at-half-maximum), and scale each of the voxel 
+time series to a mean of 100. Frame-to-frame displacement was calcu­
+lated for each volume. A generalized additive model (GAM) was run for 
+each participant modeling each of the 3 task conditions (complex 
+reflection, mindful, and confront) and 6 motion parameters, separately 
+pre-and post-treatment. 
+2.6. Statistical analysis 
+2.6.1. Behavioral data 
+Target treatment response (problem drinking; derived from the RAPI 
+total) was analyzed using a repeated measures ANCOVA with the 
+repeated factor of Time (Post-Treatment: 3, 6, and 12 months) and the 
+fixed factor of Treatment (MI; BAM) with pre-treatment problem 
+drinking included as a covariate. An alpha of 0.05 was used for all 
+behavioral analyses. Youth with full problem drinking data at all follow 
+up time points were included in treatment outcome analyses. Of note, 
+the sample with behavioral data (only) was slightly larger than the 
+sample with both brain and behavioral data, due to more stringent 
+criteria required for the inclusion of imaging data in analyses (see 
+Supplemental Fig. 1 for study CONSORT). 
+K.L. Mackiewicz Seghete et al.                                                                                                                                                                                                               
+
+=== PAGE 6 ===
+NeuroImage: Clinical 34 (2022) 102960
+6
+2.7. fMRI Data 
+2.7.1. Pre-treatment analyses 
+Pre-treatment analyses were conducted to validate activation during 
+each proposed mechanisms (each type of task condition - complex 
+reflection; mindful; confront) and to ensure absence of pre-treatment 
+group differences. Paired and independent group t-tests were conduct­
+ed using AFNI’s 3dttest++ for differences in activation between task 
+condition at pre-treatment (complex reflection vs. mindful, complex 
+reflection vs. confront, mindful vs. confront). The –Clustsim option is the 
+non-parametric correction tool utilized to determine minimum cluster 
+size threshold for a voxel-wise threshold of p < .01 to obtain a corrected 
+p < .05. 
+2.7.2. Multivariate modeling 
+Two series of multivariate statistical models using AFNI’s 3dMVM 
+program were constructed (G. Chen et al., 2014; G. Chen et al., 2015). 
+For the first series, a separate model was completed for each of the 
+following contrasts: complex reflection vs. mindful, complex reflection 
+vs. confront, and mindful vs. confront. Factors in the analyses were Time 
+(pre-treatment; post-treatment) and Treatment (MI; BAM). AFNI’s 
+–Clustsim option was used to determine minimum cluster size threshold 
+for a voxel-wise threshold of p < .01 to obtain a corrected p < .05 for 
+multiple comparisons. Results were thresholded at a voxel-wise p < .01 
+and whole-brain corrected at a p < .05. We selected a threshold that 
+balances careful negotiation of Type 1 and Type 2 errors, which are the 
+two central areas of attention in neuroimaging analyses. This selection 
+represents the most contemporary recommended approach for 
+nonparametric correction for multiple comparisons and utilizes the 
+latest version of 3dClustsim to protect against Type 1 errors (Cox et al., 
+2017; Eklund et al., 2019). Our threshold was selected to also mitigate 
+Type 2 errors, which have been identified as highly relevant in inno­
+vative fMRI data analyses (Hopfinger, 2017). Post-hoc t-tests and simple 
+main effect analyses (3dMVM) were utilized to interpret all significant 
+findings and their directionality. 
+The second series of analyses added models of each contrast (com­
+plex reflection vs. mindful, complex reflection vs. confront, and mindful 
+vs. confront) with problem drinking at 12 months, allowing us to 
+examine problem drinking regressed on the change in whole brain 
+activation (for each of the identified contrasts) from pre- to post- 
+treatment. Results were thresholded at a voxel-wise p < .05, uncorrec­
+ted and clustered at 300 voxels. Significance for associations was 
+determined through the 3dMVM platform in AFNI. Percent signal 
+change for a 5-mm sphere around the peak coordinates of all significant 
+clusters was extracted for pre- and post-treatment for the three task 
+conditions to better understand the nature of the effects. For significant 
+findings from models (examining problem drinking treatment out­
+comes), average percent signal change representing the change (post- 
+treatment – pre-treatment) in activation between conditions was 
+extracted and correlated with problem drinking at 12 months to quantify 
+the relationship and determine directionality. Brain-behavior correla­
+tions for main effects of task conditions were not corrected for multiple 
+comparisons, as they were proposed a priori . 
+3. Results 
+3.1. Adolescent treatment outcomes 
+The repeated measures ANCOVA of Time (Post-Treatment: 3, 6, 12 
+months) × Treatment (MI, BAM) with the covariate of pre-treatment 
+problem drinking revealed no main effect for Time (F(2,288) = 2.55, 
+p = .080) or Treatment condition (F(2,288) = 3.96, p = .069). Yet, there 
+was a significant Time × Group interaction (F(2,288) = 3.96, p = .020), 
+wherein MI and BAM youth demonstrated similar problem drinking at 3 
+(t (145) = 0.82, p = .413) and 6 months (t (145) = −0.26, p = .793), but 
+MI youth demonstrated significantly better treatment outcomes than 
+BAM youth at 12 months (t (124.44) = −2.42, p = .0173) (Table 1; 
+Fig. 2). Of note, all data collected for this study was conducted/ 
+completed pre-pandemic (final follow-up on January 2020), so observed 
+drinking reductions within the MI cohort would not stem from 
+pandemic-related absence of drinking opportunities. 
+3.2. Pre-treatment data per group 
+3.2.1. Pre-treatment response within the MI group 
+For pre-treatment brain response to complex reflections as con­
+trasted with mindful, MI youth showed robust response with large loci of 
+activation around the lingual gyrus (15,992 voxels), inferior frontal 
+gyrus (IFG) (7,845 voxels) and supplementary motor area (SMA;6,360 
+voxels). Similarly, for pre-treatment brain response to complex re­
+flections as contrasted with confront, MI youth also showed response 
+around lingual gyrus (24,890 voxels) and bilateral superior temporal 
+gyrus (6,627 voxels; 2,638 voxels, respectively). For pre-treatment brain 
+response to mindful as contrasted with confront, MI youth showed large 
+areas of response including cuneus (3,859 voxels), superior temporal 
+gyrus/supramarginal gyrus (3,522 voxels; Table 2). 
+3.2.2. Pre-treatment response within the BAM group 
+For pre-treatment brain response to complex reflections as con­
+trasted with mindful, BAM youth showed large loci of activation around 
+the lingual gyrus (20,021 voxels), medial temporal pole (7,415 voxels), 
+and superior medial gyrus (7,278 voxels). Similarly, for pre-treatment 
+brain response to complex reflections as contrasted with confront, 
+BAM youth also showed response around lingual gyrus (35,553 voxels) 
+and superior temporal gyrus (4,255 voxels). For pre-treatment brain 
+response to mindful as contrasted with confront, BAM youth showed 
+large areas of response including cuneus (4,793 voxels) and bilateral 
+superior temporal gyrus (3,683 voxels; 2,911 voxels, respectively; 
+Table 2). 
+3.3. Post-treatment data per group 
+3.3.1. Post-treatment response within the MI group 
+For post-treatment brain response to complex reflections as con­
+trasted with mindful, MI youth showed large loci of activation largely 
+around the lingual gyrus (5,163 voxels). Similarly, for post-treatment 
+brain response to complex reflections as contrasted with confront, MI 
+youth brain response centered around lingual gyrus (11,956 voxels) and 
+superior temporal gyrus/postcentral gyrus (7,052 voxels). For post- 
+treatment brain response to mindful as contrasted with confront, MI 
+youth showed large brain response in regions such as superior temporal 
+gyrus/supramarginal gyrus (5,287 voxels), cuneus (4,394 voxels), and 
+superior temporal gyrus (3,976 voxels; Table 2). 
+3.3.2. Post-treatment response within the BAM group 
+For post-treatment brain response to complex reflections as con­
+trasted with mindful, BAM youth showed robust brain response around 
+lingual gyrus (5,474 voxels), along with superior and middle temporal 
+gyrus (2,686 voxels; 2,583 voxels, respectively). Similarly, for post- 
+treatment brain response to complex reflections as contrasted with 
+confront, BAM youth also showed response around lingual gyrus (8,350 
+voxels) and superior temporal gyrus/postcentral gyrus (2,383 voxels). 
+For post-treatment brain response to mindful as contrasted with 
+confront, BAM youth showed large areas of brain response in regions 
+including IFG (3,455 voxels), medial temporal pole (2,462 voxels), and 
+bilateral superior temporal gyrus (3,371 voxels; 2,343 voxels, respec­
+tively; Table 2). 
+K.L. Mackiewicz Seghete et al.                                                                                                                                                                                                               
+
+=== PAGE 7 ===
+NeuroImage: Clinical 34 (2022) 102960
+7
+3.4. Intervention group effect (MI vs. BAM), time effect (pre vs. post), 
+and group × time interaction 
+3.4.1. Differences between treatment groups 
+At pre-treatment, adolescents within the MI and BAM intervention 
+conditions showed significant between-treatment-group differences in 
+response to task conditions. When comparing MI > BAM responses to 
+complex reflection as compared with mindful, we found significant 
+differences in L superior medial gyrus (BA 10; z = −4.10, p < .001), R 
+superior temporal gyrus (BA 22; z = -2.65, p < .01) and lingual gyrus 
+(BA 18, z = -3.26, p < .01). Similarly, when comparing MI > BAM re­
+sponses to complex reflection as compared with confront, we found 
+significant differences in R superior temporal gyrus (BA 41; z = -3.40, p 
+< .001) and bilateral lingual gyrus (BA 18, z = 2.43, p < 0.05; −3.10, p 
+< .01, respectively). Also, when comparing MI > BAM responses to 
+mindful as compared with confront, we found significant differences 
+across cuneus (BA 18; z = -1.98, p < .05), R SMA (BA 41; z = 2.25, p <
+.05), and R superior temporal gyrus (BA 41; z = -2.10, p < .05; see 
+Table 2). There were no additional regions where BAM > MI. 
+At post-treatment, adolescents within the MI and BAM intervention 
+conditions showed significant between-treatment-group differences in 
+response to task conditions. When comparing MI > BAM responses to 
+mindful as compared with confront, we found significant differences 
+across L SMA (BA 6; z = 2.06, p < .05) and L middle frontal gyrus (BA 10; 
+z = 2.20, p < .05). At post-treatment, when comparing MI > BAM re­
+sponses to complex reflection versus mindful, along with complex 
+reflection versus confront, we no longer observed the significant inter­
+vention group differences that we had observed at pre-treatment (see 
+Table 2 and Fig. 4). There were no additional regions where BAM > MI. 
+3.4.2. Differences by time 
+When collapsed across treatment groups, adolescents showed a 
+pattern of brain change in response to complex reflection compared with 
+mindful across multiple regions spanning precuneus (BA 4/19)/post­
+central gyrus (BA 7), inferior parietal lobe (BA 40), R superior frontal 
+gyrus, and medial frontal gyrus (BA 10) (2,252 voxels; 1,109 voxels; 867 
+voxels; 729 voxels respectively). There was also a pattern of adolescent 
+brain change for complex reflection as compared with confront across 
+bilateral precuneus (BA 7) and bilateral cuneus (BA 19) (2,548 voxels; 
+743 voxels, 517 voxels, 500 voxels, respectively; Table 3; Fig. 3). Across 
+contrasts and regions, significant changes in activation reflected de­
+creases in BOLD response to complex reflection. No significant differ­
+ences emerged for brain change in response to mindfulness as compared 
+with confront. These relationships at pre- and post-treatment are also 
+represented as columns graphically depicting the areas with differences 
+in Fig. 4. 
+3.4.3. Interaction 
+There was no evidence of a significant group × time interaction. 
+3.5. Adolescents’ brain response to task conditions and associated 12 
+month treatment outcomes 
+Adolescent brain change in response to complex reflection as 
+compared with mindful was associated with long term (12 month) 
+behavior change, here measured as reductions in problem drinking; 
+however, no significant treatment group differences were observed for 
+this comparison. Adolescent brain change in response to complex 
+reflection as compared with confront was also associated with long term 
+(12 month) behavior change, here also measured as reductions in 
+problem drinking. HWe did observe a few treatment group differences, 
+including. significant correlations for the BAM treatment group across 
+middle frontal gyrus (t(114) = 2.24, p = .025). Finally, adolescent brain 
+change in response to mindful compared with confront was associated 
+with long term (12 month) behavior change, here as well, measured as 
+reductions in problem drinking. We found significant treatment group 
+differences, primarily significant for youth in the BAM treatment group 
+across thalamus (t(114) = -2.04, p = .042) (Table 4; Fig. 5). 
+3.6. Discussion 
+Despite the critical role of therapists within behavioral addiction 
+treatment (Magill et al., 2018), only a handful of published studies have 
+investigated the role of therapist factors in adolescent treatment 
+response (Feldstein Ewing et al., 2015; Gaume et al., 2016). Fewer have 
+evaluated youths’ within-session brain response in the context of 
+behavioral addiction treatment (Feldstein Ewing et al., 2016c; Feldstein 
+Ewing et al., 2013). This is critical because behavioral-only studies may 
+be unable to detect subtle, but highly important clinical changes and/or 
+mechanisms that underlie successful treatment response (Silvers et al., 
+2019). Thus, one asset of this study is that it offers a distinctly sensitive 
+method (neuroimaging) to facilitate the detection of salient brain re­
+sponses likely to escape other methods (Gaume et al., 2019). Further, 
+these data are critical to guide improvements in adolescent addiction 
+treatment .. 
+Within this study, we employed an innovative translational design, 
+Fig. 2. Adolescent Treatment Outcomes. Youth 
+problem drinking outcomes at 3, 6, and 12 months by 
+intervention type. There was a significant Time ×
+Group interaction (F(2,288) = 3.96, p = .020) 
+wherein youth in the MI and BAM groups demon­
+strated comparable problem drinking outcomes at 3 
+and 6 months, but MI youth had significantly better 
+treatment outcomes at 12 months post-treatment as 
+compared with BAM youth (t (124.44) = -2.42, p =
+.0173). This figure represents raw means (not 
+adjusted for baseline levels). Error bars represent 
+standard error. MI = motivational interviewing. BAM 
+= brief adolescent mindfulness.   
+K.L. Mackiewicz Seghete et al.                                                                                                                                                                                                               
+
+=== PAGE 8 ===
+NeuroImage: Clinical 34 (2022) 102960
+8
+Table 2 
+Task conditions and adolescent brain response across each treatment group (pre-treatment and change data). Activation for paired t-tests is presented by 
+treatment type (MI, BAM) at pre- and post-treatment. Voxel level significance of p < .01, with whole-brain correction of p < .05. Peak z score is presented, extracted for 
+each treatment type (MI, BAM) and the independent t-test of MI > BAM. Talairach coordinates. R = right. L = left. MI = motivational interviewing. BAM = brief 
+adolescent mindfulness. B = bilateral. SMA = supplementary motor area.† = p < .05, uncorrected. * = p < .01, uncorrected. ** = p < .001, uncorrected.  
+Region 
+BA 
+Voxels 
+x 
+y 
+z 
+Z 
+MI 
+BAM 
+MI > BAM 
+Complex Reflection > Mindful 
+Pre-Treatment 
+MI 
+B Lingual Gyrus 
+18 
+15,992 
+1 
+−91 
+−1  
+4.85  
+6.47  
+−0.55 
+L Inferior Frontal Gyrus 
+47 
+7,845 
+−53 
+25 
+−7  
+4.49  
+3.48  
+0.57 
+L SMA 
+6 
+6,360 
+−7 
+11 
+73  
+4.80  
+3.28  
+0.67 
+R Medial Temporal Pole 
+38 
+3,336 
+55 
+15 
+−25  
+5.84  
+5.45  
+0.052 
+L Precentral Gyrus 
+6 
+1,205 
+−49 
+5 
+55  
+4.72  
+2.43  
+1.70 
+BAM 
+B Lingual Gyrus 
+18 
+20,021 
+1 
+−89 
+−9  
+4.40  
+6.61  
+−3.26* 
+L Medial Temporal Pole 
+38 
+7,415 
+−35 
+25 
+−31  
+4.51  
+3.97  
+−0.30 
+L Superior Medial Gyrus 
+10 
+7,278 
+1 
+65 
+23  
+−1.35  
+4.19  
+−4.10** 
+R Superior Temporal Gyrus 
+22 
+6,356 
+65 
+−1 
+−7  
+4.20  
+5.60  
+−2.65* 
+Post-Treatment 
+MI 
+B Lingual Gyrus 
+18 
+5,163 
+3 
+−95 
+1  
+6.33  
+3.75  
+1.90 
+L Temporal Pole 
+38 
+1,946 
+−61 
+9 
+−11  
+5.29  
+4.81  
+0.12 
+R Superior Temporal Gyrus 
+22 
+1,678 
+67 
+−1 
+5  
+3.69  
+3.60  
+−0.15 
+BAM 
+B Lingual Gyrus 
+18 
+5,474 
+1 
+−91 
+−5  
+4.68  
+5.82  
+−1.54 
+R Superior Temporal Gyrus 
+22 
+2,686 
+65 
+−1 
+−7  
+2.74  
+4.71  
+−1.55 
+L Middle Temporal Gyrus 
+22 
+2,583 
+−61 
+7 
+−15  
+4.06  
+5.04  
+−1.63 
+Complex Reflection > Confront 
+Pre-Treatment 
+MI 
+B Lingual Gyrus 
+18 
+24,890 
+1 
+−89 
+−5  
+13.00  
+13.00  
+−2.43†
+L Superior Temporal Gyrus 
+41 
+6,627 
+−69 
+−17 
+11  
+5.11  
+4.87  
+−1.35 
+R Superior Temporal Gyrus 
+41 
+2,638 
+59 
+−9 
+5  
+6.74  
+6.95  
+−1.13 
+L Superior Frontal Gyrus 
+6 
+1,390 
+−7 
+1 
+77  
+2.84  
+2.99  
+0.33 
+BAM 
+B Lingual Gyrus 
+18 
+35,553 
+1 
+−91 
+−7  
+7.01  
+13.00  
+−3.10* 
+R Superior Temporal Gyrus 
+41 
+4,255 
+67 
+−17 
+13  
+4.94  
+5.67  
+−3.40** 
+Post-Treatment 
+MI 
+B Lingual Gyrus 
+18 
+11,956 
+5 
+−97 
+−9  
+5.25  
+2.03  
+1.80 
+L Superior Temporal Gyrus/Postcentral Gyrus 
+41 
+7,052 
+−67 
+−13 
+9  
+5.59  
+3.48  
+1.76 
+R Superior Temporal Gyrus 
+41 
+2,390 
+59 
+−11 
+7  
+7.42  
+6.18  
+−0.47 
+L Precentral Gyrus 
+6 
+1,400 
+−51 
+−5 
+57  
+5.55  
+4.65  
+−0.018 
+BAM 
+B Lingual Gyrus 
+18 
+8,350 
+1 
+−91 
+−5  
+7.01  
+7.47  
+−1.69 
+L Superior Temporal Gyrus/Postcentral Gyrus 
+41 
+3,949 
+−59 
+−17 
+9  
+6.97  
+5.90  
+−0.93 
+R Superior Temporal Gyrus 
+41 
+2,382 
+61 
+−9 
+5  
+7.02  
+6.24  
+−1.00 
+L Precentral Gyrus 
+6 
+1,412 
+−49 
+1 
+57  
+4.65  
+4.02  
+−1.40 
+Mindful > Confront 
+Pre-Treatment 
+MI 
+B Cuneus 
+18 
+3,859 
+3 
+−101 
+11  
+2.99  
+0.71  
+1.98†
+L Superior Temporal Gyrus/ Supramarginal Gyrus 
+40 
+3,522 
+−57 
+−19 
+11  
+6.41  
+5.33  
+0.29 
+R Superior Temporal Gyrus 
+41 
+2,741 
+57 
+−11 
+7  
+7.11  
+4.93  
+0.79 
+L Temporal Pole 
+38 
+6,886 
+−31 
+23 
+−31  
+−4.76  
+−2.91  
+−1.64 
+R Inferior Frontal Gyrus 
+47 
+6,874 
+53 
+25 
+−9  
+−4.89  
+−3.11  
+−1.79 
+R SMA 
+6 
+5,845 
+3 
+17 
+69  
+−4.16  
+−1.11  
+−2.25†
+BAM 
+B Cuneus 
+18 
+4,793 
+1 
+−93 
+33  
+1.99  
+2.68  
+−0.25 
+L Superior Temporal Gyrus 
+40 
+4,683 
+−57 
+−19 
+9  
+7.40  
+5.63  
+−0.41 
+R Superior Temporal Gyrus 
+41 
+2,911 
+69 
+−17 
+13  
+4.49  
+4.29  
+−2.10†
+R Medial Temporal Pole 
+38 
+4,255 
+55 
+15 
+−27  
+−5.74  
+−5.99  
+0.68 
+R Superior Medial Gyrus 
+10 
+4,011 
+3 
+65 
+23  
+−2.66  
+−2.98  
+1.79 
+L Temporal Pole 
+38 
+1,742 
+−31 
+23 
+−29  
+−3.90  
+−3.42  
+−0.54 
+L Precuneus 
+31 
+1,368 
+−1 
+−55 
+29  
+−3.63  
+−4.26  
+1.28 
+Post-Treatment 
+MI 
+L Superior Temporal Gyrus/L Supramarginal Gyrus 
+40 
+5,287 
+−55 
+−19 
+9  
+7.85  
+5.06  
+0.61 
+L Cuneus 
+18 
+4,394 
+−7 
+−97 
+20  
+2.76  
+1.81  
+0.71 
+R Superior Temporal Gyrus 
+22 
+3,976 
+61 
+−9 
+7  
+5.75  
+4.44  
+0.48 
+L SMA 
+6 
+3,669 
+−7 
+19 
+71  
+−3.30  
+−1.19  
+−2.06†
+R Inferior Frontal Gyrus 
+47 
+3,253 
+53 
+27 
+−9  
+−4.79  
+−3.41  
+−0.32 
+L Middle Frontal Gyrus 
+10 
+3,059 
+−49 
+51 
+−5  
+−2.89  
+−0.81  
+−2.20†
+BAM 
+R Inferior Frontal Gyrus 
+47 
+3,455 
+55 
+25 
+−7  
+−3.59  
+−3.55  
+0.065 
+(continued on next page) 
+K.L. Mackiewicz Seghete et al.                                                                                                                                                                                                               
+
+=== PAGE 9 ===
+NeuroImage: Clinical 34 (2022) 102960
+9
+integrating a neuroimaging paradigm within an RCT. We randomized 
+adolescents engaged in problem drinking to two empirically-supported 
+behavioral treatments (MI and BAM), and examined behavioral treat­
+ment outcomes (problem drinking) at 3, 6, and 12 months post- 
+treatment. We then conducted an fMRI task pre- and post-treatment to 
+evaluate youths’ change in brain response to our target mechanism 
+(therapist language), and its impact on their long term (12 month) 
+behavior change, here measured as reductions in problem drinking. 
+In terms of overall treatment outcomes, prior studies including our 
+own, have highlighted the success of MI in catalyzing and sustaining 
+behavior change in this age group (D’Amico et al., 2018; Feldstein 
+Ewing et al., 2020; Feldstein Ewing et al., 2013). Thus, we anticipated 
+that this sample of adolescents engaged in problem drinking would show 
+greater behavior change following the receipt of MI, as compared with 
+BAM. Contrary to expectations, but in line with recent studies in 
+adolescent addiction treatment response (Silvers et al., 2019; Yeager 
+et al., 2017), we did not observe differential treatment outcomes at 3 
+and 6 months. However, we did observe significant differential re­
+ductions in problem drinking at 12 months, wherein MI youth displayed 
+continued treatment gains at 1 year post-treatment. In contrast, parallel 
+reductions were not observed for BAM youth, who began to return to 
+problem drinking at the 12 month follow-up. 
+These findings are clinically meaningful for three reasons; first, one 
+encouraging aspect of these data is that they support the use of brief 
+behavioral treatments (two 60-minute 1:1 sessions with therapists) to 
+promote and foster adolescent behavior change in the domain of prob­
+lem drinking – and, equivalently so, for short-term outcomes (at 3 and 6 
+months). Second, these findings follow the large and impressive body of 
+work reflecting the capacity of MI to sustain long-term treatment gains, 
+a literature that is now increasing in size and breadth for this age group 
+(D’Amico et al., 2018; Steele et al., 2020), and, which hasve historically 
+been less well examined in the youth addiction field (Cronce and 
+Larimer, 2011). Third, while some of the larger RCTs have compared MI 
+against other treatments, this examination represents the only empirical 
+study that we could find that integrates a translational paradigm into an 
+RCT for adolescent addiction, allowing for the comparison of neuro­
+developmental mechanisms across two different active behavioral 
+treatments. 
+The integration of a translational design also allows us to move 
+beyond examination of simple black-box treatment outcomes to dive 
+deeper into the neural mechanisms below the surface, which reveal a 
+more nuanced picture of what is happening in the adolescent brain and 
+how it is connected to youth behavioral treatment response. Further, 
+this generates a compelling window into which mechanisms might be 
+specific to certain treatments, and which might represent global factors 
+undergirding adolescent behavior change across treatments (referred to 
+in the behavioral treatment literature as “common factors”) (Miller and 
+Moyers, 2014). To better disaggregate how adolescent brains respond to 
+therapist language in the context of brief addiction treatments, we 
+examined adolescents’ pre-to-post treatment brain response to therapist 
+language. We proposed that youth would show greater change in the 
+precuneus and PCC pathway in response to task conditions of specific 
+therapist language (complex reflection > mindful; mindful > confront). 
+In terms of adolescent brain change, we observed an overall pattern 
+of differential neural response from pre-to-post treatment across default 
+mode network (DMN, precuneus, posterior cingulate cortex, medial 
+frontal gyrus) in response to task conditions of therapist language, 
+including those consistent with MI (complex reflection), those consistent 
+with BAM (mindful), and confrontational therapist language (confront). 
+Yet, the nature of this pattern was not precisely as anticipated. 
+Specifically, when examining task conditions, youth showed robust 
+pre-treatment brain response to all three therapist language compari­
+sons (complex reflection vs. mindful; complex reflection vs. confront; 
+and mindful vs. confront), suggesting that therapist language effectively, 
+Table 2 (continued) 
+Region 
+BA 
+Voxels 
+x 
+y 
+z 
+Z 
+MI 
+BAM 
+MI > BAM 
+L Superior Temporal Gyrus 
+22 
+3,371 
+−55 
+−25 
+−7  
+7.85  
+5.06  
+0.61 
+L Medial Temporal Pole 
+38 
+2,462 
+−35 
+25 
+−31  
+−1.93  
+−4.11  
+0.41 
+R Superior Temporal Gyrus 
+41 
+2,343 
+63 
+−9 
+7  
+5.51  
+4.21  
+0.39 
+B Cuneus 
+18 
+2,140 
+5 
+−91 
+−9  
+2.94  
+4.15  
+−0.92 
+R Superior Medial Gyrus 
+9 
+1,326 
+7 
+61 
+39  
+−1.23  
+−3.28  
+1.64  
+Table 3 
+Pre vs. Post-Treatment Change in Adolescent Brain Response to Task Conditions. Peak z-score is presented from multivariate modeling including Time (pre- 
+treatment; post-treatment), Treatment group (MI; BAM), and their interaction. No results for an interaction of group × time are reported because no significant re­
+lationships were detected. Percent signal change (psc) for a 5-mm sphere around the peak is presented for each task condition (compared to fixation) of interest. CR =
+complex reflection. MF = mindful. CF = confront. Talairach coordinates. R = right. L = left. MI = motivational interviewing. BAM = brief adolescent mindfulness. 
+Voxel level p < .01, whole-brain correction of p < .05.  
+Region 
+BA 
+Pre-treatment (psc) 
+Post-treatment (psc) 
+Voxels 
+t 
+x 
+y 
+z   
+CR 
+MF 
+CF 
+CR 
+MF 
+CF      
+Change data: Post-treatment – pre-treatment 
+Complex Reflection > Mindful 
+R Precuneus/Postcentral Gyrus/ Inferior Parietal Lobule 
+4/7/40  
+0.86 
+0.70 
+–  
+0.51 
+0.62 
+– 
+2,252  
+−2.65 
+5 
+−43 
+79 
+R Superior Frontal Gyrus 
+6  
+0.42 
+0.31 
+–  
+0.24 
+0.41 
+– 
+1,109  
+−3.09 
+7 
+−5 
+77 
+R Precuneus 
+7  
+0.90 
+0.69 
+–  
+0.69 
+0.73 
+– 
+867  
+−3.78 
+5 
+−83 
+41 
+L Medial Frontal Gyrus 
+10  
+0.11 
+−0.011 
+–  
+0.021 
+0.042 
+– 
+729  
+−2.87 
+−5 
+67 
+23 
+R Posterior Cingulate Cortex 
+19  
+0.62 
+0.47 
+–  
+0.47 
+0.47 
+– 
+564  
+−2.56 
+9 
+−57 
+5 
+R Precuneus 
+19  
+0.58 
+0.40 
+–  
+0.19 
+0.26 
+– 
+443  
+−3.76 
+23 
+−81 
+55 
+R Inferior Temporal Gyrus 
+37  
+0.042 
+−0.015 
+–  
+−0.0045 
+0.061 
+– 
+398  
+−2.64 
+61 
+−65 
+−5 
+L Superior Parietal Lobule 
+7  
+0.18 
+0.077 
+–  
+0.0050 
+0.078 
+– 
+372  
+−3.22 
+–23 
+−59 
+73 
+Complex Reflection > Confront 
+R Precuneus 
+7  
+0.60 
+– 
+0.35  
+0.24 
+– 
+0.32 
+2,548  
+−3.38 
+25 
+−79 
+55 
+L Precuneus 
+7  
+0.23 
+– 
+0.015  
+0.030 
+– 
+0.11 
+743  
+−3.67 
+−9 
+−69 
+69 
+R Cuneus 
+19  
+1.04 
+– 
+0.66  
+0.84 
+– 
+0.70 
+517  
+−3.08 
+5 
+−83 
+43 
+L Cuneus 
+19  
+0.27 
+– 
+0.11  
+0.09 
+– 
+0.079 
+500  
+−3.20 
+−25 
+−89 
+45 
+Mindful > Confront: No Significant Clusters  
+K.L. Mackiewicz Seghete et al.                                                                                                                                                                                                               
+
+=== PAGE 10 ===
+NeuroImage: Clinical 34 (2022) 102960
+10
+Fig. 3. Pre-to-Post Treatment Change in 
+Adolescents’ Brain Response to Task 
+Conditions. Percent signal change (post- 
+treatment - pre-treatment) for each task 
+condition included in the contrast (examined 
+across treatment groups); p < .01, corrected 
+at p < .05. R = right. L = left. IPL = inferior 
+parietal lobule. aMedFG = anterior medial 
+frontal gyrus. MedFG = medial frontal gyrus. 
+Talairach 
+coordinates.(A) 
+Adolescents’ 
+response to complex reflection as compared 
+with mindful . (B) Adolescents’ response to 
+complex 
+reflection 
+as 
+compared 
+with 
+confront . (C)* Adolescents’ response to 
+mindful as compared with confront is not 
+included as there were no significant findings 
+for this contrast.   
+Fig. 4. Plots of Change in Adolescent Brain Response to Task Conditions. Plots of individual peak z-score in activation to each task (complex reflection, mindful, 
+and confront) at pre-treatment and post-treatment for significant right precuneus activation in the contrast of A) complex reflection compared to mindful and B) 
+complex reflection compared to confront. Values were extracted for the main effect of Time (pre-treatment, post-treatment) from multivariate modeling, and 
+represent results that were significant for each treatment group. Voxel level p < .01, whole-brain correction of p < .05. CR = complex reflection. MF = mindful. CF =
+confront. MI = motivational interviewing. BAM = brief adolescent mindfulness. R = right. Talairach coordinates. 
+K.L. Mackiewicz Seghete et al.                                                                                                                                                                                                               
+
+=== PAGE 11 ===
+NeuroImage: Clinical 34 (2022) 102960
+11
+and differentially, elicited adolescent brain response. In terms of treat­
+ment group differences, we observed significant treatment group dif­
+ferences at pre-treatment. Here, MI youth showed significantly greater 
+BOLD response than BAM youth to task conditions of complex reflection 
+as compared with mindful and confront, respectively, across R superior 
+temporal gyrus and lingual gyrus. Different, but still significant treat­
+ment group responses were observed at pre-treatment for MI youth as 
+compared to BAM youth when evaluating pre-treatment task conditions 
+of mindful with confront, across cuneus, R SMA, and R superior tem­
+poral guys. 
+At post-treatment, we still observed significant treatment group 
+differences. Here, MI youth showed significantly greater BOLD response 
+than BAM youth to task conditions of mindful as compared with 
+confront, across L SMA and L middle frontal gyrus. However, at post- 
+treatment, we no longer observed significant treatment group differ­
+ences in response to task conditions of complex reflection versus mindful 
+or confront. 
+In sum, youth in both the MI and BAM groups showed robust, but 
+differential, brain response to task conditions of complex reflections as 
+compared with mindful and confront, particularly at pre-treatment. Not 
+only do these findings have synergy with behavioral treatment litera­
+ture, hese findings have a high degree of overlap with the neuro­
+developmental linguistic processing literature. The consistency between 
+the domains of linguistics and behavioral response have a compelling 
+and strong history in the scientific background and later treatment foci 
+for MI (Amrhein et al., 2003), including formative psycho-linguistic 
+studies indicating the role of change language as a key mechanism of 
+behavioral response in MI (Moyers et al., 2007). 
+To this end, early work in the neurodevelopmental processing of 
+emotional semantics and prosody, including the capacity to derive 
+meaning from things that we see and hear in adolescence indicates 
+bilateral processing, includingin IFG, lingual gyrus, PCC, middle and 
+superior temporal gyri, insula, SMA, and precuneus (Castelluccio et al., 
+2016; Enge et al., 2021; Vaughn et al., 2021). Additional findings from 
+the large-scale ABCD Study also indicate that verbal processing in ado­
+lescents might rely more heavily on the engagement of right hemisphere 
+structures than the left hemisphere structures often observed among 
+adults (Gonzalez et al., 2021). Further, the neurodevelopmental lan­
+guage processing literature also denotes the importance of DMN 
+network organization in terms of increased network homogeneity in not 
+only DMN, but also in salience and language networks as essential 
+precursors to effective early learning (B. Chen et al., 2021). In sum, these 
+regions are relevant within the behavioral response literature, as well as 
+the neural response of language, suggesting critical areas for future 
+exploration. Specifically, future work will disaggregate the implications 
+of these different regions of response (e.g., those associated with sub­
+stance use and its remediation, those associated with the development of 
+language processing in this age group, and their integration in terms of 
+adolescent behavior change). Here, network based approaches may 
+generate more information about how these regions overlap, and to 
+what degree that synchrony may help inform more impactful therapist 
+language and therapeutic approaches with this age group. 
+In terms of the relevance of these regions, beyond the linguistic 
+literature, superior temporal gyrus has been identified as salient within 
+neurodevelopmental processing of valence vs. risk (Blankenstein and 
+van Duijvenvoorde, 2019). As well, recent translational research in the 
+domain of adolescent behavioral treatment (in this study, response to 
+trauma-focused therapy in the context of youth PTSD), found that a 
+network centered on bilateral superior temporal gyrus predicted posi­
+tive youth treatment outcomes (Zhutovsky et al., 2021). 
+In addition to the adolescent addiction literature (Hammond, Allick 
+et al., 2019), middle temporal gyrus has played a role in both youth 
+social anxiety (Wang et al., 2021), as well as processing of prosocial 
+decisions with preferred peers (Schreuders et al., 2019), and estimates of 
+believability and trust (Jiang et al., 2018). Middle temporal gyrus has 
+also been found to be integral in processing of stress during problem 
+solving (Nair et al., 2019), as well as learning about and categorizing 
+sequential cause/effect events (Leshinskaya and Thompson-Schill, 
+2020). In sum, middle temporal gyrus clearly has a role in social 
+competence and relationship building during this phase of adolescent 
+development. 
+As with SMA (Sweitzer et al., 2016), lingual gyrus has consistently 
+shown a role in youth responding to substance use information across 
+numerous substances, including alcohol and cannabis use, and more 
+recently, tobacco and e-cigarettes/vaping (Y. Chen et al., 2018; Filbey 
+et al., 2018; Leiker et al., 2019). Lingual gyrus has been involved in the 
+processing of social experience, salience detection, social cognition and 
+Table 4 
+Adolescents’ Brain Response to Task Conditions and 12 month Treatment 
+Outcomes. Regression of adolescent problem drinking on whole-brain activa­
+tion for change in adolescent brain response to therapist language. Peak F score 
+is presented for the regression. r values and corresponding z values are presented 
+for significant whole-brain associations across treatments and separately for 
+each treatment. Talairach coordinates. R = right. L = left. MI = motivational 
+interviewing. BAM = brief adolescent mindfulness. Voxel level significance of p 
+< .05, uncorrected. Only clusters ≥300 voxels are presented.  
+Region 
+BA 
+Voxels 
+F 
+x 
+y 
+z 
+r 
+Complex Reflection > Mindful 
+L Inferior 
+Temporal Gyrus 
+21 
+404 
+31.97 
+−57 
+−7 
+−19  
+−0.19 
+MI 
+– 
+– 
+– 
+– 
+– 
+–  
+−0.16 
+BAM 
+– 
+– 
+– 
+– 
+– 
+–  
+−0.20 
+L Posterior 
+Cingulate 
+Cortex 
+30 
+373 
+13.42 
+−7 
+−53 
+3  
+−0.22 
+MI 
+– 
+– 
+– 
+– 
+– 
+–  
+−0.22 
+BAM 
+– 
+– 
+– 
+– 
+– 
+–  
+−0.19 
+Complex Reflection > Confront 
+L Superior Frontal 
+Gyrus 
+10 
+811 
+18.09 
+−29 
+65 
+−11  
+−0.053 
+MI 
+– 
+– 
+– 
+– 
+– 
+–  
+−0.15 
+BAM 
+– 
+– 
+– 
+– 
+– 
+–  
+0.006 
+R Middle Frontal 
+Gyrus 
+11 
+411 
+15.94 
+49 
+51 
+−15  
+−0.14* 
+MI 
+– 
+– 
+– 
+– 
+– 
+–  
+0.13 
+BAM 
+– 
+– 
+– 
+– 
+– 
+–  
+−0.29 
+R Insula 
+13 
+352 
+15.62 
+29 
+21 
+1  
+−0.18 
+MI 
+– 
+– 
+– 
+– 
+– 
+–  
+−0.28 
+BAM 
+– 
+– 
+– 
+– 
+– 
+–  
+−0.14 
+L Thalamus 
+– 
+310 
+16.65 
+−25 
+7 
+−5  
+−0.22 
+MI 
+– 
+– 
+– 
+– 
+– 
+–  
+−0.29 
+BAM 
+– 
+– 
+– 
+– 
+– 
+–  
+−0.17 
+R Middle Frontal 
+Gyrus 
+9 
+301 
+14.85 
+37 
+33 
+35  
+−0.006 
+MI 
+– 
+– 
+– 
+– 
+– 
+–  
+−0.10 
+BAM 
+– 
+– 
+– 
+– 
+– 
+–  
+0.049 
+Mindful > Confront 
+R Superior 
+Temporal Gyrus 
+38 
+764 
+19.60 
+27 
+5 
+−27  
+−0.35 
+MI 
+– 
+– 
+– 
+– 
+– 
+–  
+−0.26 
+BAM 
+– 
+– 
+– 
+– 
+– 
+–  
+−0.43 
+R Thalamus 
+– 
+559 
+17.20 
+11 
+−31 
+19  
+0.30* 
+MI 
+– 
+– 
+– 
+– 
+– 
+–  
+0.057 
+BAM 
+– 
+– 
+– 
+– 
+– 
+–  
+0.42 
+R Medial Frontal 
+Gyrus 
+6 
+401 
+13.09 
+3 
+−17 
+65  
+−0.12 
+MI 
+– 
+– 
+– 
+– 
+– 
+–  
+−0.14 
+BAM 
+– 
+– 
+– 
+– 
+– 
+–  
+−0.14 
+R Middle Frontal 
+Gyrus 
+10/ 
+46 
+376 
+14.52 
+51 
+49 
+3  
+−0.11 
+MI 
+– 
+– 
+– 
+– 
+– 
+–  
+−0.26 
+BAM 
+– 
+– 
+– 
+– 
+– 
+–  
+−0.04 
+L Caudate 
+– 
+369 
+18.89 
+−29 
+−1 
+27  
+0.29 
+MI 
+– 
+– 
+– 
+– 
+– 
+–  
+0.28 
+BAM 
+– 
+– 
+– 
+– 
+– 
+–  
+0.29 
+L Inferior Frontal 
+Gyrus 
+47 
+360 
+11.43 
+−45 
+13 
+7  
+−0.31 
+MI 
+– 
+– 
+– 
+– 
+– 
+–  
+−0.20 
+BAM 
+– 
+– 
+– 
+– 
+– 
+–  
+−0.40  
+K.L. Mackiewicz Seghete et al.                                                                                                                                                                                                               
+
+=== PAGE 12 ===
+NeuroImage: Clinical 34 (2022) 102960
+12
+emotional memory among youth (Rudolph et al., 2021). Moreover, early 
+translational studies in the context of the behavioral treatment (here, 
+cognitive behavioral therapy in the treatment of OCD), have shown the 
+role of lingual gyrus among positive behavioral treatment responders 
+(Cao et al., 2021). 
+When examined across treatment groups, collectively, adolescents 
+showed a pattern of brain change in response to complex reflection as 
+compared with mindful and confront across multiple regions (e.g., 
+precuneus, cuneus, postcentral gyrus, right inferior parietal cortex, 
+medial frontal gyrus). Ultimately, when collapsed across treatment 
+conditions, we observed these patterns within the contrasts across the 
+entire sample. As shown in Figs. 3 and 4, we observed that overall, ad­
+olescents tend to show differential response to these three types of 
+therapist language in the following patterns. Here, as the role of DMN is 
+increasingly being found as relevant in systematic reviews of the broader 
+mood/affective adolescent behavioral therapy response literature (La 
+Buissonniere-Ariza et al., 2021), in this initial translational adolescent 
+addiction study, we found that responses to the complex reflection in 
+DFM regions like precuneus and PCC, indicate that therapist language 
+that includes language around emotion generation (e.g., “You are 
+embarrassed about how much you have been drinking”), tends to acti­
+vate regions relevant in self-reflection. Further, between pre-and post- 
+treatment, we saw a pattern of reduced response to complex reflections 
+at T2 but relatively stable responses in these regions to the mindful and 
+the confront statements. 
+Adolescent brain response to mindful largely aligned to some degree 
+with the pattern observed within complex reflection; however, it 
+showed two notable differences. For mindful, the overall pattern of ac­
+tivity tended more toward superior temporal gyrus and superior medial 
+gyrus, regions associated with auditory comprehension, and also social 
+cognition (Kral et al., 2017). Further, between pre- and post-treatment, 
+responses in these regions were fairly stable. Similarly, when collapsed 
+across treatment groups, we observed a consistent pattern of limited 
+brain response to confront in observed regions, as well as a fairly stable 
+set of responses between pre- and post-treatment. These data indicate 
+that whereas therapist language that describes an adolescent’s emotions, 
+or highlights an adolescent’s current lived experience, activates relevant 
+self- and social-processing regions, standard condemnatory language 
+often used in adolescent addiction interventions (e.g., “Don’t you see 
+how your drinking is affecting you??”) did not generate comparable 
+responses in those relevant self- and social-change regions. In sum, these 
+data support that these relatively subtle differences in therapist lan­
+guage (as shown in Fig. 1) can lead to notably consistent impacts on 
+neural activation. 
+We also examined how those neural changes would interact with 
+adolescent treatment response. Specifically, we proposed that pre-to- 
+post adolescent brain change would be associated with long term (12 
+month) behavior change, here measured as reductions in problem 
+drinking; we examined this at 12 months, the follow-up period for which 
+there was a significant difference in drinking outcomes by treatment 
+group. 
+Across both treatment groups, adolescent brain change in response to 
+complex reflection as compared with mindful as well as with confront 
+were associated with 12-month problem drinking reductions (e.g., 
+inferior temporal gyrus, PCC; superior frontal gyrus, insula, thalamus, 
+respectively). Treatment groups showed comparable response, with the 
+exception of BAM youth showing significantly stronger relationships in 
+middle frontal gyrus (MFG) as compared with MI youth. Adolescent 
+brain change in response to mindful as compared with confront was also 
+associated with 12-month problem drinking reductions (e.g., MFG, su­
+perior temporal gyrus, medial frontal gyrus, caudate, IFG); here, BAM 
+youth showed stronger response in the thalamus, as compared with MI 
+youth. 
+In sum, these data suggest an overall compelling pattern of adoles­
+cent change in brain response across DMN hubs, including, but not 
+limited to: precuneus, PCC, and MFG, that differentially emerged by 
+therapist language, and was associated with long term (12 month) 
+behavior change, here measured as reductions in problem drinking. This 
+aligns with increasing work in the field of translational efforts inte­
+grating behavioral treatment with neuroimaging in addiction (Konova, 
+Moeller, and Goldstein, 2013). 
+The precuneus and the posterior cingulate cortex (PCC) are partic­
+ularly relevant in the picture of adolescent behavioral treatment 
+response, and represent key loci of DMN (Raichle, 2015). Both are 
+central to self-reflection, past/future thinking, emotional processing, 
+and self-referential processing. These functions are already naturally 
+elevated in the adolescent developmental period, due to inherent 
+increased escalation of self-examination and focus within this neuro­
+developmental stretch, requisite to the development of the emerging 
+“self” that occurs within this window (Davey et al., 2019). Recent 
+studies are increasingly reflecting the salient role of DMN response – 
+particularly in these self-referential cognitive skills (e.g., theory-of- 
+mind, episodic memory, prospection), factors integral to social devel­
+opment, mentalizing, and social exchanges; factors highly relevant to 
+the capacity to perform impactfully within a therapeutic exchange 
+(Washington and VanMeter, 2015). The same factors relevant in ado­
+lescents’ self-examination and self-scrutiny may undergird parallel 
+neurocognitive processes that adolescents are engaging in behavioral 
+treatments, and that when successfully deployed, lead to successful 
+behavior change in the context of problem drinking. 
+Further, precuneus continues to emerge as an important region 
+within a central network in adolescent behavioral treatment response, 
+Fig. 5. Correlations between Adolescents’ Brain Response to Task Conditions and 12 month Treatment Outcomes. These are the primary areas of brain- 
+behavior correlations for each of the 3 language contrasts. Figure shows associations between neural change in activation to task conditions associated with long 
+term behavior change, measured as adolescent problem drinking outcomes at 12 months post-treatment (examined across treatment groups). p < .05, uncorrected. R 
+= right. L = left. PCC = posterior cingulate cortex. MFG = middle frontal gyrus. IFG = inferior frontal gyrus. STG = superior temporal gyrus. Talairach coordinates. 
+K.L. Mackiewicz Seghete et al.                                                                                                                                                                                                               
+
+=== PAGE 13 ===
+NeuroImage: Clinical 34 (2022) 102960
+13
+particularly in the context of MI-based interventions (Feldstein Ewing 
+and Chung, 2019; Feldstein Ewing et al., 2013; Grodin et al., 2019). And, 
+also interesting in terms of outcomes observed here, the posterior 
+cingulate cortex (PCC) is being recognized for its probable role in pos­
+itive response to BAM -based approaches (Brewer and Garrison, 2014; 
+DeWitt et al., 2015). 
+Potentially due to its role in orienting and attention (Japee et al., 
+2015), MFG is emerging as a highly relevant region in the treatment 
+context. Outside of addiction, treatment approaches have been 
+observing the salient contribution of MFG response to treatment pro­
+cessing and outcomes in both BAM and cognitive behavioral therapy 
+when utilized to treat distress (Du et al., 2016; Taren et al., 2017). Less 
+well-examined in adolescent addiction treatment, MFG may have a role 
+in adolescent resilience and recovery. Some studies have shown that 
+treatment responders in adolescent depression show greater MFG 
+response over time than youth with more persistent depression (Fischer 
+et al., 2019). With its placement between the superior and inferior 
+frontal sulci, rostral to the precentral gyrus, MFG may truly be a site of 
+“convergence” (Japee et al., 2015). Aligning with its integral role in 
+managing and deploying brain resources to manage attention (e.g., 
+interrupting and reorienting to attentional processing), MFG may be 
+instrumental in the neural connectivity undergirding behavioral treat­
+ment participation and success within this age group. 
+3.7. Clinical implications 
+These data support the strength of two treatment approaches – MI 
+and BAM - for short-term adolescent behavior change (3 and 6 months), 
+as well as differential improvements of MI over BAM for more long-term 
+(12 month) adolescent addiction treatment outcomes. In terms of 
+adolescent brain mechanisms, this study supports that therapist lan­
+guage congruent with these treatment approaches (complex reflections 
+and mindful) both appear to successfully activate the adolescent brain in 
+the context of behavioral therapy. Further, significant changes in the 
+adolescent brain in response to these therapeutic approaches (particu­
+larly across DMN hubs including, but not limited to, precuneus, PCC, 
+MFG), were directly associated with adolescent behavior change. . 
+While this study is a substantive step in the right direction, we 
+believe that these outcomes generate more questions than answers in 
+terms of next steps, particularly with respect to the configuration of 
+results observed here. To this end, the overall gestalt of these outcomes 
+represents a complicated picture, with some more optimal results for MI 
+elements, overlaid with some more impactful results for BAM elements. 
+Together, this amalgam of brain/behavioral outcomes for this adoles­
+cent age group suggest the need for a paradigm shift in adolescent 
+addiction treatment development. Specifically, these data underscore 
+the need to continue hone in on particular types of therapist language 
+and their impact on the developing brain, to inform a step-wise 
+approach to aggregate and organize the most impactful elements of 
+addiction treatment into a novel treatment for adolescents. While the MI 
+and BAM interventions showed treatment gains, stepping back from 
+existing treatments to determine novel avenues to approach adolescent 
+behavior change may be highly valuable to advancing behavior change 
+in this age group (Silvers et al., 2019; Yeager et al., 2017). 
+3.8. Limitations and future direction 
+While there are several strengths within this study, our findings 
+should be interpreted with an eye to the following limitations. First, and 
+most importantly, while advances are being made in this direction, it is 
+still not possible to conduct live adolescent addiction behavioral treat­
+ments while receiving an MRI; an in vivo, temporal evaluation of these 
+relationships would offer the next step in understanding these data. 
+Second, due to the nature of the design, we were only able to compare 
+two active treatment conditions (MI vs. BAM); thus, at this time, we do 
+not know how these findings might compare with other widely-used 
+interventions for adolescent addiction (e.g., cognitive behavioral ther­
+apy). Yet, we believe these data suggest that common elements highlight 
+promise of generalizabilty to other behavioral treatments . Future work 
+will continue to examine novel elements that might represent additioanl 
+important “common factors”. Third, integrative (clinical-neuroimaging) 
+studies, and particularly translational RCTs, are complicated; it is 
+important to note that this is still a highly emergent area where the road 
+has not been well-developed. Fourth, there may be concern that giving 
+youth all three types of statements in the scanner potentially exposes 
+them to both therapeutic strategies, and thus reduces the ability to 
+observe differences between them; in turn, one recommended design 
+would be to only present examples of statements from the therapy 
+assigned with the confrontational statements, as a comparison in both 
+conditions. Fifth, we note that statistical analytic approaches can be 
+quite different across neuroimaging and behavioral (traditional RCT) 
+studies. We offer our approach and methodology as one example for 
+those interested in conducting clinical translational neuroscience in 
+adolescent behavioral treatment. Finally, we acknowledge that it would 
+be impractical to use neuroimaging in real-world treatment contexts; in 
+turn, we do not suggest that all youth should be imaged before receiving 
+outpatient addiction treatment. Rather, we suggest that this approach is 
+useful in that it offers a creative and innovative approach to accelerate 
+discovery; it is precisely the inclusion of the neurocognitive component 
+that makes this study responsive to recent calls to utilize translational 
+approaches to improve adolescent addiction treatment response (Feld­
+stein Ewing et al., 2016c; Gabrieli, 2018). 
+4. Funding sources 
+This work was supported by NIH/NIAAA (1R01AA023658-01, 
+K24AA026876-01 PI: Feldstein Ewing; and 5K23MH105678 PI: Mack­
+iewicz Seghete). The funding source had no involvement in the study 
+design, collection, analysis, interpretation of the data, writing of the 
+report, and/or the decision to submit the article for publication. 
+Acknowledgements 
+The authors would like to thank Angela Bryan PhD for her assistance 
+and review of the manuscript. 
+Appendix A. Supplementary data 
+Supplementary data to this article can be found online at https://doi. 
+org/10.1016/j.nicl.2022.102960. 
+References 
+Amrhein, P.C., Miller, W.R., Yahne, C.E., Palmer, M., Fulcher, L., 2003. Client 
+commitment language during motivational interviewing predicts drug use outcomes. 
+J. Consult. Clin. Psychol. 71 (5), 862–878. 
+Apa, 2013. Diagnostic and Statistical Manual of Mental Disorders, 5th ed. American 
+Psychiatric Publishing. 
+Bathelt, J., Geurts, H.M., 2021. Difference in default mode network subsystems in autism 
+across childhood and adolescence. Autism 25 (2), 556–565. 
+Bauer, C.C.C., Caballero, C., Scherer, E., West, M.R., Mrazek, M.D., Phillips, D.T., 
+Whitfield-Gabrieli, S., Gabrieli, J.D.E., 2019. Mindfulness training reduces stress and 
+amygdala reactivity to fearful faces in middle-school children. Behav. Neurosci. 133 
+(6), 569–585. 
+Becker, A., Ehret, A.M., Kirsch, P., 2017. From the neurobiological basis of comorbid 
+alcohol dependence and depression to psychological treatment strategies: study 
+protocol of a randomized controlled trial. BMC Psychiatry 17, 153. 
+Blankenstein, N.E., van Duijvenvoorde, A.C.K., 2019. Neural tracking of subjective value 
+under riskand ambiguity in adolescence. Cog. Affect. Behav. Neurosci. 19 (6), 
+1364–1378. 
+Brewer, J., Garrison, K.A., 2014. The posterior cingulate cortex as a plausible 
+mechanistic target of meditation: Findings from neuroimaging. Ann. N. Y. Acad. Sci. 
+1307, 19–27. 
+Bryan, A.D., Magnan, R.E., Gillman, A.S., Yeater, E.A., Feldstein Ewing, S.W., Kong, A.S., 
+Schmiege, S.J., 2018. Effect of Including Alcohol and Cannabis Content in a Sexual 
+Risk-Reduction Intervention on the Incidence of Sexually Transmitted Infections in 
+Adolescents: A Cluster Randomized Clinical Trial. JAMA Peds 172 (4), e175621. 
+https://doi.org/10.1001/jamapediatrics.2017.5621. 
+K.L. Mackiewicz Seghete et al.                                                                                                                                                                                                               
+
+=== PAGE 14 ===
+NeuroImage: Clinical 34 (2022) 102960
+14
+Cao, R., Yang, X., Luo, J., Wang, P., Meng, F., Xia, M., He, Y., Zhao, T., Li, Z., 2021. The 
+effects of cognitive behavioral therapy on the whole brain structural connectome in 
+unmedicated patients with obsessive-compulsive disorder. Prog. Neuro- 
+Psychopharmacol. Biol. Psychiatry 104, 110037. https://doi.org/10.1016/j. 
+pnpbp.2020.110037. 
+Castelluccio, B.C., Myers, E.B., Schuh, J.M., Eigsti, I.-M., 2016. Neural Substrates of 
+Processing Anger in Language: Contributions of Prosody and Semantics. 
+J. Psycholinguist. Res. 45 (6), 1359–1367. 
+Chawla, N., Collins, S., Bowen, S., Hsu, S., Grow, J., Douglass, A., Marlatt, G.A., 2010. 
+The mindfulness-based relapse prevention adherence and competence scale: 
+Development, interrater reliability, and validity. Psychother. Res. 20 (4), 388–397. 
+Chen, B., Linke, A., Olson, L., Ibarra, C., Kinnear, M., Fishman, I., 2021. Resting state 
+functional networks in 1-to-3-year-old typically developing children. Dev. Cogn. 
+Neurosci. 51, 100991. https://doi.org/10.1016/j.dcn.2021.100991. 
+Chen, G., Adleman, N.E., Saad, Z.S., Leibenluft, E., Cox, R.W., 2014. Applications of 
+multivariate modeling to neuroimaging group analysis: A comprehensive alternative 
+to univariate general linear model. NeuroImage 99, 571–588. 
+Chen, G., Saad, Z.S., Adleman, N.E., Leibenluft, E., Cox, R.W., 2015. Detecting the subtle 
+shape differences in hemodynamic responses at the group level. Front. Neurosci. 9, 
+375. 
+Chen, Y., Fowler, C.H., Papa, V.B., Lepping, R.J., Brucks, M.G., Fox, A.T., Martin, L.E., 
+2018. Adolescents’ behavioral and neural responses to e-cigarette advertising. 
+Addict. Biol. 23 (2), 761–771. 
+Clark, D.B., 2004. The natural history of adolescent alcohol use disorders. Addiction 99 
+(Supplement 2), 5–22. 
+Cox, R.W., Chen, G., Glen, D.R., Reynolds, R.C., Taylor, P.A., 2017. FMRI clustering in 
+AFNI: False-positive rates redux. Brain Connect. 7 (3), 152–171. 
+Crane, R.S., Brewer, J., Feldman, C., Kabat-Zinn, J., Santorelli, S., Williams, J.M.G., 
+Kuyken, W., 2017. What defines mindfulness-based programs? The warp and the 
+weft. Psychol. Med. 47 (6), 990–999. 
+Cronce, J.M., Larimer, M.E., 2011. Individual-focused approaches to the prevention of 
+college student drinking. Alcohol Res. Health 34, 210–221. 
+D’Amico, E.J., Parast, L., Shadel, W.G., Meredith, L.S., Seelam, R., Stein, B.D., 2018. Brief 
+motivational interviewing intervention to reduce alcohol and marijuana use for at- 
+risk adolescents in primary care. J. Consult. Clin. Psychol. 86 (9), 775–786. 
+Davey, C.G., Fornito, A., Pujol, J., Breakspear, M., Schmaal, L., Harrison, B.J., 2019. 
+Neurodevelopmental correlates of the emerging adult self. Dev. Cogn. Neurosci. 36, 
+100626. https://doi.org/10.1016/j.dcn.2019.100626. 
+DeWitt, S.J., Ketcherside, A., McQueeny, T.M., Dunlop, J.P., Filbey, F.M., 2015. The 
+hyper-sentient addict: an exteroception model of addiction. Am. J. Drug Alcohol 
+Abuse 41 (5), 374–381. 
+Du, X., Mao, Y., Ran, Q., Zhang, Q., Luo, Q., Qiu, J., 2016. Short-term group cognitive 
+behavioral therapy contributes to recovery from mild depression: Evidence from 
+functional and structural MRI. Psychiatry Res. Neuroimaging 251, 53–59. 
+Eklund, A., Knutsson, H., Nichols, T.E., 2019. Cluster failure revisited: Impact of first 
+level design and physiological noise on cluster false positive rates. Hum. Brain Mapp. 
+40 (7), 2017–2032. 
+Enge, A., Abdel Rahman, R., Skeide, M.A., 2021. A meta-analysis of fMRI studies of 
+semantic cognition in children. NeuroImage 241, 118436. https://doi.org/10.1016/ 
+j.neuroimage.2021.118436. 
+Feldstein Ewing, S.W., Blakemore, S.-J., Sakhardande, A., 2014a. The effect of alcohol 
+consumption on the adolescent brain: A systematic review of MRI and fMRI studies 
+of alcohol-using youth. Neuroimage: Clin. 
+Feldstein Ewing, S.W., Bryan, A.D., Dash, G.F., Lovejoy, T.I., Borsari, B., Schmiege, S.J., 
+2020. Randomized controlled trial of motivational interviewing for alcohol and 
+cannabis use within a predominantly Hispanic adolescent sample. Experimental Clin. 
+Psychopharmacol. 
+Feldstein Ewing, S.W., Chung, T., 2019. Precuneus: A key on the road to translation. 
+Alcohol. Clin. Exp. Res. https://doi.org/10.1111/acer.14026. 
+Feldstein Ewing, S.W., Chung, T., Caouette, J.D., Ketcherside, A., Hudson, K.A., Filbey, F. 
+M., 2017. Orbitofrontal cortex connectivity as a mechanism of adolescent behavior 
+change. NeuroImage 151, 14–23. 
+Feldstein Ewing, S.W., Filbey, F.M., Sabbineni, A., Hutchison, K.E., 2011. How 
+psychosocial alcohol interventions work: A preliminary look at what fMRI can tell 
+us. Alcohol. Clin. Exp. Res. 35 (4), 1–9. 
+Feldstein Ewing, S.W., Apodaca, T.R., Gaume, J., 2016a. Ambivalence: Prerequisite for 
+success in motivational interviewing with adolescents? Addiction 111 (11), 
+1900–1907. https://doi.org/10.1111/add.13286. 
+Feldstein Ewing, S.W., Gaume, J., Ernst, D.B., Rivera, L., Houck, J.M., 2015. Do therapist 
+behaviors differ with Hispanic youth? A brief look at within-session therapist 
+behaviors and youth treatment response. Psychol. Addict. Behav. 29 (3), 779–786. 
+Feldstein Ewing, S.W., Houck, J.M., Yezhuvath, U., Shokri-Kojori, E., Truitt, D., Filbey, F. 
+M., 2016b. The impact of therapists’ words on the adolescent brain: In the context of 
+addiction treatment. Behav. Brain Res. 15, 359–369. https://doi.org/10.1016/j. 
+bbr.2015.09.041. 
+Feldstein Ewing, S.W., McEachern, A.D., Yezhuvath, U., Bryan, A.D., Hutchison, K.E., 
+Filbey, F.M., 2013. Integrating brain and behavior: Evaluating adolescents’ response 
+to a cannabis intervention. Psychol. Addict. Behav. 27 (2), 510–525. 
+Feldstein Ewing, S.W., Somohano, V., 2015. Brief Adolescent Mindfulness (BAM). for 
+Adolescent Addiction. 
+Feldstein Ewing, S.W., Tapert, S.F., Molina, B.S.G., 2016c. Uniting adolescent 
+neuroimaging and treatment research: Recommendations in pursuit of improved 
+integration. Neurosci. Biobehav. Rev. 62, 109–114. 
+Feldstein Ewing, S.W., Wray, A., Bryan, A.D., Hutchison, K.E., 2009. Adolescent Alcohol 
+and Marijuana Education Intervention Manual. Mind Research Network. 
+Feldstein Ewing, S.W., Wray, A.M., Mead, H.M., Adams, S.K., 2012. Two approaches to 
+tailoring treatment for cultural minority youth. J. Subst. Abuse Treat. 43, 190–213. 
+Feldstein Ewing, S.W., Yezhuvath, U., Houck, J.M., Filbey, F.M., 2014b. Brain-based 
+origins of change language: A beginning. Addict. Behav. 39 (12), 1904–1910. 
+Filbey, F.M., Gohel, S., Prashad, S., Biswal, B.B., 2018. Differential associations of 
+combined vs. isolated cannabis and nicotine on brain resting state networks. Brain 
+Struct. Funct. 223 (7), 3317–3326. 
+Fischer, A.S., Ellwood-Lowe, M.E., Colich, N.L., Cichocki, A., Ho, T.C., Gotlib, I.H., 2019. 
+Reward-circuit biomarkers of risk and resilience in adolescent depression. J. Affect. 
+Disord. 246, 902–909. 
+Gabrieli, J., 2018. A look within. Sci. Am. 318 (3), 54–59. 
+Gaume, J., Hallgren, K. A., Clair, C., Schmid Mast, M., Carrard, V., & Atkins, D. C. (2019). 
+Modeling empathy as synchrony in clinician and patient vocally encoded emotional 
+arousal: A failure to replicate. J. Couns. Psychol. doi:10.1037/cou0000322. [Epub 
+ahead of print]. 
+Gaume, J., Longabaugh, R., Magill, M., Bertholet, N., Gmel, G., Daeppen, J.-B., 2016. 
+Under what conditions? Therapist and client characteristics moderate the role of 
+change talk in brief motivational intervention. J. Consult. Clin. Psychol. 84 (3), 
+211–220. 
+Giedd, J.n., 2015. The amazing teen brain. Sci. Am. 312, 32–37. 
+Gonzalez, M.R., Baar´e, W.F.C., Hagler, D.J., Archibald, S., Vestergaard, M., Madsen, K.S., 
+2021. Brain structure associations with phonemic and semantic fluency in typically- 
+developing children. Dev. Cogn. Neurosci. 50, 100982. https://doi.org/10.1016/j. 
+dcn.2021.100982. 
+Grodin, E.N., Ray, L.A., MacKillop, J., Lim, A.C., Karno, M.P., 2019. Elucidating the 
+effect of a brief drinking intervention using neuroimaging: A preliminary study. 
+Alcohol. Clin. Exp. Res. 43 (2), 367–377. 
+Hammond, C.J., Allick, A., Rahman, N., Nanavati, J., 2019. Structural and Functional 
+Neural Targets of Addiction Treatment in Adolescents and Young Adults: A 
+Systematic Review and Meta-Analysis. J. Child Adolesc. Psychopharmacol. 29 (7), 
+498–507. 
+Hopfinger, J.B., 2017. Replication and innovation versus a perfect ‘.05’. Cogn. Neurosci. 
+8 (3), 145–147. 
+Japee, S., Holiday, K., Satyshur, M.D., Mukai, I., Ungerleider, L.G., 2015. A role of right 
+middle frontal gyrus in reorienting attention: a case study. Fron. Syst. Neurosci. 9, 
+23. 
+Jiang, X., Sanford, R., Pell, M.D., 2018. Neural architecture underlying person perception 
+from in-group and out-group voices. NeuroImage 181, 582–597. 
+Johnston, L.D., Miech, R.A., O’Malley, P.M., Bachman, J.G., Schulenberg, J.E., 
+Patrick, M.E., 2018. Monitoring the Future national survey results on drug use: 
+1975–2017: Overview, key findings on adolescent drug use. University of Michigan, 
+Ann Arbor, Michigan.  
+Konova, A.B., Moeller, S.J., Goldstein, R.Z., 2013. Common and distinct neural targets of 
+treatment: changing brain function in substance addiction. Neurosci. Biobehav. Rev. 
+37 (10), 2806–2817. 
+Kral, T.R.A., Solis, E., Mumford, J.A., Schuyler, B.S., Flook, L., Rifken, K., Patsenko, E.G., 
+Davidson, R.J., 2017. Neural correlates of empathic accuracy in adolescence. Soc. 
+Cogn. Affect. Neurosci. 12 (11), 1701–1710. 
+La Buissonniere-Ariza, V., Fitzgerald, K., Meoded, A., Williams, L.L., Liu, G., 
+Goodman, W.K., Storch, E.A., 2021. Neural correlates of cognitive behavioral 
+therapy response in youth with negative valence disorders: A systematic review of 
+the literature. J. Affect. Disord. 282, 1288–1307. 
+Leiker, E.K., Meffert, H., Thornton, L.C., Taylor, B.K., Aloi, J., Abdel-Rahim, H., Blair, R. 
+J.R., 2019. Intrinsic Frontolimbic Connectivity and Mood Symptoms in Young Adult 
+Cannabis Users. Psychiatry Res. Neuroimaging 292, 62–71. 
+Leshinskaya, A., Thompson-Schill, S.L., 2020. Transformation of Event Representations 
+along Middle Temporal Gyrus. Cereb. Cortex 30 (5), 3148–3166. 
+Lipari, R.N., Park-Lee, E., Van Horn, S., 2016. America’s need for and receipt of 
+substance use treatment. Rockville, MD.  
+Liu, G., Zhang, N., Teoh, J.Y., Egan, C., Zeffiro, T.A., Davidson, R.J., Quevedo, K., 2020. 
+Self-compassion and dorsolateral prefrontal cortex activity during sad self-face 
+recognition in depressed adolescents. Psychol. Med. https://doi.org/10.1017/ 
+S0033291720002482. 
+Luna, B., Padmanabhan, A., O’Hearn, K., 2010. What has fMRI told us about the 
+development of cognitive control through adolescence? Brain Cogn. 72 (1), 
+101–113. 
+Magill, M., Apodaca, T.R., Borsari, B., Gaume, J., Hoadley, A., Gordon, R.E.F., 
+Tonigan, J.S., Moyers, T., 2018. A meta-analysis of motivational interviewing 
+process: Technical, relational, and conditional process models of change. J. Consult. 
+Clin. Psychol. 86 (2), 140–157. 
+Miller, W.R., Moyers, T.B., 2014. The forest and the trees: Relational and specific factors 
+in addiction treatment. Addiction. 
+Miller, W.R., Rollnick, S., 2013. Motivational Interviewing: Helping People Change, 3rd 
+Edition. Guilford Press, New York.  
+Moyers, T.B., Martin, T., Christopher, P.J., Houck, J.M., Tonigan, J.S., Amrhein, P.C., 
+2007. Client language as a mediator of motivational interviewing efficacy: Where is 
+the evidence? Alcohol. Clin. Exp. Res. 31 (s3), 40s–47s. 
+Nair, N., Hegarty, J.P., Ferguson, B.J., Hecht, P.M., Tilley, M., Christ, S.E., Beversdorf, D. 
+Q., 2019. Effects of stress on functional connectivity during problem solving. 
+NeuroImage 208, 116407. 
+Nguyen-Louie, T.T., Simmons, A.N., Squeglia, L.M., Alejandra Infante, M., Schacht, J.P., 
+Tapert, S.F., 2018. Earlier alcohol use onset prospectively predicts changes in 
+functional connectivity. Psychopharmacology 235 (4), 1041–1054. 
+Qin, K., Lei, D.u., Yang, J., Li, W., Tallman, M.J., Duran, L.R.P., Blom, T.J., Bruns, K.M., 
+Cotton, S., Sweeney, J.A., Gong, Q., DelBello, M.P., 2021. Network-level functional 
+topological changes after mindfulness-based cognitive therapy in mood dysregulated 
+K.L. Mackiewicz Seghete et al.                                                                                                                                                                                                               
+
+=== PAGE 15 ===
+NeuroImage: Clinical 34 (2022) 102960
+15
+adolescents at familial risk for bipolar disorder: a pilot study. BMC Psychiatry 21 (1). 
+https://doi.org/10.1186/s12888-021-03211-4. 
+Raichle, M.E., 2015. The brain’s default mode network. Annu. Rev. Neurosci. 38 (1), 
+433–447. 
+Ray, L.A., Grodin, E., Leggio, L., Bechtholt, A., Becker, H., Feldstein Ewing, S.W., 
+Koob, G.F., 2021. The future of translational research in alcohol use disorder. Addict. 
+Biol. 26, e12903. 
+Rudolph, K.D., Davis, M.M., Skymba, H.V., Modi, H.H., Telzer, E.H., 2021. Social 
+experience calibrates neural sensitivity to social feedback during adolescence: A 
+functional connectivity approach. Dev Cogn Neurosci 47, 100903. https://doi.org/ 
+10.1016/j.dcn.2020.100903. 
+Schreuders, E., Smeekens, S., Cillessen, A.H.N., Güro˘glu, B., 2019. Friends and foes: 
+Neural correlates of prosocial decisions with peers in adolescence. Neuropsychologia 
+129, 153–163. 
+Silvers, J.A., Squeglia, L.M., Rømer Thomsen, K., Hudson, K.A., Feldstein Ewing, S.W., 
+2019. Hunting for what works: Adolescents in addiction treatment. Alcohol. Clin. 
+Exp. Res. 43 (4), 578–592. 
+Steele, D.W., Becker, S.J., Danko, K.J., Balk, E.M., Adam, G.P., Saldanha, I.J., 
+Trikalinos, T.A., 2020. Brief Behavioral Interventions for Substance Use in 
+Adolescents: A Meta-analysis. Pediatrics 146. https://doi.org/10.1542/peds.2020- 
+0351. 
+Sweitzer, M.M., Geier, C.F., Addicott, M.A., Denlinger, R., Raiff, B.R., Dallery, J., 
+McClernon, F.J., Donny, E.C., 2016. Smoking Abstinence-Induced Changes in 
+Resting State Functional Connectivity with Ventral Striatum Predict Lapse During a 
+Quit Attempt. Neuropsychopharmacology 41 (10), 2521–2529. 
+Taren, A.A., Gianaros, P.J., Greco, C.M., Lindsa, E.K., Fairgrieve, A., Brown, K.W., 
+Creswell, J., 2017. Mindfulness meditation training and executive control network 
+restting state functional connectivity: A randomized controlled trial. Psychsomatic 
+Med 79, 674–683. 
+Tymofiyeva, O., Henje, E., Yuan, J.P., Huang, C.-Y., Connolly, C.G., Ho, T.C., 
+Bhandari, S., Parks, K.C., Sipes, B.S., Yang, T.T., Xu, D., 2021. Reduced anxiety and 
+changes in amygdala network properties in adolescents with training for awareness, 
+resilience, and action (TARA). NeuroImage Clin. 29, 102521. https://doi.org/ 
+10.1016/j.nicl.2020.102521. 
+Vaughn, K.A., Nguyen, M.V.H., Ronderos, J., Hernandez, A.E., 2021. Cortical Thickness 
+in bilingual and monolingual children: Relationships to language use and language 
+skill. NeuroImage 243, 118560. https://doi.org/10.1016/j. 
+neuroimage.2021.118560. 
+Wang, S., Zhao, Y., Wang, X., Yang, X., Cheng, B., Pan, N., Suo, X., Gong, Q., 2021. 
+Emotional intelligence mediates the association between middle temporal gyrus gray 
+matter volume and social anxiety in late adolescence. Eur. Child Adolesc. Psychiatry 
+30 (12), 1857–1869. 
+Washington, S.D., VanMeter, J.W., 2015. Anterior-Posterior Connectivity within the 
+Default Mode Network Increases During Maturation. Int. J. Med. Biol. Front.. 21, 
+207–218. 
+White, H.R., Labouvie, E.W., 1989. Towards the assessment of adolescent problem 
+drinking. J. Stud. Alcohol 50 (1), 30–37. 
+Witkiewitz, K., Lustyk, M.K.B., Bowen, S., 2013. Retraining the addicted brain: a review 
+of hypothesized neurobiological mechanisms of mindfulness-based relapse 
+prevention. Psychol. Addict. Behav. 27 (2), 351–365. 
+Yeager, D.S., Dahl, R.E., Dweck, C.S., 2017. Why interventions to influence adolescent 
+behavior often fail but could succeed. Perspect. Psychol. Sci. 13, 101–122. 
+Zhutovsky, P., Zantvoord, J.B., Ensink, J.B.M., op den Kelder, R., Lindauer, R.J.L., van 
+Wingen, G.A., 2021. Individual prediction of trauma-focused psychotherapy 
+response in youth with posttraumatic stress disorder using resting-state functional 
+connectivity. Neuroimage Clin. 32, 102898. https://doi.org/10.1016/j. 
+nicl.2021.102898. 
+Further reading 
+Jensen, C.D., Cushing, C.C., Aylward, B.S., Craig, J.T., Sorell, D.M., Steele, R.G., 2011. 
+Effectiveness of motivational interviewing interventions for adolescent substance use 
+behavior change: A meta-analytic review. J. Consult. Clin. Psychol. 79 (4), 433–440. 
+K.L. Mackiewicz Seghete et al.                                                                                                                                                                                                               
+

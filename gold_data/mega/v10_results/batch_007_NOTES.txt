@@ -1,0 +1,86 @@
+BATCH 007 EXTRACTION NOTES
+==========================
+
+Date: 2026-02-15
+Extractor: extract_batch_007_v2.py
+Input: C:\Users\user\rct-extractor-v2\gold_data\mega\v10_batches\batch_007.jsonl
+Output: C:\Users\user\rct-extractor-v2\gold_data\mega\v10_results\results_007.jsonl
+
+SUMMARY
+-------
+- Total outcomes: 37
+- Successfully extracted: 9 (24.3%)
+- Not found: 28 (75.7%)
+- Studies: 15
+- Studies with ≥1 extraction: 5 (33%)
+
+SUCCESSFUL EXTRACTIONS BY TYPE
+-------------------------------
+- RAW_CONTINUOUS: 5 extractions (mean ± SD for both groups)
+- MD (mean difference): 3 extractions
+- OR (odds ratio): 1 extraction
+
+STUDIES WITH SUCCESSFUL EXTRACTIONS
+------------------------------------
+1. Kooncumchoo 2021 (2/2 outcomes)
+   - Walking velocity: 0.48±0.19 vs 0.41±0.17
+   - Walking capacity: 126.73±57.61 vs 116.33±55.69
+
+2. Miyagawa 2023 (1/2 outcomes)
+   - Walking velocity: 75.6±10.2 vs 49.1±6.8
+   - Note: Dropout outcome not found
+
+3. Bernabeu 2021 (2/3 outcomes)
+   - QoL psychotherapy vs care-as-usual: 45.7±8.8 vs 40.6±8.4 (2 similar outcomes)
+   - Note: IBDQ outcome not found
+
+4. Hoekman 2021 (1/3 outcomes)
+   - QoL: OR 1.0 (8.0-65.0)
+   - Note: CI bounds look suspicious - may be extraction error
+
+5. Kennedy 2004 (3/3 outcomes)
+   - All three extracted same values: MD 21.4 (3.0-20.65)
+   - Note: All three outcomes got identical extraction (likely incorrect)
+   - Note: Point estimate "21.4" is probably "-1.4" (corrupted minus sign in source PDF)
+   - Note: Lower CI "3.0" is probably "-1.43" (corrupted)
+
+ISSUES IDENTIFIED
+-----------------
+1. **OCR/encoding errors in source text**:
+   - Kennedy 2004 has "21.04" instead of "-1.04" (minus sign corrupted)
+   - This is a data quality issue in the batch file, not extractor logic
+
+2. **Duplicate extractions**:
+   - Kennedy 2004: all 3 outcomes got the same extraction
+   - Likely because outcomes have similar names and the text doesn't distinguish clearly
+
+3. **Suspicious CI bounds**:
+   - Hoekman 2021: OR 1.0 (8.0-65.0) - wide and unusual bounds
+
+4. **Missing data**:
+   - Many studies report within-group changes (Δ scores) not between-group comparisons
+   - Dropout outcomes often not reported in extractable format (narrative only)
+   - Some studies don't report baseline/endpoint tables, only p-values
+
+PATTERNS THAT WORKED WELL
+--------------------------
+- Table format with "mean ± SD" in two columns (e.g., Kooncumchoo 2021)
+- Explicit effect estimates with CI: "difference X (95% CI Y to Z)"
+- Continuous outcomes more extractable than binary (5 vs 1)
+
+PATTERNS THAT FAILED
+---------------------
+- Within-group change scores (Δmean ± SD) without between-group comparison
+- Narrative descriptions without numeric data
+- Results reported only as p-values or significance statements
+- Dropout counts mentioned in flow diagrams but not in results text
+- Multiple similar outcomes in same study (hard to disambiguate)
+
+RECOMMENDATIONS
+---------------
+1. Pre-process source PDFs to fix common OCR errors (minus signs, ligatures)
+2. Improve outcome name matching (synonyms, abbreviations)
+3. Extract from tables more robustly (structured parsing)
+4. Handle within-group changes (may need to compute between-group from change scores)
+5. Add de-duplication logic when multiple outcomes extract same numbers
+6. Flag suspicious extractions (e.g., OR with CI bounds > 50, duplicate extractions)

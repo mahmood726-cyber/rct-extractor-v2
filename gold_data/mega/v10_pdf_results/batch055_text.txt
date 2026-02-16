@@ -1,0 +1,3882 @@
+
+
+================================================================================
+FILE: Rodriguez-Hernandez_2023_2023_PMC10071242.pdf
+================================================================================
+
+--- PAGE 1 ---
+Rodríguez‑Hernández et al. 
+Journal of NeuroEngineering and Rehabilitation           (2023) 20:38  
+https://doi.org/10.1186/s12984-023-01170-3
+RESEARCH
+Can specific virtual reality combined 
+with conventional rehabilitation improve 
+poststroke hand motor function? A randomized 
+clinical trial
+Marta Rodríguez‑Hernández1,2, Begoña Polonio‑López1,2*, Ana‑Isabel Corregidor‑Sánchez1,2, 
+José L. Martín‑Conty1,2, Alicia Mohedano‑Moriano1,2 and Juan‑José Criado‑Álvarez1,2,3 
+Abstract 
+Trial objective  To verify whether conventional rehabilitation combined with specific virtual reality is more effective 
+than conventional therapy alone in restoring hand motor function and muscle tone after stroke.
+Trial design  This prospective single-blind randomized controlled trial compared conventional rehabilitation based 
+on physiotherapy and occupational therapy (control group) with the combination of conventional rehabilitation and 
+specific virtual reality technology (experimental group). Participants were allocated to these groups in a ratio of 1:1. 
+The conventional rehabilitation therapists were blinded to the study, but neither the participants nor the therapist 
+who applied the virtual reality–based therapy could be blinded to the intervention.
+Participants  Forty-six patients (43 of whom completed the intervention period and follow-up evaluation) were 
+recruited from the Neurology and Rehabilitation units of the Hospital General Universitario of Talavera de la Reina, 
+Spain.
+Intervention  Each participant completed 15 treatment sessions lasting 150 min/session; the sessions took place five 
+consecutive days/week over the course of three weeks. The experimental group received conventional upper-limb 
+strength and motor training (100 min/session) combined with specific virtual reality technology devices (50 min/ses‑
+sion); the control group received only conventional training (150 min/session).
+Results  As measured by the Ashworth Scale, a decrease in wrist muscle tone was observed in both groups (control 
+and experimental), with a notably larger decrease in the experimental group (baseline mean/postintervention mean: 
+1.22/0.39; difference between baseline and follow-up: 0.78; 95% confidence interval: 0.38–1.18; effect size = 0.206). 
+Fugl-Meyer Assessment scores were observed to increase in both groups, with a notably larger increase in the experi‑
+mental group (total motor function: effect size = 0.300; mean: − 35.5; 95% confidence interval: − 38.9 to − 32.0; wrist: 
+effect size = 0.290; mean: − 5.6; 95% confidence interval: − 6.4 to − 4.8; hand: effect size = 0.299; mean: − -8.9; 95% 
+confidence interval: − 10.1 to − 7.6). On the Action Research Arm Test, the experimental group quadrupled its score 
+after the combined intervention (effect size = 0.321; mean: − 32.8; 95% confidence interval: − 40.1 to − 25.5).
+Open Access
+© The Author(s) 2023. Open Access This article is licensed under a Creative Commons Attribution 4.0 International License, which 
+permits use, sharing, adaptation, distribution and reproduction in any medium or format, as long as you give appropriate credit to the 
+original author(s) and the source, provide a link to the Creative Commons licence, and indicate if changes were made. The images or 
+other third party material in this article are included in the article’s Creative Commons licence, unless indicated otherwise in a credit line 
+to the material. If material is not included in the article’s Creative Commons licence and your intended use is not permitted by statutory 
+regulation or exceeds the permitted use, you will need to obtain permission directly from the copyright holder. To view a copy of this 
+licence, visit http://creativecommons.org/licenses/by/4.0/. The Creative Commons Public Domain Dedication waiver (http://creativecom‑
+mons.org/publicdomain/zero/1.0/) applies to the data made available in this article, unless otherwise stated in a credit line to the data.
+Journal of NeuroEngineering
+and Rehabilitation
+*Correspondence:
+Begoña Polonio‑López
+begona.polonio@uclm.es
+Full list of author information is available at the end of the article
+
+
+--- PAGE 2 ---
+Page 2 of 14
+Rodríguez‑Hernández et al. Journal of NeuroEngineering and Rehabilitation           (2023) 20:38 
+Introduction
+Stroke is a leading cause of long-lasting disability. As 
+many as 41.5 million new cases occur yearly in Europe, 
+and 3.7 million survivors experience long-lasting impair-
+ments, whereas less than 15% of patients achieve full 
+poststroke recovery [1].
+It is estimated that 80% of stroke patients have upper-
+limb deficits and have decreased activity and use of the 
+paretic hand in daily life [2]; the involvement of the more 
+affected hand in activities of daily living (ADLs) depends 
+on the severity of the deterioration and is associated with 
+a decrease in health-related quality of life (HRQoL) and 
+restrictions on social participation [3, 4].
+Most of the functional recovery after diagnosis occurs 
+in the first three months, although neural repair pro-
+cesses and behavioral improvements continue to show 
+slight plasticity in later phases of the rehabilitation pro-
+cess [5, 6]. Therefore, it is crucial that hand rehabilitation 
+begin early; treatment should start within this window 
+of opportunity for functional recovery, when the brain is 
+especially receptive to sensorimotor interaction [7–9].
+Rehabilitative treatment of the upper limb is recog-
+nized by consensus among survivors, caregivers and 
+health professionals as one of the top ten research pri-
+orities for poststroke recovery [10, 11]. In addition to the 
+rehabilitation of the upper limb, other priorities should 
+also be taken into account for the development of neu-
+rorehabilitation programs and the design of the corre-
+sponding studies, such as minimizing patients’ mobility 
+disability, poststroke fatigue and difficulty in fulfilling 
+responsibilities in the family and work environments; 
+improving patients’ response to the demands of society; 
+and ensuring exhaustive, well-structured monitoring of 
+their clinical evolution after treatment.
+During poststroke hand treatment, special attention 
+must be paid to restoring the different biomechanical 
+movements and curvature of the hand in order to pro-
+vide a stable base and correct alignment as a prerequisite 
+for dexterity training and modulation of reaching move-
+ments [12–14]. It is crucial to remember that restoring 
+the selective voluntary movements of the upper limb in 
+stroke patients also relies on the postural control that is 
+necessary for reaching movements—scapula stabiliza-
+tion, shoulder stability more broadly, and selective mus-
+cle recruitment [15–20].
+Various therapies based on a conventional approach 
+have been demonstrated to be useful, achieving good 
+results in terms of hand rehabilitation: motor imagery 
+training seems to improve the precision and accuracy of 
+movement, as well as the reception of sensory signals, by 
+fostering activation of dormant synapses and accelerat-
+ing reperfusion of the ischemic penumbra [21]. Mirror 
+therapy can reduce asymmetric hemisphere activation, 
+stimulate the primary motor cortex in both the lesioned 
+(ipsilateral) hemisphere and the opposite (contralateral) 
+hemisphere, widely activate the mirror neuron system 
+and induce partial pathways for motor neurons on the 
+side affected by stroke, which facilitates the remodeling 
+of brain function [22, 23]. Constraint-induced move-
+ment therapy focuses on intensive, gradual training of 
+the paretic upper limb to improve its use in specific tasks, 
+limit the use of the less affected upper limb, and, in the 
+context of behavior-changing methods for improving 
+adherence, transfer the clinical achievements into the 
+patient’s real life [24] by relating the therapeutic inter-
+vention components to the improvement of motor func-
+tion and the use and skill of the paretic hand in daily life 
+[25]. Forced use, which is meant to maximize daily use 
+of the paretic hand, seems to yield improvements in 
+motor function after intervention, and these improve-
+ments persist for three months after poststroke inter-
+vention [26]. Last but not least, active sensory therapies 
+focus on active sensory training in the context of practice 
+with goals involving multiple areas of the brain; pursuing 
+neural reorganization in this manner enhances the motor 
+recovery of the paretic upper limb (e.g., practicing non-
+visual identification of common objects increases stere-
+ognosis) [27].
+Another important aspect of hand-focused therapy 
+programs is the use of a generous dose of intense repeti-
+tion [28]. Lang et al. [27] determined by means of meta-
+regression that from 24 to 57 h, the effect size increased 
+by 0.034 for every ten extra hours of therapy, independent 
+of the specific poststroke intervention. In a conventional 
+Conclusion  The outcomes of the study suggest that conventional rehabilitation combined with a specific virtual 
+reality technology system can be more effective than conventional programs alone in improving hand motor func‑
+tion and voluntary movement and in normalizing muscle tone in subacute stroke patients. With combined treatment, 
+hand and wrist functionality and motion increase; resistance to movement (spasticity) decreases and remains at a 
+reduced level.
+Trials Registry: International Clinical Trials Registry Platform: ISRCTN27760662 (15/06/2020; retrospectively registered).
+Keywords  Randomized controlled trial, Stroke, Neurorehabilitation, Motor recovery, Hand, Virtual reality-based 
+therapy
+
+
+--- PAGE 3 ---
+Page 3 of 14
+Rodríguez‑Hernández et al. Journal of NeuroEngineering and Rehabilitation           (2023) 20:38 
+	
+therapy session at an ordinary hospital rehabilitation 
+unit, a patient can achieve 30 repetitions of an exercise 
+involving the upper limbs, whereas specific technologi-
+cal systems allow more than 300 repetitions in 34 min of 
+action per session [29, 30].
+Recent years have witnessed an increased use of tech-
+nology-based and especially virtual reality–based neu-
+rorehabilitation approaches, which have allowed the 
+creation of effective simulated environments and pro-
+vided multimodal, controllable and customizable stimu-
+lation [31]. The re-creation of objects in virtual form 
+maximizes visual feedback [32]. In addition, high inten-
+sity and a large number of repetitions are key factors 
+influencing neuroplasticity and functional improvement 
+in patients [33]. Rehabilitation based on virtual reality 
+offers the possibility of addressing individual treatment 
+needs and simultaneously standardizing evaluation and 
+training protocols [34, 35].
+There are two major types of virtual reality-based sys-
+tems used in neurorehabilitation: nonspecific virtual 
+reality (N-SVR) systems and specific virtual reality (SVR) 
+systems. These two classes differ in that systems of the 
+former type use game consoles and video games designed 
+by the entertainment industry. Such consoles (Wii, Xbox, 
+PlayStation, etc.) run games that are not designed for 
+adults suffering from a neurological pathology and do 
+not allow monitoring of movement or other motor or 
+functional variables of the affected body segments. Thus, 
+N-SVR systems are not designed for the neurophysiologi-
+cal recovery of the brain, and they do not focus on the 
+neuronal connections necessary for the recovery of hand 
+function after stroke. In contrast, SVR systems are specif-
+ically designed to promote motor learning and recovery, 
+optimizing the acquisition, retention and generalization 
+of motor skills. SVR systems incorporate key features of 
+virtual reality and add objective, quantitative movement 
+monitoring and exergames to facilitate the motor recov-
+ery of the hand (regular voluntary movement, arches of 
+hand curvature, grasping, pinch grips and gross manipu-
+lation). In addition, SVR systems comply with the prin-
+ciples of neurorehabilitation: mass practice (repetitive 
+training), high dosing (intensive training), structured 
+practice, task-specific practice (ADL-relevant skills train-
+ing), variable practice, multisensory stimulation (training 
+in which the feedback is not limited to the visual modal-
+ity), increasing difficulty (individualized training), explicit 
+feedback (training that provides knowledge about the 
+results), implicit feedback (training that provides task-
+relevant implicit signals), avatar representation (immer-
+sive training) and encouragement of the use of the paretic 
+limb (training that counteracts compensation) [36].
+In this sense, neurorehabilitation SVR systems allow 
+rehabilitation work to proceed in a functional way and 
+with specific intervention objectives, and these systems 
+can easily evaluate and document progress during ses-
+sions [37]. Taking advantage of these characteristics, 
+several authors have used virtual reality-based therapy 
+(VRBT) to restore motor function after stroke [38–40]. 
+Immersion, presence, and interactivity are three key 
+features of virtual reality [41, 42]. In the course of our 
+study, the exergames of the ­HandTutor© glove soft-
+ware made it possible for the user to become the main 
+character (immersion); users perceived the connection 
+to the virtual environment through movement (inter-
+activity) and acted inside it as they received input and 
+responded to the challenges posed by the exergame 
+(presence).
+In this regard, Laver et  al. [40] analyzed studies that 
+compared N-SVR-based therapies with an alternative 
+intervention or no intervention. In 2017, they updated 
+their review by adding 35 new studies of N-SVR-based 
+therapies, the majority of which used commercial games 
+on the Nintendo Wii console. They concluded that vir-
+tual reality alone did not offer statistically significant 
+improvements, in contrast to conventional treatment. 
+However, when virtual reality was applied as a comple-
+ment to common treatment, this combined treatment 
+outperformed the conventional treatment alone. In these 
+studies, the experimental group was given more time for 
+treatment than the control group [41].
+Choosing the appropriate neurorehabilitation strate-
+gies to maximize clinical results in stroke patients takes 
+priority. In this sense, a combination of more traditional 
+neurophysiological approaches and motion-based thera-
+pies, delivered at a high intensity and in a large dose in 
+motivating game-related environments where motion 
+can be made, offers an important advantage in restoring 
+the motor function of the upper limb [29, 31].
+Our clinical trial differs from the studies included 
+in the review as follows: (1) it adds SVR technology 
+­(HandTutor© glove), designed for hand motor rehabilita-
+tion; (2) it offers the same amount of time for interven-
+tion in both groups (control vs. experimental); and (3) it 
+combines SVR with conventional treatment (experimen-
+tal group). Additionally, many of the studies included in 
+the review focused on adult patients with chronic stroke 
+(a period of recovery equal to or greater than six months 
+after diagnosis).
+Ikbali and collaborators [39] used the Kinect sensor 
+and the Xbox 360 console from Microsoft Inc.© to train 
+active movement of the upper limb, focusing on shoulder 
+abduction and adduction and wrist flexion and extension 
+exercises.
+The Kinect sensor, independent of any specific software 
+for rehabilitation after stroke, is able to capture gross 
+movement of the upper limb, but it cannot identify hand 
+
+
+--- PAGE 4 ---
+Page 4 of 14
+Rodríguez‑Hernández et al. Journal of NeuroEngineering and Rehabilitation           (2023) 20:38 
+motion and does not include exergames designed for 
+hand motor rehabilitation.
+Programs incorporating SVR technology to train distal 
+motor function after cerebrovascular accident remain lit-
+tle known [43, 44], in contrast to programs focusing on 
+proximal motor function [45], robot-assisted hand treat-
+ment [30, 46] or improving balance and walking [47, 48]. 
+Therefore, the aim of the present study is to test whether 
+conventional rehabilitation combined with SVR is more 
+effective than conventional therapy alone in restoring the 
+motor function and muscle tone of the hand after stroke.
+It was hypothesized that, compared to control group 
+(CG) participants, adults randomized to the experimen-
+tal group (EG) would achieve an increased degree of 
+hand motor function improvement and have superior 
+results on the Fugl-Meyer Assessment, Ashworth Scale, 
+and Action Research Arm Test.
+Methods
+Study design, randomization, and blinding
+This was a prospective single-blind randomized con-
+trolled trial comparing conventional rehabilitation (CG) 
+with the combination of conventional rehabilitation 
+and an SVR system (EG); all reporting of this trial is in 
+accordance with the Consolidated Standards of Report-
+ing Trials (CONSORT) statement [49, 50].
+The study was approved by the Research and Medical 
+Ethics Committee of the Integrated [healthcare] Area 
+of Talavera de la Reina (protocol code: 12/2018), and it 
+complies with the Declaration of Helsinki. All partici-
+pants received verbal and written information about the 
+study and gave their written informed consent.
+The participants were randomly assigned in a 1:1 ratio 
+to the CG or the EG by a researcher who did not par-
+ticipate in the intervention or the evaluation process. 
+The clinical practitioners who applied the conventional 
+intervention and those who administered the baseline, 
+postintervention, and follow-up clinical assessments to 
+the intervention groups (CG and EG) were blinded. The 
+participants and the researcher who applied VRBT could 
+not be blinded.
+Participants
+The study included 46 patients (43 of whom completed 
+the intervention period and follow-up evaluation), with 
+a mean age of 63.1  years (SD: 12.8). Nineteen percent 
+(n = 8) were women. The participants were recruited 
+from the Neurology and Rehabilitation units of the Hos-
+pital General Universitario of Talavera de la Reina, and 
+none of them suffered from moderate or severe cogni-
+tive impairment that prevented them from following 
+verbal and visual instructions from the therapist or the 
+SVR technology. All participants had been diagnosed 
+with stroke and met the following inclusion criteria: (1) 
+age between 18 and 85 years; (2) maximum time of six 
+months since diagnosis; (3) upper-limb motor impair-
+ment (Fugl-Meyer Assessment, Ashworth Scale and 
+ARAT); (4) dependency in ADLs (Stroke Impact Scale; 
+version 3.0); (5) life expectancy greater than 6 months 
+(no diagnosis of any life-threatening condition such as 
+end-stage cancer); and (6) absence of any other serious 
+and disabling pathology.
+According to baseline tests for determining motor 
+function loss in the upper limb after stroke, we included 
+patients who showed (1) scarce or no reflex activity, (2) 
+absence or limitation of voluntary movements in flex-
+ion and extension synergies, (3) limitations in shoulder 
+flexion–extension and adduction-abduction and wrist 
+flexion–extension and stabilization, (4) difficulty grasp-
+ing and gripping with the most affected hand, and (5) 
+trembling or dysmetria (Fugl-Meyer Assessment). Fur-
+thermore, most of the patients selected for the study 
+(especially those who had been diagnosed more than 
+20 days prior) showed a slight or a substantial increase 
+in their muscle tone (Ashworth Scale) and difficulties 
+in pinching, gripping or handling objects and making 
+larger-scale movements, for example, placing their hand 
+behind their head (Action Research Arm Test). We never 
+set minimum or maximum scores for the testing tools 
+applied; instead, we focused on movement limitations 
+and elements that might affect the individual’s functional 
+independence after stroke.
+Four exclusion criteria were defined: presence of 
+another neurological diagnosis, severe hemineglect, psy-
+chiatric pathology, and signed revocation of informed 
+consent [51, 52].
+Intervention
+Each participant completed 15 treatment sessions lasting 
+150 min each. These sessions took place on five consecu-
+tive days per week over the course of three weeks. The 
+patients assigned to the EG received conventional upper 
+and lower limb strength and motor training (100  min/
+session, administered by the hospital’s physiotherapy and 
+occupational therapy team) as well as rehabilitation with 
+SVR devices (50 min/session), while participants in the 
+CG received only conventional training in the form of 
+physiotherapy (75 min/session) and occupational therapy 
+(75 min/session). A 15-min break was allocated for each 
+participant between professionals or types of treatment.
+The conventional intervention protocol consisted of 
+manual therapy techniques (massage); passive and active 
+assisted mobilization of the upper and lower limbs; 
+walking on level surfaces, slopes and stairs; exercises 
+with resistance or assistance from balls, elastic bands 
+and dumbbells in therapeutic cages and trellises; active 
+
+
+--- PAGE 5 ---
+Page 5 of 14
+Rodríguez‑Hernández et al. Journal of NeuroEngineering and Rehabilitation           (2023) 20:38 
+	
+assisted mobility exercises of the upper limb and fingers 
+in a sitting position; moving objects horizontally on a 
+table; elevation and superposition of objects in the ver-
+tical plane; and biomechanical tasks that simulated flex-
+ion–extension and abduction–adduction of the shoulder 
+and flexion–extension of the wrist and fingers [51, 52].
+The motor training protocol with SVR devices con-
+sisted of applying the ­HandTutor© glove [53, 54], 
+­3DTutor© and ­Rehametrics© [55]. All systems are based 
+on intensive and repetitive practice through movement 
+instructions, with feedback provided by the software and 
+virtual environments and tasks that simulate the move-
+ments that the stroke survivor must complete in daily life 
+[56, 57].
+In this work, we will address the clinical and functional 
+effects of the application of ­Meditouch© software and the 
+­HandTutor© glove.
+The ­HandTutor© glove focuses on flexion–extension 
+of the fingers and wrist. It relies on analytical exergames 
+that work isolated movements necessary to complete an 
+ADL using virtual, gamified environments. It monitors 
+and captures the movement of the hand joints (distal and 
+proximal metacarpophalangeal and interphalangeal) and 
+the wrist through sensors located in the front and back of 
+the glove.
+During the exercise, it provides visual and audio feed-
+back on success and failure, shows the score and allows 
+the therapist to modify the sensitivity of the movement to 
+avoid frustration in the participant and reduce difficulty.
+Meditouch© software provides quantitative data on the 
+progress of the patient in each exergame over the various 
+treatment sessions. In addition, it generates a model with 
+the silhouette of the hands, which allows the observation 
+of active movement (shown in red) and passive move-
+ment (shown in blue) for each finger and the wrist. The 
+exergames were customized according to the functional 
+capacity of the patient.
+Figure  1 shows the SVR system ­(HandTutor© glove) 
+used in this study, along with a representation of the 
+active and passive movement of a participant’s hand 
+and the variety of exergames offered by the software 
+­Meditouch©.
+Although neither the clinical nor the functional effects 
+of ­3DTutor© and ­Rehametrics© are specifically analyzed 
+in this work, a brief characterization of them is included, 
+since they are among the systems applied in motor train-
+ing protocols with SVR devices. The ­3DTutor© apparatus 
+is a wireless device that monitors patients’ movements 
+and includes evaluation of the full rotation of the joints in 
+every plane, as well as choices for designing the treatment 
+Fig. 1  The SVR system (HandTutor © glove) used in this study, together with a representation of the active (red) and passive hand movement (blue) 
+of a participant and the variety of exergames offered by the ­Meditouch© software
+
+
+--- PAGE 6 ---
+Page 6 of 14
+Rodríguez‑Hernández et al. Journal of NeuroEngineering and Rehabilitation           (2023) 20:38 
+through the software exergames screen. The device can 
+be placed on the distal or proximal side of any joint and is 
+secured with Velcro strips of diverse sizes. ­Rehametrics© 
+uses the Kinect sensor by ­Microsoft© to capture and 
+monitor the movement of joints and body segments in 
+real time. It works the upper limb (shoulder and elbow), 
+trunk and lower limbs and simulates ADLs and commu-
+nity ambulation by means of virtual environments and in 
+combination with games [52].
+Outcomes
+In our study, we used the basic set of assessment meas-
+ures recommended for clinical practice and research to 
+assess the physical function and activity level of the upper 
+limb; these measures are included in the current stand-
+ardized protocols of evidence-based practice [58, 59].
+The primary outcome was hand motor function. For 
+quantification purposes, we applied the Fugl-Meyer 
+Assessment-Upper Extremity (FMA-UE), the ARAT and 
+the Ashworth Scale (a muscle tone evaluation).
+Upper limb motor function (FMA-UE and ARAT) 
+and muscle tone (Ashworth Scale) were evaluated and 
+recorded before the treatment began (baseline), three 
+weeks later (postintervention) and three months after its 
+completion (follow-up).
+Fugl‑Meyer assessment‑upper extremity (FMA‑UE)
+The FMA is considered a valid, fully suitable instrument 
+to evaluate the motor function of the upper limb after 
+stroke, given its excellent psychometric properties and its 
+appropriate scale. The upper-limb subscale of this instru-
+ment, the FMA-UE, is of great value for predicting the 
+degree of independence that can be achieved one year 
+after stroke. The FMA-UE is composed of 113 items, and 
+each item on the evaluation scale is scored as an ordinal 
+variable ranging from 0 to 2 points [60, 61]. We used the 
+Spanish version of the FMA-UE [60], which has a Spear-
+man coefficient of 0.946 (p = 0.000), excellent reliability 
+(ICC 0.987; p = 0.000) and a Cronbach’s alpha coefficient 
+of 0.98 for motor control of the upper limb.
+Action research arm test (ARAT)
+The ARAT assesses the ability to manipulate small and 
+large objects, with a variety of qualitative items that allow 
+a numerical quantification of each of the subtests: grasp, 
+grip, pinch and gross movement [62]. Each item is scored 
+on a 4-point scale, and total scores range from 0 to 57 
+points [63]. Decades ago, the interobserver reliability 
+of this test in patients with poststroke hemiparesis was 
+established to be 0.98, and the test–retest reliability was 
+established to be 0.99 [64].
+Ashworth Scale
+The Ashworth Scale measures resistance to passive 
+movement on a scale of 0 to 4; it has a Kendall’s W of 
+0.765 (p = 0.000) for the elbow, and its reliability is 0.4 
+to 0.75 for 95% of the assessments [65].
+Data analysis
+The sample size was calculated using the program Epi-
+dat 4.2. At the time when the study was designed, the 
+methodologist and statistician calculated the size of 
+the sample using an estimated effectiveness ratio of 
+90% in the experimental group and 50% in the con-
+trol group, a power level of 80%, and confidence level 
+of 95% (p < 0.05). The minimum necessary sample size 
+was calculated to be 20 participants per group. Then, 
+we decided to increase the sample size by 15% to com-
+pensate for potential losses (during field work and in 
+the course of the study). The small sample size in each 
+group could have led to a change in the variance in the 
+case of missing data imputation, which would have 
+compromised the accuracy of the final data.
+Once we had gathered all the data, we carried out 
+an analysis of missing values with SPSS; we observed a 
+value below 5%, which can be attributed to chance. The 
+estimated effectiveness in both groups (90% and 50%) 
+was determined after considering the outcomes from 
+studies already published on conventional poststroke 
+motor rehabilitation, VRBT and the two approaches 
+combined [43, 66, 67].
+Student’s t tests and Chi-squared tests were per-
+formed to compare the clinical and sociodemographic 
+variables of the intervention groups. Differences in 
+the Ashworth, ARAT, and FMA-UE scores at baseline, 
+postintervention, and 3-month follow-up were ana-
+lyzed with inter- and intragroup ANOVAs and Stu-
+dent’s t tests. Statistical significance was defined by a p 
+value of less than 0.05.
+In this study of experimental intervention with the 
+­HandTutor© SVR glove and ­Meditouch© software, 
+the outcomes of interest included the total score for 
+upper-limb motor function according to the FMA-UE; 
+the scores for the wrist and hand, which are important 
+because they capture the clinical evolution of mobility in 
+these specific body segments; and the differences found 
+between the two groups receiving different interventions 
+(EG vs. CG). We chose to include segment-specific scores 
+because the technology we used to facilitate distal motor 
+recovery of the upper limb ­(HandTutor© glove) focuses 
+on intensive rehabilitation of the wrist and the hand.
+The analysis of missing data from the CG was carried 
+out with multiple imputation in the analysis (expecta-
+tion maximization and regression method), with a Little’s 
+
+
+--- PAGE 7 ---
+Page 7 of 14
+Rodríguez‑Hernández et al. Journal of NeuroEngineering and Rehabilitation           (2023) 20:38 
+	
+Chi-squared statistic of 36.280 (degrees of freedom = 28; 
+p = 0.136).
+The assignment of participants to the intervention 
+groups was random and unknown to the researcher per-
+forming the statistical analysis.
+Results
+Characteristics of the participants
+Twenty-three participants were assigned to the EG, and 
+an equal number were assigned to the CG. Three partici-
+pants in the CG were lost to follow-up due to the start of 
+the COVID-19 pandemic in Spain (Fig. 2) [51, 52].
+The characteristics of the participants are shown in 
+Table  1. Significant differences were observed in the 
+evolution of pain between the two groups, with pain 
+decreasing considerably after intervention in the EG. Fif-
+teen percent (n = 3) of participants in the CG reported 
+a change in dominance (from right to left) during the 
+first follow-up (postintervention), while the EG main-
+tained the same hand dominance they had had at base-
+line [51, 52]. Regarding the results obtained from the 
+visual analog scale of the EuroQoL instrument (EQ-VAS) 
+for the measurement of self-perceived HRQoL, a statis-
+tically significant intergroup difference emerged after 
+the experimental intervention (86.5 in the EG vs. 57.0 
+in the CG) [51]. Voluntary movement of the upper limb 
+increased remarkably after the experimental intervention 
+(FMA-UE: 30.1 in the EG vs. 24.7 in the CG; difference in 
+means: 5.4), and, accordingly, muscle tone in the shoul-
+der decreased (Ashworth Scale: baseline 1.30/postinter-
+vention 0.60 in the EG vs. baseline 1.22/postintervention 
+1.05 in the CG) [52].
+Research objective
+Table 2 shows the differences in the evolution of the Ash-
+worth scores of the two intervention groups. A decrease 
+in wrist muscle tone was observed in both groups, with 
+579
+580
+Assessed for eligibility (n = 46)
+Excluded (n = 0)
+Did not meet inclusion criteria (n = 0)
+Declined to parcipate (n = 0)
+Other reasons (n = 0)
+Analyzed (n = 23)
+Lost to follow-up at 3 weeks of treatment * (n = 0)
+Lost to follow-up at 3 months aer treatment (n = 
+0)
+Allocated to experimental group (n = 23)
+CRT + virtual reality
+Received allocated intervenon (n = 23)
+Lost to follow-up at 3 treatment weeks * (n = 2)
+Lost to follow-up at 3 treatment months (n = 1)
+Allocated to control group (n = 23)
+CRT
+Received allocated intervenon (n = 23)
+Analyzed (n = 20)
+Allocaon
+Analysis
+Follow-Up
+Randomized (n = 46)
+Enrollment
+Fig. 2  CONSORT flow diagram for participant recruitment, allocation, follow-up and analysis. CRT​ conventional rehabilitation treatment. 
+*Postintervention evaluation
+
+
+--- PAGE 8 ---
+Page 8 of 14
+Rodríguez‑Hernández et al. Journal of NeuroEngineering and Rehabilitation           (2023) 20:38 
+a notably larger decrease in the EG (baseline/postinter-
+vention mean: 1.22 to 0.39). During follow-up, the mus-
+cle tone of participants in the EG increased slightly, while 
+participants in the CG had a more pronounced increase 
+over most of the range of wrist movement (postinter-
+vention/follow-up mean: 1.10 to 1.30). The effect size 
+of the experimental intervention was 0.206 (difference 
+between baseline and follow-up in the EG: 0.78; 95% CI 
+0.38–1.18).
+Table 3 shows the differences in the evolution of FMA-
+UE and ARAT results by intervention group. On the 
+FMA-UE, we observed a score increase in both groups, 
+but the change was notably larger in the EG (total motor 
+function mean, baseline/postintervention: from 23.3 to 
+57.7; total wrist mean, baseline/postintervention: 3.4 to 
+9.0; total hand mean, baseline/postintervention: 3.9 to 
+12.8). During follow-up, the effects of the intervention 
+in both groups remained stable, and the motor function 
+of the upper limb increased slightly. The effect size of the 
+experimental intervention was large (total motor func-
+tion: 0.300; total wrist: 0.290; total hand: 0.299). On the 
+ARAT, the EG quadrupled its score after the combined 
+intervention, while the CG achieved approximately 50% 
+of the total possible score for this test in the postinter-
+vention evaluation (maximum 57 points). The effect size 
+of the experimental intervention was large (η2 = 0.321).
+Table 1  Characteristics of the participants in both groups (n = 43)
+a Mean (SD)
+p values were calculated using Student’s independent-samples t test for continuous variables and Pearson’s Chi-squared test for categorical variables
+Characteristics: study variables
+Experimental group (EG)
+(n = 23)
+Control group (CG)
+(n = 20)
+Difference in 
+means between 
+groups
+(p value)
+Age
+ Mean (SD)
+ Under 55 years (%)
+ 55 to 70 years (%)
+ Over 70 years (%)
+62.6 (13.5)
+26
+30
+44
+63.6 (12.2)
+25
+45
+30
+– 0.9 (0.812)
+0.566
+Sex (%)
+ Male
+ Female
+78
+22
+85
+15
+0.571
+Main diagnosis (%)
+ Ischemic/thrombotic
+ Hemorrhagic
+91
+9
+90
+10
+0.883
+ Middle cerebral artery lesion (%)
+61
+55
+0.697
+Location of the brain injury (%)
+ Right
+ Left
+83
+17
+85
+15
+0.832
+Time since diagnosis (days)a
+ Baseline (preintervention)
+ Postintervention (3-week follow-up)
+ Follow-up (3 months)
+55.3 (34.3)
+75.3 (34.3)
+162.3 (36.9)
+54.2 (30.4)
+74.2 (30.4)
+157.2 (36.1)
+1.1 (0.909)
+1.1 (0.909)
+5.1 (0.650)
+Table 2  Linear model. Effect of the intervention on Ashworth Scale scores (wrist)
+SD standard deviation, 95% CI 95% confidence interval. Partial η2: effect size
+*The difference in means is significant at p = 0.000
+Intervention group
+Difference between baseline and follow-up
+Baseline mean (SD)
+Postintervention 
+mean (SD)
+Follow-up mean (SD)
+Mean (95% CI)
+ANOVA
+F
+p
+Partial η2
+Ashworth Scale (wrist) (T score)
+ Experimental group
+1.22 (0.74)
+0.39 (0.50)
+0.43 (0.59)
+0.78 (0.38/1.18)*
+ Control group
+1.13 (0.81)
+1.10 (0.44)
+1.30 (0.66)
+− 0.10 (− 0.64/0.44)
+10.6
+0.002
+0.206
+ p
+0.706
+0.000
+0.000
+
+
+--- PAGE 9 ---
+Page 9 of 14
+Rodríguez‑Hernández et al. Journal of NeuroEngineering and Rehabilitation           (2023) 20:38 
+	
+Discussion
+The main purpose of this clinical trial was to test whether 
+conventional rehabilitation combined with SVR technol-
+ogy is more effective than an intervention based exclu-
+sively on occupational therapy and physiotherapy for 
+improving hand motor function in adults with subacute 
+stroke.
+Previous studies [40, 56] concluded that non-immer-
+sive virtual reality–assisted therapy using low-cost com-
+mercial platforms designed for family entertainment 
+appeared to slightly contribute to the improvement of 
+upper limb motor function after stroke. In 2017, these 
+commercial games were compared with SVR technology 
+to determine their efficacy against an alternative inter-
+vention or no intervention. None of the fifteen included 
+studies focused on the combined use of SVR and conven-
+tional rehabilitation to improve hand motor function and 
+normalize muscle tone of the hand in adults with suba-
+cute stroke [41].
+In this study of patients with a poststroke inter-
+val of less than 6 months (EG mean: 55.3 days at base-
+line), patients randomly allocated to the EG followed a 
+motor training protocol with SVR technology designed 
+for improving hand motor function; interventions were 
+delivered over the course of three weeks, five consecutive 
+days a week, with each session lasting 50 min. In addi-
+tion, patients in this group a received 100-min session of 
+conventional treatment (occupational therapy and physi-
+otherapy) along with each SVR training session. This 
+combined treatment regimen yielded promising func-
+tional results regarding distal motor control of the upper 
+limb, as resistance to movement decreased (spasticity), 
+while the functionality and motion of the hand and wrist 
+increased. In light of the functional results, it is impor-
+tant to highlight that the ­HandTutor© glove is an afford-
+able electronic device for rehabilitation teams and that it 
+is versatile thanks to its small size, which allows it to fit in 
+every clinical environment (hospital and healthcare cent-
+ers); in contrast, expensive technologies such as robotics 
+require not only a large economic investment but also 
+facilities of specific dimensions.
+The introduction of SVR systems into conventional 
+rehabilitation processes offers new models of simulation 
+that provide participants with the experience of moti-
+vating, stimulating, realistic environments, allowing safe 
+practice of techniques based on meaningful, entertaining 
+daily tasks [39].
+Ikbali et  al., in their intervention, chose the Kinect 
+sensor in combination with the commercial console 
+Xbox  360 by ­Microsoft© Inc. for training active move-
+ments of the upper limb (shoulder abduction and adduc-
+tion and active wrist flexion and extension); their team 
+concluded that game-based therapy contributes to 
+motor and functional recovery of the upper limbs when 
+Table 3  Linear model. Effect of the intervention on FMA-UE (Total Motor Function, Wrist and Hand) and ARAT scores
+SD standard deviation, 95% CI 95% confidence interval. Partial η2: effect size
+*The difference in means is significant at p = 0.000
+Intervention group
+Difference between baseline and follow-up
+Baseline 
+mean (SD)
+Postintervention 
+mean (SD)
+Follow-up 
+mean (SD)
+Mean (CI95%)
+ANOVA
+F
+p
+Partial η2
+FMA-UE (Total Motor Function) (T score)
+ Experimental group
+23.3 (6.9)
+57.7 (4.7)
+58.8 (5.9)
+− 35.5 (− 38.9/− 32.0)*
+ Control group
+22.7 (5.4)
+47.0 (6.1)
+49.3 (6.3)
+− 26.6 (− 29.1/− 24.2)*
+17.5
+0.000
+0.300
+ p
+0.722
+0.000
+0.000
+FMA-UE (Total Wrist) (T score)
+ Experimental group
+3.4 (1.9)
+9.0 (1.0)
+9.0 (1.0)
+− 5.6 (− 6.4/− 4.8)*
+ Control group
+3.2 (1.7)
+6.8 (1.2)
+6.9 (1.3)
+− 3.7 (− 4.5/− 2.8)*
+16.7
+0.000
+0.290
+ p
+0.688
+0.000
+0.000
+FMA-UE (Total Hand) (T score)
+ Experimental group
+3.9 (2.4)
+12.8 (1.0)
+12.8 (1.0)
+− 8.9 (− 10.1/− 7.6)*
+ Control group
+3.5 (1.9)
+10.0 (2.2)
+10.0 (2.2)
+− 6.3 (− 7.6/− 5.0)*
+17.9
+0.000
+0.299
+ p
+0.547
+0.000
+0.000
+ARAT (T score)
+ Experimental group
+13.2 (11.7)
+46.0 (9.0)
+46.0 (9.0)
+− 32.8 (− 40.1/− 25.5)*
+ Control group
+11.5 (10.6)
+29.3 (10.5)
+29.7 (10.6)
+− 17.4 (− 24.7/− 10.0)*
+19.3
+0.000
+0.321
+ p
+0.609
+0.000
+0.000
+
+
+--- PAGE 10 ---
+Page 10 of 14
+Rodríguez‑Hernández et al. Journal of NeuroEngineering and Rehabilitation           (2023) 20:38 
+administered in the subacute phase as a complement to 
+conventional rehabilitation for patients diagnosed with 
+stroke [39]. However, few studies have introduced SVR 
+technology into hand treatment with software specifi-
+cally designed for clinical use in patients with neurologi-
+cal disorders, as we do in the course of our work.
+The results of this study suggest that VRBT using 
+­Meditouch© software and ­HandTutor© gloves in combi-
+nation with conventional physiotherapy and occupational 
+therapy is effective in the rehabilitation of motor function 
+in the subacute phase of stroke.
+The differences in Ashworth Scale scores for the wrist 
+found in our study coincide with the results published 
+by Young-Bin et al. [68]. In contrast to the present work, 
+their study combined the SVR intervention with the use 
+of real objects, prolonged the intervention to six weeks, 
+and delayed the follow-up evaluation to 4  weeks. The 
+matching findings may indicate that the effect of experi-
+mental intervention on decreased wrist muscle tone is 
+maintained over time. In our case, we were able to check 
+only the baseline/postintervention change after three 
+weeks of combined treatment (SVR and conventional 
+physiotherapy and occupational therapy treatment) 
+and the progress after three months of follow-up (base-
+line/follow-up difference: 0.78 points; p = 0.000; effect 
+size = 0.206).
+Our study revealed positive results in terms of hand 
+function after the combination of SVR and conven-
+tional physiotherapy and occupational therapy. The dif-
+ference between baseline and follow-up measurements 
+reflected functional improvements after the experimental 
+intervention: 5.6 points on the wrist scale of the FMA-
+UE, 8.9 points on the hand scale of the same instrument 
+(p = 0.000 for each), and 32.8 points on the ARAT. In 
+this respect, it is important to note the proximity of the 
+three-week postintervention differences to the minimum 
+detectable change on the Spanish version of the FMA-
+UE, which corresponds to 7.3 points six weeks after inter-
+vention. The effect size of the intervention ­(h2) for the 
+wrist and hand were 0.290 and 0.299, respectively). Fac-
+tors that may have contributed to the large improvement 
+in upper-extremity motor function include the repetitive 
+and intensive practice involved in the experimental inter-
+vention and the use of a structured training approach 
+whose objectives were focused on functional motor 
+training. In poststroke SVR treatment, special attention 
+was paid to the restoration of the different biomechani-
+cal movements and curvature of the hand to provide a 
+stable base and correct alignment. The interface used by 
+the therapist to adjust the difficulty levels of the exergame 
+and to adapt to each participant’s ability and progression 
+in the EG may also help explain the results. The train-
+ing objectives focused on primary motor components, 
+restoring selective voluntary movements to reach and 
+grasp objects in the virtual environment. It is important 
+to note the characteristics of the participants, who had a 
+poststroke interval of less than 56 days (SD between 30 
+and 34) and a mean age of 63.1 years ± 12.3. Participants 
+in this study did not have elevated levels of muscle tone 
+at baseline measurement, and those with severe hem-
+ineglect (which implies a negative poststroke prognosis) 
+were excluded.
+Increased practice results in greater ability as long as 
+the exercises are challenging, progressive and skill-based 
+[69]. In this regard, our results showed that, from the 
+eighth combined treatment session with SVR technol-
+ogy, patients displayed clinical improvements in the fine 
+motor skills and functionality of the hand, which progres-
+sively increased until the end of experimental treatment. 
+In this study, the experimental design called for three 
+consecutive weeks of combined treatment (EG) with SVR 
+sessions of 50  min each. However, a larger study with 
+varying durations and session lengths is needed to deter-
+mine the optimal intervention protocol.
+A noteworthy feature that likely contributes to the 
+utility of the ­HandTutor© glove’s exergames is that they 
+offer progressive challenge levels, allowing therapists 
+to increase the difficulty, the frequency of stimuli, and 
+the presence of distractors according to the evolution 
+of motion and functionality in each individual stroke 
+patient.
+For our study, we designed a daily intervention plan, 
+devoting 50 min per session to motor training with SVR 
+technology devices.
+High-quality upper-limb training focusing on the 
+motion quality of the injured segment is difficult to 
+achieve in the time allowed in standard rehabilitation 
+programs, in which patients are encouraged to carry out 
+tasks through compensation [70].
+Similar results have been found in studies that com-
+bined conventional techniques with the use of robotics 
+[29, 31]. In these cases, the robotic system was applied in 
+fewer weekly sessions than our SVR system. It is possi-
+ble that the effect of robot-assisted intervention is more 
+durable than that of SVR technology. Predictive models, 
+as yet unpublished, are needed to help identify the weekly 
+dose that yields optimal poststroke recovery.
+The use of VRBT in treatments aimed at functional 
+recovery of the upper limb in stroke patients brings about 
+an enriched, interactive environment that positively 
+influences neuroplasticity, especially in the subacute 
+phase of the disease, in which the level of brain reorgani-
+zation is at a maximum [71]. No significant differences 
+were found in the baseline evaluations of the interven-
+tion groups; therefore, we can conclude that the results 
+are a consequence of the use of SVR technology in active 
+
+
+--- PAGE 11 ---
+Page 11 of 14
+Rodríguez‑Hernández et al. Journal of NeuroEngineering and Rehabilitation           (2023) 20:38 
+	
+and intensive training and the response to the demands 
+and challenges of exergames [72]. The use of SVR as a 
+rehabilitation method formulates an alternative thera-
+peutic concept that is attractive to patients, as it allows 
+them to focus on the demands of the exergames and not 
+on the need for repetition or the degree of challenge. 
+This approach facilitates the relearning of coordinated 
+motor patterns and enables environments to be created 
+in which the intensity of visual and auditory feedback and 
+training can be systematically manipulated and enhanced 
+to create individualized motor learning paradigms and 
+increase treatment compliance, thus positively affecting 
+the emotional state of patients [73].
+The above results suggest that SVR-facilitated exercise-
+based intervention programs benefit the recovery of hand 
+motor function in people with stroke.
+Recent studies on stroke patients observed significant 
+changes and great improvements in ARAT and FMA-UE 
+results when patients received upper-limb therapy 5 days 
+a week over 3 , 6 and 12 weeks; the declared intention in 
+those studies was to make motion practice as realistic 
+as possible, with increasing progress in joint movement 
+culminating in full practice of the actual physical task 
+[74–76].
+The SVR technology devices used for our study focused 
+on the joints and body segments damaged by stroke, dif-
+ferentiating and isolating the movements and the active 
+range of joint motion if necessary. The ­HandTutor© glove 
+enables the therapist to block and/or reduce the range 
+of motion if compensation is noted in the wrist during 
+flexion and extension of the fingers. In addition, the soft-
+ware makes it possible to isolate the fingers if the patient 
+always reaches the goal with the same movement and 
+body segment. In this way, the digital and tripod grasps 
+(necessary for carrying out ADLs) can be isolated and 
+trained separately.
+Evidence from this study reveals that virtual reality has 
+the potential to create effective environments for reha-
+bilitation with safe, multimodal, individualized simula-
+tions while providing feedback and options regarding 
+repetition, intensity, and training in specific tasks; these 
+features are not common among conventional physical 
+therapies but are useful for promoting the recovery of 
+upper limbs after stroke [33, 77–79].
+Limitations of the study
+The results of the present study cannot be extrapolated 
+to other poststroke phases or to rehabilitation programs 
+with fewer weekly sessions.
+The design of our study does not include a long-term 
+follow-up to clarify the evolution of the intervention 
+groups (CG vs. EG) or the differences found. In addi-
+tion, this study was limited to a single center, in contrast 
+to several studies with multicenter randomized con-
+trolled designs [51, 52, 80]. The psychometric properties 
+of the items described for the upper limbs (total wrist 
+and total hand) are unknown, and the participants could 
+not be blinded because they agreed not only to receive 
+conventional rehabilitation treatment but also to report 
+the course of changes in their mobility and execution of 
+ADLs as a result of SVR-based rehabilitation. In future 
+research, it would be interesting to extend the follow-
+up period to 12 months to ascertain whether the effect 
+of the experimental intervention is maintained in the 
+chronic poststroke phase. It would also be advantageous 
+to increase the sample of participants with a less inten-
+sive conventional intervention group (two or three days a 
+week); this would allow blinding of the participants.
+Conclusions
+The outcomes of the study suggest that conventional 
+rehabilitation combined with an SVR-based method 
+can be more effective than conventional therapy alone 
+in improving hand motor function and voluntary move-
+ment and normalizing muscle tone in subacute stroke 
+patients. With combined treatment, hand and wrist func-
+tionality and motion increased; resistance to movement 
+(spasticity) decreased, and this decrease was sustained 
+over time.
+Patients showed significant clinical improvements 
+in the fine motor skills and functionality of the affected 
+hand, with a large effect size, and these gains were 
+achieved in less time than if conventional rehabilitation 
+alone were used.
+Abbreviations
+ADLs	
+Activities of daily living
+HRQoL	
+Health-related quality of life
+N-SVR	
+Nonspecific virtual reality
+SVR	
+Specific virtual reality
+VRBT	
+Virtual reality-based therapy
+CG	
+Control group
+EG	
+Experimental group
+CONSORT	 Consolidated Standards of Reporting Trials
+SD	
+Standard deviation
+ROM	
+Range of motion
+FMA-UE	
+Fugl-Meyer Assessment-Upper Extremity
+ARAT​	
+Action Research Arm Test
+SIS	
+Stroke Impact Scale
+CI	
+Confidence interval
+Acknowledgements
+The authors would like to thank the participants and the staff of the Hospital 
+General Universitario (Talavera de la Reina, Spain) for their collaboration in this 
+study.
+Author contributions
+MRH: conceptualization, methodology, software, validation, formal analysis, 
+investigation, and writing—original draft preparation. BPL: conceptualization, 
+validation, and writing—original draft preparation. JJCA: conceptualization, 
+methodology, software, validation, formal analysis, and writing—original draft 
+
+
+--- PAGE 12 ---
+Page 12 of 14
+Rodríguez‑Hernández et al. Journal of NeuroEngineering and Rehabilitation           (2023) 20:38 
+preparation. AICS, JLMC and AMM: writing—review and editing and supervi‑
+sion. All authors read and approved the final manuscript.
+Funding
+The study was sponsored by the University of Castilla-La Mancha (grant 
+#2020-GRIN-29192). This funding contributed to the purchase of the SVR 
+technology used for this study.
+Availability of data and materials
+Not applicable.
+Declarations
+Ethics approval and consent to participate
+The Research and Medical Ethics Committee of the Integrated Area of Talavera 
+de la Reina approved this study (protocol code: 12/2018). All participants 
+received verbal and written information about the study and gave their writ‑
+ten informed consent.
+Consent for publication
+Not applicable.
+Competing interests
+The authors declare no potential conflicts of interest with respect to the 
+research, authorship, or publication of this article. The ­Meditouch© software 
+and ­HandTutor© glove were purchased from the University of Castilla-La 
+Mancha. The authors have no conflict of interest involving the company that 
+produced these resources. No previously published article includes the inter‑
+vention and evaluation data presented in this manuscript.
+Author details
+1 Faculty of Health Sciences, University of Castilla-La Mancha, 45600 Talavera de 
+la Reina, Spain. 2 Technological Innovation Applied to Health Research Group 
+(ITAS Group), Faculty of Health Sciences, University of Castilla-La Mancha, 
+Talavera de la Reina, Spain. 3 Institute of Health Sciences, Talavera de la Reina, 
+Spain. 
+Received: 24 February 2022   Accepted: 30 March 2023
+References
+	1.	
+Koch PJ, Park CH, Girard G, Beanato E, Egger P, Evangelista GG, et al. The 
+structural connectome and motor recovery after stroke: predicting natu‑
+ral recovery. Brain. 2021;144(7):2107–19. https://​doi.​org/​10.​1093/​brain/​
+awab0​82.
+	2.	
+Guidetti S, Ytterberg C, Ekstam L, Johansson U, Eriksson G. Changes in the 
+impact of stroke between 3 and 12 months post-stroke, assessed with 
+the Stroke Impact Scale. J Rehabil Med. 2014;46(10):963–8. https://​doi.​
+org/​10.​2340/​16501​977-​1865.
+	3.	
+Törnbom K, Persson HC, Lundälv J, Sunnerhagen KS. Self-assessed 
+physical, cognitive, and emotional impact of stroke at 1 month: the 
+importance of stroke severity and participation. J Stroke Cerebrovasc Dis. 
+2017;26(1):57–63. https://​doi.​org/​10.​1016/j.​jstro​kecer​ebrov​asdis.​2016.​08.​
+029.
+	4.	
+Franck JA, Smeets RJEM, Seelen HAM. Changes in actual arm-hand use 
+in stroke patients during and after clinical rehabilitation involving a well-
+defined arm-hand rehabilitation program: a prospective cohort study. 
+PLoS ONE. 2019;14(4):e0214651. https://​doi.​org/​10.​1371/​journ​al.​pone.​
+02146​51.
+	5.	
+Rehme AK, Eickhoff SB, Rottschy C, Fink GR, Grefkes C. Activation likeli‑
+hood estimation meta-analysis of motor-related neural activity after 
+stroke. Neuroimage. 2012;59(3):2771–82. https://​doi.​org/​10.​1016/j.​neuro​
+image.​2011.​10.​023.
+	6.	
+Ramsey LE, Siegel JS, Lang CE, Strube M, Shulman GL, Corbetta M. 
+Behavioural clusters and predictors of performance during recovery 
+from stroke. Nat Hum Behav. 2017;1(3):0038. https://​doi.​org/​10.​1038/​
+s41562-​016-​0038.
+	7.	
+Biernaskie J. Efficacy of rehabilitative experience declines with time after 
+focal ischemic brain injury. J Neurosci. 2004;24(5):1245–54. https://​doi.​
+org/​10.​1523/​JNEUR​OSCI.​3834-​03.​2004.
+	8.	
+Kwakkel G, Kollen B, Twisk J. Impact of time on improvement of outcome 
+after stroke. Stroke. 2006;37(9):2348–53. https://​doi.​org/​10.​1161/​01.​STR.​
+00002​38594.​91938.​1e.
+	9.	
+Stinear CM, Lang CE, Zeiler S, Byblow WD. Advances and challenges in 
+stroke rehabilitation. Lancet Neurol. 2020;19(4):348–60. https://​doi.​org/​10.​
+1016/​S1474-​4422(19)​30415-6.
+	10.	 Rudberg AS, Berge E, Laska AC, et al. Stroke survivors’ priorities for 
+research related to life after stroke. Top Stroke Rehabil. 2021;28(2):153–8. 
+https://​doi.​org/​10.​1080/​10749​357.​2020.​17898​29.
+	11.	 Pollock A, St George B, Fenton M, Firkins L. Top 10 research priorities relat‑
+ing to life after stroke–consensus from stroke survivors, caregivers, and 
+health professionals. Int J Stroke. 2014;9(3):313–20. https://​doi.​org/​10.​
+1111/j.​1747-​4949.​2012.​00942.x.
+	12.	 Sangole AP, Levin MF. Arches of the hand in reach to grasp. J Biomech. 
+2008;41(4):829–37. https://​doi.​org/​10.​1016/j.​jbiom​ech.​2007.​11.​006.
+	13.	 Sangole AP, Levin MF. A new perspective in the understanding of 
+hand dysfunction following neurological injury. Top Stroke Rehabil. 
+2007;14(3):80–94. https://​doi.​org/​10.​1310/​tsr14​03-​80.
+	14.	 Sangole AP, Levin MF. Palmar arch modulation in patients with hemipa‑
+resis after a stroke. Exp Brain Res. 2009;199(1):59–70. https://​doi.​org/​10.​
+1007/​s00221-​009-​1972-5.
+	15.	 Haruyama K, Kawakami M, Otsuka T. Effect of core stability training on 
+trunk function, standing balance, and mobility in stroke patients: a ran‑
+domized controlled trial. Neurorehabil Neural Repair. 2017;31(3):240–9. 
+https://​doi.​org/​10.​1177/​15459​68316​675431.
+	16.	 Harbourne R, Kamm K. Upper extremity function: what’s posture got to 
+do with it? J Hand Ther. 2015;28(2):106–13. https://​doi.​org/​10.​1016/j.​jht.​
+2015.​01.​008.
+	17.	 McQuade KJ, Borstad J, de Oliveira AS. Critical and theoretical perspec‑
+tive on scapular stabilization: what does it really mean, and are we on 
+the right track? Phys Ther. 2016;96(8):1162–9. https://​doi.​org/​10.​2522/​ptj.​
+20140​230.
+	18.	 Mottram SL. Dynamic stability of the scapula. Man Ther. 1997;2(3):123–31. 
+https://​doi.​org/​10.​1054/​math.​1997.​0292.
+	19.	 Kisiel-Sajewicz K, Fang Y, Hrovat K, Yue GH, Siemionow V, Sun CK, et al. 
+Weakening of synergist muscle coupling during reaching movement in 
+stroke patients. Neurorehabil Neural Repair. 2011;25(4):359–68. https://​
+doi.​org/​10.​1177/​15459​68310​388665.
+	20.	 Barker RN, Brauer S, Carson R. Training-induced changes in the pattern 
+of triceps to biceps activation during reaching tasks after chronic and 
+severe stroke. Exp Brain Res. 2009;196(4):483–96. https://​doi.​org/​10.​1007/​
+s00221-​009-​1872-8.
+	21.	 Tavazzi E, Bergsland N, Pirastru A, Cazzoli M, Blasi V, Baglio F. MRI mark‑
+ers of functional connectivity and tissue microstructure in stroke-
+related motor rehabilitation: a systematic review. NeuroImage Clin. 
+2022;33:102931. https://​doi.​org/​10.​1016/j.​nicl.​2021.​102931.
+	22.	 Jaafar N, Che Daud AZ, Ahmad Roslan NF, Mansor W. Mirror therapy reha‑
+bilitation in stroke: a scoping review of upper limb recovery and brain 
+activities. Rehabil Res Pract. 2021;2021:1–12. https://​doi.​org/​10.​1155/​
+2021/​94873​19.
+	23.	 Xiong F, Liao X, Xiao J, Bai X, Huang J, Zhang B, et al. Emerging limb reha‑
+bilitation therapy after post-stroke motor recovery. Front Aging Neurosci. 
+2022;14:863379. https://​doi.​org/​10.​3389/​fnagi.​2022.​863379.
+	24.	 Kwakkel G, Veerbeek JM, van Wegen EEH, Wolf SL. Constraint-induced 
+movement therapy after stroke. Lancet Neurol. 2015;14(2):224–34. 
+https://​doi.​org/​10.​1016/​S1474-​4422(14)​70160-7.
+	25.	 Hammer A, Lindmark B. Is forced use of the paretic upper limb beneficial? 
+A randomized pilot study during subacute post-stroke recovery. Clin 
+Rehabil. 2009;23(5):424–33. https://​doi.​org/​10.​1177/​02692​15508​101734.
+	26.	 Arya KN, Pandian S, Joshi AK, Chaudhary N, Agarwal GG. Active sensory 
+therapies enhancing upper limb recovery among poststroke subjects: a 
+systematic review. Ann Neurosci. 2022;29:104. https://​doi.​org/​10.​1177/​
+09727​53122​10867​32.
+	27.	 Lang CE, Lohse KR, Birkenmeier RL. Dose and timing in neuroreha‑
+bilitation: prescribing motor therapy after stroke. Curr Opin Neurol. 
+2015;28(6):549–55. https://​doi.​org/​10.​1097/​WCO.​00000​00000​000256.
+
+
+--- PAGE 13 ---
+Page 13 of 14
+Rodríguez‑Hernández et al. Journal of NeuroEngineering and Rehabilitation           (2023) 20:38 
+	
+	28.	 Cooke EV, Mares K, Clark A, Tallis RC, Pomeroy VM. The effects of increased 
+dose of exercise-based therapies to enhance motor recovery after stroke: 
+a systematic review and meta-analysis. BMC Med. 2010;8(1):60. https://​
+doi.​org/​10.​1186/​1741-​7015-8-​60.
+	29.	 Krakauer JW, Kitago T, Goldsmith J, Ahmad O, Roy P, Stein J, et al. Compar‑
+ing a novel neuroanimation experience to conventional therapy for 
+high-dose intensive upper-limb training in subacute stroke: the SMARTS2 
+randomized trial. Neurorehabil Neural Repair. 2021;35(5):393–405. https://​
+doi.​org/​10.​1177/​15459​68321​10007​30.
+	30.	 Jamin P, Duret C, Hutin E, Bayle N, Koeppel T, Gracies JM, et al. Using 
+robot-based variables during upper limb robot-assisted training in suba‑
+cute stroke patients to quantify treatment dose. Sensors. 2022;22(8):2989. 
+https://​doi.​org/​10.​3390/​s2208​2989.
+	31.	 Meyer S, Verheyden G, Kempeneers K, Michielsen M. Arm-hand boost 
+therapy during inpatient stroke rehabilitation: a pilot randomized con‑
+trolled trial. Front Neurol. 2021;12:652042. https://​doi.​org/​10.​3389/​fneur.​
+2021.​652042.
+	32.	 DaSilvaCameirão M, Bermúdez I Badia S, Duarte E, Verschure PFMJ. Virtual 
+reality based rehabilitation speeds up functional recovery of the upper 
+extremities after stroke: a randomized controlled pilot study in the acute 
+phase of stroke using the rehabilitation gaming system. Restor Neurol 
+Neurosci. 2011;29(5):287–98. https://​doi.​org/​10.​3233/​RNN-​2011-​0599.
+	33.	 Mekbib DB, Han J, Zhang L, et al. Virtual reality therapy for upper limb 
+rehabilitation in patients with stroke: a meta-analysis of randomized clini‑
+cal trials. Brain Inj. 2020;34(4):456–65. https://​doi.​org/​10.​1080/​02699​052.​
+2020.​17251​26.
+	34.	 Thomson K, Pollock A, Bugge C, Brady M. Commercial gaming devices 
+for stroke upper limb rehabilitation: a systematic review. Int J Stroke. 
+2014;9(4):479–88. https://​doi.​org/​10.​1111/​ijs.​12263.
+	35.	 Ahmad MA, Singh DKA, MohdNordin NA, Hooi Nee K, Ibrahim N. Virtual 
+reality games as an adjunct in improving upper limb function and 
+general health among stroke survivors. Int J Environ Res Public Health. 
+2019;16(24):5144. https://​doi.​org/​10.​3390/​ijerp​h1624​5144.
+	36.	 Maier M, Rubio Ballester B, Duff A, Duarte Oller E, Verschure PFMJ. Effect 
+of specific over nonspecific VR-based rehabilitation on poststroke 
+motor recovery: a systematic meta-analysis. Neurorehabil Neural Repair. 
+2019;33(2):112–29. https://​doi.​org/​10.​1177/​15459​68318​820169.
+	37.	 Akinladejo FO. Virtual environments in physical therapy. Virtual Real 
+Environ. Published online April 27, 2012.
+	38.	 Sveistrup H. Motor rehabilitation using virtual reality. J NeuroEngineering 
+Rehabil. 2004;1(1):10. https://​doi.​org/​10.​1186/​1743-​0003-1-​10.
+	39.	 IkbaliAfsar S, Mirzayev I, UmitYemisci O, CosarSaracgil SN. Virtual reality 
+in upper extremity rehabilitation of stroke patients: a randomized con‑
+trolled trial. J Stroke Cerebrovasc Dis. 2018;27(12):3473–8. https://​doi.​org/​
+10.​2340/​16501​977-​2755.
+	40.	 Laver KE, George S, Thomas S, Deutsch JE, Crotty M. Virtual reality for 
+stroke rehabilitation. Cochrane Database Syst Rev. 2015;2:CD08349. 
+https://​doi.​org/​10.​1002/​14651​858.​CD008​349.​pub3.
+	41.	 Laver KE, Lange B, George S, Deutsch JE, Saposnik G, Crotty M. 
+Virtual reality for stroke rehabilitation. Cochrane Database Syst Rev. 
+2017;11:CD008349. https://​doi.​org/​10.​1002/​14651​858.​CD008​349.​pub4.
+	42.	 Cipresso P, Giglioli IAC, Raya MA, Riva G. The past, present, and future of 
+virtual and augmented reality research: a network and cluster analysis of 
+the literature. Front Psychol. 2018;9:2086. https://​doi.​org/​10.​3389/​fpsyg.​
+2018.​02086.
+	43.	 Martin-Martin J, Cuesta-Vargas AI, Labajos-Manzanares MT. Clinical effec‑
+tiveness of the therapeutic intervention on the hand with virtual reality in 
+hemiplegic subjects: a systematic review. Fisioterapia. 2015;37(1):27–34. 
+https://​doi.​org/​10.​1016/j.​ft.​2014.​02.​002.
+	44.	 Castellanos-Ruiz J, Pinzón-Bernal M, Giraldo-Samboní E. Virtual reality for 
+spastic hand in stroke patient. Syst Rev Rev Ecuat Neurol. 2020;29(2):67–
+77. https://​doi.​org/​10.​46997/​revec​uatne​urol2​92000​67.
+	45.	 Wu J, Zeng A, Chen Z, Wei Y, Huang K, Chen J, et al. Effects of virtual 
+reality training on upper limb function and balance in stroke patients: 
+systematic review and meta-meta-analysis. J Med Internet Res. 
+2021;23(10):e31051. https://​doi.​org/​10.​2196/​31051.
+	46.	 Bressi F, Santacaterina F, Cricenti L, Campagnola B, Nasto F, Assenza 
+C, et al. Robotic-assisted hand therapy with gloreha sinfonia for the 
+improvement of hand function after pediatric stroke: a case report. Appl 
+Sci. 2022;12(9):4206. https://​doi.​org/​10.​3390/​app12​094206.
+	47.	 De Rooij IJM, van de Port IGL, Meijer JWG. Effect of virtual reality training 
+on balance and gait ability in patients with stroke: systematic review and 
+meta-analysis. Phys Ther. 2016;96(12):1905–18. https://​doi.​org/​10.​2522/​
+ptj.​20160​054.
+	48.	 García C, Casuso MJ. Effectiveness of Wii Fit Balance board in comparison 
+with other interventions for post-stroke balance rehabilitation. Syst Rev 
+Meta-Anal Rev Neurol. 2019;69(07):271. https://​doi.​org/​10.​33588/​rn.​6907.​
+20190​91.
+	49.	 Schulz KF, Altman DG, Moher D, the CONSORT Group. CONSORT 2010 
+Statement: updated guidelines for reporting parallel group randomised 
+trials. BMC Med. 2010;8(1):18. https://​doi.​org/​10.​1136/​bmj.​c332.
+	50.	 Liu X, CruzRivera S, Moher D, Calvert MJ, Denniston AK, The SPIRIT-AI 
+and CONSORT-AI Working Group. Reporting guidelines for clinical trial 
+reports for interventions involving artificial intelligence: the CONSORT-
+AI extension. Nat Med. 2020;26(9):1364–74. https://​doi.​org/​10.​1038/​
+s41591-​020-​1034-x.
+	51.	 Rodríguez-Hernández M, Criado-Álvarez JJ, Corregidor-Sánchez AI, 
+Martín-Conty JL, Mohedano-Moriano A, Polonio-López B. Effects of virtual 
+reality-based therapy on quality of life of patients with subacute stroke: 
+a three-month follow-up randomized controlled trial. Int J Environ Res 
+Public Health. 2021;18(6):2810. https://​doi.​org/​10.​3390/​ijerp​h1806​2810.
+	52.	 Rodríguez-Hernández M, Polonio-López B, Corregidor-Sánchez AI, 
+Martín-Conty JL, Mohedano-Moriano A, Criado-Álvarez JJ. Effects of 
+specific virtual reality-based therapy for the rehabilitation of the upper 
+limb motor function post-ictus: randomized controlled trial. Brain Sci. 
+2021;11:555. https://​doi.​org/​10.​3390/​brain​sci11​050555.
+	53.	 Carmeli E, Peleg S, Bartur G, Elbo E, Vatine JJ. HandTutorTM enhanced 
+hand rehabilitation after stroke—a pilot study. Physiother Res Int. 
+2011;16(4):191–200. https://​doi.​org/​10.​1002/​pri.​485.
+	54.	 Rodríguez-Hernández M, Fernández-Panadero C, López-Martín O, 
+Polonio-López B. Hand rehabilitation after chronic brain damage: effec‑
+tiveness, usability and acceptance of technological devices: a pilot study. 
+In: Tan U, ed. Physical disabilities—therapeutic implications. InTech; 2017.
+	55.	 Rehametrics|Cuantificando la Rehabilitación Física y Cognitiva. Rehamet‑
+rics. https://​reham​etrics.​com/ Accessed 9 Jan 2021.
+	56.	 Saposnik G, Cohen LG, Mamdani M, et al. Efficacy and safety of non-
+immersive virtual reality exercising in stroke rehabilitation (EVREST): a 
+randomised, multicentre, single-blind, controlled trial. Lancet Neurol. 
+2016;15(10):1019–27. https://​doi.​org/​10.​1016/​S1474-​4422(16)​30121-1.
+	57.	 Sampaio-Baptista C, Sanders ZB, Johansen-Berg H. Structural plas‑
+ticity in adulthood with motor learning and stroke rehabilitation. 
+Annu Rev Neurosci. 2018;41(1):25–40. https://​doi.​org/​10.​1146/​annur​
+ev-​neuro-​080317-​062015.
+	58.	 Prange-Lasonder GB, Alt Murphy M, Lamers I, et al. European evidence-
+based recommendations for clinical assessment of upper limb in neu‑
+rorehabilitation (CAULIN): data synthesis from systematic reviews, clinical 
+practice guidelines and expert consensus. J NeuroEngineering Rehabil. 
+2021;18(1):162. https://​doi.​org/​10.​1186/​s12984-​021-​00951-y.
+	59.	 Kwakkel G, Lannin NA, Borschmann K, et al. Standardized measurement 
+of sensorimotor recovery in stroke trials: consensus-based core recom‑
+mendations from the stroke recovery and rehabilitation roundtable. Int J 
+Stroke. 2017;12(5):451–61. https://​doi.​org/​10.​1177/​17474​93017​711813.
+	60.	 González BMF. Adaptación y validación al español de la escala fugl-meyer 
+en el manejo de la rehabilitación de pacientes con ictus.:189. http://​hdl.​
+handle.​net/​11441/​40335.
+	61.	 Roman N, Miclaus R, Repanovici A, Nicolau C. Equal opportunities for 
+stroke survivors’ rehabilitation: a study on the validity of the upper 
+extremity Fugl-Meyer assessment scale translated and adapted into 
+Romanian. Medicina (Mex). 2020;56(8):409. https://​doi.​org/​10.​3390/​medic​
+ina56​080409.
+	62.	 Platz T, Pinkowski C, van Wijck F, Kim IH, di Bella P, Johnson G. Reliability 
+and validity of arm function assessment with standardized guidelines 
+for the Fugl-Meyer test, action research arm test and box and block test: 
+a multicentre study. Clin Rehabil. 2005;19(4):404–11. https://​doi.​org/​10.​
+1191/​02692​15505​cr832​oa.
+	63.	 Lin JH, Hsu MJ, Sheu CF, et al. Psychometric comparisons of 4 measures 
+for assessing upper-extremity function in people with stroke. Phys Ther. 
+2009;89(8):840–50. https://​doi.​org/​10.​2522/​ptj.​20080​285.
+	64.	 Lang CE, Wagner JM, Dromerick AW, Edwards DF. Measurement of upper-
+extremity function early after stroke: properties of the action research 
+
+
+--- PAGE 14 ---
+Page 14 of 14
+Rodríguez‑Hernández et al. Journal of NeuroEngineering and Rehabilitation           (2023) 20:38 
+•
+ 
+fast, convenient online submission
+ 
+•
+  
+thorough peer review by experienced researchers in your ﬁeld
+• 
+ 
+rapid publication on acceptance
+• 
+ 
+support for research data, including large and complex data types
+•
+  
+gold Open Access which fosters wider collaboration and increased citations 
+ 
+maximum visibility for your research: over 100M website views per year 
+•
+  
+At BMC, research is always in progress.
+Learn more biomedcentral.com/submissions
+Ready to submit your research
+Ready to submit your research ?  Choose BMC and benefit from: 
+?  Choose BMC and benefit from: 
+arm test. Arch Phys Med Rehabil. 2006;87(12):1605–10. https://​doi.​org/​10.​
+1016/j.​apmr.​2006.​09.​003.
+	65.	 Brashear A, Zafonte R, Corcoran M, et al. Inter- and intrarater reli‑
+ability of the Ashworth Scale and the Disability Assessment Scale in 
+patients with upper-limb poststroke spasticity. Arch Phys Med Rehabil. 
+2002;83(10):1349–54. https://​doi.​org/​10.​1053/​apmr.​2002.​35474.
+	66.	 Wang Z, Wang P, Xing L, Mei L, Zhao J, Zhang T. Leap Motion-based 
+virtual reality training for improving motor functional recovery of upper 
+limbs and neural reorganization in subacute stroke patients. Neural 
+Regen Res. 2017;12(11):1823. https://​doi.​org/​10.​4103/​1673-​5374.​219043.
+	67.	 Samuel G, Oey N, Choo M, Ju H, Chan W, Kok S, et al. Combining levo‑
+dopa and virtual reality-based therapy for rehabilitation of the upper limb 
+after acute stroke: pilot study Part II. Singapore Med J. 2017;58(10):610–7. 
+https://​doi.​org/​10.​11622/​smedj.​20161​11.
+	68.	 Oh YB, Kim GW, Han KS, et al. Efficacy of virtual reality combined with real 
+instrument training for patients with stroke: a randomized controlled trial. 
+Arch Phys Med Rehabil. 2019;100(8):1400–8. https://​doi.​org/​10.​1016/j.​
+apmr.​2019.​03.​013.
+	69.	 Taub E, Uswatte G, Mark VW, Morris DM, Barman J, Bowman MH, et al. 
+Method for enhancing real-world use of a more affected arm in chronic 
+stroke: transfer package of constraint-induced movement therapy. Stroke. 
+2013;44(5):1383–8. https://​doi.​org/​10.​1161/​STROK​EAHA.​111.​000559.
+	70.	 Dobkin BH. Rehabilitation after stroke. N Engl J Med. 2005;352(16):1677–
+84. https://​doi.​org/​10.​1056/​NEJMc​p0435​11.
+	71.	 Schuster-Amft C, Eng K, Suica Z, et al. Effect of a four-week virtual reality-
+based training versus conventional therapy on upper limb motor func‑
+tion after stroke: a multicenter parallel group randomized trial. PLoS ONE. 
+2018;13(10):e0204455. https://​doi.​org/​10.​1371/​journ​al.​pone.​02044​55.
+	72.	 Miclaus R, Roman N, Caloian S, et al. Non-immersive virtual reality for 
+post-stroke upper extremity rehabilitation: a small cohort randomized 
+trial. Brain Sci. 2020;10(9). https://​doi.​org/​10.​3390/​brain​sci10​090655.
+	73.	 Bevilacqua R, Maranesi E, Riccardi GR, et al. Non-immersive virtual reality 
+for rehabilitation of the older people: a systematic review into efficacy 
+and effectiveness. J Clin Med. 2019;8(11). https://​doi.​org/​10.​3390/​jcm81​
+11882
+	74.	 Daly JJ, McCabe JP, Holcomb J, Monkiewicz M, Gansen J, Pundik S. Long-
+dose intensive therapy is necessary for strong, clinically significant, upper 
+limb functional gains and retained gains in severe/moderate chronic 
+stroke. Neurorehabil Neural Repair. 2019;33(7):523–37. https://​doi.​org/​10.​
+1177/​15459​68319​846120.
+	75.	 Ward NS, Brander F, Kelly K. Intensive upper limb neurorehabilitation in 
+chronic stroke: outcomes from the Queen Square programme. J Neurol 
+Neurosurg Psychiatry. 2019;90(5):498–506. https://​doi.​org/​10.​1136/​
+jnnp-​2018-​319954.
+	76.	 McCabe J, Monkiewicz M, Holcomb J, Pundik S, Daly JJ. Comparison of 
+robotics, functional electrical stimulation, and motor learning methods 
+for treatment of persistent upper extremity dysfunction after stroke: a 
+randomized controlled trial. Arch Phys Med Rehabil. 2015;96(6):981–90. 
+https://​doi.​org/​10.​1016/j.​apmr.​2014.​10.​022.
+	77.	 Saposnik G, Levin M, for the Stroke Outcome Research Canada (SORCan) 
+Working Group. Virtual reality in stroke rehabilitation: a meta-analysis and 
+implications for clinicians. Stroke. 2011;42(5):1380–6. https://​doi.​org/​10.​
+1161/​STROK​EAHA.​110.​605451.
+	78.	 Ghai S, Ghai I, Lamontagne A. Virtual reality training enhances gait 
+poststroke: a systematic review and meta-analysis. Ann N Y Acad Sci. 
+2020;1478(1):18–42. https://​doi.​org/​10.​1111/​nyas.​14420.
+	79.	 Cassani R, Novak GS, Falk TH, Oliveira AA. Virtual reality and non-invasive 
+brain stimulation for rehabilitation applications: a systematic review. 
+J NeuroEngineering Rehabil. 2020;17(1). https://​doi.​org/​10.​1186/​
+s12984-​020-​00780-5.
+	80.	 Cano-Mañas MJ, Collado-Vázquez S, Rodríguez Hernández J, Muñoz 
+Villena AJ, Cano-de-la-Cuerda R. Effects of video-game based therapy 
+on balance, postural control, functionality, and quality of life of patients 
+with subacute stroke: a randomized controlled trial. J Healthc Eng. 
+2020;2020:1–11. https://​doi.​org/​10.​1155/​2020/​54803​15.
+Publisher’s Note
+Springer Nature remains neutral with regard to jurisdictional claims in pub‑
+lished maps and institutional affiliations.
+
+
+
+================================================================================
+FILE: Schuster-Amft_2018_2018_PMC6200191.pdf
+================================================================================
+
+--- PAGE 1 ---
+RESEARCH ARTICLE
+Effect of a four-week virtual reality-based
+training versus conventional therapy on
+upper limb motor function after stroke: A
+multicenter parallel group randomized trial
+Corina Schuster-AmftID1,2, Kynan Eng3, Zorica Suica1, Irene Thaler4, Sandra Signer5,
+Isabelle Lehmann4, Ludwig Schmid1,6, Michael A. McCaskey1,7*, Miura Hawkins3, Martin
+L. Verra4‡, Daniel Kiper3‡
+1 Research Department, Reha Rheinfelden, Rheinfelden, Switzerland, 2 Institute for Rehabilitation and
+Performance Technology, Bern University of Applied Sciences, Burgdorf, Switzerland, 3 Institute of
+Neuroinformatics, University of Zurich and ETH Zurich, Zurich, Switzerland, 4 Department of Physiotherapy,
+Insel Group, Bern University Hospital, Berne, Switzerland, 5 Physiotherapy Department, Buergerspital
+Solothurn, Solothurn, Switzerland, 6 Physiotherapy Department, Zurcher RehaZentrum Lengg, Zurich,
+Switzerland, 7 Institute of Human Movement Sciences, ETH Zurich, Zurich, Switzerland
+‡ These authors share the last authorship on this work.
+* michael.mccaskey@hest.ethz.ch
+Abstract
+Background
+Virtual reality-based training has found increasing use in neurorehabilitation to improve
+upper limb training and facilitate motor recovery.
+Objective
+The aim of this study was to directly compare virtual reality-based training with conventional
+therapy.
+Methods
+In a multi-center, parallel-group randomized controlled trial, patients at least 6 months after
+stroke onset were allocated either to an experimental group (virtual reality-based training) or
+a control group receiving conventional therapy (16x45 minutes within 4 weeks). The virtual
+reality-based training system replicated patients´ upper limb movements in real-time to
+manipulate virtual objects.
+Blinded assessors tested patients twice before, once during, and twice after the interven-
+tion up to 2-month follow-up for dexterity (primary outcome: Box and Block Test), bimanual
+upper limb function (Chedoke-McMaster Arm and Hand Activity Inventory), and subjective
+perceived changes (Stroke Impact Scale).
+Results
+54 eligible patients (70 screened) participated (15 females, mean age 61.3 years, range 20–
+81 years, time since stroke 3.0±SD 3 years). 22 patients were allocated to the experimental
+PLOS ONE | https://doi.org/10.1371/journal.pone.0204455
+October 24, 2018
+1 / 19
+a1111111111
+a1111111111
+a1111111111
+a1111111111
+a1111111111
+OPEN ACCESS
+Citation: Schuster-Amft C, Eng K, Suica Z, Thaler I,
+Signer S, Lehmann I, et al. (2018) Effect of a four-
+week virtual reality-based training versus
+conventional therapy on upper limb motor function
+after stroke: A multicenter parallel group
+randomized trial. PLoS ONE 13(10): e0204455.
+https://doi.org/10.1371/journal.pone.0204455
+Editor: Jacobus P. van Wouwe, TNO,
+NETHERLANDS
+Received: April 20, 2018
+Accepted: August 20, 2018
+Published: October 24, 2018
+Copyright: © 2018 Schuster-Amft et al. This is an
+open access article distributed under the terms of
+the Creative Commons Attribution License, which
+permits unrestricted use, distribution, and
+reproduction in any medium, provided the original
+author and source are credited.
+Data Availability Statement: The minimal dataset
+has been uploaded to a public repository and is
+available at: https://www.research-collection.ethz.
+ch/handle/20.500.11850/289756.
+Funding: The Swiss Commission for Technology
+and Innovation (project: 14454.1 PFLS-LS) and
+YouRehab AG (now renamed REHA STIM MEDTEC
+AG) funded the study. However, they had no
+influence on the study implementation, data
+
+
+--- PAGE 2 ---
+group and 32 to the control group (3 drop-outs). Patients in the experimental and control
+group improved: Box and Block Test mean 21.5±SD 16 baseline to mean 24.1±SD 17 fol-
+low-up; Chedoke-McMaster Arm and Hand Activity Inventory mean 66.0±SD 21 baseline to
+mean 70.2±SD 19 follow-up. An intention-to-treat analysis found no between-group
+differences.
+Conclusions
+Patients in the experimental and control group showed similar effects, with most improve-
+ments occurring in the first two weeks and persisting until the end of the two-month follow-
+up period. The study population had moderate to severely impaired motor function at entry
+(Box and Block Test mean 21.5±SD 16). Patients, who were less impaired (Box and Block
+Test range 18 to 72) showed higher improvements in favor of the experimental group. This
+result could suggest that virtual reality-based training might be more applicable for such
+patients than for more severely impaired patients.
+Trial registration
+ClinicalTrials.gov NCT01774669.
+Introduction
+Virtual reality-based rehabilitation systems are gaining popularity because of their ease of use,
+applicability to wide range of patients, and ability to provide patient-personalized training [1–
+3]. Additional reported benefits of virtual reality systems for both patients and health providers
+include increased therapy efficiency and a high level of attention in patients during training
+[4].
+One of the main struggles therapists encounter is keeping patients motivated throughout
+conventional training sessions. The Yerkes-Dodson Law describes the relationship between
+arousal or motivation and performance [5]. At first, an increase in arousal and motivation
+leads to an increase in performance. But once a certain point is reached, this point can vary
+based on many factors including the task, the participant, and the context, the relationship
+becomes inverse and increases in arousal caused decreases in performance. In line with these
+ideas, previous research has shown that increased performance leads to greater improvement
+in patients after stroke up to a certain point. Virtual reality-based systems allow manipulation
+of arousal through training settings to ensure that peak performance is maintained for as large
+a portion of the therapy time as possible [6].
+Laver et al. systematically evaluated the literature regarding the efficacy of virtual reality-
+based training in stroke rehabilitation in 2011 and in its updates in 2015 and 2017 [3, 7, 8].
+Their current meta-analysis of 22 trials including 1038 patients after stroke that focused on
+upper limb function did not reveal a statistically significant difference between VR-based
+training and conventional therapy (0.07 standard deviation higher in virtual reality-based
+compared to conventional therapy. Furthermore, the authors rated the quality of evidence as
+low, based on the GRADE system. However, for ADL function the experimental groups
+showed a 0.25 higher standard deviation than the conventional therapy groups based on ten
+studies, including 466 patients after a stroke with moderate quality of evidence.
+Virtual reality-based training vs. conventional therapy
+PLOS ONE | https://doi.org/10.1371/journal.pone.0204455
+October 24, 2018
+2 / 19
+collection, data analyses and interpretation, or
+manuscript writing.
+Competing interests: All co-authors report grants
+from Swiss Commission for Technology and
+Innovation and non-financial support from
+YouRehab AG (now renamed REHA STIM MEDTEC
+AG) during the conduct of the study. KE and DK
+declare personal fees from YouRehab AG (now
+renamed REHA STIM MEDTEC AG) outside the
+submitted work. In addition, KE and DK have a
+patent US13060344 (Adjustable virtual reality
+system) with royalties paid to YouRehab AG (now
+renamed REHA STIM MEDTEC AG) and were co-
+founder and KE former CTO (part-time) of
+YouRehab AG (now renamed REHA STIM MEDTEC
+AG) during part of the study period. The study
+funding organization, the Swiss Commission for
+Technology and Innovation, had no authority over
+and was not involved in the study design; the
+collection, management, analysis or interpretation
+of data; the writing of the report; and the decision
+to submit the report for publication. The study
+sponsor (YouRehab AG (now renamed REHA
+STIM MEDTEC AG)) was involved in the study
+design. They did not write the study report and did
+not have authority over the decision to submit the
+study report for publication.
+
+
+--- PAGE 3 ---
+Only 10% of the included studies included more than 50 participants, with mean ages
+between 46 to 76 years. However, due to the different systems used no conclusion could be
+drawn regarding grip strength, dosage, type or program of the virtual reality-based training.
+Furthermore, the authors pointed out the low sample sizes and the low methodological quality
+of the reported trials. In their recommendations for further research, the authors encouraged
+researchers and clinicians again to conduct larger trials and to increase the detail in reporting
+to enable more firm conclusions.
+YouGrabber (now renamed Bi-Manu Trainer), a game-based virtual reality system
+designed for upper-limb rehabilitation, has been shown to be effective in children with cere-
+bral palsy. A 2-subject feasibility study indicated that the findings might extend to chronic
+stroke patients [9, 10]. Both male subjects, who were trained three years after insult onset,
+showed increases in scores for the bimanual activities of daily living focused Chedoke McMas-
+ter Arm and Hand Activity Inventory (CAHAI) that persisted at the final follow-up, and corre-
+sponding cortical changes measured with fMRI.
+Based on these findings the present multicenter parallel group randomized single-blinded
+trial aimed to investigate the efficacy of a virtual reality-based training with the YouGrabber
+training device (now renamed Bi-Manu Trainer) compared to conventional therapy. The
+study was designed to test the hypothesis that patients in the chronic stage after stroke in the
+virtual reality-based training group will show no higher post-intervention performance in the
+Box and Block Test (BBT) compared to patients receiving an equal training time of physiother-
+apy or occupational therapy.
+For comparison with published and ongoing international studies we selected the Box and
+Block Test as the primary outcome measure and the CAHAI as the secondary outcome
+measure.
+Methods and materials
+Study design
+This prospective, multicenter, single-blinded, parallel-group randomized trial was conducted
+in the outpatient departments of three rehabilitation hospitals in the German and French
+speaking parts of Switzerland: University hospital Inselspital Bern, Buergerspital Solothurn,
+and Reha Rheinfelden. In the study plan, each hospital was responsible for the recruitment,
+assessment, and therapy of 20 patients: 10 patients for the experimental group (EG) and 10 for
+the control group (CG), respectively.
+More details regarding the study methodology can be found in the study flow chart in Fig 1
+and the previously published study protocol strictly followed by each center (http://
+trialsjournal.biomedcentral.com/articles/10.1186/1745-6215-15-350) [11]. Ethics approval was
+warranted by the ethics committee of the Canton Aargau (2012/065) and the Canton Berne
+(220/12). The study was registered with ClinicalTrials.gov: NCT01774669 before the start of
+patient recruitment.
+Participants
+In order to meet the inclusion criteria, each patient had to be at least six months after his or
+her first-ever stroke (ischemic or hemorrhagic) with a persistent motor deficit of the arm and
+hand, indicated by a Chedoke-McMaster Stroke Assessment (CMSA) score of three or greater
+on the arm subscale and two or greater on the hand subscale. If one of the CMSA subscales
+scored seven, the difference to the other subscale had to be at least two. Patients had to be able
+to sit in a normal chair without armrests or backrest support and to score at least one on the
+Box and Block Test, which was the primary outcome measure. Patients were excluded from
+Virtual reality-based training vs. conventional therapy
+PLOS ONE | https://doi.org/10.1371/journal.pone.0204455
+October 24, 2018
+3 / 19
+
+
+--- PAGE 4 ---
+the study if they had previous or current functional deficits of the arm and hand motor func-
+tion not due to stroke, severe cognitive deficits indicated by a Mini-Mental State Examination
+score of 20 or lower, severe visual disorders, or a history of epileptic seizures triggered by visual
+stimuli within the past six months.
+Patients were informed about the study in oral and written form and gave written informed
+consent before data collection began.
+Furthermore, for descriptive purposes patients were evaluated with the Extended Barthel
+Index (EBI) [12], the Edinburgh Handedness Inventory (EHI) [13], the Mini Mental State
+Examination (MMSE) [14], and with the Line Bisection Test (LBS) [15]. Table 1 provides an
+overview of all outcome measures and measurement sessions.
+Randomization and masking
+If a patient met all eligibility criteria, he/she was randomly assigned to either the experimental
+group (EG) or the control group (CG) after the second baseline measurement session.
+Group allocation (1:1 ratio) was based on one computer-generated randomization list for
+all centers. The randomization list was created on blocks of 10 and was generated by a
+Fig 1. Patient flow chart. BS = Buergerspital Solothurn, IS = Inselspital Bern, Reha Rheinfelden Measurement sessions: twice
+within one to two weeks before intervention start (BL, T0), once after eight (T1) and after 16 (T2) intervention sessions, and after
+a two months follow-up period (FU).
+https://doi.org/10.1371/journal.pone.0204455.g001
+Virtual reality-based training vs. conventional therapy
+PLOS ONE | https://doi.org/10.1371/journal.pone.0204455
+October 24, 2018
+4 / 19
+
+
+--- PAGE 5 ---
+researcher not involved in the study (MATLAB release 2007b; MathWorks, Natick, MA,
+USA).
+The randomization list was stored at one clinic’s pharmacy only to avoid disclosing the
+group allocation. The treating therapist of the respective clinic called the pharmacy before the
+first therapy or training appointment of the respective patient to obtain the group allocation.
+Only study therapists, who were specifically trained in the study methodology, were allowed to
+call, which was verified by the pharmacist on duty. Group allocation was not recorded on any
+assessment document. Group allocation was only noticeable based on the selected training or
+therapy documentation sheets that were kept locked and separated from the assessment docu-
+ments. A row of measures was implemented to keep group allocation concealed from the
+blinded assessors until the last follow-up measurement session of the last patient. Two patients
+disclosed their group allocation during the third out of five measurement sessions. In these
+cases, the measurement sessions three to five were video recorded to ensure objective and
+unbiased assessment scoring.
+Procedures
+Patients were assessed at five measurement sessions: twice within one to two weeks before
+intervention start (BL, T0), once after eight (T1) and after 16 (T2) intervention sessions, and
+after a two-month follow-up period (FU). For statistical analyses, average scores of BL and T0
+were used as one pre-intervention score = (BL+T0)/2.
+The intervention consisted of four 45-minute training sessions per week over a four-week
+period for patients in both groups. The EG underwent a virtual reality-based training for all 16
+sessions and the CG underwent conventional physiotherapy or occupational therapy. The
+therapy and virtual reality-based training are described using the Template for Intervention
+Description and Replication (TIDieR) in Table 2 [16].
+If patients received any kind of additional therapy before trial participation, it was reduced
+or suspended for the course of the study if the patient agreed. If the additional therapy had to
+be continued or could not be reduced, it was ensured that its focus was on lower extremity
+treatments.
+Table 1. Outcome measures and measurement sessions.
+Assessment
+Abbreviation Outcome
+Measurement sessions
+BL
+T0
+T1
+T2
+FU
+Primary outcome
+Box and Block Test
+BBT
+Hand dexterity
+X
+X
+X
+X
+X
+Secondary outcomes
+Chedoke McMaster Arm and Hand Activity
+Inventory
+CAHAI-13
+Activity (ADL)
+X
+X
+X
+X
+X
+Stroke Impact Scale
+SIS
+Impact of stroke on ADL, mobility, emotion, memory, strength,
+communication
+X
+X
+X
+X
+X
+Outcomes for descriptive purposes
+Extended Barthel Index
+EBI
+Independence in ADL
+X
+Chedoke-McMaster Stroke Assessment
+CMSA
+Motor impairment
+X
+Edinburgh Handedness Inventory
+EHI
+Handedness
+X
+Mini Mental State Examination
+MMSE
+Cognitive screening
+X
+Line Bisection Test
+LBT
+Neglect
+X
+ADL = Activities of daily living; BL = Baseline, FU = Follow-up 2 months after study treatment finalization; T0 = Pre-intervention; T1 = after eight intervention
+sessions; T2 = posttest after 16 intervention sessions.
+https://doi.org/10.1371/journal.pone.0204455.t001
+Virtual reality-based training vs. conventional therapy
+PLOS ONE | https://doi.org/10.1371/journal.pone.0204455
+October 24, 2018
+5 / 19
+
+
+--- PAGE 6 ---
+Outcomes
+Table 1 lists the primary outcome measure and all secondary outcome measures for each mea-
+surement session. Adverse events were registered and transferred to the responsible ethics
+committee if the applicable criteria for transfer were met. A detailed description of all outcome
+measures can be found in the published study protocol (https://trialsjournal.biomedcentral.
+com/articles/10.1186/1745-6215-15-350).
+Table 2. Study intervention description based on the TIDieR checklist [16].
+Item
+Experimental group
+Control group
+1
+Brief name
+Virtual reality-based training system
+Conventional therapy
+2
+Why
+Both interventions were compared directly in chronic stroke patients for two reasons:
+1. One-to-one therapy sessions in an adequate amount are limited by health insurance company restrictions.
+2. If virtual reality-based technology is used, and YG in particular, patients and therapists wanted to know if the treatment effect is the same.
+If yes, YG could be used to increase the amount of training time with the technology, or it could be recommended as group- or home-based
+virtual reality training, which would not be the case if YG performed worse.
+3
+What: materials
+EG patients were sitting or standing in front of the virtual reality
+training system. They wore hand gloves with attached sensors to
+measure finger movements of the thumb, index finger, middle
+finger, wrist (bending, extending) and lower upper limb
+(pronation, supination). Movements were displayed on the screen
+in real time.
+No restrictions were placed on the material used (for example, ADL
+material, reaching and grasping material). Use of additional electrical or
+mechanical therapy devices (for example, help arm systems, splints)
+were avoided.
+4
+What:
+procedures
+The virtual reality-based system has a variety of training
+applications for different movements and at different levels of
+difficulty. Therapists could select one of three modes to control the
+on-screen finger and arm movements: (1) use of the real arm and/
+or hand movements, (2) mirroring of the real movements of one
+arm and/or hand and (3) following the movements of one arm
+and/or hand. The distribution and speed of the appearing objects
+were attuned. Furthermore, patients’ movements could be
+amplified or modulated in the virtual environment to force
+decreases or increases in training difficulty [17]. After the second
+virtual reality-based training session, patients had tested all
+training applications and all three modes of finger and/or hand
+movements. In the remaining 14 sessions, therapists selected at
+least 3 training applications for each training session and 2
+different movement modes with settings adapted to each patient’s
+needs.
+The therapy content focused on a task-related upper-limb treatment in a
+sitting or standing position. Several manual techniques, therapy
+materials and objects of ADL were performed [18, 19]. Three main
+aspects were considered during therapy: (1) neuromuscular
+interventions (NDT)–about 75% of the therapy content, (2) body
+structural interventions (BSI)–about 20% of the therapy content, (3)
+perceptual and sensory interventions (PSI)–about 5% of the therapy
+content.
+(1) NDT included neurodevelopmental/motor learning treatment
+focusing on postural control (5%), fine and gross motor skills (65%),
+and coordination (30%).
+(2) BSI included stretching (5%), passive/assistive mobilization of body
+structures and joints (45%), and training for specific muscles or muscles
+groups in an assistive, active or resistance mode (50%).
+(3) SI included proprioception (25%) and haptic perception (75%)
+exercises.
+5
+Who provides
+Both study interventions were provided by experienced physiotherapists or occupational therapists, who had at least 2 years of professional
+experience in the field of neurorehabilitation.
+6
+How
+Both study interventions were conducted individually in one-to-one sessions.
+7
+Where
+Both study interventions took place in the physiotherapy or occupational therapy department of each participating center.
+8
+When and how
+much
+During the 4-week intervention program, patients in both study groups (EG, CG) received the same amount of 16 sessions lasting 45 minutes
+each. Therapist and patient contact time varied between 25 to 60minutes (average 453min) for both groups including greeting, organization
+of next appointment, short clinical examination, changes since last appointment, training or therapy itself, and farewell. Patients in the EG
+performed between 267 to 4283 grasps if the right paretic hand/arm and 102 to 5077 grasps if the left hand/arm was paretic over the 16
+training sessions.
+9
+Tailoring
+Training and therapy content was tailored to each patient’s preferences, the agreed movement aims and the motor function level of each
+patient.
+10
+Modifications
+No modification occurred during the course of the study.
+11
+How well
+All 22 patients (100%) in the virtual reality-based training group and 30 (93.8%) patients in the conventional therapy group completed the
+training. That was evaluated by the training and therapy documentation forms for both groups that were filled in during each training
+session.
+12
+ADL, Activities of daily living; CG, Control group; EG, Experimental group; TIDieR, Template for Intervention Description and Replication checklist and guide; VR,
+Virtual reality; YG, YouGrabber (now renamed Bi-Manu Trainer).
+https://doi.org/10.1371/journal.pone.0204455.t002
+Virtual reality-based training vs. conventional therapy
+PLOS ONE | https://doi.org/10.1371/journal.pone.0204455
+October 24, 2018
+6 / 19
+
+
+--- PAGE 7 ---
+Changes in hand dexterity between T0 and T2 were measured with the BBT, which was
+described by Mathiowetz et al. in 1985 [20]. Patients were asked to grasp small wooden cubes
+and move them from one side of the box to the other as fast as possible within 60 seconds. The
+BBT provides normative data for healthy individuals in age groups ranging from 20 years to
+older than 75. A change of five or six cubes before and after an intervention seems to be the
+smallest real difference [21].
+The CAHAI-13 was developed by Barreca et al. in 2004 [22–25]. It contains 13 bimanually
+performed real-life items. Scores represent the patient’s relative ability to independently per-
+form stabilisation or manipulation in ADL with the impaired upper limb. A score of one repre-
+sents total dependence on another person, and a score of seven indicates patient independence
+without time or safety concerns or necessary splints or devices.
+The SIS is a questionnaire comprising questions regarding the impact of stroke on physical
+function, emotion, memory, communication and social participation. The SIS was developed
+by Duncan and colleagues and has been modified in recent years [26–28]. The current version,
+3.0, consists of eight subscales (strength, hand function, mobility, ADL, emotion, memory,
+communication and participation) administered in a one-to-one interview. Patients can rate
+the level of their stroke’s impact on a 5-point Likert scale. The higher the score, the less affected
+the patient perceives his or her current status to be.
+The Extended Barthel Index was used for patient evaluation of independence in ADL [12].
+The EBI comprises 16 items on mobility, ADL and cognitive function. Scoring ranges from
+zero to four with four indicating the highest level of independence.
+The CMSA was developed by Gowland et al. in 1995 for the evaluation of physical
+impairment and activity level of stroke patients [29]. We used the impairment subscales for
+hand and arm function that was scored on a seven-point scale (1 = hypoactive or absent mus-
+cle reflexes, 7 = no functional impairment detectable anymore, prestroke status) according to
+seven stages of motor recovery [30]. Additionally, the subscale of shoulder pain of the affected
+body side was administered on the same seven-point scale.
+The Edinburgh Handedness Inventory was used to assess hand laterality [13]. The ques-
+tionnaire included 12 daily activities were participants had to determine their preferred hand
+(right/left).
+For cognitive screening the Mini-Mental State Examination (MMSE) was conducted. The
+MMSE comprised 30 items and patients could achieve zero to 30 points (indicating the highest
+scoring) [14].
+The Line bisection test (LBT) is a paper-and-pencil test used to evaluate the presence of uni-
+lateral spatial neglect [15]. Patients were asked to mark the centre of 18 drawn lines on paper
+with a pencil.
+Statistical analyses
+The sample size was calculated based on the basis of an earlier efficacy study, in which the virtual
+reality-based system was tested in children with cerebral palsy [9]. A power analysis and a sample
+size calculation for the present study were performed using GPower software version 3.1.5 [31]. In
+the cited study of children, the BBT (primary outcome measure) showed an effect size of Cohen’ s
+d = 0.98. Assuming a similar effect size for adult stroke patients, a total of 46 patients (23 per group)
+had to be included: two-tailed test, power = 0.9, significance level α = 0.05. Assuming a dropout
+rate of 20%, we thus planned to recruit a total of 60 patients across the participating centers.
+All statistical analyses were conducted using the Statistical Package for Social Sciences
+(SPSS) version 23.0 (IBM, 290 Armonk, New York, USA) with a two-sided significance level of
+p0.05 as an intention-to-treat analysis.
+Virtual reality-based training vs. conventional therapy
+PLOS ONE | https://doi.org/10.1371/journal.pone.0204455
+October 24, 2018
+7 / 19
+
+
+--- PAGE 8 ---
+Variables were checked for normal distribution with the Shapiro-Wilk test.
+1. Due to observable mean differences at baseline we checked for baseline significant differ-
+ences for age, time since stroke, BBT, CAHAI, and SIS subscale hand function (subscale 7).
+Due to non-normal distribution, we used the Mann-Whitney U-Test that did not reveal sig-
+nificant differences between EG and CG at BL.
+2. Due to non-normal distribution of primary and secondary outcome measures we calculated
+the differences between each measurement session. Again, the differences were tested for
+normal distribution, which was not the case. Subsequently, the differences were tested
+using the Friedman test for repeated measures to determine changes over time for both
+groups. The Mann-Whitney U-Test was used to test for group differences of the changes
+for each measurement session.
+3. All outcome analyses were intention-to-treat analyses with missing values replaced with
+two methods: carrying the last observable value forward or backward and by adding or sub-
+tracting the mean change of the group [32, 33]. This sensitivity analysis did not materially
+change the results. For the primary outcome analysis, the differences of the BBT scores of
+the paretic side for each measurement session were the dependent variables. For the sec-
+ondary outcome analyses, dependent variables were the difference scores of the CAHAI,
+the SIS subscales 1, 5, 6, 7, 9, the SIS mobility index, and the BBT scores of the non-paretic
+side. To correct the p-value for multiple comparisons the Bonferroni adjustment (p = 005/
+k) was used, where k represents the number of tests for significance (k = 3) [34].
+4. No post-hoc power analysis was conducted due to the lack of a group interaction effect.
+Nevertheless, we calculated the effect for the four-week training intervention for each
+group separately and the standardized mean difference between groups with the following
+formula: Kazis’ effect size = (pre-intervention score-post-intervention score)/standard devi-
+ation of pre-intervention score [35].
+Results
+The study was conducted between December 1, 2012, and February 15, 2016 including the last
+follow-up assessment. In total, with a recruitment rate of 1.3, 54 patients were included, of
+whom 22 patients received virtual reality-based training (40.7%) and 32 (59.3%) patients
+received conventional therapy. All 22 patients (100%) in the virtual reality-based training
+group and 30 (93.8%) patients in the conventional therapy group completed the training.
+Table 3 provides an overview of all patient baseline characteristics and Fig 1 shows the
+study patient flow chart. There were no baseline characteristic differences except for the SIS
+mobility index with p = 0.05 (please see Table 4).
+Figs 2 and 3 illustrate the change scores for BBT of the paretic hand and the CAHAI. All
+change scores of the primary and secondary outcomes are provided in Table 4. supporting
+information S1–S4 Figs illustrate the change scores of further SIS subscales and BBT scores for
+the non-paretic hand.
+After the intervention period (T2), which included 16 training or therapy sessions lasting
+45 minutes each, both groups showed highly significant mean differences from Pre to FU for
+hand dexterity assessed with the primary outcome measure BBT (mean change from Pre to
+FU for EG: 1.7 points, for CG: 3.5 points). A similar result was found for the secondary out-
+come measure bilateral arm function assessed with the CAHAI-13 (mean change from Pre to
+FU for EG: 5.4 points, CG: 3.1 points). Based on the findings from Chen et al. and Barreca
+et al., a change of 5.5 points in the BBT and of 6.3 points in the CAHAI-13 would have been
+Virtual reality-based training vs. conventional therapy
+PLOS ONE | https://doi.org/10.1371/journal.pone.0204455
+October 24, 2018
+8 / 19
+
+
+--- PAGE 9 ---
+necessary for a clinical relevant change [21, 24]. However, for both outcomes no between-
+group differences were detected.
+In the study protocol no subgroup analyses were pre-specified. However, two non-signifi-
+cant trends based on the median score of the BBT and the CAHAI became obvious and were
+further investigated. In subgroup analyses based on (1) the median value for BBT (18 blocks)
+and (2) the CAHAI (score of 72) no differences could be detected (p>0.121).
+1. For patients, who scored higher or equal as the median value of 18 in the BBT at pre-inter-
+vention (EG = 12, CG = 16) there was an improving trend to T2 (p = 0.08) in favor of the
+experimental group. On average, patients in the experimental group improved from 10.9
+(±5.0) to 13.7 (±5.8) at T2 (mean ± SD), whereas patients in the control group changed
+from 7.4 (±6.1) to 9.0 (±8.0) at T2 (mean ± SD).
+2. For patients, who scored less or equal as the median value 72 in the CAHAI at pre-interven-
+tion (EG = 11, CG = 16) there was an improving trend to T2 (p = 0.07) in favor of the exper-
+imental group. On average, patients in the experimental group progressed from CAHAI a
+score of 51.6 (±12.2) to 63.3 (±14.3) at T2 (mean ± SD), whereas patients in the control
+group changed from a CAHAI score of 44.5 (±16.2) to 47.7 (±16.8) at T2 (mean ± SD).
+Table 3. Patients’ baseline characteristics for personal, diagnosis- and screening-related information.
+Virtual reality-based training
+(n = 22)
+(mean ± SD, range)
+Conventional therapy
+(n = 32)
+(mean ± SD, range)
+Age (years)
+61.3 ± 13.4
+(22.9–81.0)
+61.2 ± 11.2
+(20.0–78.3)
+Gender (female/male)
+6 / 16
+9 / 23
+Marital status (married / living alone)
+15 / 7
+21 / 10
+Time since stroke (years)
+2.4 ± 2.4 (0.4–9.5)
+3.6 ± 3.7 (0.45–13.7)
+Time of additional PT and/or OT (min/
+week)
+67.1 ± 44.5 (0–180)
+83.3 ± 56.0 (0–210)
+Extended Barthel Index (max. 64)
+60.4 ± 5.6 (41–64)
+59.5 ± 6.7 (30–64)
+Mini-Mental State Examination (max. 30)
+28.6 ± 1.0 (27–30)
+28.4 ± 2.0 (23–30)
+Chedoke-McMaster Stroke Assessment
+Subscale: Shoulder pain (max. 7)
+5.2 ± 1.1 (4–7)
+5.4 ± 1.4 (2–7)
+Subscale: Arm function (max. 7)
+4.0 ± 1.0 (3–7)
+4.0 ± 1.0 (3–6)
+Subscale: Hand function (max. 7)
+4.3 ± 0.9 (3–6)
+4.2 ± 1.4 (2–7)
+Stroke (ischemic/hemorraghic)
+18 / 4
+25 / 7
+Dominant side paretic (n)
+Right hand dom.+par.
+13
+14
+Right hand dom.+left hand par.
+8
+15
+Left hand dom.+par.
+0
+1
+Left hand dom.+right hand par.
+1
+2
+Experience with
+Working with a PC (yes/no)
+21/0
+25/6
+Virtual reality (yes/no)
+21/0
+17/14
+PC games (yes/no)
+21/0
+16/15
+The Mann-Whitney U-Test was used to determine significant differences between EG and CG at BL. However, there
+were no baseline for the parameters displayed in Table 3.
+ = data of one participant missing, ADL = Activities of daily living, PT = physiotherapy, OT = occupational therapy,
+dom. = dominant, par. = paretic, VR = virtual reality. Numbers in brackets represent median and range (rounded).
+https://doi.org/10.1371/journal.pone.0204455.t003
+Virtual reality-based training vs. conventional therapy
+PLOS ONE | https://doi.org/10.1371/journal.pone.0204455
+October 24, 2018
+9 / 19
+
+
+--- PAGE 10 ---
+Table 4. Details of primary and secondary outcomes.
+Outcome measure
+YouGrabber Training n = 22
+Mean changes over time compared to pre-
+intervention score
+Conventional therapy n = 32
+Mean changes over time compared to pre-
+intervention score
+Between group differences for all
+ME
+Median (IQR)
+p-value
+Median (IQR)
+p-value
+Z-value
+p-value
+Primary outcome
+Box and Block Test paretic side
+Pre-intervention (T0)
+19.3 (11.9 to 360)
+—
+17.8 (4.3 to 280)
+—
+-0.863
+0.388
+After 8 trainings (T1)
+22.5 (13.8 to 37.8)
+0.006
+21.0 (6.3 to 33.8)
+0.002
+-0.317
+0.751
+After 16 trainings (T2)
+22.0 (15.3 to 35.8)
+0.02
+20.5 (5.5 to 34.5)
+0.003
+-0.203
+0.839
+After 2 months (FU)
+19.5 (15.5 to 39.3)
+0.069
+21.5 (7.3 to 36.3)
+0.001
+-0.951
+0.341
+Secondary outcomes
+Chedoke McMaster Arm and Hand Activity Inventory (13–91)
+Pre-intervention (T0)
+73.8 (47.0 to 83.6)
+—
+72.0 (44.6 to 84.4)
+—
+-0.297
+0.771
+After 8 trainings (T1)
+75.0 (59.8 to 86.8)
+0.001
+77.5 (43.8 to 87.0)
+0.002
+-1.375
+0.169
+After 16 trainings (T2)
+77.0 (61.2 to 85.0)
+0.01
+72.0 (47.3 to 89.0)
+0.001
+-0.864
+0.387
+After 2 months (FU)
+77.0 (60.0 to 89.0)
+0.001
+77.0 (45.3 to 87.0)
+0.002
+-0.546
+0.585
+Stroke Impact Scale: subscale 1 strength (0–100)
+Pre-intervention (T0)
+60.9 (52.3 to 72.7)
+—
+59.4 (43.8 to 68.8)
+—
+-0.371
+0.711
+After 8 trainings (T1)
+68.8 (54.7 to 71.9)
+0.037
+62.5 (50.0 to 73.4)
+0.713
+-1.659
+0.097
+After 16 trainings (T2)
+68.8 (50.0 to 78.1)
+0.001
+62.5 (50.0 to 73.4)
+0.159
+-2.189
+0.290
+After 2 months (FU)
+68.8 (56.3 to 75.0)
+0.002
+65.6 (50.0 to 75.0)
+0.48
+-1.904
+0.057
+Stroke Impact Scale: subscale 5 activities of daily living (0–100)
+Pre-intervention (T0)
+83.6 (65.4 to 90.9)
+—
+73.4 (65.4 to 83.3)
+—
+-1.294
+0.196
+After 8 trainings (T1)
+86.5 (69.8 to 97.2)
+0.001
+77.1 (70.8–86.5)
+0.15
+-1.55
+0.121
+After 16 trainings (T2)
+89.6 (70.3 to 97.9)
+0.001
+81.3 (68.8–87.0)
+0.004
+-1.340
+0.180
+After 2 months (FU)
+90.2 (78.1 to 95.8)
+0.001
+83.3 (64.6–87.5)
+0.052
+-1.532
+0.125
+Stroke Impact Scale: subscale 6 mobility (0–100)
+Pre-intervention (T0)
+90.0 (74.7 to 99.1)
+—
+86.9 (76.6 to 94.4)
+—
+-1.235
+0.217
+After 8 trainings (T1)
+93.8 (81.8 to 100.0)
+0.015
+77.1 (70.8 to 86.5)
+0.191
+-0.65
+0.516
+After 16 trainings (T2)
+92.5 (83.8 to 100.0)
+0.091
+92.5 (78.1 to 96.9)
+0.015
+-0.265
+0.791
+After 2 months (FU)
+95.0 (81.9 to 100.0)
+0.243
+91.3 (78.1 to 97.5)
+0.302
+-0.204
+0.839
+Stroke Impact Scale: subscale 7 hand function (0–100)
+Pre-intervention (T0)
+65.0 (37.5 to 81.3)
+—
+43.8 (20.6 to 74.4)
+—
+-1.648
+0.099
+After 8 trainings (T1)
+75.0 (45.0 to 86.3)
+0.001
+62.5 (25.0 to 80.0)
+0.004
+-0.601
+0.548
+After 16 trainings (T2)
+77.5 (55.0 to 86.3)
+0.004
+62.5 (21.3 to 85.0)
+0.001
+-0.574
+0.566
+After 2 months (FU)
+72.5 (62.5 to 90.0)
+0.011
+72.5 (25.0 to 90.0)
+0.001
+-0.538
+0.591
+Stroke Impact Scale: subscale 9 stroke recovery (0–100)
+Pre-intervention (T0)
+54.5 (44.4 to 72.8)
+—
+61.3 (47.0 to 70.0)
+—
+-0.890
+0.374
+After 8 trainings (T1)
+60.0 (50.0 to 77.3)
+0.003
+60.0 (55.0 to 73.8)
+0.277
+-1.107
+0.268
+After 16 trainings (T2)
+64.0 (53.8 to 76.3)
+0.001
+64.0 (50.0 to 77.3)
+0.033
+-1.603
+0.109
+After 2 months (FU)
+69.0 (48.8 to 75.0)
+0.012
+70.0 (50.0 to 78.0)
+0.288
+-0.411
+0.681
+Stroke Impact Scale: mobility index (0–5)
+Pre-intervention (T0)
+4.4 (3.7 to 4.5)
+—
+3.8 (3.5 to 4.3)
+—
+-1.960
+0.050
+After 8 trainings (T1)
+4.6 (4.0 to 5.0)
+0.002
+4.0 (3.5 to 4.5)
+0.006
+-0.238
+0.812
+After 16 trainings (T2)
+4.6 (4.0 to 5.0)
+0.023
+4.0 (3.5 to 4.5)
+0.003
+-0.106
+0.916
+After 2 months (FU)
+4.6 (4.0 to 5.0)
+0.006
+4.0 (3.5 to 4.5)
+0.001
+-0.108
+0.914
+BBT non-paretic side
+Pre-intervention (T0)
+54.0 (44.8 to 59.9)
+—
+49.8 (43.5 to 56.6)
+—
+-1.057
+0.291
+After 8 trainings (T1)
+58.0 (45.8 to 65.0)
+0.001
+50.5 (45.0 to 59.5)
+0.033
+-1.216
+0.224
+(Continued)
+Virtual reality-based training vs. conventional therapy
+PLOS ONE | https://doi.org/10.1371/journal.pone.0204455
+October 24, 2018
+10 / 19
+
+
+--- PAGE 11 ---
+Scoring of both groups in the SIS changed significantly in subscales hand function, activities
+of daily living, and mobility index, but not for subscale mobility. Interestingly, for subscale
+strength both groups showed large self-perceived increases with a trend in favor of the experi-
+mental group (p = 0.057), who improved their mean value from pre-intervention to FU by
+about eight points. By comparison, the control group improved their mean value by almost
+three points (see Table 3 and supporting information S1 to S4 Figs).
+Table 4. (Continued)
+Outcome measure
+YouGrabber Training n = 22
+Mean changes over time compared to pre-
+intervention score
+Conventional therapy n = 32
+Mean changes over time compared to pre-
+intervention score
+Between group differences for all
+ME
+Median (IQR)
+p-value
+Median (IQR)
+p-value
+Z-value
+p-value
+After 16 trainings (T2)
+57.5 (46.0 to 65.0)
+0.008
+53.0 (46.3 to 59.8)
+0.001
+-0.273
+0.785
+After 2 months (FU)
+59.0 (45.8 to 64.5)
+0.001
+54.5 (46.3 to 63.8)
+0.001
+-0.273
+0.785
+The Friedman test for repeated measures was used to determine changes over time for both groups. The Mann-Whitney U-Test was used to test for group differences of
+the changes for each measurement session. A significant difference was found for the SIS mobility index at pre-intervention. The p-value is marked in bold.
+BBT = Box and Block Text, CAHAI = Chedoke McMaster Arm and Hand Activity Inventory, FU = Follow-up, SIS = Stroke Impact Scale, SS = subscale
+ significant p-Level after Bonferroni adjustment (p = 0.05/k)
+k represents number of tests for significance (k = 3).
+https://doi.org/10.1371/journal.pone.0204455.t004
+Fig 2. Change in Box und Block Test: paretic hand. Pre = Pre-intervention, T1 = after 8 training sessions, T2 = after 16 training sessions, FU = follow-up after two
+months.
+https://doi.org/10.1371/journal.pone.0204455.g002
+Virtual reality-based training vs. conventional therapy
+PLOS ONE | https://doi.org/10.1371/journal.pone.0204455
+October 24, 2018
+11 / 19
+
+
+--- PAGE 12 ---
+Effect sizes were reported in the supporting information S1 Table for each group separately.
+They range between 0.13 and 0.52 for BBT, CAHAI, and SIS upper limb related subscales, e.g.
+strength, ADL, and hand function, excluding subscale mobility.
+For the whole course of both interventions no adverse events in relation to study participa-
+tion were reported. Before randomization, three patients expected adverse events due to differ-
+ent reasons not related to the study and were excluded—please see the patient flow chart for
+details in Fig 1.
+Discussion
+The present multicenter parallel group randomized controlled trial aimed to investigate the
+efficacy of a virtual reality-based training with YouGrabber compared to conventional therapy
+as stand-alone therapy in patients in the chronic stage after stroke. As hypothesized, both
+patient groups significantly improved their performance in primary and secondary outcomes
+but did not show between-group differences after eight or 16 training sessions or after the two-
+month follow-up. These results are in line with recent publications on VR-based training from
+Brunner et al. and the systematic review update from Laver et al. [8, 36]. However, three non-
+significant trends should be further discussed: (1) subjectively perceived improved strength
+trend in the virtual reality-based training group compared to the CG, (2) the main scoring
+increase over the first eight compared to the second eight training sessions, and (3) the
+increased scoring in the BBT of the non-affected upper limb.
+Fig 3. Change in Chedoke McMaster Arm and Hand Activity Inventory. Pre = Pre-intervention, T1 = after 8 training sessions, T2 = after 16 training sessions,
+FU = follow-up after two months.
+https://doi.org/10.1371/journal.pone.0204455.g003
+Virtual reality-based training vs. conventional therapy
+PLOS ONE | https://doi.org/10.1371/journal.pone.0204455
+October 24, 2018
+12 / 19
+
+
+--- PAGE 13 ---
+Comparison with other studies
+Repetition of movement is one of the fundamental principles for motor re-learning and facili-
+tating brain plasticity to improve motor function [37]. In our study, the differences in the sub-
+jectively improved strength measured with the SIS could be explained by the very high
+numbers of repetitions of arm and finger movements preformed during the YG games. The
+training in EG was very much focused on active finger, hand and arm movements that could
+lead up to 5000 grasp movements over 16 training sessions. However, only patients in the CG
+performed a resistance training with heavy objects, e.g. weights but with a lesser amount of
+repetitions.
+The main scoring increase occurred within the first eight training sessions that were sched-
+uled during the first two weeks of the intervention. During the second two intervention weeks,
+scores further increased albeit to a lesser degree or they remained on the same level. The Yer-
+kes-Dodson Law, first explained by Yerkes and Dodson in 1908, is a dose-response framework
+that describes a relationship between arousal or motivation and performance and might help
+to explain that phenomenon [5]. It indicates that a low level of task difficulties elicits linear
+responses. Reaching a higher level of difficulty, the relationship becomes inverse and increases
+in arousal could cause decreases in performance. From our patients, we know that they
+enjoyed playing the virtual reality-based games and always reached for a higher score or a
+faster performance [38]. The intensive training could have reached a point when a higher
+intensity is necessary to push the functional improvements and patient motivation further, e.g.
+longer than 45 minutes per day or more than four times per week.
+It is worth mentioning that patients in both groups scored approximately 20 points below
+the average score in the BBT with their non-paretic upper limb compared to healthy individu-
+als of the same mean age. Mathiowetz et al. suggested a norm score above 70 for healthy
+women and men for the left and right side [20]. Patients in both groups improved their BBT
+scoring with 4.6 (EG) and 4.4 (CG) from baseline to follow-up. That distinct scoring change of
+the non-paretic upper limb over the four measurement sessions is somewhat surprising. One
+would assume that patients 2.5 to 3.5 years after stroke would use the non-paretic upper limb
+more throughout the day to compensate for the reduced motor function of the paretic side
+and would have developed even more hand and arm dexterity over time compared to healthy
+individuals. However, it could be hypothesized that the non-paretic hand/arm compensated
+for the non-use of the paretic hand/arm. Furthermore, the reduced overall activity and motor
+function after stroke and intensive carer assistance could have led to a more sedentary lifestyle
+and a learned non-use for the non-paretic side as well. A BBT performance difference of the
+paretic and non-paretic arm depending on side of brain lesion as suggested by Steward et al.
+could not be detected [39].
+Overall, our results are in line with the previous publications comparing virtual reality-
+based training using a commercial consumer virtual reality training systems, e.g. Nintendo
+Wii, XBox, Playstation with conventional therapy including patients in a chronic stage after
+stroke [40–42]. One difference in our study was that we used a system that was specifically
+developed for patients with sensorimotor impairments. The system offers different display
+modes of the arms (a) real left/right hands control their virtual counterparts, (b) virtual mirror
+therapy, in which one real hand controls both virtual arms or the contralateral virtual hand in
+a mirrored fashion, or (c) virtual following that is the same as for virtual mirror therapy, but
+without mirroring [43].
+Our results continue the work from Saposnik et al., who included 121 light to moderately
+impaired inpatients in a subacute stage after stroke [44]. They used a commercial virtual real-
+ity-based system for a two-week training program including ten 60-minute sessions as an
+Virtual reality-based training vs. conventional therapy
+PLOS ONE | https://doi.org/10.1371/journal.pone.0204455
+October 24, 2018
+13 / 19
+
+
+--- PAGE 14 ---
+adjunct to the multidisciplinary program and found significant improvements over time for
+both groups but no between-group differences.
+Furthermore, our results are in line with findings from a recent systematic review on virtual
+reality-based training in stroke rehabilitation from Aminov et al. [45]. Researchers reported
+small to moderate effect sizes in favor of virtual reality-based training ideally performed with a
+purposed-designed virtual reality design system similar to the system used in our multi-center
+study. Supporting our study design the authors of the systematic review and meta-analysis
+reported higher effects in favor of virtual reality-based training for patients three or more
+months post stroke, with more than 15 training sessions in total including more than three
+training sessions per week adding up to more than 100 minutes per week. We also included
+outcome measures to evaluate all three main categories of the International Classification of
+Function: body structure and function, activity, and participation.
+Future research directions should consider the potential of virtual reality-based training system
+to increase the efficiency of training in terms of human resources. Currently, the number of avail-
+able therapists is not sufficient compared to the increasing number of patients. To supply the
+required dose of therapy to the number of patients after stroke experiencing motor deficits, it
+would be interesting if our results could be replicated with virtual reality-based group training ses-
+sions compared to individually supervised trainings. With virtual reality, most of the time of the
+therapy session could be automated and therefore could be completed without the constant super-
+vision of a therapist. Furthermore, a system could even be installed in the patient’s home and the
+setup instructions given remotely, removing the burden of clinic visits.
+Limitations and strengths
+One limitation of our study is the number of patients per group. Despite the well-prepared
+randomization scheme the imbalances occurred by chance. Patients were randomized at study
+entry but held confidential until they passed both baseline assessments (BL, T0). However, it
+happened that patients did not pass the baseline assessments or had to be excluded for several
+reasons, which led to an uneven number of patients per group and could have therefore led to
+an under- or overestimation of the effect of the virtual reality-based training.
+A common problem in RCTs investigating therapies or training procedures is in blinding
+the patients regarding their group allocation. In our study, only one patient withdrew study
+participation after being randomized into the control group. All other patients stated that they
+were happy with their group allocation and showed high compliance. The study had a very low
+dropout rate of 1.6%.
+Our sample size calculation was based on a previous study that used the same VR-based
+training system and included children with cerebral palsy. Their effect size was higher com-
+pared to other VR-based training systems [8].
+A remarkable strength of our study is the inclusion of moderate to severely impaired
+patients in both groups, who were able to move at least one wooden cube in the BBT. The
+adjustable virtual reality-based system was adaptable to amplify even very tiny movements and
+therefore enabled the patient to play or train with his/her severely impaired hand or arm. That
+could have led to an increased motivation and desire to move or use the paretic upper limb
+during the day more often.
+From Kwakkel et al. and Verheyden et al. we know that recovery occurs mainly in the first
+six month [46, 47]. However, the majority of our patients started later than six months post
+stroke. Their improvement could reflect some training effect on a functional level or the use of
+behavioural adaptation strategies rather than by restitution of existing underlying impairments
+themselves.
+Virtual reality-based training vs. conventional therapy
+PLOS ONE | https://doi.org/10.1371/journal.pone.0204455
+October 24, 2018
+14 / 19
+
+
+--- PAGE 15 ---
+In our study, it was an important aspect to open the black box of conventional therapy and
+provide the clinician with specific information on the therapy content of the CG. Therefore,
+we analyzed and summarized the content of the therapy down to a very detailed level based on
+the classification system laid out by Pollock and colleagues in their Cochrane review on inter-
+ventions for improving upper limb function after stroke [48].
+Conclusions
+In conclusion, with the YouGrabber (now renamed Bi-Manu-Trainer) we used a virtual real-
+ity-based training system that was specifically developed for patients with sensorimotor
+impairments with three different display modes of the hand and arms as a safe training option.
+Virtual reality-based training and conventional physiotherapy and occupational therapy did
+not show significant differences when applied as a supervised one-to-one training. Virtual
+reality-based training and conventional therapy showed differently weighted therapy contents.
+However, considering the increasing numbers of patients after stroke in the future and the lim-
+ited personnel and financial resources, a virtual reality-based training could support the reha-
+bilitation process by increasing training time for patients with virtual reality-based group
+training sessions in inpatient or outpatient settings or at the patients’ home.
+Supporting information
+S1 File.
+(PDF)
+S2 File.
+(PDF)
+S1 Table. Effect sizes. Effect sizes range from 0.13 to 0.52 for upper limb related subscales, e.g.
+strength, ADL, and hand function, excluding subscale mobility.
+(DOCX)
+S1 Fig. Change in Stroke Impact Scale: Subscale strength. Pre = Pre-intervention, T1 = after
+8 training sessions, T2 = after 16 training sessions, FU = follow-up after two months.
+(TIF)
+S2 Fig. Change in Stroke Impact Scale: Subscale activities of daily living. Pre = Pre-inter-
+vention, T1 = after 8 training sessions, T2 = after 16 training sessions, FU = follow-up after
+two months.
+(TIF)
+S3 Fig. Change in Stroke Impact Scale: Subscale stroke recovery. Pre = Pre-intervention,
+T1 = after 8 training sessions, T2 = after 16 training sessions, FU = follow-up after two
+months.
+(TIF)
+S4 Fig. Change in Stroke Impact Scale: Mobility index. Pre = Pre-intervention, T1 = after 8
+training sessions, T2 = after 16 training sessions, FU = follow-up after two months.
+(TIF)
+Acknowledgments
+The authors are grateful to all patients, who participated in the study and we would like to
+thank Dr. Edith Chevier, Dr. Pawel Pyk, Nagisa Kobashi, and Gary Honegger for technical
+Virtual reality-based training vs. conventional therapy
+PLOS ONE | https://doi.org/10.1371/journal.pone.0204455
+October 24, 2018
+15 / 19
+
+
+--- PAGE 16 ---
+support, Dr. Markus Sto¨cklin for statistical advice, and Dr. Frank Behrendt for the production
+of all statistical figures.
+Author Contributions
+Conceptualization: Corina Schuster-Amft, Kynan Eng, Zorica Suica, Irene Thaler, Sandra
+Signer, Isabelle Lehmann, Ludwig Schmid, Michael A. McCaskey, Miura Hawkins, Martin
+L. Verra, Daniel Kiper.
+Data curation: Corina Schuster-Amft, Irene Thaler, Sandra Signer, Isabelle Lehmann, Ludwig
+Schmid, Miura Hawkins.
+Formal analysis: Corina Schuster-Amft, Kynan Eng, Miura Hawkins.
+Funding acquisition: Kynan Eng, Daniel Kiper.
+Investigation: Corina Schuster-Amft, Kynan Eng, Zorica Suica, Irene Thaler, Sandra Signer,
+Isabelle Lehmann, Ludwig Schmid, Michael A. McCaskey, Martin L. Verra, Daniel Kiper.
+Methodology: Corina Schuster-Amft, Kynan Eng, Zorica Suica, Irene Thaler, Sandra Signer,
+Isabelle Lehmann, Ludwig Schmid, Michael A. McCaskey, Miura Hawkins, Martin L.
+Verra, Daniel Kiper.
+Project administration: Corina Schuster-Amft, Kynan Eng, Zorica Suica, Irene Thaler, San-
+dra Signer, Isabelle Lehmann, Ludwig Schmid, Michael A. McCaskey, Daniel Kiper.
+Resources: Kynan Eng, Zorica Suica.
+Software: Kynan Eng.
+Supervision: Corina Schuster-Amft, Irene Thaler, Sandra Signer, Isabelle Lehmann, Ludwig
+Schmid, Michael A. McCaskey, Martin L. Verra, Daniel Kiper.
+Validation: Zorica Suica, Miura Hawkins.
+Visualization: Kynan Eng.
+Writing – original draft: Corina Schuster-Amft.
+Writing – review & editing: Corina Schuster-Amft, Kynan Eng, Zorica Suica, Irene Thaler,
+Sandra Signer, Isabelle Lehmann, Ludwig Schmid, Michael A. McCaskey, Miura Hawkins,
+Martin L. Verra, Daniel Kiper.
+References
+1.
+Dimbwadyo-Terrer I, Trincado-Alonso F, de Los Reyes-Guzman A, Aznar MA, Alcubilla C, Perez-Nom-
+bela S, et al. Upper limb rehabilitation after spinal cord injury: a treatment based on a data glove and an
+immersive virtual reality environment. Disabil Rehabil Assist Technol. 2016; 11(6):462–7. https://doi.
+org/10.3109/17483107.2015.1027293 PMID: 26181226.
+2.
+Kalron A, Fonkatz I, Frid L, Baransi H, Achiron A. The effect of balance training on postural control in
+people with multiple sclerosis using the CAREN virtual reality system: a pilot randomized controlled
+trial. Journal of NeuroEngineering and Rehabilitation. 2016; 13(1):1–10. https://doi.org/10.1186/
+s12984-016-0124-y PMID: 26925955
+3.
+Laver KE, George S, Thomas S, Deutsch JE, Crotty M. Virtual reality for stroke rehabilitation. Cochrane
+Database Syst Rev. 2015; 2:CD008349. https://doi.org/10.1002/14651858.CD008349.pub3 PMID:
+25927099.
+4.
+Saposnik G, Teasell R, Mamdani M, Hall J, McIlroy W, Cheung D, et al. Effectiveness of virtual reality
+using Wii gaming technology in stroke rehabilitation: a pilot randomized clinical trial and proof of princi-
+ple. Stroke. 2010; 41(7):1477–84. Epub 2010/05/29. STROKEAHA.110.584979 [pii] https://doi.org/10.
+1161/STROKEAHA.110.584979 PMID: 20508185.
+Virtual reality-based training vs. conventional therapy
+PLOS ONE | https://doi.org/10.1371/journal.pone.0204455
+October 24, 2018
+16 / 19
+
+
+--- PAGE 17 ---
+5.
+Schmidt RA. Motor control and learning: a behavioral emphasis. 2nd ed. Champaign, Illinois: Human
+Kinetics Publishers, Inc.; 1988. XI, 578 S. p.
+6.
+Feigenson JS, McDowell FH, Meese P, McCarthy ML, Greenberg SD. Factors influencing outcome and
+length of stay in a stroke rehabilitation unit. Part 1. Analysis of 248 unscreened patients—medical and
+functional prognostic indicators. Stroke. 1977; 8(6):651–6. PMID: 929650.
+7.
+Laver KE, George S, Thomas S, Deutsch JE, Crotty M. Virtual reality for stroke rehabilitation. Cochrane
+Database Syst Rev. 2011;(9):CD008349. Epub 2011/09/09. https://doi.org/10.1002/14651858.
+CD008349.pub2 PMID: 21901720.
+8.
+Laver KE, Lange B, George S, Deutsch JE, Saposnik G, Crotty M. Virtual reality for stroke rehabilitation.
+Cochrane Database Syst Rev. 2017; 11:CD008349. https://doi.org/10.1002/14651858.CD008349.
+pub4 PMID: 29156493.
+9.
+van Hedel HJA, Wick K, Eng K, Meyer-Heim A. Improving dexterity in children with cerebral palsy: Pre-
+liminary results of a randomised trial evaluating a glove based VR-system. [Poster]. In press 2011.
+10.
+Schuster-Amft C, Henneke A, Hartog-Keisker B, Holper L, Siekierka E, Chevrier E, et al. Intensive vir-
+tual reality-based training for upper limb motor function in chronic stroke: a feasibility study using a sin-
+gle case experimental design and fMRI. Disabil Rehabil: Assist Technol. 2014; 10(5):385–92. https://
+doi.org/10.3109/17483107.2014.908963 PMID: 24730659.
+11.
+Schuster-Amft C, Eng K, Lehmann I, Schmid L, Kobashi N, Thaler I, et al. Using mixed methods to eval-
+uate efficacy and user expectations of a virtual reality-based training system for upper-limb recovery in
+patients after stroke: a study protocol for a randomised controlled trial. Trials. 2014; 15(1):350. Epub
+2014/09/10. 1745-6215-15-350 [pii] https://doi.org/10.1186/1745-6215-15-350 PMID: 25194928.
+12.
+Jansa J, Pogacnik T, Gompertz P. An evaluation of the Extended Barthel Index with acute ischemic
+stroke patients. Neurorehabil Neural Repair. 2004; 18(1):37–41. https://doi.org/10.1177/
+0888439003262287 PMID: 15046015.
+13.
+Oldfield RC. The assessment and analysis of handedness: the Edinburgh Inventory. Neuropsychologia.
+1971; 9(1):97–113. Epub 1971/03/01. PMID: 5146491.
+14.
+Folstein MF, Folstein SE, McHugh PR. "Mini-mental state". A practical method for grading the cognitive
+state of patients for the clinician. J Psychiatr Res. 1975; 12(3):189–98. PMID: 1202204.
+15.
+Plummer P, Morris ME, Dunai J. Assessment of unilateral neglect. Phys Ther. 2003; 83(8):732–40.
+PMID: 12882614
+16.
+Hoffmann TC, Glasziou PP, Boutron I, Milne R, Perera R, Moher D, et al. Better reporting of interven-
+tions: template for intervention description and replication (TIDieR) checklist and guide. BMJ. 2014;
+348. https://doi.org/10.1136/bmj.g1687 PMID: 24609605
+17.
+Eng K, Siekierka E, Pyk P, Chevrier E, Hauser Y, Cameirao M, et al. Interactive visuo-motor therapy
+system for stroke rehabilitation. Med Biol Eng Comput. 2007; 45(9):901–7. Epub 2007/08/10. https://
+doi.org/10.1007/s11517-007-0239-1 PMID: 17687578.
+18.
+Barreca S, Wolf SL, Fasoli S, Bohannon R. Treatment interventions for the paretic upper limb of stroke
+survivors: a critical review. Neurorehabilitation and neural repair. 2003; 17(4):220–6. https://doi.org/10.
+1177/0888439003259415 PMID: 14677218.
+19.
+Luke C, Dodd K, Brock K. Outcomes of the Bobath concept on upper limb recovery following stroke.
+Clinical rehabilitation. 2004; 18(8):888–98. https://doi.org/10.1191/0269215504cr793oa PMID:
+15609844
+20.
+Mathiowetz V, Volland G, Kashman N, Weber K. Adult norms for the Box and Block Test of manual dex-
+terity. Am J Occup Ther. 1985; 39. https://doi.org/10.5014/ajot.39.6.386
+21.
+Chen HM, Chen CC, Hsueh IP, Huang SL, Hsieh CL. Test-retest reproducibility and smallest real differ-
+ence of 5 hand function tests in patients with stroke. Neurorehabil Neural Repair. 2009; 23. https://doi.
+org/10.1177/1545968308331146 PMID: 19261767
+22.
+Barreca S, Gowland CK, Stratford P, Huijbregts M, Griffiths J, Torresin W, et al. Development of the
+Chedoke Arm and Hand Activity Inventory: theoretical constructs, item generation, and selection. Top
+Stroke Rehabil. 2004; 11(4):31–42. Epub 2004/12/14. https://doi.org/10.1310/JU8P-UVK6-68VW-
+CF3W PMID: 15592988.
+23.
+Barreca S, Stratford P, Masters L, Lambert CL, Griffiths J, McBay C. Validation of Three Shortened Ver-
+sions of the Chedoke Arm and Hand Activity Inventory. Physiother Can. 2006; 58:148–56. https://doi.
+org/10.2310/6640.2006.00031
+24.
+Barreca SR, Stratford PW, Lambert CL, Masters LM, Streiner DL. Test-retest reliability, validity, and
+sensitivity of the Chedoke arm and hand activity inventory: a new measure of upper-limb function for
+survivors of stroke. Arch Phys Med Rehabil. 2005; 86(8):1616–22. https://doi.org/10.1016/j.apmr.2005.
+03.017 PMID: 16084816.
+Virtual reality-based training vs. conventional therapy
+PLOS ONE | https://doi.org/10.1371/journal.pone.0204455
+October 24, 2018
+17 / 19
+
+
+--- PAGE 18 ---
+25.
+Schuster C, Hahn S, Ettlin T. Objectively-assessed outcome measures: a translation and cross-cultural
+adaptation procedure applied to the Chedoke McMaster Arm and Hand Activity Inventory (CAHAI).
+BMC Med Res Methodol. 2010; 10:106. Epub 2010/12/01. 1471-2288-10-106 [pii] https://doi.org/10.
+1186/1471-2288-10-106 PMID: 21114807; PubMed Central PMCID: PMC3004924.
+26.
+Duncan PW, Wallace D, Lai SM, Johnson D, Embretson S, Laster LJ. The stroke impact scale version
+2.0. Evaluation of reliability, validity, and sensitivity to change. Stroke. 1999; 30(10):2131–40. PMID:
+10512918.
+27.
+Duncan PW, Wallace D, Studenski S, Lai SM, Johnson D. Conceptualization of a new stroke-specific
+outcome measure: The Stroke Impact Scale. Top Stroke Rehabil. 2001; 8(2):19–33. https://doi.org/10.
+1310/BRHX-PKTA-0TUJ-UYWT PMID: 14523743.
+28.
+Lin K-c, Fu T, Wu C-y, Wang Y-h, Liu J-s, Hsieh C-j, et al. Minimal Detectable Change and Clinically
+Important Difference of the Stroke Impact Scale in Stroke Patients. Neurorehabil Neural Repair. 2010;
+24(5):486–92. https://doi.org/10.1177/1545968309356295 PMID: 20053950
+29.
+Gowland C, VanHullenaar S, Torresin W, Moreland J, Vanspall B, Barreca S, et al. Chedoke-McMaster
+Stroke Assessment: development, validation, and administration manual. Hamilton (ON): School of
+Rehabilitation Science, McMaster University; 1995.
+30.
+Gowland CA. Staging motor impairment after stroke. Stroke. 1990; 21(9 Suppl):II19–21. PMID:
+2399544.
+31.
+Faul F, Erdfelder E, Lang A-G, Buchner A. GPower. 3.0.8 ed. Du¨sseldorf: Heinrich Heine Universita¨t;
+2007.
+32.
+Powney M, Williamson P, Kirkham J, Kolamunnage-Dona R. A review of the handling of missing longitu-
+dinal outcome data in clinical trials. Trials. 2014; 15:237. https://doi.org/10.1186/1745-6215-15-237
+PMID: 24947664; PubMed Central PMCID: PMC4087243.
+33.
+Armijo-Olivo S, Warren S, Magee D. Intention to treat analysis, compliance, drop-outs and how to deal
+with missing data in clinical research: a review. Phys Ther Rev. 2009; 14:36–49. https://doi.org/10.
+1179/174328809X405928
+34.
+Armstrong RA. When to use the Bonferroni correction. Ophthalmic Physiol Opt. 2014; 34(5):502–8.
+https://doi.org/10.1111/opo.12131 PMID: 24697967.
+35.
+Leonhart R. [Estimating effect sizes in clinical trials]. Rehabilitation. 2004; 43(4):241–6. https://doi.org/
+10.1055/s-2004-828293 PMID: 15318292.
+36.
+Brunner I, Skouen JS, Hofstad H, Assmus J, Becker F, Sanders AM, et al. Virtual Reality Training for
+Upper Extremity in Subacute Stroke (VIRTUES): A multicenter RCT. Neurology. 2017; 89(24):2413–
+21. https://doi.org/10.1212/WNL.0000000000004744 PMID: 29142090.
+37.
+Winstein C, Lewthwaite R, Blanton SR, Wolf LB, Wishart L. Infusing motor learning research into neu-
+rorehabilitation practice: a historical perspective with case exemplar from the accelerated skill acquisi-
+tion program. J Neurol Phys Ther. 2014; 38(3):190–200. Epub 2014/05/16. https://doi.org/10.1097/
+NPT.0000000000000046 PMID: 24828523.
+38.
+Lehmann I, Baer G, Schuster-Amft C. Experience of an upper limb training program with a non-immer-
+sive virtual reality system in patients after stroke: a qualitative study. Physiother. 2017:In press.
+39.
+Stewart JC, Gordon J, Winstein CJ. Control of reach extent with the paretic and nonparetic arms after
+unilateral sensorimotor stroke: kinematic differences based on side of brain damage. Experimental
+Brain Research. 2014; 232(7):2407–19. https://doi.org/10.1007/s00221-014-3938-5 PMID: 24718494
+40.
+da Silva Ribeiro NM, Ferraz DD, Pedreira E, Pinheiro I, da Silva Pinto AC, Neto MG, et al. Virtual reha-
+bilitation via Nintendo Wii(R) and conventional physical therapy effectively treat post-stroke hemiparetic
+patients. Top Stroke Rehabil. 2015; 22(4):299–305. https://doi.org/10.1179/1074935714Z.0000000017
+PMID: 26258455.
+41.
+Thielbar KO, Lord TJ, Fischer HC, Lazzaro EC, Barth KC, Stoykov ME, et al. Training finger individua-
+tion with a mechatronic-virtual reality system leads to improved fine motor control post-stroke. J Neu-
+roeng Rehabil. 2014; 11:171. https://doi.org/10.1186/1743-0003-11-171 PMID: 25542201; PubMed
+Central PMCID: PMC4292811.
+42.
+Rand D, Givon N, Weingarden H, Nota A, Zeilig G. Eliciting upper extremity purposeful movements
+using video games: a comparison with traditional therapy for stroke rehabilitation. Neurorehabilitation
+and neural repair. 2014; 28(8):733–9. https://doi.org/10.1177/1545968314521008 PMID: 24515927.
+43.
+Siekierka EM, Eng K, Bassetti C, Blickenstorfer A, Cameirao MS, Dietz V, et al. New technologies and
+concepts for rehabilitation in the acute phase of stroke: a collaborative matrix. Neurodegener Dis. 2007;
+4(1):57–69. https://doi.org/10.1159/000100360 PMID: 17429220.
+44.
+Saposnik G, Cohen LG, Mamdani M, Pooyania S, Ploughman M, Cheung D, et al. Efficacy and safety
+of non-immersive virtual reality exercising in stroke rehabilitation (EVREST): a randomised, multicentre,
+Virtual reality-based training vs. conventional therapy
+PLOS ONE | https://doi.org/10.1371/journal.pone.0204455
+October 24, 2018
+18 / 19
+
+
+--- PAGE 19 ---
+single-blind, controlled trial. The Lancet Neurology. 2016. https://doi.org/10.1016/S1474-4422(16)
+30121-1 PMID: 27365261
+45.
+Aminov A, Rogers JM, Middleton S, Caeyenberghs K, Wilson PH. What do randomized controlled trials
+say about virtual rehabilitation in stroke? A systematic literature review and meta-analysis of upper-limb
+and cognitive outcomes. J NeuroEng Rehabil. 2018; 15(1):29. https://doi.org/10.1186/s12984-018-
+0370-2 PMID: 29587853
+46.
+Kwakkel G, Kollen B, Lindeman E. Understanding the pattern of functional recovery after stroke: facts
+and theories. Restor Neurol Neurosci. 2004; 22(3–5):281–99. PMID: 15502272.
+47.
+Verheyden G, Nieuwboer A, De Wit L, Thijs V, Dobbelaere J, Devos H, et al. Time course of trunk, arm,
+leg, and functional recovery after ischemic stroke. Neurorehabilitation and neural repair. 2008; 22
+(2):173–9. https://doi.org/10.1177/1545968307305456 PMID: 17876069.
+48.
+Pollock A, Farmer SE, Brady MC, Langhorne P, Mead GE, Mehrholz J, et al. Interventions for improving
+upper limb function after stroke. Cochrane Database Syst Rev. 2014; 11:CD010820. Epub 2014/11/12.
+https://doi.org/10.1002/14651858.CD010820.pub2 PMID: 25387001.
+Virtual reality-based training vs. conventional therapy
+PLOS ONE | https://doi.org/10.1371/journal.pone.0204455
+October 24, 2018
+19 / 19
+
+
+
+================================================================================
+FILE: Shin_2022_2022_PMC9782087.pdf
+================================================================================
+
+--- PAGE 1 ---
+Citation: Shin, S.; Lee, H.-J.; Chang,
+W.H.; Ko, S.H.; Shin, Y.-I.; Kim, Y.-H.
+A Smart Glove Digital System
+Promotes Restoration of Upper Limb
+Motor Function and Enhances
+Cortical Hemodynamic Changes in
+Subacute Stroke Patients with Mild to
+Moderate Weakness: A Randomized
+Controlled Trial. J. Clin. Med. 2022,
+11, 7343. https://doi.org/10.3390/
+jcm11247343
+Academic Editors: Naoki Yoshida,
+Yohei Okada, Hideki Nakano and
+Akiyoshi Matsugi
+Received: 28 October 2022
+Accepted: 8 December 2022
+Published: 10 December 2022
+Publisher’s Note: MDPI stays neutral
+with regard to jurisdictional claims in
+published maps and institutional afﬁl-
+iations.
+Copyright:
+© 2022 by the authors.
+Licensee MDPI, Basel, Switzerland.
+This article is an open access article
+distributed
+under
+the
+terms
+and
+conditions of the Creative Commons
+Attribution (CC BY) license (https://
+creativecommons.org/licenses/by/
+4.0/).
+Journal of
+Clinical Medicine
+Article
+A Smart Glove Digital System Promotes Restoration of Upper
+Limb Motor Function and Enhances Cortical Hemodynamic
+Changes in Subacute Stroke Patients with Mild to Moderate
+Weakness: A Randomized Controlled Trial
+Seyoung Shin 1,†
+, Hwang-Jae Lee 2,†
+, Won Hyuk Chang 1
+, Sung Hwa Ko 3
+, Yong-Il Shin 3,4,*
+and Yun-Hee Kim 1,5,*
+1
+Department of Physical and Rehabilitation Medicine, Center for Prevention and Rehabilitation, Heart
+Vascular Stroke Institute, Samsung Medical Center, Sungkyunkwan University School of Medicine,
+Seoul 06351, Republic of Korea
+2
+Robot Business Team, Samsung Electronics, Suwon 16677, Republic of Korea
+3
+Department of Rehabilitation Medicine, Pusan National University School of Medicine, Pusan National
+University Yangsan Hospital, Yangsan 50612, Republic of Korea
+4
+Research Institute of Convergence for Biomedical Science and Technology, Pusan National University
+Yangsan Hospital, Yangsan 50612, Republic of Korea
+5
+Department of Health Science and Technology, Department of Medical Devices Management and Research,
+Department of Digital Healthcare, SAIHST, Sungkyunkwan University, Seoul 06355, Republic of Korea
+*
+Correspondence: rmshin01@gmail.com (Y.-I.S.); yun1225.kim@samsung.com (Y.-H.K.);
+Tel.: +82-51-360-2872 (Y.-I.S.); +82-2-3410-2824 (ext. 2818) (Y.-H.K.); Fax: +82-2-3410-0388 (Y.-H.K.)
+†
+These authors contributed equally to this work.
+Abstract: This study was a randomized controlled trial to examine the effects of the RAPAEL® Smart
+Glove digital training system on upper extremity function and cortical hemodynamic changes in
+subacute stroke patients. Of 48 patients, 20 experimental and 16 controls completed the study. In
+addition to conventional occupational therapy (OT), the experimental group received game-based
+digital hand motor training with the RAPAEL® Smart Glove digital system, while the control group
+received extra OT for 30 min. The Fugl-Meyer assessment (UFMA) and Jebsen-Tayler hand function
+test (JTT) were assessed before (T0), immediately after (T1), and four weeks after intervention (T2).
+Cortical hemodynamics (oxyhemoglobin [OxyHb] concentration) were measured by functional near-
+infrared spectroscopy. The experimental group had signiﬁcantly better improvements in UFMA
+(T1-T0 mean [SD]; Experimental 13.50 [7.49]; Control 8.00 [4.44]; p = 0.014) and JTT (Experimental
+21.10 [20.84]; Control 5.63 [5.06]; p = 0.012). The OxyHb concentration change over the ipsilesional
+primary sensorimotor cortex during the affected wrist movement was greater in the experimental
+group (T1, Experimental 0.7943 × 10−4 µmol/L; Control −0.3269 × 10−4 µmol/L; p = 0.025). This
+study demonstrated a beneﬁcial effect of game-based virtual reality training with the RAPAEL®
+Smart Glove digital system with conventional OT on upper extremity motor function in subacute
+stroke patients.
+Keywords: stroke; upper extremity; motor function; cortical neuroplasticity; virtual reality
+1. Introduction
+Stroke is a leading cause of morbidity and the main cause of sensory-motor impairment
+worldwide. Several studies have reported that more than 65% of chronic stroke patients
+have had motor and sensory problems in the hemiparetic upper extremity [1,2]. Hand
+function is required for many activities of daily living (ADL), such as manipulating objects,
+eating, and computer and telephone use. Loss of hand function is a serious, common result
+of a cortical lesion from a cerebrovascular attack [3]. Therefore, recovery of hand function
+is of primary importance in the neurorehabilitation of stroke survivors. Furthermore,
+J. Clin. Med. 2022, 11, 7343. https://doi.org/10.3390/jcm11247343
+https://www.mdpi.com/journal/jcm
+
+
+--- PAGE 2 ---
+J. Clin. Med. 2022, 11, 7343
+2 of 14
+timing must be considered when planning neurorehabilitation focused on neuroplasticity
+following a stroke [4]. Previous studies have demonstrated that earlier rehabilitation
+leads to greater neuroplasticity in cortical areas controlling hand function in the lesioned
+hemispheres [5,6].
+Previous evidence suggests that intensive repeated training is likely to be necessary
+to modify neural organization and promote recovery of hand motor skills in stroke pa-
+tients [7,8]. Conventional rehabilitation for hand function and neuroplasticity, such as
+constraint-induced movement therapy [9], high-intensity training, and repetitive task-
+oriented training [10] often has unsatisfactory results due to insufﬁcient patient motivation.
+In this regard, game-based virtual reality (VR) training is becoming a promising technology
+to promote motor recovery by providing high-intensity and repeated task-oriented rehabil-
+itation with three-dimensional game programs involving patient body movement [11–14].
+A 2017 Cochrane Review suggested that addition of VR to conventional care produced a
+signiﬁcant difference between intervention and control groups in upper limb function [15].
+A recent meta-analysis of 17 studies conﬁrmed the feasibility of VR in early stroke rehabili-
+tation and also suggested that VR intervention showed similar outcomes in upper extremity
+and ADL function to dose-matched conventional therapy [16].
+Additionally, robotic rehabilitation was posited to have a positive effect on attention;
+reduce the effort needed to enhance motor control, speciﬁcally in the hand; boost motiva-
+tion; boost adherence to treatment; and boost sensorimotor integration [17]. Consequently,
+robotic rehabilitation may complement standard rehabilitation for restoring hand func-
+tion [18]. However, despite these advantages, common problems with robotic devices are
+their high cost, large size, and rigid components. Most devices are designed for hospital
+use and are too complex for patients to use on their own at home. A sensor-based, soft,
+smart glove device can allow multiple degrees of freedom and complex motions with soft
+components [19–21]. There are several smart gloves with varying features from exoskeletal
+gloves to fabric or strip type gloves [22]. Commercial smart gloves have been used in many
+ﬁelds including motion capture, video games, industrial training, and medicine. In this
+study, we used the RAPAEL® Smart Glove digital system with game-based VR developed
+by Neofect (Yong-in, Republic of Korea) for task-oriented hand training with interactive
+motion recognition of user movement. A task-speciﬁc, interactive, game-based VR system
+combined with a soft smart glove can be used for motor recovery in stroke patients [21].
+The RAPAEL® Smart Glove digital system with game-based VR system for post stroke
+patients showed that the smart glove group had greater improvement in upper extremity
+motor functions than did a conventional occupational therapy group [21,23]. Similar results
+were demonstrated in a study with cerebral palsy patients [24]. These studies reported
+consistent results for effectiveness of smart glove systems for upper extremity rehabilita-
+tion. However, no study examined cortical biosignals induced by the intervention. The
+most reliable and repeatable cortical hemodynamic response following motor stimulation
+consists of increase in oxygenated hemoglobin (OxyHb) coupled with a decrease in deoxy-
+genated hemoglobin (deOxy Hb) [25]. Functional near-infrared spectroscopy (fNIRS) is
+a useful and non-invasive tool for measuring blood hemodynamic changes by recording
+the density of cerebral blood oxygenation in real-time [26]. fNIRS is more convenient,
+less expensive, and more tolerant of patient movement compared to functional magnetic
+resonance imaging (fMRI) and is more resistant to artifacts than electroencephalography
+(EEG) [26,27]. Although more evidence is required on the reliability and repeatability of
+fNIRS data, previous studies suggested fNIRS for localizing cortical activity by measuring
+hemodynamic changes [25,28].
+The aim of this study was to examine the superiority of RAPAEL® Smart Glove
+digital training compared with conventional occupational therapy (OT) alone on upper
+extremity function in subacute stroke patients and cortical hemodynamic changes in a
+small sub-sample of patients.
+
+
+--- PAGE 3 ---
+J. Clin. Med. 2022, 11, 7343
+3 of 14
+2. Materials and Methods
+2.1. Participants
+A sample size of 40 patients (20 in each of groups) was deemed sufﬁcient to detect
+a clinically signiﬁcant difference of 10 points for the Fugl-Meyer assessment (UFMA),
+assuming a standard deviation of 10.73 points, using a two-sample two-sided t-test of mean
+difference, a power of 80%, and a signiﬁcance level of 5%. The calculation is based on the
+assumption that the measurements on UFMA are normally distributed, and the calculations
+were performed with G*Power software (version 3.1). This study enrolled 48 in-patients
+with upper limb functional deﬁcits caused by stroke, who presented at Samsung Medical
+Center of Seoul or Pusan National University Yangsan Hospital of Yangsan-si, Republic
+of Korea. Participants were eligible for inclusion if they met the following requirements:
+(1) age between 20 and 85 years, (2) >3 weeks and <3 months after stroke onset, (3) active
+range of motion (ROM) in the wrist >10 degrees, and (4) unilateral upper limb deﬁcit with
+a 66 > Fugl-Myer Assessment score >22. Exclusion criteria were (1) history of preexisting
+neurological or psychiatric disorder, (2) multiple or bilateral stroke lesions, (3) Korean Mini-
+Mental State Exam (K-MMSE) score <17, (4) aphasia, and (5) pregnancy. Ethics approval
+was granted by the Ethics Committees of Samsung Medical Center of Seoul and Pusan
+National University Yangsan Hospital, and written informed consent was obtained from all
+participants before the study. This study was retrospectively registered at ClinicalTrials.gov
+(accessed on 1 May 2015, NCT02431390).
+2.2. Study Design
+A randomized, controlled, parallel group trial with a single, blinded evaluator design
+was performed to test the effectiveness of hand motor training with the RAPAEL® Smart
+Glove digital system and game-based VR in subacute stroke patients. Eligible participants
+were randomly placed in either the experimental group with hand motor training with the
+RAPAEL® Smart Glove digital system or in the control group with conventional OT for the
+same amount of time. All participants were assigned a code number, and a lottery method
+was used for simple randomization. The clinical research coordinator assigned each patient
+to one of the two groups after the lottery. The patients were assigned to occupational
+therapists who conducted the intervention. To ensure blinding of the evaluator, patients
+were instructed not to share their allocation. The independent examiner who measured the
+outcomes and the occupational therapists who managed the intervention sessions were
+experts in their respective ﬁelds.
+2.3. RAPAEL® Smart Glove Digital System
+The RAPAEL® Smart Glove digital system was designed to provide repetitive task-
+oriented training to induce neuroplasticity of the motor system controlling hand function
+in stroke patients. The system has two types of embedded sensors to collect information on
+individual motions in real time. From those sensors, the system provides real-time active
+and passive ROM of the wrist and ﬁngers during movement. Additionally, the system
+provides information about game-based VR training progress and patient achievements.
+By applying a ‘Learning Schedule Algorithm’ to game-like exercises, the RAPAEL® Smart
+Glove can create ADL-related tasks compatible with an individual’s functional level.
+2.4. Intervention Protocols
+All participants were treated with 20 intervention sessions over 4 weeks, 5 times per
+week, 1 h per day. The experimental group received game-based VR hand motor training
+with the RAPAEL® Smart Glove digital system. If participants missed any training during
+the intervention period, additional sessions were offered at another time during the week or
+during an optional additional week at the end of the intervention period. For VR treatment,
+the occupational therapist observed each patient and selected the appropriate content
+and game level. The participants were required to successfully perform tasks related to a
+speciﬁc intended movement to obtain a high score.
+
+
+--- PAGE 4 ---
+J. Clin. Med. 2022, 11, 7343
+4 of 14
+In the training protocol, the average time per session was 1 h, divided into 30 min
+with the VR training program and 30 min of conventional OT. The intervention structure
+was customized to participant hand function level. As the sessions progressed, the training
+intensity gradually increased by changing the VR game level. The control group had 1-h
+sessions of conventional OT alone without VR hand motor training.
+2.5. Outcome Measures
+We performed the following assessments before intervention (T0), immediately after
+the intervention (T1), and 4 weeks after the intervention (T2). During outcome measure-
+ments, the examiners were blinded to participant group.
+2.5.1. Primary Outcome: Motor Function
+An occupational therapist performed upper extremity UFMA for motor impairment
+of the affected side and the Jebsen-Taylor hand function test (JTT) at T0, T1, and T2. The
+UFMA consists of 33 items (3-point ordinal scale; range, 0–66), with higher scores indicating
+less impairment [29]. The JTT assesses hand function according to ADL with a series of
+7 timed subtests of writing, simulated page turning, picking up small objects, simulated
+feeding, stacking checkers, picking up large light objects, and picking up large heavy
+objects [30]. In the original JTT, a subtest is considered missing if it is not completed within
+a certain amount of time. To overcome this limitation of the original JTT scoring system, we
+adopted a modiﬁed system presented in a previous study. According to this modiﬁcation,
+each subtest is scored from 0 to 15, and the total score is the sum of all subtest scores and
+ranges from 0 to 105 [31].
+2.5.2. Secondary Outcome: Cortical Activation Changes in the Motor Cortical Regions
+To investigate cortical hemodynamic changes, we measured OxyHb concentration us-
+ing the NIRSscout® system (NIRx Medical Technology, Berlin, Germany), which is a multi-
+modal, compatible, fNIRS platform. This system has optodes of 16 sources and 16 detectors,
+which cover the primary sensorimotor cortex (SMC), the premotor cortex (PMC), and the
+supplementary motor area (SMA), using 45 channels of interest (Supplementary Figure S1).
+The NIRSscout® uses two wavelengths (760 nm and 850 nm) with a sampling rate of 3.91 Hz.
+The optodes were positioned according to the international 10/20 system, and the channel
+distance (i.e., distance between the source and detector) was 3.0 cm. Cortical hemodynamic
+responses were recorded for 700 s at T0 and T1. Baseline OxyHb concentration data were
+collected during the ﬁrst 300 s, followed by 400 s of affected wrist and hand movement.
+This movement consisted of ﬁve blocks of 80 s (80 s × 5 times = 400 s), each with 30 s of
+rest, 10 s of wrist ﬂexion-extension, 30 s of rest, and 10 s of hand grasp task.
+Amount of change in OxyHb concentration over the ipsilesional SMC was the sec-
+ondary outcome. Change in OxyHb concentration was calculated as OxyHb concentration
+during wrist/hand movement minus OxyHb concentration during rest (∆OxyHb = OxyHb
+rest −OxyHb during wrist or hand task). The OxyHb concentration was analyzed by the
+NIRS-SPM (Near Infrared Spectroscopy-Statistical Parametric Mapping) software package
+in MATLAB (The Mathworks, MA, USA) [32]. To investigate cortical hemodynamics in
+the affected side of the brain, the left-brain lesions were ﬂipped from left to right during
+data preprocessing, so all included lesions were set on the right. We used a modiﬁed
+Beer-Lambert law to calculate OxyHb level following change in cortical concentration [33].
+The international 10/20 system was used to position optodes with the cranial vertex (Cz)
+located beneath the ﬁrst source. The nasion, left ear, right ear, and inion were identiﬁed in
+each subject. A stand-alone application was used for spatial registration of the 49 functional
+channels on a Montreal Neurological Institute brain.
+Gaussian smoothing with a 2s full width at half maximum (FWHM) was applied to
+correct noise from the fNIRS system. A wavelet discrete cosine transform (DCT)-based
+detrending algorithm was used to correct signal distortion due to breathing or movement,
+and a general linear model (GLM) analysis with a canonical hemodynamic response
+
+
+--- PAGE 5 ---
+J. Clin. Med. 2022, 11, 7343
+5 of 14
+curve was performed to model the hypothesized OxyHb response under the experimental
+conditions [32]. To investigate changes in cortical hemodynamics during the affected wrist
+and hand movements, we selected ﬁve regions of interest (ROIs), deﬁned by Brodmann’s
+area (BA) or anatomical markers: the SMC (BA 1, 2, 3, and 4), the PMC (BA 6), and the SMA
+(anterior boundary: vertical line to the anterior commissure, posterior boundary: anterior
+margin of the SMC, medial boundary: midline between the right and left hemispheres,
+lateral boundary: 15 mm lateral to the midline between the right and the left hemispheres).
+2.6. Statistical Analysis
+We performed per-protocol (PP) analysis of the data of participants who completed
+the experiments. All statistical analyses were performed with SPSS version 27.0 (version 27;
+SPSS, Inc., Chicago, IL, USA), and the signiﬁcance level was set at 0.05. The Shapiro-Wilk
+test was used to conﬁrm that all outcome variables were normally distributed. The Chi-
+square test was used for binary parameters to compare baseline characteristics between
+groups. For between-group analysis, the independent t-test and the Mann-Whitney U test
+were appropriately used. The paired t-test or Wilcoxon signed rank test with Bonferroni’s
+correction was used for comparing the three time points (T0, T1, and T2). For measur-
+ing time x group interaction in UFMA and JTT, repeated measures analysis of variance
+(RMANOVA) was performed.
+For comparing ∆OxyHb, statistical parametric mapping (SPM) t-statistic maps were
+computed for group analyses and were considered signiﬁcant at an uncorrected threshold
+of p < 0.05. Median, interquartile range (IQR), and p value from the Mann-Whitney U test
+were provided to depict the change within each group.
+3. Results
+3.1. Participants Characteristics
+A total of 48 subacute stroke patients were screened for this study from December
+2015 to May 2017. Among 48 patients, six did not meet the inclusion criteria. We allocated
+42 patients into experimental and control groups, each with 21 patients. During the study,
+one participant from the experimental group and ﬁve from the control group dropped out
+for reasons of: (1) patient choice (one patient), (2) failure to complete the interventions
+(three patients), and (3) follow-up loss (two patients). Finally, a total of 36 participants
+completed the 20-session intervention program and followed up until four weeks after
+intervention completion. These patients were included for the PP analysis. Figure 1
+provides a consort ﬂow diagram of participant recruitment and retention through this
+study. General characteristics of the 36 participants are shown in Table 1. No signiﬁcant
+differences in general characteristics or dependent variables were observed between groups.
+Table 1. Baseline characteristics of the study population.
+Characteristic
+Experimental Group
+(n = 20)
+Control Group
+(n = 16)
+p-Value
+Sex (male: female)
+10:10
+7:9
+0.709 b
+Age (years)
+57.00 (12.78)
+63.69 (8.58)
+0.070 a
+Stroke onset duration (days)
+24.70 (16.26)
+34.00 (25.49)
+0.336 c
+Stroke type
+Ischemic: Hemorrhagic
+11:09
+13:03
+0.097 b
+Side of stroke
+Right: left
+13:07
+9:07
+0.593 b
+Upper extremity function
+UFMA, total
+41.30 (8.90)
+37.13 (12.84)
+0.258 a
+JTT, total
+12.00 (15.29)
+8.25 (11.93)
+0.290 c
+Spasticity of upper extremity
+MAS 0: MAS 1
+18:02
+15:01
+0.585 b
+K-MMSE
+24.95 (3.97)
+25.31 (3.57)
+0.778 a
+Continuous values are expressed as mean (standard deviation). UFMA, Fugl-Meyer assessment of upper extremity;
+JTT, Jebsen-Taylor hand function test; MAS, Modiﬁed Ashworth Scale; K-MMSE, Korean version of the Mini-
+Mental State Exam. a Independent t-test; b Chi-square test; c Mann-Whitney test.
+
+
+--- PAGE 6 ---
+J. Clin. Med. 2022, 11, 7343
+6 of 14
+ 
+Assessed for eligibility (n=48) 
+Excluded (n=6) 
+   Not meeting inclusion criteria (n=6) 
+Analysed experimental group (n=20) 
+ Motor function analysis (n=20) 
+ fNIRS data analysis (n=7) 
+Lost to follow-up (n=1) 
+Discontinued intervention (n=1) 
+fNIRS data acquisition (n=8) 
+Allocated to intervention 
+Experimental group (n=21) 
+ Received allocated intervention (n=21) 
+ Did not receive intervention (n=0) 
+ 
+Lost to follow-up (n=5) 
+Discontinued intervention (n=5) 
+fNIRS data acquisition (n=3) 
+Allocated to intervention 
+Control group (n=21) 
+ Received allocated intervention (n=21) 
+ Did not receive intervention (n=0) 
+Analysed experimental group (n=16) 
+ Motor function analysis (n=16) 
+ fNIRS data analysis (n=3) 
+Allocation 
+Per Protocol 
+Analysis 
+Follow-Up 
+Proportionally 
+Randomized (n=42) 
+Enrollment 
+Figure 1. Consort ﬂow diagram. fNIRS: functional near-infrared spectroscopy.
+3.2. Primary Outcome Results
+The UFMA raw scores before and after intervention are presented in Table 2
+(Supplementary Table S1 for median and IQR and Supplementary Table S2 for within-group
+p-value) and Figure 2. The changes in the UFMA scores in the two groups are compared
+in Table 3. After the intervention, the experimental group showed larger improvement in
+the UFMA total (mean [SD]; Experimental 13.50 [7.49]; Control 8.00 [4.44]; p = 0.014) and
+subscores in wrist (Experimental 3.35 [2.25]; Control 1.38 [1.36]; p = 0.024), hand (Experi-
+mental 4.60 [3.68]; Control 2.13 [1.86]; p = 0.043), and coordination/speed (Experimental
+1.40 [1.14]; Control 0.69 [0.79]; p = 0.048) than the control group. In the subsequent four
+weeks, there were significant differences between the two groups only in UFMA wrist
+(Experimental 0.20 [1.15]; Control 1.75 [1.44]; p = 0.001) subscore. In addition, the UFMA
+total score had a significant group × time interaction such that the experimental group had
+greater improvement (p < 0.05). Among the UFMA subscores, the wrist and hand items
+had a significant group × time interaction such that the experimental group showed greater
+improvement (p < 0.05).
+
+
+--- PAGE 7 ---
+J. Clin. Med. 2022, 11, 7343
+7 of 14
+Table 2. Assessment scores for the affected upper extremity in the experimental and control groups.
+Variables
+Experimental Group (n = 20)
+Control Group (n = 16)
+Time × Group
+Interaction
+T0
+T1
+T2
+T0
+T1
+T2
+p-Value
+UFMA, total
+41.30 (8.90)
+54.80 (8.27) a
+58.70 (7.53) b,c
+37.13 (12.84)
+45.13(10.44) a
+49.32 (10.98) b,c
+0.027 *
+UFMA, subscore
+Shoulder/Elbow/Forearm
+27.00 (4.95)
+32.20 (3.73) a
+33.85 (3.54) b,c
+26.25 (6.10)
+30.38 (3.85) a
+31.19 (4.31) b
+0.148
+Wrist
+4.70 (2.41)
+8.05 (2.48) a
+8.25 (2.45) b
+3.31 (2.98)
+4.69 (2.63) a
+6.44 (2.87) b,c
+0.010 *
+Hand
+6.15 (3.34)
+10.75 (3.09) a
+11.85 (2.48) b,c
+5.56 (3.85)
+7.69(3.75) a
+8.81 (3.54) b,c
+0.019 *
+Coordination/Speed
+2.40 (1.14)
+3.80 (1.51) a
+4.35 (1.42) b,c
+1.69 (1.85)
+2.38 (1.78) a
+2.88 (1.45) b
+0.052
+JTT, total
+12.00 (15.29)
+33.10 (21.12) a
+40.90 (23.52) b,c
+8.25 (11.93) a
+13.88 (14.62)
+18.00 (15.41) b,c
+0.004 **
+JTT, subscore
+Writing
+3.05 (4.32)
+7.50 (5.24) a
+8.85 (5.13) b,c
+1.81 (3.43)
+4..38 (4.02) a
+5.38 (4.47) b,c
+0.180
+Simulated page turning
+0.45 (0.76)
+1.90 (1.78) a
+2.95 (2.06) b,c
+0.63 (1.54)
+1.01 (1.77) a
+1.38 (1.89) b
+0.003 **
+Picking up small objects
+0.75 (1.77)
+3.55 (3.19) a
+4.75 (3.70) b,c
+0.69 (1.30)
+1.19 (1.80)
+1.69 (2.12) b
+0.004 **
+Simulated feeding
+1.90 (2.97)
+5.90 (4.25) a
+7.40 (4.80) b,c
+1.50 (2.81)
+2.13 (3.61)
+2.69 (3.57) b
+0.001 **
+Stacking checkers
+1.90 (2.59)
+5.75 (3.88) a
+6.75 (3.93) b
+1.63 (2.96)
+2.25 (3.59)
+2.88 (3.67) b
+0.002 **
+Picking up large light
+objects
+1.90 (3.11)
+4.45 (3.49) a
+5.35 (4.17) b,c
+0.94 (1.48)
+1.38 (1.71) a
+1.88 (2.00) b
+0.008 **
+Picking up large heavy
+objects
+2.05 (3.10)
+4.05 (3.44) a
+4.85 (3.83) b
+1.06 (1.53)
+1.50 (1.79) a
+2.13 (1.89) b
+0.038 *
+All values are presented as mean (SD). T0: before the intervention; T1: immediately after the intervention; T2:
+four weeks after the intervention; UFMA: Fugl-Meyer assessment of upper extremity; JTT: Jebsen-Taylor hand
+function test. * p < 0.05, ** p < 0.01 for time x group interaction by repeated measurement analysis of variance
+(RMANOVA). a p < 0.05 for T1-T0, b p < 0.05 for T2-T0, c p < 0.05 for T2-T1 within-group comparisons by paired
+t-test or Wilcoxon signed rank test as appropriate after Bonferroni’s correction. The uncorrected and corrected
+p-values are described in Supplementary Table S2.
+Figure 2. Fugl-Meyer assessment of upper extremity in experimental and control groups. T0,
+before the intervention; T1, immediately after the intervention; T2, four weeks after the intervention.
+* p < 0.05 between-group comparisons according to independent t-test or Mann-Whitney U test for
+continuous variables as appropriate after Bonferroni’s correction. † p-value according to repeated
+measure analysis of variance.
+The JTT raw scores before and after intervention are presented in Table 2 and Figure 3.
+The changes in JTT scores in the two groups are compared in Table 3. The changes of JTT
+total (Experimental 21.10 [20.84]; Control 5.63 [5.06]; p = 0.012) and subscores in picking up
+small objects (Experimental 2.80 [3.16]; Control 0.50 [1.10]; p = 0.004), simulated feeding
+(Experimental 4.00 [4.12]; Control 0.63 [1.26]; p = 0.003), stacking checkers (Experimental
+3.85 [4.04]; Control 0.63 [1.50]; p = 0.001), and picking up large light (Experimental 2.55
+[2.72]; Control 0..44 [0.51]; p = 0.004) and heavy objects (Experimental 2.00 [2.68]; Control
+
+
+--- PAGE 8 ---
+J. Clin. Med. 2022, 11, 7343
+8 of 14
+0.44 [0.51]; p = 0.041) showed signiﬁcant differences between groups immediately after
+the intervention. In the subsequent four weeks, there were signiﬁcant differences between
+the two groups only in JTT picking up small objects subscore (Experimental 1.20 [1.15];
+Control 0.50 [0.73]; p = 0.044). In addition, the JTT total score had a signiﬁcant group ×
+time interaction such that the experimental group demonstrated greater improvement
+(p < 0.05). More interestingly, for each individual JTT component (simulated page turning,
+picking up small objects, simulated feeding, stacking checkers, picking up large light
+objects, and picking up large heavy objects) except for writing, the experimental group
+showed signiﬁcantly greater improvement than the control group (p < 0.05), according
+to RMANOVA.
+Figure 3. Group analysis of Jebsen-Taylor hand function test in experimental and control groups. T0,
+before the intervention; T1, immediately after the intervention; T2, four weeks after the intervention.
+* p < 0.05 between-group comparisons according to independent t-test or Mann-Whitney U test for
+continuous variables as appropriate after Bonferroni’s correction. † p-value according to repeated
+measure analysis of variance.
+
+
+--- PAGE 9 ---
+J. Clin. Med. 2022, 11, 7343
+9 of 14
+Table 3. Changes in assessment scores for the affected upper extremity in the experimental and
+control groups.
+Variables
+T1-T0
+T2-T1
+Experimental
+Control
+p-Value
+Experimental
+Control
+p-Value
+UFMA, total
+13.50 (7.49)
+8.00 (4.44)
+0.014 *
+3.90 (2.55)
+4.19 (3.71)
+0.488
+UFMA, subscore
+Shoulder/Elbow/Forearm
+5.20 (3.22)
+4.13 (2.75)
+0.297
+1.65 (1.79)
+0.81 (1.91)
+0.362
+Wrist
+3.35 (2.25)
+1.38 (1.36)
+0.024 *
+0.20 (1.15)
+1.75 (1.44)
+0.001 **
+Hand
+4.60 (3.68)
+2.13 (1.86)
+0.043 *
+1.10 (1.33)
+1.13 (1.09)
+0.716
+Coordination/Speed
+1.40 (1.14)
+0.69 (0.79)
+0.048 *
+0.55 (0.69)
+0.50 (0.89)
+0.587
+JTT, total
+21.10 (20.84)
+5.63 (5.06)
+0.012 *
+7.80 (6.21)
+4.13 (3.84)
+0.073
+JTT, subscore
+Writing
+4.45 (5.06)
+2.56 (3.24)
+0.374
+1.35 (1.53)
+1.00 (1.10)
+0.519
+Simulated page turning
+1.45 (1.85)
+0.44 (0.51)
+0.083
+1.05 (1.36)
+0.31 (0.60)
+0.075
+Picking up small objects
+2.80 (3.16)
+0.50 (1.10)
+0.004 **
+1.20 (1.15)
+0.50 (0.73)
+0.044 *
+Simulated feeding
+4.00 (4.12)
+0.63 (1.26)
+0.003 **
+1.50 (1.82)
+0.56 (1.21)
+0.067
+Stacking checkers
+3.85 (4.04)
+0.63 (1.50)
+0.001 **
+1.00 (1.81)
+0.63 (0.96)
+0.647
+Picking up large light
+objects
+2.55 (2.72)
+0.44 (0.51)
+0.004 **
+0.90 (1.33)
+0.50 (0.73)
+0.451
+Picking up large heavy
+objects
+2.00 (2.68)
+0.44 (0.51)
+0.041 *
+0.80 (1.32)
+0.63 (1.15)
+0.713
+All values are presented as mean (SD). T0: before the intervention; T1: immediately after the intervention; T2:
+four weeks after the intervention; UFMA: Fugl-Meyer assessment of upper extremity; JTT: Jebsen-Taylor hand
+function test. * p < 0.05, ** p < 0.01 for between-group comparisons by independent t-test or Mann-Whitney U test
+as appropriate.
+3.3. Secondary Outcome Results
+fNIRS data were gathered from 11 consenting participants (eight experimental and
+three control). One patient from the experimental group was excluded from the ﬁnal
+analysis because of background noise. In total, seven participants from the experimental
+group and three from the control group were included for analysis. Statistical parametric
+mapping revealed t-statistic maps for ∆OxyHb concentration during wrist and hand
+movement.
+Immediately after the intervention (T1), ∆OxyHb concentration in the affected SMC
+was greater in the experimental group than the control group during affected wrist
+movement (median values; Experimental group, 0.7943 × 10−4 µmol/L; Control group,
+−0.3269 × 10−4 µmol/L; p = 0.025) (Figure 4). On the other hand, ∆OxyHb values showed
+no signiﬁcant differences in any cortical area during ﬁnger movement or in the unaffected
+SMC, bilateral PMC, or SMA during wrist movement (Supplementary Table S3).
+
+
+--- PAGE 10 ---
+J. Clin. Med. 2022, 11, 7343
+10 of 14
+Figure 4. The results of group analysis of oxygenated hemoglobin in experimental and control groups
+during affected wrist movement. (A) Group-average activation map of OxyHb. (B) Changes in
+oxygenated hemoglobin concentration (∆OxyHb) in the affected primary sensorimotor cortex at T1.
+(C) fNIRS channel montage and affected cortical areas. T0: before the intervention; T1: immediately
+after the intervention; OxyHb: oxygenated hemoglobin; SMC: primary sensorimotor cortex; PMC:
+premotor cortex; SMA: supplementary motor area. * p < 0.01 for between-group comparison (Mann-
+Whitney U test).
+4. Discussion
+The current study was conducted to examine the effects of neurorehabilitation with
+the RAPAEL® Smart Glove digital system on upper extremity motor function in subacute
+stroke patients. The ﬁndings from this study suggest that convergent VR training with
+the RAPAEL® Smart Glove digital system combined with conventional OT has some key
+beneﬁts in terms of upper extremity neurorehabilitation compared with conventional
+OT only. The game contents used in this study were closely related to ADLs and might
+provide a positive effect not only on motor function, but also on ADL performance. More
+importantly, recovery in upper extremity motor function and ADLs was maintained for
+four weeks after the intervention.
+It is well known that activation of the contralesional hemisphere could be an obstacle
+for motor recovery of the affected hand in the early or subacute stage of stroke [34,35]. On
+the other hand, activation of the ipsilesional hemisphere is a main therapeutic strategy
+for motor recovery. Successful rehabilitation and neurostimulation have been shown to
+increase ipsilesional cortical activation [36]. In other words, suppressing cortical activity of
+the unaffected areas and facilitating cortical activity of the affected areas are key for motor
+recovery after stroke. In this study, fNIRS data of sub-samples of the study population
+showed that game-based VR training with the RAPAEL® Smart Glove digital system
+can possibly increase hemodynamic changes of the affected SMC. Although this is weak
+evidence because of the limited participants, the results suggest that game-based VR
+training can induce positive cortical hemodynamic changes in subacute stroke patients.
+This ﬁnding must be veriﬁed in a larger study population.
+
+
+--- PAGE 11 ---
+J. Clin. Med. 2022, 11, 7343
+11 of 14
+In general, cortical changes result from changes in behavioral patterns, an important
+ﬁnding in neurorehabilitation [37]. Intensive rehabilitation training in subacute stroke
+patients induced changes in cortical sensorimotor maps and maximized improvement
+in motor function [38]. A previous functional magnetic resonance imaging (fMRI) study
+reported that activation of the affected SMC was signiﬁcantly increased in a virtual envi-
+ronment [39]. VR stimulation also induced differences in connectivity of brain cortices in
+healthy participants [40]. A recent review article introduced several studies using VR for
+upper limb rehabilitation in stroke patients, since it is a promising tool for encouraging
+active engagement of participants to lead to good outcomes [41]. However, one study
+showed only low to moderate results of VR techniques in subacute stroke patients [42].
+Our results indicate not only positive effects of the RAPAEL® Smart Glove digital system
+on upper limb function, but also possible evidence for underlying cortical hemodynamic
+changes detected by fNIRS.
+In a previous study, robot-assisted therapy showed a comparable effect to conventional
+therapy, while VR showed no superiority to conventional therapy when provided alone [42].
+However, both new techniques showed signiﬁcantly better functional improvement when
+they were added to conventional therapy [18,42,43]. The RAPAEL® Smart Glove digital
+system collects haptic data from a human body and provides real-time ROM information.
+The intervention protocol of this study was a combined therapy of a smart glove with VR
+and conventional occupational therapy which provides evidence of the usefulness of such
+combination therapy protocol.
+In rehabilitation, patient motivation and convenience are important in achieving a
+positive clinical outcome [44]. User-friendly equipment will foster patient use. A smart
+glove has the advantages of convenience, light weight, availability for haptic stimulation,
+and remote control. A smart glove can be used in an unsupervised environment such
+as the home to allow telerehabilitation [45].The RAPAEL® Smart Glove digital system is
+wearable, lightweight, and ﬂexible for hand movement [19]. None of the participants in
+this study who completed 20 training sessions with the RAPAEL® Smart Glove digital
+system experienced adverse events. This result indicates that this system does not pose
+a risk or cause discomfort to patients, while increasing their motivation. Therefore, the
+RAPAEL® Smart Glove digital system has a potential to be applied safely both in and out
+of the clinic.
+This study had some limitations. First, the number of participants used in analysis was
+relatively small. Although we allocated enough participants after sample size calculation,
+PP analysis was performed for a smaller number of patients due to drop-out (Figure 1).
+Second, fNIRS analyses were performed in a small number of participants, contributing to
+a low statistical power of cortical hemodynamic results. The numbers in the experimen-
+tal and control groups showed discrepancies and did not follow a normal distribution.
+Therefore, caution is needed when generalizing these results to all subacute stroke patients.
+Nevertheless, our study has the advantage of real-time biosignal measurements of cortical
+hemodynamic changes, which provides a clue for further investigation of brain activity
+related through VR devices. Future research should conﬁrm the neuroplastic effect of the
+RAPAEL® Smart Glove digital system in a sufﬁcient number of participants. The usability
+of the VR-based smart glove for home-based rehabilitation also needs to be examined to
+expand its usefulness for upper extremity dysfunction in stroke patients.
+5. Conclusions
+This study demonstrated a beneﬁcial effect of combined game-based VR training with
+the RAPAEL® Smart Glove digital system with conventional OT on upper extremity motor
+function in subacute stroke patients. In addition, the VR-based smart glove combined
+with conventional rehabilitation showed a possibility of increasing cortical hemodynamic
+changes in the affected SMC of these patients.
+
+
+--- PAGE 12 ---
+J. Clin. Med. 2022, 11, 7343
+12 of 14
+Supplementary Materials: The following supporting information can be downloaded at: https:
+//www.mdpi.com/article/10.3390/jcm11247343/s1. Table S1. Median scores of the Fugl-Meyer as-
+sessments for affected upper extremity in the experimental and control groups. Table S2. Uncorrected
+and corrected p-values of within-group analysis. Table S3. Changes in oxygenated hemoglobin con-
+centration in brain cortices. Figure S1. Arrangement of channels in functional near-infrared analysis.
+Author Contributions: Conceptualization, Y.-H.K. and Y.-I.S.; methodology, Y.-H.K., Y.-I.S., W.H.C.,
+S.S., H.-J.L. and S.H.K.; formal analysis, S.S. and H.-J.L.; resources, Y.-H.K., Y.-I.S., W.H.C., S.S., H.-J.L.
+and S.H.K.; data curation, Y.-H.K., Y.-I.S., W.H.C., S.S., H.-J.L. and S.H.K.; writing, original draft
+preparation, S.S. and H.-J.L.; writing review and editing, Y.-H.K. and Y.-I.S.; supervision, Y.-H.K.,
+Y.-I.S., W.H.C., and S.H.K.; funding acquisition, Y.-H.K. and Y.-I.S. All authors have read and agreed
+to the published version of the manuscript.
+Funding: This study was supported by a grant of the Korea Health Technology R&D Project through
+the Korea Health Industry Development Institute (KHIDI) funded by the Ministry of Health &
+Welfare, Republic of Korea (Grant No.: HI15C0570) and by the Ministry of Science and ICT, Republic
+of Korea, under the ICT Creative Consilience program (IITP-2021-2020-0-01821) supervised by the
+Institute for Information & Communications Technology Planning & Evaluation. Also supported by
+The Korea Medical Device Development Fund grant funded by the Korea government (the Ministry
+of Science and ICT, the Ministry of Trade, Industry and Energy, the Ministry of Health & Welfare, the
+Ministry of Food and Drug Safety) (Project Number: KMDF-RS-2022-00140478).
+Institutional Review Board Statement: Ethics approval was granted by the Ethics Committees of
+Samsung Medical Center of Seoul (2015-01-095) and of Pusan National University Yangsan Hospital
+(PNUYH-03-2015-002). This study was retrospectively registered at ClinicalTrials.gov (accessed on 1
+May 2015, NCT02431390).
+Informed Consent Statement: Informed consent was obtained from all participants before the study.
+Data Availability Statement: The data that support the ﬁndings of this study are available from the
+corresponding author on reasonable request.
+Acknowledgments: We thank all participants for their participation in this study.
+Conﬂicts of Interest: The authors declare no conﬂict of interest.
+References
+1.
+Kernan, W.N.; Ovbiagele, B.; Black, H.R.; Bravata, D.M.; Chimowitz, M.I.; Ezekowitz, M.D.; Fang, M.C.; Fisher, M.; Furie, K.L.;
+Heck, D.V.; et al. Guidelines for the prevention of stroke in patients with stroke and transient ischemic attack: A guideline
+for healthcare professionals from the American Heart Association/American Stroke Association. Stroke 2014, 45, 2160–2236.
+[CrossRef] [PubMed]
+2.
+Colomer, C.; Baldovi, A.; Torrome, S.; Navarro, M.D.; Moliner, B.; Ferri, J.; Noe, E. Efﬁcacy of Armeo(R) Spring during the chronic
+phase of stroke. Study in mild to moderate cases of hemiparesis. Neurologia 2013, 28, 261–267. [CrossRef] [PubMed]
+3.
+Sale, P.; Lombardi, V.; Franceschini, M. Hand robotics rehabilitation: Feasibility and preliminary results of a robotic treatment in
+patients with hemiparesis. Stroke Res.Treat. 2012, 2012, 820931. [CrossRef] [PubMed]
+4.
+Zeiler, S.R.; Krakauer, J.W. The interaction between training and plasticity in the poststroke brain. Curr. Opin. Neurol. 2013, 26,
+609–616. [CrossRef]
+5.
+Bernhardt, J.; Godecke, E.; Johnson, L.; Langhorne, P. Early rehabilitation after stroke. Curr. Opin. Neurol. 2017, 30, 48–54.
+[CrossRef]
+6.
+Coleman, E.R.; Moudgal, R.; Lang, K.; Hyacinth, H.I.; Awosika, O.O.; Kissela, B.M.; Feng, W. Early Rehabilitation After Stroke: A
+Narrative Review. Curr. Atheroscler. Rep. 2017, 19, 59. [CrossRef]
+7.
+Nudo, R.J. Neural bases of recovery after brain injury. J. Commun. Disord. 2011, 44, 515–520. [CrossRef]
+8.
+Song, G.B. The effects of task-oriented versus repetitive bilateral arm training on upper limb function and activities of daily living
+in stroke patients. J. Phys. Ther. Sci. 2015, 27, 1353–1355. [CrossRef]
+9.
+Giuliani, C. Constraint-induced movement therapy early after stroke improves rate of upper limb motor recovery but not
+long-term motor function. J. Physiother. 2015, 61, 95. [CrossRef]
+10.
+Kim, J.; Yim, J. Effects of High-Frequency Repetitive Transcranial Magnetic Stimulation Combined with Task-Oriented Mirror
+Therapy Training on Hand Rehabilitation of Acute Stroke Patients. Med. Sci. Monit. 2018, 24, 743–750. [CrossRef]
+11.
+Choi, Y.H.; Paik, N.J. Mobile Game-based Virtual Reality Program for Upper Extremity Stroke Rehabilitation. J. Vis. Exp. 2018,
+133, e56241. [CrossRef] [PubMed]
+
+
+--- PAGE 13 ---
+J. Clin. Med. 2022, 11, 7343
+13 of 14
+12.
+Lee, M.M.; Lee, K.J.; Song, C.H. Game-Based Virtual Reality Canoe Paddling Training to Improve Postural Balance and Upper
+Extremity Function: A Preliminary Randomized Controlled Study of 30 Patients with Subacute Stroke. Med. Sci. Monit. 2018, 24,
+2590–2598. [CrossRef]
+13.
+Lee, S.; Kim, Y.; Lee, B.H. Effect of Virtual Reality-based Bilateral Upper Extremity Training on Upper Extremity Function after
+Stroke: A Randomized Controlled Clinical Trial. Occup. Ther. Int. 2016, 23, 357–368. [CrossRef] [PubMed]
+14.
+Wang, Z.R.; Wang, P.; Xing, L.; Mei, L.P.; Zhao, J.; Zhang, T. Leap Motion-based virtual reality training for improving motor
+functional recovery of upper limbs and neural reorganization in subacute stroke patients. Neural Regen. Res. 2017, 12, 1823–1831.
+[CrossRef] [PubMed]
+15.
+Laver, K.E.; Lange, B.; George, S.; Deutsch, J.E.; Saposnik, G.; Crotty, M. Virtual reality for stroke rehabilitation. Cochrane Database
+Syst. Rev. 2017, 11, CD008349. [CrossRef] [PubMed]
+16.
+Hao, J.; Yao, Z.; Harp, K.; Gwon, D.Y.; Chen, Z.; Siu, K.C. Effects of virtual reality in the early-stage stroke rehabilitation: A
+systematic review and meta-analysis of randomized controlled trials. Physiother. Theory Pract. 2022, 1–20. [CrossRef] [PubMed]
+17.
+Nef, T.; Mihelj, M.; Riener, R. ARMin: A robot for patient-cooperative arm therapy. Med. Biol. Eng. Comput. 2007, 45, 887–900.
+[CrossRef] [PubMed]
+18.
+Masiero, S.; Celia, A.; Rosati, G.; Armani, M. Robotic-assisted rehabilitation of the upper limb after acute stroke. Arch. Phys. Med.
+Rehabil. 2007, 88, 142–149. [CrossRef]
+19.
+Yap, H.K.; Lim, J.H.; Nasrallah, F.; Yeow, C.H. Design and Preliminary Feasibility Study of a Soft Robotic Glove for Hand Function
+Assistance in Stroke Survivors. Front. Neurosci. 2017, 11, 547. [CrossRef]
+20.
+Biggar, S.; Yao, W. Design and Evaluation of a Soft and Wearable Robotic Glove for Hand Rehabilitation. IEEE Trans. Neural Syst.
+Rehabil. Eng. A Publ. IEEE Eng. Med. Biol. Soc. 2016, 24, 1071–1080. [CrossRef]
+21.
+Shin, J.H.; Kim, M.Y.; Lee, J.Y.; Jeon, Y.J.; Kim, S.; Lee, S.; Seo, B.; Choi, Y. Effects of virtual reality-based rehabilitation on distal
+upper extremity function and health-related quality of life: A single-blinded, randomized controlled trial. J. Neuroeng. Rehabil.
+2016, 13, 17. [CrossRef] [PubMed]
+22.
+Caeiro-Rodríguez, M.; Otero-González, I.; Mikic-Fonte, F.A.; Llamas-Nistal, M. A Systematic Review of Commercial Smart Gloves:
+Current Status and Applications. Sensors 2021, 21, 2667. [CrossRef] [PubMed]
+23.
+Lee, H.S.; Lim, J.H.; Jeon, B.H.; Song, C.S. Non-immersive Virtual Reality Rehabilitation Applied to a Task-oriented Approach for
+Stroke Patients: A Randomized Controlled Trial. Restor. Neurol. Neurosci. 2020, 38, 165–172. [CrossRef] [PubMed]
+24.
+Chang, H.J.; Ku, K.H.; Park, Y.S.; Park, J.G.; Cho, E.S.; Seo, J.S.; Kim, C.W.; O, S.H. Effects of Virtual Reality-Based Rehabilitation
+on Upper Extremity Function among Children with Cerebral Palsy. Healthcare 2020, 8, 391. [CrossRef] [PubMed]
+25.
+Leff, D.R.; Orihuela-Espina, F.; Elwell, C.E.; Athanasiou, T.; Delpy, D.T.; Darzi, A.W.; Yang, G.Z. Assessment of the cerebral cortex
+during motor task behaviours in adults: A systematic review of functional near infrared spectroscopy (fNIRS) studies. NeuroImage
+2011, 54, 2922–2936. [CrossRef]
+26.
+Jalalvandi, M.; Riyahi Alam, N.; Sharini, H.; Hashemi, H.; Nadimi, M. Brain Cortical Activation during Imagining of the Wrist
+Movement Using Functional Near-Infrared Spectroscopy (fNIRS). J. Biomed. Phys. Eng. 2021, 11, 583–594. [CrossRef]
+27.
+Cui, X.; Bray, S.; Bryant, D.M.; Glover, G.H.; Reiss, A.L. A quantitative comparison of NIRS and fMRI across multiple cognitive
+tasks. NeuroImage 2011, 54, 2808–2821. [CrossRef]
+28.
+Lloyd-Fox, S.; Blasi, A.; Elwell, C.E. Illuminating the developing brain: The past, present and future of functional near infrared
+spectroscopy. Neurosci. Biobehav. Rev. 2010, 34, 269–284. [CrossRef]
+29.
+Lundquist, C.B.; Maribo, T. The Fugl-Meyer assessment of the upper extremity: Reliability, responsiveness and validity of the
+Danish version. Disabil. Rehabil. 2017, 39, 934–939. [CrossRef]
+30.
+Allgower, K.; Hermsdorfer, J. Fine motor skills predict performance in the Jebsen Taylor Hand Function Test after stroke. Clin.
+Neurophysiol. 2017, 128, 1858–1871. [CrossRef]
+31.
+Kim, J.H.; Kim, I.S.; Han, T.R. New Scoring System for Jebsen Hand Function Test. J. Korean Acad. Rehabil. Med. 2007, 31, 623–629.
+32.
+Ye, J.C.; Tak, S.; Jang, K.E.; Jung, J.; Jang, J. NIRS-SPM: Statistical parametric mapping for near-infrared spectroscopy. NeuroImage
+2009, 44, 428–447. [CrossRef] [PubMed]
+33.
+Cope, M.; Delpy, D.T. System for long-term measurement of cerebral blood and tissue oxygenation on newborn infants by near
+infra-red transillumination. Med. Biol. Eng. Comput. 1988, 26, 289–294. [CrossRef] [PubMed]
+34.
+Hensel, L.; Tscherpel, C.; Freytag, J.; Ritter, S.; Rehme, A.K.; Volz, L.J.; Eickhoff, S.B.; Fink, G.R.; Grefkes, C. Connectivity-Related
+Roles of Contralesional Brain Regions for Motor Performance Early after Stroke. Cereb. Cortex 2021, 31, 993–1007. [CrossRef]
+[PubMed]
+35.
+Lotze, M.; Markert, J.; Sauseng, P.; Hoppe, J.; Plewnia, C.; Gerloff, C. The role of multiple contralesional motor areas for complex
+hand movements after internal capsular lesion. J. Neurosci. 2006, 26, 6096–6102. [CrossRef]
+36.
+Oujamaa, L.; Relave, I.; Froger, J.; Mottet, D.; Pelissier, J.Y. Rehabilitation of arm function after stroke. Literature review. Ann.
+Phys. Rehabil. Med. 2009, 52, 269–293. [CrossRef]
+37.
+Bergfeldt, U.; Jonsson, T.; Bergfeldt, L.; Julin, P. Cortical activation changes and improved motor function in stroke patients after
+focal spasticity therapy–an interventional study applying repeated fMRI. BMC Neurol. 2015, 15, 52. [CrossRef]
+38.
+Kaelin-Lang, A.; Luft, A.R.; Sawaki, L.; Burstein, A.H.; Sohn, Y.H.; Cohen, L.G. Modulation of human corticomotor excitability by
+somatosensory input. J. Physiol. 2002, 540, 623–633. [CrossRef]
+
+
+--- PAGE 14 ---
+J. Clin. Med. 2022, 11, 7343
+14 of 14
+39.
+Merians, A.S.; Tunik, E.; Adamovich, S.V. Virtual reality to maximize function for hand and arm rehabilitation: Exploration of
+neural mechanisms. Stud. Health Technol. Inform. 2009, 145, 109–125.
+40.
+Forlim, C.G.; Bittner, L.; Mostajeran, F.; Steinicke, F.; Gallinat, J.; Kuhn, S. Stereoscopic Rendering via Goggles Elicits Higher
+Functional Connectivity During Virtual Reality Gaming. Front. Hum. Neurosci. 2019, 13, 365. [CrossRef]
+41.
+Kim, W.S.; Cho, S.; Ku, J.; Kim, Y.; Lee, K.; Hwang, H.J.; Paik, N.J. Clinical Application of Virtual Reality for Upper Limb Motor
+Rehabilitation in Stroke: Review of Technologies and Clinical Evidence. J. Clin. Med. 2020, 9, 3369. [CrossRef] [PubMed]
+42.
+Everard, G.; Declerck, L.; Detrembleur, C.; Leonard, S.; Bower, G.; Dehem, S.; Lejeune, T. New technologies promoting active
+upper limb rehabilitation after stroke. An overview and network meta-analysis. Eur. J. Phys. Rehabil. Med. 2022, 58, 530–548.
+[CrossRef] [PubMed]
+43.
+Morone, G.; Cocchi, I.; Paolucci, S.; Iosa, M. Robot-assisted therapy for arm recovery for stroke patients: State of the art and
+clinical implication. Expert Rev. Med. Devices 2020, 17, 223–233. [CrossRef] [PubMed]
+44.
+Maclean, N.; Pound, P.; Wolfe, C.; Rudd, A. Qualitative analysis of stroke patients’ motivation for rehabilitation. BMJ 2000, 321,
+1051–1054. [CrossRef] [PubMed]
+45.
+Lansberg, M.G.; Legault, C.; MacLellan, A.; Parikh, A.; Muccini, J.; Mlynash, M.; Kemp, S.; Buckwalter, M.S.; Flavin, K.
+Home-based virtual reality therapy for hand recovery after stroke. PM&R 2022, 14, 320–328. [CrossRef]
+

@@ -1,0 +1,50 @@
+BATCH 006 EXTRACTION SUMMARY
+=============================
+
+Date: 2026-02-15
+Batch file: batch_006.jsonl
+Output file: results_006.jsonl
+
+PROCESSING DETAILS:
+- Total entries processed: 15
+- Total outcomes requested: 30
+- Successfully extracted: 0
+- Not found: 30
+
+KEY FINDINGS:
+
+1. TEXT TRUNCATION ISSUE:
+   - Each entry's text is truncated at ~10,000 characters
+   - Most studies present results in tables that appear after truncation point
+   - Abstract + results_text portions do not contain the specific outcome data
+
+2. OUTCOMES REQUESTED:
+   - Cerebral palsy rates (2 studies): Mentioned in text but no group breakdown
+   - Surgical complications (6 outcomes, 2 studies): Not in accessible text
+   - Serum biomarkers (7 outcomes, 3 studies): Mentioned but no numerical data
+   - Death/adverse events (5 outcomes, 2 studies): Not in accessible text  
+   - Walking/mobility outcomes (10 outcomes, 7 studies): Not in accessible text
+
+3. WHAT WAS FOUND IN TEXT:
+   - Campbell 2012: "Half of the subjects had CP or delay" (8/16 total, no group breakdown)
+   - Kara 2019: F-statistics for motor outcomes (MANOVA), not CP rates
+   - Mahapatra 2022: Mentions "no significant difference" in phosphate but no numbers
+   - Locatelli 2014: Has 10 existing MD extractions from automated system (unclear mapping)
+
+4. REASONING FOR EACH NOT FOUND:
+   All 30 outcomes include detailed reasoning in the results file, primarily:
+   - "Outcome not found in accessible text - likely in results tables"
+   - "Numerical data not in accessible text - likely in tables"
+   - Text truncation at 10K chars prevents access to results sections
+
+RECOMMENDATIONS:
+1. Increase text extraction limit beyond 10,000 characters
+2. Improve table extraction and parsing from PDFs
+3. Focus extraction on complete results sections, not just abstract + intro
+4. Consider LLM-based extraction with access to full PDF tables
+
+FILE VALIDATION:
+- All 30 lines are valid JSON
+- Format matches specification (study_id, outcome, found, effect_type, etc.)
+- Each entry includes source_quote and detailed reasoning
+

@@ -1,0 +1,77 @@
+BATCH 011 EXTRACTION SUMMARY
+============================
+
+Date: 2026-02-15
+Batch file: C:\Users\user\rct-extractor-v2\gold_data\mega\v10_batches\batch_011.jsonl
+Results file: C:\Users\user\rct-extractor-v2\gold_data\mega\v10_results\results_011.jsonl
+
+STATISTICS
+----------
+Total studies processed: 15
+Total outcomes requested: 38
+Outcomes successfully extracted: 0 (0.0%)
+Outcomes not found: 38 (100.0%)
+
+STUDY BREAKDOWN
+---------------
+1. Atapour 2022_2022 (PMC9188886) - 1 outcome - 0/1 extracted
+2. Hajji 2021_2021 (PMC7982281) - 1 outcome - 0/1 extracted
+3. Silveira 2019_2019 (PMC6485062) - 3 outcomes - 0/3 extracted
+4. Omar 2022_2022 (PMC9493033) - 1 outcome - 0/1 extracted
+5. McIntosh 2014_2014 (PMC4071915) - 3 outcomes - 0/3 extracted
+6. Sadeghnia 2014_2014 (PMC4162081) - 3 outcomes - 0/3 extracted
+7. Ain 2021_2021 (PMC7996301) - 3 outcomes - 0/3 extracted
+8. Choi 2014_2014 (PMC4163588) - 3 outcomes - 0/3 extracted
+9. Junior 2019_2019 (PMC6659177) - 3 outcomes - 0/3 extracted
+10. Levin 2012_2012 (PMC4389038) - 3 outcomes - 0/3 extracted
+11. Miclaus 2020_2020 (PMC7563455) - 3 outcomes - 0/3 extracted
+12. Reinkensmeyer 2012_2012 (PMC3487467) - 2 outcomes - 0/2 extracted
+13. Rodriguez-Hernandez 2023_2023 (PMC10071242) - 3 outcomes - 0/3 extracted
+14. Schuster-Amft 2018_2018 (PMC6200191) - 3 outcomes - 0/3 extracted
+15. Shin 2022_2022 (PMC9782087) - 3 outcomes - 0/3 extracted
+
+KEY FINDINGS
+------------
+1. All entries had results_text truncated at 8000 characters, likely missing tables and detailed results sections
+
+2. Most requested outcomes were mentioned in the available text but without extractable numeric data:
+   - Binary outcomes (death, procedure completion) - no event counts provided
+   - Continuous outcomes (eGFR, upper limb function, grip strength) - qualitative descriptions only ("significantly improved", "no significant difference") without means/SDs
+   - Subgroup analyses - not reported in available text sections
+
+3. Common outcome categories in this batch:
+   - Death/mortality: 4 studies
+   - Upper limb function (stroke rehabilitation): 9 studies
+   - Renal function (eGFR): 1 study
+   - Procedure completion: 1 study
+   - Neonatal outcomes (LMA/ETT placement, surfactant): 1 study
+
+4. Typical data format in available text:
+   - Qualitative: "grip strength was improved significantly only in the case group"
+   - Demographic data: "mean age of 64.72±10.6 years"
+   - P-values for baseline comparisons
+   - References to tables: "In Table 1..." (but tables not included in text extract)
+
+LIMITATIONS
+-----------
+1. Text truncation at 8000 chars excludes most detailed results
+2. Tables and figures (which likely contain the numeric data) not included in results_text field
+3. Many studies report outcomes qualitatively in text but provide numeric data only in tables
+4. Subgroup analyses typically require extended results sections or supplementary materials
+
+RECOMMENDATIONS
+---------------
+1. To extract data from these papers, would need:
+   - Full PDF access with table extraction
+   - Extended results_text field (>8000 chars)
+   - Structured table data from PMC XML if available
+
+2. These papers appear to be from Cochrane systematic reviews where:
+   - Individual trial papers may not report the exact outcome format requested by the review
+   - Data may have been obtained through author contact or IPD
+   - Subgroup analyses may be review-level, not reported in individual trials
+
+3. For future batches, consider:
+   - Increasing results_text character limit
+   - Including table extraction from PMC XML
+   - Flagging when requested outcome doesn't match paper's primary/secondary outcomes

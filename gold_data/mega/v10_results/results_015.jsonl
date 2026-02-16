@@ -1,0 +1,20 @@
+{"study_id": "Pratt 2022_2022", "outcome": "Smoking cessation", "found": false, "reasoning": "Could not find effect estimate for 'Smoking cessation'"}
+{"study_id": "Pratt 2022_2022", "outcome": "Serious adverse events", "found": false, "reasoning": "Could not find effect estimate for 'Serious adverse events'"}
+{"study_id": "Pratt 2022_2022", "outcome": "Carbon monoxide (ppm)", "found": true, "effect_type": "MD", "point_estimate": -9.0, "raw_data": {"exp_mean": 16.4, "exp_ci_lower": 13.4, "exp_ci_upper": 19.5, "ctrl_mean": 25.4, "ctrl_ci_lower": 22.4, "ctrl_ci_upper": 28.9}, "source_quote": "16.4 ppm [CI = 13.4, 19.5] vs  25.4 ppm [CI = 22.4, 28.9]", "reasoning": "Found means with CIs per group, MD = -9.00"}
+{"study_id": "Adriaens 2014_2014", "outcome": "Carbon monoxide (ppm)", "found": false, "reasoning": "Could not find effect estimate for 'Carbon monoxide (ppm)'"}
+{"study_id": "Ozga-Hess 2019_2019", "outcome": "Carbon monoxide (ppm)", "found": false, "reasoning": "Could not find effect estimate for 'Carbon monoxide (ppm)'"}
+{"study_id": "Vickerman 2022_2022", "outcome": "Adverse events at 3 months", "found": false, "reasoning": "Could not find effect estimate for 'Adverse events at 3 months'"}
+{"study_id": "Revelli 2006_2006", "outcome": "Live birth rate per woman by urinary gonadotropins", "found": false, "reasoning": "Could not find effect estimate for 'Live birth rate per woman by urinary gonadotropins'"}
+{"study_id": "Revelli 2006_2006", "outcome": "Live birth rate per woman by sponsor", "found": false, "reasoning": "Could not find effect estimate for 'Live birth rate per woman by sponsor'"}
+{"study_id": "Jain 2013_2013", "outcome": "Hb (g/dL) 0-7 days", "found": false, "reasoning": "Could not find effect estimate for 'Hb (g/dL) 0-7 days'"}
+{"study_id": "Jain 2013_2013", "outcome": "Hb (g/dL) 8-28 days", "found": false, "reasoning": "Could not find effect estimate for 'Hb (g/dL) 8-28 days'"}
+{"study_id": "Iyoke 2017_2017", "outcome": "Constipation", "found": false, "reasoning": "Could not find effect estimate for 'Constipation'"}
+{"study_id": "Guillaumier 2018_2018", "outcome": "Adverse events", "found": false, "reasoning": "Could not find effect estimate for 'Adverse events'"}
+{"study_id": "Clancy 2012_2012", "outcome": "Adverse effects: 100 mg and 200 mg lumacaftor groups (combined data) versus placebo at up to 1 month", "found": false, "reasoning": "Could not find effect estimate for 'Adverse effects: 100 mg and 200 mg lumacaftor groups (combined data) versus placebo at up to 1 month'"}
+{"study_id": "Vidrine 2012_2012", "outcome": "Tobacco use cessation", "found": false, "reasoning": "Could not find effect estimate for 'Tobacco use cessation'"}
+{"study_id": "Kim 2018_2018", "outcome": "Incidence of arrhythmias", "found": false, "reasoning": "Could not find effect estimate for 'Incidence of arrhythmias'"}
+{"study_id": "Humfleet 2013_2013", "outcome": "Tobacco use cessation", "found": false, "reasoning": "Could not find effect estimate for 'Tobacco use cessation'"}
+{"study_id": "Mussulman 2018_2018", "outcome": "Tobacco use cessation", "found": false, "reasoning": "Could not find effect estimate for 'Tobacco use cessation'"}
+{"study_id": "Stanton 2015_2015", "outcome": "Tobacco use cessation", "found": false, "reasoning": "Could not find effect estimate for 'Tobacco use cessation'"}
+{"study_id": "Stanton 2015_2015", "outcome": "Quit attempts", "found": false, "reasoning": "Could not find effect estimate for 'Quit attempts'"}
+{"study_id": "Reich 2020_2015", "outcome": "Fumaric acid esters versus methotrexate", "found": false, "reasoning": "Could not find effect estimate for 'Fumaric acid esters versus methotrexate'"}

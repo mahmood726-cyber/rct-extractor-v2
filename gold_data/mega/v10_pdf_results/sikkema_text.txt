@@ -1,0 +1,914 @@
+Pages: 22
+--- PAGE 1 ---
+Improving AIDS Care after Trauma (ImpACT): Pilot outcomes of a 
+coping intervention among HIV-infected women with sexual 
+trauma in South Africa
+Kathleen J. Sikkema1,2,3, Marta I. Mulawa1, Corne Robertson3, Melissa H. Watt1, Nonceba 
+Ciya3, Dan J. Stein3, Emily M. Cherenack1,2, Karmel W. Choi1,2, Matapelo Kombora3, and 
+John A. Joska3
+1Duke Global Health Institute, Duke University, Durham, NC
+2Department of Psychology and Neuroscience, Duke University, Durham, NC
+3Department of Psychiatry and Mental Health, University of Cape Town, Cape Town, South Africa
+Abstract
+Improving AIDS Care after Trauma (ImpACT), a coping intervention for HIV-infected women 
+with sexual abuse histories, was evaluated for feasibility and potential efficacy in a public clinic in 
+Cape Town, South Africa. Sixty-four participants were enrolled prior to starting antiretroviral 
+therapy (ART). After completing baseline assessments, participants were randomly assigned to 
+standard of care (SoC: three adherence counseling sessions) or ImpACT (SoC plus four individual 
+and three group sessions). Participants completed assessments at 3 months (after individual 
+sessions) and 6 months post-baseline. In exploratory analysis of primary outcomes, ImpACT 
+participants, compared to SoC, reported greater reductions in avoidance and arousal symptoms of 
+PTSD and greater increases in ART adherence motivation at 3 months. Clinically significant 
+decreases in overall PTSD symptoms were also demonstrated at 3 months. These effects continued 
+as trends at the 6-month assessment, in addition to increases in social/spiritual coping. In analysis 
+of secondary outcomes, high levels of non-adherence to ART and poor care engagement were 
+evident at 6 months, with no differences between study arms. A trauma-focused, culturally-
+adapted individual intervention delivered by a non-specialist in the HIV care setting is feasible and 
+acceptable. Preliminary findings suggest ImpACT has potential to reduce PTSD symptoms and 
+increase ART adherence motivation, but a more intensive intervention may be needed to improve 
+and maintain care engagement among this population.
+Correspondence: Kathleen J. Sikkema, Duke University, Department of Psychology and Neuroscience, 417 Chapel Drive, Box 90086, 
+Durham, NC 27708-0086, kathleen.sikkema@duke.edu. 
+Compliance with Ethical Standards
+Conflict of Interest : All authors declare that they have no conflicts of interest.
+Trial Registration : ClinicalTrials.gov NCT02223390
+Ethical approval : All procedures performed in studies involving human participants were in accordance with the ethical standards of 
+the institutional and/or national research committee and with the 1964 Helsinki declaration and its later amendments or comparable 
+ethical standards. (Duke C0147, UCT 071/2014)
+Informed consent : Informed consent was obtained from all individual participants included in the study.
+HHS Public Access
+Author manuscript
+AIDS Behav . Author manuscript; available in PMC 2019 March 01.
+Published in final edited form as:
+AIDS Behav . 2018 March ; 22(3): 1039–1052. doi:10.1007/s10461-017-2013-1.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+--- PAGE 2 ---
+Keywords
+South Africa; HIV; Sexual violence; Traumatic stress; Adherence
+INTRODUCTION
+Individuals living with HIV report disproportionately high levels of interpersonal trauma and 
+have higher rates of post-traumatic stress disorder (PTSD) than the general population ( 1, 2). 
+The psychosocial and behavioral sequelae that result from traumatic experiences can 
+significantly impact HIV care-seeking behaviors and clinical outcomes ( 3–6). Despite this, 
+the evidence base for trauma-focused interventions among HIV-infected individuals is 
+limited ( 7, 8). A comprehensive review ( 7) identified only two interventions that have 
+empirical support for the treatment of trauma-related symptoms in this population ( 9, 10): 
+one of prolonged exposure therapy ( 11) and the other based on stress and coping ( 12) in 
+combination with components of trauma-focused cognitive behavioral therapy. Both studies 
+were evaluated in the United States, and neither intervention focused on nor examined HIV 
+care engagement as an outcome ( 9, 10). As the global community strives to meet the 
+90-90-90 target (including 90% on antiretroviral therapy and 90% virally suppressed), there 
+is a need to develop and evaluate trauma-focused interventions that can support sustained 
+HIV care engagement among individuals with trauma histories in low- and middle-income 
+countries (LMICs).
+In South Africa, where HIV prevalence is particularly high ( 13), sexual trauma, including 
+childhood and adult sexual abuse, is common in the general population and is likely elevated 
+among women living with HIV ( 1, 14). In a clinic-based screening of women in HIV care in 
+South Africa, 51% reported a history of sexual abuse (23% during childhood/adolescence 
+and 37% during adulthood) ( 15). An HIV diagnosis and a history of sexual trauma can lead 
+to compounded shame and stigma and impact HIV care engagement ( 16, 17). This was 
+evident in qualitative work in South Africa ( 18), where women with sexual trauma histories 
+often experienced a delay of several years between HIV diagnosis and enrollment in HIV 
+care. This delay was attributed to feelings of shame related to recent or ongoing sexual 
+trauma experiences. In many cases, women attributed their HIV infection directly to their 
+experiences of sexual abuse. Once engaged in HIV care, women continued to face barriers; 
+several women noted how taking antiretroviral therapy (ART) brought up disturbing 
+memories of the sexual trauma, and no women had disclosed their sexual trauma to an HIV 
+care provider ( 18).
+Traumatic stress symptoms, such as avoidance ( 19) and dissociation ( 20, 21) may persist for 
+years after the occurrence of sexual trauma and impact women’s capacity to fully engage in 
+HIV care ( 22). In addition, co-morbid mental health disorders, such as depression, anxiety 
+disorder, and substance use may further interfere with care ( 23–25). The impact of sexual 
+trauma on HIV care engagement has implications for clinical outcomes ( 26–28), explaining 
+in part why individuals with traumatic histories progress faster to AIDS and face more 
+AIDS-related mortality ( 22, 29, 30).Sikkema et al. Page 2
+AIDS Behav . Author manuscript; available in PMC 2019 March 01.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+--- PAGE 3 ---
+Addressing the impact of sexual trauma on HIV care behaviors and outcomes requires a 
+model of trauma-informed care, whereby trauma is recognized (typically through routine 
+screening), targeted interventions are delivered, and referrals are made to specialized 
+services ( 31, 32). To date, no trauma-informed interventions to promote HIV care 
+engagement in LMICs have been identified ( 33), although evaluation of an intervention for 
+HIV-infected women with histories of gender-based violence is on-going in Kenya ( 34, 35). 
+A major issue in trauma-informed care models in LMICs is the availability of specialized 
+personnel to deliver interventions, and the resources and time available for supplemental 
+interventions. This necessitates that interventions should be designed for delivery by non-
+specialized health care providers or lay providers, an approach known as task-shifting or 
+task-sharing ( 36, 37), and that they should be easily integrated into the existing care delivery 
+structure. To address the unique needs of HIV-infected women who have a history of sexual 
+trauma, it is necessary to develop brief and scalable approaches to address the accumulated 
+impacts of trauma, in order to help them develop strategies for long-term HIV care 
+engagement.
+The goal of this study was to conduct a pilot clinical trial of a newly developed 7-session 
+psychological intervention (4 individual sessions and 3 group sessions) for HIV-infected 
+women with sexual abuse histories, in a low-resource, primary care setting to 1) determine 
+the feasibility and acceptability of the intervention, 2) explore the potential efficacy of the 
+intervention on mental health (primary outcomes) and HIV care engagement (secondary 
+outcomes) as ART is initiated, and 3) assess the feasibility of conducting a full scale 
+randomized controlled trial.
+METHODS
+Participants and Setting
+HIV-infected women newly initiating ART were recruited between March 2016 and January 
+2017 from a primary health care clinic in a peri-urban township of Cape Town, South Africa, 
+serving an impoverished and densely populated area. Community resources and local 
+infrastructure are limited, and socioeconomic indicators point to high rates of poverty and 
+hardship. One-third of residents completed Grade 12 education, 38% were unemployed, 
+78% reported an annual household income below 3,200 South African rand (approx US 
+$225), and 56% live in informal dwellings ( 38). The clinic is one of the public service HIV 
+treatment centers where patients receive free HIV care, including ART. At the time of the 
+study, the clinic had a total patient load of over 2,500 adult HIV patients. ART initiation at 
+the clinic follows a standard protocol as per South African government guidelines ( 39). 
+After receiving an HIV diagnosis, patients are clinically assessed based on current ART 
+initiation criteria (i.e., CD4 <= 500 cells/mm3, AIDS defining illness). Patients who do not 
+yet meet ART initiation criteria receive care and regular assessments (e.g., CD4 count 
+monitoring) in the Wellness sub-clinic until they meet the ART initiation criteria. Patients 
+who meet ART initiation criteria typically receive three sessions of adherence “readiness” 
+counseling, after which they are to initiate ART.
+Women were eligible to participate in the study if they met the following criteria: (1) HIV-
+infected and meeting ART initiation criteria; (2) history of sexual abuse, defined as sexual Sikkema et al. Page 3
+AIDS Behav . Author manuscript; available in PMC 2019 March 01.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+--- PAGE 4 ---
+abuse or assault that occurred during childhood, adolescence or adulthood, based on the 
+WHO CIDI ( 40) and the Childhood Trauma Questionnaire ( 41); (3) 18 years or older; ( 4) 
+Xhosa speaking; and ( 5) accessing HIV care services at the study clinic. Suicidal ideation 
+and severity were assessed using items adapted from the suicidality subscale of the Mini 
+International Neuropsychiatric Interview ( 42). Women with current suicidal intent were 
+excluded and referred for psychiatric treatment. Suicidal risk was assessed throughout the 
+study, and referrals provided as needed. A target sample size of 60 was chosen as adequate 
+to examine the feasibility and acceptability of a pilot RCT with two conditions ( 43). 
+Reporting of study methods and results followed the CONSORT 2010 statement, as extend 
+to pilot randomized controlled trials ( 44).
+Procedures
+All women who were eligible for ART initiation were referred to the study by the Wellness 
+sub-clinic staff. Study staff consented and screened patients for eligibility based on reported 
+sexual abuse history. Potential participants were informed of the study focus on sexual 
+trauma following completion of the screening.
+Patients who met eligibility criteria and gave written informed consent to the trial were 
+scheduled to complete the baseline assessment (typically within 1 – 5 days following 
+screening), prior to receiving the standard adherence counseling sessions. Participants were 
+randomly assigned (1:1) to the standard of care control condition (SoC: 3 adherence 
+“readiness” sessions) or the experimental intervention condition (SoC, plus ImpACT) using 
+a small block (size 8 or 10) randomization procedure. Condition assignments were placed in 
+sealed envelopes, blinded to study staff until assignment. Due to the nature of the 
+intervention conditions, neither participants nor staff could be blinded to condition 
+assignment. All participants completed follow-up assessments at 3-months and 6-months 
+after baseline to comprise a 6-month study period. Interviewer-administered assessments 
+were conducted within a private room in the clinic and lasted approximately 90 minutes. 
+Participants were remunerated R100 (approx. $8) for each assessment and R50 (approx. $4) 
+for each ImpACT intervention session. All study procedures were approved by the 
+institutional review boards at both participating institutions. The trial was registered at 
+ClinicalTrials.gov (NCT02223390).
+Figure 1 displays the CONSORT flow diagram of participant progress through the phases of 
+the study. Of the 138 who completed screening, 79 (57.2%) met eligibility criteria for the 
+study. Of the eligible patients, 64 (81.0%) were enrolled and completed the baseline 
+assessment. Retention in the 3- and/or 6-month assessment was 85.9% and no significant 
+differences by study condition in the percentage of participants lost to follow-up were 
+observed. Participants lost to follow-up at the 6-month assessment were significantly more 
+likely than those retained to have reported hazardous drinking (69.2% vs. 37.3%, p = 0.04) 
+and recent physical intimate partner violence at baseline (46.2% vs. 17.65%, p = 0.03).
+Study Conditions
+ImpACT Intervention— The development of ImpACT was guided by an evidence-based, 
+trauma-focused stress and coping intervention among HIV-infected adults ( 10, 45, 46), and Sikkema et al. Page 4
+AIDS Behav . Author manuscript; available in PMC 2019 March 01.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+--- PAGE 5 ---
+culturally adapted using extensive formative research ( 18). The intervention was designed to 
+reduce traumatic stress and improve HIV care engagement by developing effective strategies 
+for coping with HIV and trauma, and enhancing adherence to ART, but was not singularly 
+intended as a treatment for PTSD. The time of ART initiation was viewed as a ‘window of 
+opportunity’ to improve HIV care engagement and set the stage for sustained adherence to 
+ART. ImpACT was developed for integration in a primary care clinic in a low resource 
+setting. As such, the intervention was brief, focused, and delivered by a lay provider (non-
+specialist in mental health). The provider was trained by the study PI and coordinator to 
+facilitate ImpACT using an intervention manual, participant workbook and culturally 
+tailored visual aids, and received ongoing supervision from a South African clinical 
+psychologist. Individual supervision was conducted on a weekly basis and included review 
+of clinical notes, workbook content and reflection on intervention process.
+The ImpACT intervention consisted of four individual sessions (60 minutes, on average) and 
+three group sessions (90 minutes). Individual sessions typically began within one week of 
+completing the standard adherence counseling (SoC, see below) and occurred weekly, as 
+ART was being initiated. The first session (“Understanding the Combined Stress of Sexual 
+Trauma and HIV”) addressed the commonalities of stressors in trauma and HIV , and 
+provided an opportunity for the participant to discuss her experiences and related feelings. A 
+values exercise was developed, based on our formative research, to identify personal 
+motivations for HIV care engagement, and a “Start Strong, Stay Strong” visual theme was 
+used to focus on long-term adherence to ART. The “3H (Head, Heart, and Hands) Model” 
+was developed and utilized to articulate the influence of trauma and HIV on thoughts 
+(“Head”), feelings (“Heart”) and relationships (“Hands”). The impact of sexual trauma on 
+safety, trust, power and self-esteem (based on cognitive processing therapy) was adapted via 
+a visual depiction of an Imbiza  pot, a culturally relevant community-oriented item that 
+represented these constructs and provided linkages between trauma and HIV . The second 
+session (“Coping that Works”) was focused on how to develop adaptive strategies. The 
+“Coping Pebbles” exercise was developed to reflect the stress and coping model ( 12) and 
+adapted to emphasize the emotional and physical burden of stress carried in daily life, and to 
+discuss stress specific to trauma and HIV . A bag of small painted rocks represented 
+changeable and unchangeable stressors; the participant selected specific stressors, and based 
+on stress appraisal, worked to develop problem- and emotion-focused coping strategies that 
+would reduce avoidance and be effective for coping with trauma and engaging in HIV care. 
+Effective strategies included acceptance and disclosure of HIV status, communication with 
+health care providers, cognitive reframing of the traumatic consequences of HIV diagnosis, 
+reduction of alcohol use, addressing family conflict, and managing emotional and behavioral 
+responses to abusive partners, including conflicts related to HIV testing and disclosure. The 
+third session (“Coping and HIV Care”) built on all concepts from sessions 1 and 2 to 
+identify behaviors and goals for successful engagement in HIV care and to address potential 
+challenges and barriers that may interfere with ART adherence. Session 4 (“Impact of 
+Sexual Trauma on Relationships and Next Steps”) was a review of key constructs and 
+activities, notably practice of adaptive coping strategies, with a focus on relationships and 
+social interactions. Continued progress was reinforced, and engaging in HIV care in light of Sikkema et al. Page 5
+AIDS Behav . Author manuscript; available in PMC 2019 March 01.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+--- PAGE 6 ---
+one’s values (e.g., children, family, and community) was used to frame adherence and self-
+care, including as a form of empowerment.
+Three subsequent group sessions were focused on consolidating concepts from ImpACT 
+individual sessions, with opportunities for sharing challenges and successes, seeking social 
+support, and generating coping strategies with peer input to refine strategies for adherence to 
+ART and coping with HIV . The group sessions were co-facilitated by the ImpACT lay 
+provider and a community care worker from the study clinic. The ImpACT intervention 
+manual ( 47) is available upon request.
+Fidelity to ImpACT intervention protocol:  After each session, detailed quality assurance 
+worksheets were completed to document fidelity to intervention content, skills, and 
+activities. Participant workbooks with session-by-session activities were completed with 
+detailed notes on session content and process. The quality assurance data was reviewed 
+frequently by the study coordinator, who held supervisory meetings on a regular basis.
+Standard of Care (SoC) Adherence Counseling— SoC control condition participants 
+received three sessions of adherence counseling, as required for patients prior to initiating 
+ART in public HIV clinics in South Africa ( 39). The sessions were delivered by a clinic 
+counselor and included education about HIV and ART, the importance of full engagement in 
+HIV care, and strategies for HIV disclosure. The sessions typically began a week after the 
+Wellness Clinic visit when patients were informed of ART eligibility, and occurred weekly. 
+After completing these three sessions, patients then advanced to initiate ART, approximately 
+one month after study baseline. ImpACT participants also received the SoC adherence 
+counseling sessions prior to beginning the ImpACT intervention.
+Feasibility and Acceptability
+Study feasibility was determined by patient willingness to be screened, proportion of women 
+meeting trauma criteria, and flow of participants through the study. Feasibility of 
+assessments was examined through self-report and medical record abstraction. The 
+acceptability of the study was evaluated using a 5-item scale included in the 6-month 
+assessment, which asked about the participant’s general experience with the study, including 
+their satisfaction with the amount of confidentiality and respect received, and their 
+likelihood of recommending the study to other women (1=strongly disagree to 4=strongly 
+agree; Cronbach’s alpha = 0.87).
+Intervention feasibility was monitored through session attendance and quality assurance data 
+collection on intervention fidelity and supervision. The acceptability of the intervention was 
+evaluated using three measures of participant feedback at 3- and 6-month assessments: (1) 
+satisfaction with intervention, facilitator, frequency and length of sessions, ability of 
+intervention to address specific issues, and overall ratings (1=strongly disagree to 4=strongly 
+agree; Cronbach’s alpha = 0.79); (2) ratings of usefulness of each of seven intervention 
+components within the individual sessions (1=not at all useful to 5=extremely useful) 
+(Cronbach’s alpha = 0.77); and (3) open ended questions on logistical challenges, manner in 
+which sexual trauma was addressed, and ways in which intervention impacted adherence to 
+HIV care.Sikkema et al. Page 6
+AIDS Behav . Author manuscript; available in PMC 2019 March 01.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+--- PAGE 7 ---
+Measures
+Measures were selected based on prior use in South Africa, and were translated into Xhosa 
+and back-translated into English. Formative research and cognitive interviews were 
+conducted on measures of traumatic stress and coping in order to ensure respect for context, 
+comprehensible literacy levels, and cultural salience.
+Demographics, alcohol use, and HIV-related health characteristics:  Demographics 
+included questions about the participant’s age, education, employment status, and 
+relationship status. Hazardous drinking was assessed with the AUDIT-C, a three-question 
+measure that evaluates frequency of drinking, quantity of drinks consumed on a typical day, 
+and frequency of binge drinking ( 48). HIV related questions (date of diagnosis, CD4 count, 
+attendance of readiness sessions, date of ART initiation, ARV prescription information, and 
+HIV disclosure) were assessed through self-report and abstraction of medical record data.
+Sexual abuse, intimate partner violence, and exposure to other traumatic 
+events:  Recent sexual abuse (in addition to sexual abuse during childhood, adolescence, and 
+adulthood, per inclusion criteria), defined as sexual abuse or assault that occurred within the 
+past 3 months, was assessed using three items based on the WHO Composite International 
+Diagnostic Interview (CIDI) ( 40) (e.g., “As an adult, did anyone ever touch you in a sexual 
+way or make you touch them in a sexual way against your will, when you made it clear 
+through words or actions that you did not want to? If yes, has it happened in the last 3 
+months?”). Disclosure of sexual abuse or sexual violence to others, including family 
+members, current partner (excluding the abuse partner), and healthcare providers was 
+assessed using an adapted HIV disclosure instrument ( 49). Physical intimate partner 
+violence (physical IPV) occurring in adolescence, adulthood, and within the past 3 months 
+was measured using three items from the physical IPV subscale of the revised Conflict 
+Tactics Scale (CTS2) ( 50) (e.g., “Has a partner ever beat, kicked or hit you?”). Exposure to 
+other traumatic events in adulthood and ever was measured using five traumatic events listed 
+in the PTSD module of the WHO CIDI (e.g., “Have you ever been mugged, held up, car-
+jacked or threatened with a weapon?”; “Has someone very close to you died unexpectedly; 
+for example, they were killed in an accident, murdered, or your son or daughter died?”) ( 40).
+Post-Traumatic Stress Disorder (PTSD):  PCL-5 ( 51), a 20-item self-report questionnaire, 
+assessed severity of symptoms that parallel DSM-5 diagnostic criteria for PTSD. 
+Participants were asked to indicate the extent to which they were bothered by problems 
+experienced in the past month in relation to a traumatic experience of abuse or act of 
+violence (0=not at all to 4=extremely). Total severity score (Cronbach’s alpha = 0.94) and 
+subscale totals (re-experiencing symptom category B; avoidance category C; negative 
+alterations in cognitions and mood category D; and hyperarousal category E; Cronbach’s 
+alpha = 0.88, 0.83, 0.83, and 0.83, respectively) were examined at each of the three 
+assessment points.
+Coping:  Coping was assessed using 43 items that were previously used to measure coping 
+in Sub-Saharan Africa or among HIV-infected individuals ( 10, 52–57), in addition to 4 new 
+items that were chosen based on cognitive interviewing and formative findings. Participants Sikkema et al. Page 7
+AIDS Behav . Author manuscript; available in PMC 2019 March 01.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+--- PAGE 8 ---
+were asked how often they used these strategies in the past month to help deal with their 
+HIV illness (1 = not at all to 4 = most of the time). A principal axis factor analysis with 
+direct oblimin rotation was performed on the baseline data to explore the structure of coping 
+items. Five items did not logically group with any factor and were removed from further 
+analysis. In total, three factors were identified, which included active coping (13 items, e.g., 
+“I made a plan and have taken steps to improve the situation”; Cronbach’s alpha = 0.83), 
+avoidant coping (16 items, e.g., “I bottled by feelings inside”; Cronbach’s alpha = 0.79), and 
+social/spiritual coping (13 items, e.g., “I talked with others with problems like mine”; 
+Cronbach’s alpha = 0.78).
+Adherence Motivation:  Motivation to take ART was measured using an adapted subscale 
+of the LifeWindows Information-Motivation-Behavioral Skills ART Adherence 
+Questionnaire (LW-IMB-AAQ) ( 58). The LW-IMB-AAQ was developed to identify barriers 
+to ART adherence among HIV-infected patients. The personal motivation subscale measures 
+attitudes and beliefs about the impact of ART medication and the daily burden of ART 
+adherence. For the present study, five items were included based on their relevance to South 
+African women in a clinic setting, and a new item was added to measure the perceived 
+difficulty of being able to take HIV medications with food as prescribed. The final scale 
+included six questions with responses ranging from 1 = strongly disagree to 5 = strongly 
+agree (Cronbach’s alpha = 0.76). All six questions were reverse-scored and summed to 
+obtain a total score with a possible range of 6 to 30, with larger values indicating greater 
+motivation to take ART.
+HIV care engagement:  HIV care engagement was measured using self-reported ART 
+adherence and medical record abstraction. Any self-reported non-adherence was evaluated 
+by asking the participant how many days she missed taking her medication within the past 
+month ( 59). Using the abstracted medical record data, retention in care was measured by 
+computing days between consecutive kept HIV-related visits and assessing whether 60 days 
+or more elapsed between any two visits or between the participant’s last kept visit and the 
+end of the study window ( 60). Additionally, the viral load data abstracted from medical 
+records was dichotomized as suppressed (<1,000 copies/ml) or not suppressed ( ≥ 1,000 
+copies/ml) ( 61). Data was abstracted for the first assessment of viral load, typically 3–4 
+months post ART initiation, and thus the test result most approximate to the 6-month 
+assessment.
+Exploratory Data Analysis to Evaluate Potential Intervention Efficacy
+Study data were double-entered using REDCap, a secure, web-based application hosted at 
+Duke University ( 62). Descriptive statistics were used to characterize the sample at baseline, 
+with t tests and χ2 tests examining between-group differences for continuous and categorical 
+variables, respectively. The conditions were compared based on demographic factors, abuse 
+histories, and HIV history.
+Although exploratory in approach, our primary hypotheses examined the short term effects 
+of ImpACT on mental health outcomes. To assess the changes in PTSD symptoms, coping, 
+and adherence motivation by intervention condition, linear mixed models were fit using the Sikkema et al. Page 8
+AIDS Behav . Author manuscript; available in PMC 2019 March 01.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+--- PAGE 9 ---
+PROC MIXED procedure in SAS software version 9.4 (SAS Institute, Inc., Cary, NC). To 
+explore differences between conditions in clinically significant change of PTSD symptoms, 
+χ2 tests compared proportions of participants with a > 20 point reduction in the total severity 
+score from baseline to 3-month and baseline to 6-month assessments ( 63). Participants were 
+retained in these analyses regardless of intervention exposure, following an intent-to-treat 
+analysis of the outcomes.
+For our secondary outcomes, analysis of self-reported adherence excluded participants who 
+did not initiate ART (n= 4 in ImpACT and n= 3 in SoC), and care engagement measures 
+excluded both participants who did not initiate ART and those who officially transferred care 
+to another clinic (n= 2 in ImpACT and n= 2 in SoC). To explore differences in adherence 
+and care engagement, χ2 tests compared proportions between conditions at 3-month and 6-
+month.
+RESULTS
+Sample Characteristics
+Characteristics of the study sample are described in Table 1. The average age of participants 
+was 29.1 years (SD = 7.5) and most participants (78.1%) had not completed high school. 
+While a quarter of participants reported current employment and a few reported occasional 
+work, the majority of participants (68.7%) were unemployed. More than half (59.4%) were 
+in relationship but not living with their partner, 15.6% were living with a partner, and 12.5% 
+were married. Four participants were single (6.3%) and four were separated or divorced 
+(6.3%) at baseline.
+High rates of sexual abuse were reported across the life course, with 18.8% of participants 
+reporting sexual abuse in childhood, nearly half (48.4%) reporting sexual abuse in 
+adolescence, and over three-quarters (76.6%) reporting sexual abuse in adulthood. Moreover, 
+40.6% of participants reported experiencing sexual abuse within the last three months at 
+baseline. While more than half of participants (54.7%) had disclosed at least one sexual 
+abuse experience to a family member, only 9.4% had ever told a health care provider about 
+their history of sexual abuse. Prevalence of lifetime physical intimate partner violence was 
+also high (84.4%), with 23.4% of the sample experiencing physical IPV within the last 3 
+months at baseline. Nearly the entire sample (92.2%) reported exposure to other traumatic 
+events, with 87.5% reporting exposure in adulthood.
+Most of the study participants were recently diagnosed with HIV , with 53.1% diagnosed 
+within the last one month and 57.8% diagnosed within the last three months of enrolling in 
+the study. The overall proportion of women who had disclosed their HIV status was high, 
+with 92.2% of participants having told somebody about their diagnosis. However, 25.0% of 
+participants with a current partner reported not having disclosed their HIV status to this 
+partner. The average CD4 count of study participants at the time of ART initiation was 317.9 
+cells/μl. Based on medical record review, 87.5% of SoC participants and 90.6% of ImpACT 
+participants completed the three adherence counseling sessions required for ART initiation. 
+Overall, 10.9% of participants did not initiate ART during the study period. Of the Sikkema et al. Page 9
+AIDS Behav . Author manuscript; available in PMC 2019 March 01.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+--- PAGE 10 ---
+participants who initiated ART, 94.6% were on a fixed dose combination (FDC) with 
+tenofovir (TDF), emtricitabine (FTC) and efavirenz (EFV).
+No significant differences for any of these sample characteristics were observed between 
+treatment conditions.
+Intervention Trial Feasibility and Acceptability
+Fidelity to the ImpACT intervention protocol for individual sessions was high. An 
+independent coder estimated level of fidelity to the ImpACT intervention for the individual 
+sessions, with 97.8% coverage specific to each session’s protocol. Due to challenges in 
+group session attendance, limited quality assurance data for group sessions were available, 
+although for the group sessions that were implemented, intervention fidelity was also high. 
+Overall, the mean number of individual sessions attended was 3.1 (SD = 1.3; range 0 – 4), 
+with 65.6% of participants attending all four sessions. Three participants (9.4%) attended 
+only one session and only one attended no sessions. For group sessions, attendance was 
+poor, with only 25.0% receiving any group sessions. Twenty-five percent of enrolled 
+participants were referred for psychological or psychiatric services over the course of the 
+study and no significant differences by study condition in the portion of participants 
+receiving referrals were observed.
+The mean score for overall study acceptability (range 1–4) was 3.79 at 3 months and 3.78 at 
+6 months, representing high levels of study acceptability among participants in both study 
+arms. Among intervention participants, the mean score for acceptability of the intervention 
+(range 1–4) was 3.77 at 3-month and 3.71, also representing high levels of acceptability of 
+the intervention. Ratings of the usefulness of each of seven intervention components within 
+the individual sessions (range 1–5) were also high, with mean scores of 4.84 at 3-month and 
+4.91 at 6-month.
+Longitudinal Effects on Traumatic Stress Outcomes, Coping, and Motivation to Adhere
+Means and results for overall effect of condition by time for the primary psychological 
+outcomes are reported in Table 2. Mixed model parameter estimates of time effects from 
+baseline to 3-month (post individual sessions) as well as baseline to 6-month revealed 
+significant decreases in overall PTSD symptom severity scores and all PTSD subscales 
+across both study conditions. The time by condition interaction parameter estimates revealed 
+significantly greater reductions in the ImpACT arm compared to the SoC for avoidance 
+symptoms of PTSD (Cluster C; F (1,43) = 5.05, p =. 03) as well as hyperarousal symptoms of 
+PTSD (Cluster E; F (1,43) = 6.78, p =. 01) from baseline to 3-month. The time by condition 
+interaction parameter estimate suggested a trend for greater reductions in overall PTSD 
+symptom severity scores in the ImpACT arm compared to SoC from baseline to 3-month as 
+well (F (1,43) = 3.15, p =. 08). In mixed models of time effects from baseline to 6-month, the 
+time by condition interaction parameter estimates did not reach statistical significance, 
+though results suggested a trend for greater reductions in hyperarousal symptoms of PTSD 
+in the ImpACT arm compared to the SoC (Cluster E; F (2,93)  = 2.55, p =. 08).
+Exploratory post-hoc analysis revealed that a significantly larger proportion of participants 
+in the ImpACT arm compared to SoC had clinically significant reductions in total symptom Sikkema et al. Page 10
+AIDS Behav . Author manuscript; available in PMC 2019 March 01.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+--- PAGE 11 ---
+severity scores from baseline to 3-month assessments (47.4% vs. 15.4%; p =. 02). While this 
+trend continued into the 6-month assessment (39.1% vs. 25.0%), the difference did not reach 
+statistical significance.
+Mixed model parameter estimates of time effects from baseline to 3-month as well as 
+baseline to 6-month revealed significant decreases in levels of avoidant coping as well as 
+significant increases in levels of social/spiritual coping and adherence motivation across both 
+study arms (Table 2). Changes in the levels of active coping over time did not reach 
+statistical significance. The time by condition interaction parameter estimate for social/
+spiritual coping revealed marginally larger increases within the ImpACT arm compared to 
+the SoC from baseline to 6-month (F (2,89)  = 2.95, p =. 06).
+Additionally, significant time by condition interaction parameter estimates were observed for 
+adherence motivation, suggesting participants in the ImpACT arm reported greater increases 
+in their motivation to adhere to ART than those in the SoC arm from baseline to 3-month 
+(F(1,42) = 4.27, p =. 05), with a potential trend observed from baseline to 6-month (F (2,89)  = 
+2.40, p =. 10).
+Exploration of Longitudinal Effect on Adherence and Care Engagement
+Among ART initiators, high rates of non-adherence to treatment (missed medication past 
+month) were reported in both conditions at 3-month (44.0% vs. 36.8% in ImpACT vs. SoC; 
+χ2 (1) = 0.23, p =. 63) and 6-month (42.3% vs. 36.4% in ImpACT vs. SoC; χ2 (1) = 0.18, p 
+=. 67). Medical record data also suggested high levels of non-retention in care, with 42.3% 
+of ImpACT participants and 33.3% of SoC participants having a 60 day or greater gap 
+between any two consecutive appointments, or between their last appointment and the end of 
+their 6-month study window ( χ2 (1) = 0.45, p =. 50). Viral load data from the abstracted 
+medical records, representing 3–4 months post ART initiation, revealed that among 
+individuals who had viral load data, 15.8% of ImpACT participants and 20.0% of SoC 
+participants had an unsuppressed viral load (i.e., ≥ 1,000 copies/ml; χ2 (1) = 0.13, p =. 72). 
+However, if participants who did not initiate ART and those with poor care engagement who 
+were therefore missing viral load data are assumed to have unsuppressed viral loads, and 
+participants who officially transferred to another clinic are assumed to have a suppressed 
+viral load, the overall proportion of study participants with unsuppressed viral loads reaches 
+39.1%, suggesting low levels of viral suppression overall. Exploratory analysis revealed no 
+differences on secondary outcomes of adherence and care engagement between study arms.
+DISCUSSION
+HIV-infected South African women initiating ART in a low-resource, public clinic reported 
+high levels of sexual abuse, interpersonal trauma, and traumatic stress. A significant 
+proportion of these women were newly HIV diagnosed, with experiences of sexual violence 
+ongoing for many, indicative of the syndemic nature of HIV and trauma in this setting. In 
+this study, we conducted an exploratory clinical trial of a culturally-adapted, task-shifted 
+coping intervention, developed through formative research and based on a theoretically 
+grounded, evidence-based intervention addressing HIV and trauma ( 10). ART initiation was 
+conceptualized as a window of opportunity to address the emotional and behavioral Sikkema et al. Page 11
+AIDS Behav . Author manuscript; available in PMC 2019 March 01.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+--- PAGE 12 ---
+consequences of sexual trauma, and potentially impact HIV care engagement. The study 
+demonstrated the feasibility of conducting a clinical trial, and the feasibility and 
+acceptability of the individual intervention sessions, delivered with high rates of fidelity by a 
+lay provider in mental health.
+ImpACT, a brief coping intervention for HIV-infected women with a history of sexual abuse, 
+was shown to reduce traumatic stress and increase motivation to adhere to treatment as ART 
+was initiated. This preliminary effect was evident post intervention (3 months from 
+baseline), with trends suggesting a potential impact at 6-month follow-up. Overall, all 
+participants reported a reduction in PTSD symptoms, with ImpACT participants reporting a 
+greater reduction in avoidance and arousal symptoms, with a trend for total symptom 
+severity reduction. In further support of ImpACT’s potential to reduce PTSD, an exploratory 
+analysis demonstrated that significantly more ImpACT participants reported a clinically 
+significant reduction in overall PTSD symptoms, with nearly half reporting a reduction of 20 
+points or more, moving most of those participants below the diagnostic threshold for PTSD. 
+A similar pattern of results indicated increased motivation among ImpACT participants to 
+adhere to ART post-intervention, with a trend suggesting a continued effect at the 6-month 
+follow-up assessment. Lastly, while avoidant coping decreased among all study participants, 
+ImpACT participants demonstrated an increased level of social/spiritual coping at the 6-
+month follow assessment.
+Taken together, these preliminary results suggest the potential for a brief coping intervention 
+for HIV-infected women with extensive and ongoing traumatic experiences to reduce PTSD 
+symptoms and improve motivation to adhere to HIV care. These preliminary effects are 
+primarily evident post-intervention, with less clear support at the 6-month follow-up 
+assessment. In addition, although the pilot study was not powered to evaluate psychological 
+or clinical outcomes, levels of non-adherence across outcomes were similar between 
+conditions at 6-month follow-up based on self-report and medical record abstraction of gaps 
+between kept visits and viral load suppression. The overall challenges of adherence and viral 
+suppression, with nearly 40% of our sample not suppressed at first viral load, suggest high 
+levels of poor care engagement, supporting the need for trauma-informed interventions in 
+this context.
+Notably, while the individual sessions were considered feasible and acceptable, based on 
+high levels of satisfaction with the content and interventionist, implementation of the group 
+sessions met significant challenges and barriers. Although the study was designed to explore 
+the additional benefit of group sessions, the low rate of attendance permitted the follow-up 
+period between the 3- and 6-month assessments to serve as a form of no-intervention, 
+maintenance period. The effectiveness of group intervention has been documented in other 
+similar settings ( 64), and despite the acceptability of group sessions in our formative 
+research, group sessions were unsuccessful in this study likely due to concerns of stigma and 
+privacy, and difficulties with scheduling and transportation. Thus, although the exploratory 
+outcomes suggest the potential for individual ImpACT sessions to effect change in the short-
+term, an intervention of greater intensity and/or duration should be considered for this 
+population in a full scale trial. This could include, for example, greater number of individual 
+sessions that would replace group sessions, along with booster sessions over time. This Sikkema et al. Page 12
+AIDS Behav . Author manuscript; available in PMC 2019 March 01.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+--- PAGE 13 ---
+modification to ImpACT could provide opportunities for further coping skills development, 
+utilizing practice and application to new stressors, including barriers to adherence and re-
+emergence of avoidance and PTSD symptoms. This may be particularly necessary to 
+demonstrate long-term effects on care engagement among HIV-infected women 
+experiencing high levels of traumatic stress, and potentially ongoing sexual and physical 
+violence.
+Even within this syndemic context ( 65, 66), the ImpACT intervention and conduct of the 
+trial were considered feasible across a variety of indicators. In collaboration with clinic 
+providers, we were able to systematically refer and screen women for traumatic experiences. 
+Based on our formative research findings ( 18), many women had not previously disclosed 
+their sexually traumatic experiences, and few to none had disclosed in the health care 
+setting. The prevalence of sexual abuse, intimate partner violence, and PTSD in our screened 
+sample was higher than many HIV-positive studies ( 1), strongly supporting the need for a 
+trauma-focused intervention in the context of differentiated care whereby scarce resources 
+are allocated to individuals who may be most vulnerable and in need of support ( 67). Trial 
+retention overall was similar to or better than prior adherence intervention studies in varied 
+settings ( 68), with an impressive 80% retention at 6 months among women in this stressful 
+context. Lastly, individual session intervention dosage among ImpACT participants was 
+similar to other studies of trauma treatment ( 9, 10, 69).
+Study Limitations
+As a pilot feasibility study, there are limitations to the study design, primarily that the study 
+was under-powered to evaluate effects, and the preliminary analysis should be considered 
+exploratory and with the purpose of informing a large-scale trial. Although the preliminary 
+findings support the potential for the ImpACT intervention to reduce traumatic stress and 
+improve adherence motivation, all study participants improved over time on a number of 
+psychological indicators. Possible explanations for the overall improvement over time 
+include the following: 1) potential improvement in physical health due to ART initiation, 
+with resulting decreases in psychological distress, 2) openly discussing experiences of 
+sexual abuse and trauma in the context of the baseline study procedures, possibly for the first 
+time, 3) supportive study staff, including repeated opportunities through assessments to 
+acknowledge and report on various psychological symptoms and daily life stressors, 4) 
+referrals for psychiatric and psychological services across study arms as needed, and 5) 
+potential effect of adherence counseling sessions received as standard of care by all 
+participants.
+Although there were advantages of utilizing ART initiation as a window of opportunity for 
+intervention, this timing also presented challenges and potential limitations in the study 
+design. With the clinic-required adherence counseling sessions serving as the standard of 
+care control condition, participants were typically screened, enrolled, completed baseline 
+and randomized within days of learning they needed to initiate ART; for some, this was 
+immediately after receiving an HIV diagnosis. This process potentially created a high level 
+of stress for participants and could be one explanatory factor in the differential loss to 
+follow-up among women experiencing intimate partner violence and those reporting Sikkema et al. Page 13
+AIDS Behav . Author manuscript; available in PMC 2019 March 01.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+--- PAGE 14 ---
+hazardous drinking upon enrollment in the trial. In contrast, study screening provided an 
+opportunity for suicidality assessment and psychiatric referral for a number of participants 
+not likely available through standard clinic procedures. Future research must consider 
+alternative control conditions and timing of study entry, such that outcomes can remain 
+focused on preventing non-adherence and maintaining care engagement, while also 
+broadening the time period for study enrollment.
+When considering the generalizability of these findings, demographic characteristics should 
+be considered. Another limitation was the absence of direct observation of sessions (for 
+example, through audio recordings), to assess intervention fidelity. In addition, the accuracy 
+of self-reported adherence and medical record review cannot be confirmed, and future 
+research should utilize viral load testing within the study protocol and consider biomarkers 
+of medication to measure adherence, such as dried blood spots or hair samples.
+Conclusions
+ImpACT, in an exploratory clinical trial, was shown to reduce traumatic stress and increase 
+ART adherence motivation among HIV-infected women with sexual abuse histories. A brief 
+coping intervention, developed and culturally adapted based on an evidence-based approach 
+to HIV and trauma, and delivered by a non-specialist in a public primary care clinic in Cape 
+Town, was found to be feasible and acceptable for individual sessions. Future research 
+should evaluate the ImpACT intervention, with modifications based on lessons learned in 
+this pilot trial, in a full-scale RCT to assess its long-term effects on traumatic stress, coping 
+and HIV care engagement. With South Africa currently implementing test-and treat 
+guidelines ( 70, 71), but with continuing drop off across the HIV care cascade ( 72, 73), 
+trauma-informed interventions are needed in this syndemic context to increase and maintain 
+uptake of and adherence to ARV treatment.
+Acknowledgments
+This study was funded by a grant from NIMH (R34 MH102001). We also acknowledge support received from the 
+Duke Center for AIDS Research (P30 AI064518), and the Duke Interdisciplinary Research Training Program in 
+AIDS (T32 AI007392). We gratefully acknowledge the participants who contributed time and energy to this study.
+References
+1. Seedat S. Interventions to improve psychological functioning and health outcomes of HIV-infected 
+individuals with a history of trauma or PTSD. Current HIV/AIDS Reports. 2012; 9(4):344–50. 
+[PubMed: 23007792] 
+2. Machtinger E, Wilson T, Haberer J, Weiss D. Psychological trauma and PTSD in HIV-positive 
+women: A meta-analysis. AIDS and Behavior. 2012; 16(8):2091–100. [PubMed: 22249954] 
+3. LeGrand S, Reif S, Sullivan K, Murray K, Barlow ML, Whetten K. A Review of Recent Literature 
+on Trauma Among Individuals Living with HIV . Curr HIV/AIDS Rep. 2015; 12(4):397–405. 
+[PubMed: 26419376] 
+4. Whetten K, Shirey K, Pence BW, Yao J, Thielman N, Whetten R, et al. Trauma history and 
+depression predict incomplete adherence to antiretroviral therapies in a low income country. PloS 
+one. 2013; 8(10):e74771. [PubMed: 24124455] 
+5. Aaron E, Criniti S, Bonacquisti A, Geller PA. Providing sensitive care for adult HIV-infected 
+women with a history of childhood sexual abuse. The Journal of the Association of Nurses in AIDS 
+Care: JANAC. 2013; 24(4):355–67. [PubMed: 23790278] Sikkema et al. Page 14
+AIDS Behav . Author manuscript; available in PMC 2019 March 01.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+--- PAGE 15 ---
+6. Hatcher AM, Smout EM, Turan JM, Christofides N, Stockl H. Intimate partner violence and 
+engagement in HIV care and treatment among women: a systematic review and meta-analysis. Aids. 
+2015; 29(16):2183–94. [PubMed: 26353027] 
+7. Applebaum AJ, Bedoya CA, Hendriksen ES, Wilkinson JL, Safren SA, O’Cleirigh C. Future 
+directions for interventions targeting PTSD in HIV-infected adults. The Journal of the Association 
+of Nurses in AIDS Care: JANAC. 2015; 26(2):127–38. [PubMed: 25665885] 
+8. McLean CP, Fitzgerald H. Treating Posttraumatic Stress Symptoms Among People Living with 
+HIV: a Critical Review of Intervention Trials. Current psychiatry reports. 2016; 18(9):83. [PubMed: 
+27439305] 
+9. Pacella ML, Armelie A, Boarts J, Wagner G, Jones T, Feeny N, et al. The impact of prolonged 
+exposure on PTSD symptoms and associated psychopathology in people living with HIV: A 
+randomized test of concept. AIDS Behav. 2012; 16(5):1327–40. [PubMed: 22012149] 
+10. Sikkema KJ, Ranby KW, Meade CS, Hansen NB, Wilson PA, Kochman A. Reductions in traumatic 
+stress following a coping intervention were mediated by decreases in avoidant coping for people 
+living with HIV/AIDS and childhood sexual abuse. J Consult Clin Psychol. 2013; 81(2):274–83. 
+[PubMed: 23025248] 
+11. Nemeroff CB, Bremner JD, Foa EB, Mayberg HS, North CS, Stein MB. Posttraumatic stress 
+disorder: a state-of-the-science review. J Psychiatr Res. 2006; 40(1):1–21. [PubMed: 16242154] 
+12. Folkman, S., Chesney, M., McKusick, L., Ironson, G., Johnson, D., Coates, T. Translating coping 
+theory into an intervention. In: Eckenrode, J., editor. The Social Context of Coping. New York, 
+NY: Plenum Press; 1991. p. 239-60.
+13. UNAIDS. UNAIDS Data 2017. Geneva, Switzerland: Joint United Nations Programme on HIV/
+AIDS; 2017. 
+14. Jewkes R, Penn-Kekana L, Levin J, Ratsaka M, Schrieber M. Prevalence of emotional, physical 
+and sexual abuse of women in three South African provinces. South African Medical Journal. 
+2001; 91(5):421–8. [PubMed: 11455808] 
+15. Yemeke TT, Sikkema KJ, Watt MH, Ciya N, Robertson C, Joska JA. Screening for Traumatic 
+Experiences and Mental Health Distress Among Women in HIV Care in Cape Town, South Africa. 
+Journal of interpersonal violence. 2017 0886260517718186. 
+16. Whetten K, Reif S, Whetten R, Murphy-McMillan LK. Trauma, mental health, distrust, and stigma 
+among HIV-positive persons: Implications for effective care. Psychosom Med. 2008; 70(5):531–8. 
+[PubMed: 18541904] 
+17. Blashill AJ, Perry N, Safren SA. Mental health: A focus on stress, coping, and mental illness as it 
+relates to treatment retention, adherence, and other health outcomes. Current HIV/AIDS Reports. 
+2011; 8(4):215–22. [PubMed: 21822626] 
+18. Watt MH, Dennis AC, Choi KW, Ciya N, Joska JA, Robertson C, et al. Impact of Sexual Trauma 
+on HIV Care Engagement: Perspectives of Female Patients with Trauma Histories in Cape Town, 
+South Africa. AIDS Behav. 2017; 21(11):3209–18. [PubMed: 27866288] 
+19. McIntosh R, Rosselli M. Stress and coping in women living with HIV: A meta-analytic review. 
+AIDS and Behavior. 2012; 16(8):2144–59. [PubMed: 22434282] 
+20. Keuroghlian AS, Kamen CS, Neri E, Lee S, Liu R, Gore-Felton C. Trauma, dissociation, and 
+antiretroviral adherence among persons living with HIV/AIDS. Journal of Psychiatric Research. 
+2011; 45(7):942–8. [PubMed: 21636097] 
+21. Dallam, S. Where does it hurt? How victimization impacts presentation and outcomes in primary 
+care. In: Banyard, VL.Edwards, VJ., Kendall-Tackett, K., editors. Trauma and physical health: 
+Understanding the effects of extreme stress and of psychological harm. London and New York: 
+Routledge; 2009. p. 134-62.
+22. Pence BW, Mugavero MJ, Carter TJ, Leserman J, Thielman NM, Raper JL, et al. Childhood 
+trauma and health outcomes in HIV-infected patients: An exploration of causal pathways. Journal 
+of Acquired Immune Deficiency Syndromes. 2012; 59(4):409–16. [PubMed: 22107822] 
+23. Brief DJ, Bollinger AR, Vielhauer MJ, Berger-Greenstein JA, Morgan EE, Brady SM, et al. 
+Understanding the interface of HIV , trauma, post-traumatic stress disorder, and substance use and 
+its implications for health outcomes. AIDS Care. 2004; 16(Suppl 1):S97–120. [PubMed: 
+15736824] Sikkema et al. Page 15
+AIDS Behav . Author manuscript; available in PMC 2019 March 01.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+--- PAGE 16 ---
+24. Kessler RC, Berglund P, Demler O, Jin R, Merikangas KR, Walters EE. Lifetime prevalence and 
+age-of-onset distributions of DSM-IV disorders in the National Comorbidity Survey Replication. 
+Archives of General Psychiatry. 2005; 62(6):593–602. [PubMed: 15939837] 
+25. Seedat S, Stein DJ, Carey PD. Post-traumatic stress disorder in women: Epidemiological and 
+treatment issues. CNS Drugs. 2005; 19(5):411–27. [PubMed: 15907152] 
+26. Ironson G, O’Cleirigh C, Fletcher MA, Laurenceau JP, Balbin E, Klimas N, et al. Psychosocial 
+factors predict CD4 and viral load change in men and women with human immunodeficiency virus 
+in the era of highly active antiretroviral treatment. Psychosom Med. 2005; 67(6):1013–21. 
+[PubMed: 16314608] 
+27. Reilly KH, Clark RA, Schmidt N, Benight CC, Kissinger P. The effect of post-traumatic stress 
+disorder on HIV disease progression following hurricane Katrina. AIDS Care. 2009; 21(10):1298–
+305. [PubMed: 20024706] 
+28. Schafer KR, Brant J, Gupta S, Thorpe J, Winstead-Derlega C, Pinkerton R, et al. Intimate partner 
+violence: a predictor of worse HIV outcomes and engagement in care. AIDS Patient Care STDS. 
+2012; 26(6):356–65. [PubMed: 22612519] 
+29. Leserman J, Pence B, Whetten K, Mugavero M, Thielman N, Swartz M, et al. Relation of lifetime 
+trauma and depressive symptoms to mortality in HIV . American Journal of Psychiatry. 2007; 
+164(11):1707–13. [PubMed: 17974936] 
+30. Campbell JC, Baty ML, Ghandour RM, Stockman JK, Francisco L, Wagman J. The intersection of 
+intimate partner violence against women and HIV/AIDS: a review. International journal of injury 
+control and safety promotion. 2008; 15(4):221–31. [PubMed: 19051085] 
+31. Brezing C, Ferrara M, Freudenreich O. The syndemic illness of HIV and trauma: implications for a 
+trauma-informed model of care. Psychosomatics. 2015; 56(2):107–18. [PubMed: 25597836] 
+32. Machtinger EL, Cuca YP, Khanna N, Rose CD, Kimberg LS. From treatment to healing: the 
+promise of trauma-informed primary care. Womens Health Issues. 2015; 25(3):193–7. [PubMed: 
+25965151] 
+33. Sales JM, Swartzendruber A, Phillips AL. Trauma-Informed HIV Prevention and Treatment. Curr 
+HIV/AIDS Rep. 2016; 13(6):374–82. [PubMed: 27704251] 
+34. Onu C, Ongeri L, Bukusi E, Cohen CR, Neylan TC, Oyaro P, et al. Interpersonal psychotherapy for 
+depression and posttraumatic stress disorder among HIV-positive women in Kisumu, Kenya: study 
+protocol for a randomized controlled trial. Trials. 2016; 17:64. [PubMed: 26841875] 
+35. Opiyo E, Ongeri L, Rota G, Verdeli H, Neylan T, Meffert S. Collaborative Interpersonal 
+Psychotherapy for HIV-Positive Women in Kenya: A Case Study From the Mental Health, HIV 
+and Domestic Violence (MIND) Study. Journal of clinical psychology. 2016; 72(8):779–83. 
+[PubMed: 27463639] 
+36. Patel V . The future of psychiatry in low- and middle-income countries. Psychological Medicine. 
+2009; 39(11):1759–62. [PubMed: 20162837] 
+37. Petersen I, Lund C, Stein DJ. Optimizing mental health services in low-income and middle-income 
+countries. Current Opinion in Psychiatry. 2011; 24(4):318–23. DOI: 10.1097/YCO.
+0b013e3283477afb [PubMed: 21546837] 
+38. Statistics South Africa. South African National Census of 2011. Pretoria, South Africa: 
+Government of South Africa; 2011. 
+39. Department of Health. National Consolidated Guidelines for the Prevention of Mother-to-Child 
+Transmission of HIV (PMTCT) and the Management of HIV in Children, Adolsecents and Adults. 
+Pretoria, South Africa: 2015. 
+40. World Health Organization. Composite international diagnostic interview (CIDI), Version 1.0. 
+Geneva: WHO; 1990. 
+41. Bernstein DP, Stein JA, Newcomb MD, Walker E, Pogge D, Ahluvalia T, et al. Development and 
+validation of a brief screening version of the Childhood Trauma Questionnaire. Child Abuse and 
+Neglect. 2003; 27(2):169–90. [PubMed: 12615092] 
+42. Lecrubier Y , Sheehan D, Weiller E, Amorim P, Bonora I, Harnett Sheehan K, et al. The Mini 
+International Neuropsychiatric Interview (MINI). A short diagnostic structured interview: 
+reliability and validity according to the CIDI. European Psychiatry. 1997; 12(5):224–31.Sikkema et al. Page 16
+AIDS Behav . Author manuscript; available in PMC 2019 March 01.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+--- PAGE 17 ---
+43. Browne RH. On the use of a pilot sample for sample size determination. Statistics in medicine. 
+1995; 14(17):1933–40. [PubMed: 8532986] 
+44. Eldridge SM, Chan CL, Campbell MJ, Bond CM, Hopewell S, Thabane L, et al. CONSORT 2010 
+statement: extension to randomised pilot and feasibility trials. BMJ (Clinical research ed). 2016; 
+355:i5239.
+45. Sikkema KJ, Wilson PA, Hansen NB, Kochman A, Neufeld S, Ghebremichael MS, et al. Effects of 
+a coping intervention on transmission risk behavior among people living with HIV/AIDS and a 
+history of childhood sexual abuse. Journal of Acquired Immune Deficiency Syndromes. 2008; 
+47(4):506–13. [PubMed: 18176319] 
+46. Meade CS, Drabkin AS, Hansen NB, Wilson PA, Kochman A, Sikkema KJ. Reductions in alcohol 
+and cocaine use following a group coping intervention for HIV-positive adults with childhood 
+sexual abuse histories. Addiction. 2010; 105(11):1942–51. [PubMed: 20840176] 
+47. Sikkema, KJ., Joska, JA., Choi, KW., Robertson, C., Ciya, N., Knettel, BA., et al. ImpACT: 
+Improving AIDS Care After Trauma - Intervention Manual. Duke University and University of 
+Cape Town; 2017. 
+48. Bush K, Kivlahan DR, McDonell MB, Fihn SD, Bradley KA. The AUDIT alcohol consumption 
+questions (AUDIT-C): an effective brief screening test for problem drinking. Ambulatory Care 
+Quality Improvement Project (ACQUIP). Alcohol Use Disorders Identification Test. Archives of 
+internal medicine. 1998; 158(16):1789–95. [PubMed: 9738608] 
+49. Kotze M, Visser M, Makin J, Sikkema K, Forsyth B. Psychosocial variables associated with coping 
+of HIV-positive women diagnosed during pregnancy. AIDS Behav. 2013; 17(2):498–507. 
+[PubMed: 23196861] 
+50. Straus MA, Hamby SL, Boney-McCoy S, Sugarman DB. The revised Conflict Tactics Scales 
+(CTS2): Development and preliminary psychometric data. Journal of Family Issues. 1996; 17(3):
+283–316.
+51. Blevins CA, Weathers FW, Davis MT, Witte TK, Domino JL. The Posttraumatic Stress Disorder 
+Checklist for DSM-5 (PCL-5): Development and Initial Psychometric Evaluation. J Trauma Stress. 
+2015; 28(6):489–98. [PubMed: 26606250] 
+52. Namir S, Wolcott DL, Fawzey FI, Alumbaugh MJ. Coping with AIDS: Psychological and health 
+implications. Journal of Applied Social Psychology. 1987; 17(3):309–28.
+53. Kotze M, Visser M, Makin J, Sikkema K, Forsyth B. The coping strategies used over a two-year 
+period by HIV-positive women who had been diagnosed during pregnancy. AIDS Care. 2013; 
+25(6):695–701. [PubMed: 23442202] 
+54. Olley BO, Zeier MD, Seedat S, Stein DJ. Post-traumatic stress disorder among recently diagnosed 
+patients with HIV/AIDS in South Africa. AIDS Care. 2005; 17(5):550–7. [PubMed: 16036241] 
+55. Carver CS. You want to measure coping but your protocol’s too long: Consider the brief COPE. 
+International Journal of Behavioral Medicine. 1997; 4(1):92–100. [PubMed: 16250744] 
+56. Hansen NB, Harrison B, Fambro S, Bodnar S, Heckman TG, Sikkema KJ. The structure of coping 
+among older adults living with HIV/AIDS and depressive symptoms. Journal of Health 
+Psychology. 2013; 18(2):198–211. [PubMed: 22453164] 
+57. Folkman, S., Lazarus, RS. Manual for the Ways of Coping Questionnaire: Research Edition. Palo 
+Alto, CA: Consulting Psychological Press; 1988. 
+58. The LifeWindows Project Team. The LifeWindows Information Motivation Behavioral Skills ART 
+Adherence Questionnaire (LW-IMB-AAQ). Center for Health, Intervention, and Prevention. 
+University of Connecticut; 2006. 
+59. Chesney MA, Ickovics JR, Chambers DB, Gifford AL, Neidig J, Zwickl B, et al. Self-reported 
+adherence to antiretroviral medications among participants in HIV clinical trials: the AACTG 
+adherence instruments. Patient Care Committee & Adherence Working Group of the Outcomes 
+Committee of the Adult AIDS Clinical Trials Group (AACTG). AIDS Care. 2000; 12(3):255–66. 
+[PubMed: 10928201] 
+60. Mugavero MJ, Westfall AO, Zinski A, Davila J, Drainoni ML, Gardner LI, et al. Measuring 
+retention in HIV care: The elusive gold standard. Journal of Acquired Immune Deficiency 
+Syndromes. 2012; 61(5):574–80. [PubMed: 23011397] Sikkema et al. Page 17
+AIDS Behav . Author manuscript; available in PMC 2019 March 01.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+--- PAGE 18 ---
+61. World Health Organization. Consolidated guidelines on person-centred HIV patient monitoring and 
+case surveillance. Geneva: WHO; 2017. 
+62. Harris PA, Taylor R, Thielke R, Payne J, Gonzalez N, Conde JG. Research electronic data capture 
+(REDCap)--a metadata-driven methodology and workflow process for providing translational 
+research informatics support. Journal of biomedical informatics. 2009; 42(2):377–81. [PubMed: 
+18929686] 
+63. Weathers, FW., Litz, BT., Keane, TM., Palmieri, PA., Marx, BP., Schnurr, PP. The PTSD Checklist 
+for DSM-5  (PCL-5) 2013 [Scale. National Center for PTSD; at www.ptsd.va.gov .]
+64. Bass JK, Annan J, McIvor Murray S, Kaysen D, Griffiths S, Cetinoglu T, et al. Controlled trial of 
+psychotherapy for Congolese survivors of sexual violence. The New England journal of medicine. 
+2013; 368(23):2182–91. [PubMed: 23738545] 
+65. Singer M, Bulled N, Ostrach B, Mendenhall E. Syndemics and the biosocial conception of health. 
+Lancet. 2017; 389(10072):941–50. [PubMed: 28271845] 
+66. Meyer JP, Springer SA, Altice FL. Substance abuse, violence, and HIV in women: a literature 
+review of the syndemic. Journal of women’s health (2002). 2011; 20(7):991–1006.
+67. Grimsrud A, Bygrave H, Doherty M, Ehrenkranz P, Ellman T, Ferris R, et al. Reimagining HIV 
+service delivery: the role of differentiated care from prevention to suppression. J Int AIDS Soc. 
+2016; 19(1):21484. [PubMed: 27914186] 
+68. Rueda S, Park-Wyllie LY , Bayoumi A, Tynan A-M, Antoniou T, Rourke S, et al. Patient support 
+and education for promoting adherence to highly active antiretroviral therapy for HIV/AIDS. 
+Cochrane Database of Systematic Reviews. 2006; (3)
+69. Hembree EA, Foa EB, Dorfan NM, Street GP, Kowalski J, Tu X. Do patients drop out prematurely 
+from exposure therapy for PTSD? J Trauma Stress. 2003; 16(6):555–62. [PubMed: 14690352] 
+70. World Health Organization. Consolidated guidelines on the use of antiretroviral drugs for treating 
+and preventing HIV infection. Geneva: WHO; 2016. 
+71. Department of Health. Minister Aaron Motsoaledi: Health Dept Budget V ote 2016/17. 2016. 
+72. UNAIDS. Prevention Gap Report. Geneva, Switzerland: Joint United Nations Programme on HIV/
+AIDS; 2016. 
+73. Takuva S, Brown AE, Pillay Y , Delpech V , Puren AJ. The continuum of HIV care in South Africa: 
+implications for achieving the second and third UNAIDS 90-90-90 targets. Aids. 2017; 31(4):545–
+52. [PubMed: 28121668] Sikkema et al. Page 18
+AIDS Behav . Author manuscript; available in PMC 2019 March 01.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+--- PAGE 19 ---
+Figure 1. 
+CONSORT Flow Diagram of the study participants through the trial.
+Note: a Of the 141 participants referred to the study, 8 were reinitiating ART after defaulting 
+treatment. 4 did not meet eligibility criteria (no sexual trauma) and 1 did not appear for 
+baseline. 3 re-initiators were enrolled in the trial (2 randomized to ImpACT and 1 to SoC).Sikkema et al. Page 19
+AIDS Behav . Author manuscript; available in PMC 2019 March 01.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+--- PAGE 20 ---
+Author Manuscript Author Manuscript Author Manuscript Author ManuscriptSikkema et al. Page 20
+Table 1
+Study sample characteristics
+Study Condition
+Total sample (n=64)
+n (%)SoC (n=32)
+n (%)ImpACT (n=32)
+n (%)
+Demographic Characteristics
+Age, Mean (SD) 29.0 (8.4) 29.2 (6.6) 29.1 (7.5)
+Education
+ Some high school or less 24 (75.0) 26 (81.3) 50 (78.1)
+ Completed high school 5 (15.6) 5 (15.6) 10 (15.6)
+ Some university or more 3 (9.4) 1 (3.1) 4 (6.3)
+Current Employment Status
+ Currently working 6 (18.7) 10 (31.2) 16 (25.0)
+ Casual/sometimes working 2 (6.3) 2 (6.3) 4 (6.3)
+ Not working 24 (75.0) 20 (62.5) 44 (68.7)
+Relationship status
+ Single 2 (6.3) 2 (6.3) 4 (6.3)
+ In a relationship, not living together 17 (53.1) 21 (65.6) 38 (59.4)
+ In a relationship, living together 5 (15.6) 5 (15.6) 10 (15.6)
+ Married 4 (12.5) 4 (12.5) 8 (12.5)
+ Separated/Divorced 4 (12.5) 0 (0) 4 (6.3)
+Sexual Abuse History
+Sexual abuse in childhood 6 (18.8) 6 (18.8) 12 (18.8)
+Sexual abuse in adolescence 17 (53.1) 14 (43.8) 31 (48.4)
+Sexual abuse in adulthood 25 (78.1) 24 (75.0) 49 (76.6)
+Recent (last 3 months) sexual abuse 12 (37.5) 14 (43.8) 26 (40.6)
+Physical Intimate Partner Violence
+Ever experienced physical IPV 24 (75.0) 30 (93.8) 54 (84.4)
+Recent (last 3 months) physical IPV 6 (18.8) 9 (28.1) 15 (23.4)
+Other Traumatic Events
+Lifetime exposure to traumatic event 28 (87.5) 31 (96.9) 59 (92.2)
+Adulthood exposure to traumatic event 27 (84.4) 29 (90.6) 56 (87.5)
+Hazardous Drinking 13 (40.6) 15 (46.9) 28 (43.8)
+HIV-Related Characteristics
+Recent HIV Diagnosis (<3 months) 19 (59.4) 18 (56.3) 37 (57.8)
+CD4 count, (Mean, SD) 286.9 (115.6) 348.8 (163.5) 317.9 (143.9)
+Initiated ART during study period 28 (87.5) 29 (90.6) 57 (89.1)
+Note: No significant differences were found between the two conditions.
+AIDS Behav . Author manuscript; available in PMC 2019 March 01.
+--- PAGE 21 ---
+Author Manuscript Author Manuscript Author Manuscript Author ManuscriptSikkema et al. Page 21Table 2
+Intervention effects on traumatic stress, coping, and motivation to adhere to ART
+Baseline (n=64) 3-Month Follow-up (n=45) Baseline to 3-Month Overall Effect 6-Month Follow-up (n=51) Baseline to 6-Month Overall Effect
+F Values: F Values:
+Mean (SE) Mean (SE) Time Mean (SE) Time
+Condition*Time Condition*Time
+PCL – Total Symptom Severity Score
+ ImpACT 43.28 (3.88)* 25.79 (5.40) 15.84** 28.61 (5.04) 7.54**
+ SoC 30.72 (3.58) 23.04 (3.60) 3.15† 22.50 (3.47) 0.90
+PCL – Cluster B
+ ImpACT 10.03 (1.20) 6.42 (1.52) 10.58** 7.30 (1.30) 4.42*
+ SoC 7.72 (1.12) 5.27 (1.26) 1.15 5.82 (1.02) 0.22
+PCL – Cluster C
+ ImpACT 4.53 (0.52)* 2.21 (0.63) 17.67** 2.96 (0.60) 5.09**
+ SoC 3.03 (0.46) 2.23 (0.39) 5.05* 2.71 (0.47) 1.37
+PCL – Cluster D
+ ImpACT 15.84 (1.45)* 9.68 (2.31) 12.63** 10.43 (1.93) 8.19**
+ SoC 11.66 (1.37) 7.54 (1.34) 0.58 7.21 (1.43) 0.21
+PCL – Cluster E
+ ImpACT 12.88 (1.28)** 7.47 (1.36) 8.01** 7.91 (1.54) 5.32**
+ SoC 8.31 (1.13) 8.00 (1.21) 6.78* 6.75 (1.10) 2.55†
+Avoidant Coping
+ ImpACT 2.45 (0.11) 2.10 (0.12) 14.24** 2.17 (0.13) 12.42**
+ SoC 2.40 (0.08) 2.13 (0.07) 0.15 1.99 (0.09) 0.69
+Spiritual/Social Coping
+ ImpACT 2.54 (0.10) 2.89 (0.11) 3.93† 2.90 (0.10)* 2.47†
+ SoC 2.62 (0.11) 2.66 (0.11) 2.58 2.58 (0.10) 2.95†
+AIDS Behav . Author manuscript; available in PMC 2019 March 01.
+--- PAGE 22 ---
+Author Manuscript Author Manuscript Author Manuscript Author ManuscriptSikkema et al. Page 22Baseline (n=64) 3-Month Follow-up (n=45) Baseline to 3-Month Overall Effect 6-Month Follow-up (n=51) Baseline to 6-Month Overall Effect
+F Values: F Values:
+Mean (SE) Mean (SE) Time Mean (SE) Time
+Condition*Time Condition*Time
+Motivation to Adhere
+ ImpACT 19.00 (1.27) 23.84 (1.46) 11.24** 21.63 (1.60) 5.74**
+ SoC 20.88 (1.13) 22.40 (1.27) 4.27* 21.33 (1.19) 2.40†
+Note: Between-group differences within each time point denoted at † p < .10, * p < .05, and ** p < .01, respectively
+AIDS Behav . Author manuscript; available in PMC 2019 March 01.

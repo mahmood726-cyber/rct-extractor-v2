@@ -1,0 +1,1012 @@
+A cluster randomized controlled trial of a telephone-based parent
+intervention to increase preschoolers’ fruit and vegetable
+consumption1–3
+Rebecca Wyse, Luke Wolfenden, Elizabeth Campbell, Karen J Campbell, John Wiggers, Leah Brennan, Amanda Fletcher,
+Jenny Bowman, and Todd R Heard
+ABSTRACT
+Background: Inadequate fruit and vegetable consumption is asso-
+ciated with increased chronic disease risk and represents a consider-
+able global health burden. Despite evidence that dietary habits
+track from early childhood, there are few published trials of in-
+terventions attempting to increase preschoolers’ fruit and vegetable
+consumption.
+Objective: The Healthy Habits trial aimed to assess the efﬁcacy of
+a telephone-based intervention for parents to increase the fruit and
+vegetable consumption in their 3–5-y-old children.
+Design: A cluster randomized controlled trial was conducted in-
+volving 394 parents of children aged 3–5 y recruited through local
+preschools. Parents allocated to the intervention received printed
+resources plus four 30-min telephone calls targeting aspects of the
+home food environment associated with children’s fruit and vege-
+table consumption. Parents allocated to the control group received
+generic printed nutrition information. Children’s fruit and vegetable
+consumption was assessed by using the Fruit and Vegetable Sub-
+scale of the Children’s Dietary Questionnaire, which was adminis-
+tered via telephone interview at baseline and 2 and 6 mo later.
+Results: Analysis of all available data showed that children’s fruit
+and vegetable scores were signiﬁcantly higher in the intervention
+group than in the control group at 2 mo (P , 0.001) and at 6 mo
+(P = 0.021). Sensitivity analysis using baseline observation carried
+forward showed an intervention effect at 2 mo (P = 0.008) but not
+at 6 mo (P = 0.069).
+Conclusions: Telephone-delivered parent interventions may be an
+effective way of increasing children’s fruit and vegetable consump-
+tion in the short term. Further investigation to determine whether
+the intervention effect is maintained in the longer term is recom-
+mended. This trial was registered at http://www.anzctr.org.au as
+ACTRN12609000820202.
+Am J Clin Nutr 2012;96:102–10.
+INTRODUCTION
+Inadequate fruit and vegetable consumption increases chronic
+disease risk (1–3) and represents a considerable health burden
+worldwide (4). Evidence suggests that childhood dietary patterns
+track into adulthood (5), and high fruit and vegetable con-
+sumption in childhood has been associated with a lower risk of
+adulthood stroke and cancer (6, 7). Because early childhood is
+important in the development of dietary habits (8), interventions
+to promote young children’s fruit and vegetable intakes may help
+to establish dietary habits that decrease chronic disease risk in
+adulthood.
+Systematic reviews have identiﬁed a dearth of quality in-
+tervention studies to increase fruit and vegetable consumption in
+preschoolers (children aged 3–5 y) (9, 10). Most of the published
+trials have investigated multicomponent interventions conducted
+in the preschool setting and have predominantly targeted the
+policies and practices within the preschool environment (11–14).
+Interventions targeting the home environment, however, may be
+particularly effective (9) given that social and physical charac-
+teristics of the home environment are among the strongest cor-
+relates of children’s fruit and vegetable consumption (15, 16).
+Despite this, to our knowledge, only one published intervention
+trial has targeted the home food environment of preschoolers. In
+this randomized controlled trial of 1306 disadvantaged, rural-
+dwelling participants in the United States, an intervention
+consisting of 4 home visits, resources, and tailored newsletters
+had no overall effect on children’s fruit and vegetable intakes at
+6–11 mo of follow-up (17).
+Given evidence of the efﬁcacy of telephone-delivered in-
+terventions in improving adult dietary behaviors (18, 19), tele-
+phone interventions delivered to parents and targeting the home
+environment may represent an effective primary prevention
+strategy to enhance children’s fruit and vegetable intake. As
+such, we recently conducted a pre-post pilot trial and reported
+a signiﬁcant postintervention increase in preschoolers’ fruit and
+1 From the School of Medicine and Public Health (RW, LW, JW, AF, and
+TRH) and the School of Psychology (JB), University of Newcastle, New-
+castle, Australia; Hunter New England Population Health, Newcastle, Aus-
+tralia (EC, JW, and TRH); the Centre for Physical Activity & Nutrition
+Research, School of Exercise & Nutrition Sciences, Deakin University, Mel-
+bourne, Australia (KJC); the Centre for Obesity Research and Education,
+Monash University, Melbourne, Australia (LB); and the Hunter Medical
+Research Institute, Newcastle, Australia (RW, LW, EC, JW, AF, and TRH).
+2 Supported by the Cancer Institute New South Wales (grant 08/ECF/1-
+18). Infrastructure support was provided by the Hunter Medical Research
+Institute, and in-kind support was provided by Hunter New England Popu-
+lation Health.
+3 Address correspondence and reprint requests to R Wyse, Hunter New
+England Population Health, Locked Bag 10, Wallsend, NSW 2287, Australia.
+E-mail: rebecca.wyse@hnehealth.nsw.gov.au.
+Received November 10, 2011. Accepted for publication April 2, 2012.
+First published online May 23, 2012; doi: 10.3945/ajcn.111.030585.
+102
+Am J Clin Nutr 2012;96:102–10. Printed in USA.  2012 American Society for Nutrition
+vegetable consumption immediately after a 4-contact, telephone-
+based intervention (20). On the basis of the pilot ﬁndings and the
+broader telephone and health behavior literature (19), we sought
+to test the longer-term efﬁcacy of the intervention in an appro-
+priately powered randomized controlled trial.
+The primary aim of the current study was to assess the efﬁcacy
+of a telephone-based intervention for parents to increase the fruit
+and vegetable consumption of their 3–5-y-old children. It was
+hypothesized that the change in children’s fruit and vegetable
+scores from baseline to 2 mo and from baseline to 6 mo would be
+greater in the intervention children than in the control children.
+Given that dietary patterns that include a high intake of fruit and
+vegetables have been associated with higher food costs (21), as an
+assessment of a possible adverse effect, an additional aim was to
+determine whether intervention participation was associated with
+an increase in reported weekly household food expenditure.
+SUBJECTS AND METHODS
+Design overview
+The Healthy Habits trial used a cluster randomized controlled
+design and was prospectively registered with the Australian New
+Zealand Clinical Trials Registry. All trial outcomes and subgroup
+analyses reported in this article were prespeciﬁed. The research
+was approved by the Human Research Ethics Committees of the
+University of Newcastle (H-2008-0410) and the Hunter New
+England Area Health Service (08/10/15/5.09). This article reports
+the 2- and 6-mo primary trial outcomes collected via telephone
+interviews with the parents. The methods used to conduct this trial
+were published elsewhere (22) and are described brieﬂy below.
+Participants
+Parents were recruited through preschools within 4 Local
+Government Areas of the Hunter region of New South Wales,
+Australia, by using strategies found to be effective in increasing
+participation in child health research (23). All nongovernment
+preschools were eligible to participate if they did not provide
+meals to children, did not exclusively cater for children with
+special needs, or had not been involved in healthy eating studies
+within the preceding 6 mo. At preschools where the manager
+consented to participate, a research assistant, blind to preschool
+allocation, distributed study information and consent forms to
+parents as they dropped off or picked up their child. The consent
+form contained questions about the child’s usual fruit and veg-
+etable consumption and the child’s sex, age, and residential postal
+code. To assess bias due to selective nonparticipation, all parents
+were asked to complete these details on the consent form, even if
+they chose not to consent to participate in the study. Parents were
+eligible to participate if they had a 3–5-y-old child who resided
+with them for 4 d/wk, were responsible for providing food to
+their child at least half of the time, had a child with no dietary
+requirements that would make Australian fruit and vegetable
+intake recommendations unsuitable, and were literate in English.
+Recruitment took place from February to August 2010.
+Randomization and allocation
+After the commencement of parent recruitment, a statistician
+not associated with the project used a random number function in
+Microsoft Excel to allocate preschools to the intervention or
+control group. Randomization was carried out at the level of the
+preschool to reduce potential contamination from parents at the
+same preschool sharing intervention information or resources.
+Randomization of preschools was stratiﬁed by socioeconomic
+status based on the decile of disadvantage classiﬁcation of the
+postal code area in which the preschool was located (24). Pre-
+schools were randomly assigned in a 1:1 ratio (intervention:
+control) in randomly sequenced blocks of between 2 and 6
+preschools. Parents were informed of group allocation via a letter
+after baseline data collection.
+Experimental group
+Intervention
+Parents allocated to the intervention group received 4 tele-
+phone calls over a period of 4 wk. Intervention participants were
+also mailed a series of instructional resources, including a
+guidebook, a meal planner, cookbooks, and a water bottle for all
+family members. A complete description of the intervention is
+provided in the trial protocol (22). Telephone-delivered in-
+terventions of a similar intensity were previously shown to be
+effective at increasing adult health behaviors (25, 26). An
+overview of the intervention content and structure is provided in
+Table 1.
+The intervention assumes that children’s fruit and vegetable
+consumption stems from the complex interaction between per-
+sonal, cultural, and environmental factors and draws on socio-
+ecologic theory (28). Speciﬁcally, the intervention used the
+conceptual model of family-based intervention proposed by
+Golan and Weizman (29) in the treatment and prevention of
+childhood obesity. This model focuses on introducing new fa-
+milial norms associated with healthy eating. This is achieved
+through making changes within the home food environment,
+providing positive parental role-modeling, and increasing knowl-
+edge and skills related to parenting and nutrition (29). The in-
+tervention used a range of behavior-change techniques as
+classiﬁed in the taxonomy proposed by Abraham and Michie (30)
+to encourage parents to make such changes (Table 1). These
+techniques included goal setting, behavioral self-monitoring,
+intention formation, use of prompts or cues, and review of be-
+havioral goals (30). The calls focused on increasing fruit and
+vegetable availability and accessibility in the home, increasing
+parental role-modeling of fruit and vegetable consumption, and
+enhancing supportive food routines around the home, such as
+eating dinner as a family without the television on. The calls were
+scripted and delivered by using computer-assisted telephone
+interview (CATI)4 (31) software. Participants had to complete
+each call before progressing to the next, ie, no intervention calls
+could be skipped. All participants received information relating
+to each intervention content area (Table 1). Within content areas,
+however, the information provided was tailored based on assess-
+ments made during baseline data collection or earlier intervention
+calls regarding the participant’s home food environment, par-
+enting, or dietary practices. For example, to facilitate role-
+modeling, parents already regularly consuming fruit and vegetables
+4 Abbreviations used: CATI, computer-assisted telephone interview; F&V,
+Fruit and Vegetable Subscale; GEE, generalized estimating equation.
+TELEPHONE INTERVENTION FOR PRESCHOOL PARENTS
+103
+TABLE 1
+Intervention content, strategies, and structure1
+Key theme
+Content
+Behavior change
+technique
+Application of behavior
+change technique
+Week 1: Availability and accessibility
+d Dietary recommendations and serving sizes
+d Children’s food diary
+d Ways to provide fruit and vegetables
+throughout the day
+d Prompt self-monitoring
+of behavior
+d Parents are asked to monitor their children’s
+intake of fruit and vegetables over 3 d
+d Setting goals
+d Prompt speciﬁc goal-setting
+d Parents are encouraged to set a program goal
+Week 2: Availability and accessibility,
+supportive family eating routines
+d Changing the family routine
+d Availability and accessibility of foods
+in the home
+d Mealtime practices
+d Meal planning
+d Review of goals
+d Prompt intention formation
+d Provide general encouragement
+d Teach to use prompts or cues
+d Prompt review of behavioral goals
+d Parents decide which activities they will attempt
+in the coming week
+d Interviewers provide positive feedback about any
+helpful practices occurring in the home
+d Parents learn the HELPS acronym, ie, try to
+eat when Hungry, not attempting anything else
+at the same time (focus on Eating), at an
+appropriate Location to eat, from a Plate,
+and while Sitting
+d Parents review the goals they set during the
+previous calls and evaluate their progress
+Week 3: Parental role-modeling, supportive
+family eating routines
+d The Ps and Cs division of feeding
+responsibility
+d Mealtime strategies to encourage vegetable
+consumption
+d Role-modeling of fruit and vegetable
+consumption
+d Teach to use prompts or cues
+d Prompt intention formation
+d Provide general encouragement
+d Prompt identiﬁcation as a role model
+d Parents learn the Ps and Cs: parents are
+encouraged to Plan, Prepare, and Provide.
+Children are encouraged to Choose (whether,
+what, and how much to eat) (27)
+d Parents decide which activities they will attempt
+in the coming week
+d Interviewers provide positive feedback about any
+helpful practices occurring in the home
+d Parents are provided information about their
+importance in role-modeling fruit and vegetable
+consumption; their consumption is compared with
+national nutrition recommendations, and tailored
+feedback is provided
+Week 4: Availability and accessibility,
+parental role-modeling, supportive family
+eating routines
+d Review of weeks 1 to 3
+d Planning for the future and dealing
+with difﬁcult situations
+d Review of goals
+d Provide general encouragement
+d Prompt barrier identiﬁcation
+d Prompt review of behavioral goals
+d Interviewers provide positive feedback about any
+helpful practices occurring in the home
+d Parents are encouraged to identify barriers that
+will prevent them from implementing what they have
+learned and to generate solutions
+d Parents review their program goal, evaluate
+their progress, and identify how they can
+maintain the change
+1 From Wyse et al (22). Cs, responsibilities of the “children,” which are to “choose whether or not to eat,” “choose what to eat from a variety of healthy options,” and “choose how much to eat at scheduled
+meal and snack times”; Ps, responsibilities of the “parents”—to “plan,” “prepare,” and “provide.”
+104
+WYSE ET AL
+in front of their children (based on baseline assessment) were
+congratulated and encouraged to maintain this behavior. Par-
+ents not routinely modeling consumption of these foods,
+however, were given the opportunity to set a goal to work toward
+achieving this over the next week and were provided with
+strategies to assist with goal attainment. Parents could be offered
+between 1 and 4 activities to undertake between calls. Data from
+the pilot trial suggest that parents actively engaged in these tasks
+(20).
+The scripts and the resources were extensively pretested
+and piloted (20). Five experienced health interviewers with no
+formal qualiﬁcations in nutrition or psychology and not blind to
+participant allocation delivered the scripted telephone support.
+Interventionists received 2 d of training in script delivery and
+associated nutrition and parenting issues from an accredited
+practicing dietitian, a psychologist specializing in parenting,
+and health-promotion practitioners and were then required to
+complete an additional 10 h of delivery practice. For the duration
+of the intervention delivery period (April to December 2010),
+interventionists participated in biweekly group supervision
+sessions with a psychologist specializing in parenting to ensure
+that any arising issues were dealt with in an appropriate and
+standardized manner. Members of the research team moni-
+tored each interventionist multiple times throughout the inter-
+vention delivery period to assess adherence to the intervention
+protocol.
+Control
+Parents allocated to the control group were mailed the Aus-
+tralian Guide to Healthy Eating—a 22-page booklet outlining
+the dietary guidelines and ways to meet them (32). They re-
+ceived no further contact until the 2-mo follow-up data collec-
+tion call.
+Data collection and blinding
+All data collection occurred via CATI by using trained tele-
+phone interviewers. Participants could be contacted on landlines
+or mobile numbers and were called ;1 wk after recruitment to
+complete the baseline survey and then ;2 and 6 mo later for
+follow-up data collection. At each time point, data collectors
+attempted to contact participants for a 2-mo period, and, if the
+call could not be completed, contact was attempted again at the
+subsequent follow-up point. The baseline survey was conducted
+from April to October 2010. Parents were instructed to complete
+the baseline and follow-up surveys with respect to their pre-
+school-aged child. If they had more than one child aged 3–5 y,
+they were instructed to select the child who would have the next
+birthday. Data collectors received 4 h of training in script de-
+livery and during the data-collection periods were regularly
+monitored by members of the study team to ensure standardized
+survey delivery across data collectors. Data collectors were
+blind to group allocation. To assess whether blinding was
+maintained, after collection of follow-up trial outcomes, the
+CATI system prompted the data collector to nominate the group
+to which they thought the participant had been allocated. The
+proportion of times data collectors correctly identiﬁed group
+allocation at each time point was calculated.
+Measures
+Participant characteristics
+Information regarding parent and child characteristics was
+collected from the consent form and the baseline CATI. The
+consent form included questions about child sex, age, and postal
+code and 2 items that assessed the child’s usual daily intake of
+fruit and vegetable servings. These items were included to allow
+for comparison between those who did and did not consent to
+study participation. During the CATI, participants were asked
+their age, their sex, their annual household income, their highest
+level of education, whether they identiﬁed as Aboriginal and/or
+Torres Strait Islander, the number of children in their household,
+and the number of servings of fruit and vegetables they consumed
+daily. Participants also reported their child’s date of birth and sex
+and whether their child identiﬁed as Aboriginal and/or Torres
+Strait Islander.
+Children’s fruit and vegetable intake
+Children’s fruit and vegetable intake was the primary trial
+outcome and was assessed at baseline and at the 2- and 6-mo
+follow-ups by using the Fruit and Vegetable Subscale (F&V) of the
+Children’s Dietary Questionnaire. The subscale has been estab-
+lished as reliable (test-retest intraclass correlation coefﬁcient =
+0.75) in samples of 39 children aged 4–5 y and 92 children aged
+5–16 y and was established as valid as compared with a 7-d
+checklist (Spearman correlation coefﬁcient = 0.58) in samples of
+126 children aged 5–6 y and 132 children aged 5–10 y (33). A
+preliminary assessment using data from a sample of 126 children
+aged 5–10 y indicated that the subscale demonstrated the ability to
+detect change in the hypothesized direction (Wilcoxon’s signed
+rank test, P , 0.001) (33).
+The scale requires parents to report the frequency and variety
+of fruit and vegetables consumed by their child over the previous
+24 h and previous 7 d. Scores on this scale can range from 0 to 28,
+with a score of 14 indicating that the child is meeting Aus-
+tralian Dietary Guidelines (33). An increase in the score could
+arise from a range of changes to children’s fruit and vegetable
+consumption patterns, eg, a 1-point increase could result from
+eating an additional type of fruit or vegetable or eating fruit or
+vegetable at an additional occasion in the previous 24 h.
+Food expenditure
+Participants were asked at baseline and at each follow-up to
+estimate their average weekly household expenditure on food:
+“On average, how much do you spend on food for your household
+each week? This includes foods you buy from the supermarket as
+well as any foods you buy and eat outside the home, for example,
+takeaway, restaurant meals, lunches.” The psychometric prop-
+erties of this item are unknown.
+Process measures
+Intervention ﬁdelity. The number of intervention calls com-
+pleted by participants was automatically recorded by the CATI
+system. During the monitoring of intervention calls, members of
+the research team used a checklist to record whether the in-
+terventionist discussed the key topics of each call (eg, serving
+size recommendations) and the extent to which they delivered
+TELEPHONE INTERVENTION FOR PRESCHOOL PARENTS
+105
+the script as per the protocol (always, mostly, sometimes, rarely,
+or never).
+Data collection. The CATI system automatically recorded the
+date, time, and outcome of each data collection call attempt. The
+proportion of times data collectors correctly identiﬁed the par-
+ticipants’ group allocation at each time point was calculated.
+Sample size calculation
+The sample size allowed a detectable difference between the
+intervention and control F&V scores of 1.27 (equivalent to
+a change of 0.25 of an SD), with 80% power at the 0.05 sig-
+niﬁcance level. Assuming an intraclass correlation coefﬁcient of
+0.03 [unpublished data from Good for Kids. Good for Life,
+Australia’s largest childhood obesity prevention program (34)],
+it was calculated that recruiting 400 parents from 30 preschools
+would achieve the desired sample of 300 participants (150 per
+group) at the ﬁnal follow-up data collection at 18 mo.
+Analysis
+All statistical tests were performed by using SAS version 9.2
+statistical software (SAS Institute). Descriptive statistics were
+used to describe the study sample and process measures. Data
+were analyzed by using an intention-to-treat approach, whereby
+all participants were analyzed based on the group to which they
+were allocated. For the analyses of F&V scores at follow-up,
+a linear regression model within a generalized estimating
+equation (GEE) framework was used to account for clustering by
+preschool. The GEE accounts for clustering by weighting each
+cluster inversely to its variance matrix, which is a function of the
+within-cluster dependence (35). Children’s F&V score at base-
+line was included as a covariate. Signiﬁcance testing was per-
+formed with an a level of 0.05. Determination of intervention
+efﬁcacy was based on an analysis using all available data and
+speciﬁed a priori (22). This main analysis compared intervention
+and control F&V scores at 2 mo and at 6 mo and assumed that
+any missing data at follow-up were missing at random and in-
+cluded all participants with complete baseline and 2-mo data
+and baseline and 6-mo data, respectively. Little’s test was per-
+formed to determine whether the missing data were missing
+completely at random (36). A sensitivity analysis, speciﬁed
+a priori, was undertaken to ensure that the ﬁndings of the main
+analysis were robust against the missing data assumptions of the
+GEE. This involved imputing missing data at the 2- or 6-mo
+follow-up by using baseline observation carried forward. A per-
+protocol analysis was also undertaken in which only intervention
+participants who had received all 4 telephone calls were in-
+cluded. When randomized trials are conducted, both sensitivity
+and per-protocol analyses are recommended to aid interpretation
+of the trial outcome (37). A subgroup analysis was also con-
+ducted. The sample was divided into 2 subgroups: those whose
+children were and those whose children were not meeting na-
+tional dietary guidelines for fruit and vegetable consumption at
+baseline (ie, a baseline F&V score 14 or ,14), and a GEE
+model was ﬁtted that included a subgroup by experimental
+group interaction. Changes in reported food expenditure at 2 and
+6 mo were also assessed by using a GEE model adjusted for
+baseline values and by using participants with no missing data at
+2 and 6 mo, respectively, on this measure.
+RESULTS
+Participant characteristics
+Children from ;2200 families attended the 30 eligible and
+consenting preschools. In total, 418 parents returned a signed
+consent form indicating a willingness to participate, 394 of
+whom completed the baseline telephone survey and were in-
+cluded in the study; 178 parents did not consent to participate
+but returned a form with completed demographic details. The
+preschool and participant ﬂow throughout the trial is shown in
+Figure 1.
+The characteristics of participants allocated to the intervention
+and control groups were similar (Table 2). No signiﬁcant dif-
+ferences in child age, sex, or daily intake of fruit or vegetables
+were found between study participants and the children of 202
+parents who either did not consent or initially consented but did
+not complete the baseline survey. When compared with a ran-
+dom sample of parents of 3–5-y-olds from the broader study
+region, participants in the current study had higher levels of
+education (47% compared with 36% with tertiary education) and
+higher household incomes (41% compared with 20% US
+$100,000) (38). The proportion of children consuming at least
+one daily fruit serving in the current sample was similar to
+a random sample of 2–4-y-old children in a broader region (96%
+compared with 96%), but more children in the study sample
+were consuming 2 servings of vegetables each day (65%
+compared with 48%) (39).
+In total, 86% and 84% of participants allocated to the in-
+tervention and 96% and 91% of participants allocated to the
+control group provided 2- and 6-mo follow-up data, respectively.
+No signiﬁcant differences in demographic characteristics or in
+baseline fruit and vegetable intakes were found between the
+intervention group participants who completed and those who did
+not complete the 2- or 6-mo follow-up surveys. Among the control
+group, participants who did not complete the 6-mo follow-up
+consumed more vegetable servings per day (mean 6 SD: 3.8 6
+1.0 compared with 3.0 6 1.3; P = 0.013) at baseline and were
+less likely to have a tertiary education qualiﬁcation (24%
+compared with 52%; P = 0.025) than were control participants
+who provided 6-mo data.
+Children’s fruit and vegetable intakes
+The analysis showed that the mean F&V scores were sig-
+niﬁcantly higher in the intervention than in the control group at
+both the 2-mo and 6-mo follow-ups (Table 3). Little’s test (v2 =
+15.233, 2 df, P , 0.001) (36) was signiﬁcant, which suggests
+that group allocation and the children’s F&V score at baseline
+predicted missing data at follow-up. In the sensitivity analysis,
+the intervention effect remained signiﬁcant when children’s
+F&V scores at baseline were carried forward for missing data at
+the 2-mo follow-up. Although the effect was nearly signiﬁcant
+when such values were carried forward at the 6-mo follow-up, the
+effect was not signiﬁcant (Table 3). The per-protocol analysis
+showed that intervention participants who completed all 4 in-
+tervention calls had signiﬁcantly higher F&V scores than did
+control participants at 2 and 6 mo (Table 3). The subgroup
+analysis comparing children who did and did not meet the dietary
+guidelines at baseline found that the subgroup-by-experimental
+group interaction term was not signiﬁcant.
+106
+WYSE ET AL
+Food expenditure
+At the 2-mo follow-up, the estimated weekly food expenditure
+in intervention households was signiﬁcantly lower than that in
+control households, adjusted for the baseline values, and no
+signiﬁcant difference was observed at 6 mo (Table 4).
+Process measures
+Intervention ﬁdelity
+Of the 208 participants allocated to the intervention, 87%
+completed all 4 intervention calls. No signiﬁcant differences in
+parent or child demographic characteristics or baseline fruit and
+vegetable consumption were found between those who com-
+pleted all intervention calls (n = 181) and those who did not (n =
+27). Among those who did not, 16 participants did not complete
+the ﬁrst call, 6 participants completed only the ﬁrst call, 4
+completed the ﬁrst 2 calls, and 1 participant completed 3 calls.
+The mean duration of all intervention calls was 29 min (34, 30,
+26, and 28 min for calls 1–4, respectively). In total, 44 in-
+tervention calls were monitored, representing 6% of all com-
+pleted calls and an average of 9 calls per interventionist. Across
+all monitored calls, interventionists covered 97% of key content
+areas, and in .80% of calls they “rarely” deviated from the
+script. In instances in which calls deviated from the script, in-
+terventionists were provided with feedback immediately after
+the call, and the issue was raised during biweekly supervision.
+Data collection
+On average, 74 d (2.4 mo) elapsed between baseline and the
+scheduled 2-mo data collection call, and an average of 198 d (6.5
+mo) elapsed between baseline and the scheduled 6-mo call; no
+differences were observed between groups in the time elapsed
+from baseline to either follow-up point. At the conclusion of the
+2-mo and 6-mo follow-ups, data collectors correctly identiﬁed the
+participants’ group allocation in 59% (P , 0.001) and 56% (P =
+0.027) of cases, respectively, which represents slightly more
+cases than would be expected by chance. In accordance with the
+study protocol, 43 data collection calls (4%) were monitored
+across the 3 time points, and, in every instance, interviewers
+FIGURE 1. Consolidated Standards of Reporting Trials diagram showing cluster (preschool) and participant (parent) ﬂow throughout the trial. #Although
+418 parents consented, 24 parents were not randomly assigned because they were subsequently uncontactable (n = 5), did not meet inclusion criteria (n = 9), or
+refused to complete the baseline survey when contacted (n = 10). *Two parents were excluded from the 2-mo analysis because they had been away from their
+child for the previous 24 h and/or previous 7 d and were unable to answer questions about their child’s fruit and vegetable consumption. CDQ, Children’s
+Dietary Questionnaire.
+TELEPHONE INTERVENTION FOR PRESCHOOL PARENTS
+107
+delivered the questions as per the protocol “all” or “most of the
+time.”
+DISCUSSION
+This is the ﬁrst randomized controlled trial of a telephone-
+based primary prevention intervention to increase fruit and
+vegetable consumption in preschool-aged children. An analysis
+using all available data showed that children whose parents were
+randomly allocated to receive 4 weekly scripted support calls had
+higher fruit and vegetable scores at 2 and 6 mo after baseline than
+did children whose parents were randomly allocated to receive
+printed nutrition material. The sensitivity analysis, which adopted
+a conservative imputation approach (baseline observation carried
+forward), found a signiﬁcant intervention effect at 2 mo, which
+was nearly signiﬁcant at 6 mo. The effect of the intervention
+did not vary between children who were and those who were
+not meeting fruit and vegetable dietary guidelines at baseline.
+Furthermore, increases in child fruit and vegetable scores did
+not coincide with increases in household expenditure on food,
+which suggested that the intervention did not pose any ad-
+ditional ﬁnancial burden on families.
+The ﬁndings are promising given the limited effectiveness of
+interventions attempting to increase young children’s fruit and
+vegetable consumption. The only randomized controlled trial of
+an intervention that explicitly targeted the home food environ-
+ment to encourage fruit and vegetable consumption of preschool
+children failed to increase fruit and vegetable consumption
+overall but increased intake among a subsample of normal-weight
+children (17). The intervention, which also consisted of 4 in-
+tervention contacts, was delivered via home visits to a sample of
+predominantly disadvantaged families (20–25% university edu-
+cated, 50–60% with an annual household income ,$35,000)
+(17). The contrasting ﬁndings may reﬂect the difﬁculties expe-
+rienced by socioeconomically disadvantaged parents, relative to
+the current sample, of increasing children’s fruit and vegetable
+intake. Whereas the effect of this telephone-based intervention
+on children from disadvantaged families is not known, more in-
+tensive telephone-based support, which is considerate of the
+distinct challenges of disadvantaged families [including cost,
+work schedules, lack of time, and lack of skills and conﬁdence
+(40–42)], may maximize the potential effectiveness and accept-
+ability of a telephone-based approach to such parents. Nonethe-
+less, the results are consistent with the pilot study (20) and with
+systematic reviews ﬁnding strong evidence of the efﬁcacy of adult
+dietary interventions delivered by telephone (19, 43).
+Given the positive trial ﬁndings, the research has many im-
+portant public health implications. First, the intervention was
+relatively brief, scripted, and delivered by nonspecialist staff.
+Such attributes suggest that the intervention could easily be
+integrated into existing telephone support services (44) and may
+be relatively inexpensive compared with services using specialist
+TABLE 2
+Characteristics of the 394 participants who completed baseline by group1
+Parent and child
+demographic characteristics
+Control
+(n = 186)
+Intervention
+(n = 208)
+Parents
+Age (y)
+35.7 6 5.02
+35.2 6 5.6
+Female sex (%)
+96.8
+95.2
+Household income $100,000 (%)
+40.2
+42.4
+University education (%)
+49.5
+45.2
+Aboriginal and/or Torres Strait Islander (%)
+3.2
+1.0
+No. of children aged ,16 y in household
+2.3 6 0.7
+2.3 6 0.8
+No. of daily servings of fruit
+1.8 6 1.0
+1.8 6 1.1
+No. of daily servings of vegetables
+3.1 6 1.3
+3.3 6 1.3
+Children
+Age (y)
+4.3 6 0.6
+4.3 6 0.6
+Female sex (%)
+45.7
+51.0
+Aboriginal and/or Torres Strait Islander (%)
+4.8
+1.0
+No. of daily servings of fruit3
+2.2 6 1.0
+2.3 6 1.0
+No. of daily servings of vegetables3
+2.0 6 1.2
+2.1 6 1.1
+1 Between-group differences at baseline were tested by using chi-square
+tests for categorical data and t tests for continuous data; there were no
+signiﬁcant differences between the intervention and control groups (P ,
+0.05).
+2 Mean 6 SD (all such values).
+3 Information taken from a consent form.
+TABLE 3
+Fruit and Vegetable Subscale scores in the intervention and control groups at baseline, 2 mo, and 6 mo1
+Time point
+Mean 6 SEM
+Regression coefﬁcient
+(95% CI)2
+P value
+Control
+Intervention
+Main analysis
+Baseline (n = 394)
+14.5 6 0.4
+15.0 6 0.3
+—
+2 mo (n = 357)
+15.4 6 0.3
+17.0 6 0.3
+1.28 (0.54, 2.03)
+,0.001
+6 mo (n = 343)
+15.9 6 0.3
+17.0 6 0.3
+0.80 (0.12, 1.49)
+0.021
+Sensitivity analysis
+Baseline (n = 394)
+14.5 6 0.4
+15.0 6 0.3
+—
+2 mo (n = 394)
+15.3 6 0.3
+16.6 6 0.3
+0.98 (0.26, 1.70)
+0.008
+6 mo (n = 394)
+15.8 6 0.2
+16.7 6 0.2
+0.59 (20.05, 1.22)
+0.069
+Per-protocol analysis
+Baseline (n = 367)
+14.5 6 0.4
+15.2 6 0.4
+—
+2 mo (n = 351)
+15.4 6 0.3
+17.1 6 0.3
+1.34 (0.59, 2.10)
+,0.001
+6 mo (n = 334)
+15.9 6 0.3
+17.1 6 0.3
+0.87 (0.17, 1.56)
+0.014
+1 Data were analyzed by using a generalized estimating equation framework, adjusted for children’s scores
+at baseline and clustering within preschools (P , 0.05).
+2 Adjusted for baseline scores.
+108
+WYSE ET AL
+health professionals for the provision of child nutrition support.
+Second, the intervention had high retention rates (87%) and was
+previously found to be acceptable to parents (20), indicating
+broad appeal of this form of support. Finally, the intervention was
+delivered by using a modality that affords almost population-wide
+access in the developed world (45). As such, the intervention has
+the potential to overcome barriers to parent use of traditional
+support services, such as conﬂicting or inﬂexible schedules, time
+constraints, and transport difﬁculties (41, 46), particularly those
+faced by rural and socioeconomically disadvantaged households
+(41), and should be tested with a less-advantaged sample.
+Collectively, such research suggests that the telephone-based
+intervention may represent an appealing policy option for gov-
+ernments or other health agencies to improve public health nu-
+trition and reduce future chronic disease.
+The strengths of this study included the experimental design,
+the standardization of intervention delivery (via scripted dialogue
+appearing on computer screens), and consideration of unintended
+cost effects of the intervention. There were, however, many study
+limitations that warrant consideration. The sample included
+participants who, on average, were more educated and had a
+higher household income than did a random sample of parents
+within the study region, and, as such, further investigation ex-
+amining intervention effectiveness in more disadvantaged pop-
+ulations is recommended. Furthermore, the generalizability of
+the ﬁndings may be limited by the high proportion of children
+consuming the recommended number of daily vegetable serv-
+ings at baseline, compared with the broader study area. The
+subgroup analysis, however, suggested that no signiﬁcant dif-
+ference in intervention efﬁcacy was observed between children
+who consumed high or low amounts of fruit and vegetables at
+baseline. As is common in trials of behavioral interventions (47),
+parent participants in this trial were unblinded, and the primary
+outcome measure was subjectively assessed by parent report,
+which increased the risk of a biased assessment of intervention
+effect (48). Furthermore, the primary outcome was assessed by
+using a food-frequency questionnaire. Whereas this tool repre-
+sented the only measure of fruit and vegetable consumption
+available to the research team that had been validated on a sample
+of Australian preschool children (33, 49), a more comprehensive
+method of dietary assessment—such as food records or 24-h
+dietary recalls—may have yielded more accurate assessments of
+intake (50) and allowed for a more meaningful comparison with
+other studies. Finally, by the end of each survey, outcome as-
+sessors were 6–9% more likely than chance to correctly identify
+the group to which participants were allocated, which potentially
+increased the risk of detection bias (48).
+Many opportunities for further research exist. Although the
+analysis using all available data showed a signiﬁcant intervention
+effect at both 2 and 6 mo of follow-up, the sensitivity analysis fell
+short of signiﬁcance at 6 mo. Research is therefore required to
+conﬁrm these ﬁndings. Whereas the presence of a short-term
+intervention effect is encouraging, further investigation to de-
+termine whether the effect is maintained in the longer term is also
+warranted. Research into the optimal schedule of telephone
+contacts could increase the efﬁciency of the intervention by
+determining the maximum effect that can be obtained for a given
+level of resources. Investigating the characteristics of the home
+food environment that mediated the relation between the in-
+tervention and dietary behavior (eg, parent knowledge, self-
+efﬁcacy, and fruit and vegetable availability) would also allow
+a greater understanding of the causal pathways and further in-
+tervention reﬁnement and may result in greater efﬁciencies in
+intervention delivery (51). Notwithstanding the study limitations,
+and the value of further research in this area, the study represents
+an important contribution to the scientiﬁc literature regarding
+public health interventions addressing childhood fruit and veg-
+etable consumption.
+We thank Patrick McElduff for his statistical advice and Jenna Hollis for
+the crucial role she played in the trial’s administration. We acknowledge the
+indispensable contribution of the Hunter New England Population Health
+CATI interviewers in delivering the intervention and collecting the data
+and sincerely thank the preschool supervisors and the parents for their gen-
+erous participation.
+The authors’ responsibilities were as follows—LW: conceived of the pro-
+ject idea; LW, RW, EC, JW, KJC, LB, JB, TRH, and AF: designed the re-
+search;
+KJC
+and
+LB:
+provided
+expert
+advice
+on
+the
+design
+and
+implementation of the intervention; RW, AF, LW, and LB: conducted the re-
+search; RW and LW: analyzed the data and performed the statistical analysis;
+and RW: led the development of the manuscript and had primary responsi-
+bility for the ﬁnal content. All authors contributed to the drafts and read
+and approved the ﬁnal manuscript. None of the authors reported a conﬂict
+of interest.
+REFERENCES
+1. World Cancer Research Fund/American Institute for Cancer Research.
+Food, nutrition, physical activity, and the prevention of cancer: a global
+perspective. Washington, DC: AICR, 2007.
+2. Dauchet L, Amouyel P, Hercberg S, Dallongeville J. Fruit and vege-
+table consumption and risk of coronary heart disease: a meta-analysis
+of cohort studies. J Nutr 2006;136:2588–93.
+3. He FJ, Nowson CA, MacGregor GA. Fruit and vegetable consumption
+and stroke: meta-analysis of cohort studies. Lancet 2006;367:320–6.
+4. Lock K, Pomerleau J, Causer L, Altmann DR, McKee M. The global
+burden of disease attributable to low consumption of fruit and vege-
+tables: implications for the global strategy on diet. Bull World Health
+Organ 2005;83:100–8.
+TABLE 4
+Estimated weekly food expenditure in the intervention and control groups at baseline, 2 mo, and 6 mo1
+Mean 6 SEM
+Estimated weekly food expenditure
+Control
+Intervention
+Regression coefﬁcient (95% CI)2
+P value
+US$
+US$
+US$
+Baseline (n = 392)
+234 6 3
+241 6 7
+—
+—
+2 mo (n = 358)
+252 6 5
+235 6 5
+220 (232, 28)
+,0.001
+6 mo (n = 342)
+246 6 5
+245 6 7
+25 (217, 7)
+0.426
+1 Data were analyzed by using a generalized estimating equation framework, adjusted for weekly food expenditure at
+baseline and clustering within preschools (P , 0.05).
+2 Adjusted for baseline expenditure.
+TELEPHONE INTERVENTION FOR PRESCHOOL PARENTS
+109
+5. Mikkila¨ V, Rasanen L, Raitakari OT, Pietinen P, Viikari J. Longitudinal
+changes in diet from childhood into adulthood with respect to risk of
+cardiovascular diseases: the Cardiovascular Risk in Young Finns Study.
+Eur J Clin Nutr 2004;58:1038–45.
+6. Ness AR, Maynard M, Frankel S, Smith GD, Frobisher C, Leary SD,
+Emmett PM, Gunnell D. Diet in childhood and adult cardiovascular
+and all cause mortality: the Boyd Orr cohort. Heart 2005;91:894–8.
+7. Maynard M, Gunnell D, Emmett P, Frankel S, Davey Smith G. Fruit,
+vegetables, and antioxidants in childhood and risk of adult cancer: the
+Boyd Orr cohort. J Epidemiol Community Health 2003;57:218–25.
+8. Birch LL. Development of food preferences. Annu Rev Nutr 1999;19:
+41–62.
+9. Hector D, Shrewsbury V. Building solutions for preventing childhood
+obesity. Module 2: Interventions to increase consumption of fruit and veg-
+etables. Sydney, Australia: NSW Centre for Overweight and Obesity, 2008.
+10. Campbell KJ, Hesketh KD. Strategies which aim to positively impact
+on weight, physical activity, diet and sedentary behaviours in children
+from zero to ﬁve years. A systematic review of the literature. Obes Rev
+2007;8:327–38.
+11. Bayer O, von Kries R, Strauss A, Mitschek C, Toschke AM, Hose A,
+Koletzko BV. Short- and mid-term effects of a setting based prevention
+program to reduce obesity risk factors in children: a cluster-randomized
+trial. Clin Nutr 2009;28:122–8.
+12. Witt KE, Dunn C. Increasing fruit and vegetable consumption among
+preschoolers: evaluation of Color Me Healthy. J Nutr Educ Behav
+2012;44:107–13.
+13. Vereecken C, Huybrechts I, van Houte H, Martens V, Wittebroodt I,
+Maes L. Results from a dietary intervention study in preschools
+“Beastly Healthy at School.” Int J Public Health 2009;54:142–9.
+14. Hardy LL, King L, Kelly B, Farrell L, Howlett S. Munch and Move:
+evaluation of a preschool healthy eating and movement skill program.
+Int J Behav Nutr Phys Act 2010;7:80.
+15. Pearson N, Biddle SJ, Gorely T. Family correlates of fruit and vege-
+table consumption in children and adolescents: a systematic review.
+Public Health Nutr 2009;12:267–83.
+16. Rasmussen M, Krolner R, Klepp KI, Lytle L, Brug J, Bere E, Due P.
+Determinants of fruit and vegetable consumption among children and
+adolescents: a review of the literature. Part I: Quantitative studies. Int J
+Behav Nutr Phys Act 2006;3:22.
+17. Haire-Joshu D, Elliott MB, Caito NM, Hessler K, Nanney MS, Hale N,
+Boehmer TK, Kreuter M, Brownson RC. High 5 for Kids: the impact of
+a home visiting program on fruit and vegetable intake of parents and
+their preschool children. Prev Med 2008;47:77–82.
+18. Vanwormer JJ, Boucher JL, Pronk NP. Telephone-based counseling
+improves dietary fat, fruit, and vegetable consumption: a best-evidence
+synthesis. J Am Diet Assoc 2006;106:1434–44.
+19. Eakin EG, Lawler SP, Vandelanotte C, Owen N. Telephone inter-
+ventions for physical activity and dietary behavior change: a systematic
+review. Am J Prev Med 2007;32:419–34.
+20. Wyse R, Wolfenden L, Campbell E, Campbell K, Brennan L, Fletcher A,
+Bowman J, Heard T, Wiggers J. A pilot study of a telephone-based parental
+intervention to increase fruit and vegetable consumption in 3-5-year-old
+children. Public Health Nutr (Epub ahead of print 23 June 2011).
+21. Drewnowski A, Darmon N, Briend A. Replacing fats and sweets with
+vegetables and fruits—a question of cost. Am J Public Health 2004;94:
+1555–9.
+22. Wyse RJ, Wolfenden L, Campbell E, Brennan L, Campbell KJ,
+Fletcher A, Bowman J, Heard TR, Wiggers J. A cluster randomised
+trial of a telephone-based intervention for parents to increase fruit and
+vegetable consumption in their 3- to 5-year-old children: study pro-
+tocol. BMC Public Health 2010;10:216.
+23. Wolfenden L, Kypri K, Freund M, Hodder R. Obtaining active parental
+consent for school-based research: a guide for researchers. Aust N Z J
+Public Health 2009;33:270–5.
+24. Australian Bureau of Statistics. Census of population and housing:
+Socio-Economic Indexes for Areas (SEIFA) (2033.0.55.001). Canberra,
+Australia: ABS, 2006.
+25. Green BB, McAfee T, Hindmarsh M, Madsen L, Caplow M, Buist D.
+Effectiveness of telephone support in increasing physical activity levels
+in primary care patients. Am J Prev Med 2002;22:177–83.
+26. Elley CR, Kerse N, Arroll B, Robinson E. Effectiveness of counselling
+patients on physical activity in general practice: cluster randomised
+controlled trial. BMJ 2003;326:793.
+27. Satter E. Feeding dynamics: helping children to eat well. J Pediatr
+Health Care 1995;9:178–84.
+28. Robinson T. Applying the socio-ecological model to improving fruit
+and vegetable intake among low-income African Americans. J Com-
+munity Health 2008;33:395–406.
+29. Golan M, Weizman A. Familial approach to the treatment of childhood
+obesity: conceptual mode. J Nutr Educ 2001;33:102–7.
+30. Abraham C, Michie S. A taxonomy of behavior change techniques
+used in interventions. Health Psychol 2008;27:379–87.
+31. Choi BC. Computer assisted telephone interviewing (CATI) for health
+surveys in public health surveillance: methodological issues and chal-
+lenges ahead. Chronic Dis Can 2004;25:21–7.
+32. Kellet E, Smith A, Schmerlaib Y. The Australian guide to healthy
+eating: background information for consumers. Canberra, Australia: The
+Australian Government Department of Health and Ageing, 1998.
+33. Magarey A, Golley R, Spurrier N, Goodwin E, Ong F. Reliability and
+validity of the Children’s Dietary Questionnaire; a new tool to measure
+children’s dietary patterns. Int J Pediatr Obes 2009;4:257–65.
+34. Good for kids. Good for life. 2010. Available from: http://www.
+goodforkids.nsw.gov.au (cited 9 November 2011).
+35. Liang KY, Zeger SL. Regression analysis for correlated data. Annu Rev
+Public Health 1993;14:43–68.
+36. Little RJA. A test of missing completely at random for multivariate
+data with missing values. J Am Stat Assoc 1988;83:1198–12.
+37. Porta N, Bonet C, Cobo E. Discordance between reported intention-to-
+treat and per protocol analyses. J Clin Epidemiol 2007;60:663–9.
+38. Wolfenden L, Hardy LL, Milat A, Bell C, Sutherland R, Wiggers J.
+Prevalence and socio-demographic associations of overweight and
+obesity among children attending childcare services in rural and re-
+gional New South Wales Australia. Nutr Diet 2011;68:15–20.
+39. Centre for Epidemiology and Research. New South Wales Population
+Health Survey 2007-2008 (HOIST). New South Wales, Australia: NSW
+Department of Health, 2008.
+40. Omar MA, Coleman G, Hoerr S. Healthy eating for rural low-income
+toddlers: caregivers’ perceptions. J Community Health Nurs 2001;18:
+93–106.
+41. Katz I, La Placa V, Hunter S. Barriers to inclusion and successful
+engagement of parents in mainstream services. York, United Kingdom:
+Joseph Rowntree Foundation, 2007.
+42. Winkler E, Turrell G. Conﬁdence to cook vegetables and the buy-
+ing habits of Australian households. J Am Diet Assoc 2009;109:
+1759–68.
+43. Goode AD, Reeves MM, Eakin EG. Telephone-delivered interventions
+for physical activity and dietary behavior change: an updated sys-
+tematic review. Am J Prev Med 2012;42:81–8.
+44. O’Hara BJ, Bauman AE, King EL, Phongsavan P. Process evaluation of
+the advertising campaign for the NSW Get Healthy Information and
+Coaching Servce. Health Promot J Austr 2011;22:68–71.
+45. International Telecommunications Union. Global ICT developments.
+2008. Available from: http://www.itu.int/ITU-D/ict/statistics/ict/index.
+html (cited 9 November 2011).
+46. Lamb-Parker F, Piotrkowski CS, Baker AJL, Kessler-Sklar S, Clark
+B, Peay L. Understanding barriers to parent involvement in Head
+Start: a research-community partnership. Early Child Res Q 2001;16:
+35–51.
+47. Boutron I, Tubach F, Giraudeau B, Ravaud P. Blinding was judged
+more difﬁcult to achieve and maintain in nonpharmacologic than
+pharmacologic trials. J Clin Epidemiol 2004;57:543–50.
+48. The Cochrane Collaboration. Cochrane handbook for systematic
+reviews of interventions (version 5.1.0, March 2011). Available from:
+http://www.cochrane.org/training/cochrane-handbook (cited 2 October
+2011).
+49. Australasian Child and Adolescent Obesity Research Network
+(ACAORN). ACAORN repository of tools to measure dietary intake in
+children and adolescents—September 2009. Available from: www.acaorn.
+org.au/streams/nutrition/Pub_Repository_diet_assess_tools_Sept2009.
+pdf (cited 1 February 2012).
+50. McPherson RS, Hoelscher DM, Alexander M, Scanlon KS, Serdula
+MK. Dietary assessment methods among school-aged children: validity
+and reliability. Prev Med 2000;31:S11–33.
+51. Cerin E, Mackinnon DP. A commentary on current practice in medi-
+ating variable analyses in behavioural nutrition and physical activity.
+Public Health Nutr 2009;12:1182–8.
+110
+WYSE ET AL
