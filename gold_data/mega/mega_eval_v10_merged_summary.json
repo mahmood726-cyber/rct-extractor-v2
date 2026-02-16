@@ -1,0 +1,41 @@
+{
+  "version": "v10_merged",
+  "total": 1290,
+  "v93_matches": 719,
+  "v10_matches": 892,
+  "upgraded": 173,
+  "upgraded_from_no_extraction": 105,
+  "upgraded_from_extracted_no_match": 68,
+  "match_rate": 69.1,
+  "improvement_over_v93": 13.4,
+  "status_breakdown": {
+    "match": 892,
+    "no_extraction": 220,
+    "extracted_no_match": 142,
+    "no_cochrane_ref": 33,
+    "error": 3
+  },
+  "upgrade_methods": {
+    "pdf_direct_5pct": 63,
+    "pdf_direct_25pct": 12,
+    "pdf_reciprocal_15pct": 11,
+    "pdf_signflip_5pct": 10,
+    "pdf_direct_45pct": 9,
+    "pdf_reciprocal_25pct": 9,
+    "pdf_direct_35pct": 9,
+    "pdf_scale_0.1x_5pct": 8,
+    "pdf_scale_0.1x_15pct": 8,
+    "pdf_direct_15pct": 5,
+    "pdf_scale_10x_5pct": 4,
+    "pdf_direct_10pct": 4,
+    "pdf_scale_0.01x_15pct": 4,
+    "pdf_signflip_15pct": 3,
+    "pdf_signflip_25pct": 3,
+    "pdf_scale_100x_15pct": 3,
+    "pdf_ci_bound_upper_5pct": 3,
+    "pdf_reciprocal_5pct": 2,
+    "pdf_scale_0.01x_5pct": 1,
+    "pdf_ci_bound_lower_5pct": 1,
+    "pdf_scale_100x_5pct": 1
+  }
+}
