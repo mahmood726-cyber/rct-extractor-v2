@@ -1,0 +1,25 @@
+{
+  "computed_at_utc": "2026-02-17T10:33:23.451391+00:00",
+  "counts": {
+    "total_trials": 37,
+    "trials_with_extractions": 21,
+    "matchable_trials": 21,
+    "strict_matches": 21,
+    "lenient_matches": 21,
+    "effect_type_total": 21,
+    "effect_type_correct": 21,
+    "ci_total": 21,
+    "ci_complete": 13,
+    "ma_ready_trials": 3,
+    "computed_trials": 0
+  },
+  "rates": {
+    "extraction_coverage": 0.5675675675675675,
+    "strict_match_rate": 0.5675675675675675,
+    "lenient_match_rate": 0.5675675675675675,
+    "effect_type_accuracy": 1.0,
+    "ci_completeness": 0.6190476190476191,
+    "ma_ready_yield": 0.08108108108108109,
+    "computed_effect_share": 0.0
+  }
+}

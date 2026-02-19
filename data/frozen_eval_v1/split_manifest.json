@@ -1,0 +1,60 @@
+{
+  "protocol_version": "1.0.0",
+  "created_at_utc": "2026-02-17T08:21:07.677155+00:00",
+  "seed": 42,
+  "ratios": {
+    "train": 0.7,
+    "validation": 0.15,
+    "test": 0.15
+  },
+  "trial_ids": {
+    "train": [
+      "Beiranvand_2014",
+      "Bracken_2014",
+      "Chung_2022",
+      "Coentrao_2012",
+      "Fagerlin_2011",
+      "Feltner_2009",
+      "Habib_2017",
+      "Hirono_2019",
+      "Hutchins_2019",
+      "Jin_2016",
+      "Khanna_2020",
+      "Marigold_2005",
+      "McDonald_2015",
+      "Oyo-Ita_2021",
+      "Papay_2014",
+      "Raj Kumawat_2024",
+      "Rajanbabu_2019",
+      "Rodrigues_2023",
+      "Santos_2020",
+      "Sawaki_2008",
+      "Siddiqi_2020",
+      "Singh_2018",
+      "Tada_2022",
+      "Van de Ven_2014",
+      "Yan_2021"
+    ],
+    "validation": [
+      "Beulen_2016",
+      "Bomyea_2015",
+      "Moschonis_2019",
+      "Shi_2012",
+      "Toker_2019"
+    ],
+    "test": [
+      "Berry_2013",
+      "Delroy_2013",
+      "Durand_2020",
+      "Jandaghi_2021",
+      "Jiang_2020",
+      "Keene_2022",
+      "Palve_2020"
+    ]
+  },
+  "split_record_counts": {
+    "train": 25,
+    "validation": 5,
+    "test": 7
+  }
+}

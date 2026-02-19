@@ -1179,6 +1179,13 @@ class EnhancedExtractor:
         # "Mean difference in X was 4.2 (95% CI 2.1-6.3)"
         r'[Mm]ean\s+difference\s+(?:in\s+[\w\s]{1,80}\s+)?was\s+(-?\d+\.?\d*)\s*(?:\w+)?\s*\(\s*(?:95%?\s*)?CI\s+(-?\d+\.?\d*)\s*[-–—]\s*(-?\d+\.?\d*)',
 
+        # v7.2: "mean difference in ... , -1.7 percentage points [95% CI, -8.3 to 4.8]"
+        r'mean\s+difference\s+in\s+[\w\s\'/\-]{1,120}?,\s*([+-]?\d+\.?\d*)\s*(?:percentage\s+points?|points?|%|mmHg|kg|mL|L|cm/s|W/kg|Nm/kg)?\s*\[\s*(?:95%?\s*)?CI\s*,\s*([+-]?\d+\.?\d*)\s*(?:to|[-â€“â€”])\s*([+-]?\d+\.?\d*)',
+        # v7.2: bracket-CI variant with comma-separated bounds
+        r'mean\s+difference\s+in\s+[\w\s\'/\-]{1,120}?,\s*([+-]?\d+\.?\d*)\s*(?:percentage\s+points?|points?|%|mmHg|kg|mL|L|cm/s|W/kg|Nm/kg)?\s*\[\s*(?:95%?\s*)?CI\s*,\s*([+-]?\d+\.?\d*)\s*,\s*([+-]?\d+\.?\d*)',
+        # v7.2: "21mm group difference; 95% confidence interval, -32.6 to -9.4"
+        r'([+-]?\d+\.?\d*)\s*(?:mmHg|mm|kg|mL|L|cm/s|W/kg|Nm/kg|points?|%)?\s*group\s+difference\s*[;,]\s*(?:95%?\s*)?confidence\s+interval[,:\s]+([+-]?\d+\.?\d*)\s*(?:to|[-â€“â€”])\s*([+-]?\d+\.?\d*)',
+
         # "FEV1 improved by MD=0.15 L [0.08 to 0.22]"
         r'\bMD\s*=\s*(-?\d+\.?\d*)\s*(?:\w+)?\s*\[\s*(-?\d+\.?\d*)\s+to\s+(-?\d+\.?\d*)\s*\]',
 
@@ -1556,6 +1563,9 @@ class EnhancedExtractor:
 
         # "difference of 28.9 percentage points (95% CI, 9.6-48.2)" - dash format
         r'difference\s+of\s+(-?\d+\.?\d*)\s*(?:percentage\s+points?)\s*\(\s*(?:95%?\s*)?CI[,:\s]+(-?\d+\.?\d*)\s*[-–—]\s*(-?\d+\.?\d*)',
+
+        # v7.2: "absolute difference 16%; 95% CI -4% to +37%" (no parentheses)
+        r'absolute\s+difference\s+([+-]?\d+\.?\d*)%?\s*[;,]\s*(?:95%?\s*)?CI[,:\s]+([+-]?\d+\.?\d*)%?\s*(?:to|[-â€“â€”])\s*([+-]?\d+\.?\d*)%?',
 
         # "ARR 3.5% (95% CI 1.8% to 5.2%)"
         r'\bARR\b\s+(-?\d+\.?\d*)%\s*\(\s*95%\s*CI\s*(-?\d+\.?\d*)%\s*to\s*(-?\d+\.?\d*)%\)',
@@ -1946,6 +1956,16 @@ class EnhancedExtractor:
         # "CI0.08" -> "CI 0.08", "CI:0.08" -> "CI: 0.08"
         # Also handles IC (French/Spanish), KI (German), CL (confidence limits)
         text = re.sub(r'\b(CI|IC|KI|CL)([-]?\d)', r'\1 \2', text)
+
+        # v7.2: OCR artifacts in CI bounds, e.g., "95%CI?0.12e0.75" -> "95% CI 0.12-0.75"
+        text = re.sub(
+            r'((?:95%?\s*)?(?:CI|IC|KI|CL)[^0-9+\-]{0,5}[+\-]?\d+\.?\d*)e([+\-]?\d+\.?\d*)',
+            r'\1-\2',
+            text,
+            flags=re.IGNORECASE,
+        )
+        # Normalize explicit positive signs in bounds/values: "+37" -> "37"
+        text = re.sub(r'(?<![A-Za-z0-9])\+(\d+\.?\d*)', r'\1', text)
 
         # v6.2: Normalize "pvalue" / "p-value" stuck to comparator and number
         # "pvalue<0.001" -> "p value <0.001", "p<.05" already handled by leading-dot fix
@@ -2723,6 +2743,91 @@ def extract_p_value(text: str) -> Optional[float]:
                         return p_val
             except ValueError:
                 continue
+    return None
+
+
+# v7.1: robust scientific-notation parsing for p-values
+P_VALUE_PATTERNS = [
+    r'[Pp]\s*[=<>]\s*(0?\.\d+)',
+    r'[Pp]\s*-?\s*value\s*[=<>]\s*(0?\.\d+)',
+    r'[Pp]\s*=\s*0?\.\d+',
+    r'[Pp]\s*<\s*0?\.\d+',
+    r'significance\s*[=:]\s*(0?\.\d+)',
+    r'\([Pp]\s*[=<]\s*(0?\.\d+)\)',
+    # Scientific notation: P = 1.2e-5, P < 10^-6, P < 1 x 10^-4
+    r'[Pp]\s*[=<>]\s*(\d+\.?\d*)\s*(?:x|\*)\s*10\s*(?:\^)?\s*-\s*(\d+)',
+    r'[Pp]\s*[=<>]\s*(\d+\.?\d*)\s*[eE]\s*-\s*(\d+)',
+    r'[Pp]\s*[=<>]\s*10\s*(?:\^)?\s*-\s*(\d+)',
+]
+
+
+def _normalize_p_notation(text: str) -> str:
+    """Normalize notation variants before p-value extraction."""
+    normalized = text
+    normalized = normalized.replace('\u00D7', 'x')
+    normalized = normalized.replace('\u2212', '-')
+    normalized = normalized.replace('\u2013', '-')
+    normalized = normalized.replace('\u2014', '-')
+    return re.sub(r'\s+', ' ', normalized).strip()
+
+
+def extract_p_value(text: str) -> Optional[float]:
+    """Extract p-value from text, including scientific notation."""
+    normalized_text = _normalize_p_notation(text)
+
+    for pattern in P_VALUE_PATTERNS:
+        match = re.search(pattern, normalized_text, re.IGNORECASE)
+        if not match:
+            continue
+
+        try:
+            matched = _normalize_p_notation(match.group(0))
+
+            # 1.2e-5
+            sci_match = re.search(r'(\d+\.?\d*)\s*[eE]\s*-\s*(\d+)', matched)
+            if sci_match:
+                base = float(sci_match.group(1))
+                exp = int(sci_match.group(2))
+                p_val = base * (10 ** -exp)
+                if 0 <= p_val <= 1:
+                    return p_val
+                continue
+
+            # 1 x 10^-4
+            coeff_match = re.search(
+                r'(\d+\.?\d*)\s*(?:x|\*)\s*10\s*(?:\^)?\s*-\s*(\d+)',
+                matched,
+                re.IGNORECASE,
+            )
+            if coeff_match:
+                base = float(coeff_match.group(1))
+                exp = int(coeff_match.group(2))
+                p_val = base * (10 ** -exp)
+                if 0 <= p_val <= 1:
+                    return p_val
+                continue
+
+            # 10^-6
+            ten_match = re.search(r'(?<![\d.])10\s*(?:\^)?\s*-\s*(\d+)', matched)
+            if ten_match:
+                exp = int(ten_match.group(1))
+                p_val = 10 ** -exp
+                if 0 <= p_val <= 1:
+                    return p_val
+                continue
+
+            # Skip malformed scientific notation instead of partial decimal fallback.
+            if re.search(r'(?:[eE]|(?:x|\*)\s*10)', matched, re.IGNORECASE):
+                continue
+
+            # Standard decimal form
+            p_str = re.search(r'(?<!\d)(?:0?\.\d+)(?!\d)', matched)
+            if p_str:
+                p_val = float(p_str.group(0))
+                if 0 <= p_val <= 1:
+                    return p_val
+        except ValueError:
+            continue
     return None
 
 

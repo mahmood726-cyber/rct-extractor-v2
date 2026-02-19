@@ -70,7 +70,11 @@ from .primary_outcome_detector import PrimaryOutcomeDetector
 
 # Import raw data extractor + computation engine (v5.9)
 from .raw_data_extractor import extract_raw_data
-from .effect_calculator import compute_effect_from_raw_data, ComputedEffect
+from .effect_calculator import (
+    compute_effect_family_from_raw_data,
+    compute_effect_from_raw_data,
+    ComputedEffect,
+)
 
 # Import advanced extraction (v6.3: ML tables, OCR, LLM)
 try:
@@ -145,6 +149,10 @@ class PDFExtractionPipeline:
         extract_tables: bool = True,
         enable_advanced: bool = False,
         enable_llm: bool = False,
+        run_rct_classification: bool = True,
+        score_primary_outcomes: bool = True,
+        compute_raw_effects: bool = True,
+        include_page_audit: bool = True,
     ):
         """
         Initialize the PDF extraction pipeline.
@@ -157,6 +165,10 @@ class PDFExtractionPipeline:
             extract_tables: Extract effect estimates from tables and merge with text
             enable_advanced: Enable advanced extraction (Table Transformer + OCR)
             enable_llm: Enable LLM-based extraction (non-deterministic, UNCERTIFIED)
+            run_rct_classification: Run RCT classifier on full text
+            score_primary_outcomes: Score extracted effects for primary outcome likelihood
+            compute_raw_effects: Compute fallback effects from raw data mentions
+            include_page_audit: Run per-page extraction pass for detailed audit metadata
         """
         self.extract_diagnostics = extract_diagnostics
         self.ocr_threshold = ocr_threshold
@@ -164,14 +176,18 @@ class PDFExtractionPipeline:
         self.skip_non_rct = skip_non_rct
         self.extract_tables = extract_tables
         self.enable_advanced = enable_advanced
+        self.run_rct_classification = run_rct_classification
+        self.score_primary_outcomes = score_primary_outcomes
+        self.compute_raw_effects = compute_raw_effects
+        self.include_page_audit = include_page_audit
 
         # Initialize components
         self.effect_extractor = EnhancedExtractor()
         self.diagnostic_extractor = DiagnosticAccuracyExtractor() if extract_diagnostics else None
         self.ocr_preprocessor = OCRPreprocessor(aggressive=aggressive_ocr_correction)
         self.text_preprocessor = TextPreprocessor()  # v4.3.5: Unicode, columns, dehyphenation
-        self.rct_classifier = RCTClassifier()
-        self.primary_detector = PrimaryOutcomeDetector()
+        self.rct_classifier = RCTClassifier() if run_rct_classification else None
+        self.primary_detector = PrimaryOutcomeDetector() if score_primary_outcomes else None
 
         # Table extraction (optional)
         self.table_effect_extractor = TableEffectExtractor() if (extract_tables and HAS_TABLE_EXTRACTOR) else None
@@ -295,19 +311,20 @@ class PDFExtractionPipeline:
             result.total_characters = total_chars
             result.full_text = full_text
 
-            # Classify the paper
-            classification = self.rct_classifier.classify(full_text)
-            result.classification = classification
+            # Classify the paper (optional in fast paths)
+            if self.run_rct_classification and self.rct_classifier:
+                classification = self.rct_classifier.classify(full_text)
+                result.classification = classification
 
-            if self.skip_non_rct and classification.recommendation == "exclude":
-                result.warnings.append(
-                    f"Skipped extraction: classified as {classification.study_type.value} "
-                    f"(confidence: {classification.confidence:.2f})"
-                )
-                logger.info(
-                    f"Skipping {pdf_path}: classified as {classification.study_type.value}"
-                )
-                return result
+                if self.skip_non_rct and classification.recommendation == "exclude":
+                    result.warnings.append(
+                        f"Skipped extraction: classified as {classification.study_type.value} "
+                        f"(confidence: {classification.confidence:.2f})"
+                    )
+                    logger.info(
+                        f"Skipping {pdf_path}: classified as {classification.study_type.value}"
+                    )
+                    return result
 
             # Assess OCR quality if applicable
             if not pdf_content.is_born_digital or pdf_content.extraction_method == "ocr":
@@ -352,29 +369,35 @@ class PDFExtractionPipeline:
                     result.warnings.append(f"Table extraction failed: {e}")
                     logger.warning(f"Table extraction failed for {pdf_path}: {e}")
 
-            # v6.2: Always run raw data extraction and merge computed effects.
-            # Previously only ran as fallback when no labeled effects found,
-            # but many PDFs have the Cochrane value computed from raw 2x2 data
-            # that doesn't appear as a stated effect estimate in text.
-            try:
-                computed = self._extract_computed_effects(full_text)
-                if computed:
-                    if result.effect_estimates:
-                        result.effect_estimates = self._merge_text_and_table_effects(
-                            result.effect_estimates, computed
-                        )
-                        result.warnings.append(
-                            f"{len(computed)} additional effects computed from raw data"
-                        )
-                    else:
-                        result.effect_estimates = computed
-                        result.warnings.append(
-                            f"No labeled effects found; {len(computed)} computed from raw data"
-                        )
-                    logger.info(f"Raw data extraction: {len(computed)} computed effects")
-            except Exception as e:
-                result.warnings.append(f"Raw data extraction failed: {e}")
-                logger.warning(f"Raw data extraction failed for {pdf_path}: {e}")
+            # Optional raw-data fallback extraction.
+            if self.compute_raw_effects:
+                try:
+                    # Use normalized reading-order text first, then merge with raw full-text pass.
+                    # Some PDFs lose critical delimiters during reading-order normalization.
+                    computed = self._extract_computed_effects(processed_text)
+                    if processed_text != full_text:
+                        computed_full_text = self._extract_computed_effects(full_text)
+                        if computed:
+                            computed = self._merge_extractions(computed, computed_full_text)
+                        else:
+                            computed = computed_full_text
+                    if computed:
+                        if result.effect_estimates:
+                            result.effect_estimates = self._merge_extractions(
+                                result.effect_estimates, computed
+                            )
+                            result.warnings.append(
+                                f"{len(computed)} additional effects computed from raw data"
+                            )
+                        else:
+                            result.effect_estimates = computed
+                            result.warnings.append(
+                                f"No labeled effects found; {len(computed)} computed from raw data"
+                            )
+                        logger.info(f"Raw data extraction: {len(computed)} computed effects")
+                except Exception as e:
+                    result.warnings.append(f"Raw data extraction failed: {e}")
+                    logger.warning(f"Raw data extraction failed for {pdf_path}: {e}")
 
             # v6.3: Advanced extraction (Table Transformer + OCR + LLM)
             if self.advanced_pipeline and not result.effect_estimates:
@@ -415,29 +438,45 @@ class PDFExtractionPipeline:
                     result.warnings.append(f"Advanced extraction failed: {e}")
                     logger.warning(f"Advanced extraction failed for {pdf_path}: {e}")
 
+            # Final deterministic fallback for sparse reporting formats.
+            if not result.effect_estimates:
+                try:
+                    lax_effects = self._extract_lax_effects(processed_text)
+                    if lax_effects:
+                        result.effect_estimates.extend(lax_effects)
+                        result.warnings.append(
+                            f"Lax fallback extraction: {len(lax_effects)} low-confidence effects"
+                        )
+                        logger.info(f"Lax fallback extraction recovered {len(lax_effects)} effects")
+                except Exception as e:
+                    result.warnings.append(f"Lax fallback extraction failed: {e}")
+                    logger.warning(f"Lax fallback extraction failed for {pdf_path}: {e}")
+
             # Primary outcome detection (v5.1)
-            if result.effect_estimates:
+            if self.score_primary_outcomes and self.primary_detector and result.effect_estimates:
                 self.primary_detector.score_extractions(
                     result.effect_estimates, full_text
                 )
 
-            # Process per-page for detailed audit trail
-            for page in pdf_content.pages:
-                page_effects, page_diagnostics, _, _ = self._extract_from_text(
-                    page.full_text, preprocess=True
-                )
+            # Process per-page for detailed audit trail (optional in fast paths)
+            if self.include_page_audit:
+                for page in pdf_content.pages:
+                    page_effects, page_diagnostics, _, _ = self._extract_from_text(
+                        page.full_text, preprocess=True
+                    )
 
-                result.page_extractions[page.page_num] = {
-                    "effect_count": len(page_effects),
-                    "diagnostic_count": len(page_diagnostics),
-                    "char_count": len(page.full_text),
-                    "is_ocr": page.is_ocr,
-                    "ocr_confidence": page.ocr_confidence
-                }
+                    result.page_extractions[page.page_num] = {
+                        "effect_count": len(page_effects),
+                        "diagnostic_count": len(page_diagnostics),
+                        "char_count": len(page.full_text),
+                        "is_ocr": page.is_ocr,
+                        "ocr_confidence": page.ocr_confidence
+                    }
 
-            # Calculate overall confidence
-            if effect_extractions:
-                confidences = [e.calibrated_confidence for e in effect_extractions if e.calibrated_confidence > 0]
+            # Calculate overall confidence on the final merged extraction set.
+            final_effects = result.effect_estimates
+            if final_effects:
+                confidences = [e.calibrated_confidence for e in final_effects if e.calibrated_confidence > 0]
                 if confidences:
                     result.extraction_confidence = sum(confidences) / len(confidences)
                 else:
@@ -451,7 +490,7 @@ class PDFExtractionPipeline:
                 result.warnings.append(f"{len(corrections)} OCR corrections applied")
 
             logger.info(
-                f"Extraction complete: {len(effect_extractions)} effects, "
+                f"Extraction complete: {len(final_effects)} effects, "
                 f"{len(diagnostic_extractions)} diagnostics"
             )
 
@@ -523,50 +562,218 @@ class PDFExtractionPipeline:
         Returns list of Extraction objects (same type as main extractor).
         """
         raw_extractions = extract_raw_data(full_text)
-        computed_effects = []
+        computed_effects: List[Extraction] = []
+        seen = set()
 
         for raw_ext in raw_extractions:
             raw_dict = raw_ext.to_raw_data_dict()
             if raw_dict is None:
+                # Partial continuous fallback: if means are available but sample sizes
+                # are missing, recover point-only MD instead of dropping the signal.
+                if raw_ext.data_type == "continuous":
+                    mean1 = getattr(raw_ext.arm1, "mean", None)
+                    mean2 = getattr(raw_ext.arm2, "mean", None)
+                    if mean1 is not None and mean2 is not None:
+                        try:
+                            md_value = float(mean1) - float(mean2)
+                        except (TypeError, ValueError):
+                            md_value = None
+                        if md_value is not None and abs(md_value) <= 10000:
+                            extraction = Extraction(
+                                effect_type=EffectType.MD,
+                                point_estimate=md_value,
+                                ci=None,
+                                source_text=f"[COMPUTED partial raw data] {raw_ext.source_text[:150]}",
+                                calibrated_confidence=max(0.12, min(0.35, raw_ext.confidence * 0.5)),
+                                has_complete_ci=False,
+                                se_method="computed_partial",
+                                warnings=["Missing sample sizes: point estimate only"],
+                            )
+                            computed_effects.append(extraction)
                 continue
 
-            # Compute effect based on data type
-            if raw_ext.data_type == "binary":
-                result = compute_effect_from_raw_data(raw_dict, "binary")
-            else:
-                result = compute_effect_from_raw_data(raw_dict, "continuous")
-
-            if result is None:
+            # Compute all available effect-family variants from the same raw data.
+            family_results = compute_effect_family_from_raw_data(raw_dict, raw_ext.data_type)
+            if not family_results:
+                # Backward-compatible fallback to single-effect path.
+                result = compute_effect_from_raw_data(raw_dict, raw_ext.data_type)
+                family_results = [result] if result is not None else []
+            if not family_results:
                 continue
 
-            # Convert ComputedEffect to Extraction (main extractor's type)
-            try:
-                if result.effect_type and result.effect_type in EffectType.__members__:
-                    etype = EffectType[result.effect_type]
-                else:
-                    continue  # Skip unknown effect types
-            except (KeyError, AttributeError):
-                continue
+            for result in family_results:
+                effect_name = str(getattr(result, "effect_type", "") or "").upper()
+                if effect_name == "RD":
+                    effect_name = "ARD"
 
-            ci = ConfidenceInterval(
-                lower=result.ci_lower,
-                upper=result.ci_upper,
-                level=0.95
-            )
+                # Convert ComputedEffect to Extraction (main extractor's type)
+                try:
+                    if effect_name and effect_name in EffectType.__members__:
+                        etype = EffectType[effect_name]
+                    else:
+                        continue  # Skip unknown effect types
+                except (KeyError, AttributeError):
+                    continue
 
-            extraction = Extraction(
-                effect_type=etype,
-                point_estimate=result.point_estimate,
-                ci=ci,
-                source_text=f"[COMPUTED from raw data] {raw_ext.source_text[:150]}",
-                calibrated_confidence=raw_ext.confidence * 0.7,  # Discount for computed
-                has_complete_ci=True,
-                se_method="computed",
-                standard_error=result.se,
-            )
-            computed_effects.append(extraction)
+                ci = ConfidenceInterval(
+                    lower=result.ci_lower,
+                    upper=result.ci_upper,
+                    level=0.95
+                )
+
+                dedupe_key = (
+                    etype.value,
+                    round(float(result.point_estimate), 6),
+                    round(float(result.ci_lower), 6),
+                    round(float(result.ci_upper), 6),
+                )
+                if dedupe_key in seen:
+                    continue
+                seen.add(dedupe_key)
+
+                extraction = Extraction(
+                    effect_type=etype,
+                    point_estimate=result.point_estimate,
+                    ci=ci,
+                    source_text=f"[COMPUTED from raw data] {raw_ext.source_text[:150]}",
+                    calibrated_confidence=raw_ext.confidence * 0.7,  # Discount for computed
+                    has_complete_ci=True,
+                    se_method="computed",
+                    standard_error=result.se,
+                )
+                computed_effects.append(extraction)
 
         return computed_effects
+
+    def _extract_lax_effects(self, text: str) -> List[Extraction]:
+        """
+        Deterministic low-confidence fallback when strict extraction returns nothing.
+
+        Designed for sparse reporting styles (e.g., "mean difference in score ..., -1.7
+        [95% CI, -8.3 to 4.8]") where stricter patterns may miss due extra context tokens.
+        """
+        if not text:
+            return []
+
+        label_patterns = [
+            ("HR", r'(?:(?i:hazard\s*ratio)\s*(?:was|=|:|,)?\s*|\bHR\b\s*(?:=|:)?\s*)([0-9]+(?:\.[0-9]+)?)', (0.01, 50.0)),
+            ("OR", r'(?:(?i:odds\s*ratio)\s*(?:was|=|:|,)?\s*|\bOR\b\s*(?:=|:)?\s*)([0-9]+(?:\.[0-9]+)?)', (0.01, 100.0)),
+            ("RR", r'(?:(?i:(?:risk\s*ratio|relative\s*risk))\s*(?:was|=|:|,)?\s*|\bRR\b\s*(?:=|:)?\s*)([0-9]+(?:\.[0-9]+)?)', (0.01, 50.0)),
+            ("MD", r'(?:(?i:mean\s+difference)(?:\s+in\s+[\w\s\'/\-]{1,80})?\s*(?:was|=|:|,)?\s*|\bMD\b\s*(?:=|:)?\s*)([+-]?[0-9]+(?:\.[0-9]+)?)', (-10000.0, 10000.0)),
+            ("SMD", r'(?:(?i:standardized\s+mean\s+difference)\s*(?:was|=|:|,)?\s*|\bSMD\b\s*(?:=|:)?\s*)([+-]?[0-9]+(?:\.[0-9]+)?)', (-20.0, 20.0)),
+            ("ARD", r'(?:(?i:absolute\s+difference|risk\s+difference)(?:\s+of)?\s*(?:was|=|:|,)?\s*|\b(?:ARD|RD)\b\s*(?:=|:)?\s*)([+-]?[0-9]+(?:\.[0-9]+)?)\s*%?', (-100.0, 100.0)),
+        ]
+        ci_pattern = re.compile(
+            r'(?:95%?\s*)?(?:CI|confidence\s+interval)\s*[,:\[\(]?\s*([+-]?\d+\.?\d*)\s*(?:to|[-–—,])\s*([+-]?\d+\.?\d*)',
+            re.IGNORECASE,
+        )
+        noise_pattern = re.compile(
+            r'\b(?:doi|pmid|isbn|nct\d{8}|vol\.?\s*\d{1,3}|;\s*\d+\(\d+\):\d+)\b',
+            re.IGNORECASE,
+        )
+
+        recovered: List[Extraction] = []
+        seen = set()
+
+        for effect_name, pattern, bounds in label_patterns:
+            for match in re.finditer(pattern, text, re.IGNORECASE):
+                try:
+                    value = float(match.group(1))
+                except (TypeError, ValueError):
+                    continue
+
+                min_val, max_val = bounds
+                if not (min_val <= value <= max_val):
+                    continue
+
+                start = max(0, match.start() - 120)
+                end = min(len(text), match.end() + 220)
+                window = text[start:end]
+                if noise_pattern.search(window):
+                    continue
+
+                ci = None
+                has_complete_ci = False
+                confidence = 0.22
+                ci_match = ci_pattern.search(window)
+                if ci_match:
+                    try:
+                        low = float(ci_match.group(1))
+                        high = float(ci_match.group(2))
+                        if low > high:
+                            low, high = high, low
+                        if effect_name in {"HR", "OR", "RR"} and (low <= 0 or high <= 0):
+                            raise ValueError("invalid_ratio_ci")
+                        ci = ConfidenceInterval(lower=low, upper=high, level=0.95)
+                        has_complete_ci = True
+                        confidence = 0.34
+                    except (TypeError, ValueError):
+                        ci = None
+                        has_complete_ci = False
+
+                dedupe_key = (
+                    effect_name,
+                    round(value, 3),
+                    round(ci.lower, 3) if ci else None,
+                    round(ci.upper, 3) if ci else None,
+                )
+                if dedupe_key in seen:
+                    continue
+                seen.add(dedupe_key)
+
+                recovered.append(
+                    Extraction(
+                        effect_type=EffectType[effect_name],
+                        point_estimate=value,
+                        ci=ci,
+                        source_text=f"[LAX] {window[:180]}",
+                        calibrated_confidence=confidence,
+                        has_complete_ci=has_complete_ci,
+                        warnings=["Low-confidence fallback extraction"],
+                    )
+                )
+
+                if len(recovered) >= 8:
+                    return recovered
+
+        return recovered
+
+    def _merge_extractions(
+        self,
+        primary: List[Extraction],
+        additional: List[Extraction],
+    ) -> List[Extraction]:
+        """
+        Merge two Extraction lists with light deduplication.
+
+        Used for combining computed raw-data effects with existing text/table effects.
+        """
+        merged = list(primary)
+        seen = {
+            (
+                eff.effect_type.value,
+                round(float(eff.point_estimate), 6),
+                round(float(eff.ci.lower), 6) if eff.ci else None,
+                round(float(eff.ci.upper), 6) if eff.ci else None,
+            )
+            for eff in merged
+            if eff.point_estimate is not None
+        }
+
+        for eff in additional:
+            if eff.point_estimate is None:
+                continue
+            key = (
+                eff.effect_type.value,
+                round(float(eff.point_estimate), 6),
+                round(float(eff.ci.lower), 6) if eff.ci else None,
+                round(float(eff.ci.upper), 6) if eff.ci else None,
+            )
+            if key in seen:
+                continue
+            seen.add(key)
+            merged.append(eff)
+        return merged
 
     def _raw_table_to_structure(self, table_data: List[List], page_num: int):
         """
@@ -790,15 +997,16 @@ class PDFExtractionPipeline:
             full_text=text
         )
 
-        # Classify text
-        result.classification = self.rct_classifier.classify(text)
+        # Classify text (optional)
+        if self.run_rct_classification and self.rct_classifier:
+            result.classification = self.rct_classifier.classify(text)
 
-        if self.skip_non_rct and result.classification.recommendation == "exclude":
-            result.warnings.append(
-                f"Skipped extraction: classified as {result.classification.study_type.value} "
-                f"(confidence: {result.classification.confidence:.2f})"
-            )
-            return result
+            if self.skip_non_rct and result.classification.recommendation == "exclude":
+                result.warnings.append(
+                    f"Skipped extraction: classified as {result.classification.study_type.value} "
+                    f"(confidence: {result.classification.confidence:.2f})"
+                )
+                return result
 
         effect_extractions, diagnostic_extractions, processed_text, corrections = \
             self._extract_from_text(text, preprocess=True)
@@ -807,7 +1015,7 @@ class PDFExtractionPipeline:
         result.diagnostic_measures = diagnostic_extractions
 
         # Primary outcome detection (v5.1)
-        if effect_extractions:
+        if self.score_primary_outcomes and self.primary_detector and effect_extractions:
             self.primary_detector.score_extractions(effect_extractions, text)
 
         # Assess quality

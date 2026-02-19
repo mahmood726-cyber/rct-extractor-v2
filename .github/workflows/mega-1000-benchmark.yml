@@ -1,0 +1,61 @@
+name: Mega 1000+ Benchmark
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main, master, develop]
+    paths:
+      - "scripts/benchmark_mega_1000_plus.py"
+      - "gold_data/mega/mega_eval_v10_merged.jsonl"
+      - "gold_data/mega/mega_eval_v10_1_merged.jsonl"
+      - "gold_data/mega/mega_eval_v10_2_merged.jsonl"
+      - "output/real_rct_metrics_upgraded_v3.json"
+      - "data/baselines/real_rct_metrics_baseline.json"
+      - ".github/workflows/mega-1000-benchmark.yml"
+  push:
+    branches: [main, master, develop]
+    paths:
+      - "scripts/benchmark_mega_1000_plus.py"
+      - "gold_data/mega/mega_eval_v10_merged.jsonl"
+      - "gold_data/mega/mega_eval_v10_1_merged.jsonl"
+      - "gold_data/mega/mega_eval_v10_2_merged.jsonl"
+      - "output/real_rct_metrics_upgraded_v3.json"
+      - "data/baselines/real_rct_metrics_baseline.json"
+      - ".github/workflows/mega-1000-benchmark.yml"
+
+jobs:
+  mega-benchmark:
+    name: Build Mega 1000+ Report
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Generate benchmark report
+        run: |
+          python scripts/benchmark_mega_1000_plus.py
+
+      - name: Show markdown summary
+        run: |
+          sed -n '1,160p' output/mega_1000_plus_benchmark.md
+
+      - name: Upload benchmark artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: mega-1000-benchmark
+          path: |
+            output/mega_1000_plus_benchmark.json
+            output/mega_1000_plus_benchmark.md
+          retention-days: 30

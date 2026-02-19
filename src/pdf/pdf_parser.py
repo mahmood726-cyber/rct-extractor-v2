@@ -105,8 +105,8 @@ class PDFParser:
     Main PDF parser with fallback strategies.
 
     Strategy:
-    1. Try pdfplumber for born-digital PDFs (best table support)
-    2. Fall back to PyMuPDF if pdfplumber fails
+    1. Try PyMuPDF for born-digital PDFs (more robust on malformed streams)
+    2. Fall back to pdfplumber if PyMuPDF yields insufficient text
     3. Fall back to OCR if text extraction yields little content
     """
 
@@ -131,19 +131,7 @@ class PDFParser:
             num_pages=0
         )
 
-        # Try pdfplumber first (best for tables)
-        if HAS_PDFPLUMBER:
-            try:
-                result = self._parse_with_pdfplumber(pdf_path)
-                if self._has_sufficient_text(result):
-                    result.extraction_method = "pdfplumber"
-                    result.is_born_digital = True
-                    logger.info(f"Successfully parsed with pdfplumber: {pdf_path}")
-                    return result
-            except Exception as e:
-                logger.warning(f"pdfplumber failed: {e}")
-
-        # Try PyMuPDF as fallback
+        # Try PyMuPDF first because some malformed PDFs can hang in pdfminer/pdfplumber.
         if HAS_PYMUPDF:
             try:
                 result = self._parse_with_pymupdf(pdf_path)
@@ -154,6 +142,18 @@ class PDFParser:
                     return result
             except Exception as e:
                 logger.warning(f"PyMuPDF failed: {e}")
+
+        # Try pdfplumber as fallback (still useful for some layout edge cases)
+        if HAS_PDFPLUMBER:
+            try:
+                result = self._parse_with_pdfplumber(pdf_path)
+                if self._has_sufficient_text(result):
+                    result.extraction_method = "pdfplumber"
+                    result.is_born_digital = True
+                    logger.info(f"Successfully parsed with pdfplumber: {pdf_path}")
+                    return result
+            except Exception as e:
+                logger.warning(f"pdfplumber failed: {e}")
 
         # Fall back to OCR
         if HAS_OCR and HAS_PYMUPDF:

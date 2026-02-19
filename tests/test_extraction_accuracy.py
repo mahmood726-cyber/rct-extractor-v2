@@ -353,6 +353,10 @@ class TestPatternCoverage:
         # Standard MD
         ("mean difference -4.0; 95% CI, -7.31 to -0.64", "MD", -4.0),
         ("MD -0.5 (-1.0 to 0.0)", "MD", -0.5),
+        ("mean difference in score change from baseline, -1.7 percentage points [95% CI, -8.3 to 4.8 percentage points]", "MD", -1.7),
+
+        # Absolute difference without parentheses
+        ("absolute difference 16%; 95% CI -4% to +37%", "ARD", 16.0),
     ])
     def test_standard_patterns(self, text, expected_type, expected_value):
         """Test standard effect patterns"""

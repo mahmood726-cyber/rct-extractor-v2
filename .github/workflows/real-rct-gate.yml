@@ -1,0 +1,84 @@
+name: Real-RCT Gate
+
+on:
+  workflow_dispatch:
+    inputs:
+      rerun_missing:
+        description: "Rerun unresolved studies with full PDF extraction"
+        required: false
+        default: false
+        type: boolean
+      enable_advanced:
+        description: "Enable advanced extraction during rerun"
+        required: false
+        default: false
+        type: boolean
+  pull_request:
+    branches: [main, master, develop]
+    paths:
+      - "scripts/freeze_eval_split.py"
+      - "scripts/upgrade_real_rct_results.py"
+      - "scripts/evaluate_real_rct_metrics.py"
+      - "scripts/check_regression_gate.py"
+      - "scripts/build_ma_records_from_results.py"
+      - "scripts/validate_ma_contract.py"
+      - "scripts/run_real_rct_gate.py"
+      - "src/core/ma_contract.py"
+      - "src/core/enhanced_extractor_v3.py"
+      - "src/core/pdf_extraction_pipeline.py"
+      - "src/core/verified_extraction_pipeline.py"
+      - "data/frozen_eval_v1/**"
+      - "data/baselines/real_rct_metrics_baseline.json"
+      - "gold_data/gold_50.jsonl"
+      - "gold_data/baseline_results.json"
+      - ".github/workflows/real-rct-gate.yml"
+
+jobs:
+  real-rct-gate:
+    name: Real-RCT Freeze -> Upgrade -> Gate
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run real-RCT gate pipeline
+        run: |
+          if [ "${{ github.event.inputs.rerun_missing || 'false' }}" = "true" ]; then
+            RERUN_FLAG="--rerun-missing"
+          else
+            RERUN_FLAG="--no-rerun-missing"
+          fi
+          if [ "${{ github.event.inputs.enable_advanced || 'false' }}" = "true" ]; then
+            ADV_FLAG="--enable-advanced"
+          else
+            ADV_FLAG="--no-enable-advanced"
+          fi
+          python scripts/run_real_rct_gate.py $RERUN_FLAG $ADV_FLAG --no-backfill-pages
+
+      - name: Upload gate artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: real-rct-gate-artifacts
+          path: |
+            data/frozen_eval_v1/frozen_gold.jsonl
+            data/frozen_eval_v1/split_manifest.json
+            data/frozen_eval_v1/protocol_lock.json
+            data/baselines/real_rct_metrics_baseline.json
+            output/real_rct_results_upgraded_v3.json
+            output/real_rct_metrics_upgraded_v3.json
+            output/real_rct_gate_report_upgraded_v3.json
+            output/ma_records_upgraded_v3.jsonl
+            output/ma_records_upgraded_v3.validated.jsonl

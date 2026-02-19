@@ -1,0 +1,1 @@
+{"study_id": "X1", "outcome_name": "Primary endpoint", "effect_type": "HR", "point_estimate": 0.74, "ci_lower": 0.65, "ci_upper": 0.85, "standard_error": null, "p_value": 0.001, "is_subgroup": false, "computation_origin": "reported", "provenance": {"source_text": "HR 0.74 (95% CI 0.65-0.85)", "page_number": 3, "source_type": "text"}}

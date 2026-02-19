@@ -1,0 +1,124 @@
+name: Real-RCT Scorecard
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "30 6 * * *"
+  pull_request:
+    branches: [main, master, develop]
+    paths:
+      - "scripts/build_executive_scorecard.py"
+      - "scripts/benchmark_mega_1000_plus.py"
+      - "scripts/benchmark_outside_solutions.py"
+      - "scripts/evaluate_real_rct_metrics.py"
+      - "scripts/run_real_rct_gate.py"
+      - "scripts/check_mega_eval_gate.py"
+      - "scripts/mega_evaluate.py"
+      - "scripts/run_mega_evaluate_batched.py"
+      - "gold_data/mega/mega_eval_summary.json"
+      - "data/baselines/mega_eval_gate_baseline.json"
+      - "output/real_rct_results_upgraded_v4.json"
+      - "output/real_rct_results_upgraded_v3.json"
+      - ".github/workflows/real-rct-scorecard.yml"
+
+jobs:
+  scorecard:
+    name: Build Scorecard Artifacts
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Resolve current real-RCT result file
+        shell: bash
+        run: |
+          if [ -f output/real_rct_results_upgraded_v4.json ]; then
+            CURRENT_RESULTS="output/real_rct_results_upgraded_v4.json"
+          elif [ -f output/real_rct_results_upgraded_v3.json ]; then
+            CURRENT_RESULTS="output/real_rct_results_upgraded_v3.json"
+          else
+            python scripts/run_real_rct_gate.py --no-rerun-missing --no-enable-advanced --no-backfill-pages
+            CURRENT_RESULTS="output/real_rct_results_upgraded_v3.json"
+          fi
+          echo "CURRENT_RESULTS=${CURRENT_RESULTS}" >> "$GITHUB_ENV"
+          echo "Using current results: ${CURRENT_RESULTS}"
+
+      - name: Build current real-RCT metrics
+        run: |
+          python scripts/evaluate_real_rct_metrics.py \
+            --results "${CURRENT_RESULTS}" \
+            --output output/real_rct_metrics_current_ci.json
+
+      - name: Build outside benchmark
+        run: |
+          python scripts/benchmark_outside_solutions.py \
+            --current "${CURRENT_RESULTS}" \
+            --output-json output/outside_solution_benchmark_ci.json \
+            --output-md output/outside_solution_benchmark_ci.md
+
+      - name: Build 1000+ benchmark
+        run: |
+          python scripts/benchmark_mega_1000_plus.py \
+            --real-current-metrics output/real_rct_metrics_current_ci.json \
+            --output-json output/mega_1000_plus_benchmark_ci.json \
+            --output-md output/mega_1000_plus_benchmark_ci.md
+
+      - name: Build executive scorecard
+        run: |
+          python scripts/build_executive_scorecard.py \
+            --outside-benchmark output/outside_solution_benchmark_ci.json \
+            --output-json output/real_rct_executive_scorecard_ci.json \
+            --output-md output/real_rct_executive_scorecard_ci.md
+
+      - name: Build no-extraction subtype uplift report
+        shell: bash
+        run: |
+          BEFORE_SNAPSHOT="output/mega_eval_before_ci.jsonl"
+          AFTER_SNAPSHOT="gold_data/mega/mega_eval.jsonl"
+          if [ ! -f "${AFTER_SNAPSHOT}" ]; then
+            mkdir -p "$(dirname "${AFTER_SNAPSHOT}")"
+            : > "${AFTER_SNAPSHOT}"
+          fi
+          cp "${AFTER_SNAPSHOT}" "${BEFORE_SNAPSHOT}"
+          python scripts/analyze_no_extraction_subtype_uplift.py \
+            --before "${BEFORE_SNAPSHOT}" \
+            --after "${AFTER_SNAPSHOT}" \
+            --output-json output/no_extraction_uplift_by_subtype_ci.json \
+            --output-md output/no_extraction_uplift_by_subtype_ci.md
+
+      - name: Run mega non-regression gate
+        run: |
+          python scripts/check_mega_eval_gate.py \
+            --baseline data/baselines/mega_eval_gate_baseline.json \
+            --current-summary gold_data/mega/mega_eval_summary.json \
+            --report output/mega_eval_gate_report_ci.json
+
+      - name: Upload scorecard artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: real-rct-scorecard-artifacts
+          path: |
+            gold_data/mega/mega_eval_summary.json
+            output/real_rct_metrics_current_ci.json
+            output/outside_solution_benchmark_ci.json
+            output/outside_solution_benchmark_ci.md
+            output/mega_1000_plus_benchmark_ci.json
+            output/mega_1000_plus_benchmark_ci.md
+            output/real_rct_executive_scorecard_ci.json
+            output/real_rct_executive_scorecard_ci.md
+            output/no_extraction_uplift_by_subtype_ci.json
+            output/no_extraction_uplift_by_subtype_ci.md
+            output/mega_eval_gate_report_ci.json

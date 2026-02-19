@@ -83,6 +83,11 @@ _LAZY_IMPORTS = {
     'PipelineStatus': ('.verified_extraction_pipeline', 'PipelineStatus'),
     'BatchProcessor': ('.verified_extraction_pipeline', 'BatchProcessor'),
     'generate_verification_report': ('.verified_extraction_pipeline', 'generate_verification_report'),
+    # Meta-analysis output contract
+    'MAProvenance': ('.ma_contract', 'MAProvenance'),
+    'MAExtractionRecord': ('.ma_contract', 'MAExtractionRecord'),
+    'validate_ma_records': ('.ma_contract', 'validate_ma_records'),
+    'is_meta_analysis_ready': ('.ma_contract', 'is_meta_analysis_ready'),
 }
 
 __all__ = list(_LAZY_IMPORTS.keys())

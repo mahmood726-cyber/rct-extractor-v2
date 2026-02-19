@@ -21,6 +21,7 @@ from src.core.effect_calculator import (
     compute_smd,
     sem_to_sd,
     pct_to_events,
+    compute_effect_family_from_raw_data,
     compute_effect_from_raw_data,
 )
 
@@ -293,6 +294,29 @@ class TestComputeFromRawData:
         assert result.effect_type == "MD"
         assert abs(result.point_estimate - (-0.6)) < 0.01
 
+    def test_binary_exp_ctrl_aliases(self):
+        """exp_*/ctrl_* aliases should map to intervention/control for binary data."""
+        raw = {"exp_cases": 11, "exp_n": 107, "ctrl_cases": 7, "ctrl_n": 103}
+        result = compute_effect_from_raw_data(raw, "binary")
+        assert result is not None
+        assert result.effect_type == "OR"
+        assert abs(result.point_estimate - 1.57) < 0.05
+
+    def test_continuous_exp_ctrl_aliases(self):
+        """exp_*/ctrl_* aliases should map to intervention/control for continuous data."""
+        raw = {
+            "exp_mean": 49.1,
+            "exp_sd": 5.0,
+            "exp_n": 22,
+            "ctrl_mean": 48.1,
+            "ctrl_sd": 5.7,
+            "ctrl_n": 26,
+        }
+        result = compute_effect_from_raw_data(raw, "continuous")
+        assert result is not None
+        assert result.effect_type == "MD"
+        assert abs(result.point_estimate - 1.0) < 0.01
+
     def test_empty_raw_data(self):
         """Empty dict should return None."""
         result = compute_effect_from_raw_data({}, "binary")
@@ -302,3 +326,29 @@ class TestComputeFromRawData:
         """None should return None."""
         result = compute_effect_from_raw_data(None, "binary")
         assert result is None
+
+
+class TestComputeEffectFamilyFromRawData:
+    def test_binary_family_contains_or_rr_rd(self):
+        raw = {
+            "intervention_events": 11,
+            "intervention_n": 107,
+            "control_events": 7,
+            "control_n": 103,
+        }
+        results = compute_effect_family_from_raw_data(raw, "binary")
+        kinds = {r.effect_type for r in results}
+        assert {"OR", "RR", "RD"}.issubset(kinds)
+
+    def test_continuous_family_contains_md_smd(self):
+        raw = {
+            "intervention_mean": 49.1,
+            "intervention_sd": 5.0,
+            "intervention_n": 22,
+            "control_mean": 48.1,
+            "control_sd": 5.7,
+            "control_n": 26,
+        }
+        results = compute_effect_family_from_raw_data(raw, "continuous")
+        kinds = {r.effect_type for r in results}
+        assert {"MD", "SMD"}.issubset(kinds)

@@ -20,7 +20,7 @@ from __future__ import annotations
 
 import math
 from dataclasses import dataclass
-from typing import Optional, Tuple
+from typing import List, Optional, Tuple
 
 
 # Z-value for 95% CI (default)
@@ -314,6 +314,41 @@ def pct_to_events(pct: float, n: int) -> int:
     return round(pct / 100.0 * n)
 
 
+def _normalize_raw_data_aliases(raw_data: dict) -> dict:
+    """
+    Normalize common raw_data key aliases to intervention/control naming.
+
+    Cochrane-derived rows frequently use exp_*/ctrl_* keys while the extractor
+    stack emits intervention_*/control_* keys.
+    """
+    if not isinstance(raw_data, dict):
+        return {}
+
+    normalized = dict(raw_data)
+    alias_pairs = (
+        ("intervention_events", "exp_cases"),
+        ("intervention_n", "exp_n"),
+        ("control_events", "ctrl_cases"),
+        ("control_n", "ctrl_n"),
+        ("intervention_pct", "exp_pct"),
+        ("control_pct", "ctrl_pct"),
+        ("intervention_mean", "exp_mean"),
+        ("intervention_sd", "exp_sd"),
+        ("control_mean", "ctrl_mean"),
+        ("control_sd", "ctrl_sd"),
+        ("intervention_se", "exp_se"),
+        ("control_se", "ctrl_se"),
+        ("intervention_change", "exp_change"),
+        ("control_change", "ctrl_change"),
+        ("intervention_sem", "exp_sem"),
+        ("control_sem", "ctrl_sem"),
+    )
+    for canonical_key, alias_key in alias_pairs:
+        if normalized.get(canonical_key) is None and raw_data.get(alias_key) is not None:
+            normalized[canonical_key] = raw_data[alias_key]
+    return normalized
+
+
 def compute_effect_from_raw_data(raw_data: dict, cochrane_type: str,
                                   cochrane_effect_type: str = None) -> Optional[ComputedEffect]:
     """
@@ -331,8 +366,40 @@ def compute_effect_from_raw_data(raw_data: dict, cochrane_type: str,
         cochrane_effect_type: Optional hint ("OR", "RR", "MD", "SMD") for which
             effect to compute. If None, inferred from cochrane_type.
     """
-    if not raw_data:
+    family = compute_effect_family_from_raw_data(raw_data, cochrane_type)
+    if not family:
         return None
+
+    if cochrane_effect_type:
+        requested = str(cochrane_effect_type).upper()
+        # Pipeline uses ARD enum for risk difference.
+        if requested == "ARD":
+            requested = "RD"
+        for effect in family:
+            if effect.effect_type == requested:
+                return effect
+
+    preferred = "OR" if str(cochrane_type).lower() == "binary" else "MD"
+    for effect in family:
+        if effect.effect_type == preferred:
+            return effect
+    return family[0]
+
+
+def compute_effect_family_from_raw_data(raw_data: dict, cochrane_type: str) -> List[ComputedEffect]:
+    """
+    Compute all effect types available from one raw_data record.
+
+    Binary:
+        OR, RR, RD
+    Continuous:
+        MD, SMD
+    """
+    raw_data = _normalize_raw_data_aliases(raw_data)
+    if not raw_data:
+        return []
+
+    computed: List[ComputedEffect] = []
 
     # Binary: events/N
     if "intervention_events" in raw_data and "control_events" in raw_data:
@@ -340,30 +407,24 @@ def compute_effect_from_raw_data(raw_data: dict, cochrane_type: str,
         n1 = raw_data["intervention_n"]
         c = raw_data["control_events"]
         n2 = raw_data["control_n"]
-
-        if cochrane_effect_type == "RR":
-            return compute_rr(a, n1, c, n2)
-        elif cochrane_effect_type == "RD":
-            return compute_rd(a, n1, c, n2)
-        else:
-            return compute_or(a, n1, c, n2)
+        for fn in (compute_or, compute_rr, compute_rd):
+            result = fn(a, n1, c, n2)
+            if result is not None:
+                computed.append(result)
 
     # Binary: percentages
-    if "intervention_pct" in raw_data and "control_pct" in raw_data:
+    elif "intervention_pct" in raw_data and "control_pct" in raw_data:
         n1 = raw_data["intervention_n"]
         n2 = raw_data["control_n"]
         a = pct_to_events(raw_data["intervention_pct"], n1)
         c = pct_to_events(raw_data["control_pct"], n2)
-
-        if cochrane_effect_type == "RR":
-            return compute_rr(a, n1, c, n2)
-        elif cochrane_effect_type == "RD":
-            return compute_rd(a, n1, c, n2)
-        else:
-            return compute_or(a, n1, c, n2)
+        for fn in (compute_or, compute_rr, compute_rd):
+            result = fn(a, n1, c, n2)
+            if result is not None:
+                computed.append(result)
 
     # Continuous: means/SDs
-    if "intervention_mean" in raw_data and "control_mean" in raw_data:
+    elif "intervention_mean" in raw_data and "control_mean" in raw_data:
         m1 = raw_data["intervention_mean"]
         sd1 = raw_data.get("intervention_sd")
         n1 = raw_data["intervention_n"]
@@ -371,22 +432,21 @@ def compute_effect_from_raw_data(raw_data: dict, cochrane_type: str,
         sd2 = raw_data.get("control_sd")
         n2 = raw_data["control_n"]
 
-        # Convert SE to SD if needed
         if sd1 is None and "intervention_se" in raw_data:
             sd1 = sem_to_sd(raw_data["intervention_se"], n1)
         if sd2 is None and "control_se" in raw_data:
             sd2 = sem_to_sd(raw_data["control_se"], n2)
 
-        if sd1 is None or sd2 is None:
-            return None
-
-        if cochrane_effect_type == "SMD":
-            return compute_smd(m1, sd1, n1, m2, sd2, n2)
-        else:
-            return compute_md(m1, sd1, n1, m2, sd2, n2)
+        if sd1 is not None and sd2 is not None:
+            md = compute_md(m1, sd1, n1, m2, sd2, n2)
+            smd = compute_smd(m1, sd1, n1, m2, sd2, n2)
+            if md is not None:
+                computed.append(md)
+            if smd is not None:
+                computed.append(smd)
 
     # Continuous: change scores with SEM
-    if "intervention_change" in raw_data and "control_change" in raw_data:
+    elif "intervention_change" in raw_data and "control_change" in raw_data:
         m1 = raw_data["intervention_change"]
         m2 = raw_data["control_change"]
         n1 = raw_data["intervention_n"]
@@ -394,22 +454,28 @@ def compute_effect_from_raw_data(raw_data: dict, cochrane_type: str,
 
         sd1 = raw_data.get("intervention_sd")
         sd2 = raw_data.get("control_sd")
-
-        # Convert SEM to SD
         if sd1 is None and "intervention_sem" in raw_data:
             sd1 = sem_to_sd(raw_data["intervention_sem"], n1)
         if sd2 is None and "control_sem" in raw_data:
             sd2 = sem_to_sd(raw_data["control_sem"], n2)
 
-        if sd1 is None or sd2 is None:
-            return None
+        if sd1 is not None and sd2 is not None:
+            md = compute_md(m1, sd1, n1, m2, sd2, n2)
+            smd = compute_smd(m1, sd1, n1, m2, sd2, n2)
+            if md is not None:
+                computed.append(md)
+            if smd is not None:
+                computed.append(smd)
 
-        if cochrane_effect_type == "SMD":
-            return compute_smd(m1, sd1, n1, m2, sd2, n2)
-        else:
-            return compute_md(m1, sd1, n1, m2, sd2, n2)
-
-    return None
+    deduped: List[ComputedEffect] = []
+    seen = set()
+    for effect in computed:
+        key = effect.effect_type
+        if key in seen:
+            continue
+        seen.add(key)
+        deduped.append(effect)
+    return deduped
 
 
 def _z_for_level(conf_level: float) -> float:

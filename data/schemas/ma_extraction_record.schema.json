@@ -1,0 +1,206 @@
+{
+  "$defs": {
+    "MAProvenance": {
+      "additionalProperties": false,
+      "description": "Minimum provenance needed for auditability and reproducibility.",
+      "properties": {
+        "source_text": {
+          "description": "Snippet supporting the extracted value.",
+          "minLength": 1,
+          "title": "Source Text",
+          "type": "string"
+        },
+        "page_number": {
+          "description": "0-based PDF page index.",
+          "minimum": 0,
+          "title": "Page Number",
+          "type": "integer"
+        },
+        "source_type": {
+          "default": "unknown",
+          "enum": [
+            "text",
+            "table",
+            "figure",
+            "ocr",
+            "computed",
+            "unknown"
+          ],
+          "title": "Source Type",
+          "type": "string"
+        },
+        "char_start": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Char Start"
+        },
+        "char_end": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Char End"
+        }
+      },
+      "required": [
+        "source_text",
+        "page_number"
+      ],
+      "title": "MAProvenance",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Contract for one extraction record that can enter a meta-analysis workflow.",
+  "properties": {
+    "study_id": {
+      "minLength": 1,
+      "title": "Study Id",
+      "type": "string"
+    },
+    "outcome_name": {
+      "minLength": 1,
+      "title": "Outcome Name",
+      "type": "string"
+    },
+    "effect_type": {
+      "enum": [
+        "HR",
+        "OR",
+        "RR",
+        "IRR",
+        "GMR",
+        "NNT",
+        "NNH",
+        "MD",
+        "SMD",
+        "ARD",
+        "ARR",
+        "RRR",
+        "RD",
+        "WMD"
+      ],
+      "title": "Effect Type",
+      "type": "string"
+    },
+    "point_estimate": {
+      "title": "Point Estimate",
+      "type": "number"
+    },
+    "ci_lower": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Ci Lower"
+    },
+    "ci_upper": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Ci Upper"
+    },
+    "standard_error": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Standard Error"
+    },
+    "p_value": {
+      "anyOf": [
+        {
+          "maximum": 1,
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "P Value"
+    },
+    "timepoint": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Timepoint"
+    },
+    "is_primary": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Is Primary"
+    },
+    "is_subgroup": {
+      "default": false,
+      "title": "Is Subgroup",
+      "type": "boolean"
+    },
+    "computation_origin": {
+      "default": "reported",
+      "enum": [
+        "reported",
+        "computed"
+      ],
+      "title": "Computation Origin",
+      "type": "string"
+    },
+    "provenance": {
+      "$ref": "#/$defs/MAProvenance"
+    }
+  },
+  "required": [
+    "study_id",
+    "outcome_name",
+    "effect_type",
+    "point_estimate",
+    "provenance"
+  ],
+  "title": "MAExtractionRecord",
+  "type": "object"
+}

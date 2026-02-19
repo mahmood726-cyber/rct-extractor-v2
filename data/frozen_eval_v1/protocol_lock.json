@@ -1,0 +1,18 @@
+{
+  "protocol_version": "1.0.0",
+  "frozen_at_utc": "2026-02-17T08:21:07.739816+00:00",
+  "input_dataset": "gold_data/gold_50.jsonl",
+  "input_dataset_sha256": "fe0bb3923edc0e9c62c5fdd26c29506ff0a8b7421dcc4835daf23b37a2d5d339",
+  "frozen_dataset": "data/frozen_eval_v1/frozen_gold.jsonl",
+  "frozen_dataset_sha256": "a6dd121876455f4fc350e7c8117354f65ff27cf736b2cd545e7b3b392159f9bd",
+  "frozen_dataset_record_count": 37,
+  "frozen_trial_count": 37,
+  "split_manifest": "data/frozen_eval_v1/split_manifest.json",
+  "split_manifest_sha256": "d29c81bcb52dc5f028c3846c356a2d820d5426b24af32995d219a108e0aaa1b6",
+  "include_excluded": false,
+  "skipped_records": {
+    "excluded_flag": 6,
+    "missing_study_id": 0,
+    "missing_reference_effect": 0
+  }
+}

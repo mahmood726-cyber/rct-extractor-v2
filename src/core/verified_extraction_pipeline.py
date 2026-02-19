@@ -477,9 +477,9 @@ def generate_verification_report(results: List[PipelineResult]) -> str:
         lines.append("-" * 40)
         lines.append(f"  Effect Type: {r.effect_type}")
         lines.append(f"  Value: {r.value}")
-        if r.ci_lower and r.ci_upper:
+        if r.ci_lower is not None and r.ci_upper is not None:
             lines.append(f"  95% CI: [{r.ci_lower}, {r.ci_upper}]")
-        if r.standard_error:
+        if r.standard_error is not None:
             lines.append(f"  SE: {r.standard_error:.4f}")
         lines.append(f"  Status: {r.status.value}")
         lines.append(f"  Confidence: {r.confidence:.0%}")

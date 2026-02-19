@@ -1,0 +1,4 @@
+{"event": "run_start", "recorded_at_utc": "2026-02-17T22:28:11.735842+00:00", "batch": 1, "resume": true, "fast_mode": true, "per_study_timeout_sec": 8}
+{"event": "pipeline_init_skipped", "recorded_at_utc": "2026-02-17T22:28:11.954080+00:00", "fast_mode": true, "reason": "per_study_timeout_mode", "per_study_timeout_sec": 8}
+{"event": "run_start", "recorded_at_utc": "2026-02-17T22:28:52.150814+00:00", "batch": 1, "resume": true, "fast_mode": true, "per_study_timeout_sec": 8}
+{"event": "pipeline_init_skipped", "recorded_at_utc": "2026-02-17T22:28:52.399956+00:00", "fast_mode": true, "reason": "per_study_timeout_mode", "per_study_timeout_sec": 8}
