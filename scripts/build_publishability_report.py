@@ -48,12 +48,31 @@ def _fmt_ci(metric: Dict[str, float]) -> str:
     return f"{_fmt_pct(metric['point'])} ({_fmt_pct(metric['ci_low_95'])} to {_fmt_pct(metric['ci_high_95'])})"
 
 
+def _fmt_distance(value) -> str:
+    if isinstance(value, (int, float)):
+        return f"{float(value):.6f}"
+    return "n/a"
+
+
 def _cohort_label_from_protocol(protocol: Dict, protocol_path: Path) -> str:
     explicit = str(protocol.get("cohort_name") or "").strip()
     if explicit:
         return explicit
     parent = protocol_path.parent
     return parent.name if parent.name else "external_validated_pdf"
+
+
+def _is_identity_validated(protocol: Dict) -> bool:
+    explicit = protocol.get("identity_validation_applied")
+    if isinstance(explicit, bool):
+        return explicit
+    stats = protocol.get("validation_stats")
+    if not isinstance(stats, dict) or not stats:
+        return False
+    passed = stats.get("passed")
+    if isinstance(passed, int):
+        return passed > 0
+    return True
 
 
 def _build_residual_rows(results: List[Dict], gold_by_id: Dict[str, Dict]) -> List[Dict]:
@@ -117,6 +136,8 @@ def main() -> int:
 
     protocol = _load_json(args.cohort_protocol)
     cohort_label = _cohort_label_from_protocol(protocol, args.cohort_protocol)
+    identity_validated = _is_identity_validated(protocol)
+    cohort_descriptor = "Identity-validated adjudicated" if identity_validated else "Adjudicated"
     frozen_trials_total = int(
         protocol.get("frozen_trials_total")
         or protocol.get("adjudicated_frozen_trials_total")
@@ -207,7 +228,7 @@ def main() -> int:
     lines.append("## Cohort Integrity")
     lines.append("")
     lines.append(f"- Selected candidates: {protocol.get('selected_trials_total')}")
-    lines.append(f"- Frozen identity-validated full-text trials: {frozen_trials_total}")
+    lines.append(f"- {cohort_descriptor} full-text trials: {frozen_trials_total}")
     if protocol.get("parent_frozen_trials_total") is not None:
         lines.append(f"- Parent frozen trials: {protocol.get('parent_frozen_trials_total')}")
     if protocol.get("excluded_trials_total") is not None:
@@ -219,8 +240,9 @@ def main() -> int:
     lines.append(f"- PMCID resolution stats: {protocol.get('pmc_resolution_stats', {})}")
     lines.append(f"- Download stats: {protocol.get('download_stats', {})}")
     lines.append(f"- Validation stats: {protocol.get('validation_stats', {})}")
+    lines.append(f"- Identity validation applied: {identity_validated}")
     lines.append("")
-    lines.append("## Ablation (Validated Cohort)")
+    lines.append("## Ablation (Adjudicated Cohort)")
     lines.append("")
     lines.append("| Metric | PDF Only | PDF + PubMed | Delta |")
     lines.append("| --- | ---: | ---: | ---: |")
@@ -232,12 +254,12 @@ def main() -> int:
     lines.append(f"- PDF-only status counts: {status_counts_pdf_only}")
     lines.append(f"- PDF+PubMed status counts: {status_counts_pdf_pubmed}")
     lines.append("")
-    lines.append("## Bootstrap 95% CI (Validated Cohort, PDF Only)")
+    lines.append("## Bootstrap 95% CI (Adjudicated Cohort, PDF Only)")
     lines.append("")
     for metric in metrics_order:
         lines.append(f"- {metric}: {_fmt_ci(pdf_only_bootstrap['metrics'][metric])}")
     lines.append("")
-    lines.append("## Residual Manual Adjudication (Validated Cohort)")
+    lines.append("## Residual Manual Adjudication (Adjudicated Cohort)")
     lines.append("")
     if residual_rows:
         lines.append("| Study | Status | Distance | Gold | Extracted | Judgement | Likely Cause | Recommended Fix |")
@@ -252,7 +274,7 @@ def main() -> int:
                 f"{row['extracted_type']} {row['extracted_effect']} [{row['extracted_ci_lower']}, {row['extracted_ci_upper']}]"
             )
             lines.append(
-                f"| {row['study_id']} | {row['status']} | {row.get('distance_to_target', 0):.6f} | "
+                f"| {row['study_id']} | {row['status']} | {_fmt_distance(row.get('distance_to_target'))} | "
                 f"{gold_cell} | {extracted_cell} | {row['judgement']} | {row['likely_cause']} | {row['recommended_fix']} |"
             )
     else:
@@ -265,7 +287,12 @@ def main() -> int:
     lines.append("")
     lines.append("## Publication Readiness")
     lines.append("")
-    if frozen_trials_total < 20:
+    if not identity_validated:
+        lines.append(
+            "- Not publication-ready for identity-validated external-claim framing: this cohort is adjudicated but not identity-validated."
+        )
+        lines.append("- Suitable for internal benchmarking and ablation reporting with explicit limitations.")
+    elif frozen_trials_total < 20:
         lines.append(
             "- Not publication-ready for broad external full-text claims: identity-validated full-text sample remains small."
         )

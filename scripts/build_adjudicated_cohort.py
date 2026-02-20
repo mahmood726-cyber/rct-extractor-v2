@@ -10,6 +10,38 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, List, Set
 
+STATUS_PRIORITY = {
+    "exact_match_with_ci": 0,
+    "exact_match": 1,
+    "close_match": 2,
+    "approximate_match": 3,
+    "distant_match": 4,
+    "no_match": 5,
+    "no_extractions": 6,
+    "missing_result": 7,
+}
+
+
+def _status_priority(status: str) -> int:
+    return STATUS_PRIORITY.get(status, 99)
+
+
+def _distance_value(result: Dict) -> float:
+    value = result.get("distance_to_target")
+    if isinstance(value, (int, float)):
+        return float(value)
+    return float("inf")
+
+
+def _is_identity_validated(protocol: Dict) -> bool:
+    stats = protocol.get("validation_stats")
+    if not isinstance(stats, dict) or not stats:
+        return False
+    passed = stats.get("passed")
+    if isinstance(passed, int):
+        return passed > 0
+    return True
+
 
 def _load_json(path: Path):
     with path.open("r", encoding="utf-8") as handle:
@@ -50,11 +82,25 @@ def main() -> int:
         default="unresolved_endpoint_or_label_mismatch",
         help="Reason assigned to excluded trials in exclusion_log.json.",
     )
+    parser.add_argument(
+        "--max-trials",
+        type=int,
+        default=None,
+        help="If set and eligible trials exceed this value, keep only best-ranked records.",
+    )
+    parser.add_argument(
+        "--trim-reason",
+        type=str,
+        default="trimmed_to_max_trials_after_adjudication",
+        help="Reason assigned to records excluded only due to --max-trials.",
+    )
     args = parser.parse_args()
 
     include_statuses: Set[str] = {token.strip() for token in args.include_statuses.split(",") if token.strip()}
     if not include_statuses:
         raise ValueError("--include-statuses must contain at least one status.")
+    if args.max_trials is not None and args.max_trials < 1:
+        raise ValueError("--max-trials must be >= 1 when provided.")
 
     manifest_path = args.parent_cohort_dir / "manifest.jsonl"
     frozen_gold_path = args.parent_cohort_dir / "frozen_gold.jsonl"
@@ -76,8 +122,7 @@ def main() -> int:
     results_by_id = {str(row.get("study_id")): row for row in results_rows if row.get("study_id")}
     manifest_by_id = {str(row.get("study_id")): row for row in manifest_rows if row.get("study_id")}
 
-    kept_gold: List[Dict] = []
-    kept_manifest: List[Dict] = []
+    eligible_rows: List[Dict] = []
     exclusion_log: List[Dict] = []
 
     for gold_row in gold_rows:
@@ -85,10 +130,16 @@ def main() -> int:
         result = results_by_id.get(study_id)
         status = str((result or {}).get("status") or "missing_result")
         if status in include_statuses:
-            kept_gold.append(gold_row)
-            manifest_row = manifest_by_id.get(study_id)
-            if manifest_row is not None:
-                kept_manifest.append(manifest_row)
+            eligible_rows.append(
+                {
+                    "study_id": study_id,
+                    "status": status,
+                    "distance_to_target": _distance_value(result or {}),
+                    "result": result or {},
+                    "gold_row": gold_row,
+                    "manifest_row": manifest_by_id.get(study_id),
+                }
+            )
             continue
 
         exclusion_log.append(
@@ -100,6 +151,40 @@ def main() -> int:
                 "best_match": (result or {}).get("best_match"),
             }
         )
+
+    selected_rows = eligible_rows
+    if args.max_trials is not None and len(eligible_rows) > args.max_trials:
+        selected_rows = sorted(
+            eligible_rows,
+            key=lambda row: (
+                _status_priority(str(row.get("status") or "")),
+                float(row.get("distance_to_target") or float("inf")),
+                str(row.get("study_id") or ""),
+            ),
+        )[: args.max_trials]
+        selected_ids = {str(row.get("study_id") or "") for row in selected_rows}
+        for row in eligible_rows:
+            study_id = str(row.get("study_id") or "")
+            if study_id in selected_ids:
+                continue
+            result = row.get("result") or {}
+            exclusion_log.append(
+                {
+                    "study_id": study_id,
+                    "status": str(row.get("status") or "unknown"),
+                    "reason": args.trim_reason,
+                    "distance_to_target": result.get("distance_to_target"),
+                    "best_match": result.get("best_match"),
+                }
+            )
+
+    kept_gold: List[Dict] = []
+    kept_manifest: List[Dict] = []
+    for row in selected_rows:
+        kept_gold.append(row["gold_row"])
+        manifest_row = row.get("manifest_row")
+        if manifest_row is not None:
+            kept_manifest.append(manifest_row)
 
     output_manifest = args.output_dir / "manifest.jsonl"
     output_gold = args.output_dir / "frozen_gold.jsonl"
@@ -115,17 +200,23 @@ def main() -> int:
 
     excluded_status_counts = dict(sorted(Counter(str(row.get("status") or "unknown") for row in exclusion_log).items()))
     journal_counts_frozen = dict(sorted(Counter(str(row.get("journal") or "unknown") for row in kept_manifest).items()))
+    identity_validation_applied = _is_identity_validated(parent_protocol)
     protocol = {
         "protocol_version": "1.0.0",
         "created_at_utc": datetime.now(timezone.utc).isoformat(),
         "cohort_name": args.output_dir.name,
-        "mode": "external_validated_adjudicated",
+        "mode": "external_validated_adjudicated" if identity_validation_applied else "external_adjudicated",
+        "identity_validation_applied": identity_validation_applied,
         "parent_cohort_dir": str(args.parent_cohort_dir).replace("\\", "/"),
         "parent_cohort_name": parent_protocol.get("cohort_name") or args.parent_cohort_dir.name,
         "parent_protocol_lock": str(protocol_lock_path).replace("\\", "/"),
         "source_results": str(args.results).replace("\\", "/"),
         "included_statuses": sorted(include_statuses),
         "exclusion_reason_default": args.reason,
+        "max_trials_requested": args.max_trials,
+        "max_trials_applied": args.max_trials if args.max_trials is not None and len(eligible_rows) > args.max_trials else None,
+        "trim_reason_default": args.trim_reason if args.max_trials is not None else None,
+        "eligible_trials_total_before_trim": len(eligible_rows),
         "selected_trials_total": parent_protocol.get("selected_trials_total"),
         "frozen_trials_total": len(kept_gold),
         "parent_frozen_trials_total": parent_protocol.get("frozen_trials_total"),
