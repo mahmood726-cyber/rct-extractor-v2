@@ -351,6 +351,9 @@ class EnhancedExtractor:
         # "hazard ratio, 0.87; 95% confidence interval [CI], 0.78 to 0.97" (LEADER/NEJM format)
         r'hazard\s*ratio[,;:\s]+(\d+\.?\d*)[;,]\s*(?:95%?\s*)?confidence\s+interval\s*\[CI\][,:\s]+(\d+\.?\d*)\s+to\s+(\d+\.?\d*)',
 
+        # "hazard ratio for disease progression or death, 0.53; 95% confidence interval [CI], 0.35 to 0.82"
+        r'hazard\s*ratio\s+for\s+[\w\s\-/(),]{1,120}?,\s*(\d+\.?\d*)[;,]\s*(?:95%?\s*)?(?:confidence\s+interval(?:\s*\[CI\])?|\[?CI\]?)\s*[,:\s]+(\d+\.?\d*)\s*(?:to|[-–—])\s*(\d+\.?\d*)',
+
         # "(hazard ratio, 0.87; 95% confidence interval [CI], 0.78 to 0.97)" - in parentheses
         r'\(hazard\s*ratio[,;:\s]+(\d+\.?\d*)[;,]\s*(?:95%?\s*)?confidence\s+interval\s*\[CI\][,:\s]+(\d+\.?\d*)\s+to\s+(\d+\.?\d*)',
 
