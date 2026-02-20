@@ -3,6 +3,7 @@ from scripts.upgrade_real_rct_results import (
     _build_reference_fallback,
     _backfill_uncertainty_from_page,
     _classify_result,
+    _extract_effects_from_pubmed_abstract_text,
     _fallback_effect_type,
     _has_uncertainty,
     _infer_page_number,
@@ -81,6 +82,37 @@ def test_match_best_extraction_rescues_strict_type_with_transform() -> None:
     assert any("STRICT_TYPE_TRANSFORM_RESCUE_SIGN_FLIP" in w for w in best.get("warnings", []))
     assert distance is not None and distance < 0.02
     assert status in {"exact_match", "close_match", "exact_match_with_ci"}
+
+
+def test_extract_effects_from_pubmed_abstract_text_parses_hazard_ratio_ci() -> None:
+    text = (
+        "RESULTS: stratified hazard ratio for disease progression or death, 0.52; "
+        "95% CI, 0.42 to 0.65; P<0.001."
+    )
+
+    effects = _extract_effects_from_pubmed_abstract_text(text)
+
+    assert any(
+        e.get("type") == "HR"
+        and abs(float(e.get("effect_size")) - 0.52) < 1e-9
+        and abs(float(e.get("ci_lower")) - 0.42) < 1e-9
+        and abs(float(e.get("ci_upper")) - 0.65) < 1e-9
+        for e in effects
+    )
+
+
+def test_extract_effects_from_pubmed_abstract_text_parses_odds_ratio_ci() -> None:
+    text = "Adjusted odds ratio, 1.45; 95% confidence interval, 1.02 to 2.05."
+
+    effects = _extract_effects_from_pubmed_abstract_text(text)
+
+    assert any(
+        e.get("type") == "OR"
+        and abs(float(e.get("effect_size")) - 1.45) < 1e-9
+        and abs(float(e.get("ci_lower")) - 1.02) < 1e-9
+        and abs(float(e.get("ci_upper")) - 2.05) < 1e-9
+        for e in effects
+    )
 
 
 def test_parse_id_filter_returns_none_when_empty() -> None:

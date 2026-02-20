@@ -10,6 +10,8 @@ import re
 import subprocess
 import sys
 import time
+import urllib.request
+import xml.etree.ElementTree as ET
 from pathlib import Path
 from statistics import NormalDist
 from typing import Dict, List, Optional, Set, Tuple
@@ -41,6 +43,48 @@ P_VALUE_FUZZY_EQ_PATTERN = re.compile(
     r"\bp\s*=\s*(?:[^0-9]{0,80})?(0?\.\d+|1(?:\.0+)?)",
     flags=re.IGNORECASE,
 )
+PUBMED_ABSTRACT_PATTERNS = [
+    (
+        "HR",
+        re.compile(
+            r"(?:(?i:hazard\s*ratio)|\bHR\b)[^0-9]{0,90}"
+            r"([0-9]+(?:[.,][0-9]+)?)\s*[;,)]?\s*"
+            r"(?:\(?\s*(?:95(?:\.[0-9]+)?\s*%?\s*)?"
+            r"(?:confidence\s*interval|\[?\s*CI\s*\]?)\s*[,:\]\[]*\s*)?"
+            r"([0-9]+(?:[.,][0-9]+)?)\s*(?:to|[-–—])\s*([0-9]+(?:[.,][0-9]+)?)"
+        ),
+    ),
+    (
+        "OR",
+        re.compile(
+            r"(?:(?i:odds\s*ratio)|\bOR\b)[^0-9]{0,90}"
+            r"([0-9]+(?:[.,][0-9]+)?)\s*[;,)]?\s*"
+            r"(?:\(?\s*(?:95(?:\.[0-9]+)?\s*%?\s*)?"
+            r"(?:confidence\s*interval|\[?\s*CI\s*\]?)\s*[,:\]\[]*\s*)?"
+            r"([0-9]+(?:[.,][0-9]+)?)\s*(?:to|[-–—])\s*([0-9]+(?:[.,][0-9]+)?)"
+        ),
+    ),
+    (
+        "RR",
+        re.compile(
+            r"(?:(?i:risk\s*ratio)|(?i:relative\s*risk)|\bRR\b)[^0-9]{0,90}"
+            r"([0-9]+(?:[.,][0-9]+)?)\s*[;,)]?\s*"
+            r"(?:\(?\s*(?:95(?:\.[0-9]+)?\s*%?\s*)?"
+            r"(?:confidence\s*interval|\[?\s*CI\s*\]?)\s*[,:\]\[]*\s*)?"
+            r"([0-9]+(?:[.,][0-9]+)?)\s*(?:to|[-–—])\s*([0-9]+(?:[.,][0-9]+)?)"
+        ),
+    ),
+    (
+        "IRR",
+        re.compile(
+            r"(?:(?i:incidence\s*rate\s*ratio)|(?i:rate\s*ratio)|\bIRR\b)[^0-9]{0,90}"
+            r"([0-9]+(?:[.,][0-9]+)?)\s*[;,)]?\s*"
+            r"(?:\(?\s*(?:95(?:\.[0-9]+)?\s*%?\s*)?"
+            r"(?:confidence\s*interval|\[?\s*CI\s*\]?)\s*[,:\]\[]*\s*)?"
+            r"([0-9]+(?:[.,][0-9]+)?)\s*(?:to|[-–—])\s*([0-9]+(?:[.,][0-9]+)?)"
+        ),
+    ),
+]
 
 
 def _load_jsonl(path: Path) -> List[Dict]:
@@ -128,6 +172,154 @@ def _extract_effects_subprocess(
     if not lines:
         return []
     return json.loads(lines[-1])
+
+
+def _normalize_pmid(value: object) -> str:
+    return re.sub(r"\D+", "", str(value or ""))
+
+
+def _fetch_pubmed_abstract_text(
+    pmid: str,
+    *,
+    timeout_sec: float,
+    cache: Dict[str, Optional[str]],
+) -> Optional[str]:
+    normalized_pmid = _normalize_pmid(pmid)
+    if not normalized_pmid:
+        return None
+    if normalized_pmid in cache:
+        return cache[normalized_pmid]
+
+    url = (
+        "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi"
+        f"?db=pubmed&id={normalized_pmid}&retmode=xml"
+    )
+    request = urllib.request.Request(
+        url,
+        headers={
+            "User-Agent": (
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36"
+            )
+        },
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=timeout_sec) as response:
+            xml_payload = response.read().decode("utf-8", errors="replace")
+    except Exception:
+        cache[normalized_pmid] = None
+        return None
+
+    try:
+        root = ET.fromstring(xml_payload)
+    except ET.ParseError:
+        cache[normalized_pmid] = None
+        return None
+
+    abstract_parts: List[str] = []
+    for abstract_text in root.findall(".//AbstractText"):
+        chunk = " ".join(part.strip() for part in abstract_text.itertext() if part and part.strip()).strip()
+        label = str(abstract_text.get("Label") or "").strip()
+        if label and chunk:
+            abstract_parts.append(f"{label}: {chunk}")
+        elif chunk:
+            abstract_parts.append(chunk)
+    abstract = " ".join(part for part in abstract_parts if part).strip()
+    cache[normalized_pmid] = abstract or None
+    return cache[normalized_pmid]
+
+
+def _extract_effects_from_pubmed_abstract_text(abstract_text: str) -> List[Dict]:
+    if not abstract_text:
+        return []
+    normalized = _normalize_numeric_text(abstract_text)
+    if not normalized:
+        return []
+
+    extracted: List[Dict] = []
+    seen: Set[Tuple[str, float, float, float]] = set()
+    for effect_type, pattern in PUBMED_ABSTRACT_PATTERNS:
+        for match in pattern.finditer(normalized):
+            effect_size = _to_numeric_token(match.group(1))
+            ci_lower = _to_numeric_token(match.group(2))
+            ci_upper = _to_numeric_token(match.group(3))
+            if None in (effect_size, ci_lower, ci_upper):
+                continue
+            assert effect_size is not None
+            assert ci_lower is not None
+            assert ci_upper is not None
+            if ci_lower > ci_upper:
+                ci_lower, ci_upper = ci_upper, ci_lower
+            if effect_type in RATIO_TYPES and (effect_size <= 0 or ci_lower <= 0 or ci_upper <= 0):
+                continue
+
+            key = (effect_type, round(effect_size, 6), round(ci_lower, 6), round(ci_upper, 6))
+            if key in seen:
+                continue
+            seen.add(key)
+
+            context_start = max(0, match.start() - 120)
+            context_end = min(len(normalized), match.end() + 120)
+            source_text = normalized[context_start:context_end].strip()
+            extracted.append(
+                {
+                    "type": effect_type,
+                    "effect_size": effect_size,
+                    "ci_lower": ci_lower,
+                    "ci_upper": ci_upper,
+                    "p_value": None,
+                    "standard_error": None,
+                    "source_text": source_text,
+                    "warnings": ["PUBMED_ABSTRACT"],
+                    "page_number": None,
+                }
+            )
+    return extracted
+
+
+def _attempt_pubmed_abstract_fallback(
+    record: Dict,
+    *,
+    timeout_sec: float,
+    cache: Dict[str, Optional[str]],
+) -> Tuple[Optional[Dict], int, Optional[float], Optional[str]]:
+    external_meta = record.get("external_meta") or {}
+    pmid = _normalize_pmid(external_meta.get("pmid"))
+    if not pmid:
+        return None, 0, None, None
+
+    abstract_text = _fetch_pubmed_abstract_text(
+        pmid=pmid,
+        timeout_sec=timeout_sec,
+        cache=cache,
+    )
+    if not abstract_text:
+        return None, 0, None, None
+
+    effects = _extract_effects_from_pubmed_abstract_text(abstract_text)
+    if not effects:
+        return None, 0, None, None
+
+    best_match, distance, status = _match_best_extraction(effects, record)
+    if best_match is None:
+        return None, len(effects), distance, status
+
+    resolved = dict(best_match)
+    raw_source = str(resolved.get("source_text") or "").strip()
+    if raw_source:
+        resolved["source_text"] = f"[PUBMED_ABSTRACT PMID:{pmid}] {raw_source}"
+    else:
+        resolved["source_text"] = f"[PUBMED_ABSTRACT PMID:{pmid}] {abstract_text[:240]}"
+
+    warnings = resolved.get("warnings")
+    if isinstance(warnings, list):
+        if "PUBMED_ABSTRACT_FALLBACK" not in warnings:
+            warnings.append("PUBMED_ABSTRACT_FALLBACK")
+    else:
+        resolved["warnings"] = ["PUBMED_ABSTRACT_FALLBACK"]
+    resolved["page_number"] = None
+
+    return resolved, len(effects), distance, status
 
 
 def _select_candidate(
@@ -1104,6 +1296,21 @@ def main() -> int:
             "assuming two-sided p=0.05."
         ),
     )
+    parser.add_argument(
+        "--fallback-from-pubmed-abstract",
+        action=argparse.BooleanOptionalAction,
+        default=False,
+        help=(
+            "For no_extractions/no_match cases, try extracting ratio effects from the PubMed abstract "
+            "using external_meta.pmid (no gold/cochrane value injection)."
+        ),
+    )
+    parser.add_argument(
+        "--pubmed-timeout-sec",
+        type=float,
+        default=20.0,
+        help="Timeout in seconds for PubMed abstract fetches when --fallback-from-pubmed-abstract is enabled.",
+    )
     args = parser.parse_args()
 
     if not args.gold.exists():
@@ -1120,6 +1327,8 @@ def main() -> int:
         raise ValueError("--uncertainty-distance-tolerance must be >= 0.")
     if args.uncertainty_backfill_max_distance < 0:
         raise ValueError("--uncertainty-backfill-max-distance must be >= 0.")
+    if args.pubmed_timeout_sec <= 0:
+        raise ValueError("--pubmed-timeout-sec must be > 0.")
 
     focus_statuses: Optional[Set[str]] = None
     if args.focus_statuses:
@@ -1145,6 +1354,7 @@ def main() -> int:
     to_dict_fn = None
     parser_obj = None
     page_cache: Dict[str, Dict[int, str]] = {}
+    pubmed_cache: Dict[str, Optional[str]] = {}
 
     upgraded: List[Dict] = []
     stats = {
@@ -1174,6 +1384,11 @@ def main() -> int:
         "fallback_replaced_no_extractions": 0,
         "fallback_replaced_no_match": 0,
         "fallback_replaced_distant": 0,
+        "pubmed_fallback_attempted": 0,
+        "pubmed_fallback_applied": 0,
+        "pubmed_fallback_replaced_no_extractions": 0,
+        "pubmed_fallback_replaced_no_match": 0,
+        "pubmed_fallback_unavailable": 0,
         "assumed_se_fallback_applied": 0,
         "errors": 0,
     }
@@ -1198,7 +1413,43 @@ def main() -> int:
 
         pdf_path = args.pdf_dir / str(pdf_filename)
         if not pdf_path.exists():
-            upgraded.append({"study_id": study_id, "status": "pdf_missing", "best_match": None, "n_extractions": 0})
+            status = "pdf_missing"
+            best_match = None
+            n_extractions = 0
+            distance = None
+            if args.fallback_from_pubmed_abstract:
+                stats["pubmed_fallback_attempted"] += 1
+                (
+                    pubmed_match,
+                    pubmed_n_extractions,
+                    pubmed_distance,
+                    pubmed_status,
+                ) = _attempt_pubmed_abstract_fallback(
+                    record=record,
+                    timeout_sec=args.pubmed_timeout_sec,
+                    cache=pubmed_cache,
+                )
+                if pubmed_match is not None:
+                    best_match = pubmed_match
+                    n_extractions = pubmed_n_extractions
+                    distance = pubmed_distance
+                    status = pubmed_status or "no_match"
+                    stats["pubmed_fallback_applied"] += 1
+                    stats["pubmed_fallback_replaced_no_extractions"] += 1
+                    stats["best_match_total"] += 1
+                else:
+                    stats["pubmed_fallback_unavailable"] += 1
+
+            entry = {
+                "study_id": study_id,
+                "status": status,
+                "best_match": best_match,
+                "n_extractions": n_extractions,
+                "cochrane_effect": record.get("cochrane_effect"),
+            }
+            if distance is not None:
+                entry["distance_to_target"] = round(distance, 6)
+            upgraded.append(entry)
             continue
 
         if focus_statuses is not None and seed_status not in focus_statuses:
@@ -1312,6 +1563,32 @@ def main() -> int:
             best_match=best_match,
             record=record,
         )
+
+        if args.fallback_from_pubmed_abstract and status in {"no_extractions", "no_match"}:
+            stats["pubmed_fallback_attempted"] += 1
+            (
+                pubmed_match,
+                pubmed_n_extractions,
+                pubmed_distance,
+                pubmed_status,
+            ) = _attempt_pubmed_abstract_fallback(
+                record=record,
+                timeout_sec=args.pubmed_timeout_sec,
+                cache=pubmed_cache,
+            )
+            if pubmed_match is not None:
+                replaced_status = status
+                best_match = pubmed_match
+                n_extractions = max(n_extractions, pubmed_n_extractions) if n_extractions > 0 else pubmed_n_extractions
+                distance = pubmed_distance
+                status = pubmed_status or status
+                stats["pubmed_fallback_applied"] += 1
+                if replaced_status == "no_extractions":
+                    stats["pubmed_fallback_replaced_no_extractions"] += 1
+                elif replaced_status == "no_match":
+                    stats["pubmed_fallback_replaced_no_match"] += 1
+            else:
+                stats["pubmed_fallback_unavailable"] += 1
 
         should_try_fallback = (
             (args.fallback_from_gold or args.fallback_from_cochrane)

@@ -49,6 +49,7 @@ def _write_summary_report(summary: Dict, report_path: Path) -> None:
     metrics = summary.get("metrics", {})
     status_counts = summary.get("status_counts", {})
     protocol = summary.get("protocol", {})
+    no_tune_flags = summary.get("no_tune_flags", {})
 
     lines = [
         "# External No-Tune Evaluation Report",
@@ -81,6 +82,7 @@ def _write_summary_report(summary: Dict, report_path: Path) -> None:
             "- `--no-fallback-for-distant`",
             "- `--no-allow-assumed-se-fallback`",
             "- `--no-resume-from-output`",
+            f"- PubMed abstract fallback: `{'enabled' if no_tune_flags.get('fallback_from_pubmed_abstract') else 'disabled'}`",
         ]
     )
     report_path.parent.mkdir(parents=True, exist_ok=True)
@@ -132,6 +134,20 @@ def main() -> int:
         action=argparse.BooleanOptionalAction,
         default=False,
         help="Pass through to upgrade script.",
+    )
+    parser.add_argument(
+        "--fallback-from-pubmed-abstract",
+        action=argparse.BooleanOptionalAction,
+        default=False,
+        help=(
+            "For no_extractions/no_match rows, allow PubMed abstract extraction fallback "
+            "using trial PMID."
+        ),
+    )
+    parser.add_argument(
+        "--pubmed-timeout-sec",
+        type=float,
+        default=20.0,
     )
     parser.add_argument(
         "--skip-prepare",
@@ -237,6 +253,12 @@ def main() -> int:
         upgrade_cmd.append("--enable-advanced")
     else:
         upgrade_cmd.append("--no-enable-advanced")
+    if args.fallback_from_pubmed_abstract:
+        upgrade_cmd.append("--fallback-from-pubmed-abstract")
+    else:
+        upgrade_cmd.append("--no-fallback-from-pubmed-abstract")
+    if args.pubmed_timeout_sec is not None:
+        upgrade_cmd.extend(["--pubmed-timeout-sec", str(args.pubmed_timeout_sec)])
     if args.per_study_timeout_sec is not None:
         upgrade_cmd.extend(["--per-study-timeout-sec", str(args.per_study_timeout_sec)])
     _run(upgrade_cmd)
@@ -275,6 +297,7 @@ def main() -> int:
             "fallback_for_distant": False,
             "allow_assumed_se_fallback": False,
             "resume_from_output": False,
+            "fallback_from_pubmed_abstract": bool(args.fallback_from_pubmed_abstract),
         },
         "protocol": {
             "source": protocol_payload.get("source"),
