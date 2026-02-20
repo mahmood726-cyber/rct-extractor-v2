@@ -1,0 +1,61 @@
+{
+  "protocol_version": "1.0.0",
+  "created_at_utc": "2026-02-20T12:04:40.203462+00:00",
+  "cohort_name": "external_validated_pdf_v2",
+  "mode": "external_validated_adjudicated",
+  "parent_cohort_dir": "data/external_validated_pdf_v1",
+  "parent_cohort_name": "external_validated_pdf_v1",
+  "parent_protocol_lock": "data/external_validated_pdf_v1/protocol_lock.json",
+  "source_results": "output/external_validated_pdf_v1_pdf_only_results.json",
+  "included_statuses": [
+    "close_match",
+    "exact_match",
+    "exact_match_with_ci"
+  ],
+  "exclusion_reason_default": "unresolved_endpoint_or_label_mismatch",
+  "selected_trials_total": 47,
+  "frozen_trials_total": 10,
+  "parent_frozen_trials_total": 11,
+  "adjudicated_frozen_trials_total": 10,
+  "excluded_trials_total": 1,
+  "included_study_ids": [
+    "dream_2006",
+    "oak_2017",
+    "actt_1_2020",
+    "checkmate_067_2015",
+    "empa_kidney_2023",
+    "fidelio_dkd_2020",
+    "leader_2016",
+    "polo_2019",
+    "sprint_2015",
+    "sprint_2015_pmc4689591"
+  ],
+  "excluded_study_ids": [
+    "cleopatra_2012"
+  ],
+  "excluded_status_counts": {
+    "approximate_match": 1
+  },
+  "journal_counts_selected": {
+    "Lancet": 3,
+    "NEJM": 44
+  },
+  "journal_counts_frozen": {
+    "Lancet": 2,
+    "NEJM": 8
+  },
+  "pmc_resolution_stats": {
+    "kept_source_pmc_unverified": 35,
+    "source_pmc_replaced_by_pmid": 8,
+    "source_pmc_verified_by_pmid": 4
+  },
+  "download_stats": {
+    "downloaded": 42,
+    "failed": 4,
+    "already_present": 1
+  },
+  "validation_stats": {
+    "failed": 32,
+    "passed": 11
+  }
+}

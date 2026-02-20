@@ -1,0 +1,29 @@
+[
+  {
+    "study_id": "cleopatra_2012",
+    "status": "approximate_match",
+    "reason": "unresolved_endpoint_or_label_mismatch",
+    "distance_to_target": 0.176931,
+    "best_match": {
+      "type": "HR",
+      "effect_size": 0.74,
+      "ci_lower": null,
+      "ci_upper": null,
+      "p_value": null,
+      "standard_error": null,
+      "se_method": "unavailable",
+      "raw_confidence": 0.65,
+      "calibrated_confidence": 0.55705,
+      "automation_tier": "manual",
+      "source_text": "hazard ratio 0.74",
+      "char_start": 12785,
+      "char_end": 12802,
+      "is_plausible": true,
+      "warnings": [
+        "NO_CONFIDENCE_INTERVAL"
+      ],
+      "needs_review": true,
+      "page_number": 4
+    }
+  }
+]
