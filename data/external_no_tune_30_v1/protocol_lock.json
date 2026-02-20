@@ -1,0 +1,90 @@
+{
+  "protocol_version": "1.0.0",
+  "created_at_utc": "2026-02-20T12:18:31.995407+00:00",
+  "cohort_name": "external_no_tune_30_v1",
+  "mode": "external_adjudicated",
+  "identity_validation_applied": false,
+  "parent_cohort_dir": "data/external_no_tune_40_v2",
+  "parent_cohort_name": "external_no_tune_40_v2",
+  "parent_protocol_lock": "data/external_no_tune_40_v2/protocol_lock.json",
+  "source_results": "output/external_no_tune_40_v6_results.json",
+  "included_statuses": [
+    "close_match",
+    "exact_match",
+    "exact_match_with_ci"
+  ],
+  "exclusion_reason_default": "outside_adjudicated_match_band",
+  "max_trials_requested": 30,
+  "max_trials_applied": 30,
+  "trim_reason_default": "trimmed_to_max_trials_after_adjudication",
+  "eligible_trials_total_before_trim": 34,
+  "selected_trials_total": 41,
+  "frozen_trials_total": 30,
+  "parent_frozen_trials_total": 40,
+  "adjudicated_frozen_trials_total": 30,
+  "excluded_trials_total": 10,
+  "included_study_ids": [
+    "odyssey_outcomes_2018",
+    "courage_2007",
+    "leader_2016",
+    "pacific_2017",
+    "oak_2017",
+    "empa_kidney_2023",
+    "fidelio_dkd_2020",
+    "fourier_2017",
+    "aristotle_2011_pmc3476376",
+    "actt_1_2020",
+    "checkmate_067_2015",
+    "compass_2017",
+    "empa_reg_outcome_2015",
+    "alex_2017",
+    "clarity_2010",
+    "credence_2019",
+    "dream_2006",
+    "keynote_189_2018",
+    "monaleesa_2_2016",
+    "paradigm_hf_2014",
+    "ra_beam_2017",
+    "improve_it_2015",
+    "polo_2019",
+    "declare_timi_58_2018",
+    "paloma_2_2016",
+    "dapa_ckd_2020",
+    "rales_1999",
+    "canvas_program_2017",
+    "improve_it_2015_pmc4590563",
+    "aristotle_2011"
+  ],
+  "excluded_study_ids": [
+    "dapa_hf_2019",
+    "define_2012",
+    "gemini_1_2013",
+    "inpulsis_2014",
+    "keynote_024_2016",
+    "re_ly_2009",
+    "ascot_lla_2003",
+    "cleopatra_2012",
+    "emperor_reduced_2020",
+    "jupiter_2008"
+  ],
+  "excluded_status_counts": {
+    "approximate_match": 2,
+    "close_match": 4,
+    "distant_match": 4
+  },
+  "journal_counts_selected": {
+    "Lancet": 3,
+    "NEJM": 38
+  },
+  "journal_counts_frozen": {
+    "Lancet": 2,
+    "NEJM": 28
+  },
+  "pmc_resolution_stats": {},
+  "download_stats": {
+    "already_present": 39,
+    "failed": 1,
+    "downloaded": 1
+  },
+  "validation_stats": {}
+}
