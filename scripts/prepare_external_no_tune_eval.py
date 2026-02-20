@@ -175,15 +175,108 @@ def _normalize_pmid(value: object) -> str:
     return re.sub(r"\D+", "", str(value or ""))
 
 
+def _normalize_pmc_id(value: object) -> str:
+    pmc = str(value or "").strip().upper()
+    if not pmc:
+        return ""
+    if not pmc.startswith("PMC"):
+        pmc = f"PMC{pmc}"
+    return pmc
+
+
+def _fetch_idconv_record(
+    *,
+    identifier: str,
+    timeout_sec: float,
+    cache: Dict[str, Optional[Dict[str, str]]],
+) -> Optional[Dict[str, str]]:
+    normalized_id = str(identifier or "").strip()
+    if not normalized_id:
+        return None
+    if normalized_id in cache:
+        return cache[normalized_id]
+
+    url = f"https://www.ncbi.nlm.nih.gov/pmc/utils/idconv/v1.0/?ids={normalized_id}&format=json"
+    request = urllib.request.Request(url, headers=_headers())
+    try:
+        with urllib.request.urlopen(request, timeout=timeout_sec) as response:
+            payload = json.loads(response.read().decode("utf-8", errors="replace"))
+    except Exception:
+        cache[normalized_id] = None
+        return None
+
+    records = payload.get("records") or []
+    if not records or not isinstance(records[0], dict):
+        cache[normalized_id] = None
+        return None
+    record = records[0]
+
+    normalized = {
+        "pmcid": _normalize_pmc_id(record.get("pmcid")),
+        "pmid": _normalize_pmid(record.get("pmid")),
+        "doi": _normalize_doi(record.get("doi")),
+        "requested_id": str(record.get("requested-id") or normalized_id).strip(),
+    }
+    cache[normalized_id] = normalized
+    return normalized
+
+
+def _resolve_trial_pmc_id(
+    *,
+    source_pmc_id: object,
+    expected_pmid: object,
+    expected_doi: object,
+    timeout_sec: float,
+    cache: Dict[str, Optional[Dict[str, str]]],
+) -> Tuple[str, str, Dict[str, str]]:
+    source_pmc = _normalize_pmc_id(source_pmc_id)
+    pmid_norm = _normalize_pmid(expected_pmid)
+    doi_norm = _normalize_doi(expected_doi)
+
+    pmid_record = _fetch_idconv_record(identifier=pmid_norm, timeout_sec=timeout_sec, cache=cache) if pmid_norm else None
+    doi_record = _fetch_idconv_record(identifier=doi_norm, timeout_sec=timeout_sec, cache=cache) if doi_norm else None
+
+    pmid_pmc = _normalize_pmc_id((pmid_record or {}).get("pmcid"))
+    doi_pmc = _normalize_pmc_id((doi_record or {}).get("pmcid"))
+
+    resolution_details = {
+        "source_pmc_id": source_pmc,
+        "pmcid_from_pmid": pmid_pmc,
+        "pmcid_from_doi": doi_pmc,
+    }
+
+    if pmid_pmc:
+        if source_pmc and source_pmc == pmid_pmc:
+            return pmid_pmc, "source_pmc_verified_by_pmid", resolution_details
+        if source_pmc and source_pmc != pmid_pmc:
+            return pmid_pmc, "source_pmc_replaced_by_pmid", resolution_details
+        return pmid_pmc, "resolved_from_pmid", resolution_details
+
+    if doi_pmc:
+        if source_pmc and source_pmc == doi_pmc:
+            return doi_pmc, "source_pmc_verified_by_doi", resolution_details
+        if source_pmc and source_pmc != doi_pmc:
+            return doi_pmc, "source_pmc_replaced_by_doi", resolution_details
+        return doi_pmc, "resolved_from_doi", resolution_details
+
+    if source_pmc:
+        return source_pmc, "kept_source_pmc_unverified", resolution_details
+
+    return "", "unresolved_no_pmcid", resolution_details
+
+
 def _fetch_pmc_idconv_record(
     pmc_id: str,
     *,
     timeout_sec: float,
     cache: Dict[str, Dict[str, str]],
 ) -> Optional[Dict[str, str]]:
-    if pmc_id in cache:
-        return cache[pmc_id]
-    url = f"https://www.ncbi.nlm.nih.gov/pmc/utils/idconv/v1.0/?ids={pmc_id}&format=json"
+    normalized_pmc = _normalize_pmc_id(pmc_id)
+    if not normalized_pmc:
+        return None
+    if normalized_pmc in cache:
+        return cache[normalized_pmc]
+    url = f"https://www.ncbi.nlm.nih.gov/pmc/utils/idconv/v1.0/?ids={normalized_pmc}&format=json"
     request = urllib.request.Request(url, headers=_headers())
     try:
         with urllib.request.urlopen(request, timeout=timeout_sec) as response:
@@ -200,7 +293,7 @@ def _fetch_pmc_idconv_record(
         "pmid": _normalize_pmid(record.get("pmid")),
         "doi": _normalize_doi(record.get("doi")),
     }
-    cache[pmc_id] = normalized
+    cache[normalized_pmc] = normalized
     return normalized
 
 
@@ -407,6 +500,15 @@ def main() -> int:
         default=False,
         help="Validate PMCID metadata against expected DOI/PMID before freezing.",
     )
+    parser.add_argument(
+        "--resolve-pmcid-from-metadata",
+        action=argparse.BooleanOptionalAction,
+        default=False,
+        help=(
+            "Resolve/correct PMCID from expected PMID/DOI using NCBI idconv before download. "
+            "Useful when source PMCID labels are stale or incorrect."
+        ),
+    )
     args = parser.parse_args()
 
     if args.source == "jsonl" and not args.input.exists():
@@ -428,7 +530,9 @@ def main() -> int:
 
     selected: List[Dict] = []
     skipped = Counter()
+    pmc_resolution_stats = Counter()
     seen_study_ids = set()
+    resolve_cache: Dict[str, Optional[Dict[str, str]]] = {}
 
     for row in rows:
         journal = str(row.get("journal") or "").strip()
@@ -436,13 +540,22 @@ def main() -> int:
             skipped["journal_filtered"] += 1
             continue
 
-        pmc_id = str(row.get("pmc_id") or "").strip()
-        if not pmc_id:
-            skipped["missing_pmc_id"] += 1
-            continue
-        if not pmc_id.upper().startswith("PMC"):
-            pmc_id = f"PMC{pmc_id}"
-        pmc_id = pmc_id.upper()
+        pmc_id = _normalize_pmc_id(row.get("pmc_id"))
+        pmc_resolution_reason = "source_pmc_kept"
+        pmc_resolution_details: Dict[str, str] = {}
+        if args.resolve_pmcid_from_metadata:
+            pmc_id, pmc_resolution_reason, pmc_resolution_details = _resolve_trial_pmc_id(
+                source_pmc_id=row.get("pmc_id"),
+                expected_pmid=row.get("pmid"),
+                expected_doi=row.get("doi"),
+                timeout_sec=args.request_timeout_sec,
+                cache=resolve_cache,
+            )
+        else:
+            if not pmc_id:
+                skipped["missing_pmc_id"] += 1
+                continue
+        pmc_resolution_stats[pmc_resolution_reason] += 1
 
         primary_effect = _pick_primary_effect(row.get("effects") or [])
         if primary_effect is None:
@@ -473,9 +586,12 @@ def main() -> int:
                 "journal": journal,
                 "year": year,
                 "pmc_id": pmc_id,
+                "pmc_id_source": _normalize_pmc_id(row.get("pmc_id")),
+                "pmc_resolution_reason": pmc_resolution_reason,
+                "pmc_resolution_details": pmc_resolution_details,
                 "pmid": row.get("pmid"),
                 "doi": row.get("doi"),
-                "pdf_filename": f"{pmc_id}.pdf",
+                "pdf_filename": f"{pmc_id}.pdf" if pmc_id else f"{study_id}_no_pmcid.pdf",
                 "target_effect_type": effect_type,
                 "target_value": target_value,
                 "target_ci_lower": target_ci_lower,
@@ -508,7 +624,10 @@ def main() -> int:
         row["pdf_path"] = _relative_path(pdf_path)
 
         row["local_pdf"] = False
-        if pdf_path.exists() and pdf_path.stat().st_size > 1024:
+        if not row.get("pmc_id"):
+            row["download_status"] = "missing_pmc_id"
+            download_stats["missing_pmc_id"] += 1
+        elif pdf_path.exists() and pdf_path.stat().st_size > 1024:
             row["local_pdf"] = True
             row["download_status"] = "already_present"
             download_stats["already_present"] += 1
@@ -610,6 +729,8 @@ def main() -> int:
         "require_local_pdf": args.require_local_pdf,
         "download_missing": args.download_missing,
         "validate_pdf_content": args.validate_pdf_content,
+        "resolve_pmcid_from_metadata": args.resolve_pmcid_from_metadata,
+        "pmc_resolution_stats": dict(sorted(pmc_resolution_stats.items())),
         "requested_journal_allowlist": allowlist_tokens,
         "selected_trials_total": len(selected),
         "frozen_trials_total": len(frozen_items),
@@ -630,6 +751,8 @@ def main() -> int:
     print(f"Selected trials: {len(selected)}")
     print(f"Frozen trials:   {len(frozen_items)}")
     print(f"Journal counts (selected): {dict(sorted(journal_counts_all.items()))}")
+    if args.resolve_pmcid_from_metadata:
+        print(f"PMCID resolution stats: {dict(sorted(pmc_resolution_stats.items()))}")
     print(f"Download stats: {dict(download_stats)}")
     print(f"Validation stats: {dict(validation_stats)}")
     print(f"Wrote: {manifest_path}")
