@@ -48,6 +48,14 @@ def _fmt_ci(metric: Dict[str, float]) -> str:
     return f"{_fmt_pct(metric['point'])} ({_fmt_pct(metric['ci_low_95'])} to {_fmt_pct(metric['ci_high_95'])})"
 
 
+def _cohort_label_from_protocol(protocol: Dict, protocol_path: Path) -> str:
+    explicit = str(protocol.get("cohort_name") or "").strip()
+    if explicit:
+        return explicit
+    parent = protocol_path.parent
+    return parent.name if parent.name else "external_validated_pdf"
+
+
 def _build_residual_rows(results: List[Dict], gold_by_id: Dict[str, Dict]) -> List[Dict]:
     residual: List[Dict] = []
     for row in results:
@@ -108,6 +116,12 @@ def main() -> int:
     args = parser.parse_args()
 
     protocol = _load_json(args.cohort_protocol)
+    cohort_label = _cohort_label_from_protocol(protocol, args.cohort_protocol)
+    frozen_trials_total = int(
+        protocol.get("frozen_trials_total")
+        or protocol.get("adjudicated_frozen_trials_total")
+        or 0
+    )
     gold_rows = _load_jsonl(args.cohort_gold)
     gold_by_id = {row.get("study_id"): row for row in gold_rows if row.get("study_id")}
 
@@ -155,9 +169,15 @@ def main() -> int:
 
     output_payload = {
         "generated_at_utc": datetime.now(timezone.utc).isoformat(),
+        "cohort_label": cohort_label,
         "cohort": {
             "selected_trials_total": protocol.get("selected_trials_total"),
-            "frozen_trials_total": protocol.get("frozen_trials_total"),
+            "frozen_trials_total": frozen_trials_total,
+            "parent_frozen_trials_total": protocol.get("parent_frozen_trials_total"),
+            "adjudicated_frozen_trials_total": protocol.get("adjudicated_frozen_trials_total"),
+            "excluded_trials_total": protocol.get("excluded_trials_total"),
+            "included_statuses": protocol.get("included_statuses", []),
+            "excluded_status_counts": protocol.get("excluded_status_counts", {}),
             "journal_counts_selected": protocol.get("journal_counts_selected", {}),
             "journal_counts_frozen": protocol.get("journal_counts_frozen", {}),
             "pmc_resolution_stats": protocol.get("pmc_resolution_stats", {}),
@@ -182,12 +202,20 @@ def main() -> int:
     lines.append("# External Validation Publishability Report")
     lines.append("")
     lines.append(f"- Generated UTC: {output_payload['generated_at_utc']}")
-    lines.append("- Cohort: `external_validated_pdf_v1`")
+    lines.append(f"- Cohort: `{cohort_label}`")
     lines.append("")
     lines.append("## Cohort Integrity")
     lines.append("")
     lines.append(f"- Selected candidates: {protocol.get('selected_trials_total')}")
-    lines.append(f"- Frozen identity-validated full-text trials: {protocol.get('frozen_trials_total')}")
+    lines.append(f"- Frozen identity-validated full-text trials: {frozen_trials_total}")
+    if protocol.get("parent_frozen_trials_total") is not None:
+        lines.append(f"- Parent frozen trials: {protocol.get('parent_frozen_trials_total')}")
+    if protocol.get("excluded_trials_total") is not None:
+        lines.append(f"- Excluded during adjudication: {protocol.get('excluded_trials_total')}")
+    if protocol.get("included_statuses"):
+        lines.append(f"- Included statuses: {protocol.get('included_statuses')}")
+    if protocol.get("excluded_status_counts"):
+        lines.append(f"- Excluded status counts: {protocol.get('excluded_status_counts')}")
     lines.append(f"- PMCID resolution stats: {protocol.get('pmc_resolution_stats', {})}")
     lines.append(f"- Download stats: {protocol.get('download_stats', {})}")
     lines.append(f"- Validation stats: {protocol.get('validation_stats', {})}")
@@ -237,7 +265,7 @@ def main() -> int:
     lines.append("")
     lines.append("## Publication Readiness")
     lines.append("")
-    if int(protocol.get("frozen_trials_total") or 0) < 20:
+    if frozen_trials_total < 20:
         lines.append(
             "- Not publication-ready for broad external full-text claims: identity-validated full-text sample remains small."
         )
