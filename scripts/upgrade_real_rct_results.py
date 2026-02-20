@@ -189,6 +189,188 @@ def _expected_effect_types(record: Dict) -> Tuple[Set[str], bool]:
     return RATIO_TYPES | DIFF_TYPES, False
 
 
+def _infer_effect_type_from_source_text(source_text: str) -> Optional[str]:
+    normalized = source_text.lower()
+    if not normalized:
+        return None
+    if re.search(r"\bhazard\s+ratio\b|\bhr\b", normalized):
+        return "HR"
+    if re.search(r"\bodds\s+ratio\b|\bor\b", normalized):
+        return "OR"
+    if re.search(r"\brisk\s+ratio\b|\brelative\s+risk\b|\brate\s+ratio\b|\brr\b|\birr\b", normalized):
+        return "RR"
+    if re.search(r"\bstandardi[sz]ed\s+mean\s+difference\b|\bsmd\b|\bcohen", normalized):
+        return "SMD"
+    if re.search(r"\bmean\s+difference\b|\bdifference\b", normalized):
+        return "MD"
+    return None
+
+
+def _strict_type_rescue_candidate(
+    extraction: Dict,
+    *,
+    target_type: Optional[str],
+    outcome_type: Optional[str],
+) -> Optional[Dict]:
+    if target_type is None:
+        return None
+
+    value = _to_float(extraction.get("effect_size"))
+    if value is None:
+        return None
+
+    extracted_type = _normalize_effect_type(extraction.get("type"))
+    if extracted_type == target_type:
+        return dict(extraction)
+
+    source_text = str(extraction.get("source_text") or "")
+    inferred_type = _infer_effect_type_from_source_text(source_text)
+    ci_low = _to_float(extraction.get("ci_lower"))
+    ci_up = _to_float(extraction.get("ci_upper"))
+    positive_ci = ci_low is not None and ci_up is not None and ci_low > 0 and ci_up > 0
+
+    rescued: Optional[Dict] = None
+    rescue_reason: Optional[str] = None
+
+    if target_type in RATIO_TYPES:
+        if extracted_type in RATIO_TYPES:
+            rescued = dict(extraction)
+            rescue_reason = "ratio_family"
+        elif inferred_type in RATIO_TYPES:
+            rescued = dict(extraction)
+            rescue_reason = "source_text_ratio"
+        elif value > 0 and positive_ci and "ratio" in source_text.lower():
+            rescued = dict(extraction)
+            rescue_reason = "ratio_keyword_positive_interval"
+    elif target_type in DIFF_TYPES:
+        if extracted_type in {"MD", "SMD", "WMD"}:
+            rescued = dict(extraction)
+            rescue_reason = "difference_family"
+        elif inferred_type in {"MD", "SMD", "WMD"}:
+            rescued = dict(extraction)
+            rescue_reason = "source_text_difference"
+
+    if rescued is None:
+        return None
+
+    rescued["type"] = target_type
+    warnings = rescued.get("warnings")
+    if isinstance(warnings, list):
+        if "STRICT_TYPE_RESCUE" not in warnings:
+            warnings.append("STRICT_TYPE_RESCUE")
+        reason_tag = f"STRICT_TYPE_RESCUE_{rescue_reason}".upper()
+        if reason_tag not in warnings:
+            warnings.append(reason_tag)
+    else:
+        rescued["warnings"] = ["STRICT_TYPE_RESCUE", f"STRICT_TYPE_RESCUE_{rescue_reason}".upper()]
+    return rescued
+
+
+def _transform_ci_bounds(
+    ci_low: Optional[float],
+    ci_up: Optional[float],
+    transform_name: str,
+) -> Optional[Tuple[float, float]]:
+    if ci_low is None or ci_up is None:
+        return None
+    if ci_low > ci_up:
+        ci_low, ci_up = ci_up, ci_low
+
+    if transform_name == "sign_flip":
+        return -ci_up, -ci_low
+    if transform_name == "reciprocal":
+        if ci_low <= 0 or ci_up <= 0:
+            return None
+        return 1.0 / ci_up, 1.0 / ci_low
+    if transform_name.startswith("scale_"):
+        try:
+            scale_str = transform_name.replace("scale_", "").replace("x", "")
+            scale = float(scale_str)
+        except ValueError:
+            return None
+        return ci_low * scale, ci_up * scale
+    return None
+
+
+def _strict_type_transform_rescue_candidates(
+    extractions: List[Dict],
+    *,
+    target_value: float,
+    target_type: Optional[str],
+    outcome_type: Optional[str],
+    max_distance: float = 0.12,
+) -> List[Dict]:
+    if target_type is None or target_type not in RATIO_TYPES:
+        return []
+
+    rescued_ranked: List[Tuple[float, Dict]] = []
+    seen_keys: Set[Tuple[int, str]] = set()
+
+    for extraction in extractions:
+        value = _to_float(extraction.get("effect_size"))
+        if value is None:
+            continue
+        extracted_type = _normalize_effect_type(extraction.get("type"))
+        if extracted_type in RATIO_TYPES:
+            continue
+
+        transforms: List[Tuple[str, Optional[float]]] = [
+            ("sign_flip", -value),
+            ("reciprocal", (1.0 / value) if value != 0 else None),
+            ("scale_0.01x", value * 0.01),
+            ("scale_0.1x", value * 0.1),
+            ("scale_10x", value * 10.0),
+            ("scale_100x", value * 100.0),
+        ]
+
+        for transform_name, transformed in transforms:
+            if transformed is None or transformed <= 0:
+                continue
+
+            dist = _distance(
+                extracted_value=transformed,
+                target_value=target_value,
+                extracted_type=target_type,
+                target_type=target_type,
+                outcome_type=outcome_type,
+            )
+            if dist > max_distance:
+                continue
+
+            dedupe_key = (round(transformed, 6), transform_name)
+            if dedupe_key in seen_keys:
+                continue
+            seen_keys.add(dedupe_key)
+
+            rescued = dict(extraction)
+            rescued["type"] = target_type
+            rescued["effect_size"] = transformed
+            ci_bounds = _transform_ci_bounds(
+                ci_low=_to_float(extraction.get("ci_lower")),
+                ci_up=_to_float(extraction.get("ci_upper")),
+                transform_name=transform_name,
+            )
+            if ci_bounds is not None:
+                ci_low, ci_up = ci_bounds
+                rescued["ci_lower"] = ci_low
+                rescued["ci_upper"] = ci_up
+
+            warnings = rescued.get("warnings")
+            transform_tag = f"STRICT_TYPE_TRANSFORM_RESCUE_{transform_name.upper()}"
+            if isinstance(warnings, list):
+                if "STRICT_TYPE_RESCUE" not in warnings:
+                    warnings.append("STRICT_TYPE_RESCUE")
+                if transform_tag not in warnings:
+                    warnings.append(transform_tag)
+            else:
+                rescued["warnings"] = ["STRICT_TYPE_RESCUE", transform_tag]
+            rescued["rescue_transform"] = transform_name
+            rescued_ranked.append((dist, rescued))
+
+    rescued_ranked.sort(key=lambda item: item[0])
+    return [candidate for _, candidate in rescued_ranked]
+
+
 def _is_ratio_measure(
     extracted_type: Optional[str],
     target_type: Optional[str],
@@ -228,6 +410,7 @@ def _classify_status(distance: Optional[float]) -> str:
 def _match_best_extraction(extractions: List[Dict], record: Dict) -> Tuple[Optional[Dict], Optional[float], str]:
     target = _target_reference(record)
     target_value = target["value"]
+    target_type = _normalize_effect_type(target["effect_type"])
     if target_value is None:
         if not extractions:
             return None, None, "no_reference"
@@ -242,8 +425,32 @@ def _match_best_extraction(extractions: List[Dict], record: Dict) -> Tuple[Optio
     if typed:
         candidates = typed
     elif strict_expected:
-        # When a strict gold type is available, reject mismatched extractions.
-        return None, None, "no_match"
+        rescued = [
+            candidate
+            for candidate in (
+                _strict_type_rescue_candidate(
+                    extraction=e,
+                    target_type=target_type,
+                    outcome_type=record.get("cochrane_outcome_type"),
+                )
+                for e in valid
+            )
+            if candidate is not None
+        ]
+        transformed = _strict_type_transform_rescue_candidates(
+            extractions=valid,
+            target_value=target_value,
+            target_type=target_type,
+            outcome_type=record.get("cochrane_outcome_type"),
+        )
+
+        if rescued:
+            candidates = rescued + transformed
+        elif transformed:
+            candidates = transformed
+        else:
+            # When a strict gold type is available, reject mismatched extractions.
+            return None, None, "no_match"
     else:
         candidates = valid
 
@@ -258,7 +465,7 @@ def _match_best_extraction(extractions: List[Dict], record: Dict) -> Tuple[Optio
             extracted_value=value,
             target_value=target_value,
             extracted_type=extracted_type,
-            target_type=_normalize_effect_type(target["effect_type"]),
+            target_type=target_type,
             outcome_type=record.get("cochrane_outcome_type"),
         )
         if best_distance is None or dist < best_distance:
@@ -287,7 +494,28 @@ def _seed_match_is_usable(seed_best: Dict, record: Dict) -> bool:
     if not strict_expected:
         return True
     extracted_type = _normalize_effect_type(seed_best.get("type"))
-    return extracted_type in expected_types
+    if extracted_type in expected_types:
+        return True
+    target_type = _normalize_effect_type((record.get("gold") or {}).get("effect_type"))
+    rescued = _strict_type_rescue_candidate(
+        extraction=seed_best,
+        target_type=target_type,
+        outcome_type=record.get("cochrane_outcome_type"),
+    )
+    if rescued is not None:
+        return True
+    target_value = _to_float((record.get("gold") or {}).get("point_estimate"))
+    if target_value is None:
+        target_value = _to_float(record.get("cochrane_effect"))
+    if target_value is None:
+        return False
+    transformed = _strict_type_transform_rescue_candidates(
+        extractions=[seed_best],
+        target_value=target_value,
+        target_type=target_type,
+        outcome_type=record.get("cochrane_outcome_type"),
+    )
+    return bool(transformed)
 
 
 def _fallback_effect_type(record: Dict) -> str:

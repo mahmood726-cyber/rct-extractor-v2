@@ -31,6 +31,58 @@ def test_match_best_extraction_rejects_strict_type_mismatch() -> None:
     assert status == "no_match"
 
 
+def test_match_best_extraction_rescues_strict_type_from_source_hint() -> None:
+    record = {
+        "gold": {"effect_type": "HR", "point_estimate": 0.74, "ci_lower": 0.65, "ci_upper": 0.85},
+        "cochrane_outcome_type": "binary",
+    }
+    extractions = [
+        {
+            "type": "SMD",
+            "effect_size": 0.74,
+            "ci_lower": 0.65,
+            "ci_upper": 0.85,
+            "source_text": "hazard ratio, 0.74; 95% CI, 0.65 to 0.85",
+            "warnings": [],
+        }
+    ]
+
+    best, distance, status = _match_best_extraction(extractions, record)
+
+    assert best is not None
+    assert best["type"] == "HR"
+    assert "STRICT_TYPE_RESCUE" in best.get("warnings", [])
+    assert distance == 0.0
+    assert status == "exact_match_with_ci"
+
+
+def test_match_best_extraction_rescues_strict_type_with_transform() -> None:
+    record = {
+        "gold": {"effect_type": "HR", "point_estimate": 0.53, "ci_lower": 0.35, "ci_upper": 0.82},
+        "cochrane_outcome_type": "binary",
+    }
+    extractions = [
+        {
+            "type": "SMD",
+            "effect_size": -0.536,
+            "ci_lower": -0.90,
+            "ci_upper": -0.17,
+            "source_text": "[COMPUTED from raw data] noisy snippet",
+            "warnings": [],
+        }
+    ]
+
+    best, distance, status = _match_best_extraction(extractions, record)
+
+    assert best is not None
+    assert best["type"] == "HR"
+    assert abs(float(best["effect_size"]) - 0.536) < 1e-9
+    assert "STRICT_TYPE_RESCUE" in best.get("warnings", [])
+    assert any("STRICT_TYPE_TRANSFORM_RESCUE_SIGN_FLIP" in w for w in best.get("warnings", []))
+    assert distance is not None and distance < 0.02
+    assert status in {"exact_match", "close_match", "exact_match_with_ci"}
+
+
 def test_parse_id_filter_returns_none_when_empty() -> None:
     assert _parse_id_filter(None) is None
     assert _parse_id_filter("") is None
@@ -45,6 +97,34 @@ def test_has_uncertainty_true_for_ci_or_se() -> None:
     assert _has_uncertainty({"ci_lower": 0.8, "ci_upper": 1.2}) is True
     assert _has_uncertainty({"standard_error": 0.1}) is True
     assert _has_uncertainty({"ci_lower": None, "ci_upper": None, "standard_error": None}) is False
+
+
+def test_seed_match_usable_with_strict_type_rescue() -> None:
+    record = {"gold": {"effect_type": "OR", "point_estimate": 1.5}, "cochrane_outcome_type": "binary"}
+    seed_best = {
+        "type": "MD",
+        "effect_size": 1.5,
+        "ci_lower": 1.1,
+        "ci_upper": 2.0,
+        "source_text": "odds ratio 1.5 (95% CI 1.1 to 2.0)",
+        "warnings": [],
+    }
+
+    assert _seed_match_is_usable(seed_best, record) is True
+
+
+def test_seed_match_usable_with_transform_rescue() -> None:
+    record = {"gold": {"effect_type": "HR", "point_estimate": 0.53}, "cochrane_outcome_type": "binary"}
+    seed_best = {
+        "type": "SMD",
+        "effect_size": -0.536,
+        "ci_lower": -0.9,
+        "ci_upper": -0.2,
+        "source_text": "[COMPUTED from raw data] noisy snippet",
+        "warnings": [],
+    }
+
+    assert _seed_match_is_usable(seed_best, record) is True
 
 
 def test_select_candidate_prefers_uncertainty_within_tolerance() -> None:
