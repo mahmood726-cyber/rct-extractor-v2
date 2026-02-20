@@ -1,0 +1,234 @@
+{
+  "protocol_version": "1.0.0",
+  "created_at_utc": "2026-02-19T23:00:48.968004+00:00",
+  "mode": "external_no_tune",
+  "source": "module",
+  "input_dataset": "data.external_validation_dataset:ALL_EXTERNAL_VALIDATION_TRIALS",
+  "input_dataset_sha256": null,
+  "output_manifest": "data/external_no_tune_40_v4/manifest.jsonl",
+  "output_manifest_sha256": "eb1b0f2442fa4d67843f8e5c027804ae0aabac44a749308a91e2e4f246c99cc9",
+  "output_frozen_gold": "data/external_no_tune_40_v4/frozen_gold.jsonl",
+  "output_frozen_gold_sha256": "12b7d69f636049bddae7f652483c2aaa15ef162e8bc0e1af5c71349d9cb6451d",
+  "output_seed_results": "data/external_no_tune_40_v4/seed_results_empty.json",
+  "output_seed_results_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+  "pdf_dir": "test_pdfs/external_no_tune_40_v1/pdfs",
+  "require_local_pdf": true,
+  "download_missing": false,
+  "validate_pdf_content": true,
+  "requested_journal_allowlist": [
+    "Lancet",
+    "NEJM"
+  ],
+  "selected_trials_total": 43,
+  "frozen_trials_total": 2,
+  "journal_counts_selected": {
+    "Lancet": 3,
+    "NEJM": 40
+  },
+  "journal_counts_frozen": {
+    "NEJM": 2
+  },
+  "download_stats": {
+    "already_present": 40,
+    "not_attempted": 3
+  },
+  "validation_stats": {
+    "failed": 38,
+    "passed": 2
+  },
+  "skipped_rows": {
+    "journal_filtered": 2
+  },
+  "failed_downloads": [
+    {
+      "study_id": "ascot_lla_2003",
+      "pmc_id": "PMC2779584",
+      "reason": "metadata_mismatch:pmid+doi"
+    },
+    {
+      "study_id": "dream_2006",
+      "pmc_id": "PMC2714726",
+      "reason": "metadata_mismatch:pmid+doi"
+    },
+    {
+      "study_id": "oak_2017",
+      "pmc_id": "PMC5478149",
+      "reason": "metadata_mismatch:pmid+doi"
+    },
+    {
+      "study_id": "alex_2017",
+      "pmc_id": "PMC5633812",
+      "reason": "metadata_mismatch:pmid+doi"
+    },
+    {
+      "study_id": "aristotle_2011",
+      "pmc_id": "PMC3175640",
+      "reason": "metadata_mismatch:pmid+doi"
+    },
+    {
+      "study_id": "aristotle_2011_pmc3476376",
+      "pmc_id": "PMC3476376",
+      "reason": "metadata_mismatch:pmid+doi"
+    },
+    {
+      "study_id": "canvas_program_2017",
+      "pmc_id": "PMC5507108",
+      "reason": "metadata_mismatch:pmid+doi"
+    },
+    {
+      "study_id": "checkmate_067_2015",
+      "pmc_id": "PMC5389545",
+      "reason": "metadata_mismatch:pmid+doi"
+    },
+    {
+      "study_id": "clarity_2010",
+      "pmc_id": "PMC2858814",
+      "reason": "metadata_mismatch:pmid+doi"
+    },
+    {
+      "study_id": "cleopatra_2012",
+      "pmc_id": "PMC3324192",
+      "reason": "metadata_mismatch:pmid+doi"
+    },
+    {
+      "study_id": "compass_2017",
+      "pmc_id": "PMC5648577",
+      "reason": "metadata_mismatch:pmid+doi"
+    },
+    {
+      "study_id": "courage_2007",
+      "pmc_id": "PMC2781467",
+      "reason": "metadata_mismatch:doi"
+    },
+    {
+      "study_id": "credence_2019",
+      "pmc_id": "PMC6498475",
+      "reason": "metadata_mismatch:pmid+doi"
+    },
+    {
+      "study_id": "dapa_ckd_2020",
+      "pmc_id": "PMC7536793",
+      "reason": "idconv_lookup_failed"
+    },
+    {
+      "study_id": "dapa_hf_2019",
+      "pmc_id": "PMC6832437",
+      "reason": "metadata_mismatch:pmid+doi"
+    },
+    {
+      "study_id": "declare_timi_58_2018",
+      "pmc_id": "PMC6306896",
+      "reason": "metadata_mismatch:pmid+doi"
+    },
+    {
+      "study_id": "define_2012",
+      "pmc_id": "PMC3537689",
+      "reason": "metadata_mismatch:pmid+doi"
+    },
+    {
+      "study_id": "empa_kidney_2023",
+      "pmc_id": "PMC9794216",
+      "reason": "metadata_mismatch:pmid+doi"
+    },
+    {
+      "study_id": "empa_reg_outcome_2015",
+      "pmc_id": "PMC4631072",
+      "reason": "metadata_mismatch:pmid+doi"
+    },
+    {
+      "study_id": "emperor_reduced_2020",
+      "pmc_id": "PMC7592000",
+      "reason": "metadata_mismatch:pmid+doi"
+    },
+    {
+      "study_id": "fidelio_dkd_2020",
+      "pmc_id": "PMC7748110",
+      "reason": "metadata_mismatch:pmid+doi"
+    },
+    {
+      "study_id": "fourier_2017",
+      "pmc_id": "PMC5384230",
+      "reason": "metadata_mismatch:pmid+doi"
+    },
+    {
+      "study_id": "gemini_1_2013",
+      "pmc_id": "PMC4012629",
+      "reason": "metadata_mismatch:pmid+doi"
+    },
+    {
+      "study_id": "improve_it_2015",
+      "pmc_id": "PMC4508499",
+      "reason": "metadata_mismatch:pmid+doi"
+    },
+    {
+      "study_id": "improve_it_2015_pmc4590563",
+      "pmc_id": "PMC4590563",
+      "reason": "metadata_mismatch:pmid+doi"
+    },
+    {
+      "study_id": "inpulsis_2014",
+      "pmc_id": "PMC4140676",
+      "reason": "metadata_mismatch:pmid+doi"
+    },
+    {
+      "study_id": "jupiter_2008",
+      "pmc_id": "PMC2664590",
+      "reason": "metadata_mismatch:pmid+doi"
+    },
+    {
+      "study_id": "keynote_024_2016",
+      "pmc_id": "PMC5101118",
+      "reason": "metadata_mismatch:pmid+doi"
+    },
+    {
+      "study_id": "keynote_189_2018",
+      "pmc_id": "PMC6045956",
+      "reason": "metadata_mismatch:pmid+doi"
+    },
+    {
+      "study_id": "monaleesa_2_2016",
+      "pmc_id": "PMC5117596",
+      "reason": "metadata_mismatch:pmid+doi"
+    },
+    {
+      "study_id": "odyssey_outcomes_2018",
+      "pmc_id": "PMC6451651",
+      "reason": "metadata_mismatch:pmid+doi"
+    },
+    {
+      "study_id": "pacific_2017",
+      "pmc_id": "PMC5762025",
+      "reason": "metadata_mismatch:pmid+doi"
+    },
+    {
+      "study_id": "paloma_2_2016",
+      "pmc_id": "PMC5117597",
+      "reason": "metadata_mismatch:pmid+doi"
+    },
+    {
+      "study_id": "paradigm_hf_2014",
+      "pmc_id": "PMC4212585",
+      "reason": "metadata_mismatch:pmid+doi"
+    },
+    {
+      "study_id": "polo_2019",
+      "pmc_id": "PMC6614614",
+      "reason": "metadata_mismatch:pmid"
+    },
+    {
+      "study_id": "ra_beam_2017",
+      "pmc_id": "PMC5297537",
+      "reason": "metadata_mismatch:pmid+doi"
+    },
+    {
+      "study_id": "rales_1999",
+      "pmc_id": "PMC2714826",
+      "reason": "metadata_mismatch:pmid+doi"
+    },
+    {
+      "study_id": "re_ly_2009",
+      "pmc_id": "PMC2829856",
+      "reason": "metadata_mismatch:pmid+doi"
+    }
+  ]
+}
