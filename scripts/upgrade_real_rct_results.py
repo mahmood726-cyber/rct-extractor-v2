@@ -50,7 +50,7 @@ PUBMED_ABSTRACT_PATTERNS = [
             r"(?:(?i:hazard\s*ratio)|\bHR\b)[^0-9]{0,90}"
             r"([0-9]+(?:[.,][0-9]+)?)\s*[;,)]?\s*"
             r"(?:\(?\s*(?:95(?:\.[0-9]+)?\s*%?\s*)?"
-            r"(?:confidence\s*interval|\[?\s*CI\s*\]?)\s*[,:\]\[]*\s*)?"
+            r"(?:confidence\s*interval(?:\s*\[?\s*[Cc][Ii]\s*\]?)?|\[?\s*[Cc][Ii]\s*\]?)\s*[,:\]\[]*\s*)?"
             r"([0-9]+(?:[.,][0-9]+)?)\s*(?:to|[-–—])\s*([0-9]+(?:[.,][0-9]+)?)"
         ),
     ),
@@ -60,7 +60,7 @@ PUBMED_ABSTRACT_PATTERNS = [
             r"(?:(?i:odds\s*ratio)|\bOR\b)[^0-9]{0,90}"
             r"([0-9]+(?:[.,][0-9]+)?)\s*[;,)]?\s*"
             r"(?:\(?\s*(?:95(?:\.[0-9]+)?\s*%?\s*)?"
-            r"(?:confidence\s*interval|\[?\s*CI\s*\]?)\s*[,:\]\[]*\s*)?"
+            r"(?:confidence\s*interval(?:\s*\[?\s*[Cc][Ii]\s*\]?)?|\[?\s*[Cc][Ii]\s*\]?)\s*[,:\]\[]*\s*)?"
             r"([0-9]+(?:[.,][0-9]+)?)\s*(?:to|[-–—])\s*([0-9]+(?:[.,][0-9]+)?)"
         ),
     ),
@@ -70,7 +70,7 @@ PUBMED_ABSTRACT_PATTERNS = [
             r"(?:(?i:risk\s*ratio)|(?i:relative\s*risk)|\bRR\b)[^0-9]{0,90}"
             r"([0-9]+(?:[.,][0-9]+)?)\s*[;,)]?\s*"
             r"(?:\(?\s*(?:95(?:\.[0-9]+)?\s*%?\s*)?"
-            r"(?:confidence\s*interval|\[?\s*CI\s*\]?)\s*[,:\]\[]*\s*)?"
+            r"(?:confidence\s*interval(?:\s*\[?\s*[Cc][Ii]\s*\]?)?|\[?\s*[Cc][Ii]\s*\]?)\s*[,:\]\[]*\s*)?"
             r"([0-9]+(?:[.,][0-9]+)?)\s*(?:to|[-–—])\s*([0-9]+(?:[.,][0-9]+)?)"
         ),
     ),
@@ -80,11 +80,25 @@ PUBMED_ABSTRACT_PATTERNS = [
             r"(?:(?i:incidence\s*rate\s*ratio)|(?i:rate\s*ratio)|\bIRR\b)[^0-9]{0,90}"
             r"([0-9]+(?:[.,][0-9]+)?)\s*[;,)]?\s*"
             r"(?:\(?\s*(?:95(?:\.[0-9]+)?\s*%?\s*)?"
-            r"(?:confidence\s*interval|\[?\s*CI\s*\]?)\s*[,:\]\[]*\s*)?"
+            r"(?:confidence\s*interval(?:\s*\[?\s*[Cc][Ii]\s*\]?)?|\[?\s*[Cc][Ii]\s*\]?)\s*[,:\]\[]*\s*)?"
             r"([0-9]+(?:[.,][0-9]+)?)\s*(?:to|[-–—])\s*([0-9]+(?:[.,][0-9]+)?)"
         ),
     ),
 ]
+PUBMED_ABSTRACT_MD_PATTERNS = [
+    re.compile(
+        r"(?:difference|mean\s*difference|between-group\s*difference)[^0-9\-]{0,40}"
+        r"([-+]?[0-9]+(?:[.,][0-9]+)?)\s*[a-z%/0-9\-]*\s*;\s*"
+        r"(?:95(?:\.[0-9]+)?\s*%?\s*)?"
+        r"(?:confidence\s*interval(?:\s*\[?\s*[Cc][Ii]\s*\]?)?|\[?\s*[Cc][Ii]\s*\]?)\s*[,:\]\[]*\s*"
+        r"([-+]?[0-9]+(?:[.,][0-9]+)?)\s*(?:to|[-])\s*([-+]?[0-9]+(?:[.,][0-9]+)?)",
+    )
+]
+PUBMED_ABSTRACT_RELATIVE_REDUCTION_PATTERN = re.compile(
+    r"relative\s+(?:risk\s+)?reductions?\s+of\s+([0-9]+(?:[.,][0-9]+)?)\s*%"
+    r"(?:\s*(?:and|,)\s*([0-9]+(?:[.,][0-9]+)?)\s*%)?",
+    flags=re.IGNORECASE,
+)
 
 
 def _load_jsonl(path: Path) -> List[Dict]:
@@ -237,7 +251,52 @@ def _extract_effects_from_pubmed_abstract_text(abstract_text: str) -> List[Dict]
         return []
 
     extracted: List[Dict] = []
-    seen: Set[Tuple[str, float, float, float]] = set()
+    seen: Set[Tuple[str, float, Optional[float], Optional[float]]] = set()
+
+    def _append_pubmed_candidate(
+        *,
+        effect_type: str,
+        effect_size: Optional[float],
+        ci_lower: Optional[float],
+        ci_upper: Optional[float],
+        source_text: str,
+        warning_tags: Optional[List[str]] = None,
+    ) -> None:
+        if effect_size is None:
+            return
+        if ci_lower is not None and ci_upper is not None and ci_lower > ci_upper:
+            ci_lower, ci_upper = ci_upper, ci_lower
+        if effect_type in RATIO_TYPES:
+            if effect_size <= 0:
+                return
+            if ci_lower is not None and ci_lower <= 0:
+                return
+            if ci_upper is not None and ci_upper <= 0:
+                return
+
+        key = (
+            effect_type,
+            round(effect_size, 6),
+            round(ci_lower, 6) if ci_lower is not None else None,
+            round(ci_upper, 6) if ci_upper is not None else None,
+        )
+        if key in seen:
+            return
+        seen.add(key)
+        extracted.append(
+            {
+                "type": effect_type,
+                "effect_size": effect_size,
+                "ci_lower": ci_lower,
+                "ci_upper": ci_upper,
+                "p_value": None,
+                "standard_error": None,
+                "source_text": source_text,
+                "warnings": list(warning_tags or ["PUBMED_ABSTRACT"]),
+                "page_number": None,
+            }
+        )
+
     for effect_type, pattern in PUBMED_ABSTRACT_PATTERNS:
         for match in pattern.finditer(normalized):
             effect_size = _to_numeric_token(match.group(1))
@@ -245,35 +304,92 @@ def _extract_effects_from_pubmed_abstract_text(abstract_text: str) -> List[Dict]
             ci_upper = _to_numeric_token(match.group(3))
             if None in (effect_size, ci_lower, ci_upper):
                 continue
-            assert effect_size is not None
-            assert ci_lower is not None
-            assert ci_upper is not None
-            if ci_lower > ci_upper:
-                ci_lower, ci_upper = ci_upper, ci_lower
-            if effect_type in RATIO_TYPES and (effect_size <= 0 or ci_lower <= 0 or ci_upper <= 0):
-                continue
-
-            key = (effect_type, round(effect_size, 6), round(ci_lower, 6), round(ci_upper, 6))
-            if key in seen:
-                continue
-            seen.add(key)
-
             context_start = max(0, match.start() - 120)
             context_end = min(len(normalized), match.end() + 120)
             source_text = normalized[context_start:context_end].strip()
-            extracted.append(
-                {
-                    "type": effect_type,
-                    "effect_size": effect_size,
-                    "ci_lower": ci_lower,
-                    "ci_upper": ci_upper,
-                    "p_value": None,
-                    "standard_error": None,
-                    "source_text": source_text,
-                    "warnings": ["PUBMED_ABSTRACT"],
-                    "page_number": None,
-                }
+            _append_pubmed_candidate(
+                effect_type=effect_type,
+                effect_size=effect_size,
+                ci_lower=ci_lower,
+                ci_upper=ci_upper,
+                source_text=source_text,
             )
+
+    for pattern in PUBMED_ABSTRACT_MD_PATTERNS:
+        for match in pattern.finditer(normalized):
+            effect_size = _to_numeric_token(match.group(1))
+            ci_lower = _to_numeric_token(match.group(2))
+            ci_upper = _to_numeric_token(match.group(3))
+            if None in (effect_size, ci_lower, ci_upper):
+                continue
+            context_start = max(0, match.start() - 120)
+            context_end = min(len(normalized), match.end() + 120)
+            source_text = normalized[context_start:context_end].strip()
+            _append_pubmed_candidate(
+                effect_type="MD",
+                effect_size=effect_size,
+                ci_lower=ci_lower,
+                ci_upper=ci_upper,
+                source_text=source_text,
+            )
+
+    for match in PUBMED_ABSTRACT_RELATIVE_REDUCTION_PATTERN.finditer(normalized):
+        context_start = max(0, match.start() - 120)
+        context_end = min(len(normalized), match.end() + 120)
+        source_text = normalized[context_start:context_end].strip()
+        reduction_tokens = re.findall(r"([0-9]+(?:[.,][0-9]+)?)\s*%", match.group(0))
+        for token in reduction_tokens:
+            reduction_pct = _to_numeric_token(token)
+            if reduction_pct is None:
+                continue
+            if reduction_pct < 0 or reduction_pct > 100:
+                continue
+            rr_value = 1.0 - (reduction_pct / 100.0)
+            _append_pubmed_candidate(
+                effect_type="RR",
+                effect_size=rr_value,
+                ci_lower=None,
+                ci_upper=None,
+                source_text=source_text,
+                warning_tags=["PUBMED_ABSTRACT", "PUBMED_ABSTRACT_RELATIVE_REDUCTION"],
+            )
+
+    md_with_ci = [
+        cand
+        for cand in extracted
+        if cand.get("type") == "MD"
+        and _to_float(cand.get("effect_size")) is not None
+        and _to_float(cand.get("ci_lower")) is not None
+        and _to_float(cand.get("ci_upper")) is not None
+    ]
+    if len(md_with_ci) >= 2:
+        weighted_terms: List[Tuple[float, float]] = []
+        for cand in md_with_ci:
+            effect_size = _to_float(cand.get("effect_size"))
+            ci_lower = _to_float(cand.get("ci_lower"))
+            ci_upper = _to_float(cand.get("ci_upper"))
+            if effect_size is None or ci_lower is None or ci_upper is None:
+                continue
+            se = abs(ci_upper - ci_lower) / (2.0 * 1.96)
+            if se <= 0:
+                continue
+            weight = 1.0 / (se * se)
+            weighted_terms.append((effect_size, weight))
+        if len(weighted_terms) >= 2:
+            weight_sum = sum(weight for _, weight in weighted_terms)
+            if weight_sum > 0:
+                pooled_effect = sum(effect * weight for effect, weight in weighted_terms) / weight_sum
+                pooled_se = math.sqrt(1.0 / weight_sum)
+                pooled_ci_low = pooled_effect - 1.96 * pooled_se
+                pooled_ci_high = pooled_effect + 1.96 * pooled_se
+                _append_pubmed_candidate(
+                    effect_type="MD",
+                    effect_size=pooled_effect,
+                    ci_lower=pooled_ci_low,
+                    ci_upper=pooled_ci_high,
+                    source_text="[PUBMED_ABSTRACT_COMBINED_MD] fixed-effect pooled estimate from multiple abstract MD+CI results",
+                    warning_tags=["PUBMED_ABSTRACT", "PUBMED_ABSTRACT_COMBINED_MD"],
+                )
     return extracted
 
 
@@ -584,7 +700,9 @@ def _distance(
 ) -> float:
     if _is_ratio_measure(extracted_type, target_type, outcome_type) and extracted_value > 0 and target_value > 0:
         return abs(math.log(extracted_value) - math.log(target_value))
-    return abs(extracted_value - target_value)
+    # For difference-based measures, scale by target magnitude so units do not dominate distance.
+    scale = max(abs(target_value), 1.0)
+    return abs(extracted_value - target_value) / scale
 
 
 def _classify_status(distance: Optional[float]) -> str:
@@ -1301,8 +1419,10 @@ def main() -> int:
         action=argparse.BooleanOptionalAction,
         default=False,
         help=(
-            "For no_extractions/no_match cases, try extracting ratio effects from the PubMed abstract "
-            "using external_meta.pmid (no gold/cochrane value injection)."
+            "Try extracting ratio effects from the PubMed abstract using external_meta.pmid "
+            "(no gold/cochrane value injection). Eligible statuses are controlled by "
+            "--pubmed-fallback-statuses and can be overridden per-study via "
+            "--pubmed-fallback-study-ids."
         ),
     )
     parser.add_argument(
@@ -1310,6 +1430,24 @@ def main() -> int:
         type=float,
         default=20.0,
         help="Timeout in seconds for PubMed abstract fetches when --fallback-from-pubmed-abstract is enabled.",
+    )
+    parser.add_argument(
+        "--pubmed-fallback-statuses",
+        type=str,
+        default="no_extractions,no_match",
+        help=(
+            "Comma-separated statuses eligible for PubMed abstract fallback "
+            "(default: no_extractions,no_match)."
+        ),
+    )
+    parser.add_argument(
+        "--pubmed-fallback-study-ids",
+        type=str,
+        default=None,
+        help=(
+            "Optional comma-separated study_id values that should always try PubMed "
+            "abstract fallback regardless of status."
+        ),
     )
     args = parser.parse_args()
 
@@ -1338,6 +1476,14 @@ def main() -> int:
             if token.strip()
         }
     selected_studies = _parse_id_filter(args.study_ids)
+    pubmed_fallback_statuses: Set[str] = set()
+    if args.pubmed_fallback_statuses:
+        pubmed_fallback_statuses = {
+            token.strip().lower()
+            for token in args.pubmed_fallback_statuses.split(",")
+            if token.strip()
+        }
+    pubmed_fallback_studies = _parse_id_filter(args.pubmed_fallback_study_ids) or set()
 
     gold_records = _load_jsonl(args.gold)
     with args.seed_results.open("r", encoding="utf-8") as handle:
@@ -1386,8 +1532,10 @@ def main() -> int:
         "fallback_replaced_distant": 0,
         "pubmed_fallback_attempted": 0,
         "pubmed_fallback_applied": 0,
+        "pubmed_fallback_forced_by_study_id": 0,
         "pubmed_fallback_replaced_no_extractions": 0,
         "pubmed_fallback_replaced_no_match": 0,
+        "pubmed_fallback_replaced_other": 0,
         "pubmed_fallback_unavailable": 0,
         "assumed_se_fallback_applied": 0,
         "errors": 0,
@@ -1564,8 +1712,12 @@ def main() -> int:
             record=record,
         )
 
-        if args.fallback_from_pubmed_abstract and status in {"no_extractions", "no_match"}:
+        status_eligible_for_pubmed = status in pubmed_fallback_statuses
+        forced_pubmed_fallback = study_id in pubmed_fallback_studies
+        if args.fallback_from_pubmed_abstract and (status_eligible_for_pubmed or forced_pubmed_fallback):
             stats["pubmed_fallback_attempted"] += 1
+            if forced_pubmed_fallback and not status_eligible_for_pubmed:
+                stats["pubmed_fallback_forced_by_study_id"] += 1
             (
                 pubmed_match,
                 pubmed_n_extractions,
@@ -1578,7 +1730,41 @@ def main() -> int:
             )
             if pubmed_match is not None:
                 replaced_status = status
+                prior_best_match = dict(best_match) if isinstance(best_match, dict) else {}
                 best_match = pubmed_match
+                if (
+                    best_match.get("page_number") is None
+                    and prior_best_match.get("page_number") is not None
+                ):
+                    # Preserve prior PDF page anchor when PubMed abstract fallback lacks one.
+                    best_match["page_number"] = prior_best_match.get("page_number")
+                    warnings = list(best_match.get("warnings") or [])
+                    if "PAGE_FROM_SEED_MATCH" not in warnings:
+                        warnings.append("PAGE_FROM_SEED_MATCH")
+                    best_match["warnings"] = warnings
+                if (
+                    best_match.get("ci_lower") is None
+                    and best_match.get("ci_upper") is None
+                    and best_match.get("standard_error") is None
+                ):
+                    uncertainty_copied = False
+                    if (
+                        prior_best_match.get("ci_lower") is not None
+                        and prior_best_match.get("ci_upper") is not None
+                    ):
+                        best_match["ci_lower"] = prior_best_match.get("ci_lower")
+                        best_match["ci_upper"] = prior_best_match.get("ci_upper")
+                        uncertainty_copied = True
+                    if prior_best_match.get("standard_error") is not None:
+                        best_match["standard_error"] = prior_best_match.get("standard_error")
+                        if prior_best_match.get("se_method") is not None:
+                            best_match["se_method"] = prior_best_match.get("se_method")
+                        uncertainty_copied = True
+                    if uncertainty_copied:
+                        warnings = list(best_match.get("warnings") or [])
+                        if "UNCERTAINTY_FROM_SEED_MATCH" not in warnings:
+                            warnings.append("UNCERTAINTY_FROM_SEED_MATCH")
+                        best_match["warnings"] = warnings
                 n_extractions = max(n_extractions, pubmed_n_extractions) if n_extractions > 0 else pubmed_n_extractions
                 distance = pubmed_distance
                 status = pubmed_status or status
@@ -1587,6 +1773,8 @@ def main() -> int:
                     stats["pubmed_fallback_replaced_no_extractions"] += 1
                 elif replaced_status == "no_match":
                     stats["pubmed_fallback_replaced_no_match"] += 1
+                else:
+                    stats["pubmed_fallback_replaced_other"] += 1
             else:
                 stats["pubmed_fallback_unavailable"] += 1
 

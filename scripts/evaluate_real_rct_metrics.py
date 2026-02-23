@@ -120,7 +120,9 @@ def _match_distance(
 ) -> float:
     if _is_ratio_measure(extracted_type, target_type, outcome_type) and extracted_value > 0 and target_value > 0:
         return abs(math.log(extracted_value) - math.log(target_value))
-    return abs(extracted_value - target_value)
+    # For difference-based measures, scale by target magnitude so units do not dominate distance.
+    scale = max(abs(target_value), 1.0)
+    return abs(extracted_value - target_value) / scale
 
 
 def _load_split_ids(split_manifest: Optional[Path], split: str) -> Optional[Set[str]]:

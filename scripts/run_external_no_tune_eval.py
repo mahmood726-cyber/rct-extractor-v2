@@ -50,6 +50,8 @@ def _write_summary_report(summary: Dict, report_path: Path) -> None:
     status_counts = summary.get("status_counts", {})
     protocol = summary.get("protocol", {})
     no_tune_flags = summary.get("no_tune_flags", {})
+    pubmed_statuses = no_tune_flags.get("pubmed_fallback_statuses") or []
+    pubmed_forced_ids = no_tune_flags.get("pubmed_fallback_study_ids") or []
 
     lines = [
         "# External No-Tune Evaluation Report",
@@ -85,6 +87,10 @@ def _write_summary_report(summary: Dict, report_path: Path) -> None:
             f"- PubMed abstract fallback: `{'enabled' if no_tune_flags.get('fallback_from_pubmed_abstract') else 'disabled'}`",
         ]
     )
+    if pubmed_statuses:
+        lines.append(f"- PubMed fallback statuses: `{','.join(pubmed_statuses)}`")
+    if pubmed_forced_ids:
+        lines.append(f"- PubMed fallback forced study_ids: `{','.join(pubmed_forced_ids)}`")
     report_path.parent.mkdir(parents=True, exist_ok=True)
     report_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
@@ -140,14 +146,48 @@ def main() -> int:
         action=argparse.BooleanOptionalAction,
         default=False,
         help=(
-            "For no_extractions/no_match rows, allow PubMed abstract extraction fallback "
-            "using trial PMID."
+            "Allow PubMed abstract extraction fallback using trial PMID. Eligible statuses "
+            "are controlled by --pubmed-fallback-statuses and can be overridden per-study via "
+            "--pubmed-fallback-study-ids."
+        ),
+    )
+    parser.add_argument(
+        "--pubmed-fallback-statuses",
+        type=str,
+        default="no_extractions,no_match",
+        help=(
+            "Comma-separated statuses eligible for PubMed abstract fallback "
+            "(default: no_extractions,no_match)."
+        ),
+    )
+    parser.add_argument(
+        "--pubmed-fallback-study-ids",
+        type=str,
+        default=None,
+        help=(
+            "Optional comma-separated study_id values that should always try PubMed "
+            "abstract fallback regardless of status."
         ),
     )
     parser.add_argument(
         "--pubmed-timeout-sec",
         type=float,
         default=20.0,
+    )
+    parser.add_argument(
+        "--seed-results",
+        type=Path,
+        default=None,
+        help=(
+            "Optional seed results JSON for upgrade step. Defaults to "
+            "<cohort-dir>/seed_results_empty.json."
+        ),
+    )
+    parser.add_argument(
+        "--study-ids",
+        type=str,
+        default=None,
+        help="Optional comma-separated study_id filter passed to upgrade step.",
     )
     parser.add_argument(
         "--skip-prepare",
@@ -183,7 +223,7 @@ def main() -> int:
 
     cohort_dir = args.cohort_dir
     frozen_gold = cohort_dir / "frozen_gold.jsonl"
-    seed_results = cohort_dir / "seed_results_empty.json"
+    seed_results = args.seed_results if args.seed_results is not None else (cohort_dir / "seed_results_empty.json")
     protocol_lock = cohort_dir / "protocol_lock.json"
 
     if not args.skip_prepare:
@@ -255,8 +295,14 @@ def main() -> int:
         upgrade_cmd.append("--no-enable-advanced")
     if args.fallback_from_pubmed_abstract:
         upgrade_cmd.append("--fallback-from-pubmed-abstract")
+        if args.pubmed_fallback_statuses is not None:
+            upgrade_cmd.extend(["--pubmed-fallback-statuses", args.pubmed_fallback_statuses])
+        if args.pubmed_fallback_study_ids:
+            upgrade_cmd.extend(["--pubmed-fallback-study-ids", args.pubmed_fallback_study_ids])
     else:
         upgrade_cmd.append("--no-fallback-from-pubmed-abstract")
+    if args.study_ids:
+        upgrade_cmd.extend(["--study-ids", args.study_ids])
     if args.pubmed_timeout_sec is not None:
         upgrade_cmd.extend(["--pubmed-timeout-sec", str(args.pubmed_timeout_sec)])
     if args.per_study_timeout_sec is not None:
@@ -281,6 +327,16 @@ def main() -> int:
     results_rows = _load_results(args.results_output)
     protocol_payload = _load_json(protocol_lock) if protocol_lock.exists() else {}
     status_counts = Counter(str(row.get("status") or "unknown") for row in results_rows)
+    pubmed_statuses = [
+        token.strip()
+        for token in str(args.pubmed_fallback_statuses or "").split(",")
+        if token.strip()
+    ]
+    pubmed_forced_ids = [
+        token.strip()
+        for token in str(args.pubmed_fallback_study_ids or "").split(",")
+        if token.strip()
+    ]
 
     summary = {
         "generated_at_utc": datetime.now(timezone.utc).isoformat(),
@@ -298,6 +354,8 @@ def main() -> int:
             "allow_assumed_se_fallback": False,
             "resume_from_output": False,
             "fallback_from_pubmed_abstract": bool(args.fallback_from_pubmed_abstract),
+            "pubmed_fallback_statuses": pubmed_statuses,
+            "pubmed_fallback_study_ids": pubmed_forced_ids,
         },
         "protocol": {
             "source": protocol_payload.get("source"),
