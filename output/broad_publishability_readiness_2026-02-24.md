@@ -28,9 +28,19 @@
 - CI-bound agreement within 10%: `70.0%` (95% CI: `40.0%` to `100.0%`) on 10 comparable trials
 - Strict match rate: `76.9%`, lenient match rate: `84.6%`, MA-ready yield: `76.9%`
 
+### 4) Large real-data mega cohort (`mega_eval`, n=560; Cochrane-linked n=546)
+- Source artifact: `gold_data/mega/mega_eval.jsonl`
+- Human-error agreement report: `output/mega_human_error_agreement_2026-02-24.md`
+- Rows with PMCID: `560`
+- Rows with Cochrane reference: `546`
+- Strict match rate (5% criterion): `98.7%`
+- Point agreement within 10% (conservative, status-based): `98.7%` (95% CI: `97.6%` to `99.6%`)
+- Residual non-match rows: `7`
+- Caveat: this report is point-estimate focused and does not by itself establish CI-field completeness for all rows.
+
 ## Readiness Assessment
 - Strong signal exists for point-estimate extraction under a 10% human-error envelope.
-- Broad external publishability is still constrained by identity-validated sample size and CI stability.
+- Broad external publishability is still constrained by identity-validated sample size and CI stability despite strong large-cohort point-estimate performance.
 - Current identity-validated full-text size (`n=13`) remains below the repo's own precision guidance (`n≈73` for +/-5% at 95% confidence in `docs/SAMPLE_SIZE_JUSTIFICATION.md`).
 
 ## Practical Claim Boundary

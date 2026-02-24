@@ -1,0 +1,80 @@
+{
+  "generated_at_utc": "2026-02-24T10:26:34.731253+00:00",
+  "inputs": {
+    "mega_eval_jsonl": "gold_data/mega/mega_eval.jsonl",
+    "n_bootstrap": 20000,
+    "rng_seed": 20260224,
+    "zero_abs_tolerance": 0.02
+  },
+  "summary": {
+    "total_rows": 560,
+    "rows_with_pmcid": 560,
+    "rows_with_cochrane_ref": 546,
+    "strict_5pct_match_rate": 0.9871794871794872,
+    "human_error_10pct_rate_status_based": 0.9871794871794872,
+    "human_error_10pct_bootstrap_95ci": {
+      "point": 0.9871794871794872,
+      "ci_low_95": 0.9761904761904762,
+      "ci_high_95": 0.9963369963369964
+    },
+    "residual_rows_count": 7
+  },
+  "residual_rows": [
+    {
+      "study_id": "Wintzen 2007_2007",
+      "status": "extracted_no_match",
+      "pmcid": "PMC1915648",
+      "n_extracted": 34,
+      "n_cochrane": 2,
+      "best_direct_rel_error": 0.184134759399431
+    },
+    {
+      "study_id": "Guo 2022_2022",
+      "status": "extracted_no_match",
+      "pmcid": "PMC8941540",
+      "n_extracted": 22,
+      "n_cochrane": 3,
+      "best_direct_rel_error": 0.3329050265181454
+    },
+    {
+      "study_id": "Kitamura 2020_2020",
+      "status": "extracted_no_match",
+      "pmcid": "PMC7686635",
+      "n_extracted": 395,
+      "n_cochrane": 1,
+      "best_direct_rel_error": 0.7466826377956663
+    },
+    {
+      "study_id": "Hajji 2021_2021",
+      "status": "extracted_no_match",
+      "pmcid": "PMC7982281",
+      "n_extracted": 256,
+      "n_cochrane": 2,
+      "best_direct_rel_error": 13.466622262370116
+    },
+    {
+      "study_id": "Cooke 2011_2011",
+      "status": "extracted_no_match",
+      "pmcid": "PMC3272376",
+      "n_extracted": 31,
+      "n_cochrane": 3,
+      "best_direct_rel_error": 299.9785050687813
+    },
+    {
+      "study_id": "El-Kafy 2021_2021",
+      "status": "extracted_no_match",
+      "pmcid": "PMC8594757",
+      "n_extracted": 96,
+      "n_cochrane": 1,
+      "best_direct_rel_error": 2139.737613754124
+    },
+    {
+      "study_id": "Linder 2015_2015",
+      "status": "extracted_no_match",
+      "pmcid": "PMC4480056",
+      "n_extracted": 228,
+      "n_cochrane": 1,
+      "best_direct_rel_error": 321239.21096372063
+    }
+  ]
+}
