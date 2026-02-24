@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Audit PLOS-family studies in the multipersona campaign with PLOS ONE separation."""
+"""Audit PLOS-family studies in a cohort with strict PLOS ONE separation."""
 
 from __future__ import annotations
 
@@ -58,6 +58,18 @@ def _journal_segment(doi: str) -> str:
     return ""
 
 
+def _extract_doi(row: Dict) -> tuple[str, str]:
+    """Return normalized DOI and a short source label."""
+    study_doi = _norm_doi(row.get("study_doi"))
+    if study_doi:
+        return study_doi, "study_doi"
+    external_meta = row.get("external_meta") or {}
+    external_doi = _norm_doi(external_meta.get("doi"))
+    if external_doi:
+        return external_doi, "external_meta.doi"
+    return "", "missing"
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -69,6 +81,11 @@ def main() -> int:
         "--results",
         type=Path,
         default=Path("output/real_rct_results_campaign_multipersona.json"),
+    )
+    parser.add_argument(
+        "--cohort-label",
+        type=str,
+        default="multipersona",
     )
     parser.add_argument(
         "--output-json",
@@ -89,7 +106,7 @@ def main() -> int:
 
     plos_rows = []
     for row in frozen_rows:
-        doi = _norm_doi(row.get("study_doi"))
+        doi, doi_source = _extract_doi(row)
         if not doi.startswith("10.1371/journal."):
             continue
         study_id = str(row.get("study_id") or "")
@@ -121,6 +138,7 @@ def main() -> int:
             "study_id": study_id,
             "study_name": row.get("study_name"),
             "study_doi": doi,
+            "doi_source": doi_source,
             "journal_segment": journal_segment or None,
             "journal_class": journal_class,
             "gold": {
@@ -156,25 +174,26 @@ def main() -> int:
     ]
 
     summary = {
+        "cohort_label": args.cohort_label,
         "total_plos_family_studies": len(plos_rows),
         "plos_one_studies": len(plos_one_rows),
         "non_plos_one_plos_studies": len(non_plos_one_rows),
         "plos_one_all_results_present": all(row["comparisons"]["result_present"] for row in plos_one_rows)
         if plos_one_rows
-        else False,
+        else None,
         "plos_one_all_effect_type_match": all(row["comparisons"]["effect_type_match"] is True for row in plos_one_rows)
         if plos_one_rows
-        else False,
+        else None,
         "plos_one_all_point_estimate_match": all(
             row["comparisons"]["point_estimate_match"] is True for row in plos_one_rows
         )
         if plos_one_rows
-        else False,
+        else None,
         "plos_one_all_ci_match_when_comparable": all(
             row["comparisons"]["ci_match"] is True for row in plos_one_ci_comparable
         )
         if plos_one_ci_comparable
-        else False,
+        else None,
         "plos_one_needs_review_count": sum(
             1 for row in plos_one_rows if row["best_match"]["needs_review"]
         ),
@@ -197,9 +216,10 @@ def main() -> int:
     args.output_json.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
 
     lines: List[str] = []
-    lines.append("# Multipersona PLOS ONE Review")
+    lines.append(f"# {args.cohort_label} PLOS ONE Review")
     lines.append("")
     lines.append(f"- Generated UTC: {payload['generated_at_utc']}")
+    lines.append(f"- Cohort label: `{args.cohort_label}`")
     lines.append(f"- Frozen gold: `{payload['inputs']['frozen_gold']}`")
     lines.append(f"- Results: `{payload['inputs']['results']}`")
     lines.append("")
@@ -208,11 +228,11 @@ def main() -> int:
     lines.append(f"- Total PLOS-family studies in frozen cohort: {summary['total_plos_family_studies']}")
     lines.append(f"- PLOS ONE studies: {summary['plos_one_studies']}")
     lines.append(f"- Non-PLOS-ONE PLOS studies: {summary['non_plos_one_plos_studies']}")
-    lines.append(f"- PLOS ONE all results present: {summary['plos_one_all_results_present']}")
-    lines.append(f"- PLOS ONE all effect types match: {summary['plos_one_all_effect_type_match']}")
-    lines.append(f"- PLOS ONE all point estimates match: {summary['plos_one_all_point_estimate_match']}")
+    lines.append(f"- PLOS ONE all results present: {_bool_label(summary['plos_one_all_results_present'])}")
+    lines.append(f"- PLOS ONE all effect types match: {_bool_label(summary['plos_one_all_effect_type_match'])}")
+    lines.append(f"- PLOS ONE all point estimates match: {_bool_label(summary['plos_one_all_point_estimate_match'])}")
     lines.append(
-        f"- PLOS ONE all CIs match (where gold CI exists): {summary['plos_one_all_ci_match_when_comparable']}"
+        f"- PLOS ONE all CIs match (where gold CI exists): {_bool_label(summary['plos_one_all_ci_match_when_comparable'])}"
     )
     lines.append(f"- PLOS ONE needs-review count: {summary['plos_one_needs_review_count']}")
     lines.append(f"- Non-PLOS-ONE needs-review count: {summary['non_plos_one_needs_review_count']}")

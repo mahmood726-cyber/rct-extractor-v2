@@ -1,6 +1,7 @@
-# Multipersona PLOS ONE Review
+# multipersona PLOS ONE Review
 
-- Generated UTC: 2026-02-24T05:18:55.604614+00:00
+- Generated UTC: 2026-02-24T05:28:05.915357+00:00
+- Cohort label: `multipersona`
 - Frozen gold: `data/frozen_eval_v1/frozen_gold.jsonl`
 - Results: `output/real_rct_results_campaign_multipersona.json`
 
@@ -9,10 +10,10 @@
 - Total PLOS-family studies in frozen cohort: 3
 - PLOS ONE studies: 2
 - Non-PLOS-ONE PLOS studies: 1
-- PLOS ONE all results present: True
-- PLOS ONE all effect types match: True
-- PLOS ONE all point estimates match: True
-- PLOS ONE all CIs match (where gold CI exists): True
+- PLOS ONE all results present: yes
+- PLOS ONE all effect types match: yes
+- PLOS ONE all point estimates match: yes
+- PLOS ONE all CIs match (where gold CI exists): yes
 - PLOS ONE needs-review count: 0
 - Non-PLOS-ONE needs-review count: 1
 

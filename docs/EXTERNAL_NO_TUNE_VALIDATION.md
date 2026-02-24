@@ -99,6 +99,20 @@ Latest full-40 result (`external_no_tune_40_v7`):
 - lenient match rate: `1.0000` (vs `0.9000` in v6)
 - MA-ready yield: `0.9250` (unchanged vs v6)
 
+PLOS ONE scope audit on the same full-40 cohort:
+```bash
+python3 scripts/review_multipersona_plos_one.py \
+  --cohort-label external_no_tune_40_v7 \
+  --frozen-gold data/external_no_tune_40_v2/frozen_gold.jsonl \
+  --results output/external_no_tune_40_v7_results.json \
+  --output-json output/external_no_tune_40_v7_plos_one_review_2026-02-24.json \
+  --output-md output/external_no_tune_40_v7_plos_one_review_2026-02-24.md
+```
+- `output/external_no_tune_40_v7_plos_one_review_2026-02-24.md` confirms:
+  - PLOS-family studies in the frozen cohort: `0`
+  - PLOS ONE studies: `0`
+  - No PLOS-specific regression risk in this 40-study cohort.
+
 ## Main Artifacts
 - `data/external_no_tune_v1/manifest.jsonl`
 - `data/external_no_tune_v1/frozen_gold.jsonl`

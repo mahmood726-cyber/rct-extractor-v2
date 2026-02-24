@@ -1,0 +1,20 @@
+{
+  "generated_at_utc": "2026-02-24T05:27:26.872762+00:00",
+  "inputs": {
+    "frozen_gold": "data/external_no_tune_40_v2/frozen_gold.jsonl",
+    "results": "output/external_no_tune_40_v7_results.json"
+  },
+  "summary": {
+    "cohort_label": "external_no_tune_40_v7",
+    "total_plos_family_studies": 0,
+    "plos_one_studies": 0,
+    "non_plos_one_plos_studies": 0,
+    "plos_one_all_results_present": null,
+    "plos_one_all_effect_type_match": null,
+    "plos_one_all_point_estimate_match": null,
+    "plos_one_all_ci_match_when_comparable": null,
+    "plos_one_needs_review_count": 0,
+    "non_plos_one_needs_review_count": 0
+  },
+  "studies": []
+}
