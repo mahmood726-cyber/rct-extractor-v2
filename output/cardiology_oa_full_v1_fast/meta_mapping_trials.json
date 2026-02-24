@@ -1,0 +1,2318 @@
+{
+  "generated_at_utc": "2026-02-24T15:41:31.000441+00:00",
+  "trials": [
+    {
+      "trial_pmid": "35851807",
+      "trial_study_ids": [
+        "PMC10103568"
+      ],
+      "trial_pmcids": [
+        "PMC10103568"
+      ],
+      "citing_total_considered": 13,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "39119189"
+      ]
+    },
+    {
+      "trial_pmid": "35934783",
+      "trial_study_ids": [
+        "PMC10244070"
+      ],
+      "trial_pmcids": [
+        "PMC10244070"
+      ],
+      "citing_total_considered": 11,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "36037026",
+      "trial_study_ids": [
+        "PMC10103559"
+      ],
+      "trial_pmcids": [
+        "PMC10103559"
+      ],
+      "citing_total_considered": 16,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "36259998",
+      "trial_study_ids": [
+        "PMC10010730"
+      ],
+      "trial_pmcids": [
+        "PMC10010730"
+      ],
+      "citing_total_considered": 0,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "36282460",
+      "trial_study_ids": [
+        "PMC10289933"
+      ],
+      "trial_pmcids": [
+        "PMC10289933"
+      ],
+      "citing_total_considered": 16,
+      "meta_matches_total": 4,
+      "meta_pmids": [
+        "36465144",
+        "37226247",
+        "39057618",
+        "41179256"
+      ]
+    },
+    {
+      "trial_pmid": "36459474",
+      "trial_study_ids": [
+        "PMC10069254"
+      ],
+      "trial_pmcids": [
+        "PMC10069254"
+      ],
+      "citing_total_considered": 3,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "36576323",
+      "trial_study_ids": [
+        "PMC10062288"
+      ],
+      "trial_pmcids": [
+        "PMC10062288"
+      ],
+      "citing_total_considered": 12,
+      "meta_matches_total": 5,
+      "meta_pmids": [
+        "37469293",
+        "38020055",
+        "39077364",
+        "40435338",
+        "40952576"
+      ]
+    },
+    {
+      "trial_pmid": "36596867",
+      "trial_study_ids": [
+        "PMC10025205"
+      ],
+      "trial_pmcids": [
+        "PMC10025205"
+      ],
+      "citing_total_considered": 3,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "41441217"
+      ]
+    },
+    {
+      "trial_pmid": "36670327",
+      "trial_study_ids": [
+        "PMC10359433"
+      ],
+      "trial_pmcids": [
+        "PMC10359433"
+      ],
+      "citing_total_considered": 14,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "36758013",
+      "trial_study_ids": [
+        "PMC10062319"
+      ],
+      "trial_pmcids": [
+        "PMC10062319"
+      ],
+      "citing_total_considered": 13,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "36802845",
+      "trial_study_ids": [
+        "PMC10111466"
+      ],
+      "trial_pmcids": [
+        "PMC10111466"
+      ],
+      "citing_total_considered": 13,
+      "meta_matches_total": 3,
+      "meta_pmids": [
+        "39617283",
+        "40284036",
+        "41445624"
+      ]
+    },
+    {
+      "trial_pmid": "36872367",
+      "trial_study_ids": [
+        "PMC10039090"
+      ],
+      "trial_pmcids": [
+        "PMC10039090"
+      ],
+      "citing_total_considered": 10,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "40383741"
+      ]
+    },
+    {
+      "trial_pmid": "36891899",
+      "trial_study_ids": [
+        "PMC10108841"
+      ],
+      "trial_pmcids": [
+        "PMC10108841"
+      ],
+      "citing_total_considered": 9,
+      "meta_matches_total": 4,
+      "meta_pmids": [
+        "39570492",
+        "39680561",
+        "40351680",
+        "41303036"
+      ]
+    },
+    {
+      "trial_pmid": "36908162",
+      "trial_study_ids": [
+        "PMC10287070"
+      ],
+      "trial_pmcids": [
+        "PMC10287070"
+      ],
+      "citing_total_considered": 7,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "36916018",
+      "trial_study_ids": [
+        "PMC10250874"
+      ],
+      "trial_pmcids": [
+        "PMC10250874"
+      ],
+      "citing_total_considered": 12,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "39120758"
+      ]
+    },
+    {
+      "trial_pmid": "36929813",
+      "trial_study_ids": [
+        "PMC10320207"
+      ],
+      "trial_pmcids": [
+        "PMC10320207"
+      ],
+      "citing_total_considered": 2,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "36934444",
+      "trial_study_ids": [
+        "PMC10192282"
+      ],
+      "trial_pmcids": [
+        "PMC10192282"
+      ],
+      "citing_total_considered": 0,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "36941980",
+      "trial_study_ids": [
+        "PMC10024473"
+      ],
+      "trial_pmcids": [
+        "PMC10024473"
+      ],
+      "citing_total_considered": 4,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "36961199",
+      "trial_study_ids": [
+        "PMC10036020"
+      ],
+      "trial_pmcids": [
+        "PMC10036020"
+      ],
+      "citing_total_considered": 5,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "38808173"
+      ]
+    },
+    {
+      "trial_pmid": "36963790",
+      "trial_study_ids": [
+        "PMC10040014"
+      ],
+      "trial_pmcids": [
+        "PMC10040014"
+      ],
+      "citing_total_considered": 0,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "36967796",
+      "trial_study_ids": [
+        "PMC10031025"
+      ],
+      "trial_pmcids": [
+        "PMC10031025"
+      ],
+      "citing_total_considered": 7,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "39237457"
+      ]
+    },
+    {
+      "trial_pmid": "36968886",
+      "trial_study_ids": [
+        "PMC10032553"
+      ],
+      "trial_pmcids": [
+        "PMC10032553"
+      ],
+      "citing_total_considered": 0,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "36969508",
+      "trial_study_ids": [
+        "PMC10036779"
+      ],
+      "trial_pmcids": [
+        "PMC10036779"
+      ],
+      "citing_total_considered": 3,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "38699102"
+      ]
+    },
+    {
+      "trial_pmid": "36970339",
+      "trial_study_ids": [
+        "PMC10031055"
+      ],
+      "trial_pmcids": [
+        "PMC10031055"
+      ],
+      "citing_total_considered": 5,
+      "meta_matches_total": 2,
+      "meta_pmids": [
+        "38424483",
+        "39618855"
+      ]
+    },
+    {
+      "trial_pmid": "36974970",
+      "trial_study_ids": [
+        "PMC10228539"
+      ],
+      "trial_pmcids": [
+        "PMC10228539"
+      ],
+      "citing_total_considered": 4,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "36984439",
+      "trial_study_ids": [
+        "PMC10057087"
+      ],
+      "trial_pmcids": [
+        "PMC10057087"
+      ],
+      "citing_total_considered": 3,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "36994016",
+      "trial_study_ids": [
+        "PMC10040989"
+      ],
+      "trial_pmcids": [
+        "PMC10040989"
+      ],
+      "citing_total_considered": 4,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "36995528",
+      "trial_study_ids": [
+        "PMC10061401"
+      ],
+      "trial_pmcids": [
+        "PMC10061401"
+      ],
+      "citing_total_considered": 3,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "36997260",
+      "trial_study_ids": [
+        "PMC10069592"
+      ],
+      "trial_pmcids": [
+        "PMC10069592"
+      ],
+      "citing_total_considered": 0,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "36999245",
+      "trial_study_ids": [
+        "PMC10192283"
+      ],
+      "trial_pmcids": [
+        "PMC10192283"
+      ],
+      "citing_total_considered": 2,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37000332",
+      "trial_study_ids": [
+        "PMC10064630"
+      ],
+      "trial_pmcids": [
+        "PMC10064630"
+      ],
+      "citing_total_considered": 7,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "39902537"
+      ]
+    },
+    {
+      "trial_pmid": "37004634",
+      "trial_study_ids": [
+        "PMC10300169"
+      ],
+      "trial_pmcids": [
+        "PMC10300169"
+      ],
+      "citing_total_considered": 4,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37009192",
+      "trial_study_ids": [
+        "PMC10052595"
+      ],
+      "trial_pmcids": [
+        "PMC10052595"
+      ],
+      "citing_total_considered": 56,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37009942",
+      "trial_study_ids": [
+        "PMC10241727"
+      ],
+      "trial_pmcids": [
+        "PMC10241727"
+      ],
+      "citing_total_considered": 4,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37014888",
+      "trial_study_ids": [
+        "PMC10072463"
+      ],
+      "trial_pmcids": [
+        "PMC10072463"
+      ],
+      "citing_total_considered": 0,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37021020",
+      "trial_study_ids": [
+        "PMC10068943"
+      ],
+      "trial_pmcids": [
+        "PMC10068943"
+      ],
+      "citing_total_considered": 3,
+      "meta_matches_total": 2,
+      "meta_pmids": [
+        "39270779",
+        "39618855"
+      ]
+    },
+    {
+      "trial_pmid": "37021351",
+      "trial_study_ids": [
+        "PMC10227654"
+      ],
+      "trial_pmcids": [
+        "PMC10227654"
+      ],
+      "citing_total_considered": 38,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "41020496"
+      ]
+    },
+    {
+      "trial_pmid": "37021403",
+      "trial_study_ids": [
+        "PMC10228535"
+      ],
+      "trial_pmcids": [
+        "PMC10228535"
+      ],
+      "citing_total_considered": 26,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "40002711"
+      ]
+    },
+    {
+      "trial_pmid": "37024952",
+      "trial_study_ids": [
+        "PMC10080824"
+      ],
+      "trial_pmcids": [
+        "PMC10080824"
+      ],
+      "citing_total_considered": 17,
+      "meta_matches_total": 3,
+      "meta_pmids": [
+        "39188318",
+        "40142306",
+        "40964525"
+      ]
+    },
+    {
+      "trial_pmid": "37025083",
+      "trial_study_ids": [
+        "PMC10270269"
+      ],
+      "trial_pmcids": [
+        "PMC10270269"
+      ],
+      "citing_total_considered": 6,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37026546",
+      "trial_study_ids": [
+        "PMC10227255"
+      ],
+      "trial_pmcids": [
+        "PMC10227255"
+      ],
+      "citing_total_considered": 4,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37044211",
+      "trial_study_ids": [
+        "PMC10323182"
+      ],
+      "trial_pmcids": [
+        "PMC10323182"
+      ],
+      "citing_total_considered": 1,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "40257634"
+      ]
+    },
+    {
+      "trial_pmid": "37047810",
+      "trial_study_ids": [
+        "PMC10095298"
+      ],
+      "trial_pmcids": [
+        "PMC10095298"
+      ],
+      "citing_total_considered": 21,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "41598813"
+      ]
+    },
+    {
+      "trial_pmid": "37048677",
+      "trial_study_ids": [
+        "PMC10094898"
+      ],
+      "trial_pmcids": [
+        "PMC10094898"
+      ],
+      "citing_total_considered": 3,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "41334602"
+      ]
+    },
+    {
+      "trial_pmid": "37050858",
+      "trial_study_ids": [
+        "PMC10228617"
+      ],
+      "trial_pmcids": [
+        "PMC10228617"
+      ],
+      "citing_total_considered": 17,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "40776967"
+      ]
+    },
+    {
+      "trial_pmid": "37051056",
+      "trial_study_ids": [
+        "PMC10084837"
+      ],
+      "trial_pmcids": [
+        "PMC10084837"
+      ],
+      "citing_total_considered": 6,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37057101",
+      "trial_study_ids": [
+        "PMC10086241"
+      ],
+      "trial_pmcids": [
+        "PMC10086241"
+      ],
+      "citing_total_considered": 8,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37060000",
+      "trial_study_ids": [
+        "PMC10103413"
+      ],
+      "trial_pmcids": [
+        "PMC10103413"
+      ],
+      "citing_total_considered": 4,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37064432",
+      "trial_study_ids": [
+        "PMC10094472"
+      ],
+      "trial_pmcids": [
+        "PMC10094472"
+      ],
+      "citing_total_considered": 12,
+      "meta_matches_total": 2,
+      "meta_pmids": [
+        "39108740",
+        "39484133"
+      ]
+    },
+    {
+      "trial_pmid": "37068888",
+      "trial_study_ids": [
+        "PMC10227658"
+      ],
+      "trial_pmcids": [
+        "PMC10227658"
+      ],
+      "citing_total_considered": 7,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37070436",
+      "trial_study_ids": [
+        "PMC10212585"
+      ],
+      "trial_pmcids": [
+        "PMC10212585"
+      ],
+      "citing_total_considered": 57,
+      "meta_matches_total": 6,
+      "meta_pmids": [
+        "37660005",
+        "38573633",
+        "39533603",
+        "40232664",
+        "40841653",
+        "41517628"
+      ]
+    },
+    {
+      "trial_pmid": "37077739",
+      "trial_study_ids": [
+        "PMC10106572"
+      ],
+      "trial_pmcids": [
+        "PMC10106572"
+      ],
+      "citing_total_considered": 4,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "40698307"
+      ]
+    },
+    {
+      "trial_pmid": "37078403",
+      "trial_study_ids": [
+        "PMC10126623"
+      ],
+      "trial_pmcids": [
+        "PMC10126623"
+      ],
+      "citing_total_considered": 9,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37078691",
+      "trial_study_ids": [
+        "PMC10228603"
+      ],
+      "trial_pmcids": [
+        "PMC10228603"
+      ],
+      "citing_total_considered": 11,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37081514",
+      "trial_study_ids": [
+        "PMC10120259"
+      ],
+      "trial_pmcids": [
+        "PMC10120259"
+      ],
+      "citing_total_considered": 2,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37084084",
+      "trial_study_ids": [
+        "PMC10228602"
+      ],
+      "trial_pmcids": [
+        "PMC10228602"
+      ],
+      "citing_total_considered": 1,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37086110",
+      "trial_study_ids": [
+        "PMC10124979"
+      ],
+      "trial_pmcids": [
+        "PMC10124979"
+      ],
+      "citing_total_considered": 4,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37091661",
+      "trial_study_ids": [
+        "PMC10120957"
+      ],
+      "trial_pmcids": [
+        "PMC10120957"
+      ],
+      "citing_total_considered": 0,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37091662",
+      "trial_study_ids": [
+        "PMC10120947"
+      ],
+      "trial_pmcids": [
+        "PMC10120947"
+      ],
+      "citing_total_considered": 3,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37103036",
+      "trial_study_ids": [
+        "PMC10146134"
+      ],
+      "trial_pmcids": [
+        "PMC10146134"
+      ],
+      "citing_total_considered": 4,
+      "meta_matches_total": 2,
+      "meta_pmids": [
+        "37771663",
+        "38907344"
+      ]
+    },
+    {
+      "trial_pmid": "37108147",
+      "trial_study_ids": [
+        "PMC10138415"
+      ],
+      "trial_pmcids": [
+        "PMC10138415"
+      ],
+      "citing_total_considered": 10,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37124961",
+      "trial_study_ids": [
+        "PMC10140738"
+      ],
+      "trial_pmcids": [
+        "PMC10140738"
+      ],
+      "citing_total_considered": 2,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "38402528"
+      ]
+    },
+    {
+      "trial_pmid": "37124963",
+      "trial_study_ids": [
+        "PMC10140742"
+      ],
+      "trial_pmcids": [
+        "PMC10140742"
+      ],
+      "citing_total_considered": 1,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37129172",
+      "trial_study_ids": [
+        "PMC10159251"
+      ],
+      "trial_pmcids": [
+        "PMC10159251"
+      ],
+      "citing_total_considered": 2,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37142599",
+      "trial_study_ids": [
+        "PMC10160023"
+      ],
+      "trial_pmcids": [
+        "PMC10160023"
+      ],
+      "citing_total_considered": 6,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37144106",
+      "trial_study_ids": [
+        "PMC10152197"
+      ],
+      "trial_pmcids": [
+        "PMC10152197"
+      ],
+      "citing_total_considered": 16,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "37950145"
+      ]
+    },
+    {
+      "trial_pmid": "37145342",
+      "trial_study_ids": [
+        "PMC10329066"
+      ],
+      "trial_pmcids": [
+        "PMC10329066"
+      ],
+      "citing_total_considered": 11,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37162633",
+      "trial_study_ids": [
+        "PMC10403397"
+      ],
+      "trial_pmcids": [
+        "PMC10403397"
+      ],
+      "citing_total_considered": 1,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37173099",
+      "trial_study_ids": [
+        "PMC10186465"
+      ],
+      "trial_pmcids": [
+        "PMC10186465"
+      ],
+      "citing_total_considered": 2,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37174062",
+      "trial_study_ids": [
+        "PMC10177608"
+      ],
+      "trial_pmcids": [
+        "PMC10177608"
+      ],
+      "citing_total_considered": 13,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37176490",
+      "trial_study_ids": [
+        "PMC10179566"
+      ],
+      "trial_pmcids": [
+        "PMC10179566"
+      ],
+      "citing_total_considered": 6,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "39976882"
+      ]
+    },
+    {
+      "trial_pmid": "37176504",
+      "trial_study_ids": [
+        "PMC10179681"
+      ],
+      "trial_pmcids": [
+        "PMC10179681"
+      ],
+      "citing_total_considered": 2,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37178136",
+      "trial_study_ids": [
+        "PMC10228607"
+      ],
+      "trial_pmcids": [
+        "PMC10228607"
+      ],
+      "citing_total_considered": 5,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37180775",
+      "trial_study_ids": [
+        "PMC10172664"
+      ],
+      "trial_pmcids": [
+        "PMC10172664"
+      ],
+      "citing_total_considered": 3,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37181979",
+      "trial_study_ids": [
+        "PMC10168639"
+      ],
+      "trial_pmcids": [
+        "PMC10168639"
+      ],
+      "citing_total_considered": 3,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37189171",
+      "trial_study_ids": [
+        "PMC10184412"
+      ],
+      "trial_pmcids": [
+        "PMC10184412"
+      ],
+      "citing_total_considered": 4,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "39003246"
+      ]
+    },
+    {
+      "trial_pmid": "37205320",
+      "trial_study_ids": [
+        "PMC10187779"
+      ],
+      "trial_pmcids": [
+        "PMC10187779"
+      ],
+      "citing_total_considered": 1,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "39953895"
+      ]
+    },
+    {
+      "trial_pmid": "37215603",
+      "trial_study_ids": [
+        "PMC10192632"
+      ],
+      "trial_pmcids": [
+        "PMC10192632"
+      ],
+      "citing_total_considered": 4,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37226247",
+      "trial_study_ids": [
+        "PMC10210497"
+      ],
+      "trial_pmcids": [
+        "PMC10210497"
+      ],
+      "citing_total_considered": 6,
+      "meta_matches_total": 3,
+      "meta_pmids": [
+        "39057618",
+        "40464647",
+        "41357094"
+      ]
+    },
+    {
+      "trial_pmid": "37228330",
+      "trial_study_ids": [
+        "PMC10203739"
+      ],
+      "trial_pmcids": [
+        "PMC10203739"
+      ],
+      "citing_total_considered": 1,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37234370",
+      "trial_study_ids": [
+        "PMC10206232"
+      ],
+      "trial_pmcids": [
+        "PMC10206232"
+      ],
+      "citing_total_considered": 4,
+      "meta_matches_total": 2,
+      "meta_pmids": [
+        "39270779",
+        "39618855"
+      ]
+    },
+    {
+      "trial_pmid": "37244397",
+      "trial_study_ids": [
+        "PMC10421993"
+      ],
+      "trial_pmcids": [
+        "PMC10421993"
+      ],
+      "citing_total_considered": 4,
+      "meta_matches_total": 2,
+      "meta_pmids": [
+        "38623957",
+        "39261775"
+      ]
+    },
+    {
+      "trial_pmid": "37250296",
+      "trial_study_ids": [
+        "PMC10220504"
+      ],
+      "trial_pmcids": [
+        "PMC10220504"
+      ],
+      "citing_total_considered": 4,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37255854",
+      "trial_study_ids": [
+        "PMC10225923"
+      ],
+      "trial_pmcids": [
+        "PMC10225923"
+      ],
+      "citing_total_considered": 0,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37259986",
+      "trial_study_ids": [
+        "PMC10381984"
+      ],
+      "trial_pmcids": [
+        "PMC10381984"
+      ],
+      "citing_total_considered": 2,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37273256",
+      "trial_study_ids": [
+        "PMC10236990"
+      ],
+      "trial_pmcids": [
+        "PMC10236990"
+      ],
+      "citing_total_considered": 12,
+      "meta_matches_total": 3,
+      "meta_pmids": [
+        "39149585",
+        "41008660",
+        "41180724"
+      ]
+    },
+    {
+      "trial_pmid": "37273859",
+      "trial_study_ids": [
+        "PMC10236886"
+      ],
+      "trial_pmcids": [
+        "PMC10236886"
+      ],
+      "citing_total_considered": 15,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37282378",
+      "trial_study_ids": [
+        "PMC10250868"
+      ],
+      "trial_pmcids": [
+        "PMC10250868"
+      ],
+      "citing_total_considered": 2,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37285483",
+      "trial_study_ids": [
+        "PMC10246817"
+      ],
+      "trial_pmcids": [
+        "PMC10246817"
+      ],
+      "citing_total_considered": 9,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37288260",
+      "trial_study_ids": [
+        "PMC10242061"
+      ],
+      "trial_pmcids": [
+        "PMC10242061"
+      ],
+      "citing_total_considered": 21,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37296366",
+      "trial_study_ids": [
+        "PMC10356652"
+      ],
+      "trial_pmcids": [
+        "PMC10356652"
+      ],
+      "citing_total_considered": 1,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "37950145"
+      ]
+    },
+    {
+      "trial_pmid": "37301743",
+      "trial_study_ids": [
+        "PMC10356043"
+      ],
+      "trial_pmcids": [
+        "PMC10356043"
+      ],
+      "citing_total_considered": 14,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "39318872"
+      ]
+    },
+    {
+      "trial_pmid": "37304967",
+      "trial_study_ids": [
+        "PMC10249073"
+      ],
+      "trial_pmcids": [
+        "PMC10249073"
+      ],
+      "citing_total_considered": 10,
+      "meta_matches_total": 2,
+      "meta_pmids": [
+        "38020055",
+        "40836668"
+      ]
+    },
+    {
+      "trial_pmid": "37304985",
+      "trial_study_ids": [
+        "PMC10249522"
+      ],
+      "trial_pmcids": [
+        "PMC10249522"
+      ],
+      "citing_total_considered": 2,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37311823",
+      "trial_study_ids": [
+        "PMC10465382"
+      ],
+      "trial_pmcids": [
+        "PMC10465382"
+      ],
+      "citing_total_considered": 3,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37323135",
+      "trial_study_ids": [
+        "PMC10263126"
+      ],
+      "trial_pmcids": [
+        "PMC10263126"
+      ],
+      "citing_total_considered": 8,
+      "meta_matches_total": 2,
+      "meta_pmids": [
+        "38918060",
+        "40878995"
+      ]
+    },
+    {
+      "trial_pmid": "37324622",
+      "trial_study_ids": [
+        "PMC10263056"
+      ],
+      "trial_pmcids": [
+        "PMC10263056"
+      ],
+      "citing_total_considered": 2,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37325422",
+      "trial_study_ids": [
+        "PMC10266410"
+      ],
+      "trial_pmcids": [
+        "PMC10266410"
+      ],
+      "citing_total_considered": 3,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37333005",
+      "trial_study_ids": [
+        "PMC10268604"
+      ],
+      "trial_pmcids": [
+        "PMC10268604"
+      ],
+      "citing_total_considered": 24,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37337683",
+      "trial_study_ids": [
+        "PMC10292951"
+      ],
+      "trial_pmcids": [
+        "PMC10292951"
+      ],
+      "citing_total_considered": 12,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37341446",
+      "trial_study_ids": [
+        "PMC10318383"
+      ],
+      "trial_pmcids": [
+        "PMC10318383"
+      ],
+      "citing_total_considered": 12,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "40547439"
+      ]
+    },
+    {
+      "trial_pmid": "37345798",
+      "trial_study_ids": [
+        "PMC10356058"
+      ],
+      "trial_pmcids": [
+        "PMC10356058"
+      ],
+      "citing_total_considered": 4,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37361615",
+      "trial_study_ids": [
+        "PMC10287999"
+      ],
+      "trial_pmcids": [
+        "PMC10287999"
+      ],
+      "citing_total_considered": 21,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37361620",
+      "trial_study_ids": [
+        "PMC10288028"
+      ],
+      "trial_pmcids": [
+        "PMC10288028"
+      ],
+      "citing_total_considered": 2,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37363575",
+      "trial_study_ids": [
+        "PMC10289746"
+      ],
+      "trial_pmcids": [
+        "PMC10289746"
+      ],
+      "citing_total_considered": 0,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37365755",
+      "trial_study_ids": [
+        "PMC10318221"
+      ],
+      "trial_pmcids": [
+        "PMC10318221"
+      ],
+      "citing_total_considered": 10,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "41308057"
+      ]
+    },
+    {
+      "trial_pmid": "37374017",
+      "trial_study_ids": [
+        "PMC10305663"
+      ],
+      "trial_pmcids": [
+        "PMC10305663"
+      ],
+      "citing_total_considered": 2,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37375813",
+      "trial_study_ids": [
+        "PMC10300994"
+      ],
+      "trial_pmcids": [
+        "PMC10300994"
+      ],
+      "citing_total_considered": 8,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "37685629"
+      ]
+    },
+    {
+      "trial_pmid": "37388423",
+      "trial_study_ids": [
+        "PMC10306244"
+      ],
+      "trial_pmcids": [
+        "PMC10306244"
+      ],
+      "citing_total_considered": 1,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37388643",
+      "trial_study_ids": [
+        "PMC10305775"
+      ],
+      "trial_pmcids": [
+        "PMC10305775"
+      ],
+      "citing_total_considered": 3,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37391738",
+      "trial_study_ids": [
+        "PMC10311748"
+      ],
+      "trial_pmcids": [
+        "PMC10311748"
+      ],
+      "citing_total_considered": 3,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37396578",
+      "trial_study_ids": [
+        "PMC10313423"
+      ],
+      "trial_pmcids": [
+        "PMC10313423"
+      ],
+      "citing_total_considered": 19,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "40951473"
+      ]
+    },
+    {
+      "trial_pmid": "37396596",
+      "trial_study_ids": [
+        "PMC10311453"
+      ],
+      "trial_pmcids": [
+        "PMC10311453"
+      ],
+      "citing_total_considered": 6,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "41303036"
+      ]
+    },
+    {
+      "trial_pmid": "37398783",
+      "trial_study_ids": [
+        "PMC10309076"
+      ],
+      "trial_pmcids": [
+        "PMC10309076"
+      ],
+      "citing_total_considered": 5,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37408938",
+      "trial_study_ids": [
+        "PMC10318567"
+      ],
+      "trial_pmcids": [
+        "PMC10318567"
+      ],
+      "citing_total_considered": 2,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37415397",
+      "trial_study_ids": [
+        "PMC10375154"
+      ],
+      "trial_pmcids": [
+        "PMC10375154"
+      ],
+      "citing_total_considered": 4,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37425612",
+      "trial_study_ids": [
+        "PMC10329454"
+      ],
+      "trial_pmcids": [
+        "PMC10329454"
+      ],
+      "citing_total_considered": 10,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37427760",
+      "trial_study_ids": [
+        "PMC10334859"
+      ],
+      "trial_pmcids": [
+        "PMC10334859"
+      ],
+      "citing_total_considered": 5,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37435100",
+      "trial_study_ids": [
+        "PMC10329913"
+      ],
+      "trial_pmcids": [
+        "PMC10329913"
+      ],
+      "citing_total_considered": 2,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37440977",
+      "trial_study_ids": [
+        "PMC10335410"
+      ],
+      "trial_pmcids": [
+        "PMC10335410"
+      ],
+      "citing_total_considered": 3,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "37626066"
+      ]
+    },
+    {
+      "trial_pmid": "37449567",
+      "trial_study_ids": [
+        "PMC10382113"
+      ],
+      "trial_pmcids": [
+        "PMC10382113"
+      ],
+      "citing_total_considered": 6,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "40555009"
+      ]
+    },
+    {
+      "trial_pmid": "37465619",
+      "trial_study_ids": [
+        "PMC10351075"
+      ],
+      "trial_pmcids": [
+        "PMC10351075"
+      ],
+      "citing_total_considered": 1,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37471323",
+      "trial_study_ids": [
+        "PMC10358888"
+      ],
+      "trial_pmcids": [
+        "PMC10358888"
+      ],
+      "citing_total_considered": 1,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37476150",
+      "trial_study_ids": [
+        "PMC10358285"
+      ],
+      "trial_pmcids": [
+        "PMC10358285"
+      ],
+      "citing_total_considered": 10,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37485143",
+      "trial_study_ids": [
+        "PMC10362836"
+      ],
+      "trial_pmcids": [
+        "PMC10362836"
+      ],
+      "citing_total_considered": 1,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "38742375"
+      ]
+    },
+    {
+      "trial_pmid": "37489450",
+      "trial_study_ids": [
+        "PMC10366732"
+      ],
+      "trial_pmcids": [
+        "PMC10366732"
+      ],
+      "citing_total_considered": 0,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37489740",
+      "trial_study_ids": [
+        "PMC10492962"
+      ],
+      "trial_pmcids": [
+        "PMC10492962"
+      ],
+      "citing_total_considered": 28,
+      "meta_matches_total": 3,
+      "meta_pmids": [
+        "39965615",
+        "40420156",
+        "41377633"
+      ]
+    },
+    {
+      "trial_pmid": "37493027",
+      "trial_study_ids": [
+        "PMC10492990"
+      ],
+      "trial_pmcids": [
+        "PMC10492990"
+      ],
+      "citing_total_considered": 2,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37504529",
+      "trial_study_ids": [
+        "PMC10380213"
+      ],
+      "trial_pmcids": [
+        "PMC10380213"
+      ],
+      "citing_total_considered": 1,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37504563",
+      "trial_study_ids": [
+        "PMC10380665"
+      ],
+      "trial_pmcids": [
+        "PMC10380665"
+      ],
+      "citing_total_considered": 5,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "40935409"
+      ]
+    },
+    {
+      "trial_pmid": "37509209",
+      "trial_study_ids": [
+        "PMC10376958"
+      ],
+      "trial_pmcids": [
+        "PMC10376958"
+      ],
+      "citing_total_considered": 4,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37509724",
+      "trial_study_ids": [
+        "PMC10377079"
+      ],
+      "trial_pmcids": [
+        "PMC10377079"
+      ],
+      "citing_total_considered": 16,
+      "meta_matches_total": 2,
+      "meta_pmids": [
+        "39398777",
+        "40259909"
+      ]
+    },
+    {
+      "trial_pmid": "37520737",
+      "trial_study_ids": [
+        "PMC10371824"
+      ],
+      "trial_pmcids": [
+        "PMC10371824"
+      ],
+      "citing_total_considered": 4,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "38731033"
+      ]
+    },
+    {
+      "trial_pmid": "37523771",
+      "trial_study_ids": [
+        "PMC10473833"
+      ],
+      "trial_pmcids": [
+        "PMC10473833"
+      ],
+      "citing_total_considered": 17,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37532820",
+      "trial_study_ids": [
+        "PMC10397297"
+      ],
+      "trial_pmcids": [
+        "PMC10397297"
+      ],
+      "citing_total_considered": 4,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "40542996"
+      ]
+    },
+    {
+      "trial_pmid": "37536671",
+      "trial_study_ids": [
+        "PMC10438213"
+      ],
+      "trial_pmcids": [
+        "PMC10438213"
+      ],
+      "citing_total_considered": 12,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37540064",
+      "trial_study_ids": [
+        "PMC10398958"
+      ],
+      "trial_pmcids": [
+        "PMC10398958"
+      ],
+      "citing_total_considered": 3,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37540446",
+      "trial_study_ids": [
+        "PMC10462572"
+      ],
+      "trial_pmcids": [
+        "PMC10462572"
+      ],
+      "citing_total_considered": 30,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "39612438"
+      ]
+    },
+    {
+      "trial_pmid": "37547248",
+      "trial_study_ids": [
+        "PMC10397410"
+      ],
+      "trial_pmcids": [
+        "PMC10397410"
+      ],
+      "citing_total_considered": 0,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37547280",
+      "trial_study_ids": [
+        "PMC10402885"
+      ],
+      "trial_pmcids": [
+        "PMC10402885"
+      ],
+      "citing_total_considered": 2,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37547561",
+      "trial_study_ids": [
+        "PMC10403723"
+      ],
+      "trial_pmcids": [
+        "PMC10403723"
+      ],
+      "citing_total_considered": 1,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "39981320"
+      ]
+    },
+    {
+      "trial_pmid": "37548160",
+      "trial_study_ids": [
+        "PMC10492936"
+      ],
+      "trial_pmcids": [
+        "PMC10492936"
+      ],
+      "citing_total_considered": 12,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "38818215"
+      ]
+    },
+    {
+      "trial_pmid": "37552372",
+      "trial_study_ids": [
+        "PMC10409690"
+      ],
+      "trial_pmcids": [
+        "PMC10409690"
+      ],
+      "citing_total_considered": 9,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "41133649"
+      ]
+    },
+    {
+      "trial_pmid": "37554691",
+      "trial_study_ids": [
+        "PMC10406556"
+      ],
+      "trial_pmcids": [
+        "PMC10406556"
+      ],
+      "citing_total_considered": 12,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "40878995"
+      ]
+    },
+    {
+      "trial_pmid": "37559713",
+      "trial_study_ids": [
+        "PMC10409544"
+      ],
+      "trial_pmcids": [
+        "PMC10409544"
+      ],
+      "citing_total_considered": 2,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37560114",
+      "trial_study_ids": [
+        "PMC10407100"
+      ],
+      "trial_pmcids": [
+        "PMC10407100"
+      ],
+      "citing_total_considered": 1,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "39877018"
+      ]
+    },
+    {
+      "trial_pmid": "37563569",
+      "trial_study_ids": [
+        "PMC10416527"
+      ],
+      "trial_pmcids": [
+        "PMC10416527"
+      ],
+      "citing_total_considered": 21,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37571293",
+      "trial_study_ids": [
+        "PMC10421390"
+      ],
+      "trial_pmcids": [
+        "PMC10421390"
+      ],
+      "citing_total_considered": 49,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37576074",
+      "trial_study_ids": [
+        "PMC10422653"
+      ],
+      "trial_pmcids": [
+        "PMC10422653"
+      ],
+      "citing_total_considered": 2,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37581396",
+      "trial_study_ids": [
+        "PMC10492958"
+      ],
+      "trial_pmcids": [
+        "PMC10492958"
+      ],
+      "citing_total_considered": 17,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37593149",
+      "trial_study_ids": [
+        "PMC10427724"
+      ],
+      "trial_pmcids": [
+        "PMC10427724"
+      ],
+      "citing_total_considered": 3,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37600053",
+      "trial_study_ids": [
+        "PMC10435261"
+      ],
+      "trial_pmcids": [
+        "PMC10435261"
+      ],
+      "citing_total_considered": 7,
+      "meta_matches_total": 2,
+      "meta_pmids": [
+        "39540016",
+        "39964636"
+      ]
+    },
+    {
+      "trial_pmid": "37614537",
+      "trial_study_ids": [
+        "PMC10442870"
+      ],
+      "trial_pmcids": [
+        "PMC10442870"
+      ],
+      "citing_total_considered": 1,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37622590",
+      "trial_study_ids": [
+        "PMC10451006"
+      ],
+      "trial_pmcids": [
+        "PMC10451006"
+      ],
+      "citing_total_considered": 88,
+      "meta_matches_total": 3,
+      "meta_pmids": [
+        "40426038",
+        "41347156",
+        "41536392"
+      ]
+    },
+    {
+      "trial_pmid": "37622591",
+      "trial_study_ids": [
+        "PMC10451003"
+      ],
+      "trial_pmcids": [
+        "PMC10451003"
+      ],
+      "citing_total_considered": 21,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "41127764"
+      ]
+    },
+    {
+      "trial_pmid": "37623350",
+      "trial_study_ids": [
+        "PMC10455774"
+      ],
+      "trial_pmcids": [
+        "PMC10455774"
+      ],
+      "citing_total_considered": 15,
+      "meta_matches_total": 2,
+      "meta_pmids": [
+        "39868862",
+        "40160592"
+      ]
+    },
+    {
+      "trial_pmid": "37623860",
+      "trial_study_ids": [
+        "PMC10456563"
+      ],
+      "trial_pmcids": [
+        "PMC10456563"
+      ],
+      "citing_total_considered": 8,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "39076939"
+      ]
+    },
+    {
+      "trial_pmid": "37629037",
+      "trial_study_ids": [
+        "PMC10454641"
+      ],
+      "trial_pmcids": [
+        "PMC10454641"
+      ],
+      "citing_total_considered": 0,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37637286",
+      "trial_study_ids": [
+        "PMC10459339"
+      ],
+      "trial_pmcids": [
+        "PMC10459339"
+      ],
+      "citing_total_considered": 1,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37639078",
+      "trial_study_ids": [
+        "PMC10462590"
+      ],
+      "trial_pmcids": [
+        "PMC10462590"
+      ],
+      "citing_total_considered": 3,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37644104",
+      "trial_study_ids": [
+        "PMC10465608"
+      ],
+      "trial_pmcids": [
+        "PMC10465608"
+      ],
+      "citing_total_considered": 9,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37644466",
+      "trial_study_ids": [
+        "PMC10466728"
+      ],
+      "trial_pmcids": [
+        "PMC10466728"
+      ],
+      "citing_total_considered": 4,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "39014315"
+      ]
+    },
+    {
+      "trial_pmid": "37645259",
+      "trial_study_ids": [
+        "PMC10461197"
+      ],
+      "trial_pmcids": [
+        "PMC10461197"
+      ],
+      "citing_total_considered": 1,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37645518",
+      "trial_study_ids": [
+        "PMC10461005"
+      ],
+      "trial_pmcids": [
+        "PMC10461005"
+      ],
+      "citing_total_considered": 4,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37652586",
+      "trial_study_ids": [
+        "PMC10476129"
+      ],
+      "trial_pmcids": [
+        "PMC10476129"
+      ],
+      "citing_total_considered": 0,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37652855",
+      "trial_study_ids": [
+        "PMC10497890"
+      ],
+      "trial_pmcids": [
+        "PMC10497890"
+      ],
+      "citing_total_considered": 9,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37663739",
+      "trial_study_ids": [
+        "PMC10473299"
+      ],
+      "trial_pmcids": [
+        "PMC10473299"
+      ],
+      "citing_total_considered": 2,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "38918704"
+      ]
+    },
+    {
+      "trial_pmid": "37674807",
+      "trial_study_ids": [
+        "PMC10478246"
+      ],
+      "trial_pmcids": [
+        "PMC10478246"
+      ],
+      "citing_total_considered": 7,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37674948",
+      "trial_study_ids": [
+        "PMC10479956"
+      ],
+      "trial_pmcids": [
+        "PMC10479956"
+      ],
+      "citing_total_considered": 7,
+      "meta_matches_total": 4,
+      "meta_pmids": [
+        "39174960",
+        "39263954",
+        "39886783",
+        "40422568"
+      ]
+    },
+    {
+      "trial_pmid": "37675090",
+      "trial_study_ids": [
+        "PMC10478025"
+      ],
+      "trial_pmcids": [
+        "PMC10478025"
+      ],
+      "citing_total_considered": 2,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37680096",
+      "trial_study_ids": [
+        "PMC10493442"
+      ],
+      "trial_pmcids": [
+        "PMC10493442"
+      ],
+      "citing_total_considered": 2,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37685589",
+      "trial_study_ids": [
+        "PMC10488500"
+      ],
+      "trial_pmcids": [
+        "PMC10488500"
+      ],
+      "citing_total_considered": 3,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37685819",
+      "trial_study_ids": [
+        "PMC10489015"
+      ],
+      "trial_pmcids": [
+        "PMC10489015"
+      ],
+      "citing_total_considered": 7,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "37893237"
+      ]
+    },
+    {
+      "trial_pmid": "37692042",
+      "trial_study_ids": [
+        "PMC10483997"
+      ],
+      "trial_pmcids": [
+        "PMC10483997"
+      ],
+      "citing_total_considered": 2,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37701476",
+      "trial_study_ids": [
+        "PMC10494795"
+      ],
+      "trial_pmcids": [
+        "PMC10494795"
+      ],
+      "citing_total_considered": 0,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37711553",
+      "trial_study_ids": [
+        "PMC10497979"
+      ],
+      "trial_pmcids": [
+        "PMC10497979"
+      ],
+      "citing_total_considered": 2,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "38659018"
+      ]
+    },
+    {
+      "trial_pmid": "37711935",
+      "trial_study_ids": [
+        "PMC10499465"
+      ],
+      "trial_pmcids": [
+        "PMC10499465"
+      ],
+      "citing_total_considered": 12,
+      "meta_matches_total": 0,
+      "meta_pmids": []
+    },
+    {
+      "trial_pmid": "37719867",
+      "trial_study_ids": [
+        "PMC10502722"
+      ],
+      "trial_pmcids": [
+        "PMC10502722"
+      ],
+      "citing_total_considered": 3,
+      "meta_matches_total": 1,
+      "meta_pmids": [
+        "41288078"
+      ]
+    }
+  ]
+}

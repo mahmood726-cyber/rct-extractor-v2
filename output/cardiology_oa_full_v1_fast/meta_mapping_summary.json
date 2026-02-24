@@ -1,0 +1,617 @@
+{
+  "generated_at_utc": "2026-02-24T15:41:30.995316+00:00",
+  "inputs": {
+    "results_jsonl": "output/cardiology_oa_full_v1_fast/results.jsonl",
+    "max_trials": null,
+    "max_citing_per_trial": 300,
+    "max_meta_per_trial": 80,
+    "require_cardiology": true,
+    "meta_mode": "strict"
+  },
+  "ncbi": {
+    "api_key_present": true,
+    "request_sleep_sec": 0.12,
+    "timeout_sec": 25.0
+  },
+  "counts": {
+    "trial_rows_considered": 180,
+    "trial_rows_with_pmid": 178,
+    "unresolved_pmcid_rows": 2,
+    "unique_trial_pmids": 178,
+    "unique_citing_pmids_considered": 1315,
+    "unique_candidate_meta_pmids": 101,
+    "trials_with_meta_matches": 68,
+    "edge_rows": 109
+  },
+  "rates": {
+    "trial_pmid_resolution_rate": 0.9888888888888889,
+    "trial_with_meta_rate": 0.38202247191011235
+  },
+  "distributions": {
+    "status_counts_considered_rows": {
+      "extracted": 180
+    }
+  },
+  "top_meta_rows": [
+    {
+      "meta_pmid": "39618855",
+      "trial_pmid_count": 3,
+      "title": "Assessment of Redundant Meta-Analyses on Catheter Ablation of Atrial Fibrillation in Patients with Heart Failure.",
+      "pubdate": "2024 Nov",
+      "journal": "Reviews in cardiovascular medicine",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review"
+      ]
+    },
+    {
+      "meta_pmid": "37950145",
+      "trial_pmid_count": 2,
+      "title": "Safety and efficacy of catheter ablation for atrial fibrillation in cancer survivors: a systematic review and meta-analysis.",
+      "pubdate": "2024 Jan",
+      "journal": "Journal of interventional cardiac electrophysiology : an international journal of arrhythmias and pacing",
+      "pubtype": [
+        "Meta-Analysis",
+        "Systematic Review",
+        "Journal Article"
+      ]
+    },
+    {
+      "meta_pmid": "38020055",
+      "trial_pmid_count": 2,
+      "title": "Catheter ablation in patients with paroxysmal atrial fibrillation and absence of structural heart disease: A meta-analysis of randomized trials.",
+      "pubdate": "2023 Dec",
+      "journal": "International journal of cardiology. Heart & vasculature",
+      "pubtype": [
+        "Journal Article"
+      ]
+    },
+    {
+      "meta_pmid": "39057618",
+      "trial_pmid_count": 2,
+      "title": "Sodium-Glucose Transporter 2 Inhibitors in Heart Failure: An Overview of Systematic Reviews.",
+      "pubdate": "2024 Jun 28",
+      "journal": "Journal of cardiovascular development and disease",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ]
+    },
+    {
+      "meta_pmid": "39270779",
+      "trial_pmid_count": 2,
+      "title": "Comparison of rhythm versus rate control of atrial fibrillation in heart failure subgroups: Systematic review and meta-analysis of randomized controlled trials.",
+      "pubdate": "2024 Nov-Dec",
+      "journal": "Indian pacing and electrophysiology journal",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ]
+    },
+    {
+      "meta_pmid": "40878995",
+      "trial_pmid_count": 2,
+      "title": "Depression and cardiovascular disease: mind the gap in the guidelines.",
+      "pubdate": "2025 Nov 3",
+      "journal": "European heart journal",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review"
+      ]
+    },
+    {
+      "meta_pmid": "41303036",
+      "trial_pmid_count": 2,
+      "title": "Effects of Sodium Glucose Co-Transporter 2 Inhibitors on Atrial Fibrillation Recurrences After Catheter Ablation in Atrial Fibrillation Patients: A Systematic Review and Meta-Analysis.",
+      "pubdate": "2025 Nov 11",
+      "journal": "Journal of clinical medicine",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ]
+    },
+    {
+      "meta_pmid": "36465144",
+      "trial_pmid_count": 1,
+      "title": "Meta-analysis addressing the impact of sodium-glucose Co-transporter-2 inhibitors on the risk for atrial fibrillation among individuals with heart failure with preserved ejection fraction.",
+      "pubdate": "2022 Dec",
+      "journal": "International journal of cardiology. Cardiovascular risk and prevention",
+      "pubtype": [
+        "Journal Article"
+      ]
+    },
+    {
+      "meta_pmid": "37226247",
+      "trial_pmid_count": 1,
+      "title": "Sodium-glucose cotransporter 2 inhibitor may not prevent atrial fibrillation in patients with heart failure: a systematic review.",
+      "pubdate": "2023 May 24",
+      "journal": "Cardiovascular diabetology",
+      "pubtype": [
+        "Systematic Review",
+        "Meta-Analysis",
+        "Journal Article",
+        "Research Support, Non-U.S. Gov't"
+      ]
+    },
+    {
+      "meta_pmid": "37469293",
+      "trial_pmid_count": 1,
+      "title": "Short-term and long-term effects of cryoballoon ablation versus antiarrhythmic drug therapy as first-line treatment for paroxysmal atrial fibrillation: A systematic review and meta-analysis.",
+      "pubdate": "2023 Oct",
+      "journal": "Clinical cardiology",
+      "pubtype": [
+        "Meta-Analysis",
+        "Systematic Review",
+        "Journal Article"
+      ]
+    },
+    {
+      "meta_pmid": "37626066",
+      "trial_pmid_count": 1,
+      "title": "High-intensity interval training versus moderate-intensity continuous training on patient quality of life in cardiovascular disease: a systematic review and meta-analysis.",
+      "pubdate": "2023 Aug 25",
+      "journal": "Scientific reports",
+      "pubtype": [
+        "Meta-Analysis",
+        "Systematic Review",
+        "Journal Article",
+        "Research Support, Non-U.S. Gov't"
+      ]
+    },
+    {
+      "meta_pmid": "37660005",
+      "trial_pmid_count": 1,
+      "title": "Left ventricular remodeling response to SGLT2 inhibitors in heart failure: an updated meta-analysis of randomized controlled studies.",
+      "pubdate": "2023 Sep 2",
+      "journal": "Cardiovascular diabetology",
+      "pubtype": [
+        "Meta-Analysis",
+        "Journal Article"
+      ]
+    },
+    {
+      "meta_pmid": "37685629",
+      "trial_pmid_count": 1,
+      "title": "Efficacy and Safety of Oral Factor XIa Inhibitors in Stroke Prevention: A Systematic Review and Meta-Analysis.",
+      "pubdate": "2023 Aug 26",
+      "journal": "Journal of clinical medicine",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ]
+    },
+    {
+      "meta_pmid": "37771663",
+      "trial_pmid_count": 1,
+      "title": "Comparison of middle-term valve durability between transcatheter aortic valve implantation and surgical aortic valve replacement: an updated systematic review and meta-analysis of RCTs.",
+      "pubdate": "2023",
+      "journal": "Frontiers in cardiovascular medicine",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ]
+    },
+    {
+      "meta_pmid": "37893237",
+      "trial_pmid_count": 1,
+      "title": "Prevalence and Impact of Cerebral Microbleeds on Clinical and Safety Outcomes in Acute Ischaemic Stroke Patients Receiving Reperfusion Therapy: A Systematic Review and Meta-Analysis.",
+      "pubdate": "2023 Oct 23",
+      "journal": "Biomedicines",
+      "pubtype": [
+        "Journal Article"
+      ]
+    },
+    {
+      "meta_pmid": "38402528",
+      "trial_pmid_count": 1,
+      "title": "Predictors of pacemaker requirement in patients with implantable loop recorder and unexplained syncope: A systematic review and meta-analysis.",
+      "pubdate": "2024 Feb",
+      "journal": "Clinical cardiology",
+      "pubtype": [
+        "Meta-Analysis",
+        "Systematic Review",
+        "Journal Article"
+      ]
+    },
+    {
+      "meta_pmid": "38424483",
+      "trial_pmid_count": 1,
+      "title": "Catheter ablation versus medical therapy in atrial fibrillation: an umbrella review of meta-analyses of randomized clinical trials.",
+      "pubdate": "2024 Feb 29",
+      "journal": "BMC cardiovascular disorders",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review"
+      ]
+    },
+    {
+      "meta_pmid": "38573633",
+      "trial_pmid_count": 1,
+      "title": "SGLT2 Inhibitors, Functional Capacity, and Quality of Life in Patients With Heart Failure: A Systematic Review and Meta-Analysis.",
+      "pubdate": "2024 Apr 1",
+      "journal": "JAMA network open",
+      "pubtype": [
+        "Meta-Analysis",
+        "Systematic Review",
+        "Journal Article",
+        "Research Support, Non-U.S. Gov't"
+      ]
+    },
+    {
+      "meta_pmid": "38623957",
+      "trial_pmid_count": 1,
+      "title": "Long-term clinical outcomes of intravascular imaging-guided percutaneous coronary intervention versus angiography-guided percutaneous coronary intervention in complex coronary lesions: a systematic review and meta-analysis.",
+      "pubdate": "2024",
+      "journal": "Future cardiology",
+      "pubtype": [
+        "Journal Article",
+        "Meta-Analysis",
+        "Systematic Review"
+      ]
+    },
+    {
+      "meta_pmid": "38659018",
+      "trial_pmid_count": 1,
+      "title": "Efficacy of selenium on patients undergoing cardiac surgery: a meta-analysis of randomized controlled trials.",
+      "pubdate": "2024 Apr 24",
+      "journal": "Journal of cardiothoracic surgery",
+      "pubtype": [
+        "Journal Article",
+        "Meta-Analysis",
+        "Systematic Review"
+      ]
+    },
+    {
+      "meta_pmid": "38699102",
+      "trial_pmid_count": 1,
+      "title": "Comparison of Effectiveness and Safety of Direct-Acting Oral Anticoagulants and Vitamin K Agonists in Patients With Atrial Fibrillation and End-Stage Kidney Disease: A Systematic Review and Meta-Analysis.",
+      "pubdate": "2024 Apr",
+      "journal": "Cureus",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ]
+    },
+    {
+      "meta_pmid": "38731033",
+      "trial_pmid_count": 1,
+      "title": "Comparison between Imaging and Physiology in Guiding Coronary Revascularization: A Meta-Analysis.",
+      "pubdate": "2024 Apr 24",
+      "journal": "Journal of clinical medicine",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ]
+    },
+    {
+      "meta_pmid": "38742375",
+      "trial_pmid_count": 1,
+      "title": "Timing of oral anticoagulants initiation for atrial fibrillation after acute ischemic stroke: A systematic review and meta-analysis.",
+      "pubdate": "2024 Dec",
+      "journal": "European stroke journal",
+      "pubtype": [
+        "Systematic Review",
+        "Journal Article",
+        "Meta-Analysis"
+      ]
+    },
+    {
+      "meta_pmid": "38808173",
+      "trial_pmid_count": 1,
+      "title": "A Comprehensive Analysis of Conventional Acupuncture and Pharmacological Approaches for Cardiac Arrhythmias: An Umbrella Review.",
+      "pubdate": "2024 May",
+      "journal": "The Journal of innovations in cardiac rhythm management",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ]
+    },
+    {
+      "meta_pmid": "38818215",
+      "trial_pmid_count": 1,
+      "title": "Cardiocerebrovascular benefits of early rhythm control in patients with atrial fibrillation detected after stroke: a systematic review and meta-analysis.",
+      "pubdate": "2024",
+      "journal": "Frontiers in cardiovascular medicine",
+      "pubtype": [
+        "Systematic Review",
+        "Journal Article"
+      ]
+    },
+    {
+      "meta_pmid": "38907344",
+      "trial_pmid_count": 1,
+      "title": "The evolution of TAVI performance overtime: an overview of systematic reviews.",
+      "pubdate": "2024 Jun 21",
+      "journal": "BMC cardiovascular disorders",
+      "pubtype": [
+        "Journal Article",
+        "Review",
+        "Research Support, Non-U.S. Gov't"
+      ]
+    },
+    {
+      "meta_pmid": "38918060",
+      "trial_pmid_count": 1,
+      "title": "Heart failure with preserved ejection fraction management: a systematic review of clinical practice guidelines and recommendations.",
+      "pubdate": "2024 Nov 5",
+      "journal": "European heart journal. Quality of care & clinical outcomes",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review"
+      ]
+    },
+    {
+      "meta_pmid": "38918704",
+      "trial_pmid_count": 1,
+      "title": "Antiarrhythmic drug therapy and catheter ablation in patients with paroxysmal or persistent atrial fibrillation: a systematic review and meta-analysis.",
+      "pubdate": "2024 Jun 25",
+      "journal": "BMC cardiovascular disorders",
+      "pubtype": [
+        "Systematic Review",
+        "Meta-Analysis",
+        "Journal Article"
+      ]
+    },
+    {
+      "meta_pmid": "39003246",
+      "trial_pmid_count": 1,
+      "title": "The effect of pharmacist-led interventions on the appropriateness and clinical outcomes of anticoagulant therapy: a systematic review and meta-analysis.",
+      "pubdate": "2024 Sep 13",
+      "journal": "European heart journal. Quality of care & clinical outcomes",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review",
+        "Meta-Analysis"
+      ]
+    },
+    {
+      "meta_pmid": "39014315",
+      "trial_pmid_count": 1,
+      "title": "Efficacy and safety of extracorporeal membrane oxygenation for cardiogenic shock complicating myocardial infarction: a systematic review and meta-analysis.",
+      "pubdate": "2024 Jul 16",
+      "journal": "BMC cardiovascular disorders",
+      "pubtype": [
+        "Systematic Review",
+        "Journal Article",
+        "Meta-Analysis"
+      ]
+    },
+    {
+      "meta_pmid": "39076939",
+      "trial_pmid_count": 1,
+      "title": "Efficacy and Safety of PSCK9 Inhibitors on Patients with Acute Coronary Syndrome: A Systematic Review and Meta-Analysis of Randomised Controlled Trials.",
+      "pubdate": "2024 Mar",
+      "journal": "Reviews in cardiovascular medicine",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review"
+      ]
+    },
+    {
+      "meta_pmid": "39077364",
+      "trial_pmid_count": 1,
+      "title": "Quality of Life and Safety Outcomes after First-Line Treatment of Symptomatic AF with Cryoablation or Drug Therapy: A Meta-Analysis of Randomized Controlled Trials.",
+      "pubdate": "2024 Feb",
+      "journal": "Reviews in cardiovascular medicine",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review"
+      ]
+    },
+    {
+      "meta_pmid": "39108740",
+      "trial_pmid_count": 1,
+      "title": "Efficacy and safety of Mavacamten for symptomatic Hypertrophic cardiomyopathy - an updated Meta-Analysis of randomized controlled trials.",
+      "pubdate": "2024 Aug",
+      "journal": "International journal of cardiology. Heart & vasculature",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ]
+    },
+    {
+      "meta_pmid": "39119189",
+      "trial_pmid_count": 1,
+      "title": "Efficacy and safety of catheter ablation for atrial fibrillation in patients with heart failure with preserved ejection fraction: a systematic review and meta-analysis.",
+      "pubdate": "2024",
+      "journal": "Frontiers in cardiovascular medicine",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review"
+      ]
+    },
+    {
+      "meta_pmid": "39120758",
+      "trial_pmid_count": 1,
+      "title": "Comparison between non-vitamin K oral antagonist versus warfarin in atrial fibrillation with and without valvular heart disease: a systematic review and meta-analysis.",
+      "pubdate": "2024 Aug 9",
+      "journal": "The Egyptian heart journal : (EHJ) : official bulletin of the Egyptian Society of Cardiology",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ]
+    },
+    {
+      "meta_pmid": "39149585",
+      "trial_pmid_count": 1,
+      "title": "Dietary interventions in the management of atrial fibrillation.",
+      "pubdate": "2024",
+      "journal": "Frontiers in cardiovascular medicine",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review"
+      ]
+    },
+    {
+      "meta_pmid": "39174960",
+      "trial_pmid_count": 1,
+      "title": "Efficacy of mesenchymal stem cell transplantation on major adverse cardiovascular events and cardiac function indices in patients with chronic heart failure: a meta-analysis of randomized controlled trials.",
+      "pubdate": "2024 Aug 22",
+      "journal": "Journal of translational medicine",
+      "pubtype": [
+        "Journal Article",
+        "Meta-Analysis"
+      ]
+    },
+    {
+      "meta_pmid": "39188318",
+      "trial_pmid_count": 1,
+      "title": "Minimally invasive vs. conventional mitral valve surgery: a meta-analysis of randomised controlled trials.",
+      "pubdate": "2024",
+      "journal": "Frontiers in cardiovascular medicine",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review"
+      ]
+    },
+    {
+      "meta_pmid": "39237457",
+      "trial_pmid_count": 1,
+      "title": "Update on antithrombotic therapy and body mass: a clinical consensus statement of the European Society of Cardiology Working Group on Cardiovascular Pharmacotherapy and the European Society of Cardiology Working Group on Thrombosis.",
+      "pubdate": "2024 Nov 6",
+      "journal": "European heart journal. Cardiovascular pharmacotherapy",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review",
+        "Consensus Statement"
+      ]
+    },
+    {
+      "meta_pmid": "39261775",
+      "trial_pmid_count": 1,
+      "title": "Intravascular imaging-guided versus angiography-guided percutaneous coronary intervention: a systematic review and bayesian network meta-analysis of randomized controlled trials.",
+      "pubdate": "2024 Sep 11",
+      "journal": "BMC cardiovascular disorders",
+      "pubtype": [
+        "Systematic Review",
+        "Journal Article",
+        "Network Meta-Analysis"
+      ]
+    },
+    {
+      "meta_pmid": "39263954",
+      "trial_pmid_count": 1,
+      "title": "Induced pluripotent stem cell therapies in heart failure treatment: a meta-analysis and systematic review.",
+      "pubdate": "2024 Sep-Oct",
+      "journal": "Regenerative medicine",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review",
+        "Meta-Analysis"
+      ]
+    },
+    {
+      "meta_pmid": "39318872",
+      "trial_pmid_count": 1,
+      "title": "Cardiac thrombus detected by cardiac computed tomography angiography in patients with acute ischemic stroke: a meta-analysis.",
+      "pubdate": "2024",
+      "journal": "Frontiers in neurology",
+      "pubtype": [
+        "Journal Article"
+      ]
+    },
+    {
+      "meta_pmid": "39398777",
+      "trial_pmid_count": 1,
+      "title": "Empagliflozin Effect on Left Cardiac Parameters in Acute Coronary Syndrome: A Systematic Review and Meta-Analysis of Randomized Controlled Trials.",
+      "pubdate": "2024 Sep",
+      "journal": "Cureus",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ]
+    },
+    {
+      "meta_pmid": "39484133",
+      "trial_pmid_count": 1,
+      "title": "A Systematic Review and Meta-analysis of Efficacy and Safety of Mavacamten for the Treatment of Hypertrophic Cardiomyopathy.",
+      "pubdate": "2024 Oct",
+      "journal": "Reviews in cardiovascular medicine",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review"
+      ]
+    },
+    {
+      "meta_pmid": "39533603",
+      "trial_pmid_count": 1,
+      "title": "Meta-analysis of the efficacy and impact on cardiac function of sodium-glucose cotransporter 2 inhibitor Empagliflozin in heart failure patients.",
+      "pubdate": "2024 Nov 8",
+      "journal": "Medicine",
+      "pubtype": [
+        "Journal Article",
+        "Meta-Analysis",
+        "Systematic Review"
+      ]
+    },
+    {
+      "meta_pmid": "39540016",
+      "trial_pmid_count": 1,
+      "title": "Hemodynamic and clinical outcomes with balloon-expandable valves versus self-expanding valves in patients with small aortic annulus undergoing transcatheter aortic valve replacement: A meta-analysis of randomized controlled trials and propensity score matched studies.",
+      "pubdate": "2024 Dec",
+      "journal": "International journal of cardiology. Heart & vasculature",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ]
+    },
+    {
+      "meta_pmid": "39570492",
+      "trial_pmid_count": 1,
+      "title": "Cost Effectiveness of Catheter Ablation Versus Antiarrhythmic Drugs for Atrial Fibrillation: A Systematic Review and Meta-analysis.",
+      "pubdate": "2025 Mar",
+      "journal": "American journal of cardiovascular drugs : drugs, devices, and other interventions",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review",
+        "Meta-Analysis",
+        "Comparative Study"
+      ]
+    },
+    {
+      "meta_pmid": "39612438",
+      "trial_pmid_count": 1,
+      "title": "Evaluation of the efficacy and safety of acupuncture assisted treatment for atrial fibrillation: A systematic review and meta-analysis based on randomized controlled trials.",
+      "pubdate": "2024 Nov 29",
+      "journal": "Medicine",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review",
+        "Meta-Analysis"
+      ]
+    },
+    {
+      "meta_pmid": "39617283",
+      "trial_pmid_count": 1,
+      "title": "Omega-3 and Risk of atrial fibrillation: Vagally-mediated double-edged sword.",
+      "pubdate": "2025 Jul-Aug",
+      "journal": "Progress in cardiovascular diseases",
+      "pubtype": [
+        "Journal Article",
+        "Review",
+        "Meta-Analysis"
+      ]
+    },
+    {
+      "meta_pmid": "39680561",
+      "trial_pmid_count": 1,
+      "title": "Right atrial volume index and right atrial volume predict atrial fibrillation recurrence: A meta-analysis.",
+      "pubdate": "2024",
+      "journal": "PloS one",
+      "pubtype": [
+        "Journal Article",
+        "Meta-Analysis"
+      ]
+    }
+  ],
+  "cache_sizes": {
+    "pmcid_to_pmid": 180,
+    "trial_citedin": 178,
+    "pmid_summary": 1315
+  },
+  "paths": {
+    "edges_jsonl": "output/cardiology_oa_full_v1_fast/meta_mapping_edges.jsonl",
+    "trial_map_json": "output/cardiology_oa_full_v1_fast/meta_mapping_trials.json",
+    "cache_dir": "output/cardiology_oa_full_v1_fast/cache_meta_map"
+  }
+}
