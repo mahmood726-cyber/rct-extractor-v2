@@ -1,0 +1,1076 @@
+{
+  "rows": [
+    {
+      "pmid": "41523524",
+      "title": "Efficacy and Safety of Percutaneous Kyphoplasty Combined With Zoledronic Acid for Osteoporotic Vertebral Compression Fractures: A Systematic Review and Meta-Analysis.",
+      "pubdate": "2025 Dec",
+      "journal": "Cureus",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ],
+      "authors": [
+        "Tayyab M",
+        "Ahmad M",
+        "Akbar R",
+        "Syed R",
+        "Ullah KI",
+        "Haq NU",
+        "Khan I",
+        "Khan AA",
+        "Khan A",
+        "Javaid MH"
+      ],
+      "author_name_match": true,
+      "is_meta": true,
+      "meta_reasons": [
+        "title_hint"
+      ],
+      "is_cardiology": false,
+      "cardiology_terms": [],
+      "accepted": false
+    },
+    {
+      "pmid": "41210065",
+      "title": "Efficacy of Platelet-Rich Plasma Augmentation in Anterior Cruciate Ligament Reconstruction: An Updated Systematic Review and Meta-Analysis of Clinical Trials.",
+      "pubdate": "2025 Oct",
+      "journal": "Cureus",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ],
+      "authors": [
+        "Tayyab M",
+        "Ahmad Z",
+        "Akbar R",
+        "Ahmad M",
+        "Shah S",
+        "Khan S",
+        "Hussain I",
+        "Khan AA",
+        "Syed R",
+        "Khan A",
+        "Ali M"
+      ],
+      "author_name_match": true,
+      "is_meta": true,
+      "meta_reasons": [
+        "title_hint"
+      ],
+      "is_cardiology": false,
+      "cardiology_terms": [],
+      "accepted": false
+    },
+    {
+      "pmid": "41149262",
+      "title": "Impact of Atrial Fibrillation on the Outcome of Patients with Brugada Syndrome: A Meta-Analysis.",
+      "pubdate": "2025 Oct 3",
+      "journal": "Journal of cardiovascular development and disease",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ],
+      "authors": [
+        "Aboutorabi M",
+        "Ahmad M",
+        "Bray JJH",
+        "Gomes DA",
+        "Providencia R"
+      ],
+      "author_name_match": true,
+      "is_meta": true,
+      "meta_reasons": [
+        "title_hint"
+      ],
+      "is_cardiology": true,
+      "cardiology_terms": [
+        "atrial fibrillation",
+        "cardio"
+      ],
+      "accepted": true
+    },
+    {
+      "pmid": "41127782",
+      "title": "Effectiveness of Dry Needling Combined With Exercise Versus Exercise Alone in Various Tendinopathies: A Systematic Review and Meta-Analysis.",
+      "pubdate": "2025 Sep",
+      "journal": "Cureus",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ],
+      "authors": [
+        "Tayyab M",
+        "Ahmad Z",
+        "Tanveer M",
+        "Ahmad M",
+        "Akbar R",
+        "Shah S",
+        "Syed R",
+        "Khan AA",
+        "Khan A",
+        "Ali M",
+        "Shabir M"
+      ],
+      "author_name_match": true,
+      "is_meta": true,
+      "meta_reasons": [
+        "title_hint"
+      ],
+      "is_cardiology": false,
+      "cardiology_terms": [],
+      "accepted": false
+    },
+    {
+      "pmid": "40796655",
+      "title": "Diagnostic test accuracy of simplified algorithms for diagnosing acute rheumatic fever: a systematic review.",
+      "pubdate": "2025 Aug 12",
+      "journal": "Communications medicine",
+      "pubtype": [
+        "Journal Article"
+      ],
+      "authors": [
+        "Providencia R",
+        "Aali G",
+        "Zhu F",
+        "Katairo T",
+        "Ahmad M",
+        "Bray JJ",
+        "Pelone F",
+        "Marijon E",
+        "Cassandra M",
+        "Celermajer DS",
+        "Shokraneh F"
+      ],
+      "author_name_match": true,
+      "is_meta": true,
+      "meta_reasons": [
+        "title_hint"
+      ],
+      "is_cardiology": false,
+      "cardiology_terms": [],
+      "accepted": false
+    },
+    {
+      "pmid": "40740155",
+      "title": "Direct oral anticoagulants versus vitamin K antagonists in concurrent hypertrophic cardiomyopathy and atrial fibrillation: a meta-analysis.",
+      "pubdate": "2025 Aug",
+      "journal": "Expert review of cardiovascular therapy",
+      "pubtype": [
+        "Journal Article",
+        "Meta-Analysis",
+        "Systematic Review",
+        "Comparative Study"
+      ],
+      "authors": [
+        "Aboutorabi M",
+        "Ahmad M",
+        "Flora K",
+        "Ferreira H",
+        "Chiu M",
+        "Bray JJH",
+        "Kumar NS",
+        "Providencia R"
+      ],
+      "author_name_match": true,
+      "is_meta": true,
+      "meta_reasons": [
+        "pubtype",
+        "title_hint"
+      ],
+      "is_cardiology": true,
+      "cardiology_terms": [
+        "atrial fibrillation",
+        "cardio"
+      ],
+      "accepted": true
+    },
+    {
+      "pmid": "40737493",
+      "title": "Mechanical circulatory support devices vs. standard medical therapy for treatment of myocardial infarction complicated by cardiogenic shock: a network meta-analysis.",
+      "pubdate": "2025 Nov 4",
+      "journal": "European heart journal. Quality of care & clinical outcomes",
+      "pubtype": [
+        "Journal Article",
+        "Network Meta-Analysis"
+      ],
+      "authors": [
+        "Freer R",
+        "Frost O",
+        "Sreenivas A",
+        "Zaghloul S",
+        "Bray J",
+        "Ahmad M",
+        "Providência R"
+      ],
+      "author_name_match": true,
+      "is_meta": true,
+      "meta_reasons": [
+        "pubtype",
+        "title_hint"
+      ],
+      "is_cardiology": true,
+      "cardiology_terms": [
+        "cardio",
+        "heart",
+        "myocard"
+      ],
+      "accepted": true
+    },
+    {
+      "pmid": "40468584",
+      "title": "Fibrosis-Guided Ablation in Patients With Atrial Fibrillation: A Meta-Analysis of Randomized Controlled Trials.",
+      "pubdate": "2025 Aug",
+      "journal": "Journal of cardiovascular electrophysiology",
+      "pubtype": [
+        "Journal Article",
+        "Meta-Analysis",
+        "Systematic Review"
+      ],
+      "authors": [
+        "Salih A",
+        "Sutaria A",
+        "Montaser Z",
+        "Magar TP",
+        "El Ashal G",
+        "Zaghloul S",
+        "Tom AJ",
+        "Ahmad M",
+        "Creta A",
+        "Ali H",
+        "Barra S",
+        "Farkowski M",
+        "Cappato R",
+        "Providencia R"
+      ],
+      "author_name_match": true,
+      "is_meta": true,
+      "meta_reasons": [
+        "pubtype",
+        "title_hint"
+      ],
+      "is_cardiology": true,
+      "cardiology_terms": [
+        "atrial fibrillation",
+        "cardio"
+      ],
+      "accepted": true
+    },
+    {
+      "pmid": "39908074",
+      "title": "Weight reduction interventions for the management of atrial fibrillation in overweight and obese people.",
+      "pubdate": "2024 May 14",
+      "journal": "The Cochrane database of systematic reviews",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ],
+      "authors": [
+        "Valli H",
+        "Tindale A",
+        "Butt H",
+        "Beattie CJ",
+        "Adasuriya G",
+        "Warraich M",
+        "Ahmad M",
+        "Banerjee A",
+        "Providencia R",
+        "Haldar S"
+      ],
+      "author_name_match": true,
+      "is_meta": false,
+      "meta_reasons": [],
+      "is_cardiology": true,
+      "cardiology_terms": [
+        "atrial fibrillation"
+      ],
+      "accepted": false
+    },
+    {
+      "pmid": "39832806",
+      "title": "Rigour of development of European Society of Cardiology, American College of Cardiology and American Heart Association guidelines over a 12-year period (2013-2024): a systematic review of guidelines.",
+      "pubdate": "2025 Sep 12",
+      "journal": "European heart journal. Quality of care & clinical outcomes",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review"
+      ],
+      "authors": [
+        "Gomes DA",
+        "Ahuja SAC",
+        "Yu YT",
+        "English R",
+        "Ahmad M",
+        "Khanji M",
+        "Adragão P",
+        "Providência R"
+      ],
+      "author_name_match": true,
+      "is_meta": true,
+      "meta_reasons": [
+        "pubtype",
+        "title_hint"
+      ],
+      "is_cardiology": true,
+      "cardiology_terms": [
+        "cardio",
+        "heart"
+      ],
+      "accepted": true
+    },
+    {
+      "pmid": "39312290",
+      "title": "Long-term antibiotic prophylaxis for prevention of rheumatic fever recurrence and progression to rheumatic heart disease.",
+      "pubdate": "2024 Sep 23",
+      "journal": "The Cochrane database of systematic reviews",
+      "pubtype": [
+        "Systematic Review",
+        "Journal Article",
+        "Meta-Analysis"
+      ],
+      "authors": [
+        "Bray JJ",
+        "Thompson S",
+        "Seitler S",
+        "Ali SA",
+        "Yiu J",
+        "Salehi M",
+        "Ahmad M",
+        "Pelone F",
+        "Gashau H",
+        "Shokraneh F",
+        "Ahmed N",
+        "Cassandra M",
+        "Marijon E",
+        "Celermajer DS",
+        "Providencia R"
+      ],
+      "author_name_match": true,
+      "is_meta": true,
+      "meta_reasons": [
+        "pubtype"
+      ],
+      "is_cardiology": true,
+      "cardiology_terms": [
+        "heart"
+      ],
+      "accepted": true
+    },
+    {
+      "pmid": "39290636",
+      "title": "Local anaesthetic to reduce injection pain in patients who are prescribed intramuscular benzathine penicillin G: a systematic review and meta-analysis.",
+      "pubdate": "2024 Oct",
+      "journal": "EClinicalMedicine",
+      "pubtype": [
+        "Journal Article"
+      ],
+      "authors": [
+        "Pelone F",
+        "Kwok B",
+        "Ahmed S",
+        "Kilic Y",
+        "Ali SA",
+        "Ahmed N",
+        "Ahmad M",
+        "Bray JJ",
+        "Shokraneh F",
+        "Cassandra M",
+        "Celermajer DS",
+        "Marijon E",
+        "Providencia R"
+      ],
+      "author_name_match": true,
+      "is_meta": true,
+      "meta_reasons": [
+        "title_hint"
+      ],
+      "is_cardiology": false,
+      "cardiology_terms": [],
+      "accepted": false
+    },
+    {
+      "pmid": "39175848",
+      "title": "Efficacy of renal denervation as an adjunct to pulmonary vein isolation for atrial fibrillation treatment: a systematic review and meta-analysis.",
+      "pubdate": "2024 Jul",
+      "journal": "European heart journal open",
+      "pubtype": [
+        "Journal Article"
+      ],
+      "authors": [
+        "Thavabalan K",
+        "Sheikh M",
+        "Phuah Y",
+        "Rajput SK",
+        "Fatima N",
+        "Sutaria A",
+        "Bray JJH",
+        "Ahmad M",
+        "Glatzel H",
+        "Ahmad R",
+        "Snell L",
+        "Kumar NS",
+        "García-Pérez CL",
+        "Candilio L",
+        "Providencia R"
+      ],
+      "author_name_match": true,
+      "is_meta": true,
+      "meta_reasons": [
+        "title_hint"
+      ],
+      "is_cardiology": true,
+      "cardiology_terms": [
+        "atrial fibrillation",
+        "heart"
+      ],
+      "accepted": true
+    },
+    {
+      "pmid": "38982996",
+      "title": "Exercise training improves exercise capacity and quality of life in heart failure with preserved ejection fraction: a systematic review and meta-analysis of randomized controlled trials.",
+      "pubdate": "2024 Jul",
+      "journal": "European heart journal open",
+      "pubtype": [
+        "Journal Article"
+      ],
+      "authors": [
+        "Baral R",
+        "Ho JSY",
+        "Soroya AN",
+        "Hanger M",
+        "Clarke RE",
+        "Memon SF",
+        "Glatzel H",
+        "Ahmad M",
+        "Providencia R",
+        "Bray JJH",
+        "D'Ascenzo F"
+      ],
+      "author_name_match": true,
+      "is_meta": true,
+      "meta_reasons": [
+        "title_hint"
+      ],
+      "is_cardiology": true,
+      "cardiology_terms": [
+        "heart"
+      ],
+      "accepted": true
+    },
+    {
+      "pmid": "38828867",
+      "title": "External electrical and pharmacological cardioversion for atrial fibrillation, atrial flutter or atrial tachycardias: a network meta-analysis.",
+      "pubdate": "2024 Jun 3",
+      "journal": "The Cochrane database of systematic reviews",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review",
+        "Network Meta-Analysis"
+      ],
+      "authors": [
+        "Kukendrarajah K",
+        "Ahmad M",
+        "Carrington M",
+        "Ioannou A",
+        "Taylor J",
+        "Razvi Y",
+        "Papageorgiou N",
+        "Mead GE",
+        "Nevis IF",
+        "D'Ascenzo F",
+        "Wilton SB",
+        "Lambiase PD",
+        "Morillo CA",
+        "Kwong JS",
+        "Providencia R"
+      ],
+      "author_name_match": true,
+      "is_meta": true,
+      "meta_reasons": [
+        "pubtype",
+        "title_hint"
+      ],
+      "is_cardiology": true,
+      "cardiology_terms": [
+        "atrial fibrillation",
+        "cardio"
+      ],
+      "accepted": true
+    },
+    {
+      "pmid": "38762298",
+      "title": "Handheld echocardiography for the screening and diagnosis of rheumatic heart disease: a systematic review to inform WHO guidelines.",
+      "pubdate": "2024 Jun",
+      "journal": "The Lancet. Global health",
+      "pubtype": [
+        "Systematic Review",
+        "Journal Article",
+        "Meta-Analysis"
+      ],
+      "authors": [
+        "Providência R",
+        "Aali G",
+        "Zhu F",
+        "Katairo T",
+        "Ahmad M",
+        "Bray JJH",
+        "Pelone F",
+        "Khanji MY",
+        "Marijon E",
+        "Cassandra M",
+        "Celermajer DS",
+        "Shokraneh F"
+      ],
+      "author_name_match": true,
+      "is_meta": true,
+      "meta_reasons": [
+        "pubtype",
+        "title_hint"
+      ],
+      "is_cardiology": true,
+      "cardiology_terms": [
+        "cardio",
+        "heart"
+      ],
+      "accepted": true
+    },
+    {
+      "pmid": "38710670",
+      "title": "Cardiac resynchronization therapy in inotrope-dependent heart failure: a meta-analysis.",
+      "pubdate": "2024 Oct",
+      "journal": "ESC heart failure",
+      "pubtype": [
+        "Meta-Analysis",
+        "Journal Article"
+      ],
+      "authors": [
+        "Al-Shakarchi NJ",
+        "Ho JSY",
+        "Bray JJH",
+        "D'Ascenzo F",
+        "Duffy E",
+        "Hewett J",
+        "Adegbie D",
+        "Khan F",
+        "Kumar NS",
+        "Patel N",
+        "Ahmad M",
+        "Banerjee A",
+        "Haq I",
+        "Providencia R"
+      ],
+      "author_name_match": true,
+      "is_meta": true,
+      "meta_reasons": [
+        "pubtype",
+        "title_hint"
+      ],
+      "is_cardiology": true,
+      "cardiology_terms": [
+        "cardiac",
+        "heart"
+      ],
+      "accepted": true
+    },
+    {
+      "pmid": "38696031",
+      "title": "Penicillin Allergy Testing and Delabeling for Patients Who Are Prescribed Penicillin: A Systematic Review for a World Health Organization Guideline.",
+      "pubdate": "2024 Apr",
+      "journal": "Clinical reviews in allergy & immunology",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review",
+        "Meta-Analysis"
+      ],
+      "authors": [
+        "Providencia R",
+        "Aali G",
+        "Zhu F",
+        "Leas BF",
+        "Orrell R",
+        "Ahmad M",
+        "Bray JJH",
+        "Pelone F",
+        "Nass P",
+        "Marijon E",
+        "Cassandra M",
+        "Celermajer DS",
+        "Shokraneh F"
+      ],
+      "author_name_match": true,
+      "is_meta": true,
+      "meta_reasons": [
+        "pubtype",
+        "title_hint"
+      ],
+      "is_cardiology": false,
+      "cardiology_terms": [],
+      "accepted": false
+    },
+    {
+      "pmid": "38681969",
+      "title": "Routine Antenatal Echocardiography in High-Prevalence Areas of Rheumatic Heart Disease: A WHO-Guideline Systematic Review.",
+      "pubdate": "2024",
+      "journal": "Global heart",
+      "pubtype": [
+        "Systematic Review",
+        "Journal Article",
+        "Research Support, Non-U.S. Gov't"
+      ],
+      "authors": [
+        "Seitler S",
+        "Ahmad M",
+        "Ahuja SAC",
+        "Ahmed MT",
+        "Stevenson A",
+        "Schreiber TR",
+        "Sodhi PS",
+        "Diyasena HK",
+        "Ogbeide O",
+        "Arularooran S",
+        "Shokraneh F",
+        "Cassandra M",
+        "Marijon E",
+        "Celermajer DS",
+        "Khanji MY",
+        "Providencia R"
+      ],
+      "author_name_match": true,
+      "is_meta": true,
+      "meta_reasons": [
+        "pubtype",
+        "title_hint"
+      ],
+      "is_cardiology": true,
+      "cardiology_terms": [
+        "cardio",
+        "heart"
+      ],
+      "accepted": true
+    },
+    {
+      "pmid": "38602398",
+      "title": "The effect of sodium-glucose cotransporter-2 inhibitors on inflammatory biomarkers: A meta-analysis of randomized controlled trials.",
+      "pubdate": "2024 Jul",
+      "journal": "Diabetes, obesity & metabolism",
+      "pubtype": [
+        "Meta-Analysis",
+        "Journal Article",
+        "Systematic Review"
+      ],
+      "authors": [
+        "Buttice L",
+        "Ghani M",
+        "Suthakar J",
+        "Gnanalingham S",
+        "Carande E",
+        "Kennedy BWC",
+        "Pitcher A",
+        "Gamble JHP",
+        "Ahmad M",
+        "Lewis A",
+        "Jüni P",
+        "Rider OJ",
+        "Stephens JW",
+        "Bray JJH"
+      ],
+      "author_name_match": true,
+      "is_meta": true,
+      "meta_reasons": [
+        "pubtype",
+        "title_hint"
+      ],
+      "is_cardiology": false,
+      "cardiology_terms": [],
+      "accepted": false
+    },
+    {
+      "pmid": "38242567",
+      "title": "De-escalation of dual antiplatelet therapy for patients with acute coronary syndrome after percutaneous coronary intervention: a systematic review and network meta-analysis.",
+      "pubdate": "2024 May 22",
+      "journal": "BMJ evidence-based medicine",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review",
+        "Network Meta-Analysis"
+      ],
+      "authors": [
+        "De Filippo O",
+        "Piroli F",
+        "Bruno F",
+        "Bocchino PP",
+        "Saglietto A",
+        "Franchin L",
+        "Angelini F",
+        "Gallone G",
+        "Rizzello G",
+        "Ahmad M",
+        "Gasparini M",
+        "Chatterjee S",
+        "De Ferrari GM",
+        "D'Ascenzo F"
+      ],
+      "author_name_match": true,
+      "is_meta": true,
+      "meta_reasons": [
+        "pubtype",
+        "title_hint"
+      ],
+      "is_cardiology": true,
+      "cardiology_terms": [
+        "coronary"
+      ],
+      "accepted": true
+    },
+    {
+      "pmid": "37840586",
+      "title": "Prognosis prediction in cardiac amyloidosis by cardiac magnetic resonance imaging: a systematic review with meta-analysis.",
+      "pubdate": "2023 Sep",
+      "journal": "European heart journal open",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ],
+      "authors": [
+        "Boretto P",
+        "Patel NH",
+        "Patel K",
+        "Rana M",
+        "Saglietto A",
+        "Soni M",
+        "Ahmad M",
+        "Sin Ying Ho J",
+        "De Filippo O",
+        "Providencia RA",
+        "Hyett Bray JJ",
+        "D'Ascenzo F"
+      ],
+      "author_name_match": true,
+      "is_meta": true,
+      "meta_reasons": [
+        "title_hint"
+      ],
+      "is_cardiology": true,
+      "cardiology_terms": [
+        "cardiac",
+        "heart"
+      ],
+      "accepted": true
+    },
+    {
+      "pmid": "36915032",
+      "title": "Oral Class I and III antiarrhythmic drugs for maintaining sinus rhythm after catheter ablation of atrial fibrillation.",
+      "pubdate": "2023 Mar 13",
+      "journal": "The Cochrane database of systematic reviews",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review",
+        "Research Support, Non-U.S. Gov't"
+      ],
+      "authors": [
+        "Bray JJH",
+        "Warraich M",
+        "Whitfield MG",
+        "Peter CU",
+        "Baral R",
+        "Ahmad M",
+        "Ahmad S",
+        "Abraham GR",
+        "Kirresh A",
+        "Sahibzada MS",
+        "Muzaffar A",
+        "Tomson J",
+        "Lambiase PD",
+        "Captur G",
+        "Banerjee A",
+        "Providencia R"
+      ],
+      "author_name_match": true,
+      "is_meta": true,
+      "meta_reasons": [
+        "pubtype"
+      ],
+      "is_cardiology": true,
+      "cardiology_terms": [
+        "arrhythm",
+        "atrial fibrillation"
+      ],
+      "accepted": true
+    },
+    {
+      "pmid": "36752432",
+      "title": "Prognostic Value of Late Gadolinium Enhancement Detected on Cardiac Magnetic Resonance in Cardiac Sarcoidosis.",
+      "pubdate": "2023 Mar",
+      "journal": "JACC. Cardiovascular imaging",
+      "pubtype": [
+        "Systematic Review",
+        "Meta-Analysis",
+        "Journal Article"
+      ],
+      "authors": [
+        "Stevenson A",
+        "Bray JJH",
+        "Tregidgo L",
+        "Ahmad M",
+        "Sharma A",
+        "Ng A",
+        "Siddiqui A",
+        "Khalid AA",
+        "Hylton K",
+        "Ionescu A",
+        "Providencia R",
+        "Kirresh A"
+      ],
+      "author_name_match": true,
+      "is_meta": true,
+      "meta_reasons": [
+        "pubtype"
+      ],
+      "is_cardiology": true,
+      "cardiology_terms": [
+        "cardiac",
+        "cardio"
+      ],
+      "accepted": true
+    },
+    {
+      "pmid": "36065812",
+      "title": "Letter by Vermeer et al Regarding Article, \"Characteristics and Quality of National Cardiac Registries: A Systematic Review\".",
+      "pubdate": "2022 Sep",
+      "journal": "Circulation. Cardiovascular quality and outcomes",
+      "pubtype": [
+        "Letter",
+        "Comment"
+      ],
+      "authors": [
+        "Vermeer M",
+        "Fernandes F",
+        "Ahmad M"
+      ],
+      "author_name_match": true,
+      "is_meta": true,
+      "meta_reasons": [
+        "title_hint"
+      ],
+      "is_cardiology": true,
+      "cardiology_terms": [
+        "cardiac",
+        "cardio"
+      ],
+      "accepted": true
+    },
+    {
+      "pmid": "35987312",
+      "title": "Impact of secondary prevention medical therapies on outcomes of patients suffering from Myocardial Infarction with NonObstructive Coronary Artery disease (MINOCA): A meta-analysis.",
+      "pubdate": "2022 Dec 1",
+      "journal": "International journal of cardiology",
+      "pubtype": [
+        "Journal Article",
+        "Meta-Analysis",
+        "Review"
+      ],
+      "authors": [
+        "De Filippo O",
+        "Russo C",
+        "Manai R",
+        "Borzillo I",
+        "Savoca F",
+        "Gallone G",
+        "Bruno F",
+        "Ahmad M",
+        "De Ferrari GM",
+        "D'Ascenzo F"
+      ],
+      "author_name_match": true,
+      "is_meta": true,
+      "meta_reasons": [
+        "pubtype",
+        "title_hint"
+      ],
+      "is_cardiology": true,
+      "cardiology_terms": [
+        "cardio",
+        "coronary",
+        "myocard"
+      ],
+      "accepted": true
+    },
+    {
+      "pmid": "35919128",
+      "title": "Machine learning applications in cardiac computed tomography: a composite systematic review.",
+      "pubdate": "2022 Mar",
+      "journal": "European heart journal open",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ],
+      "authors": [
+        "Bray JJH",
+        "Hanif MA",
+        "Alradhawi M",
+        "Ibbetson J",
+        "Dosanjh SS",
+        "Smith SL",
+        "Ahmad M",
+        "Pimenta D"
+      ],
+      "author_name_match": true,
+      "is_meta": true,
+      "meta_reasons": [
+        "title_hint"
+      ],
+      "is_cardiology": true,
+      "cardiology_terms": [
+        "cardiac",
+        "heart"
+      ],
+      "accepted": true
+    },
+    {
+      "pmid": "33713891",
+      "title": "Preventing seizure occurrence following spontaneous intracerebral haemorrhage: A systematic review and meta-analysis of seizure prophylaxis.",
+      "pubdate": "2021 Apr",
+      "journal": "Seizure",
+      "pubtype": [
+        "Journal Article",
+        "Meta-Analysis",
+        "Systematic Review"
+      ],
+      "authors": [
+        "Tran QK",
+        "Bzhilyanskaya V",
+        "Afridi LZ",
+        "Ahmad M",
+        "Palmer J",
+        "Rehan MA",
+        "Raffman A",
+        "Rashid A",
+        "Menne A",
+        "Pourmand A"
+      ],
+      "author_name_match": true,
+      "is_meta": true,
+      "meta_reasons": [
+        "pubtype",
+        "title_hint"
+      ],
+      "is_cardiology": false,
+      "cardiology_terms": [],
+      "accepted": false
+    },
+    {
+      "pmid": "33704775",
+      "title": "COVID-19 and its cardiovascular effects: a systematic review of prevalence studies.",
+      "pubdate": "2021 Mar 11",
+      "journal": "The Cochrane database of systematic reviews",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review"
+      ],
+      "authors": [
+        "Pellicori P",
+        "Doolub G",
+        "Wong CM",
+        "Lee KS",
+        "Mangion K",
+        "Ahmad M",
+        "Berry C",
+        "Squire I",
+        "Lambiase PD",
+        "Lyon A",
+        "McConnachie A",
+        "Taylor RS",
+        "Cleland JG"
+      ],
+      "author_name_match": true,
+      "is_meta": true,
+      "meta_reasons": [
+        "pubtype",
+        "title_hint"
+      ],
+      "is_cardiology": true,
+      "cardiology_terms": [
+        "cardio"
+      ],
+      "accepted": true
+    },
+    {
+      "pmid": "32113073",
+      "title": "Non-vitamin K oral anticoagulants at the time of cardiac rhythm device surgery: A systematic review and meta-analysis.",
+      "pubdate": "2020 Apr",
+      "journal": "Thrombosis research",
+      "pubtype": [
+        "Journal Article",
+        "Meta-Analysis",
+        "Systematic Review"
+      ],
+      "authors": [
+        "Creta A",
+        "Finlay M",
+        "Hunter RJ",
+        "Chow A",
+        "Sporton S",
+        "Muthumala A",
+        "Dhillon G",
+        "Papageorgiou N",
+        "Waddingham P",
+        "Ahsan S",
+        "Dhinoja M",
+        "Earley MJ",
+        "Khan F",
+        "Lowe M",
+        "Ahmad M",
+        "Ricciardi D",
+        "Grigioni F",
+        "Di Sciascio G",
+        "Lambiase PD",
+        "Schilling RJ",
+        "Providência R"
+      ],
+      "author_name_match": true,
+      "is_meta": true,
+      "meta_reasons": [
+        "pubtype",
+        "title_hint"
+      ],
+      "is_cardiology": true,
+      "cardiology_terms": [
+        "cardiac"
+      ],
+      "accepted": true
+    },
+    {
+      "pmid": "30950507",
+      "title": "Non-invasive positive pressure ventilation (CPAP or bilevel NPPV) for cardiogenic pulmonary oedema.",
+      "pubdate": "2019 Apr 5",
+      "journal": "The Cochrane database of systematic reviews",
+      "pubtype": [
+        "Journal Article",
+        "Meta-Analysis",
+        "Research Support, Non-U.S. Gov't",
+        "Systematic Review"
+      ],
+      "authors": [
+        "Berbenetz N",
+        "Wang Y",
+        "Brown J",
+        "Godfrey C",
+        "Ahmad M",
+        "Vital FM",
+        "Lambiase P",
+        "Banerjee A",
+        "Bakhai A",
+        "Chong M"
+      ],
+      "author_name_match": true,
+      "is_meta": true,
+      "meta_reasons": [
+        "pubtype"
+      ],
+      "is_cardiology": true,
+      "cardiology_terms": [
+        "cardio"
+      ],
+      "accepted": true
+    }
+  ]
+}
