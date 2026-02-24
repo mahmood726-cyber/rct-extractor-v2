@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Map extracted cardiology trial PMIDs to citing cardiology meta-analyses."""
+"""Map cardiology trial PMIDs to citing cardiology meta-analyses."""
 
 from __future__ import annotations
 
@@ -297,10 +297,16 @@ def _row_has_extractable_best(row: Dict) -> bool:
     return best.get("effect_size") is not None
 
 
-def _trial_rows_from_results(latest: Dict[str, Dict]) -> List[Dict]:
+def _row_is_included(row: Dict, *, extracted_only: bool) -> bool:
+    if extracted_only:
+        return _row_has_extractable_best(row)
+    return True
+
+
+def _trial_rows_from_results(latest: Dict[str, Dict], *, extracted_only: bool) -> List[Dict]:
     rows: List[Dict] = []
     for relpath, row in sorted(latest.items(), key=lambda item: item[0]):
-        if not _row_has_extractable_best(row):
+        if not _row_is_included(row, extracted_only=extracted_only):
             continue
         pmcid = _normalize_pmcid(row.get("pmcid")) or _pmcid_from_relpath(relpath)
         if not pmcid:
@@ -310,6 +316,8 @@ def _trial_rows_from_results(latest: Dict[str, Dict]) -> List[Dict]:
                 "study_id": str(row.get("study_id") or ""),
                 "pdf_relpath": relpath,
                 "pmcid": pmcid,
+                "status": str(row.get("status") or ""),
+                "has_extractable_best": _row_has_extractable_best(row),
                 "best_match": row.get("best_match") or {},
             }
         )
@@ -357,6 +365,12 @@ def main() -> int:
     parser.add_argument("--max-meta-per-trial", type=int, default=80)
     parser.add_argument("--timeout-sec", type=float, default=25.0)
     parser.add_argument(
+        "--extracted-only",
+        action=argparse.BooleanOptionalAction,
+        default=False,
+        help="Include only rows with extractable best matches (status=extracted with effect_size).",
+    )
+    parser.add_argument(
         "--meta-mode",
         choices=["strict", "sensitive"],
         default="strict",
@@ -397,7 +411,7 @@ def main() -> int:
     summary_cache = _load_json(summary_cache_path)
 
     latest = _load_latest_rows(args.results_jsonl)
-    trial_rows = _trial_rows_from_results(latest)
+    trial_rows = _trial_rows_from_results(latest, extracted_only=bool(args.extracted_only))
     if args.max_trials is not None:
         trial_rows = trial_rows[: int(args.max_trials)]
 
@@ -496,6 +510,8 @@ def main() -> int:
                     "trial_pmcid": trial.get("pmcid"),
                     "trial_study_id": trial.get("study_id"),
                     "trial_pdf_relpath": trial.get("pdf_relpath"),
+                    "trial_status": trial.get("status"),
+                    "trial_has_extractable_best": bool(trial.get("has_extractable_best")),
                     "meta_pmid": cite_norm,
                     "meta_title": summary.get("title"),
                     "meta_pubdate": summary.get("pubdate"),
@@ -509,11 +525,16 @@ def main() -> int:
         unique_meta = sorted(set(matched_meta_pmids))
         if len(unique_meta) > int(args.max_meta_per_trial):
             unique_meta = unique_meta[: int(args.max_meta_per_trial)]
+        trial_status_counts = Counter(str(t.get("status") or "") for t in trials)
         trial_map_rows.append(
             {
                 "trial_pmid": trial_pmid,
                 "trial_study_ids": sorted({t.get("study_id") for t in trials if t.get("study_id")}),
+                "trial_pdf_relpaths": sorted({t.get("pdf_relpath") for t in trials if t.get("pdf_relpath")}),
                 "trial_pmcids": sorted({t.get("pmcid") for t in trials if t.get("pmcid")}),
+                "trial_row_count": len(trials),
+                "trial_extractable_row_count": sum(1 for t in trials if bool(t.get("has_extractable_best"))),
+                "trial_status_counts": dict(sorted(trial_status_counts.items())),
                 "citing_total_considered": len(citing_pmids),
                 "meta_matches_total": len(set(matched_meta_pmids)),
                 "meta_pmids": unique_meta,
@@ -535,7 +556,8 @@ def main() -> int:
         )
     meta_rows.sort(key=lambda row: (-int(row["trial_pmid_count"]), str(row.get("meta_pmid"))))
 
-    status_counts = Counter(str((latest.get(row.get("pdf_relpath", ""), {}) or {}).get("status") or "") for row in trial_rows)
+    status_counts = Counter(str(row.get("status") or "") for row in trial_rows)
+    extractable_considered = sum(1 for row in trial_rows if bool(row.get("has_extractable_best")))
     trials_with_meta = sum(1 for row in trial_map_rows if int(row.get("meta_matches_total") or 0) > 0)
 
     summary_payload = {
@@ -545,6 +567,7 @@ def main() -> int:
             "max_trials": args.max_trials,
             "max_citing_per_trial": int(args.max_citing_per_trial),
             "max_meta_per_trial": int(args.max_meta_per_trial),
+            "extracted_only": bool(args.extracted_only),
             "require_cardiology": bool(args.require_cardiology),
             "meta_mode": str(args.meta_mode),
         },
@@ -555,6 +578,7 @@ def main() -> int:
         },
         "counts": {
             "trial_rows_considered": len(trial_rows),
+            "trial_rows_extractable_considered": extractable_considered,
             "trial_rows_with_pmid": len(trial_rows_with_pmid),
             "unresolved_pmcid_rows": unresolved_pmcids,
             "unique_trial_pmids": len(trial_pmids),
@@ -566,6 +590,9 @@ def main() -> int:
         "rates": {
             "trial_pmid_resolution_rate": (
                 len(trial_rows_with_pmid) / len(trial_rows) if trial_rows else 0.0
+            ),
+            "extractable_share_considered": (
+                extractable_considered / len(trial_rows) if trial_rows else 0.0
             ),
             "trial_with_meta_rate": (
                 trials_with_meta / len(trial_map_rows) if trial_map_rows else 0.0
@@ -605,7 +632,9 @@ def main() -> int:
     lines.append("# Cardiology Trial to Meta-Analysis Mapping")
     lines.append("")
     lines.append(f"- Generated UTC: {summary_payload['generated_at_utc']}")
+    lines.append(f"- Extracted-only inclusion: {summary_payload['inputs']['extracted_only']}")
     lines.append(f"- Trial rows considered: {summary_payload['counts']['trial_rows_considered']}")
+    lines.append(f"- Extractable considered rows: {summary_payload['counts']['trial_rows_extractable_considered']}")
     lines.append(f"- Trial rows with PMID: {summary_payload['counts']['trial_rows_with_pmid']}")
     lines.append(f"- Trial PMID resolution rate: {_fmt_pct(summary_payload['rates']['trial_pmid_resolution_rate'])}")
     lines.append(f"- Unique trial PMIDs: {summary_payload['counts']['unique_trial_pmids']}")

@@ -1,64 +1,71 @@
 {
-  "generated_at_utc": "2026-02-24T15:41:09.303734+00:00",
+  "generated_at_utc": "2026-02-24T17:56:12.941397+00:00",
   "counts": {
-    "total_rows": 267,
-    "extracted_rows": 181,
-    "best_match_rows": 181,
-    "best_with_ci": 121,
-    "best_with_se": 118,
-    "best_with_uncertainty": 121,
-    "best_with_source_text": 181,
+    "total_rows": 2042,
+    "extracted_rows": 1417,
+    "best_match_rows": 1417,
+    "best_with_ci": 921,
+    "best_with_se": 880,
+    "best_with_uncertainty": 921,
+    "best_with_source_text": 1417,
     "best_with_page_number": 0,
-    "high_confidence_best": 118,
-    "high_confidence_with_ci": 118,
-    "ma_ready_relaxed": 121,
+    "high_confidence_best": 880,
+    "high_confidence_with_ci": 880,
+    "ma_ready_relaxed": 921,
     "ma_ready_strict": 0
   },
   "rates": {
-    "extraction_coverage": 0.6779026217228464,
-    "best_match_rate": 0.6779026217228464,
-    "ci_completeness_among_best": 0.6685082872928176,
-    "uncertainty_completeness_among_best": 0.6685082872928176,
+    "extraction_coverage": 0.6939275220372184,
+    "best_match_rate": 0.6939275220372184,
+    "ci_completeness_among_best": 0.6499647141848977,
+    "uncertainty_completeness_among_best": 0.6499647141848977,
     "source_completeness_among_best": 1.0,
     "page_completeness_among_best": 0.0,
-    "high_confidence_share_among_best": 0.6519337016574586,
-    "high_confidence_ci_share_among_best": 0.6519337016574586,
-    "ma_ready_relaxed_rate": 0.45318352059925093,
+    "high_confidence_share_among_best": 0.621030345800988,
+    "high_confidence_ci_share_among_best": 0.621030345800988,
+    "ma_ready_relaxed_rate": 0.45102840352595497,
     "ma_ready_strict_rate": 0.0
   },
   "distributions": {
     "status_counts": {
-      "extracted": 181,
-      "no_extraction": 86
+      "extracted": 1417,
+      "no_extraction": 624,
+      "timeout": 1
     },
     "extraction_method_counts": {
-      "pymupdf": 267
+      "pymupdf": 2041,
+      "unknown": 1
     },
     "best_effect_type_counts": {
-      "ARD": 2,
-      "HR": 84,
-      "IRR": 1,
-      "MD": 15,
-      "OR": 55,
-      "RR": 24
+      "ARD": 16,
+      "GMR": 1,
+      "HR": 578,
+      "IRR": 3,
+      "MD": 172,
+      "NNT": 1,
+      "OR": 479,
+      "RR": 150,
+      "RRR": 1,
+      "SMD": 16
     },
     "best_automation_tier_counts": {
-      "full_auto": 118,
-      "manual": 63
+      "full_auto": 880,
+      "manual": 537
     },
     "best_source_type_counts": {
-      "lax": 36,
-      "text": 145
+      "lax": 310,
+      "text": 1107
     },
     "born_digital_counts": {
-      "born_digital": 267
+      "born_digital": 2041,
+      "unknown": 1
     }
   },
   "timing_sec": {
-    "n_with_elapsed": 267,
-    "median_sec": 39.296,
-    "mean_sec": 39.035,
-    "max_sec": 61.509
+    "n_with_elapsed": 2042,
+    "median_sec": 35.776,
+    "mean_sec": 36.795,
+    "max_sec": 90.147
   },
   "parameters": {
     "high_confidence_threshold": 0.9
