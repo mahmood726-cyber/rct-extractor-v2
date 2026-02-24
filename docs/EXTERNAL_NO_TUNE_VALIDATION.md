@@ -8,6 +8,10 @@ Run external PDF validation without tuning, without gold/cochrane fallback injec
 - `scripts/run_external_no_tune_eval.py`
 - `scripts/build_human_error_agreement_report.py`
 - `scripts/augment_identity_validation_with_unpaywall.py`
+- `scripts/bootstrap_real_rct_metrics.py`
+- `scripts/build_ma_records_from_results.py`
+- `scripts/validate_ma_contract.py`
+- `scripts/build_published_meta_comparison_report.py`
 
 ## Default Input
 - `data/ground_truth/external_validation_ground_truth.jsonl`
@@ -207,6 +211,68 @@ python3 scripts/run_external_no_tune_eval.py \
 - Publishability note:
   - This improves validated-N from 13 to 17 but remains under broad-claim sample-size guidance (see `docs/SAMPLE_SIZE_JUSTIFICATION.md`, minimum `n≈73` for ±5% precision at 95% confidence).
   - Suitable for scoped methods claims; not yet sufficient for broad external full-text generalization claims.
+
+## Identity-Validated v3 Deep Extension (February 24, 2026)
+- Added parser-timeout and cached-download reuse in `augment_identity_validation_with_unpaywall.py` to prevent malformed-PDF stalls and recover partial successful downloads.
+- Built v3 deep cohort from v2 balanced baseline:
+```bash
+python3 scripts/augment_identity_validation_with_unpaywall.py \
+  --input-cohort-dir data/external_all_validated_augmented_v2_balanced \
+  --output-dir data/external_all_validated_augmented_v3_deep \
+  --pdf-dir test_pdfs/external_all_validated_augmented_v3_deep/pdfs \
+  --max-attempts 0 \
+  --pdf-parse-timeout-sec 12
+```
+- v3 cohort outcome:
+  - frozen identity-validated trials: `17 -> 19`
+  - added studies: `improve_it_2015`, `improve_it_2015_pmc4590563`
+  - protocol: `data/external_all_validated_augmented_v3_deep/protocol_lock.json`
+- v3 strict PDF-only extraction:
+```bash
+python3 scripts/run_external_no_tune_eval.py \
+  --skip-prepare \
+  --cohort-dir data/external_all_validated_augmented_v3_deep \
+  --pdf-dir test_pdfs/external_all_validated_augmented_v3_deep_merged/pdfs \
+  --no-fallback-from-pubmed-abstract \
+  --results-output output/external_all_validated_augmented_v3_deep_pdf_only_results.json \
+  --metrics-output output/external_all_validated_augmented_v3_deep_pdf_only_metrics.json \
+  --summary-output output/external_all_validated_augmented_v3_deep_pdf_only_summary.json \
+  --report-output output/external_all_validated_augmented_v3_deep_pdf_only_report.md
+```
+- CI/error-targeted advanced rerun (5 studies: `actt_1_2020,checkmate_067_2015,dream_2006,cleopatra_2012,leader_2016`):
+```bash
+python3 scripts/run_external_no_tune_eval.py \
+  --skip-prepare \
+  --cohort-dir data/external_all_validated_augmented_v3_deep \
+  --pdf-dir test_pdfs/external_all_validated_augmented_v3_deep_merged/pdfs \
+  --seed-results output/external_all_validated_augmented_v3_deep_pdf_only_seed_ci_targeted.json \
+  --study-ids actt_1_2020,checkmate_067_2015,dream_2006,cleopatra_2012,leader_2016 \
+  --enable-advanced \
+  --no-fallback-from-pubmed-abstract \
+  --results-output output/external_all_validated_augmented_v3_deep_pdf_only_advfix_results.json \
+  --metrics-output output/external_all_validated_augmented_v3_deep_pdf_only_advfix_metrics.json \
+  --summary-output output/external_all_validated_augmented_v3_deep_pdf_only_advfix_summary.json \
+  --report-output output/external_all_validated_augmented_v3_deep_pdf_only_advfix_report.md
+```
+- v3 metrics (`output/external_all_validated_augmented_v3_deep_pdf_only_advfix_metrics.json`):
+  - `extraction_coverage: 0.9474`
+  - `strict_match_rate: 0.8947`
+  - `lenient_match_rate: 0.9474`
+  - `effect_type_accuracy: 1.0`
+  - `ci_completeness: 0.9444`
+  - `ma_ready_yield: 0.8947`
+- v3 human-error agreement:
+  - `output/external_all_validated_augmented_v3_deep_pdf_only_advfix_human_error_agreement_2026-02-24.md`
+  - point agreement within 10%: `94.4%` (`95% CI: 83.3% to 100.0%`) on 18 comparable trials
+  - CI-bound agreement within 10%: `82.4%` (`95% CI: 64.7% to 100.0%`) on 17 comparable trials
+- Frozen bootstrap and MA-contract artifacts:
+  - `output/external_all_validated_augmented_v3_deep_pdf_only_advfix_bootstrap_95ci.json`
+  - `output/external_all_validated_augmented_v3_deep_pdf_only_advfix_ma_records_validated.jsonl` (`16` valid records)
+  - `output/external_all_validated_augmented_v3_deep_pdf_only_advfix_ma_records_rejections.json` (`2` rejections: `cleopatra_2012`, `dream_2006`)
+- Published-meta comparison artifact:
+  - `output/external_all_validated_augmented_v3_deep_pdf_only_advfix_published_meta_comparison_2026-02-24.md`
+- Publishability note update:
+  - validated full-text N improved further (`13 -> 19`) but remains below broad-claim precision target (`n~73` for +/-5% precision at 95% confidence; `docs/SAMPLE_SIZE_JUSTIFICATION.md`).
 
 ## Main Artifacts
 - `data/external_no_tune_v1/manifest.jsonl`

@@ -20,14 +20,17 @@
 - CI-bound agreement within 10%: `25.6%` (95% CI: `12.8%` to `38.5%`)
 - Caveat: 31/40 are `manual` + `needs_review`, and fallback is enabled for selected studies.
 
-### 3) Expanded identity-validated PDF-only cohort (`external_all_validated_augmented_v2_balanced_pdf_only`, n=17)
-- Cohort build: `data/external_all_validated_augmented_v2_balanced/protocol_lock.json`
-- PDF-only metrics: `output/external_all_validated_augmented_v2_balanced_pdf_only_metrics.json`
-- Human-error agreement: `output/external_all_validated_augmented_v2_balanced_pdf_only_human_error_agreement_2026-02-24.md`
-- Point agreement within 10%: `93.8%` (95% CI: `81.2%` to `100.0%`) on 16 comparable trials
-- CI-bound agreement within 10%: `80.0%` (95% CI: `60.0%` to `100.0%`) on 15 comparable trials
-- Strict match rate: `88.2%`, lenient match rate: `94.1%`, MA-ready yield: `88.2%`
-- Net validated full-text lift vs prior v1 cohort: `+4` trials (13 -> 17)
+### 3) Expanded identity-validated PDF-only cohort (`external_all_validated_augmented_v3_deep_pdf_only_advfix`, n=19)
+- Cohort build: `data/external_all_validated_augmented_v3_deep/protocol_lock.json`
+- PDF-only metrics: `output/external_all_validated_augmented_v3_deep_pdf_only_advfix_metrics.json`
+- Human-error agreement: `output/external_all_validated_augmented_v3_deep_pdf_only_advfix_human_error_agreement_2026-02-24.md`
+- Point agreement within 10%: `94.4%` (95% CI: `83.3%` to `100.0%`) on 18 comparable trials
+- CI-bound agreement within 10%: `82.4%` (95% CI: `64.7%` to `100.0%`) on 17 comparable trials
+- Strict match rate: `89.5%`, lenient match rate: `94.7%`, MA-ready yield: `89.5%`
+- Frozen bootstrap CI artifact: `output/external_all_validated_augmented_v3_deep_pdf_only_advfix_bootstrap_95ci.json`
+- MA-contract validity: `16/16` accepted from emitted records (`output/external_all_validated_augmented_v3_deep_pdf_only_advfix_ma_records_validated.jsonl`)
+- Published-meta comparison: `output/external_all_validated_augmented_v3_deep_pdf_only_advfix_published_meta_comparison_2026-02-24.md`
+- Net validated full-text lift vs prior v1 cohort: `+6` trials (13 -> 19)
 
 ### 4) Large real-data mega cohort (`mega_eval`, n=560; Cochrane-linked n=546)
 - Source artifact: `gold_data/mega/mega_eval.jsonl`
@@ -42,7 +45,7 @@
 ## Readiness Assessment
 - Strong signal exists for point-estimate extraction under a 10% human-error envelope.
 - Broad external publishability is still constrained by identity-validated sample size and CI stability despite strong large-cohort point-estimate performance.
-- Current identity-validated full-text size (`n=17`) remains below the repo's own precision guidance (`n≈73` for +/-5% at 95% confidence in `docs/SAMPLE_SIZE_JUSTIFICATION.md`).
+- Current identity-validated full-text size (`n=19`) remains below the repo's own precision guidance (`n≈73` for +/-5% at 95% confidence in `docs/SAMPLE_SIZE_JUSTIFICATION.md`).
 
 ## Practical Claim Boundary
 - Publishable now as a scoped methods/engineering paper with explicit boundary conditions.

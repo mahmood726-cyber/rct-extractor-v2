@@ -7,6 +7,7 @@ import argparse
 import html
 import json
 import re
+import subprocess
 import sys
 import time
 from urllib.parse import parse_qs, urljoin, urlparse
@@ -288,12 +289,54 @@ def _download_pdf(url: str, output_path: Path, timeout_sec: float, max_retries: 
     return True
 
 
-def _pdf_contains_doi(pdf_path: Path, doi: str, parser: PDFParser) -> bool:
+def _pdf_contains_doi_local(pdf_path: Path, doi: str, parser: PDFParser) -> bool:
     content = parser.parse(str(pdf_path))
     text = "\n".join((page.full_text or "") for page in content.pages).lower()
     compact_text = re.sub(r"[^a-z0-9./]", "", text)
     compact_doi = re.sub(r"[^a-z0-9./]", "", doi.lower())
     return bool(compact_doi) and compact_doi in compact_text
+
+
+def _pdf_contains_doi(
+    *,
+    pdf_path: Path,
+    doi: str,
+    parser: PDFParser,
+    parse_timeout_sec: float,
+) -> bool:
+    # Parse in a subprocess with timeout to prevent single malformed PDFs
+    # from stalling full augmentation runs.
+    if parse_timeout_sec > 0:
+        inline = (
+            "import re,sys;"
+            "from pathlib import Path;"
+            "ROOT=Path(sys.argv[3]);"
+            "sys.path.insert(0,str(ROOT));"
+            "from src.pdf.pdf_parser import PDFParser;"
+            "pdf=sys.argv[1]; doi=sys.argv[2].lower();"
+            "p=PDFParser(); c=p.parse(pdf);"
+            "t='\\n'.join((pg.full_text or '') for pg in c.pages).lower();"
+            "ct=re.sub(r'[^a-z0-9./]','',t);"
+            "cd=re.sub(r'[^a-z0-9./]','',doi);"
+            "print('1' if cd and cd in ct else '0')"
+        )
+        try:
+            proc = subprocess.run(
+                [sys.executable, "-c", inline, str(pdf_path), doi, str(PROJECT_ROOT)],
+                cwd=PROJECT_ROOT,
+                capture_output=True,
+                text=True,
+                timeout=parse_timeout_sec,
+                check=False,
+            )
+            if proc.returncode == 0:
+                out = (proc.stdout or "").strip().splitlines()
+                return bool(out) and out[-1].strip() == "1"
+            return False
+        except subprocess.TimeoutExpired as exc:
+            raise TimeoutError(f"pdf_parse_timeout:{parse_timeout_sec}s:{pdf_path.name}") from exc
+
+    return _pdf_contains_doi_local(pdf_path=pdf_path, doi=doi, parser=parser)
 
 
 def _candidate_sort_key(candidate: Dict[str, str], prefer_repository: bool) -> Tuple[int, int, int, str]:
@@ -339,6 +382,7 @@ def main() -> int:
     parser.add_argument("--max-landing-pages-per-study", type=int, default=3)
     parser.add_argument("--max-links-per-landing-page", type=int, default=8)
     parser.add_argument("--http-retries", type=int, default=2)
+    parser.add_argument("--pdf-parse-timeout-sec", type=float, default=25.0)
     parser.add_argument(
         "--prefer-repository",
         action=argparse.BooleanOptionalAction,
@@ -362,6 +406,8 @@ def main() -> int:
         raise ValueError("--max-links-per-landing-page must be > 0")
     if args.http_retries < 0:
         raise ValueError("--http-retries must be >= 0")
+    if args.pdf_parse_timeout_sec < 0:
+        raise ValueError("--pdf-parse-timeout-sec must be >= 0")
 
     input_protocol_path = args.input_cohort_dir / "protocol_lock.json"
     input_protocol = _load_json(input_protocol_path) if input_protocol_path.exists() else {}
@@ -388,6 +434,42 @@ def main() -> int:
             stats["missing_doi"] += 1
             failures.append({"study_id": row.get("study_id", ""), "reason": "missing_doi"})
             continue
+
+        filename = f"{_safe_study_slug(row.get('study_id', 'study'))}__doi.pdf"
+        cached_pdf_path = args.pdf_dir / filename
+        if cached_pdf_path.exists() and cached_pdf_path.stat().st_size > 1024:
+            try:
+                if _pdf_contains_doi(
+                    pdf_path=cached_pdf_path,
+                    doi=doi,
+                    parser=parser_pdf,
+                    parse_timeout_sec=args.pdf_parse_timeout_sec,
+                ):
+                    row["pdf_filename"] = filename
+                    row["pdf_path"] = _relative_path(cached_pdf_path)
+                    row["local_pdf"] = True
+                    row["download_status"] = "reused_cached_download"
+                    row["download_url"] = row.get("download_url")
+                    row["content_valid"] = True
+                    row["content_validation_reason"] = "matched_doi_in_cached_pdf_text"
+                    row["identity_validation_method"] = "doi_text_match_cached"
+                    stats["reused_cached_download"] += 1
+                    continue
+                stats["cached_pdf_doi_mismatch"] += 1
+                cached_pdf_path.unlink(missing_ok=True)
+            except Exception as exc:
+                if isinstance(exc, TimeoutError):
+                    stats["pdf_parse_timeouts"] += 1
+                stats["cached_pdf_parse_errors"] += 1
+                failures.append(
+                    {
+                        "study_id": row.get("study_id", ""),
+                        "reason": "cached_pdf_parse_error",
+                        "pdf_path": _relative_path(cached_pdf_path),
+                        "error": str(exc)[:200],
+                    }
+                )
+
         if args.max_attempts is not None and attempts >= args.max_attempts:
             stats["skipped_max_attempts"] += 1
             continue
@@ -488,7 +570,6 @@ def main() -> int:
             url = str(candidate.get("url") or "").strip()
             host_type = str(candidate.get("host_type") or "")
             source = str(candidate.get("source") or "")
-            filename = f"{_safe_study_slug(row.get('study_id', 'study'))}__doi.pdf"
             pdf_path = args.pdf_dir / filename
             stats["download_attempts"] += 1
             try:
@@ -500,7 +581,12 @@ def main() -> int:
                 ):
                     stats["non_pdf_response"] += 1
                     continue
-                if not _pdf_contains_doi(pdf_path=pdf_path, doi=doi, parser=parser_pdf):
+                if not _pdf_contains_doi(
+                    pdf_path=pdf_path,
+                    doi=doi,
+                    parser=parser_pdf,
+                    parse_timeout_sec=args.pdf_parse_timeout_sec,
+                ):
                     stats["downloaded_without_doi_match"] += 1
                     pdf_path.unlink(missing_ok=True)
                     continue
@@ -519,6 +605,8 @@ def main() -> int:
                 success = True
                 break
             except Exception as exc:
+                if isinstance(exc, TimeoutError):
+                    stats["pdf_parse_timeouts"] += 1
                 stats["download_errors"] += 1
                 failures.append(
                     {
@@ -579,6 +667,7 @@ def main() -> int:
         "unpaywall_email": args.unpaywall_email,
         "request_timeout_sec": args.request_timeout_sec,
         "http_retries": args.http_retries,
+        "pdf_parse_timeout_sec": args.pdf_parse_timeout_sec,
         "max_candidates_per_study": args.max_candidates_per_study,
         "max_landing_pages_per_study": args.max_landing_pages_per_study,
         "max_links_per_landing_page": args.max_links_per_landing_page,

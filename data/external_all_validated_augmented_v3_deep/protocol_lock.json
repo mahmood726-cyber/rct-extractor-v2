@@ -1,0 +1,48 @@
+{
+  "protocol_version": "1.0.0",
+  "created_at_utc": "2026-02-24T12:42:22.049899+00:00",
+  "mode": "external_validated_with_unpaywall_fallback",
+  "identity_validation_applied": true,
+  "parent_cohort_dir": "data/external_all_validated_augmented_v2_balanced",
+  "parent_protocol_lock": "data/external_all_validated_augmented_v2_balanced/protocol_lock.json",
+  "selected_trials_total": 49,
+  "frozen_trials_total": 19,
+  "journal_counts_selected": {
+    "AJP": 1,
+    "Eur Heart J": 1,
+    "Lancet": 3,
+    "NEJM": 44
+  },
+  "journal_counts_frozen": {
+    "Lancet": 2,
+    "NEJM": 17
+  },
+  "validation_stats": {
+    "passed": 19,
+    "failed": 30
+  },
+  "augmentation_stats": {
+    "already_local": 17,
+    "skipped_max_attempts": 30,
+    "reused_cached_download": 2
+  },
+  "augmentation_failures_total": 0,
+  "augmentation_failures_sample": [],
+  "source_protocol_mode": "external_validated_with_unpaywall_fallback",
+  "source_validation_stats": {
+    "passed": 17,
+    "failed": 32
+  },
+  "unpaywall_email": "tooling@proton.me",
+  "request_timeout_sec": 10.0,
+  "http_retries": 1,
+  "pdf_parse_timeout_sec": 12.0,
+  "max_candidates_per_study": 12,
+  "max_landing_pages_per_study": 3,
+  "max_links_per_landing_page": 8,
+  "prefer_repository": true,
+  "output_manifest": "data/external_all_validated_augmented_v3_deep/manifest.jsonl",
+  "output_frozen_gold": "data/external_all_validated_augmented_v3_deep/frozen_gold.jsonl",
+  "output_seed_results": "data/external_all_validated_augmented_v3_deep/seed_results_empty.json",
+  "pdf_dir": "test_pdfs/external_all_validated_augmented_v3_deep/pdfs"
+}
