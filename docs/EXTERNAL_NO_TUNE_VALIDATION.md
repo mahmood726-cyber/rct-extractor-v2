@@ -7,6 +7,7 @@ Run external PDF validation without tuning, without gold/cochrane fallback injec
 - `scripts/prepare_external_no_tune_eval.py`
 - `scripts/run_external_no_tune_eval.py`
 - `scripts/build_human_error_agreement_report.py`
+- `scripts/augment_identity_validation_with_unpaywall.py`
 
 ## Default Input
 - `data/ground_truth/external_validation_ground_truth.jsonl`
@@ -164,8 +165,47 @@ python3 scripts/run_external_no_tune_eval.py \
   - `output/external_all_validated_augmented_v1_pdf_only_human_error_agreement_2026-02-24.md`
   - point agreement within 10%: `90.9%` (`95% CI: 72.7% to 100.0%`) on 11 comparable trials
   - CI-bound agreement within 10%: `70.0%` (`95% CI: 40.0% to 100.0%`) on 10 comparable trials
+- Improved augmentation pass with repository landing-page PDF discovery and balanced network settings:
+```bash
+python3 scripts/augment_identity_validation_with_unpaywall.py \
+  --input-cohort-dir data/external_all_validated_probe \
+  --output-dir data/external_all_validated_augmented_v2_balanced \
+  --pdf-dir test_pdfs/external_all_validated_augmented_v2_balanced/pdfs \
+  --request-timeout-sec 6 \
+  --http-retries 1 \
+  --max-landing-pages-per-study 2 \
+  --max-links-per-landing-page 6 \
+  --max-candidates-per-study 8
+```
+- Result of balanced v2 augmentation:
+  - frozen identity-validated trials: `11 -> 17` (`+6 downloaded`, `+4 net` vs v1)
+  - downloaded and DOI-validated additions vs v1: `clarity_2010`, `emperor_reduced_2020`, `fourier_2017`, `paradigm_hf_2014`
+  - protocol: `data/external_all_validated_augmented_v2_balanced/protocol_lock.json`
+- Re-ran strict PDF-only extraction on the balanced v2 cohort:
+```bash
+python3 scripts/run_external_no_tune_eval.py \
+  --skip-prepare \
+  --cohort-dir data/external_all_validated_augmented_v2_balanced \
+  --pdf-dir test_pdfs/external_all_validated_augmented_v2_balanced_merged/pdfs \
+  --no-fallback-from-pubmed-abstract \
+  --results-output output/external_all_validated_augmented_v2_balanced_pdf_only_results.json \
+  --metrics-output output/external_all_validated_augmented_v2_balanced_pdf_only_metrics.json \
+  --summary-output output/external_all_validated_augmented_v2_balanced_pdf_only_summary.json \
+  --report-output output/external_all_validated_augmented_v2_balanced_pdf_only_report.md
+```
+- Balanced v2 validated PDF-only metrics (`output/external_all_validated_augmented_v2_balanced_pdf_only_metrics.json`):
+  - `extraction_coverage: 0.9412`
+  - `strict_match_rate: 0.8824`
+  - `lenient_match_rate: 0.9412`
+  - `effect_type_accuracy: 1.0`
+  - `ci_completeness: 0.9375`
+  - `ma_ready_yield: 0.8824`
+- Human-error-envelope agreement on balanced v2 cohort:
+  - `output/external_all_validated_augmented_v2_balanced_pdf_only_human_error_agreement_2026-02-24.md`
+  - point agreement within 10%: `93.8%` (`95% CI: 81.2% to 100.0%`) on 16 comparable trials
+  - CI-bound agreement within 10%: `80.0%` (`95% CI: 60.0% to 100.0%`) on 15 comparable trials
 - Publishability note:
-  - This improves validated-N but remains under broad-claim sample-size guidance (see `docs/SAMPLE_SIZE_JUSTIFICATION.md`, minimum `n≈73` for ±5% precision at 95% confidence).
+  - This improves validated-N from 13 to 17 but remains under broad-claim sample-size guidance (see `docs/SAMPLE_SIZE_JUSTIFICATION.md`, minimum `n≈73` for ±5% precision at 95% confidence).
   - Suitable for scoped methods claims; not yet sufficient for broad external full-text generalization claims.
 
 ## Main Artifacts

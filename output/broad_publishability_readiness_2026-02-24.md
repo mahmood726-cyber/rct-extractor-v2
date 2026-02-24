@@ -20,13 +20,14 @@
 - CI-bound agreement within 10%: `25.6%` (95% CI: `12.8%` to `38.5%`)
 - Caveat: 31/40 are `manual` + `needs_review`, and fallback is enabled for selected studies.
 
-### 3) Expanded identity-validated PDF-only cohort (`external_all_validated_augmented_v1_pdf_only`, n=13)
-- Cohort build: `data/external_all_validated_augmented_v1/protocol_lock.json`
-- PDF-only metrics: `output/external_all_validated_augmented_v1_pdf_only_metrics.json`
-- Human-error agreement: `output/external_all_validated_augmented_v1_pdf_only_human_error_agreement_2026-02-24.md`
-- Point agreement within 10%: `90.9%` (95% CI: `72.7%` to `100.0%`) on 11 comparable trials
-- CI-bound agreement within 10%: `70.0%` (95% CI: `40.0%` to `100.0%`) on 10 comparable trials
-- Strict match rate: `76.9%`, lenient match rate: `84.6%`, MA-ready yield: `76.9%`
+### 3) Expanded identity-validated PDF-only cohort (`external_all_validated_augmented_v2_balanced_pdf_only`, n=17)
+- Cohort build: `data/external_all_validated_augmented_v2_balanced/protocol_lock.json`
+- PDF-only metrics: `output/external_all_validated_augmented_v2_balanced_pdf_only_metrics.json`
+- Human-error agreement: `output/external_all_validated_augmented_v2_balanced_pdf_only_human_error_agreement_2026-02-24.md`
+- Point agreement within 10%: `93.8%` (95% CI: `81.2%` to `100.0%`) on 16 comparable trials
+- CI-bound agreement within 10%: `80.0%` (95% CI: `60.0%` to `100.0%`) on 15 comparable trials
+- Strict match rate: `88.2%`, lenient match rate: `94.1%`, MA-ready yield: `88.2%`
+- Net validated full-text lift vs prior v1 cohort: `+4` trials (13 -> 17)
 
 ### 4) Large real-data mega cohort (`mega_eval`, n=560; Cochrane-linked n=546)
 - Source artifact: `gold_data/mega/mega_eval.jsonl`
@@ -41,7 +42,7 @@
 ## Readiness Assessment
 - Strong signal exists for point-estimate extraction under a 10% human-error envelope.
 - Broad external publishability is still constrained by identity-validated sample size and CI stability despite strong large-cohort point-estimate performance.
-- Current identity-validated full-text size (`n=13`) remains below the repo's own precision guidance (`n≈73` for +/-5% at 95% confidence in `docs/SAMPLE_SIZE_JUSTIFICATION.md`).
+- Current identity-validated full-text size (`n=17`) remains below the repo's own precision guidance (`n≈73` for +/-5% at 95% confidence in `docs/SAMPLE_SIZE_JUSTIFICATION.md`).
 
 ## Practical Claim Boundary
 - Publishable now as a scoped methods/engineering paper with explicit boundary conditions.

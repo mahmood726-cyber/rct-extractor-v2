@@ -4,9 +4,12 @@
 from __future__ import annotations
 
 import argparse
+import html
 import json
+import re
 import sys
 import time
+from urllib.parse import parse_qs, urljoin, urlparse
 from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
@@ -16,6 +19,7 @@ import requests
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_EMAIL = "tooling@proton.me"
+TRANSIENT_HTTP_CODES = {408, 425, 429, 500, 502, 503, 504}
 
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
@@ -108,39 +112,176 @@ def _build_gold_record(item: Dict) -> Dict:
 
 
 def _headers() -> Dict[str, str]:
-    return {"User-Agent": "Mozilla/5.0"}
+    return {
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36"
+        ),
+        "Accept": "application/pdf,application/xhtml+xml,text/html;q=0.9,*/*;q=0.8",
+    }
 
 
-def _fetch_unpaywall_locations(doi: str, email: str, timeout_sec: float) -> List[Tuple[str, str]]:
-    url = f"https://api.unpaywall.org/v2/{doi}?email={email}"
-    response = requests.get(url, timeout=timeout_sec, headers=_headers())
-    if response.status_code != 200:
-        return []
-    payload = response.json()
-    locations = payload.get("oa_locations") or []
-    candidates: List[Tuple[str, str]] = []
+def _safe_study_slug(value: object) -> str:
+    text = re.sub(r"[^a-zA-Z0-9._-]+", "_", str(value or "study"))
+    text = re.sub(r"_+", "_", text).strip("._-")
+    return text or "study"
+
+
+def _looks_like_pdf_url(url: str) -> bool:
+    if not url:
+        return False
+    parsed = urlparse(url)
+    path = (parsed.path or "").lower()
+    if path.endswith(".pdf") or "/pdf/" in path or path.endswith("/pdf"):
+        return True
+    params = parse_qs(parsed.query or "", keep_blank_values=True)
+    for key, values in params.items():
+        key_l = key.lower()
+        values_l = [str(v).lower() for v in values]
+        if key_l in {"blobtype", "format"} and "pdf" in values_l:
+            return True
+        if key_l in {"download", "filename"} and any(value.endswith(".pdf") for value in values_l):
+            return True
+    return False
+
+
+def _request_with_retries(
+    *,
+    url: str,
+    timeout_sec: float,
+    stream: bool,
+    max_retries: int,
+) -> requests.Response:
+    backoff = 0.6
+    last_exc: Optional[Exception] = None
+    for attempt in range(max_retries + 1):
+        try:
+            response = requests.get(
+                url,
+                timeout=timeout_sec,
+                headers=_headers(),
+                allow_redirects=True,
+                stream=stream,
+            )
+            if response.status_code in TRANSIENT_HTTP_CODES and attempt < max_retries:
+                response.close()
+                time.sleep(backoff * (attempt + 1))
+                continue
+            response.raise_for_status()
+            return response
+        except requests.RequestException as exc:
+            last_exc = exc
+            if attempt >= max_retries:
+                raise
+            time.sleep(backoff * (attempt + 1))
+    if last_exc is not None:
+        raise last_exc
+    raise RuntimeError(f"Request failed without an exception for URL: {url}")
+
+
+def _extract_pdf_links_from_html(html_text: str, base_url: str, max_links: int) -> List[str]:
+    candidates: List[str] = []
     seen = set()
-    for loc in locations:
-        pdf_url = str(loc.get("url_for_pdf") or "").strip()
-        host_type = str(loc.get("host_type") or "")
-        if pdf_url and pdf_url not in seen:
-            candidates.append((pdf_url, host_type))
-            seen.add(pdf_url)
+
+    patterns = [
+        re.compile(r'(?i)citation_pdf_url["\']?\s+content=["\']([^"\']+)["\']'),
+        re.compile(r'(?i)(?:href|src)\s*=\s*["\']([^"\']+)["\']'),
+        re.compile(r'(?i)(https?://[^"\'\s<>]+\.pdf(?:\?[^"\'\s<>]*)?)'),
+    ]
+
+    for pattern in patterns:
+        for raw_link in pattern.findall(html_text):
+            if not isinstance(raw_link, str):
+                continue
+            clean = html.unescape(raw_link.strip())
+            if not clean:
+                continue
+            absolute = urljoin(base_url, clean)
+            if not _looks_like_pdf_url(absolute):
+                continue
+            if absolute in seen:
+                continue
+            seen.add(absolute)
+            candidates.append(absolute)
+            if len(candidates) >= max_links:
+                return candidates
     return candidates
 
 
-def _download_pdf(url: str, output_path: Path, timeout_sec: float) -> bool:
-    response = requests.get(url, timeout=timeout_sec, headers=_headers(), allow_redirects=True, stream=True)
-    response.raise_for_status()
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    with output_path.open("wb") as handle:
-        first_chunk = b""
-        for chunk in response.iter_content(chunk_size=1024 * 64):
-            if not chunk:
+def _fetch_unpaywall_locations(
+    *,
+    doi: str,
+    email: str,
+    timeout_sec: float,
+    max_retries: int,
+) -> List[Dict[str, str]]:
+    url = f"https://api.unpaywall.org/v2/{doi}?email={email}"
+    try:
+        response = _request_with_retries(url=url, timeout_sec=timeout_sec, stream=False, max_retries=max_retries)
+    except requests.RequestException:
+        return []
+    payload = response.json()
+    raw_locations: List[Dict] = []
+    best = payload.get("best_oa_location")
+    if isinstance(best, dict):
+        raw_locations.append(best)
+    raw_locations.extend(loc for loc in (payload.get("oa_locations") or []) if isinstance(loc, dict))
+
+    candidates: List[Dict[str, str]] = []
+    seen = set()
+    for loc in raw_locations:
+        host_type = str(loc.get("host_type") or "").strip().lower()
+        for field_name in ("url_for_pdf", "url"):
+            candidate_url = str(loc.get(field_name) or "").strip()
+            if not candidate_url or candidate_url in seen:
                 continue
-            if not first_chunk:
-                first_chunk = chunk
-            handle.write(chunk)
+            seen.add(candidate_url)
+            candidates.append(
+                {
+                    "url": candidate_url,
+                    "host_type": host_type,
+                    "source": field_name,
+                }
+            )
+    return candidates
+
+
+def _discover_pdf_links_from_landing(
+    *,
+    landing_url: str,
+    timeout_sec: float,
+    max_retries: int,
+    max_links: int,
+) -> List[str]:
+    response = _request_with_retries(
+        url=landing_url,
+        timeout_sec=timeout_sec,
+        stream=False,
+        max_retries=max_retries,
+    )
+    final_url = str(response.url or landing_url)
+    body = response.content or b""
+    if body.startswith(b"%PDF") and _looks_like_pdf_url(final_url):
+        return [final_url]
+
+    content_type = str(response.headers.get("content-type") or "").lower()
+    if "html" not in content_type and "xml" not in content_type:
+        return []
+    text = response.text or ""
+    return _extract_pdf_links_from_html(text, base_url=final_url, max_links=max_links)
+
+
+def _download_pdf(url: str, output_path: Path, timeout_sec: float, max_retries: int) -> bool:
+    with _request_with_retries(url=url, timeout_sec=timeout_sec, stream=True, max_retries=max_retries) as response:
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        with output_path.open("wb") as handle:
+            first_chunk = b""
+            for chunk in response.iter_content(chunk_size=1024 * 64):
+                if not chunk:
+                    continue
+                if not first_chunk:
+                    first_chunk = chunk
+                handle.write(chunk)
     if not first_chunk.startswith(b"%PDF"):
         output_path.unlink(missing_ok=True)
         return False
@@ -150,7 +291,39 @@ def _download_pdf(url: str, output_path: Path, timeout_sec: float) -> bool:
 def _pdf_contains_doi(pdf_path: Path, doi: str, parser: PDFParser) -> bool:
     content = parser.parse(str(pdf_path))
     text = "\n".join((page.full_text or "") for page in content.pages).lower()
-    return doi.lower() in text
+    compact_text = re.sub(r"[^a-z0-9./]", "", text)
+    compact_doi = re.sub(r"[^a-z0-9./]", "", doi.lower())
+    return bool(compact_doi) and compact_doi in compact_text
+
+
+def _candidate_sort_key(candidate: Dict[str, str], prefer_repository: bool) -> Tuple[int, int, int, str]:
+    host = str(candidate.get("host_type") or "").lower()
+    source = str(candidate.get("source") or "")
+    url = str(candidate.get("url") or "")
+
+    if prefer_repository:
+        host_rank = 0 if host == "repository" else 1
+    else:
+        host_rank = 0 if host == "publisher" else 1
+
+    source_rank = 0 if source == "url_for_pdf" else 1
+    pdf_rank = 0 if _looks_like_pdf_url(url) else 1
+    return host_rank, source_rank, pdf_rank, url
+
+
+def _existing_local_pdf_path(row: Dict, preferred_pdf_dir: Path) -> Optional[Path]:
+    relative_pdf = str(row.get("pdf_path") or "").strip()
+    if relative_pdf:
+        candidate = PROJECT_ROOT / Path(relative_pdf.replace("/", "\\"))
+        if candidate.exists() and candidate.stat().st_size > 1024:
+            return candidate
+
+    pdf_filename = str(row.get("pdf_filename") or "").strip()
+    if pdf_filename:
+        candidate = preferred_pdf_dir / pdf_filename
+        if candidate.exists() and candidate.stat().st_size > 1024:
+            return candidate
+    return None
 
 
 def main() -> int:
@@ -162,11 +335,33 @@ def main() -> int:
     parser.add_argument("--request-timeout-sec", type=float, default=25.0)
     parser.add_argument("--sleep-sec", type=float, default=0.1)
     parser.add_argument("--max-attempts", type=int, default=None)
+    parser.add_argument("--max-candidates-per-study", type=int, default=12)
+    parser.add_argument("--max-landing-pages-per-study", type=int, default=3)
+    parser.add_argument("--max-links-per-landing-page", type=int, default=8)
+    parser.add_argument("--http-retries", type=int, default=2)
+    parser.add_argument(
+        "--prefer-repository",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="Prefer repository candidates before publisher links.",
+    )
     args = parser.parse_args()
 
     manifest_path = args.input_cohort_dir / "manifest.jsonl"
     if not manifest_path.exists():
         raise FileNotFoundError(f"Missing manifest: {manifest_path}")
+    if args.request_timeout_sec <= 0:
+        raise ValueError("--request-timeout-sec must be > 0")
+    if args.sleep_sec < 0:
+        raise ValueError("--sleep-sec must be >= 0")
+    if args.max_candidates_per_study <= 0:
+        raise ValueError("--max-candidates-per-study must be > 0")
+    if args.max_landing_pages_per_study < 0:
+        raise ValueError("--max-landing-pages-per-study must be >= 0")
+    if args.max_links_per_landing_page <= 0:
+        raise ValueError("--max-links-per-landing-page must be > 0")
+    if args.http_retries < 0:
+        raise ValueError("--http-retries must be >= 0")
 
     input_protocol_path = args.input_cohort_dir / "protocol_lock.json"
     input_protocol = _load_json(input_protocol_path) if input_protocol_path.exists() else {}
@@ -179,8 +374,15 @@ def main() -> int:
 
     for row in rows:
         if row.get("local_pdf"):
-            stats["already_local"] += 1
-            continue
+            existing_pdf = _existing_local_pdf_path(row=row, preferred_pdf_dir=args.pdf_dir)
+            if existing_pdf is not None:
+                row["pdf_path"] = _relative_path(existing_pdf)
+                stats["already_local"] += 1
+                continue
+            row["local_pdf"] = False
+            row["download_status"] = "stale_local_pdf_flag"
+            stats["stale_local_pdf_flag"] += 1
+
         doi = _normalize_doi(row.get("doi"))
         if not doi:
             stats["missing_doi"] += 1
@@ -192,22 +394,111 @@ def main() -> int:
         attempts += 1
         stats["attempted_rows"] += 1
 
-        candidates = _fetch_unpaywall_locations(
+        base_candidates = _fetch_unpaywall_locations(
             doi=doi,
             email=args.unpaywall_email,
             timeout_sec=args.request_timeout_sec,
+            max_retries=args.http_retries,
         )
-        if not candidates:
+        if not base_candidates:
             stats["no_oa_pdf_candidate"] += 1
             failures.append({"study_id": row.get("study_id", ""), "reason": "no_oa_pdf_candidate"})
             continue
 
-        success = False
-        for url, host_type in candidates[:5]:
-            filename = f"{row.get('study_id', 'study')}__doi.pdf"
-            pdf_path = args.pdf_dir / filename
+        base_candidates = sorted(
+            base_candidates,
+            key=lambda candidate: _candidate_sort_key(candidate, prefer_repository=args.prefer_repository),
+        )
+        stats["unpaywall_candidates_total"] += len(base_candidates)
+
+        download_candidates: List[Dict[str, str]] = []
+        seen_candidate_urls = set()
+        for candidate in base_candidates:
+            candidate_url = str(candidate.get("url") or "").strip()
+            if not candidate_url or candidate_url in seen_candidate_urls:
+                continue
+            seen_candidate_urls.add(candidate_url)
+            source = str(candidate.get("source") or "")
+            if source == "url_for_pdf" or _looks_like_pdf_url(candidate_url):
+                download_candidates.append(candidate)
+
+        landing_pages_checked = 0
+        for candidate in base_candidates:
+            if len(download_candidates) >= args.max_candidates_per_study:
+                break
+            if landing_pages_checked >= args.max_landing_pages_per_study:
+                break
+            source = str(candidate.get("source") or "")
+            landing_url = str(candidate.get("url") or "").strip()
+            host_type = str(candidate.get("host_type") or "")
+            if source != "url" or not landing_url:
+                continue
+            if host_type != "repository":
+                continue
+
+            landing_pages_checked += 1
+            stats["landing_pages_checked"] += 1
             try:
-                if not _download_pdf(url=url, output_path=pdf_path, timeout_sec=args.request_timeout_sec):
+                discovered_links = _discover_pdf_links_from_landing(
+                    landing_url=landing_url,
+                    timeout_sec=args.request_timeout_sec,
+                    max_retries=args.http_retries,
+                    max_links=args.max_links_per_landing_page,
+                )
+            except Exception as exc:
+                stats["landing_page_errors"] += 1
+                failures.append(
+                    {
+                        "study_id": row.get("study_id", ""),
+                        "reason": "landing_page_error",
+                        "url": landing_url,
+                        "error": str(exc)[:200],
+                    }
+                )
+                continue
+
+            if not discovered_links:
+                stats["landing_pages_without_pdf_links"] += 1
+                continue
+
+            stats["landing_pages_with_pdf_links"] += 1
+            for link in discovered_links:
+                if link in seen_candidate_urls:
+                    continue
+                seen_candidate_urls.add(link)
+                download_candidates.append(
+                    {
+                        "url": link,
+                        "host_type": host_type,
+                        "source": "landing_discovered_pdf",
+                    }
+                )
+                if len(download_candidates) >= args.max_candidates_per_study:
+                    break
+
+        if not download_candidates:
+            stats["no_downloadable_candidate"] += 1
+            failures.append({"study_id": row.get("study_id", ""), "reason": "no_downloadable_candidate"})
+            continue
+
+        row["unpaywall_candidate_count"] = len(download_candidates)
+
+        success = False
+        for candidate in download_candidates[: args.max_candidates_per_study]:
+            url = str(candidate.get("url") or "").strip()
+            host_type = str(candidate.get("host_type") or "")
+            source = str(candidate.get("source") or "")
+            filename = f"{_safe_study_slug(row.get('study_id', 'study'))}__doi.pdf"
+            pdf_path = args.pdf_dir / filename
+            stats["download_attempts"] += 1
+            try:
+                if not _download_pdf(
+                    url=url,
+                    output_path=pdf_path,
+                    timeout_sec=args.request_timeout_sec,
+                    max_retries=args.http_retries,
+                ):
+                    stats["non_pdf_response"] += 1
                     continue
                 if not _pdf_contains_doi(pdf_path=pdf_path, doi=doi, parser=parser_pdf):
                     stats["downloaded_without_doi_match"] += 1
@@ -223,15 +514,18 @@ def main() -> int:
                 row["content_validation_reason"] = "matched_doi_in_pdf_text"
                 row["identity_validation_method"] = "doi_text_match"
                 row["unpaywall_host_type"] = host_type
+                row["unpaywall_candidate_source"] = source
                 stats["downloaded_and_validated"] += 1
                 success = True
                 break
             except Exception as exc:
+                stats["download_errors"] += 1
                 failures.append(
                     {
                         "study_id": row.get("study_id", ""),
                         "reason": "download_or_parse_error",
                         "url": url,
+                        "candidate_source": source,
                         "error": str(exc)[:200],
                     }
                 )
@@ -239,9 +533,9 @@ def main() -> int:
 
         if not success:
             row["local_pdf"] = False
-            row["download_status"] = row.get("download_status") or "unpaywall_failed"
+            row["download_status"] = "unpaywall_failed"
             row["content_valid"] = False
-            row["content_validation_reason"] = row.get("content_validation_reason") or "no_doi_matched_oa_pdf"
+            row["content_validation_reason"] = "no_doi_matched_oa_pdf"
             stats["failed_after_candidates"] += 1
 
         if args.sleep_sec > 0:
@@ -278,11 +572,17 @@ def main() -> int:
         "journal_counts_frozen": journal_counts_frozen,
         "validation_stats": validation_stats,
         "augmentation_stats": dict(stats),
+        "augmentation_failures_total": len(failures),
         "augmentation_failures_sample": failures[:200],
         "source_protocol_mode": input_protocol.get("mode"),
         "source_validation_stats": input_protocol.get("validation_stats", {}),
         "unpaywall_email": args.unpaywall_email,
         "request_timeout_sec": args.request_timeout_sec,
+        "http_retries": args.http_retries,
+        "max_candidates_per_study": args.max_candidates_per_study,
+        "max_landing_pages_per_study": args.max_landing_pages_per_study,
+        "max_links_per_landing_page": args.max_links_per_landing_page,
+        "prefer_repository": args.prefer_repository,
         "output_manifest": _relative_path(output_manifest),
         "output_frozen_gold": _relative_path(output_gold),
         "output_seed_results": _relative_path(output_seed),
