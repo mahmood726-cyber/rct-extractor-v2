@@ -1,0 +1,44 @@
+{
+  "generated_at_utc": "2026-02-24T22:40:35.981499+00:00",
+  "benchmark_version": "cardiology_meta_linked_v1_pilot150",
+  "inputs": {
+    "results_jsonl": "output/cardiology_oa_full_v1_fast/results_baseline_frozen_snapshot.jsonl",
+    "trial_map_json": "output/cardiology_oa_full_v1_fast/meta_mapping_trials_baseline_frozen.json",
+    "pmcid_cache_json": "output/cardiology_oa_full_v1_fast/cache_meta_map/pmcid_to_pmid.json",
+    "input_dir": "C:/Users/user/cardiology_rcts",
+    "include_statuses": [
+      "error",
+      "extracted",
+      "no_extraction",
+      "timeout"
+    ],
+    "target_n": 150,
+    "seed": 20260224,
+    "max_meta_pmids": 30
+  },
+  "counts": {
+    "linked_rows_available": 533,
+    "selected_rows": 150,
+    "available_unique_pmids": 533,
+    "selected_unique_pmids": 150,
+    "status_counts_available": {
+      "extracted": 414,
+      "no_extraction": 116,
+      "timeout": 3
+    },
+    "status_counts_selected": {
+      "extracted": 116,
+      "no_extraction": 33,
+      "timeout": 1
+    }
+  },
+  "paths": {
+    "cohort_jsonl": "benchmark_cohort.jsonl",
+    "annotator_a_jsonl": "blinded_template_annotator_a.jsonl",
+    "annotator_b_jsonl": "blinded_template_annotator_b.jsonl",
+    "adjudication_jsonl": "adjudication_template.jsonl",
+    "model_seed_jsonl": "model_seed_adjudicator_only.jsonl",
+    "manifest_json": "manifest.json",
+    "readme_md": "README.md"
+  }
+}
