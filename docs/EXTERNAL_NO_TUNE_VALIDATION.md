@@ -6,6 +6,7 @@ Run external PDF validation without tuning, without gold/cochrane fallback injec
 ## Scripts
 - `scripts/prepare_external_no_tune_eval.py`
 - `scripts/run_external_no_tune_eval.py`
+- `scripts/build_human_error_agreement_report.py`
 
 ## Default Input
 - `data/ground_truth/external_validation_ground_truth.jsonl`
@@ -112,6 +113,60 @@ python3 scripts/review_multipersona_plos_one.py \
   - PLOS-family studies in the frozen cohort: `0`
   - PLOS ONE studies: `0`
   - No PLOS-specific regression risk in this 40-study cohort.
+
+Human-error-envelope agreement audit (10% tolerance):
+```bash
+python3 scripts/build_human_error_agreement_report.py \
+  --cohort-label external_no_tune_40_v7 \
+  --gold-jsonl data/external_no_tune_40_v2/frozen_gold.jsonl \
+  --results-json output/external_no_tune_40_v7_results.json \
+  --output-json output/external_no_tune_40_v7_human_error_agreement_2026-02-24.json \
+  --output-md output/external_no_tune_40_v7_human_error_agreement_2026-02-24.md \
+  --n-bootstrap 20000
+```
+- `output/external_no_tune_40_v7_human_error_agreement_2026-02-24.md`:
+  - point agreement within 10%: `100.0%` (`95% CI: 100.0% to 100.0%`)
+  - effect-type match: `100.0%`
+  - CI-bound agreement within 10%: `25.6%`
+  - Interpretation: endpoint point estimates are stable under a 10% human-error envelope, but CI-bound agreement is weak in this fallback-enabled full-40 run.
+
+## Identity-Validated Full-Text Expansion (February 24, 2026)
+- Augmented identity-validated full-text cohort using DOI-in-PDF verification from Unpaywall:
+```bash
+python3 scripts/augment_identity_validation_with_unpaywall.py \
+  --input-cohort-dir data/external_all_validated_probe \
+  --output-dir data/external_all_validated_augmented_v1 \
+  --pdf-dir test_pdfs/external_all_validated_augmented_v1/pdfs
+```
+- Result of augmentation:
+  - frozen identity-validated trials: `11 -> 13`
+  - stats: `downloaded_and_validated=2`, `failed_after_candidates=31`, `no_oa_pdf_candidate=5`
+- Re-ran strict PDF-only extraction on the expanded validated cohort:
+```bash
+python3 scripts/run_external_no_tune_eval.py \
+  --skip-prepare \
+  --cohort-dir data/external_all_validated_augmented_v1 \
+  --pdf-dir test_pdfs/external_all_validated_augmented_v1_merged/pdfs \
+  --no-fallback-from-pubmed-abstract \
+  --results-output output/external_all_validated_augmented_v1_pdf_only_results.json \
+  --metrics-output output/external_all_validated_augmented_v1_pdf_only_metrics.json \
+  --summary-output output/external_all_validated_augmented_v1_pdf_only_summary.json \
+  --report-output output/external_all_validated_augmented_v1_pdf_only_report.md
+```
+- Expanded validated PDF-only metrics (`output/external_all_validated_augmented_v1_pdf_only_metrics.json`):
+  - `extraction_coverage: 0.8462`
+  - `strict_match_rate: 0.7692`
+  - `lenient_match_rate: 0.8462`
+  - `effect_type_accuracy: 1.0`
+  - `ci_completeness: 0.9091`
+  - `ma_ready_yield: 0.7692`
+- Human-error-envelope agreement on expanded validated cohort:
+  - `output/external_all_validated_augmented_v1_pdf_only_human_error_agreement_2026-02-24.md`
+  - point agreement within 10%: `90.9%` (`95% CI: 72.7% to 100.0%`) on 11 comparable trials
+  - CI-bound agreement within 10%: `70.0%` (`95% CI: 40.0% to 100.0%`) on 10 comparable trials
+- Publishability note:
+  - This improves validated-N but remains under broad-claim sample-size guidance (see `docs/SAMPLE_SIZE_JUSTIFICATION.md`, minimum `n≈73` for ±5% precision at 95% confidence).
+  - Suitable for scoped methods claims; not yet sufficient for broad external full-text generalization claims.
 
 ## Main Artifacts
 - `data/external_no_tune_v1/manifest.jsonl`

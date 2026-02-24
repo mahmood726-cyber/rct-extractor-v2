@@ -1,0 +1,68 @@
+{
+  "generated_at_utc": "2026-02-24T08:25:58.162708+00:00",
+  "artifacts": {
+    "frozen_gold": "data/external_all_validated_augmented_v1/frozen_gold.jsonl",
+    "seed_results": "data/external_all_validated_augmented_v1/seed_results_empty.json",
+    "results": "output/external_all_validated_augmented_v1_pdf_only_results.json",
+    "metrics": "output/external_all_validated_augmented_v1_pdf_only_metrics.json",
+    "protocol_lock": "data/external_all_validated_augmented_v1/protocol_lock.json"
+  },
+  "no_tune_flags": {
+    "fallback_from_gold": false,
+    "fallback_from_cochrane": false,
+    "fallback_for_distant": false,
+    "allow_assumed_se_fallback": false,
+    "resume_from_output": false,
+    "fallback_from_pubmed_abstract": false,
+    "pubmed_fallback_statuses": [
+      "no_extractions",
+      "no_match"
+    ],
+    "pubmed_fallback_study_ids": []
+  },
+  "protocol": {
+    "source": null,
+    "selected_trials_total": 49,
+    "frozen_trials_total": 13,
+    "journal_counts_frozen": {
+      "Lancet": 2,
+      "NEJM": 11
+    },
+    "download_stats": {},
+    "validate_pdf_content": null,
+    "validation_stats": {
+      "passed": 13,
+      "failed": 36
+    }
+  },
+  "counts": {
+    "total_trials": 13,
+    "trials_with_extractions": 11,
+    "matchable_trials": 11,
+    "strict_matches": 10,
+    "lenient_matches": 11,
+    "effect_type_total": 11,
+    "effect_type_correct": 11,
+    "ci_total": 11,
+    "ci_complete": 10,
+    "ma_ready_trials": 10,
+    "computed_trials": 2
+  },
+  "metrics": {
+    "extraction_coverage": 0.8461538461538461,
+    "strict_match_rate": 0.7692307692307693,
+    "lenient_match_rate": 0.8461538461538461,
+    "effect_type_accuracy": 1.0,
+    "ci_completeness": 0.9090909090909091,
+    "ma_ready_yield": 0.7692307692307693,
+    "computed_effect_share": 0.15384615384615385
+  },
+  "status_counts": {
+    "approximate_match": 1,
+    "close_match": 2,
+    "error": 1,
+    "exact_match": 2,
+    "exact_match_with_ci": 6,
+    "timeout": 1
+  }
+}
