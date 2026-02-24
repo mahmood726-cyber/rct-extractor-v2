@@ -1,0 +1,312 @@
+{
+  "protocol_version": "1.0.0",
+  "created_at_utc": "2026-02-24T13:48:13.086131+00:00",
+  "mode": "external_validated_with_unpaywall_fallback",
+  "identity_validation_applied": true,
+  "parent_cohort_dir": "data/external_all_validated_augmented_v4_broad_fast",
+  "parent_protocol_lock": "data/external_all_validated_augmented_v4_broad_fast/protocol_lock.json",
+  "selected_trials_total": 49,
+  "frozen_trials_total": 19,
+  "journal_counts_selected": {
+    "AJP": 1,
+    "Eur Heart J": 1,
+    "Lancet": 3,
+    "NEJM": 44
+  },
+  "journal_counts_frozen": {
+    "Lancet": 2,
+    "NEJM": 17
+  },
+  "validation_stats": {
+    "passed": 19,
+    "failed": 30
+  },
+  "augmentation_stats": {
+    "already_local": 19,
+    "attempted_rows": 30,
+    "unpaywall_candidates_total": 65,
+    "landing_pages_checked": 14,
+    "landing_pages_without_pdf_links": 6,
+    "download_attempts": 39,
+    "non_pdf_response": 8,
+    "download_errors": 31,
+    "failed_after_candidates": 27,
+    "no_oa_pdf_candidate": 2,
+    "landing_pages_with_pdf_links": 4,
+    "landing_page_errors": 4,
+    "no_downloadable_candidate": 1
+  },
+  "augmentation_failures_total": 38,
+  "augmentation_failures_sample": [
+    {
+      "study_id": "alex_2017",
+      "reason": "download_or_parse_error",
+      "url": "https://www.nejm.org/doi/pdf/10.1056/NEJMoa1704795?articleTools=true",
+      "candidate_source": "url_for_pdf",
+      "error": "403 Client Error: Forbidden for url: https://www.nejm.org/doi/pdf/10.1056/NEJMoa1704795?articleTools=true"
+    },
+    {
+      "study_id": "aristotle_2011",
+      "reason": "download_or_parse_error",
+      "url": "https://www.nejm.org/doi/pdf/10.1056/NEJMoa1107039?articleTools=true",
+      "candidate_source": "url_for_pdf",
+      "error": "403 Client Error: Forbidden for url: https://www.nejm.org/doi/pdf/10.1056/NEJMoa1107039?articleTools=true"
+    },
+    {
+      "study_id": "aristotle_2011_pmc3476376",
+      "reason": "download_or_parse_error",
+      "url": "https://www.nejm.org/doi/pdf/10.1056/NEJMoa1107039?articleTools=true",
+      "candidate_source": "url_for_pdf",
+      "error": "403 Client Error: Forbidden for url: https://www.nejm.org/doi/pdf/10.1056/NEJMoa1107039?articleTools=true"
+    },
+    {
+      "study_id": "ascot_lla_2003",
+      "reason": "no_oa_pdf_candidate"
+    },
+    {
+      "study_id": "canvas_program_2017",
+      "reason": "download_or_parse_error",
+      "url": "https://www.nejm.org/doi/pdf/10.1056/NEJMoa1611925?articleTools=true",
+      "candidate_source": "url_for_pdf",
+      "error": "403 Client Error: Forbidden for url: https://www.nejm.org/doi/pdf/10.1056/NEJMoa1611925?articleTools=true"
+    },
+    {
+      "study_id": "compass_2017",
+      "reason": "download_or_parse_error",
+      "url": "https://www.nejm.org/doi/pdf/10.1056/NEJMoa1709118?articleTools=true",
+      "candidate_source": "url_for_pdf",
+      "error": "403 Client Error: Forbidden for url: https://www.nejm.org/doi/pdf/10.1056/NEJMoa1709118?articleTools=true"
+    },
+    {
+      "study_id": "compass_2017",
+      "reason": "download_or_parse_error",
+      "url": "https://portal.findresearcher.sdu.dk/files/145346631/Rivaroxaban_with_or_without_Aspirin_in_Stable_Cardiovascular_Disease.pdf",
+      "candidate_source": "landing_discovered_pdf",
+      "error": "403 Client Error: Forbidden for url: https://portal.findresearcher.sdu.dk/files/145346631/Rivaroxaban_with_or_without_Aspirin_in_Stable_Cardiovascular_Disease.pdf"
+    },
+    {
+      "study_id": "courage_2007",
+      "reason": "download_or_parse_error",
+      "url": "https://www.nejm.org/doi/pdf/10.1056/NEJMoa070829?articleTools=true",
+      "candidate_source": "url_for_pdf",
+      "error": "403 Client Error: Forbidden for url: https://www.nejm.org/doi/pdf/10.1056/NEJMoa070829?articleTools=true"
+    },
+    {
+      "study_id": "dapa_ckd_2020",
+      "reason": "download_or_parse_error",
+      "url": "https://www.nejm.org/doi/pdf/10.1056/NEJMoa2024816?articleTools=true",
+      "candidate_source": "url_for_pdf",
+      "error": "403 Client Error: Forbidden for url: https://www.nejm.org/doi/pdf/10.1056/NEJMoa2024816?articleTools=true"
+    },
+    {
+      "study_id": "dapa_ckd_2020",
+      "reason": "download_or_parse_error",
+      "url": "https://research.rug.nl/files/174112406/nejmoa2024816.pdf",
+      "candidate_source": "landing_discovered_pdf",
+      "error": "403 Client Error: Forbidden for url: https://research.rug.nl/files/174112406/nejmoa2024816.pdf"
+    },
+    {
+      "study_id": "dapa_hf_2019",
+      "reason": "landing_page_error",
+      "url": "https://eprints.gla.ac.uk/view/journal_volume/New_England_Journal_of_Medicine.html>,",
+      "error": "404 Client Error: Not Found for url: https://eprints.gla.ac.uk/view/journal_volume/New_England_Journal_of_Medicine.html%3E,"
+    },
+    {
+      "study_id": "dapa_hf_2019",
+      "reason": "download_or_parse_error",
+      "url": "https://www.nejm.org/doi/pdf/10.1056/NEJMoa1911303?articleTools=true",
+      "candidate_source": "url_for_pdf",
+      "error": "403 Client Error: Forbidden for url: https://www.nejm.org/doi/pdf/10.1056/NEJMoa1911303?articleTools=true"
+    },
+    {
+      "study_id": "declare_timi_58_2018",
+      "reason": "download_or_parse_error",
+      "url": "https://www.nejm.org/doi/pdf/10.1056/NEJMoa1812389?articleTools=true",
+      "candidate_source": "url_for_pdf",
+      "error": "403 Client Error: Forbidden for url: https://www.nejm.org/doi/pdf/10.1056/NEJMoa1812389?articleTools=true"
+    },
+    {
+      "study_id": "declare_timi_58_2019",
+      "reason": "download_or_parse_error",
+      "url": "https://www.nejm.org/doi/pdf/10.1056/NEJMoa1812389?articleTools=true",
+      "candidate_source": "url_for_pdf",
+      "error": "403 Client Error: Forbidden for url: https://www.nejm.org/doi/pdf/10.1056/NEJMoa1812389?articleTools=true"
+    },
+    {
+      "study_id": "define_2012",
+      "reason": "no_downloadable_candidate"
+    },
+    {
+      "study_id": "empa_reg_outcome_2015",
+      "reason": "download_or_parse_error",
+      "url": "https://www.nejm.org/doi/pdf/10.1056/NEJMoa1504720?articleTools=true",
+      "candidate_source": "url_for_pdf",
+      "error": "403 Client Error: Forbidden for url: https://www.nejm.org/doi/pdf/10.1056/NEJMoa1504720?articleTools=true"
+    },
+    {
+      "study_id": "gemini_1_2013",
+      "reason": "download_or_parse_error",
+      "url": "https://www.nejm.org/doi/pdf/10.1056/NEJMoa1215734?articleTools=true",
+      "candidate_source": "url_for_pdf",
+      "error": "403 Client Error: Forbidden for url: https://www.nejm.org/doi/pdf/10.1056/NEJMoa1215734?articleTools=true"
+    },
+    {
+      "study_id": "inpulsis_2014",
+      "reason": "download_or_parse_error",
+      "url": "https://www.nejm.org/doi/pdf/10.1056/NEJMoa1402584?articleTools=true",
+      "candidate_source": "url_for_pdf",
+      "error": "403 Client Error: Forbidden for url: https://www.nejm.org/doi/pdf/10.1056/NEJMoa1402584?articleTools=true"
+    },
+    {
+      "study_id": "jupiter_2008",
+      "reason": "download_or_parse_error",
+      "url": "https://www.nejm.org/doi/media/10.1056/NEJMoa0807646/nejmoa0807646_comments.pdf?area=",
+      "candidate_source": "url_for_pdf",
+      "error": "403 Client Error: Forbidden for url: https://www.nejm.org/doi/media/10.1056/NEJMoa0807646/nejmoa0807646_comments.pdf?area="
+    },
+    {
+      "study_id": "keynote_024_2016",
+      "reason": "download_or_parse_error",
+      "url": "https://www.nejm.org/doi/pdf/10.1056/NEJMoa1606774?articleTools=true",
+      "candidate_source": "url_for_pdf",
+      "error": "403 Client Error: Forbidden for url: https://www.nejm.org/doi/pdf/10.1056/NEJMoa1606774?articleTools=true"
+    },
+    {
+      "study_id": "monaleesa_2_2016",
+      "reason": "landing_page_error",
+      "url": "http://hdl.handle.net/10668/10515",
+      "error": "HTTPConnectionPool(host='hdl.handle.net', port=80): Read timed out. (read timeout=8.0)"
+    },
+    {
+      "study_id": "monaleesa_2_2016",
+      "reason": "download_or_parse_error",
+      "url": "http://www.nejm.org/doi/pdf/10.1056/NEJMoa1609709",
+      "candidate_source": "url_for_pdf",
+      "error": "403 Client Error: Forbidden for url: https://www.nejm.org/doi/pdf/10.1056/NEJMoa1609709"
+    },
+    {
+      "study_id": "monaleesa_2_2016",
+      "reason": "download_or_parse_error",
+      "url": "https://www.nejm.org/doi/pdf/10.1056/NEJMoa1609709?articleTools=true",
+      "candidate_source": "url_for_pdf",
+      "error": "403 Client Error: Forbidden for url: https://www.nejm.org/doi/pdf/10.1056/NEJMoa1609709?articleTools=true"
+    },
+    {
+      "study_id": "odyssey_outcomes_2018",
+      "reason": "download_or_parse_error",
+      "url": "https://www.nejm.org/doi/pdf/10.1056/NEJMoa1801174?articleTools=true",
+      "candidate_source": "url_for_pdf",
+      "error": "403 Client Error: Forbidden for url: https://www.nejm.org/doi/pdf/10.1056/NEJMoa1801174?articleTools=true"
+    },
+    {
+      "study_id": "pacific_2017",
+      "reason": "landing_page_error",
+      "url": "http://hdl.handle.net/10668/11565",
+      "error": "HTTPConnectionPool(host='hdl.handle.net', port=80): Read timed out. (read timeout=8.0)"
+    },
+    {
+      "study_id": "pacific_2017",
+      "reason": "download_or_parse_error",
+      "url": "https://www.nejm.org/doi/pdf/10.1056/NEJMoa1709937?articleTools=true",
+      "candidate_source": "url_for_pdf",
+      "error": "403 Client Error: Forbidden for url: https://www.nejm.org/doi/pdf/10.1056/NEJMoa1709937?articleTools=true"
+    },
+    {
+      "study_id": "paloma_2_2016",
+      "reason": "no_oa_pdf_candidate"
+    },
+    {
+      "study_id": "ra_beam_2017",
+      "reason": "download_or_parse_error",
+      "url": "https://www.nejm.org/doi/pdf/10.1056/NEJMoa1608345?articleTools=true",
+      "candidate_source": "url_for_pdf",
+      "error": "403 Client Error: Forbidden for url: https://www.nejm.org/doi/pdf/10.1056/NEJMoa1608345?articleTools=true"
+    },
+    {
+      "study_id": "rales_1999",
+      "reason": "download_or_parse_error",
+      "url": "https://www.nejm.org/doi/pdf/10.1056/NEJM199909023411001?articleTools=true",
+      "candidate_source": "url_for_pdf",
+      "error": "403 Client Error: Forbidden for url: https://www.nejm.org/doi/pdf/10.1056/NEJM199909023411001?articleTools=true"
+    },
+    {
+      "study_id": "re_ly_2009",
+      "reason": "download_or_parse_error",
+      "url": "http://espace.library.uq.edu.au/view/UQ:382401/UQ382401_OA.pdf",
+      "candidate_source": "url_for_pdf",
+      "error": "405 Client Error: Not Allowed for url: https://espace.library.uq.edu.au/data/UQ_382401/UQ382401_OA.pdf?Expires=1772027259&Key-Pair-Id=APKAJKNBJ4MJBJNC6NLQ&Signature=TmaQzIiHS433Kod3NRZLRCFpWWlnF6io5bX"
+    },
+    {
+      "study_id": "re_ly_2009",
+      "reason": "download_or_parse_error",
+      "url": "https://www.nejm.org/doi/pdf/10.1056/NEJMoa0905561?articleTools=true",
+      "candidate_source": "url_for_pdf",
+      "error": "403 Client Error: Forbidden for url: https://www.nejm.org/doi/pdf/10.1056/NEJMoa0905561?articleTools=true"
+    },
+    {
+      "study_id": "re_ly_2009_pmc2836560",
+      "reason": "download_or_parse_error",
+      "url": "http://espace.library.uq.edu.au/view/UQ:382401/UQ382401_OA.pdf",
+      "candidate_source": "url_for_pdf",
+      "error": "405 Client Error: Not Allowed for url: https://espace.library.uq.edu.au/data/UQ_382401/UQ382401_OA.pdf?Expires=1772027271&Key-Pair-Id=APKAJKNBJ4MJBJNC6NLQ&Signature=MD2569-nPtw2yWSMf8taRRua~riM77o3-K4"
+    },
+    {
+      "study_id": "re_ly_2009_pmc2836560",
+      "reason": "download_or_parse_error",
+      "url": "https://www.nejm.org/doi/pdf/10.1056/NEJMoa0905561?articleTools=true",
+      "candidate_source": "url_for_pdf",
+      "error": "403 Client Error: Forbidden for url: https://www.nejm.org/doi/pdf/10.1056/NEJMoa0905561?articleTools=true"
+    },
+    {
+      "study_id": "rocket_af_2011",
+      "reason": "landing_page_error",
+      "url": "https://repository.urosario.edu.co/handle/10336/26913",
+      "error": "HTTPSConnectionPool(host='repository.urosario.edu.co', port=443): Read timed out. (read timeout=8.0)"
+    },
+    {
+      "study_id": "rocket_af_2011",
+      "reason": "download_or_parse_error",
+      "url": "https://www.nejm.org/doi/pdf/10.1056/NEJMoa1009638?articleTools=true",
+      "candidate_source": "url_for_pdf",
+      "error": "403 Client Error: Forbidden for url: https://www.nejm.org/doi/pdf/10.1056/NEJMoa1009638?articleTools=true"
+    },
+    {
+      "study_id": "select_2023",
+      "reason": "download_or_parse_error",
+      "url": "https://research.rug.nl/files/911981662/nejmoa2307563.pdf",
+      "candidate_source": "landing_discovered_pdf",
+      "error": "403 Client Error: Forbidden for url: https://research.rug.nl/files/911981662/nejmoa2307563.pdf"
+    },
+    {
+      "study_id": "sustain_6_2016",
+      "reason": "download_or_parse_error",
+      "url": "https://www.nejm.org/doi/pdf/10.1056/NEJMoa1607141?articleTools=true",
+      "candidate_source": "url_for_pdf",
+      "error": "403 Client Error: Forbidden for url: https://www.nejm.org/doi/pdf/10.1056/NEJMoa1607141?articleTools=true"
+    },
+    {
+      "study_id": "transform_2_2019",
+      "reason": "download_or_parse_error",
+      "url": "https://ajp.psychiatryonline.org/doi/pdf/10.1176/appi.ajp.2019.19020172",
+      "candidate_source": "url_for_pdf",
+      "error": "403 Client Error: Forbidden for url: https://ajp.psychiatryonline.org/doi/pdf/10.1176/appi.ajp.2019.19020172"
+    }
+  ],
+  "source_protocol_mode": "external_validated_with_unpaywall_fallback",
+  "source_validation_stats": {
+    "passed": 19,
+    "failed": 30
+  },
+  "unpaywall_email": "tooling@proton.me",
+  "request_timeout_sec": 8.0,
+  "http_retries": 0,
+  "pdf_parse_timeout_sec": 25.0,
+  "max_candidates_per_study": 5,
+  "max_landing_pages_per_study": 1,
+  "max_links_per_landing_page": 4,
+  "prefer_repository": true,
+  "output_manifest": "data/external_all_validated_augmented_v4_broad_fullscan/manifest.jsonl",
+  "output_frozen_gold": "data/external_all_validated_augmented_v4_broad_fullscan/frozen_gold.jsonl",
+  "output_seed_results": "data/external_all_validated_augmented_v4_broad_fullscan/seed_results_empty.json",
+  "pdf_dir": "test_pdfs/external_all_validated_augmented_v3_deep"
+}
