@@ -230,7 +230,21 @@ python scripts/run_real_rct_gate.py \
   --backfill-uncertainty-from-page \
   --uncertainty-backfill-max-distance 320
 ```
-- Campaign upgrade stats:
+- Refreshed verification (2026-02-24):
+  - `output/real_rct_metrics_campaign_multipersona.json`
+    - `extraction_coverage: 1.0`
+    - `strict_match_rate: 1.0`
+    - `lenient_match_rate: 1.0`
+    - `effect_type_accuracy: 1.0`
+    - `ci_completeness: 0.918918918918919`
+    - `ma_ready_yield: 1.0`
+    - `computed_effect_share: 0.2702702702702703`
+  - `output/real_rct_gate_report_campaign_multipersona.json`
+    - Regression gate: PASS (no metric drops)
+  - MA artifacts:
+    - `output/ma_records_campaign_multipersona.jsonl`: 37 records
+    - `output/ma_records_campaign_multipersona.validated.jsonl`: 37 valid, 0 invalid
+- Historical campaign upgrade stats (2026-02-17):
   - `uncertainty_backfill_attempted: 4`
   - `uncertainty_backfilled_from_ci: 0`
   - `uncertainty_backfilled_from_p_value: 1`
