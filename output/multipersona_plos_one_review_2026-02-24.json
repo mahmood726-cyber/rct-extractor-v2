@@ -1,0 +1,110 @@
+{
+  "generated_at_utc": "2026-02-24T05:18:55.604614+00:00",
+  "inputs": {
+    "frozen_gold": "data/frozen_eval_v1/frozen_gold.jsonl",
+    "results": "output/real_rct_results_campaign_multipersona.json"
+  },
+  "summary": {
+    "total_plos_family_studies": 3,
+    "plos_one_studies": 2,
+    "non_plos_one_plos_studies": 1,
+    "plos_one_all_results_present": true,
+    "plos_one_all_effect_type_match": true,
+    "plos_one_all_point_estimate_match": true,
+    "plos_one_all_ci_match_when_comparable": true,
+    "plos_one_needs_review_count": 0,
+    "non_plos_one_needs_review_count": 1
+  },
+  "studies": [
+    {
+      "study_id": "Jin_2016",
+      "study_name": "Jin 2016",
+      "study_doi": "10.1371/journal.pone.0166181",
+      "journal_segment": "pone",
+      "journal_class": "plos_one",
+      "gold": {
+        "effect_type": "OR",
+        "point_estimate": 0.914,
+        "ci_lower": 0.843,
+        "ci_upper": 0.991
+      },
+      "best_match": {
+        "effect_type": "OR",
+        "point_estimate": 0.914,
+        "ci_lower": 0.843,
+        "ci_upper": 0.991,
+        "page_number": 8,
+        "automation_tier": "full_auto",
+        "needs_review": false,
+        "source_text": "OR 0.914 0.843-0.991 0.030"
+      },
+      "comparisons": {
+        "result_present": true,
+        "effect_type_match": true,
+        "point_estimate_match": true,
+        "ci_match": true,
+        "ci_match_reason": "gold_ci_present"
+      }
+    },
+    {
+      "study_id": "Oyo-Ita_2021",
+      "study_name": "Oyo-Ita 2021",
+      "study_doi": "10.1371/journal.pone.0248236",
+      "journal_segment": "pone",
+      "journal_class": "plos_one",
+      "gold": {
+        "effect_type": "OR",
+        "point_estimate": 1.55,
+        "ci_lower": 1.14,
+        "ci_upper": 2.12
+      },
+      "best_match": {
+        "effect_type": "OR",
+        "point_estimate": 1.55,
+        "ci_lower": 1.14,
+        "ci_upper": 2.12,
+        "page_number": 2,
+        "automation_tier": "full_auto",
+        "needs_review": false,
+        "source_text": "OR 1.55;95% CI:1.14-2.12"
+      },
+      "comparisons": {
+        "result_present": true,
+        "effect_type_match": true,
+        "point_estimate_match": true,
+        "ci_match": true,
+        "ci_match_reason": "gold_ci_present"
+      }
+    },
+    {
+      "study_id": "Yan_2021",
+      "study_name": "Yan 2021",
+      "study_doi": "10.1371/journal.pmed.1003582",
+      "journal_segment": "pmed",
+      "journal_class": "plos_pmed",
+      "gold": {
+        "effect_type": "RR",
+        "point_estimate": 0.65,
+        "ci_lower": null,
+        "ci_upper": null
+      },
+      "best_match": {
+        "effect_type": "RR",
+        "point_estimate": 0.65,
+        "ci_lower": 0.53,
+        "ci_upper": 0.79,
+        "page_number": 2,
+        "automation_tier": "manual",
+        "needs_review": true,
+        "source_text": "RR=0.65"
+      },
+      "comparisons": {
+        "result_present": true,
+        "effect_type_match": true,
+        "point_estimate_match": true,
+        "ci_match": null,
+        "ci_match_reason": "gold_ci_missing"
+      }
+    }
+  ]
+}

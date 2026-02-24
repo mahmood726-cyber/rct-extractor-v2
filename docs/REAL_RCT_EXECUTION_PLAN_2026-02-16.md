@@ -244,6 +244,18 @@ python scripts/run_real_rct_gate.py \
   - MA artifacts:
     - `output/ma_records_campaign_multipersona.jsonl`: 37 records
     - `output/ma_records_campaign_multipersona.validated.jsonl`: 37 valid, 0 invalid
+- PLOS ONE review + scope fix (2026-02-24):
+  - Added strict journal-level audit command:
+```bash
+python scripts/review_multipersona_plos_one.py \
+  --output-json output/multipersona_plos_one_review_2026-02-24.json \
+  --output-md output/multipersona_plos_one_review_2026-02-24.md
+```
+  - Scope correction:
+    - `PLOS ONE` is now defined as DOI prefix `10.1371/journal.pone.` (not broad `10.1371/...`).
+    - In this frozen cohort, `Yan_2021` (`10.1371/journal.pmed.1003582`) is tracked as non-PLOS-ONE (`plos_pmed`).
+  - PLOS ONE subset result:
+    - `Jin_2016` and `Oyo-Ita_2021` both match effect type/point estimate/CI with `automation_tier=full_auto` and `needs_review=false`.
 - Historical campaign upgrade stats (2026-02-17):
   - `uncertainty_backfill_attempted: 4`
   - `uncertainty_backfilled_from_ci: 0`
