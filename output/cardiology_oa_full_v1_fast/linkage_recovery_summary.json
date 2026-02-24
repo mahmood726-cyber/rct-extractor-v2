@@ -1,0 +1,64 @@
+{
+  "generated_at_utc": "2026-02-24T19:45:58.886275+00:00",
+  "inputs": {
+    "input_dir": "C:/Users/user/cardiology_rcts",
+    "backlog_jsonl": "output/cardiology_oa_full_v1_fast/linkage_first_backlog.jsonl",
+    "baseline_results_jsonl": "output/cardiology_oa_full_v1_fast/results.jsonl",
+    "workers": 5,
+    "max_candidates": null,
+    "passes": [
+      {
+        "name": "advanced_tables_raw",
+        "timeout_sec": 90.0,
+        "extract_tables": false,
+        "enable_advanced": true,
+        "compute_raw_effects": false
+      },
+      {
+        "name": "advanced_no_tables_raw",
+        "timeout_sec": 1.0,
+        "extract_tables": false,
+        "enable_advanced": true,
+        "compute_raw_effects": false
+      },
+      {
+        "name": "baseline_no_tables_raw",
+        "timeout_sec": 1.0,
+        "extract_tables": false,
+        "enable_advanced": false,
+        "compute_raw_effects": false
+      }
+    ]
+  },
+  "counts": {
+    "backlog_rows_input": 97,
+    "candidates_attempted": 97,
+    "improved_rows": 15,
+    "recovered_meta_matches_total": 22,
+    "skipped": {}
+  },
+  "rates": {
+    "improvement_rate_among_attempted": 0.15463917525773196
+  },
+  "distributions": {
+    "baseline_status_counts_attempted": {
+      "no_extraction": 96,
+      "timeout": 1
+    },
+    "improved_from_baseline_status_counts": {
+      "no_extraction": 14,
+      "timeout": 1
+    },
+    "selected_pass_counts": {
+      "advanced_tables_raw": 15
+    },
+    "final_status_counts": {
+      "extracted": 15,
+      "timeout": 82
+    }
+  },
+  "paths": {
+    "output_improved_jsonl": "output/cardiology_oa_full_v1_fast/linkage_recovery_improved.jsonl",
+    "output_attempts_jsonl": "output/cardiology_oa_full_v1_fast/linkage_recovery_attempts.jsonl"
+  }
+}

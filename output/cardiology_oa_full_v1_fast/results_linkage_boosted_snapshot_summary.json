@@ -1,0 +1,17 @@
+{
+  "generated_at_utc": "2026-02-24T19:46:23.016223+00:00",
+  "inputs": {
+    "baseline_jsonl": "output/cardiology_oa_full_v1_fast/results.jsonl",
+    "overlay_jsonl": "output/cardiology_oa_full_v1_fast/linkage_recovery_improved.jsonl"
+  },
+  "counts": {
+    "baseline_latest_rows": 2682,
+    "overlay_latest_rows": 15,
+    "overlay_replaced_existing": 15,
+    "overlay_added_new": 0,
+    "merged_rows": 2682
+  },
+  "paths": {
+    "output_jsonl": "output/cardiology_oa_full_v1_fast/results_linkage_boosted_snapshot.jsonl"
+  }
+}

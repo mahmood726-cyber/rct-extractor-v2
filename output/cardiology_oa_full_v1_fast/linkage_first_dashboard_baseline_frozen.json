@@ -1,0 +1,740 @@
+{
+  "generated_at_utc": "2026-02-24T19:47:39.866873+00:00",
+  "inputs": {
+    "results_jsonl": "output/cardiology_oa_full_v1_fast/results_baseline_frozen_snapshot.jsonl",
+    "mapping_summary_json": "output/cardiology_oa_full_v1_fast/meta_mapping_summary_baseline_frozen.json",
+    "mapping_trials_json": "output/cardiology_oa_full_v1_fast/meta_mapping_trials_baseline_frozen.json",
+    "pmcid_cache_json": "output/cardiology_oa_full_v1_fast/cache_meta_map/pmcid_to_pmid.json",
+    "high_conf_threshold": 0.9,
+    "backlog_preview_limit": 50
+  },
+  "mapping_snapshot": {
+    "mapping_generated_at_utc": "2026-02-24T19:46:55.534536+00:00",
+    "mapping_inputs": {
+      "results_jsonl": "output/cardiology_oa_full_v1_fast/results_baseline_frozen_snapshot.jsonl",
+      "max_trials": null,
+      "max_citing_per_trial": 300,
+      "max_meta_per_trial": 80,
+      "extracted_only": false,
+      "require_cardiology": true,
+      "meta_mode": "strict"
+    },
+    "mapping_counts": {
+      "trial_rows_considered": 2681,
+      "trial_rows_extractable_considered": 1829,
+      "trial_rows_with_pmid": 2661,
+      "unresolved_pmcid_rows": 20,
+      "unique_trial_pmids": 2661,
+      "unique_citing_pmids_considered": 10010,
+      "unique_candidate_meta_pmids": 669,
+      "trials_with_meta_matches": 533,
+      "edge_rows": 870
+    },
+    "mapping_rates": {
+      "trial_pmid_resolution_rate": 0.9925400969787392,
+      "extractable_share_considered": 0.6822081312942931,
+      "trial_with_meta_rate": 0.20030063885757235
+    }
+  },
+  "counts": {
+    "full_total_rows": 2682,
+    "full_rows_with_pmcid": 2681,
+    "full_rows_with_pmid": 2661,
+    "full_extractable_rows": 1830,
+    "linked_trial_pmids_with_meta": 533,
+    "linked_trial_pmids_observed_in_results": 533,
+    "linked_rows": 533,
+    "linked_extractable_rows": 414,
+    "linked_extractable_with_ci": 312,
+    "linked_extractable_high_conf": 299,
+    "linked_backlog_rows": 119
+  },
+  "rates": {
+    "full_extraction_coverage": 0.6823266219239373,
+    "linked_extraction_coverage": 0.776735459662289,
+    "linked_ci_completeness_among_extracted": 0.7536231884057971,
+    "linked_high_conf_share_among_extracted": 0.7222222222222222,
+    "linked_backlog_share": 0.22326454033771106,
+    "linked_minus_full_extraction_coverage_delta": 0.09440883773835163
+  },
+  "distributions": {
+    "full_status_counts": {
+      "extracted": 1830,
+      "no_extraction": 837,
+      "timeout": 15
+    },
+    "linked_status_counts": {
+      "extracted": 414,
+      "no_extraction": 116,
+      "timeout": 3
+    }
+  },
+  "paths": {
+    "backlog_jsonl": "output/cardiology_oa_full_v1_fast/linkage_first_backlog_baseline_frozen.jsonl"
+  },
+  "backlog_preview": [
+    {
+      "pdf_relpath": "PMC10902096.pdf",
+      "study_id": "PMC10902096",
+      "status": "no_extraction",
+      "pmcid": "PMC10902096",
+      "pmid": "37776355",
+      "meta_matches_total": 11,
+      "citing_total_considered": 30,
+      "meta_pmids": [
+        "37855992",
+        "38933428",
+        "38984363",
+        "39221061",
+        "39416254",
+        "39618880",
+        "40257634",
+        "40437855",
+        "40761535",
+        "41132799",
+        "41578543"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC10237004.pdf",
+      "study_id": "PMC10237004",
+      "status": "no_extraction",
+      "pmcid": "PMC10237004",
+      "pmid": "37274376",
+      "meta_matches_total": 6,
+      "citing_total_considered": 71,
+      "meta_pmids": [
+        "37641724",
+        "38094881",
+        "38659024",
+        "40110307",
+        "40292400",
+        "40831845"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC10633988.pdf",
+      "study_id": "PMC10633988",
+      "status": "no_extraction",
+      "pmcid": "PMC10633988",
+      "pmid": "37940879",
+      "meta_matches_total": 6,
+      "citing_total_considered": 9,
+      "meta_pmids": [
+        "38845687",
+        "39056515",
+        "39200254",
+        "40160590",
+        "40556828",
+        "41597355"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC11264466.pdf",
+      "study_id": "PMC11264466",
+      "status": "no_extraction",
+      "pmcid": "PMC11264466",
+      "pmid": "39030573",
+      "meta_matches_total": 5,
+      "citing_total_considered": 12,
+      "meta_pmids": [
+        "40827363",
+        "41095818",
+        "41124985",
+        "41265923",
+        "41359218"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC10517503.pdf",
+      "study_id": "PMC10517503",
+      "status": "no_extraction",
+      "pmcid": "PMC10517503",
+      "pmid": "37740221",
+      "meta_matches_total": 4,
+      "citing_total_considered": 17,
+      "meta_pmids": [
+        "40160690",
+        "40579230",
+        "40755274",
+        "41469916"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC10719501.pdf",
+      "study_id": "PMC10719501",
+      "status": "no_extraction",
+      "pmcid": "PMC10719501",
+      "pmid": "37935836",
+      "meta_matches_total": 4,
+      "citing_total_considered": 300,
+      "meta_pmids": [
+        "38566143",
+        "39567890",
+        "40247128",
+        "40801611"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC10489039.pdf",
+      "study_id": "PMC10489039",
+      "status": "no_extraction",
+      "pmcid": "PMC10489039",
+      "pmid": "37685777",
+      "meta_matches_total": 3,
+      "citing_total_considered": 15,
+      "meta_pmids": [
+        "39484133",
+        "39749832",
+        "40242612"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC10658515.pdf",
+      "study_id": "PMC10658515",
+      "status": "no_extraction",
+      "pmcid": "PMC10658515",
+      "pmid": "37336617",
+      "meta_matches_total": 3,
+      "citing_total_considered": 15,
+      "meta_pmids": [
+        "38590993",
+        "39982636",
+        "40649145"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC11210972.pdf",
+      "study_id": "PMC11210972",
+      "status": "no_extraction",
+      "pmcid": "PMC11210972",
+      "pmid": "38565632",
+      "meta_matches_total": 3,
+      "citing_total_considered": 9,
+      "meta_pmids": [
+        "40491894",
+        "40564078",
+        "41630541"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC11277031.pdf",
+      "study_id": "PMC11277031",
+      "status": "no_extraction",
+      "pmcid": "PMC11277031",
+      "pmid": "39057626",
+      "meta_matches_total": 3,
+      "citing_total_considered": 43,
+      "meta_pmids": [
+        "40284036",
+        "41375916",
+        "41458740"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC10029179.pdf",
+      "study_id": "PMC10029179",
+      "status": "no_extraction",
+      "pmcid": "PMC10029179",
+      "pmid": "36945026",
+      "meta_matches_total": 2,
+      "citing_total_considered": 3,
+      "meta_pmids": [
+        "38151726",
+        "38169694"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC10103554.pdf",
+      "study_id": "PMC10103554",
+      "status": "no_extraction",
+      "pmcid": "PMC10103554",
+      "pmid": "36056882",
+      "meta_matches_total": 2,
+      "citing_total_considered": 17,
+      "meta_pmids": [
+        "38380137",
+        "41359270"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC10105846.pdf",
+      "study_id": "PMC10105846",
+      "status": "no_extraction",
+      "pmcid": "PMC10105846",
+      "pmid": "36879464",
+      "meta_matches_total": 2,
+      "citing_total_considered": 35,
+      "meta_pmids": [
+        "39716963",
+        "40781792"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC10241695.pdf",
+      "study_id": "PMC10241695",
+      "status": "no_extraction",
+      "pmcid": "PMC10241695",
+      "pmid": "37000245",
+      "meta_matches_total": 2,
+      "citing_total_considered": 6,
+      "meta_pmids": [
+        "38451260",
+        "40869533"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC10329123.pdf",
+      "study_id": "PMC10329123",
+      "status": "no_extraction",
+      "pmcid": "PMC10329123",
+      "pmid": "37425372",
+      "meta_matches_total": 2,
+      "citing_total_considered": 27,
+      "meta_pmids": [
+        "39255332",
+        "39902537"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC10531882.pdf",
+      "study_id": "PMC10531882",
+      "status": "no_extraction",
+      "pmcid": "PMC10531882",
+      "pmid": "37762989",
+      "meta_matches_total": 2,
+      "citing_total_considered": 3,
+      "meta_pmids": [
+        "40137088",
+        "40362416"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC10584272.pdf",
+      "study_id": "PMC10584272",
+      "status": "no_extraction",
+      "pmcid": "PMC10584272",
+      "pmid": "37859889",
+      "meta_matches_total": 2,
+      "citing_total_considered": 20,
+      "meta_pmids": [
+        "40283676",
+        "41640684"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC10613749.pdf",
+      "study_id": "PMC10613749",
+      "status": "no_extraction",
+      "pmcid": "PMC10613749",
+      "pmid": "37817408",
+      "meta_matches_total": 2,
+      "citing_total_considered": 22,
+      "meta_pmids": [
+        "38424483",
+        "39092649"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC10620341.pdf",
+      "study_id": "PMC10620341",
+      "status": "no_extraction",
+      "pmcid": "PMC10620341",
+      "pmid": "37927673",
+      "meta_matches_total": 2,
+      "citing_total_considered": 4,
+      "meta_pmids": [
+        "39816072",
+        "41632318"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC10691577.pdf",
+      "study_id": "PMC10691577",
+      "status": "no_extraction",
+      "pmcid": "PMC10691577",
+      "pmid": "37861575",
+      "meta_matches_total": 2,
+      "citing_total_considered": 2,
+      "meta_pmids": [
+        "39036117",
+        "41546720"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC10746707.pdf",
+      "study_id": "PMC10746707",
+      "status": "no_extraction",
+      "pmcid": "PMC10746707",
+      "pmid": "38135733",
+      "meta_matches_total": 2,
+      "citing_total_considered": 6,
+      "meta_pmids": [
+        "38826596",
+        "40002711"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC10863823.pdf",
+      "study_id": "PMC10863823",
+      "status": "no_extraction",
+      "pmcid": "PMC10863823",
+      "pmid": "38156451",
+      "meta_matches_total": 2,
+      "citing_total_considered": 46,
+      "meta_pmids": [
+        "40890879",
+        "41515656"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC10941692.pdf",
+      "study_id": "PMC10941692",
+      "status": "no_extraction",
+      "pmcid": "PMC10941692",
+      "pmid": "38495656",
+      "meta_matches_total": 2,
+      "citing_total_considered": 9,
+      "meta_pmids": [
+        "39468505",
+        "40886088"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC11010094.pdf",
+      "study_id": "PMC11010094",
+      "status": "no_extraction",
+      "pmcid": "PMC11010094",
+      "pmid": "38353229",
+      "meta_matches_total": 2,
+      "citing_total_considered": 22,
+      "meta_pmids": [
+        "40115442",
+        "41361441"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC11056871.pdf",
+      "study_id": "PMC11056871",
+      "status": "no_extraction",
+      "pmcid": "PMC11056871",
+      "pmid": "38690215",
+      "meta_matches_total": 2,
+      "citing_total_considered": 6,
+      "meta_pmids": [
+        "39822532",
+        "40276623"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC11131077.pdf",
+      "study_id": "PMC11131077",
+      "status": "no_extraction",
+      "pmcid": "PMC11131077",
+      "pmid": "38807966",
+      "meta_matches_total": 2,
+      "citing_total_considered": 6,
+      "meta_pmids": [
+        "40060754",
+        "41346919"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC11180403.pdf",
+      "study_id": "PMC11180403",
+      "status": "no_extraction",
+      "pmcid": "PMC11180403",
+      "pmid": "38879506",
+      "meta_matches_total": 2,
+      "citing_total_considered": 4,
+      "meta_pmids": [
+        "40505859",
+        "40745629"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC11311913.pdf",
+      "study_id": "PMC11311913",
+      "status": "no_extraction",
+      "pmcid": "PMC11311913",
+      "pmid": "39123146",
+      "meta_matches_total": 2,
+      "citing_total_considered": 5,
+      "meta_pmids": [
+        "41303229",
+        "41616587"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC11333282.pdf",
+      "study_id": "PMC11333282",
+      "status": "no_extraction",
+      "pmcid": "PMC11333282",
+      "pmid": "38760584",
+      "meta_matches_total": 2,
+      "citing_total_considered": 44,
+      "meta_pmids": [
+        "39738811",
+        "40834158"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC11450923.pdf",
+      "study_id": "PMC11450923",
+      "status": "no_extraction",
+      "pmcid": "PMC11450923",
+      "pmid": "39372457",
+      "meta_matches_total": 2,
+      "citing_total_considered": 5,
+      "meta_pmids": [
+        "40997553",
+        "41155037"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC11455821.pdf",
+      "study_id": "PMC11455821",
+      "status": "no_extraction",
+      "pmcid": "PMC11455821",
+      "pmid": "39128947",
+      "meta_matches_total": 2,
+      "citing_total_considered": 4,
+      "meta_pmids": [
+        "40918842",
+        "41389092"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC11524966.pdf",
+      "study_id": "PMC11524966",
+      "status": "no_extraction",
+      "pmcid": "PMC11524966",
+      "pmid": "39493907",
+      "meta_matches_total": 2,
+      "citing_total_considered": 15,
+      "meta_pmids": [
+        "41269503",
+        "41359232"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC11578641.pdf",
+      "study_id": "PMC11578641",
+      "status": "no_extraction",
+      "pmcid": "PMC11578641",
+      "pmid": "39431289",
+      "meta_matches_total": 2,
+      "citing_total_considered": 10,
+      "meta_pmids": [
+        "40624671",
+        "41205197"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC11580222.pdf",
+      "study_id": "PMC11580222",
+      "status": "no_extraction",
+      "pmcid": "PMC11580222",
+      "pmid": "39478667",
+      "meta_matches_total": 2,
+      "citing_total_considered": 10,
+      "meta_pmids": [
+        "40561522",
+        "41624211"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC11595032.pdf",
+      "study_id": "PMC11595032",
+      "status": "no_extraction",
+      "pmcid": "PMC11595032",
+      "pmid": "39596530",
+      "meta_matches_total": 2,
+      "citing_total_considered": 21,
+      "meta_pmids": [
+        "41357093",
+        "41425977"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC10029859.pdf",
+      "study_id": "PMC10029859",
+      "status": "no_extraction",
+      "pmcid": "PMC10029859",
+      "pmid": "36867450",
+      "meta_matches_total": 1,
+      "citing_total_considered": 1,
+      "meta_pmids": [
+        "40996972"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC10035618.pdf",
+      "study_id": "PMC10035618",
+      "status": "no_extraction",
+      "pmcid": "PMC10035618",
+      "pmid": "36970165",
+      "meta_matches_total": 1,
+      "citing_total_considered": 1,
+      "meta_pmids": [
+        "41524066"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC10068425.pdf",
+      "study_id": "PMC10068425",
+      "status": "no_extraction",
+      "pmcid": "PMC10068425",
+      "pmid": "37020642",
+      "meta_matches_total": 1,
+      "citing_total_considered": 11,
+      "meta_pmids": [
+        "38891881"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC10092178.pdf",
+      "study_id": "PMC10092178",
+      "status": "no_extraction",
+      "pmcid": "PMC10092178",
+      "pmid": "36229946",
+      "meta_matches_total": 1,
+      "citing_total_considered": 2,
+      "meta_pmids": [
+        "38464846"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC10215403.pdf",
+      "study_id": "PMC10215403",
+      "status": "no_extraction",
+      "pmcid": "PMC10215403",
+      "pmid": "37237472",
+      "meta_matches_total": 1,
+      "citing_total_considered": 1,
+      "meta_pmids": [
+        "39858645"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC10227662.pdf",
+      "study_id": "PMC10227662",
+      "status": "no_extraction",
+      "pmcid": "PMC10227662",
+      "pmid": "36942949",
+      "meta_matches_total": 1,
+      "citing_total_considered": 8,
+      "meta_pmids": [
+        "39120658"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC10250484.pdf",
+      "study_id": "PMC10250484",
+      "status": "no_extraction",
+      "pmcid": "PMC10250484",
+      "pmid": "35776266",
+      "meta_matches_total": 1,
+      "citing_total_considered": 4,
+      "meta_pmids": [
+        "39877073"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC10308096.pdf",
+      "study_id": "PMC10308096",
+      "status": "no_extraction",
+      "pmcid": "PMC10308096",
+      "pmid": "37396428",
+      "meta_matches_total": 1,
+      "citing_total_considered": 1,
+      "meta_pmids": [
+        "38046493"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC10349832.pdf",
+      "study_id": "PMC10349832",
+      "status": "no_extraction",
+      "pmcid": "PMC10349832",
+      "pmid": "37454148",
+      "meta_matches_total": 1,
+      "citing_total_considered": 7,
+      "meta_pmids": [
+        "39617283"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC10422675.pdf",
+      "study_id": "PMC10422675",
+      "status": "no_extraction",
+      "pmcid": "PMC10422675",
+      "pmid": "37576078",
+      "meta_matches_total": 1,
+      "citing_total_considered": 6,
+      "meta_pmids": [
+        "39773830"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC10520800.pdf",
+      "study_id": "PMC10520800",
+      "status": "no_extraction",
+      "pmcid": "PMC10520800",
+      "pmid": "37766884",
+      "meta_matches_total": 1,
+      "citing_total_considered": 5,
+      "meta_pmids": [
+        "38549168"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC10617135.pdf",
+      "study_id": "PMC10617135",
+      "status": "no_extraction",
+      "pmcid": "PMC10617135",
+      "pmid": "37907998",
+      "meta_matches_total": 1,
+      "citing_total_considered": 2,
+      "meta_pmids": [
+        "41578557"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC10664405.pdf",
+      "study_id": "PMC10664405",
+      "status": "no_extraction",
+      "pmcid": "PMC10664405",
+      "pmid": "37944133",
+      "meta_matches_total": 1,
+      "citing_total_considered": 19,
+      "meta_pmids": [
+        "40437855"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC10671950.pdf",
+      "study_id": "PMC10671950",
+      "status": "no_extraction",
+      "pmcid": "PMC10671950",
+      "pmid": "38004366",
+      "meta_matches_total": 1,
+      "citing_total_considered": 8,
+      "meta_pmids": [
+        "38961752"
+      ]
+    },
+    {
+      "pdf_relpath": "PMC10682904.pdf",
+      "study_id": "PMC10682904",
+      "status": "no_extraction",
+      "pmcid": "PMC10682904",
+      "pmid": "37731197",
+      "meta_matches_total": 1,
+      "citing_total_considered": 8,
+      "meta_pmids": [
+        "40178725"
+      ]
+    }
+  ]
+}

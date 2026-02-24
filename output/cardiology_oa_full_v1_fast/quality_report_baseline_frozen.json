@@ -1,0 +1,77 @@
+{
+  "generated_at_utc": "2026-02-24T19:46:32.236578+00:00",
+  "counts": {
+    "total_rows": 2682,
+    "extracted_rows": 1830,
+    "best_match_rows": 1830,
+    "best_with_ci": 1164,
+    "best_with_se": 1115,
+    "best_with_uncertainty": 1164,
+    "best_with_source_text": 1830,
+    "best_with_page_number": 0,
+    "high_confidence_best": 1115,
+    "high_confidence_with_ci": 1115,
+    "ma_ready_relaxed": 1164,
+    "ma_ready_strict": 0
+  },
+  "rates": {
+    "extraction_coverage": 0.6823266219239373,
+    "best_match_rate": 0.6823266219239373,
+    "ci_completeness_among_best": 0.6360655737704918,
+    "uncertainty_completeness_among_best": 0.6360655737704918,
+    "source_completeness_among_best": 1.0,
+    "page_completeness_among_best": 0.0,
+    "high_confidence_share_among_best": 0.6092896174863388,
+    "high_confidence_ci_share_among_best": 0.6092896174863388,
+    "ma_ready_relaxed_rate": 0.43400447427293065,
+    "ma_ready_strict_rate": 0.0
+  },
+  "distributions": {
+    "status_counts": {
+      "extracted": 1830,
+      "no_extraction": 837,
+      "timeout": 15
+    },
+    "extraction_method_counts": {
+      "pymupdf": 2667,
+      "unknown": 15
+    },
+    "best_effect_type_counts": {
+      "ARD": 16,
+      "GMR": 1,
+      "HR": 709,
+      "IRR": 4,
+      "MD": 257,
+      "NNT": 1,
+      "OR": 627,
+      "RR": 191,
+      "RRR": 1,
+      "SMD": 23
+    },
+    "best_automation_tier_counts": {
+      "full_auto": 1114,
+      "manual": 715,
+      "spot_check": 1
+    },
+    "best_source_type_counts": {
+      "lax": 399,
+      "text": 1431
+    },
+    "born_digital_counts": {
+      "born_digital": 2667,
+      "unknown": 15
+    }
+  },
+  "timing_sec": {
+    "n_with_elapsed": 2682,
+    "median_sec": 37.319,
+    "mean_sec": 42.522,
+    "max_sec": 90.269
+  },
+  "parameters": {
+    "high_confidence_threshold": 0.9
+  },
+  "inputs": {
+    "results_jsonl": "output/cardiology_oa_full_v1_fast/results_baseline_frozen_snapshot.jsonl"
+  }
+}

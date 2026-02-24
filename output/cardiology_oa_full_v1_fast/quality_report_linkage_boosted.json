@@ -1,0 +1,78 @@
+{
+  "generated_at_utc": "2026-02-24T19:46:32.239152+00:00",
+  "counts": {
+    "total_rows": 2682,
+    "extracted_rows": 1845,
+    "best_match_rows": 1845,
+    "best_with_ci": 1165,
+    "best_with_se": 1116,
+    "best_with_uncertainty": 1165,
+    "best_with_source_text": 1845,
+    "best_with_page_number": 0,
+    "high_confidence_best": 1116,
+    "high_confidence_with_ci": 1116,
+    "ma_ready_relaxed": 1165,
+    "ma_ready_strict": 0
+  },
+  "rates": {
+    "extraction_coverage": 0.6879194630872483,
+    "best_match_rate": 0.6879194630872483,
+    "ci_completeness_among_best": 0.6314363143631436,
+    "uncertainty_completeness_among_best": 0.6314363143631436,
+    "source_completeness_among_best": 1.0,
+    "page_completeness_among_best": 0.0,
+    "high_confidence_share_among_best": 0.6048780487804878,
+    "high_confidence_ci_share_among_best": 0.6048780487804878,
+    "ma_ready_relaxed_rate": 0.4343773303504847,
+    "ma_ready_strict_rate": 0.0
+  },
+  "distributions": {
+    "status_counts": {
+      "extracted": 1845,
+      "no_extraction": 823,
+      "timeout": 14
+    },
+    "extraction_method_counts": {
+      "pymupdf": 2668,
+      "unknown": 14
+    },
+    "best_effect_type_counts": {
+      "ARD": 16,
+      "GMR": 1,
+      "HR": 710,
+      "IRR": 4,
+      "MD": 257,
+      "NNT": 1,
+      "OR": 641,
+      "RR": 191,
+      "RRR": 1,
+      "SMD": 23
+    },
+    "best_automation_tier_counts": {
+      "full_auto": 1115,
+      "manual": 729,
+      "spot_check": 1
+    },
+    "best_source_type_counts": {
+      "lax": 399,
+      "table": 14,
+      "text": 1432
+    },
+    "born_digital_counts": {
+      "born_digital": 2668,
+      "unknown": 14
+    }
+  },
+  "timing_sec": {
+    "n_with_elapsed": 2682,
+    "median_sec": 37.39,
+    "mean_sec": 42.685,
+    "max_sec": 90.269
+  },
+  "parameters": {
+    "high_confidence_threshold": 0.9
+  },
+  "inputs": {
+    "results_jsonl": "output/cardiology_oa_full_v1_fast/results_linkage_boosted_snapshot.jsonl"
+  }
+}

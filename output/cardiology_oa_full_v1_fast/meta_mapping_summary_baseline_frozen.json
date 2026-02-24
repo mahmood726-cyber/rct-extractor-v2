@@ -1,0 +1,609 @@
+{
+  "generated_at_utc": "2026-02-24T19:46:55.534536+00:00",
+  "inputs": {
+    "results_jsonl": "output/cardiology_oa_full_v1_fast/results_baseline_frozen_snapshot.jsonl",
+    "max_trials": null,
+    "max_citing_per_trial": 300,
+    "max_meta_per_trial": 80,
+    "extracted_only": false,
+    "require_cardiology": true,
+    "meta_mode": "strict"
+  },
+  "ncbi": {
+    "api_key_present": false,
+    "request_sleep_sec": 0.34,
+    "timeout_sec": 25.0
+  },
+  "counts": {
+    "trial_rows_considered": 2681,
+    "trial_rows_extractable_considered": 1829,
+    "trial_rows_with_pmid": 2661,
+    "unresolved_pmcid_rows": 20,
+    "unique_trial_pmids": 2661,
+    "unique_citing_pmids_considered": 10010,
+    "unique_candidate_meta_pmids": 669,
+    "trials_with_meta_matches": 533,
+    "edge_rows": 870
+  },
+  "rates": {
+    "trial_pmid_resolution_rate": 0.9925400969787392,
+    "extractable_share_considered": 0.6822081312942931,
+    "trial_with_meta_rate": 0.20030063885757235
+  },
+  "distributions": {
+    "status_counts_considered_rows": {
+      "extracted": 1829,
+      "no_extraction": 837,
+      "timeout": 15
+    }
+  },
+  "top_meta_rows": [
+    {
+      "meta_pmid": "40351680",
+      "trial_pmid_count": 6,
+      "title": "Economic Evaluations in Electrophysiology in the Last 15 Years: A Systematic Review of the Literature.",
+      "pubdate": "2025 Apr",
+      "journal": "Reviews in cardiovascular medicine",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review"
+      ]
+    },
+    {
+      "meta_pmid": "41288078",
+      "trial_pmid_count": 6,
+      "title": "Antithrombotic strategies and DOAC dosing following left atrial appendage occlusion: a network meta-analysis.",
+      "pubdate": "2026 Feb 2",
+      "journal": "European heart journal. Cardiovascular pharmacotherapy",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review",
+        "Meta-Analysis"
+      ]
+    },
+    {
+      "meta_pmid": "40489293",
+      "trial_pmid_count": 5,
+      "title": "Efficacy and safety of empagliflozin for the acute myocardial infarction: a systematic review and meta-analysis of randomized controlled trials.",
+      "pubdate": "2025 Dec",
+      "journal": "Annals of medicine",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review",
+        "Meta-Analysis"
+      ]
+    },
+    {
+      "meta_pmid": "39468905",
+      "trial_pmid_count": 4,
+      "title": "Concurrent intra-aortic balloon pump and veno-arterial extracorporeal membrane oxygenation for acute coronary syndrome-related cardiogenic shock: A meta-analysis of multivariate studies.",
+      "pubdate": "2025 Apr 26",
+      "journal": "Biomolecules & biomedicine",
+      "pubtype": [
+        "Journal Article",
+        "Meta-Analysis"
+      ]
+    },
+    {
+      "meta_pmid": "39618855",
+      "trial_pmid_count": 4,
+      "title": "Assessment of Redundant Meta-Analyses on Catheter Ablation of Atrial Fibrillation in Patients with Heart Failure.",
+      "pubdate": "2024 Nov",
+      "journal": "Reviews in cardiovascular medicine",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review"
+      ]
+    },
+    {
+      "meta_pmid": "39817158",
+      "trial_pmid_count": 4,
+      "title": "Effectiveness and Safety of Dose-Specific DOACs in Patients With Atrial Fibrillation: A Systematic Review and Network Meta-Analysis.",
+      "pubdate": "2025",
+      "journal": "Cardiovascular therapeutics",
+      "pubtype": [
+        "Journal Article",
+        "Network Meta-Analysis",
+        "Systematic Review"
+      ]
+    },
+    {
+      "meta_pmid": "40083820",
+      "trial_pmid_count": 4,
+      "title": "Pulsed field ablation for atrial fibrillation: a comprehensive bibliometric analysis of research trends and emerging Frontiers.",
+      "pubdate": "2025",
+      "journal": "Frontiers in cardiovascular medicine",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review"
+      ]
+    },
+    {
+      "meta_pmid": "40437855",
+      "trial_pmid_count": 4,
+      "title": "Meta-Analysis of Thermal Versus Pulse Field Ablation for Pulmonary Vein Isolation Durability in Atrial Fibrillation: Insights From Repeat Ablation.",
+      "pubdate": "2025 Jun",
+      "journal": "Clinical cardiology",
+      "pubtype": [
+        "Journal Article",
+        "Meta-Analysis",
+        "Systematic Review"
+      ]
+    },
+    {
+      "meta_pmid": "40547439",
+      "trial_pmid_count": 4,
+      "title": "Balancing the benefits and risks of colchicine use among patients with atherosclerotic cardiovascular disease: an umbrella review of meta-analyses of randomised controlled trials.",
+      "pubdate": "2025 Jun",
+      "journal": "EClinicalMedicine",
+      "pubtype": [
+        "Journal Article"
+      ]
+    },
+    {
+      "meta_pmid": "40879386",
+      "trial_pmid_count": 4,
+      "title": "Left atrial appendage occlusion in patients with end-stage renal disease: an individual patient-level meta-analysis.",
+      "pubdate": "2025 Oct 7",
+      "journal": "Europace : European pacing, arrhythmias, and cardiac electrophysiology : journal of the working groups on cardiac pacing, arrhythmias, and cardiac cellular electrophysiology of the European Society of Cardiology",
+      "pubtype": [
+        "Journal Article",
+        "Meta-Analysis",
+        "Systematic Review"
+      ]
+    },
+    {
+      "meta_pmid": "40964525",
+      "trial_pmid_count": 4,
+      "title": "The impact of comorbidities on surgical outcome and mortality in minimally invasive mitral valve surgery: a systematic review.",
+      "pubdate": "2025",
+      "journal": "Frontiers in cardiovascular medicine",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review"
+      ]
+    },
+    {
+      "meta_pmid": "41630541",
+      "trial_pmid_count": 4,
+      "title": "Outcomes of Left Bundle Branch Area Pacing in Heart Failure Patients: A Systematic Review.",
+      "pubdate": "2026 Mar",
+      "journal": "Annals of noninvasive electrocardiology : the official journal of the International Society for Holter and Noninvasive Electrocardiology, Inc",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review",
+        "Review"
+      ]
+    },
+    {
+      "meta_pmid": "38918704",
+      "trial_pmid_count": 3,
+      "title": "Antiarrhythmic drug therapy and catheter ablation in patients with paroxysmal or persistent atrial fibrillation: a systematic review and meta-analysis.",
+      "pubdate": "2024 Jun 25",
+      "journal": "BMC cardiovascular disorders",
+      "pubtype": [
+        "Systematic Review",
+        "Meta-Analysis",
+        "Journal Article"
+      ]
+    },
+    {
+      "meta_pmid": "39416254",
+      "trial_pmid_count": 3,
+      "title": "Efficacy and safety of pulsed-field versus conventional thermal ablation for atrial fibrillation: A systematic review and meta-analysis.",
+      "pubdate": "2024 Oct",
+      "journal": "Journal of arrhythmia",
+      "pubtype": [
+        "Journal Article"
+      ]
+    },
+    {
+      "meta_pmid": "39484133",
+      "trial_pmid_count": 3,
+      "title": "A Systematic Review and Meta-analysis of Efficacy and Safety of Mavacamten for the Treatment of Hypertrophic Cardiomyopathy.",
+      "pubdate": "2024 Oct",
+      "journal": "Reviews in cardiovascular medicine",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review"
+      ]
+    },
+    {
+      "meta_pmid": "39524056",
+      "trial_pmid_count": 3,
+      "title": "Left atrial posterior wall isolation in addition to pulmonary vein isolation using a pentaspline catheter in pulsed-field ablation for atrial fibrillation: A systematic review and meta-analysis.",
+      "pubdate": "2024 Oct",
+      "journal": "Heart rhythm O2",
+      "pubtype": [
+        "Journal Article"
+      ]
+    },
+    {
+      "meta_pmid": "39902537",
+      "trial_pmid_count": 3,
+      "title": "Artificial Intelligence in the Heart of Medicine: A Systematic Approach to Transforming Arrhythmia Care with Intelligent Systems.",
+      "pubdate": "2025",
+      "journal": "Current cardiology reviews",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review"
+      ]
+    },
+    {
+      "meta_pmid": "40002711",
+      "trial_pmid_count": 3,
+      "title": "Cryoballoon Pulmonary Vein Isolation in Obese Patients with Atrial Fibrillation Compared to Non-Obese Counterparts: A Meta-Analysis.",
+      "pubdate": "2025 Jan 25",
+      "journal": "Biomedicines",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ]
+    },
+    {
+      "meta_pmid": "40062142",
+      "trial_pmid_count": 3,
+      "title": "Comparing Glucagon-Like Peptide-1 Receptor Agonists to Sodium-Glucose Cotransporter-2 Inhibitors in Heart Failure With Preserved Ejection Fraction: A Systematic Review.",
+      "pubdate": "2025 Feb",
+      "journal": "Cureus",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ]
+    },
+    {
+      "meta_pmid": "40224649",
+      "trial_pmid_count": 3,
+      "title": "The impact of empirical superior vena cava isolation in addition to pulmonary vein isolation on outcomes in atrial fibrillation - Systematic review, meta-analysis, and meta-regression.",
+      "pubdate": "2025 Jun",
+      "journal": "International journal of cardiology. Heart & vasculature",
+      "pubtype": [
+        "Journal Article"
+      ]
+    },
+    {
+      "meta_pmid": "40276326",
+      "trial_pmid_count": 3,
+      "title": "Systematic screening for atrial fibrillation with non-invasive devices: a systematic review and meta-analysis.",
+      "pubdate": "2025 Jun",
+      "journal": "The Lancet regional health. Europe",
+      "pubtype": [
+        "Journal Article"
+      ]
+    },
+    {
+      "meta_pmid": "40284036",
+      "trial_pmid_count": 3,
+      "title": "Assessing Omega-3 Therapy and Its Cardiovascular Benefits: What About Icosapent Ethyl? A Systematic Review and Meta-Analysis.",
+      "pubdate": "2025 Apr 20",
+      "journal": "Pharmaceuticals (Basel, Switzerland)",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ]
+    },
+    {
+      "meta_pmid": "40286375",
+      "trial_pmid_count": 3,
+      "title": "Post-Transcatheter Aortic Valve Replacement Antithrombotic Treatment in Nonindicated Patients: Updated Systematic Review and Network Meta-Analysis.",
+      "pubdate": "2025 May",
+      "journal": "JACC. Advances",
+      "pubtype": [
+        "Journal Article"
+      ]
+    },
+    {
+      "meta_pmid": "40364148",
+      "trial_pmid_count": 3,
+      "title": "Sleep-Disordered Breathing and Hypertension-A Systematic Review.",
+      "pubdate": "2025 Apr 30",
+      "journal": "Journal of clinical medicine",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ]
+    },
+    {
+      "meta_pmid": "40413387",
+      "trial_pmid_count": 3,
+      "title": "Efficacy and safety of anticoagulants in elderly atrial fibrillation patients: a systematic review and network meta-analysis.",
+      "pubdate": "2025 May 24",
+      "journal": "BMC cardiovascular disorders",
+      "pubtype": [
+        "Journal Article",
+        "Network Meta-Analysis",
+        "Systematic Review"
+      ]
+    },
+    {
+      "meta_pmid": "40433752",
+      "trial_pmid_count": 3,
+      "title": "Efficacy and Safety of Pulsed-Field Versus High-Power Short-Duration Ablation for Atrial Fibrillation: A Systematic Review and Meta-Analysis With Reconstructed Time-to-Event Data.",
+      "pubdate": "2025 Aug",
+      "journal": "Journal of cardiovascular electrophysiology",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review",
+        "Meta-Analysis"
+      ]
+    },
+    {
+      "meta_pmid": "40464647",
+      "trial_pmid_count": 3,
+      "title": "Prevention of atrial fibrillation with SGLT2 inhibitors across the spectrum of cardiovascular disorders: a meta-analysis of randomized controlled trials.",
+      "pubdate": "2025 Aug 12",
+      "journal": "European heart journal. Cardiovascular pharmacotherapy",
+      "pubtype": [
+        "Journal Article",
+        "Meta-Analysis",
+        "Review"
+      ]
+    },
+    {
+      "meta_pmid": "40486562",
+      "trial_pmid_count": 3,
+      "title": "Cardiac myosin inhibitors for hypertrophic cardiomyopathy: a systematic review and meta-analysis of randomized controlled trials.",
+      "pubdate": "2025 Jun",
+      "journal": "Annals of medicine and surgery (2012)",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ]
+    },
+    {
+      "meta_pmid": "40689605",
+      "trial_pmid_count": 3,
+      "title": "Angiotensin-neprilysin inhibition in acute decompensated heart failure: a meta-analysis of randomized controlled trials.",
+      "pubdate": "2026 Jan",
+      "journal": "Future cardiology",
+      "pubtype": [
+        "Journal Article",
+        "Meta-Analysis",
+        "Systematic Review"
+      ]
+    },
+    {
+      "meta_pmid": "40869581",
+      "trial_pmid_count": 3,
+      "title": "Comparison of Safety and Effectiveness Between Direct Oral Anticoagulants and Vitamin K Antagonists in Dementia Patients with Atrial Fibrillation: A Systematic Review and Meta-Analysis.",
+      "pubdate": "2025 Aug 14",
+      "journal": "Journal of clinical medicine",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ]
+    },
+    {
+      "meta_pmid": "40889093",
+      "trial_pmid_count": 3,
+      "title": "Colchicine for the Secondary Prevention of Cardiovascular Diseases: A Cumulative-Dose Meta-analysis of Randomized Controlled Trials including 31,397 Subjects Worldwide.",
+      "pubdate": "2026 Jan",
+      "journal": "American journal of cardiovascular drugs : drugs, devices, and other interventions",
+      "pubtype": [
+        "Journal Article",
+        "Meta-Analysis"
+      ]
+    },
+    {
+      "meta_pmid": "40892447",
+      "trial_pmid_count": 3,
+      "title": "Prevalence and multiple predictors of left atrial low voltage in paroxysmal and non-paroxysmal atrial fibrillation patients undergoing ablation: a systematic review and meta-analysis.",
+      "pubdate": "2025 Sep 1",
+      "journal": "Europace : European pacing, arrhythmias, and cardiac electrophysiology : journal of the working groups on cardiac pacing, arrhythmias, and cardiac cellular electrophysiology of the European Society of Cardiology",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review",
+        "Meta-Analysis"
+      ]
+    },
+    {
+      "meta_pmid": "40952576",
+      "trial_pmid_count": 3,
+      "title": "Impact of venous closure systems on time to ambulation and discharge following AF ablation: a systematic review and meta-analytic review.",
+      "pubdate": "2025 Sep 15",
+      "journal": "The Egyptian heart journal : (EHJ) : official bulletin of the Egyptian Society of Cardiology",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ]
+    },
+    {
+      "meta_pmid": "40978810",
+      "trial_pmid_count": 3,
+      "title": "Glucagon-like peptide-1 receptor agonists and obesity paradox in heart failure with preserved ejection fraction: a systematic review.",
+      "pubdate": "2025 Dec",
+      "journal": "Cardiovascular endocrinology & metabolism",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ]
+    },
+    {
+      "meta_pmid": "41132799",
+      "trial_pmid_count": 3,
+      "title": "Outcomes With Pulsed Field Ablation Versus Conventional Thermal Ablation for Paroxysmal Atrial Fibrillation: A Meta-Analysis.",
+      "pubdate": "2025 Oct",
+      "journal": "Journal of arrhythmia",
+      "pubtype": [
+        "Journal Article"
+      ]
+    },
+    {
+      "meta_pmid": "41235335",
+      "trial_pmid_count": 3,
+      "title": "Effectiveness of combining PCSK9 inhibitors with statins on major adverse cardiovascular events and lipid levels in patients after percutaneous coronary intervention: a systematic review and meta-analysis.",
+      "pubdate": "2025",
+      "journal": "Frontiers in cardiovascular medicine",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review"
+      ]
+    },
+    {
+      "meta_pmid": "41267359",
+      "trial_pmid_count": 3,
+      "title": "Effect of Oral Hypoglycaemic Agents on Carotid Artery Intima-Media Thickness in Patients With Cardiovascular Disease and/or Diabetes-A Systematic Review.",
+      "pubdate": "2025 Nov",
+      "journal": "Endocrinology, diabetes & metabolism",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review"
+      ]
+    },
+    {
+      "meta_pmid": "41359232",
+      "trial_pmid_count": 3,
+      "title": "Pulsed field ablation and the risk of hemolysis-driven acute kidney injury: a systematic review and meta-analysis.",
+      "pubdate": "2025 Dec 8",
+      "journal": "Journal of interventional cardiac electrophysiology : an international journal of arrhythmias and pacing",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ]
+    },
+    {
+      "meta_pmid": "41524066",
+      "trial_pmid_count": 3,
+      "title": "The Largest Systematic Review of Left Atrial Appendage Aneurysms: A Comprehensive Analysis of 216 Cases.",
+      "pubdate": "2025 Dec",
+      "journal": "Reviews in cardiovascular medicine",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review"
+      ]
+    },
+    {
+      "meta_pmid": "41578543",
+      "trial_pmid_count": 3,
+      "title": "Safety and efficacy of pulsed field ablation versus cryoablation for atrial fibrillation: A comprehensive meta-analysis.",
+      "pubdate": "2026 Jan 23",
+      "journal": "Medicine",
+      "pubtype": [
+        "Comparative Study",
+        "Journal Article",
+        "Meta-Analysis"
+      ]
+    },
+    {
+      "meta_pmid": "37950145",
+      "trial_pmid_count": 2,
+      "title": "Safety and efficacy of catheter ablation for atrial fibrillation in cancer survivors: a systematic review and meta-analysis.",
+      "pubdate": "2024 Jan",
+      "journal": "Journal of interventional cardiac electrophysiology : an international journal of arrhythmias and pacing",
+      "pubtype": [
+        "Meta-Analysis",
+        "Systematic Review",
+        "Journal Article"
+      ]
+    },
+    {
+      "meta_pmid": "38020055",
+      "trial_pmid_count": 2,
+      "title": "Catheter ablation in patients with paroxysmal atrial fibrillation and absence of structural heart disease: A meta-analysis of randomized trials.",
+      "pubdate": "2023 Dec",
+      "journal": "International journal of cardiology. Heart & vasculature",
+      "pubtype": [
+        "Journal Article"
+      ]
+    },
+    {
+      "meta_pmid": "38424483",
+      "trial_pmid_count": 2,
+      "title": "Catheter ablation versus medical therapy in atrial fibrillation: an umbrella review of meta-analyses of randomized clinical trials.",
+      "pubdate": "2024 Feb 29",
+      "journal": "BMC cardiovascular disorders",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review"
+      ]
+    },
+    {
+      "meta_pmid": "38541908",
+      "trial_pmid_count": 2,
+      "title": "Intravenous Landiolol for Rate Control in Supraventricular Tachyarrhythmias in Patients with Left Ventricular Dysfunction: A Systematic Review and Meta-Analysis.",
+      "pubdate": "2024 Mar 14",
+      "journal": "Journal of clinical medicine",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ]
+    },
+    {
+      "meta_pmid": "38566143",
+      "trial_pmid_count": 2,
+      "title": "Sodium-glucose cotransporter 2 inhibitors, inflammation, and heart failure: a two-sample Mendelian randomization study.",
+      "pubdate": "2024 Apr 2",
+      "journal": "Cardiovascular diabetology",
+      "pubtype": [
+        "Meta-Analysis",
+        "Journal Article",
+        "Research Support, Non-U.S. Gov't"
+      ]
+    },
+    {
+      "meta_pmid": "38587562",
+      "trial_pmid_count": 2,
+      "title": "Evaluating the predictive value of late gadolinium enhancement assessed by cardiac magnetic resonance on sudden cardiac death in patients selected for implantable cardioverter defibrillator and cardiac resynchronization therapy implantation: a systematic review and meta-analysis.",
+      "pubdate": "2024 Apr 8",
+      "journal": "Clinical research in cardiology : official journal of the German Cardiac Society",
+      "pubtype": [
+        "Journal Article"
+      ]
+    },
+    {
+      "meta_pmid": "38854743",
+      "trial_pmid_count": 2,
+      "title": "Optical coherence tomography-guided versus angiography-guided percutaneous coronary intervention: A meta-analysis of randomized controlled trials.",
+      "pubdate": "2024 Jun",
+      "journal": "International journal of cardiology. Heart & vasculature",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ]
+    },
+    {
+      "meta_pmid": "38907344",
+      "trial_pmid_count": 2,
+      "title": "The evolution of TAVI performance overtime: an overview of systematic reviews.",
+      "pubdate": "2024 Jun 21",
+      "journal": "BMC cardiovascular disorders",
+      "pubtype": [
+        "Journal Article",
+        "Review",
+        "Research Support, Non-U.S. Gov't"
+      ]
+    },
+    {
+      "meta_pmid": "39057618",
+      "trial_pmid_count": 2,
+      "title": "Sodium-Glucose Transporter 2 Inhibitors in Heart Failure: An Overview of Systematic Reviews.",
+      "pubdate": "2024 Jun 28",
+      "journal": "Journal of cardiovascular development and disease",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ]
+    },
+    {
+      "meta_pmid": "39108740",
+      "trial_pmid_count": 2,
+      "title": "Efficacy and safety of Mavacamten for symptomatic Hypertrophic cardiomyopathy - an updated Meta-Analysis of randomized controlled trials.",
+      "pubdate": "2024 Aug",
+      "journal": "International journal of cardiology. Heart & vasculature",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ]
+    }
+  ],
+  "cache_sizes": {
+    "pmcid_to_pmid": 2681,
+    "trial_citedin": 2661,
+    "pmid_summary": 10010
+  },
+  "paths": {
+    "edges_jsonl": "output/cardiology_oa_full_v1_fast/meta_mapping_edges_baseline_frozen.jsonl",
+    "trial_map_json": "output/cardiology_oa_full_v1_fast/meta_mapping_trials_baseline_frozen.json",
+    "cache_dir": "output/cardiology_oa_full_v1_fast/cache_meta_map"
+  }
+}
