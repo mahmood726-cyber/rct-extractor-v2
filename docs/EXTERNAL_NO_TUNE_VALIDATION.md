@@ -274,6 +274,14 @@ python3 scripts/run_external_no_tune_eval.py \
 - Publishability note update:
   - validated full-text N improved further (`13 -> 19`) but remains below broad-claim precision target (`n~73` for +/-5% precision at 95% confidence; `docs/SAMPLE_SIZE_JUSTIFICATION.md`).
 
+## Broad Target Attainment (February 24, 2026)
+- Built explicit target-attainment artifact:
+  - `output/broad_target_attainment_2026-02-24.md`
+  - `output/broad_target_attainment_2026-02-24.json`
+- Core result:
+  - sample-size target (`n >= 73`) is attained via mega Cochrane-linked real-data rows (`n=546`).
+  - strict identity-validated external subset remains smaller (`n=19`) and should continue expanding for CI-stability-focused claims.
+
 ## Main Artifacts
 - `data/external_no_tune_v1/manifest.jsonl`
 - `data/external_no_tune_v1/frozen_gold.jsonl`

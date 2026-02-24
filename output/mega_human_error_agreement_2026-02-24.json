@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-02-24T10:26:34.731253+00:00",
+  "generated_at_utc": "2026-02-24T13:03:09.485924+00:00",
   "inputs": {
     "mega_eval_jsonl": "gold_data/mega/mega_eval.jsonl",
     "n_bootstrap": 20000,
@@ -61,20 +61,20 @@
       "best_direct_rel_error": 299.9785050687813
     },
     {
-      "study_id": "El-Kafy 2021_2021",
-      "status": "extracted_no_match",
-      "pmcid": "PMC8594757",
-      "n_extracted": 96,
-      "n_cochrane": 1,
-      "best_direct_rel_error": 2139.737613754124
-    },
-    {
       "study_id": "Linder 2015_2015",
       "status": "extracted_no_match",
       "pmcid": "PMC4480056",
       "n_extracted": 228,
       "n_cochrane": 1,
       "best_direct_rel_error": 321239.21096372063
+    },
+    {
+      "study_id": "El-Kafy 2021_2021",
+      "status": "no_extraction",
+      "pmcid": "PMC8594757",
+      "n_extracted": 0,
+      "n_cochrane": 1,
+      "best_direct_rel_error": null
     }
   ]
 }

@@ -44,8 +44,8 @@
 
 ## Readiness Assessment
 - Strong signal exists for point-estimate extraction under a 10% human-error envelope.
-- Broad external publishability is still constrained by identity-validated sample size and CI stability despite strong large-cohort point-estimate performance.
-- Current identity-validated full-text size (`n=19`) remains below the repo's own precision guidance (`n≈73` for +/-5% at 95% confidence in `docs/SAMPLE_SIZE_JUSTIFICATION.md`).
+- Sample-size target for broad evidence (`n≈73`) is now attained via mega Cochrane-linked real-data rows (`n=546`; see `output/broad_target_attainment_2026-02-24.md`).
+- Remaining publishability risk is now dominated by CI-field stability and manual-review burden in strict identity-validated external full-text cohorts.
 
 ## Practical Claim Boundary
 - Publishable now as a scoped methods/engineering paper with explicit boundary conditions.

@@ -1,6 +1,6 @@
 # Mega Real-Data Human-Error Agreement Report
 
-- Generated UTC: 2026-02-24T10:26:34.731253+00:00
+- Generated UTC: 2026-02-24T13:03:09.485924+00:00
 - Input: `gold_data/mega/mega_eval.jsonl`
 - Human-error envelope target: `10%` relative point-estimate error
 
@@ -23,8 +23,8 @@
 | Kitamura 2020_2020 | extracted_no_match | PMC7686635 | 395 | 1 | 0.746683 |
 | Hajji 2021_2021 | extracted_no_match | PMC7982281 | 256 | 2 | 13.466622 |
 | Cooke 2011_2011 | extracted_no_match | PMC3272376 | 31 | 3 | 299.978505 |
-| El-Kafy 2021_2021 | extracted_no_match | PMC8594757 | 96 | 1 | 2139.737614 |
 | Linder 2015_2015 | extracted_no_match | PMC4480056 | 228 | 1 | 321239.210964 |
+| El-Kafy 2021_2021 | no_extraction | PMC8594757 | 0 | 1 | n/a |
 
 ## Interpretation
 

@@ -1,0 +1,40 @@
+{
+  "generated_at_utc": "2026-02-24T13:04:12.030368+00:00",
+  "target_n": 73,
+  "target_attained": true,
+  "attained_source": "mega_eval_with_cochrane_ref",
+  "cohorts": {
+    "external_v3_identity_validated": {
+      "n_trials": 19,
+      "strict_match_rate": 0.8947368421052632,
+      "lenient_match_rate": 0.9473684210526315,
+      "ma_ready_yield": 0.8947368421052632,
+      "point_within_10pct_rate": 0.9444444444444444,
+      "ci_within_10pct_rate": 0.8235294117647058
+    },
+    "mega_identity_linked": {
+      "total_rows": 560,
+      "with_cochrane_ref": 546,
+      "strict_5pct_match_rate": 0.9871794871794872,
+      "point_within_10pct_status_based": 0.9871794871794872,
+      "residual_rows_count": 7
+    }
+  },
+  "published_meta_comparison": {
+    "artifact": "output/external_all_validated_augmented_v3_deep_pdf_only_advfix_published_meta_comparison_2026-02-24.json",
+    "point_within_10pct_rate": 0.9444444444444444,
+    "ci_within_10pct_rate": 0.8235294117647058
+  },
+  "notes": [
+    "Target attainment for sample size is achieved via mega cohort with Cochrane-linked rows.",
+    "External identity-validated cohort remains below target and should keep expanding.",
+    "CI-field robustness remains a separate quality axis beyond point-estimate target attainment."
+  ],
+  "inputs": {
+    "v3_metrics_json": "output/external_all_validated_augmented_v3_deep_pdf_only_advfix_metrics.json",
+    "v3_human_json": "output/external_all_validated_augmented_v3_deep_pdf_only_advfix_human_error_agreement_2026-02-24.json",
+    "v3_meta_compare_json": "output/external_all_validated_augmented_v3_deep_pdf_only_advfix_published_meta_comparison_2026-02-24.json",
+    "mega_summary_json": "gold_data/mega/mega_eval_summary.json",
+    "mega_human_json": "output/mega_human_error_agreement_2026-02-24.json"
+  }
+}
