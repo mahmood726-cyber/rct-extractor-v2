@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import os
 import re
 import subprocess
 import sys
@@ -208,6 +209,9 @@ def _fetch_pubmed_abstract_text(
         "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi"
         f"?db=pubmed&id={normalized_pmid}&retmode=xml"
     )
+    api_key = str(os.environ.get("NCBI_API_KEY") or "").strip()
+    if api_key:
+        url = f"{url}&api_key={api_key}"
     request = urllib.request.Request(
         url,
         headers={

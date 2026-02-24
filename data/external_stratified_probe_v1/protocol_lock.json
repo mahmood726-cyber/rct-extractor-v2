@@ -1,0 +1,68 @@
+{
+  "protocol_version": "1.0.0",
+  "created_at_utc": "2026-02-24T14:31:12.272003+00:00",
+  "mode": "external_no_tune",
+  "source": "jsonl",
+  "input_dataset": "data/ground_truth/stratified_external_validation_ground_truth.jsonl",
+  "input_dataset_sha256": "8d5a8fa105d90b2340b21adb49b64af6ca4deac329b0be8987ccf8c4cde00048",
+  "output_manifest": "data/external_stratified_probe_v1/manifest.jsonl",
+  "output_manifest_sha256": "8c7079188d6fecb6dffbdffb05a6bbe9787d0aafcdc720c495d8782148ec4cee",
+  "output_frozen_gold": "data/external_stratified_probe_v1/frozen_gold.jsonl",
+  "output_frozen_gold_sha256": "65b68ed98b937279fb27564b49b67f43c82579d6760b81bfa352ddad95e630a2",
+  "output_seed_results": "data/external_stratified_probe_v1/seed_results_empty.json",
+  "output_seed_results_sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+  "pdf_dir": "test_pdfs/external_stratified_probe_v1/pdfs",
+  "require_local_pdf": true,
+  "download_missing": true,
+  "validate_pdf_content": true,
+  "resolve_pmcid_from_metadata": false,
+  "pmc_resolution_stats": {
+    "source_pmc_kept": 38
+  },
+  "requested_journal_allowlist": [],
+  "selected_trials_total": 38,
+  "frozen_trials_total": 35,
+  "journal_counts_selected": {
+    "BMJ": 1,
+    "Circulation": 1,
+    "JAMA": 2,
+    "Journal of Clinical Oncology": 1,
+    "Neurology": 1,
+    "New England Journal of Medicine": 23,
+    "The Lancet": 9
+  },
+  "journal_counts_frozen": {
+    "BMJ": 1,
+    "Circulation": 1,
+    "JAMA": 1,
+    "Journal of Clinical Oncology": 1,
+    "Neurology": 1,
+    "New England Journal of Medicine": 23,
+    "The Lancet": 7
+  },
+  "download_stats": {
+    "downloaded": 32,
+    "failed": 3,
+    "already_present": 3
+  },
+  "validation_stats": {
+    "passed": 35
+  },
+  "skipped_rows": {
+    "missing_pmc_id": 118
+  },
+  "failed_downloads": [
+    {
+      "study_id": "ecztra_1_2021",
+      "pmc_id": "PMC7863772"
+    },
+    {
+      "study_id": "merino_2018",
+      "pmc_id": "PMC6143100"
+    },
+    {
+      "study_id": "recovery_tocilizumab_2021",
+      "pmc_id": "PMC8084355"
+    }
+  ]
+}

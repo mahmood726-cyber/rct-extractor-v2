@@ -1,0 +1,37 @@
+{
+  "generated_at_utc": "2026-02-24T14:27:11.801519+00:00",
+  "input_module": "C:/Users/user/rct-extractor-v2/data/stratified_validation_dataset.py",
+  "output_jsonl": "data/ground_truth/stratified_external_validation_ground_truth.jsonl",
+  "resolve_idconv": true,
+  "request_timeout_sec": 12.0,
+  "http_retries": 1,
+  "counts": {
+    "missing_pmcid": 118,
+    "missing_doi": 118,
+    "rows_total": 156,
+    "rows_with_pmid": 156,
+    "resolved_pmcid": 38,
+    "resolved_doi": 38,
+    "rows_with_pmcid": 38,
+    "rows_with_doi": 38
+  },
+  "journal_counts": {
+    "Annals of Internal Medicine": 5,
+    "BMJ": 6,
+    "CHEST": 2,
+    "Circulation": 3,
+    "Gut": 2,
+    "JAMA": 7,
+    "Journal of Clinical Oncology": 4,
+    "Neurology": 2,
+    "New England Journal of Medicine": 98,
+    "The Lancet": 27
+  },
+  "year_block_counts": {
+    "2000-2004": 23,
+    "2005-2009": 23,
+    "2010-2014": 21,
+    "2015-2019": 57,
+    "2020-2025": 32
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "protocol_version": "1.0.0",
+  "created_at_utc": "2026-02-24T14:32:04.430282+00:00",
+  "mode": "external_validated_with_unpaywall_fallback",
+  "identity_validation_applied": true,
+  "parent_cohort_dir": "data/external_stratified_probe_v1",
+  "parent_protocol_lock": "data/external_stratified_probe_v1/protocol_lock.json",
+  "selected_trials_total": 38,
+  "frozen_trials_total": 35,
+  "journal_counts_selected": {
+    "BMJ": 1,
+    "Circulation": 1,
+    "JAMA": 2,
+    "Journal of Clinical Oncology": 1,
+    "Neurology": 1,
+    "New England Journal of Medicine": 23,
+    "The Lancet": 9
+  },
+  "journal_counts_frozen": {
+    "BMJ": 1,
+    "Circulation": 1,
+    "JAMA": 1,
+    "Journal of Clinical Oncology": 1,
+    "Neurology": 1,
+    "New England Journal of Medicine": 23,
+    "The Lancet": 7
+  },
+  "validation_stats": {
+    "passed": 35,
+    "failed": 3
+  },
+  "augmentation_stats": {
+    "already_local": 35,
+    "attempted_rows": 3,
+    "unpaywall_candidates_total": 15,
+    "landing_pages_checked": 6,
+    "landing_page_errors": 3,
+    "landing_pages_without_pdf_links": 1,
+    "download_attempts": 7,
+    "download_errors": 5,
+    "failed_after_candidates": 3,
+    "non_pdf_response": 1,
+    "landing_pages_with_pdf_links": 2,
+    "downloaded_without_doi_match": 1
+  },
+  "augmentation_failures_total": 8,
+  "augmentation_failures_sample": [
+    {
+      "study_id": "ecztra_1_2021",
+      "reason": "landing_page_error",
+      "url": "http://www.scopus.com/inward/record.url?scp=85103043871&partnerID=8YFLogxK",
+      "error": "403 Client Error: Forbidden for url: https://www.scopus.com/inward/record.url?scp=85103043871&partnerID=8YFLogxK"
+    },
+    {
+      "study_id": "ecztra_1_2021",
+      "reason": "download_or_parse_error",
+      "url": "http://www.jpsmjournal.com/article/S0885392421001597/pdf",
+      "candidate_source": "url_for_pdf",
+      "error": "403 Client Error: Forbidden for url: https://www.jpsmjournal.com/article/S0885392421001597/pdf"
+    },
+    {
+      "study_id": "merino_2018",
+      "reason": "landing_page_error",
+      "url": "http://www.scopus.com/inward/record.url?scp=85053263956&partnerID=8YFLogxK",
+      "error": "403 Client Error: Forbidden for url: https://www.scopus.com/inward/record.url?scp=85053263956&partnerID=8YFLogxK"
+    },
+    {
+      "study_id": "merino_2018",
+      "reason": "landing_page_error",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/6143100",
+      "error": "403 Client Error: Forbidden for url: https://pmc.ncbi.nlm.nih.gov/articles/6143100"
+    },
+    {
+      "study_id": "recovery_tocilizumab_2021",
+      "reason": "download_or_parse_error",
+      "url": "https://hdl.handle.net/2164/16630",
+      "candidate_source": "url_for_pdf",
+      "error": "('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))"
+    },
+    {
+      "study_id": "recovery_tocilizumab_2021",
+      "reason": "download_or_parse_error",
+      "url": "http://www.thelancet.com/article/S0140673621006760/pdf",
+      "candidate_source": "url_for_pdf",
+      "error": "403 Client Error: Forbidden for url: https://www.thelancet.com/article/S0140673621006760/pdf"
+    },
+    {
+      "study_id": "recovery_tocilizumab_2021",
+      "reason": "download_or_parse_error",
+      "url": "https://discovery.dundee.ac.uk/files/70667384/mmc1_1_.pdf",
+      "candidate_source": "landing_discovered_pdf",
+      "error": "403 Client Error: Forbidden for url: https://discovery.dundee.ac.uk/files/70667384/mmc1_1_.pdf"
+    },
+    {
+      "study_id": "recovery_tocilizumab_2021",
+      "reason": "download_or_parse_error",
+      "url": "https://pure.qub.ac.uk/files/268104866/1_s2.0_S0140673621006760_main.pdf",
+      "candidate_source": "landing_discovered_pdf",
+      "error": "403 Client Error: Forbidden for url: https://pure.qub.ac.uk/files/268104866/1_s2.0_S0140673621006760_main.pdf"
+    }
+  ],
+  "source_protocol_mode": "external_no_tune",
+  "source_validation_stats": {
+    "passed": 35
+  },
+  "unpaywall_email": "tooling@proton.me",
+  "request_timeout_sec": 15.0,
+  "http_retries": 1,
+  "pdf_parse_timeout_sec": 25.0,
+  "max_candidates_per_study": 8,
+  "max_landing_pages_per_study": 2,
+  "max_links_per_landing_page": 6,
+  "prefer_repository": true,
+  "output_manifest": "data/external_stratified_augmented_v1/manifest.jsonl",
+  "output_frozen_gold": "data/external_stratified_augmented_v1/frozen_gold.jsonl",
+  "output_seed_results": "data/external_stratified_augmented_v1/seed_results_empty.json",
+  "pdf_dir": "test_pdfs/external_stratified_probe_v1/pdfs"
+}

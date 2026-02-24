@@ -7,6 +7,7 @@ import argparse
 import hashlib
 import importlib.util
 import json
+import os
 import re
 import time
 import urllib.request
@@ -197,6 +198,9 @@ def _fetch_idconv_record(
         return cache[normalized_id]
 
     url = f"https://www.ncbi.nlm.nih.gov/pmc/utils/idconv/v1.0/?ids={normalized_id}&format=json"
+    api_key = str(os.environ.get("NCBI_API_KEY") or "").strip()
+    if api_key:
+        url = f"{url}&api_key={api_key}"
     request = urllib.request.Request(url, headers=_headers())
     try:
         with urllib.request.urlopen(request, timeout=timeout_sec) as response:
@@ -277,6 +281,9 @@ def _fetch_pmc_idconv_record(
     if normalized_pmc in cache:
         return cache[normalized_pmc]
     url = f"https://www.ncbi.nlm.nih.gov/pmc/utils/idconv/v1.0/?ids={normalized_pmc}&format=json"
+    api_key = str(os.environ.get("NCBI_API_KEY") or "").strip()
+    if api_key:
+        url = f"{url}&api_key={api_key}"
     request = urllib.request.Request(url, headers=_headers())
     try:
         with urllib.request.urlopen(request, timeout=timeout_sec) as response:
