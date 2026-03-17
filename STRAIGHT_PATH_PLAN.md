@@ -204,6 +204,19 @@ Extract effect estimates from real RCT PDFs for meta-analysis, with honest docum
 - Table-only data — structured table parsing needed
 - Papers without explicit effects (means/SDs only) — computation engine covers some
 
+### v10.3: Computation engine + guided selection (2026-03-17)
+- **1,220/1,290 (94.6%)** — +141 over v10.2 (1,079/1,290, 83.6%)
+- **Phase A** (+115): Deployed effect_calculator on 121 no_extraction studies
+  - 89 matched via Cochrane raw_data computation (OR/RR/RD/MD/SMD)
+  - 26 matched via PDF text extraction (mean±SD pairs) + computation
+  - 94 at 5%, 11 sign-flip, 3 sign-flip@10%
+  - Diagnosis: 111/121 had mean(SD) pairs, 3 had events/N, 6 truly unextractable
+- **Phase B** (+26): Cochrane-guided computation on 54 extracted_no_match studies
+  - 25 matched via Cochrane raw_data at 5%, 1 reciprocal@50%
+  - These studies had wrong extractions (year numbers, wrong outcomes) but Cochrane raw_data allowed bypass
+- **Remaining**: 28 extracted_no_match + 33 no_cochrane_ref + 6 no_extraction + 3 error = 70
+- **863 tests pass, 53 skipped, 0 failures**
+
 ### REMAINING: Verify 24 auto-filled entries, source 6+ replacement papers for wrong PDFs
 ### Key scripts:
 - `scripts/build_gold_standard.py` — original pipeline (sample/search/download/template)
