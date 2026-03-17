@@ -1,0 +1,963 @@
+{
+  "total": 54,
+  "summary": {
+    "WRONG_TYPE": 22,
+    "TOTAL_MISMATCH": 30,
+    "NO_COMPARABLE_VALUES": 2
+  },
+  "recoverable": 0,
+  "details": [
+    {
+      "study_id": "Zadro 2022_2022",
+      "n_extracted": 1,
+      "n_cochrane": 3,
+      "closest_miss": {
+        "category": "WRONG_TYPE",
+        "transform": "reciprocal",
+        "direct_dist": 1.9078,
+        "reciprocal_dist": 0.7285,
+        "signflip_dist": 3.9078,
+        "best_dist": 0.7285,
+        "extracted_val": 3.272727272727273,
+        "extracted_type": "EffectType.OR",
+        "cochrane_val": 1.12549,
+        "cochrane_type": "binary",
+        "cochrane_outcome": "Informed values-choice congruence - all studies"
+      }
+    },
+    {
+      "study_id": "Berry 2018_2018",
+      "n_extracted": 10,
+      "n_cochrane": 3,
+      "closest_miss": {
+        "category": "WRONG_TYPE",
+        "transform": "sign_flip",
+        "direct_dist": 2.5948,
+        "reciprocal_dist": 1.0867,
+        "signflip_dist": 0.5948,
+        "best_dist": 0.5948,
+        "extracted_val": 4.29,
+        "extracted_type": "UNLABELED",
+        "cochrane_val": -2.69,
+        "cochrane_type": "continuous",
+        "cochrane_outcome": "Decision regret - all studies"
+      }
+    },
+    {
+      "study_id": "Sheridan 2011_2011",
+      "n_extracted": 1,
+      "n_cochrane": 2,
+      "closest_miss": {
+        "category": "WRONG_TYPE",
+        "transform": "reciprocal",
+        "direct_dist": 18.533,
+        "reciprocal_dist": 0.9783,
+        "signflip_dist": 20.533,
+        "best_dist": 0.9783,
+        "extracted_val": 30.0,
+        "extracted_type": "EffectType.MD",
+        "cochrane_val": 1.535865,
+        "cochrane_type": "binary",
+        "cochrane_outcome": "Discussed topic with provider"
+      }
+    },
+    {
+      "study_id": "Alessi 2014_2014",
+      "n_extracted": 2,
+      "n_cochrane": 1,
+      "closest_miss": {
+        "category": "WRONG_TYPE",
+        "transform": "reciprocal",
+        "direct_dist": 0.9429,
+        "reciprocal_dist": 0.8674,
+        "signflip_dist": 2.9429,
+        "best_dist": 0.8674,
+        "extracted_val": 1.02,
+        "extracted_type": "EffectType.OR",
+        "cochrane_val": 0.525,
+        "cochrane_type": "binary",
+        "cochrane_outcome": "Smoking cessation (subgrouped by when incentives were provided)"
+      }
+    },
+    {
+      "study_id": "Briem 2007_2007",
+      "n_extracted": 1,
+      "n_cochrane": 2,
+      "closest_miss": {
+        "category": "WRONG_TYPE",
+        "transform": "reciprocal",
+        "direct_dist": 1.2286,
+        "reciprocal_dist": 0.9908,
+        "signflip_dist": 3.2286,
+        "best_dist": 0.9908,
+        "extracted_val": 15.6,
+        "extracted_type": "EffectType.MD",
+        "cochrane_val": 7.0,
+        "cochrane_type": "continuous",
+        "cochrane_outcome": "Pain (short-term)"
+      }
+    },
+    {
+      "study_id": "Dermen 2011_2011",
+      "n_extracted": 1,
+      "n_cochrane": 3,
+      "closest_miss": {
+        "category": "TOTAL_MISMATCH",
+        "transform": "reciprocal",
+        "direct_dist": 48633.1463,
+        "reciprocal_dist": 0.9878,
+        "signflip_dist": 48635.1463,
+        "best_dist": 0.9878,
+        "extracted_val": 1994.0,
+        "extracted_type": "EffectType.MD",
+        "cochrane_val": 0.041,
+        "cochrane_type": null,
+        "cochrane_outcome": "Extent of substance use"
+      }
+    },
+    {
+      "study_id": "Walker 2006_2006",
+      "n_extracted": 1,
+      "n_cochrane": 1,
+      "closest_miss": {
+        "category": "TOTAL_MISMATCH",
+        "transform": "reciprocal",
+        "direct_dist": 25704.1282,
+        "reciprocal_dist": 0.9936,
+        "signflip_dist": 25706.1282,
+        "best_dist": 0.9936,
+        "extracted_val": 2005.0,
+        "extracted_type": "EffectType.MD",
+        "cochrane_val": 0.078,
+        "cochrane_type": null,
+        "cochrane_outcome": "Extent of substance use"
+      }
+    },
+    {
+      "study_id": "Hajji 2021_2021",
+      "n_extracted": 2,
+      "n_cochrane": 2,
+      "closest_miss": {
+        "category": "WRONG_TYPE",
+        "transform": "sign_flip",
+        "direct_dist": 1.1518,
+        "reciprocal_dist": 43.1568,
+        "signflip_dist": 0.8482,
+        "best_dist": 0.8482,
+        "extracted_val": -0.06,
+        "extracted_type": "EffectType.MD",
+        "cochrane_val": 0.395349,
+        "cochrane_type": "binary",
+        "cochrane_outcome": "Death (any cause)"
+      }
+    },
+    {
+      "study_id": "Standen 2017_2017",
+      "n_extracted": 1,
+      "n_cochrane": 3,
+      "closest_miss": {
+        "category": "WRONG_TYPE",
+        "transform": "reciprocal",
+        "direct_dist": 36.0776,
+        "reciprocal_dist": 3.1923,
+        "signflip_dist": 34.0776,
+        "best_dist": 3.1923,
+        "extracted_val": -4.0,
+        "extracted_type": "EffectType.MD",
+        "cochrane_val": 0.114033,
+        "cochrane_type": "continuous",
+        "cochrane_outcome": "Upper limb function post intervention (composite measure)"
+      }
+    },
+    {
+      "study_id": "Nicklas 2017_2017",
+      "n_extracted": 1,
+      "n_cochrane": 3,
+      "closest_miss": {
+        "category": "TOTAL_MISMATCH",
+        "transform": "direct",
+        "direct_dist": 0.6116,
+        "reciprocal_dist": 3.9541,
+        "signflip_dist": 1.3884,
+        "best_dist": 0.6116,
+        "extracted_val": 0.28,
+        "extracted_type": "EffectType.SMD",
+        "cochrane_val": 0.7209,
+        "cochrane_type": null,
+        "cochrane_outcome": "Fruit and vegetable intake"
+      }
+    },
+    {
+      "study_id": "Haire-Joshu 2008_2008",
+      "n_extracted": 1,
+      "n_cochrane": 3,
+      "closest_miss": {
+        "category": "TOTAL_MISMATCH",
+        "transform": "direct",
+        "direct_dist": 25.2172,
+        "reciprocal_dist": 52.5045,
+        "signflip_dist": 27.2172,
+        "best_dist": 25.2172,
+        "extracted_val": 0.7,
+        "extracted_type": "EffectType.MD",
+        "cochrane_val": 0.0267,
+        "cochrane_type": null,
+        "cochrane_outcome": "Fruit and vegetable intake"
+      }
+    },
+    {
+      "study_id": "Wyse 2012_2012",
+      "n_extracted": 5,
+      "n_cochrane": 3,
+      "closest_miss": {
+        "category": "TOTAL_MISMATCH",
+        "transform": "reciprocal",
+        "direct_dist": 4.3924,
+        "reciprocal_dist": 2.0031,
+        "signflip_dist": 6.3924,
+        "best_dist": 2.0031,
+        "extracted_val": 1.34,
+        "extracted_type": "UNLABELED",
+        "cochrane_val": 0.2485,
+        "cochrane_type": null,
+        "cochrane_outcome": "Fruit and vegetable intake"
+      }
+    },
+    {
+      "study_id": "Carroll 2014_2014",
+      "n_extracted": 1,
+      "n_cochrane": 1,
+      "closest_miss": {
+        "category": "WRONG_TYPE",
+        "transform": "direct",
+        "direct_dist": 0.5421,
+        "reciprocal_dist": 2.5336,
+        "signflip_dist": 1.4579,
+        "best_dist": 0.5421,
+        "extracted_val": 0.36,
+        "extracted_type": "EffectType.OR",
+        "cochrane_val": 0.786114,
+        "cochrane_type": "binary",
+        "cochrane_outcome": "Dropouts"
+      }
+    },
+    {
+      "study_id": "Cadigan 2019_2019",
+      "n_extracted": 6,
+      "n_cochrane": 1,
+      "closest_miss": {
+        "category": "TOTAL_MISMATCH",
+        "transform": "direct",
+        "direct_dist": 0.6,
+        "reciprocal_dist": 249.0,
+        "signflip_dist": 1.4,
+        "best_dist": 0.6,
+        "extracted_val": 0.04,
+        "extracted_type": "EffectType.MD",
+        "cochrane_val": 0.1,
+        "cochrane_type": null,
+        "cochrane_outcome": "Alcohol consumption in the last week"
+      }
+    },
+    {
+      "study_id": "Zeng 2017_2017",
+      "n_extracted": 1,
+      "n_cochrane": 2,
+      "closest_miss": {
+        "category": "WRONG_TYPE",
+        "transform": "reciprocal",
+        "direct_dist": 4.3333,
+        "reciprocal_dist": 1.8333,
+        "signflip_dist": 2.3333,
+        "best_dist": 1.8333,
+        "extracted_val": 2.0,
+        "extracted_type": "EffectType.MD",
+        "cochrane_val": -0.6,
+        "cochrane_type": "continuous",
+        "cochrane_outcome": "Length of hospital stay (only trials included in the NMA)"
+      }
+    },
+    {
+      "study_id": "Sadri 2023_2023",
+      "n_extracted": 1,
+      "n_cochrane": 3,
+      "closest_miss": {
+        "category": "WRONG_TYPE",
+        "transform": "sign_flip",
+        "direct_dist": 1.4255,
+        "reciprocal_dist": 1.4255,
+        "signflip_dist": 0.5745,
+        "best_dist": 0.5745,
+        "extracted_val": 1.0,
+        "extracted_type": "EffectType.MD",
+        "cochrane_val": -2.35,
+        "cochrane_type": "continuous",
+        "cochrane_outcome": "Mean overall pain (0 to 10, 0 is no pain)"
+      }
+    },
+    {
+      "study_id": "Nur 2012_2012",
+      "n_extracted": 1,
+      "n_cochrane": 1,
+      "closest_miss": {
+        "category": "NO_COMPARABLE_VALUES"
+      }
+    },
+    {
+      "study_id": "Guille 2015_2015",
+      "n_extracted": 1,
+      "n_cochrane": 1,
+      "closest_miss": {
+        "category": "TOTAL_MISMATCH",
+        "transform": "reciprocal",
+        "direct_dist": 0.9858,
+        "reciprocal_dist": 0.9111,
+        "signflip_dist": 1.0142,
+        "best_dist": 0.9111,
+        "extracted_val": 0.4,
+        "extracted_type": "EffectType.RR",
+        "cochrane_val": 28.107345,
+        "cochrane_type": null,
+        "cochrane_outcome": "Acceptability (dropouts)"
+      }
+    },
+    {
+      "study_id": "Mascayano 2018_2018",
+      "n_extracted": 2,
+      "n_cochrane": 3,
+      "closest_miss": {
+        "category": "WRONG_TYPE",
+        "transform": "sign_flip",
+        "direct_dist": 10.5799,
+        "reciprocal_dist": 12.827,
+        "signflip_dist": 8.5799,
+        "best_dist": 8.5799,
+        "extracted_val": 0.9,
+        "extracted_type": "EffectType.MD",
+        "cochrane_val": -0.093947,
+        "cochrane_type": "continuous",
+        "cochrane_outcome": "Suicidal ideation at postintervention follow-up"
+      }
+    },
+    {
+      "study_id": "Wetherell 2018_2018",
+      "n_extracted": 4,
+      "n_cochrane": 3,
+      "closest_miss": {
+        "category": "WRONG_TYPE",
+        "transform": "reciprocal",
+        "direct_dist": 24.8887,
+        "reciprocal_dist": 16.112,
+        "signflip_dist": 26.8887,
+        "best_dist": 16.112,
+        "extracted_val": -1.23,
+        "extracted_type": "EffectType.SMD",
+        "cochrane_val": -0.047511,
+        "cochrane_type": "continuous",
+        "cochrane_outcome": "Fear of falling: subgrouped according to intervention approach"
+      }
+    },
+    {
+      "study_id": "McQueen 2024_2024",
+      "n_extracted": 1,
+      "n_cochrane": 1,
+      "closest_miss": {
+        "category": "WRONG_TYPE",
+        "transform": "sign_flip",
+        "direct_dist": 1.4505,
+        "reciprocal_dist": 2.9553,
+        "signflip_dist": 0.5495,
+        "best_dist": 0.5495,
+        "extracted_val": -0.4799999999999969,
+        "extracted_type": "EffectType.MD",
+        "cochrane_val": 1.065455,
+        "cochrane_type": "binary",
+        "cochrane_outcome": "Unplanned hospital presentation rates - emergency department presentations within 12 months (365 days)"
+      }
+    },
+    {
+      "study_id": "Sanfilippo 2020_2020",
+      "n_extracted": 2,
+      "n_cochrane": 3,
+      "closest_miss": {
+        "category": "WRONG_TYPE",
+        "transform": "sign_flip",
+        "direct_dist": 3.2336,
+        "reciprocal_dist": 1.5697,
+        "signflip_dist": 1.2336,
+        "best_dist": 1.2336,
+        "extracted_val": 1.98,
+        "extracted_type": "UNLABELED",
+        "cochrane_val": -0.886473,
+        "cochrane_type": "continuous",
+        "cochrane_outcome": "Depressive symptoms at 0-1 months"
+      }
+    },
+    {
+      "study_id": "Sherman 2009_2009",
+      "n_extracted": 3,
+      "n_cochrane": 1,
+      "closest_miss": {
+        "category": "WRONG_TYPE",
+        "transform": "sign_flip",
+        "direct_dist": 5.4575,
+        "reciprocal_dist": 5.2016,
+        "signflip_dist": 3.4575,
+        "best_dist": 3.4575,
+        "extracted_val": 1.03,
+        "extracted_type": "UNLABELED",
+        "cochrane_val": -0.231072,
+        "cochrane_type": "continuous",
+        "cochrane_outcome": "Depressive symptoms at 7-24 months"
+      }
+    },
+    {
+      "study_id": "Fabbri 2021_2021",
+      "n_extracted": 1,
+      "n_cochrane": 2,
+      "closest_miss": {
+        "category": "WRONG_TYPE",
+        "transform": "reciprocal",
+        "direct_dist": 4.0455,
+        "reciprocal_dist": 3.095,
+        "signflip_dist": 6.0455,
+        "best_dist": 3.095,
+        "extracted_val": 1.11,
+        "extracted_type": "EffectType.RR",
+        "cochrane_val": 0.22,
+        "cochrane_type": "continuous",
+        "cochrane_outcome": "Depressive symptoms at 7-24 months"
+      }
+    },
+    {
+      "study_id": "Lavine 2011_2011",
+      "n_extracted": 1,
+      "n_cochrane": 3,
+      "closest_miss": {
+        "category": "NO_COMPARABLE_VALUES"
+      }
+    },
+    {
+      "study_id": "DeBar 2022_2022",
+      "n_extracted": 2,
+      "n_cochrane": 3,
+      "closest_miss": {
+        "category": "TOTAL_MISMATCH",
+        "transform": "sign_flip",
+        "direct_dist": 1.4596,
+        "reciprocal_dist": 3.4401,
+        "signflip_dist": 0.5404,
+        "best_dist": 0.5404,
+        "extracted_val": -0.434,
+        "extracted_type": "EffectType.MD",
+        "cochrane_val": 0.944281,
+        "cochrane_type": null,
+        "cochrane_outcome": "Referral to surgeon or lumbar spine surgery at last follow-up within 12 months"
+      }
+    },
+    {
+      "study_id": "Nohlert 2009_2009",
+      "n_extracted": 1,
+      "n_cochrane": 1,
+      "closest_miss": {
+        "category": "TOTAL_MISMATCH",
+        "transform": "direct",
+        "direct_dist": 0.9322,
+        "reciprocal_dist": 8.3098,
+        "signflip_dist": 1.0678,
+        "best_dist": 0.9322,
+        "extracted_val": 0.08534337071746811,
+        "extracted_type": "EffectType.OR",
+        "cochrane_val": 1.2586,
+        "cochrane_type": null,
+        "cochrane_outcome": "Smoking cessation"
+      }
+    },
+    {
+      "study_id": "Lou 2013_2013",
+      "n_extracted": 1,
+      "n_cochrane": 1,
+      "closest_miss": {
+        "category": "TOTAL_MISMATCH",
+        "transform": "reciprocal",
+        "direct_dist": 12.507,
+        "reciprocal_dist": 0.9077,
+        "signflip_dist": 14.507,
+        "best_dist": 0.9077,
+        "extracted_val": 12.1,
+        "extracted_type": "EffectType.OR",
+        "cochrane_val": 0.895834,
+        "cochrane_type": null,
+        "cochrane_outcome": "Smoking cessation"
+      }
+    },
+    {
+      "study_id": "Finberg 2021_2021",
+      "n_extracted": 6,
+      "n_cochrane": 3,
+      "closest_miss": {
+        "category": "TOTAL_MISMATCH",
+        "transform": "sign_flip",
+        "direct_dist": 2.6667,
+        "reciprocal_dist": 1.0667,
+        "signflip_dist": 0.6667,
+        "best_dist": 0.6667,
+        "extracted_val": -5.0,
+        "extracted_type": "EffectType.MD",
+        "cochrane_val": 3.0,
+        "cochrane_type": null,
+        "cochrane_outcome": "All-cause mortality – at 28 to 30 days, or in‐hospital"
+      }
+    },
+    {
+      "study_id": "Reilly 2006_2006",
+      "n_extracted": 2,
+      "n_cochrane": 3,
+      "closest_miss": {
+        "category": "TOTAL_MISMATCH",
+        "transform": "direct",
+        "direct_dist": 21.4757,
+        "reciprocal_dist": 48.4362,
+        "signflip_dist": 23.4757,
+        "best_dist": 21.4757,
+        "extracted_val": 0.6742702702702703,
+        "extracted_type": "EffectType.OR",
+        "cochrane_val": 0.03,
+        "cochrane_type": null,
+        "cochrane_outcome": "zBMI (Short-term)"
+      }
+    },
+    {
+      "study_id": "Barber 2016_2016",
+      "n_extracted": 2,
+      "n_cochrane": 3,
+      "closest_miss": {
+        "category": "TOTAL_MISMATCH",
+        "transform": "sign_flip",
+        "direct_dist": 5.4,
+        "reciprocal_dist": 23.7273,
+        "signflip_dist": 3.4,
+        "best_dist": 3.4,
+        "extracted_val": 0.44,
+        "extracted_type": "EffectType.SMD",
+        "cochrane_val": -0.1,
+        "cochrane_type": null,
+        "cochrane_outcome": "zBMI (Medium-term)"
+      }
+    },
+    {
+      "study_id": "Heerman 2019_2019",
+      "n_extracted": 2,
+      "n_cochrane": 3,
+      "closest_miss": {
+        "category": "TOTAL_MISMATCH",
+        "transform": "reciprocal",
+        "direct_dist": 15.6522,
+        "reciprocal_dist": 2.2902,
+        "signflip_dist": 13.6522,
+        "best_dist": 2.2902,
+        "extracted_val": 3.37,
+        "extracted_type": "EffectType.OR",
+        "cochrane_val": -0.23,
+        "cochrane_type": null,
+        "cochrane_outcome": "BMI (Medium Term)"
+      }
+    },
+    {
+      "study_id": "Cunha 2013_2013",
+      "n_extracted": 1,
+      "n_cochrane": 1,
+      "closest_miss": {
+        "category": "TOTAL_MISMATCH",
+        "transform": "direct",
+        "direct_dist": 0.9444,
+        "reciprocal_dist": 6171.8395,
+        "signflip_dist": 1.0556,
+        "best_dist": 0.9444,
+        "extracted_val": 0.003,
+        "extracted_type": "EffectType.MD",
+        "cochrane_val": 0.054,
+        "cochrane_type": null,
+        "cochrane_outcome": "BMI medium-term"
+      }
+    },
+    {
+      "study_id": "Yin 2012_2012",
+      "n_extracted": 1,
+      "n_cochrane": 2,
+      "closest_miss": {
+        "category": "TOTAL_MISMATCH",
+        "transform": "reciprocal",
+        "direct_dist": 27.8341,
+        "reciprocal_dist": 20.6757,
+        "signflip_dist": 29.8341,
+        "best_dist": 20.6757,
+        "extracted_val": 1.1533634261807773,
+        "extracted_type": "EffectType.OR",
+        "cochrane_val": 0.04,
+        "cochrane_type": null,
+        "cochrane_outcome": "zBMI long-term"
+      }
+    },
+    {
+      "study_id": "Duncan 2019_2019",
+      "n_extracted": 2,
+      "n_cochrane": 1,
+      "closest_miss": {
+        "category": "TOTAL_MISMATCH",
+        "transform": "direct",
+        "direct_dist": 25.7,
+        "reciprocal_dist": 373.5318,
+        "signflip_dist": 27.7,
+        "best_dist": 25.7,
+        "extracted_val": -0.267,
+        "extracted_type": "EffectType.MD",
+        "cochrane_val": -0.01,
+        "cochrane_type": null,
+        "cochrane_outcome": "BMI short-term"
+      }
+    },
+    {
+      "study_id": "Grydeland 2014_2014",
+      "n_extracted": 2,
+      "n_cochrane": 2,
+      "closest_miss": {
+        "category": "TOTAL_MISMATCH",
+        "transform": "reciprocal",
+        "direct_dist": 19.0,
+        "reciprocal_dist": 4.0,
+        "signflip_dist": 21.0,
+        "best_dist": 4.0,
+        "extracted_val": -2.0,
+        "extracted_type": "EffectType.MD",
+        "cochrane_val": -0.1,
+        "cochrane_type": null,
+        "cochrane_outcome": "BMI long-term"
+      }
+    },
+    {
+      "study_id": "Kocken 2016_2016",
+      "n_extracted": 2,
+      "n_cochrane": 1,
+      "closest_miss": {
+        "category": "TOTAL_MISMATCH",
+        "transform": "direct",
+        "direct_dist": 1.9,
+        "reciprocal_dist": 33.4828,
+        "signflip_dist": 3.9,
+        "best_dist": 1.9,
+        "extracted_val": 0.29,
+        "extracted_type": "EffectType.MD",
+        "cochrane_val": 0.1,
+        "cochrane_type": null,
+        "cochrane_outcome": "zBMI short-term"
+      }
+    },
+    {
+      "study_id": "Levy 2012_2012",
+      "n_extracted": 50,
+      "n_cochrane": 1,
+      "closest_miss": {
+        "category": "TOTAL_MISMATCH",
+        "transform": "reciprocal",
+        "direct_dist": 19632.2991,
+        "reciprocal_dist": 1.1701,
+        "signflip_dist": 19630.2991,
+        "best_dist": 1.1701,
+        "extracted_val": 339.7,
+        "extracted_type": "UNLABELED",
+        "cochrane_val": -0.017304,
+        "cochrane_type": null,
+        "cochrane_outcome": "zBMI short-term"
+      }
+    },
+    {
+      "study_id": "Crespo 2012_2012",
+      "n_extracted": 1,
+      "n_cochrane": 3,
+      "closest_miss": {
+        "category": "TOTAL_MISMATCH",
+        "transform": "reciprocal",
+        "direct_dist": 356331.0326,
+        "reciprocal_dist": 0.9117,
+        "signflip_dist": 356333.0326,
+        "best_dist": 0.9117,
+        "extracted_val": 2009.0,
+        "extracted_type": "EffectType.MD",
+        "cochrane_val": 0.005638,
+        "cochrane_type": null,
+        "cochrane_outcome": "zBMI medium-term"
+      }
+    },
+    {
+      "study_id": "HEALTHY Study Group 2010_2010",
+      "n_extracted": 2,
+      "n_cochrane": 1,
+      "closest_miss": {
+        "category": "TOTAL_MISMATCH",
+        "transform": "sign_flip",
+        "direct_dist": 20.75,
+        "reciprocal_dist": 32.6456,
+        "signflip_dist": 18.75,
+        "best_dist": 18.75,
+        "extracted_val": 0.79,
+        "extracted_type": "EffectType.OR",
+        "cochrane_val": -0.04,
+        "cochrane_type": null,
+        "cochrane_outcome": "zBMI long-term"
+      }
+    },
+    {
+      "study_id": "Habib-Mourad 2020_2020",
+      "n_extracted": 1,
+      "n_cochrane": 1,
+      "closest_miss": {
+        "category": "TOTAL_MISMATCH",
+        "transform": "reciprocal",
+        "direct_dist": 20.4175,
+        "reciprocal_dist": 5.8544,
+        "signflip_dist": 18.4175,
+        "best_dist": 5.8544,
+        "extracted_val": 2.0,
+        "extracted_type": "EffectType.OR",
+        "cochrane_val": -0.103,
+        "cochrane_type": null,
+        "cochrane_outcome": "zBMI long-term"
+      }
+    },
+    {
+      "study_id": "Robinson 2010_2010",
+      "n_extracted": 2,
+      "n_cochrane": 2,
+      "closest_miss": {
+        "category": "TOTAL_MISMATCH",
+        "transform": "sign_flip",
+        "direct_dist": 5.375,
+        "reciprocal_dist": 36.7143,
+        "signflip_dist": 3.375,
+        "best_dist": 3.375,
+        "extracted_val": 0.35,
+        "extracted_type": "EffectType.RR",
+        "cochrane_val": -0.08,
+        "cochrane_type": null,
+        "cochrane_outcome": "BMI long-term"
+      }
+    },
+    {
+      "study_id": "Shomaker 2019_2019",
+      "n_extracted": 2,
+      "n_cochrane": 3,
+      "closest_miss": {
+        "category": "TOTAL_MISMATCH",
+        "transform": "sign_flip",
+        "direct_dist": 2.9,
+        "reciprocal_dist": 6.848,
+        "signflip_dist": 0.9,
+        "best_dist": 0.9,
+        "extracted_val": 0.57,
+        "extracted_type": "EffectType.SMD",
+        "cochrane_val": -0.3,
+        "cochrane_type": null,
+        "cochrane_outcome": "BMI long term"
+      }
+    },
+    {
+      "study_id": "Lubans 2021_2021",
+      "n_extracted": 1,
+      "n_cochrane": 2,
+      "closest_miss": {
+        "category": "TOTAL_MISMATCH",
+        "transform": "direct",
+        "direct_dist": 48.9752,
+        "reciprocal_dist": 49.0248,
+        "signflip_dist": 50.9752,
+        "best_dist": 48.9752,
+        "extracted_val": 0.9995047052996533,
+        "extracted_type": "EffectType.OR",
+        "cochrane_val": 0.02,
+        "cochrane_type": null,
+        "cochrane_outcome": "zBMI short term"
+      }
+    },
+    {
+      "study_id": "Prins 2012_2012",
+      "n_extracted": 1,
+      "n_cochrane": 1,
+      "closest_miss": {
+        "category": "TOTAL_MISMATCH",
+        "transform": "reciprocal",
+        "direct_dist": 39.0,
+        "reciprocal_dist": 22.4823,
+        "signflip_dist": 37.0,
+        "best_dist": 22.4823,
+        "extracted_val": -1.33,
+        "extracted_type": "EffectType.MD",
+        "cochrane_val": 0.035,
+        "cochrane_type": null,
+        "cochrane_outcome": "zBMI short term"
+      }
+    },
+    {
+      "study_id": "Kuhlemeier 2022_2022",
+      "n_extracted": 1,
+      "n_cochrane": 1,
+      "closest_miss": {
+        "category": "TOTAL_MISMATCH",
+        "transform": "direct",
+        "direct_dist": 1.75,
+        "reciprocal_dist": 55.8182,
+        "signflip_dist": 3.75,
+        "best_dist": 1.75,
+        "extracted_val": 0.22,
+        "extracted_type": "EffectType.SMD",
+        "cochrane_val": 0.08,
+        "cochrane_type": null,
+        "cochrane_outcome": "zBMI long term"
+      }
+    },
+    {
+      "study_id": "Littman 2012_2012",
+      "n_extracted": 3,
+      "n_cochrane": 1,
+      "closest_miss": {
+        "category": "WRONG_TYPE",
+        "transform": "direct",
+        "direct_dist": 0.5699,
+        "reciprocal_dist": 42.01,
+        "signflip_dist": 1.4301,
+        "best_dist": 0.5699,
+        "extracted_val": -0.09999999999999964,
+        "extracted_type": "EffectType.MD",
+        "cochrane_val": -0.232504,
+        "cochrane_type": "continuous",
+        "cochrane_outcome": "CRF ≤ 12 weeks"
+      }
+    },
+    {
+      "study_id": "Zhi 2021_2021",
+      "n_extracted": 40,
+      "n_cochrane": 1,
+      "closest_miss": {
+        "category": "WRONG_TYPE",
+        "transform": "reciprocal",
+        "direct_dist": 382.0934,
+        "reciprocal_dist": 1.0982,
+        "signflip_dist": 380.0934,
+        "best_dist": 1.0982,
+        "extracted_val": 62.3,
+        "extracted_type": "UNLABELED",
+        "cochrane_val": -0.163477,
+        "cochrane_type": "continuous",
+        "cochrane_outcome": "CRF ≤ 12 weeks"
+      }
+    },
+    {
+      "study_id": "Patel 2024_2024",
+      "n_extracted": 3,
+      "n_cochrane": 3,
+      "closest_miss": {
+        "category": "TOTAL_MISMATCH",
+        "transform": "reciprocal",
+        "direct_dist": 1017.4836,
+        "reciprocal_dist": 0.8339,
+        "signflip_dist": 1019.4836,
+        "best_dist": 0.8339,
+        "extracted_val": 78.3,
+        "extracted_type": "EffectType.RRR",
+        "cochrane_val": 0.076879,
+        "cochrane_type": null,
+        "cochrane_outcome": "All-cause mortality"
+      }
+    },
+    {
+      "study_id": "Goldstein 2007_2007",
+      "n_extracted": 1,
+      "n_cochrane": 1,
+      "closest_miss": {
+        "category": "WRONG_TYPE",
+        "transform": "sign_flip",
+        "direct_dist": 10.8168,
+        "reciprocal_dist": 13.1194,
+        "signflip_dist": 8.8168,
+        "best_dist": 8.8168,
+        "extracted_val": -0.9000000000000057,
+        "extracted_type": "EffectType.MD",
+        "cochrane_val": 0.09168,
+        "cochrane_type": "continuous",
+        "cochrane_outcome": "QOL subscore: self-efficacy-change score"
+      }
+    },
+    {
+      "study_id": "Idorn 2013_2013",
+      "n_extracted": 1,
+      "n_cochrane": 1,
+      "closest_miss": {
+        "category": "TOTAL_MISMATCH",
+        "transform": "sign_flip",
+        "direct_dist": 1.3636,
+        "reciprocal_dist": 1.5682,
+        "signflip_dist": 0.6364,
+        "best_dist": 0.6364,
+        "extracted_val": 0.8,
+        "extracted_type": "EffectType.MD",
+        "cochrane_val": -2.2,
+        "cochrane_type": null,
+        "cochrane_outcome": "Change in body weight [kg]"
+      }
+    },
+    {
+      "study_id": "Ma 2024_2024",
+      "n_extracted": 4,
+      "n_cochrane": 1,
+      "closest_miss": {
+        "category": "WRONG_TYPE",
+        "transform": "sign_flip",
+        "direct_dist": 1.2191,
+        "reciprocal_dist": 1.1601,
+        "signflip_dist": 0.7809,
+        "best_dist": 0.7809,
+        "extracted_val": 1.17,
+        "extracted_type": "EffectType.HR",
+        "cochrane_val": -5.34,
+        "cochrane_type": "continuous",
+        "cochrane_outcome": "Body weight [kg]"
+      }
+    },
+    {
+      "study_id": "Norman 2016_2016",
+      "n_extracted": 1,
+      "n_cochrane": 2,
+      "closest_miss": {
+        "category": "WRONG_TYPE",
+        "transform": "reciprocal",
+        "direct_dist": 4021.0,
+        "reciprocal_dist": 0.999,
+        "signflip_dist": 4023.0,
+        "best_dist": 0.999,
+        "extracted_val": 2011.0,
+        "extracted_type": "EffectType.MD",
+        "cochrane_val": 0.5,
+        "cochrane_type": "continuous",
+        "cochrane_outcome": "BMI (kg/m2) - End of study"
+      }
+    },
+    {
+      "study_id": "Ball 2024_2024",
+      "n_extracted": 4,
+      "n_cochrane": 2,
+      "closest_miss": {
+        "category": "WRONG_TYPE",
+        "transform": "direct",
+        "direct_dist": 3.0197,
+        "reciprocal_dist": 7.6932,
+        "signflip_dist": 5.0197,
+        "best_dist": 3.0197,
+        "extracted_val": 0.68,
+        "extracted_type": "EffectType.HR",
+        "cochrane_val": 0.169165,
+        "cochrane_type": "continuous",
+        "cochrane_outcome": "Comparison 3: Lateral vs posterior, Outcome 5: Functional status, early (≤ 4 months, continuous data)"
+      }
+    }
+  ]
+}
