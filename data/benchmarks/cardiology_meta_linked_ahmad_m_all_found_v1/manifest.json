@@ -1,0 +1,41 @@
+{
+  "generated_at_utc": "2026-02-25T08:26:53.997675+00:00",
+  "inputs": {
+    "benchmark_cohort_jsonl": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_v1/benchmark_cohort.jsonl",
+    "author_full_name": "Mahmood Ahmad",
+    "author_meta_pmids_manual_count": 42,
+    "author_meta_pmids_file": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_broad_probe/author_meta_pmids.json",
+    "pubmed_term": "manual_pmids:42",
+    "retmax": 300,
+    "require_author_name_in_authors": true,
+    "require_meta": true,
+    "require_cardiology": true,
+    "target_n": 200,
+    "seed": 20260224,
+    "api_key_present": true
+  },
+  "counts": {
+    "pubmed_ids_retrieved": 42,
+    "author_meta_candidates_after_filters": 42,
+    "author_meta_linked_to_benchmark": 2,
+    "subset_rows_before_sampling": 2,
+    "selected_rows": 2,
+    "selected_unique_pmids": 2,
+    "selected_status_counts": {
+      "extracted": 1,
+      "no_extraction": 1
+    }
+  },
+  "paths": {
+    "author_meta_candidates_json": "author_meta_candidates.json",
+    "author_meta_pmids_json": "author_meta_pmids.json",
+    "linked_author_meta_json": "linked_author_meta.json",
+    "benchmark_subset_jsonl": "benchmark_subset.jsonl",
+    "blinded_template_annotator_a_jsonl": "blinded_template_annotator_a.jsonl",
+    "blinded_template_annotator_b_jsonl": "blinded_template_annotator_b.jsonl",
+    "adjudication_template_jsonl": "adjudication_template.jsonl",
+    "model_seed_adjudicator_only_jsonl": "model_seed_adjudicator_only.jsonl",
+    "manifest_json": "manifest.json",
+    "readme_md": "README.md"
+  }
+}

@@ -1,16 +1,16 @@
 # Cardiology Trial to Meta-Analysis Mapping
 
-- Generated UTC: 2026-02-24T17:56:36.960621+00:00
+- Generated UTC: 2026-02-24T18:03:53.808408+00:00
 - Extracted-only inclusion: False
-- Trial rows considered: 2041
-- Extractable considered rows: 1416
-- Trial rows with PMID: 2023
-- Trial PMID resolution rate: 99.1%
-- Unique trial PMIDs: 2023
-- Trials with >=1 meta match: 451
-- Trial-with-meta rate: 22.3%
-- Unique cardiology meta PMIDs: 592
-- Edge rows: 752
+- Trial rows considered: 2127
+- Extractable considered rows: 1475
+- Trial rows with PMID: 2109
+- Trial PMID resolution rate: 99.2%
+- Unique trial PMIDs: 2109
+- Trials with >=1 meta match: 462
+- Trial-with-meta rate: 21.9%
+- Unique cardiology meta PMIDs: 599
+- Edge rows: 768
 
 ## Top Meta Papers By Linked Trials
 
@@ -23,6 +23,7 @@
 | 39817158 | 4 | 2025 | Cardiovascular therapeutics | Effectiveness and Safety of Dose-Specific DOACs in Patients With Atrial Fibrillation: A Systematic Review and Network Meta-Analysis. |
 | 40083820 | 4 | 2025 | Frontiers in cardiovascular medicine | Pulsed field ablation for atrial fibrillation: a comprehensive bibliometric analysis of research trends and emerging Frontiers. |
 | 40437855 | 4 | 2025 Jun | Clinical cardiology | Meta-Analysis of Thermal Versus Pulse Field Ablation for Pulmonary Vein Isolation Durability in Atrial Fibrillation: Insights From Repeat Ablation. |
+| 40489293 | 4 | 2025 Dec | Annals of medicine | Efficacy and safety of empagliflozin for the acute myocardial infarction: a systematic review and meta-analysis of randomized controlled trials. |
 | 40879386 | 4 | 2025 Oct 7 | Europace : European pacing, arrhythmias, and cardiac electrophysiology : journal of the working groups on cardiac pacing, arrhythmias, and cardiac cellular electrophysiology of the European Society of Cardiology | Left atrial appendage occlusion in patients with end-stage renal disease: an individual patient-level meta-analysis. |
 | 40964525 | 4 | 2025 | Frontiers in cardiovascular medicine | The impact of comorbidities on surgical outcome and mortality in minimally invasive mitral valve surgery: a systematic review. |
 | 41630541 | 4 | 2026 Mar | Annals of noninvasive electrocardiology : the official journal of the International Society for Holter and Noninvasive Electrocardiology, Inc | Outcomes of Left Bundle Branch Area Pacing in Heart Failure Patients: A Systematic Review. |
@@ -37,15 +38,14 @@
 | 40284036 | 3 | 2025 Apr 20 | Pharmaceuticals (Basel, Switzerland) | Assessing Omega-3 Therapy and Its Cardiovascular Benefits: What About Icosapent Ethyl? A Systematic Review and Meta-Analysis. |
 | 40286375 | 3 | 2025 May | JACC. Advances | Post-Transcatheter Aortic Valve Replacement Antithrombotic Treatment in Nonindicated Patients: Updated Systematic Review and Network Meta-Analysis. |
 | 40413387 | 3 | 2025 May 24 | BMC cardiovascular disorders | Efficacy and safety of anticoagulants in elderly atrial fibrillation patients: a systematic review and network meta-analysis. |
+| 40433752 | 3 | 2025 Aug | Journal of cardiovascular electrophysiology | Efficacy and Safety of Pulsed-Field Versus High-Power Short-Duration Ablation for Atrial Fibrillation: A Systematic Review and Meta-Analysis With Reconstructed Time-to-Event Data. |
 | 40486562 | 3 | 2025 Jun | Annals of medicine and surgery (2012) | Cardiac myosin inhibitors for hypertrophic cardiomyopathy: a systematic review and meta-analysis of randomized controlled trials. |
-| 40489293 | 3 | 2025 Dec | Annals of medicine | Efficacy and safety of empagliflozin for the acute myocardial infarction: a systematic review and meta-analysis of randomized controlled trials. |
 | 40547439 | 3 | 2025 Jun | EClinicalMedicine | Balancing the benefits and risks of colchicine use among patients with atherosclerotic cardiovascular disease: an umbrella review of meta-analyses of randomised controlled trials. |
 | 40869581 | 3 | 2025 Aug 14 | Journal of clinical medicine | Comparison of Safety and Effectiveness Between Direct Oral Anticoagulants and Vitamin K Antagonists in Dementia Patients with Atrial Fibrillation: A Systematic Review and Meta-Analysis. |
 | 40892447 | 3 | 2025 Sep 1 | Europace : European pacing, arrhythmias, and cardiac electrophysiology : journal of the working groups on cardiac pacing, arrhythmias, and cardiac cellular electrophysiology of the European Society of Cardiology | Prevalence and multiple predictors of left atrial low voltage in paroxysmal and non-paroxysmal atrial fibrillation patients undergoing ablation: a systematic review and meta-analysis. |
 | 40952576 | 3 | 2025 Sep 15 | The Egyptian heart journal : (EHJ) : official bulletin of the Egyptian Society of Cardiology | Impact of venous closure systems on time to ambulation and discharge following AF ablation: a systematic review and meta-analytic review. |
 | 41235335 | 3 | 2025 | Frontiers in cardiovascular medicine | Effectiveness of combining PCSK9 inhibitors with statins on major adverse cardiovascular events and lipid levels in patients after percutaneous coronary intervention: a systematic review and meta-analysis. |
 | 41267359 | 3 | 2025 Nov | Endocrinology, diabetes & metabolism | Effect of Oral Hypoglycaemic Agents on Carotid Artery Intima-Media Thickness in Patients With Cardiovascular Disease and/or Diabetes-A Systematic Review. |
-| 41524066 | 3 | 2025 Dec | Reviews in cardiovascular medicine | The Largest Systematic Review of Left Atrial Appendage Aneurysms: A Comprehensive Analysis of 216 Cases. |
 
 - Edges JSONL: `output\cardiology_oa_full_v1_fast\meta_mapping_edges.jsonl`
 - Trial map JSON: `output\cardiology_oa_full_v1_fast\meta_mapping_trials.json`

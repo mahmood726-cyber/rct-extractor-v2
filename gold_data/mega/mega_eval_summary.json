@@ -5,23 +5,23 @@
   "without_cochrane_ref": 14,
   "counts": {
     "match": 539,
-    "extracted_no_match": 7,
-    "no_extraction": 0,
+    "extracted_no_match": 6,
+    "no_extraction": 1,
     "no_cochrane_ref": 14,
     "error": 0,
     "timeout_skipped_by_batch_runner": 0
   },
   "by_status": {
     "match": 539,
-    "extracted_no_match": 7,
-    "no_extraction": 0,
+    "extracted_no_match": 6,
+    "no_extraction": 1,
     "no_cochrane_ref": 14,
     "error": 0,
     "timeout_skipped_by_batch_runner": 0
   },
   "other_status_rows": 0,
   "match_rate": 0.9871794871794872,
-  "extraction_rate": 1.0,
+  "extraction_rate": 0.9981684981684982,
   "raw_rows": 560,
   "deduped_rows": 560,
   "duplicate_rows": 0,
@@ -32,22 +32,22 @@
     "without_cochrane_ref": 0,
     "counts": {
       "match": 0,
-      "extracted_no_match": 7,
-      "no_extraction": 0,
+      "extracted_no_match": 6,
+      "no_extraction": 1,
       "no_cochrane_ref": 0,
       "error": 0,
       "timeout_skipped_by_batch_runner": 0
     },
     "by_status": {
       "match": 0,
-      "extracted_no_match": 7,
-      "no_extraction": 0,
+      "extracted_no_match": 6,
+      "no_extraction": 1,
       "no_cochrane_ref": 0,
       "error": 0,
       "timeout_skipped_by_batch_runner": 0
     },
     "other_status_rows": 0,
     "match_rate": 0.0,
-    "extraction_rate": 1.0
+    "extraction_rate": 0.8571428571428571
   }
 }

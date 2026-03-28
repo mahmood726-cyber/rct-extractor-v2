@@ -1,0 +1,39 @@
+{
+  "generated_at_utc": "2026-02-25T17:24:21.921107+00:00",
+  "inputs": {
+    "benchmark_dir": "data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v3_reextract_20260225",
+    "adjudication_jsonl": "data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v3_reextract_20260225/adjudication_template.jsonl",
+    "model_seed_jsonl": "data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v3_reextract_20260225/model_seed_adjudicator_only.jsonl",
+    "output_jsonl": "data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v3_reextract_20260225/adjudication_prefilled_model_seed.jsonl",
+    "min_include_confidence": 0.8,
+    "min_source_len": 20,
+    "overwrite_existing": false
+  },
+  "counts": {
+    "rows_total": 127,
+    "rows_preserved_existing": 0,
+    "rows_prefilled": 127,
+    "rows_suggested_included_true": 35,
+    "rows_suggested_included_false": 92,
+    "rows_missing_model_seed": 0,
+    "rows_review_required": 111,
+    "review_tier_counts": {
+      "tier_1_fast_verify_included": 35,
+      "tier_2_verify_extracted_rejected": 76,
+      "tier_4_negative_check": 16
+    },
+    "prefill_reason_counts": {
+      "extracted_below_confidence_threshold": 75,
+      "extracted_missing_source_text": 1,
+      "model_extracted_above_threshold": 35,
+      "no_extraction": 16
+    }
+  },
+  "paths": {
+    "backup_jsonl": null,
+    "prefilled_adjudication_jsonl": "data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v3_reextract_20260225/adjudication_prefilled_model_seed.jsonl",
+    "review_queue_jsonl": "data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v3_reextract_20260225/adjudication_prefill_review_queue.jsonl",
+    "review_queue_csv": "data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v3_reextract_20260225/adjudication_prefill_review_queue.csv",
+    "summary_json": "data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v3_reextract_20260225/adjudication_prefill_summary.json"
+  }
+}

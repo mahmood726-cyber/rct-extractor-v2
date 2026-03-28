@@ -1,0 +1,39 @@
+{
+  "generated_at_utc": "2026-02-25T10:06:17.268023+00:00",
+  "counts": {
+    "meta_total": 42,
+    "meta_available_local": 34,
+    "meta_unresolved": 8,
+    "trial_total": 447,
+    "trial_available_local": 126,
+    "trial_unresolved": 321
+  },
+  "meta_status_after": {
+    "already_downloaded": 20,
+    "downloaded_fallback_doi_landing": 3,
+    "downloaded_fallback_unpaywall_url_for_pdf": 1,
+    "existing_local": 10,
+    "fallback_failed": 8
+  },
+  "trial_status_after": {
+    "already_downloaded": 35,
+    "downloaded": 17,
+    "downloaded_fallback_doi_landing": 22,
+    "downloaded_fallback_pmcid_direct": 14,
+    "downloaded_fallback_unpaywall_url": 10,
+    "downloaded_fallback_unpaywall_url_for_pdf": 20,
+    "downloaded_thirdpass_crossref_link": 2,
+    "downloaded_thirdpass_doi_landing": 1,
+    "existing_local": 5,
+    "fallback_failed": 321
+  },
+  "paths": {
+    "meta_downloads_json": "C:\\Users\\user\\rct-extractor-v2\\data\\benchmarks\\cardiology_meta_linked_ahmad_m_all_found_v1\\oa_bundle\\meta_downloads.json",
+    "rct_trial_downloads_json": "C:\\Users\\user\\rct-extractor-v2\\data\\benchmarks\\cardiology_meta_linked_ahmad_m_all_found_v1\\oa_bundle\\rct_trial_downloads.json",
+    "meta_pdfs_dir": "C:\\Users\\user\\rct-extractor-v2\\data\\benchmarks\\cardiology_meta_linked_ahmad_m_all_found_v1\\oa_bundle\\meta_pdfs",
+    "rct_trial_pdfs_dir": "C:\\Users\\user\\rct-extractor-v2\\data\\benchmarks\\cardiology_meta_linked_ahmad_m_all_found_v1\\oa_bundle\\rct_trial_pdfs",
+    "fallback_summary_json": "C:\\Users\\user\\rct-extractor-v2\\data\\benchmarks\\cardiology_meta_linked_ahmad_m_all_found_v1\\oa_bundle\\fallback_summary.json",
+    "third_pass_summary_json": "C:\\Users\\user\\rct-extractor-v2\\data\\benchmarks\\cardiology_meta_linked_ahmad_m_all_found_v1\\oa_bundle\\third_pass_summary.json",
+    "elsevier_final_summary_json": "C:\\Users\\user\\rct-extractor-v2\\data\\benchmarks\\cardiology_meta_linked_ahmad_m_all_found_v1\\oa_bundle\\elsevier_final_summary.json"
+  }
+}

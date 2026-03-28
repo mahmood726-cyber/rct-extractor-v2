@@ -1,0 +1,68 @@
+{
+  "protocol_version": "1.0.0",
+  "generated_at_utc": "2026-02-25T12:41:48.239699+00:00",
+  "benchmark_version": "cardiology_meta_linked_ahmad_m_trials_v1",
+  "counts": {
+    "rows_total": 126,
+    "work_batches": 4,
+    "batch_size_target": 40
+  },
+  "consensus_rules": {
+    "point_tolerance": 0.1,
+    "ci_tolerance": 0.15,
+    "zero_abs_tolerance": 0.02
+  },
+  "completion_gates": {
+    "require_dual_annotation_all_rows": true,
+    "require_included_non_null": true,
+    "require_point_and_type_when_included": true,
+    "require_source_text_when_included": true,
+    "require_manual_adjudication_for_unresolved_consensus": true,
+    "require_exact_rows_in_final_adjudicated_jsonl": 126
+  },
+  "paths": {
+    "benchmark_dir": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v1",
+    "worklist_jsonl": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v1/adjudication_worklist.jsonl",
+    "worklist_csv": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v1/adjudication_worklist.csv",
+    "batches_dir": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v1/adjudication_batches",
+    "system_results_jsonl": "C:/Users/user/rct-extractor-v2/output/cardiology_oa_full_v1_fast/results.jsonl",
+    "eval_output_json": "output/cardiology_oa_full_v1_fast/cardiology_meta_linked_ahmad_m_trials_v1_benchmark_eval.json",
+    "eval_output_md": "output/cardiology_oa_full_v1_fast/cardiology_meta_linked_ahmad_m_trials_v1_benchmark_eval.md",
+    "protocol_md": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v1/adjudication_freeze_protocol.md",
+    "summary_json": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v1/adjudication_worklist_summary.json"
+  },
+  "freeze_command": "python scripts/evaluate_cardiology_linked_benchmark.py --benchmark-cohort-jsonl C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v1/benchmark_cohort.jsonl --system-results-jsonl C:/Users/user/rct-extractor-v2/output/cardiology_oa_full_v1_fast/results.jsonl --adjudicated-jsonl C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v1/adjudication_template.jsonl --output-json output/cardiology_oa_full_v1_fast/cardiology_meta_linked_ahmad_m_trials_v1_benchmark_eval.json --output-md output/cardiology_oa_full_v1_fast/cardiology_meta_linked_ahmad_m_trials_v1_benchmark_eval.md",
+  "preview_command": "python scripts/evaluate_cardiology_linked_benchmark.py --benchmark-cohort-jsonl C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v1/benchmark_cohort.jsonl --system-results-jsonl C:/Users/user/rct-extractor-v2/output/cardiology_oa_full_v1_fast/results.jsonl --adjudicated-jsonl C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v1/adjudication_template.jsonl --output-json output/cardiology_oa_full_v1_fast/cardiology_meta_linked_ahmad_m_trials_v1_benchmark_eval.json --output-md output/cardiology_oa_full_v1_fast/cardiology_meta_linked_ahmad_m_trials_v1_benchmark_eval.md --allow-partial-gold",
+  "input_files": [
+    {
+      "path": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v1/manifest.json",
+      "size_bytes": 1937,
+      "sha256": "795d4cb856d975b80a2dfb9124dd54b0313a74109e1bcf0605b5f315c1bedcd3"
+    },
+    {
+      "path": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v1/benchmark_cohort.jsonl",
+      "size_bytes": 134812,
+      "sha256": "29cf5be28b258898798842a1d75598b217b3fa2ec9f15da8fdcc69a40a6e0662"
+    },
+    {
+      "path": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v1/blinded_template_annotator_a.jsonl",
+      "size_bytes": 69996,
+      "sha256": "84e5c752421adafa0177031c8283c09b79b827fab45482c56813ebe91aceaefd"
+    },
+    {
+      "path": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v1/blinded_template_annotator_b.jsonl",
+      "size_bytes": 69996,
+      "sha256": "84e5c752421adafa0177031c8283c09b79b827fab45482c56813ebe91aceaefd"
+    },
+    {
+      "path": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v1/adjudication_template.jsonl",
+      "size_bytes": 80791,
+      "sha256": "07eb77944955b5f685b9cadf1720e9be383e0675ba62199bd6645384212dcc87"
+    },
+    {
+      "path": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v1/model_seed_adjudicator_only.jsonl",
+      "size_bytes": 134812,
+      "sha256": "29cf5be28b258898798842a1d75598b217b3fa2ec9f15da8fdcc69a40a6e0662"
+    }
+  ]
+}

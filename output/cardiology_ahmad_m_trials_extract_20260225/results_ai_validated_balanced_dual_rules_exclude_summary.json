@@ -1,0 +1,34 @@
+{
+  "generated_at_utc": "2026-02-26T12:06:51.578729+00:00",
+  "inputs": {
+    "input_jsonl": "C:/Users/user/rct-extractor-v2/output/cardiology_ahmad_m_trials_extract_20260225/results_ai_validated_balanced.jsonl",
+    "provider_a": "rules_a",
+    "provider_b": "rules_b",
+    "model_a": "gpt-4.1-mini",
+    "model_b": "claude-3-5-sonnet-latest",
+    "max_pages": 2,
+    "max_chars": 18000,
+    "candidate_max_best_confidence": 0.96,
+    "candidate_max_doc_score": 0.75,
+    "candidate_max_rct_score": 0.45,
+    "candidate_max_effect_score": 0.8,
+    "max_candidates": 120,
+    "min_agreement_confidence": 0.65,
+    "conflict_policy": "exclude",
+    "temperature": 0.0,
+    "max_output_tokens": 700
+  },
+  "outputs": {
+    "output_jsonl": "C:/Users/user/rct-extractor-v2/output/cardiology_ahmad_m_trials_extract_20260225/results_ai_validated_balanced_dual_rules_exclude.jsonl",
+    "summary_json": "C:/Users/user/rct-extractor-v2/output/cardiology_ahmad_m_trials_extract_20260225/results_ai_validated_balanced_dual_rules_exclude_summary.json",
+    "audit_jsonl": "C:/Users/user/rct-extractor-v2/output/cardiology_ahmad_m_trials_extract_20260225/results_ai_validated_balanced_dual_rules_exclude_audit.jsonl"
+  },
+  "counts": {
+    "rows_total": 130,
+    "candidates_total": 85,
+    "decision_conflict_keep": 79,
+    "decision_accept": 5,
+    "decision_reject": 1,
+    "rows_gated_rejected": 1
+  }
+}

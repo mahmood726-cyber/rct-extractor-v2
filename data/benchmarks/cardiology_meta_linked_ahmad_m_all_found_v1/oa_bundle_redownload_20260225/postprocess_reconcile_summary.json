@@ -1,0 +1,23 @@
+{
+  "updated_rows": 5,
+  "status_before": {
+    "fallback_failed": 325,
+    "downloaded_fallback_pmcid_direct": 68,
+    "downloaded_fallback_unpaywall_url": 11,
+    "downloaded_fallback_unpaywall_url_for_pdf": 20,
+    "downloaded_fallback_doi_landing": 17,
+    "downloaded_thirdpass_crossref_link": 1,
+    "copied_existing": 5
+  },
+  "status_after": {
+    "fallback_failed": 320,
+    "downloaded_fallback_pmcid_direct": 68,
+    "downloaded_fallback_unpaywall_url": 11,
+    "downloaded_fallback_unpaywall_url_for_pdf": 20,
+    "downloaded_fallback_doi_landing": 17,
+    "downloaded_thirdpass_crossref_link": 1,
+    "recovered_local_postprocess": 5,
+    "copied_existing": 5
+  },
+  "rct_pdf_files_on_disk": 130
+}

@@ -1,0 +1,38 @@
+{
+  "generated_at_utc": "2026-02-25T12:41:28.984603+00:00",
+  "inputs": {
+    "benchmark_dir": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v1",
+    "adjudication_jsonl": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v1/adjudication_template.jsonl",
+    "model_seed_jsonl": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v1/model_seed_adjudicator_only.jsonl",
+    "output_jsonl": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v1/adjudication_template.jsonl",
+    "min_include_confidence": 0.8,
+    "min_source_len": 20,
+    "overwrite_existing": false
+  },
+  "counts": {
+    "rows_total": 126,
+    "rows_preserved_existing": 0,
+    "rows_prefilled": 126,
+    "rows_suggested_included_true": 2,
+    "rows_suggested_included_false": 124,
+    "rows_missing_model_seed": 0,
+    "rows_review_required": 3,
+    "review_tier_counts": {
+      "tier_1_fast_verify_included": 2,
+      "tier_2_verify_extracted_rejected": 1,
+      "tier_4_negative_check": 123
+    },
+    "prefill_reason_counts": {
+      "extracted_below_confidence_threshold": 1,
+      "model_extracted_above_threshold": 2,
+      "no_extraction": 123
+    }
+  },
+  "paths": {
+    "backup_jsonl": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v1/adjudication_template.prefill_backup_20260225T124128Z.jsonl",
+    "prefilled_adjudication_jsonl": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v1/adjudication_template.jsonl",
+    "review_queue_jsonl": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v1/adjudication_prefill_review_queue.jsonl",
+    "review_queue_csv": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v1/adjudication_prefill_review_queue.csv",
+    "summary_json": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v1/adjudication_prefill_summary.json"
+  }
+}

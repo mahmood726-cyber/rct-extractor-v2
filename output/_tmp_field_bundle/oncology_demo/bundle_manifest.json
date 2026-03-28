@@ -1,0 +1,16 @@
+{
+  "generated_at_utc": "2026-02-26T18:27:55.147806+00:00",
+  "field_name": "Oncology Demo",
+  "field_slug": "oncology_demo",
+  "author_full_name": "Surname Given",
+  "bundle_dir": "C:/Users/user/rct-extractor-v2/output/_tmp_field_bundle/oncology_demo",
+  "files": {
+    "field_profile_yaml": "C:/Users/user/rct-extractor-v2/output/_tmp_field_bundle/oncology_demo/field_profile.yaml",
+    "author_meta_pmids_json": "C:/Users/user/rct-extractor-v2/output/_tmp_field_bundle/oncology_demo/author_meta_pmids.json",
+    "commands_ps1": "C:/Users/user/rct-extractor-v2/output/_tmp_field_bundle/oncology_demo/commands.ps1",
+    "commands_sh": "C:/Users/user/rct-extractor-v2/output/_tmp_field_bundle/oncology_demo/commands.sh",
+    "readme_md": "C:/Users/user/rct-extractor-v2/output/_tmp_field_bundle/oncology_demo/README.md",
+    "notes_md": "C:/Users/user/rct-extractor-v2/output/_tmp_field_bundle/oncology_demo/notes.md",
+    "rct_trial_pdfs_dir": "C:/Users/user/rct-extractor-v2/output/_tmp_field_bundle/oncology_demo/rct_trial_pdfs"
+  }
+}

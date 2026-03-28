@@ -1,0 +1,101 @@
+{
+  "generated_at_utc": "2026-02-26T09:36:07.383250+00:00",
+  "paths": {
+    "input_jsonl": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v3b_reextract_pdfpick_20260225/ensemble_pre_adjudication/adjudication_template_ensemble_prefill.jsonl",
+    "spotcheck_csv": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v3b_reextract_pdfpick_20260225/ensemble_pre_adjudication/spotcheck_packet/spotcheck_sheet.csv",
+    "output_jsonl": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v3b_reextract_pdfpick_20260225/ensemble_pre_adjudication/adjudication_template_ensemble_prefill_spotcheck_applied.jsonl"
+  },
+  "counts": {
+    "rows_total": 127,
+    "spotcheck_rows_total": 10,
+    "manual_overrides_applied": 10,
+    "manual_include_true": 3,
+    "manual_include_false": 7,
+    "manual_flip_count": 4,
+    "manual_unchanged_count": 6,
+    "missing_override_ids": 0
+  },
+  "missing_override_ids": [],
+  "applied_rows": [
+    {
+      "benchmark_id": "author_meta_trial_00006",
+      "spotcheck_rank": "1",
+      "pmid": "34449189",
+      "before_included": false,
+      "after_included": false,
+      "manual_check_notes": "Wrong PDF content (administrative document in French; not trial report)."
+    },
+    {
+      "benchmark_id": "author_meta_trial_00120",
+      "spotcheck_rank": "2",
+      "pmid": "12972896",
+      "before_included": false,
+      "after_included": false,
+      "manual_check_notes": "Wrong PDF content (Lippincott permissions/author guideline page; not trial report)."
+    },
+    {
+      "benchmark_id": "author_meta_trial_00126",
+      "spotcheck_rank": "3",
+      "pmid": "9141937",
+      "before_included": false,
+      "after_included": false,
+      "manual_check_notes": "Wrong PDF content; not an RCT paper (similar publisher/permissions-type content)."
+    },
+    {
+      "benchmark_id": "author_meta_trial_00013",
+      "spotcheck_rank": "4",
+      "pmid": "12862299",
+      "before_included": true,
+      "after_included": true,
+      "manual_check_notes": "Valid trial paper (amiodarone for recent-onset AF)"
+    },
+    {
+      "benchmark_id": "author_meta_trial_00015",
+      "spotcheck_rank": "5",
+      "pmid": "14988338",
+      "before_included": true,
+      "after_included": true,
+      "manual_check_notes": "Valid RCT paper (Crane et al., acute cardiogenic pulmonary oedema trial)."
+    },
+    {
+      "benchmark_id": "author_meta_trial_00098",
+      "spotcheck_rank": "6",
+      "pmid": "36735937",
+      "before_included": true,
+      "after_included": false,
+      "manual_check_notes": "Valid paper but not RCT (single-arm inspIRE PFA study); excluded for RCT-only benchmark."
+    },
+    {
+      "benchmark_id": "author_meta_trial_00033",
+      "spotcheck_rank": "7",
+      "pmid": "23708166",
+      "before_included": true,
+      "after_included": false,
+      "manual_check_notes": "Not RCT; observational Medicare sepsis-AF cohort study."
+    },
+    {
+      "benchmark_id": "author_meta_trial_00065",
+      "spotcheck_rank": "8",
+      "pmid": "31853543",
+      "before_included": true,
+      "after_included": false,
+      "manual_check_notes": "Not RCT; prospective prognostic ML cohort (EISNER-based) study."
+    },
+    {
+      "benchmark_id": "author_meta_trial_00113",
+      "spotcheck_rank": "9",
+      "pmid": "40156843",
+      "before_included": true,
+      "after_included": true,
+      "manual_check_notes": "RCT; prespecified subgroup analysis of SOUL randomized trial (oral semaglutide vs placebo)."
+    },
+    {
+      "benchmark_id": "author_meta_trial_00102",
+      "spotcheck_rank": "10",
+      "pmid": "38082486",
+      "before_included": true,
+      "after_included": false,
+      "manual_check_notes": "Wrong PDF content; ASN media kit/advertising document, not a trial paper."
+    }
+  ]
+}

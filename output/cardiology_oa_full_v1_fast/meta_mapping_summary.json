@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-02-24T17:56:36.960621+00:00",
+  "generated_at_utc": "2026-02-24T18:03:53.808408+00:00",
   "inputs": {
     "results_jsonl": "output/cardiology_oa_full_v1_fast/results.jsonl",
     "max_trials": null,
@@ -15,25 +15,25 @@
     "timeout_sec": 25.0
   },
   "counts": {
-    "trial_rows_considered": 2041,
-    "trial_rows_extractable_considered": 1416,
-    "trial_rows_with_pmid": 2023,
+    "trial_rows_considered": 2127,
+    "trial_rows_extractable_considered": 1475,
+    "trial_rows_with_pmid": 2109,
     "unresolved_pmcid_rows": 18,
-    "unique_trial_pmids": 2023,
-    "unique_citing_pmids_considered": 8494,
-    "unique_candidate_meta_pmids": 592,
-    "trials_with_meta_matches": 451,
-    "edge_rows": 752
+    "unique_trial_pmids": 2109,
+    "unique_citing_pmids_considered": 8656,
+    "unique_candidate_meta_pmids": 599,
+    "trials_with_meta_matches": 462,
+    "edge_rows": 768
   },
   "rates": {
-    "trial_pmid_resolution_rate": 0.9911807937285644,
-    "extractable_share_considered": 0.6937775600195982,
-    "trial_with_meta_rate": 0.22293623331685616
+    "trial_pmid_resolution_rate": 0.9915373765867419,
+    "extractable_share_considered": 0.693464974141984,
+    "trial_with_meta_rate": 0.21906116642958748
   },
   "distributions": {
     "status_counts_considered_rows": {
-      "extracted": 1416,
-      "no_extraction": 624,
+      "extracted": 1475,
+      "no_extraction": 651,
       "timeout": 1
     }
   },
@@ -116,6 +116,18 @@
         "Journal Article",
         "Meta-Analysis",
         "Systematic Review"
+      ]
+    },
+    {
+      "meta_pmid": "40489293",
+      "trial_pmid_count": 4,
+      "title": "Efficacy and safety of empagliflozin for the acute myocardial infarction: a systematic review and meta-analysis of randomized controlled trials.",
+      "pubdate": "2025 Dec",
+      "journal": "Annals of medicine",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review",
+        "Meta-Analysis"
       ]
     },
     {
@@ -273,6 +285,18 @@
       ]
     },
     {
+      "meta_pmid": "40433752",
+      "trial_pmid_count": 3,
+      "title": "Efficacy and Safety of Pulsed-Field Versus High-Power Short-Duration Ablation for Atrial Fibrillation: A Systematic Review and Meta-Analysis With Reconstructed Time-to-Event Data.",
+      "pubdate": "2025 Aug",
+      "journal": "Journal of cardiovascular electrophysiology",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review",
+        "Meta-Analysis"
+      ]
+    },
+    {
       "meta_pmid": "40486562",
       "trial_pmid_count": 3,
       "title": "Cardiac myosin inhibitors for hypertrophic cardiomyopathy: a systematic review and meta-analysis of randomized controlled trials.",
@@ -281,18 +305,6 @@
       "pubtype": [
         "Journal Article",
         "Review"
-      ]
-    },
-    {
-      "meta_pmid": "40489293",
-      "trial_pmid_count": 3,
-      "title": "Efficacy and safety of empagliflozin for the acute myocardial infarction: a systematic review and meta-analysis of randomized controlled trials.",
-      "pubdate": "2025 Dec",
-      "journal": "Annals of medicine",
-      "pubtype": [
-        "Journal Article",
-        "Systematic Review",
-        "Meta-Analysis"
       ]
     },
     {
@@ -370,6 +382,18 @@
       "pubtype": [
         "Journal Article",
         "Systematic Review"
+      ]
+    },
+    {
+      "meta_pmid": "41578543",
+      "trial_pmid_count": 3,
+      "title": "Safety and efficacy of pulsed field ablation versus cryoablation for atrial fibrillation: A comprehensive meta-analysis.",
+      "pubdate": "2026 Jan 23",
+      "journal": "Medicine",
+      "pubtype": [
+        "Comparative Study",
+        "Journal Article",
+        "Meta-Analysis"
       ]
     },
     {
@@ -574,35 +598,12 @@
         "Journal Article",
         "Review"
       ]
-    },
-    {
-      "meta_pmid": "39278992",
-      "trial_pmid_count": 2,
-      "title": "Heart failure with preserved ejection fraction and atrial fibrillation: catheter ablation vs. standard medical therapy - a systematic review and meta-analysis.",
-      "pubdate": "2025 Jan",
-      "journal": "Heart failure reviews",
-      "pubtype": [
-        "Journal Article",
-        "Systematic Review",
-        "Meta-Analysis"
-      ]
-    },
-    {
-      "meta_pmid": "39398777",
-      "trial_pmid_count": 2,
-      "title": "Empagliflozin Effect on Left Cardiac Parameters in Acute Coronary Syndrome: A Systematic Review and Meta-Analysis of Randomized Controlled Trials.",
-      "pubdate": "2024 Sep",
-      "journal": "Cureus",
-      "pubtype": [
-        "Journal Article",
-        "Review"
-      ]
     }
   ],
   "cache_sizes": {
-    "pmcid_to_pmid": 2041,
-    "trial_citedin": 2023,
-    "pmid_summary": 8494
+    "pmcid_to_pmid": 2127,
+    "trial_citedin": 2109,
+    "pmid_summary": 8656
   },
   "paths": {
     "edges_jsonl": "output/cardiology_oa_full_v1_fast/meta_mapping_edges.jsonl",

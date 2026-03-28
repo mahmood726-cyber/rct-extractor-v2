@@ -56,6 +56,14 @@ for ext in extractions:
 - **Team-of-rivals**: multiple extractors with consensus voting
 - **Provenance**: every extraction traces back to source text + page
 
+## Field Portability
+
+This repo now includes a reusable field-portability kit so other specialties can run the same workflow with their own meta-analysis corpus.
+
+- Spec: `docs/FIELD_PORTABILITY_KIT.md`
+- Field profile template: `configs/field_profile.template.yaml`
+- Scaffold tool: `scripts/scaffold_field_portability_bundle.py`
+
 ## Validation Status
 
 | Metric | Value | Notes |

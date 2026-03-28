@@ -1,0 +1,63 @@
+{
+  "protocol_version": "1.0.0",
+  "generated_at_utc": "2026-02-25T10:29:02.754894+00:00",
+  "benchmark_version": "cardiology_meta_linked_v1_full533",
+  "counts": {
+    "rows_total": 533,
+    "work_batches": 14,
+    "batch_size_target": 40
+  },
+  "consensus_rules": {
+    "point_tolerance": 0.1,
+    "ci_tolerance": 0.15,
+    "zero_abs_tolerance": 0.02
+  },
+  "completion_gates": {
+    "require_dual_annotation_all_rows": true,
+    "require_included_non_null": true,
+    "require_point_and_type_when_included": true,
+    "require_source_text_when_included": true,
+    "require_manual_adjudication_for_unresolved_consensus": true,
+    "require_exact_rows_in_final_adjudicated_jsonl": 533
+  },
+  "paths": {
+    "benchmark_dir": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_v1",
+    "worklist_jsonl": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_v1/adjudication_worklist.jsonl",
+    "worklist_csv": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_v1/adjudication_worklist.csv",
+    "batches_dir": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_v1/adjudication_batches",
+    "protocol_md": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_v1/adjudication_freeze_protocol.md",
+    "summary_json": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_v1/adjudication_worklist_summary.json"
+  },
+  "input_files": [
+    {
+      "path": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_v1/manifest.json",
+      "size_bytes": 1444,
+      "sha256": "63e657a87339fd845e363a4cbf202753c32675bcb1fc8f120709ca3f91b7a06a"
+    },
+    {
+      "path": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_v1/benchmark_cohort.jsonl",
+      "size_bytes": 382142,
+      "sha256": "50d4799ddff4d945cd3eb89f7225facd2999143dd2f4abc30cda32f65f84ad05"
+    },
+    {
+      "path": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_v1/blinded_template_annotator_a.jsonl",
+      "size_bytes": 228659,
+      "sha256": "c4ec7e4482ec65824083fa0e409bc8ba39e660052fe8e3faf7e1f4e2286d3806"
+    },
+    {
+      "path": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_v1/blinded_template_annotator_b.jsonl",
+      "size_bytes": 228659,
+      "sha256": "c4ec7e4482ec65824083fa0e409bc8ba39e660052fe8e3faf7e1f4e2286d3806"
+    },
+    {
+      "path": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_v1/adjudication_template.jsonl",
+      "size_bytes": 239319,
+      "sha256": "e157f7f4a011cb5924ff0b8fea27fa3ba468470f1bb03225eeda77ea52e358fc"
+    },
+    {
+      "path": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_v1/model_seed_adjudicator_only.jsonl",
+      "size_bytes": 382142,
+      "sha256": "50d4799ddff4d945cd3eb89f7225facd2999143dd2f4abc30cda32f65f84ad05"
+    }
+  ]
+}

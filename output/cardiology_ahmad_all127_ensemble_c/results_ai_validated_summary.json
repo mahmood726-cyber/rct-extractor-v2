@@ -1,0 +1,25 @@
+{
+  "generated_at_utc": "2026-02-26T11:25:34.439265+00:00",
+  "inputs": {
+    "input_jsonl": "C:/Users/user/rct-extractor-v2/output/cardiology_ahmad_all127_ensemble_c/results.jsonl",
+    "max_pages": 2,
+    "max_chars": 20000,
+    "effect_override_confidence": 0.97
+  },
+  "outputs": {
+    "output_jsonl": "C:/Users/user/rct-extractor-v2/output/cardiology_ahmad_all127_ensemble_c/results_ai_validated.jsonl",
+    "summary_json": "C:/Users/user/rct-extractor-v2/output/cardiology_ahmad_all127_ensemble_c/results_ai_validated_summary.json"
+  },
+  "counts": {
+    "rows_total": 127,
+    "rows_extracted_in": 116,
+    "rows_extracted_out": 91,
+    "rows_gated_excluded": 25
+  },
+  "gated_reason_counts": {
+    "doc_type:non_paper_signatures_detected": 1,
+    "rct_design:explicit_non_rct_design": 14,
+    "rct_design:explicit_protocol_no_results": 2,
+    "rct_design:explicit_single_arm_or_nonrandomized": 8
+  }
+}

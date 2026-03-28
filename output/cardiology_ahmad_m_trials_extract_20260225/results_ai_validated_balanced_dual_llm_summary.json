@@ -1,0 +1,33 @@
+{
+  "generated_at_utc": "2026-02-26T12:01:49.301497+00:00",
+  "inputs": {
+    "input_jsonl": "output/cardiology_ahmad_m_trials_extract_20260225/results_ai_validated_balanced.jsonl",
+    "provider_a": "openai",
+    "provider_b": "anthropic",
+    "model_a": "gpt-4.1-mini",
+    "model_b": "claude-3-5-sonnet-latest",
+    "max_pages": 2,
+    "max_chars": 18000,
+    "candidate_max_best_confidence": 0.96,
+    "candidate_max_doc_score": 0.75,
+    "candidate_max_rct_score": 0.45,
+    "candidate_max_effect_score": 0.8,
+    "max_candidates": 120,
+    "min_agreement_confidence": 0.65,
+    "conflict_policy": "keep",
+    "temperature": 0.0,
+    "max_output_tokens": 700
+  },
+  "outputs": {
+    "output_jsonl": "output/cardiology_ahmad_m_trials_extract_20260225/results_ai_validated_balanced_dual_llm.jsonl",
+    "summary_json": "output/cardiology_ahmad_m_trials_extract_20260225/results_ai_validated_balanced_dual_llm_summary.json",
+    "audit_jsonl": "output/cardiology_ahmad_m_trials_extract_20260225/results_ai_validated_balanced_dual_llm_audit.jsonl"
+  },
+  "counts": {
+    "rows_total": 130,
+    "candidates_total": 85,
+    "decision_error_keep": 85,
+    "judge_a_errors": 85,
+    "judge_b_errors": 85
+  }
+}

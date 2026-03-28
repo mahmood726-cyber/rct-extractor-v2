@@ -153,8 +153,8 @@ def _normalize_annotation(row: Dict) -> Dict:
     ci_high = _to_float(block.get("ci_upper"))
     effect_type = _normalize_effect_type(block.get("effect_type") or block.get("type"))
 
-    if included is None:
-        included = point is not None
+    if included is None and point is not None:
+        included = True
     return {
         "included": included,
         "effect_type": effect_type,
@@ -166,6 +166,21 @@ def _normalize_annotation(row: Dict) -> Dict:
         "source_text": str(block.get("source_text") or ""),
         "notes": str(block.get("notes") or ""),
     }
+
+
+def _gold_validation_issue(gold: Dict) -> Optional[str]:
+    included = gold.get("included")
+    if included is None:
+        return "missing_included"
+    if included is not True:
+        return None
+    if _normalize_effect_type(gold.get("effect_type")) is None:
+        return "included_missing_effect_type"
+    if _to_float(gold.get("point_estimate")) is None:
+        return "included_missing_point_estimate"
+    if not str(gold.get("source_text") or "").strip():
+        return "included_missing_source_text"
+    return None
 
 
 def _consensus_from_pair(
@@ -272,12 +287,34 @@ def _load_gold(
     if adjudicated_jsonl is not None:
         rows = _load_jsonl(adjudicated_jsonl)
         gold_map: Dict[str, Dict] = {}
+        unresolved = 0
+        unresolved_reasons: Dict[str, int] = {}
+        present_ids = set()
+        duplicates = 0
         for row in rows:
             bid = str(row.get("benchmark_id") or "")
             if not bid or bid not in benchmark_ids:
                 continue
-            gold_map[bid] = _normalize_annotation(row)
-        return gold_map, {"mode": "adjudicated", "rows_loaded": len(gold_map)}
+            present_ids.add(bid)
+            normalized = _normalize_annotation(row)
+            issue = _gold_validation_issue(normalized)
+            if issue is not None:
+                unresolved += 1
+                unresolved_reasons[issue] = unresolved_reasons.get(issue, 0) + 1
+                continue
+            if bid in gold_map:
+                duplicates += 1
+            gold_map[bid] = normalized
+        rows_missing = len(benchmark_ids.difference(present_ids))
+        return gold_map, {
+            "mode": "adjudicated",
+            "rows_loaded": len(gold_map),
+            "rows_unresolved": unresolved,
+            "rows_missing": rows_missing,
+            "duplicate_benchmark_ids": duplicates,
+            "rows_present_in_file": len(present_ids),
+            "unresolved_reason_counts": unresolved_reasons,
+        }
 
     if annotator_a_jsonl is None or annotator_b_jsonl is None:
         return {}, {"mode": "missing_labels", "rows_loaded": 0}
@@ -354,6 +391,11 @@ def main() -> int:
     parser.add_argument("--output-json", type=Path, required=True)
     parser.add_argument("--output-md", type=Path, required=True)
     parser.add_argument("--output-consensus-jsonl", type=Path, default=None)
+    parser.add_argument(
+        "--allow-partial-gold",
+        action="store_true",
+        help="Allow evaluation when gold labels are missing/incomplete (preview mode only).",
+    )
     parser.add_argument("--consensus-point-tol", type=float, default=0.10)
     parser.add_argument("--consensus-ci-tol", type=float, default=0.15)
     parser.add_argument("--zero-abs-tolerance", type=float, default=0.02)
@@ -390,6 +432,24 @@ def main() -> int:
         ci_tol=float(args.consensus_ci_tol),
         zero_abs_tolerance=float(args.zero_abs_tolerance),
     )
+
+    if not args.allow_partial_gold:
+        mode = str(label_summary.get("mode") or "")
+        unresolved_total = 0
+        if mode == "adjudicated":
+            unresolved_total += int(label_summary.get("rows_unresolved") or 0)
+            unresolved_total += int(label_summary.get("rows_missing") or 0)
+        elif mode == "dual_annotator_consensus":
+            unresolved_total += int(label_summary.get("unresolved_rows") or 0)
+            unresolved_total += max(0, len(bench_by_id) - int(label_summary.get("rows_overlap") or 0))
+        elif mode == "missing_labels":
+            unresolved_total = len(bench_by_id)
+        if unresolved_total > 0:
+            raise ValueError(
+                "Gold labels are incomplete. "
+                f"mode={mode}, unresolved_or_missing_rows={unresolved_total}. "
+                "Complete adjudication or rerun with --allow-partial-gold for preview only."
+            )
 
     if args.output_consensus_jsonl is not None and gold_map:
         out_rows: List[Dict] = []
@@ -633,6 +693,10 @@ def main() -> int:
     lines.append("")
     for key in (
         "rows_loaded",
+        "rows_present_in_file",
+        "rows_missing",
+        "rows_unresolved",
+        "duplicate_benchmark_ids",
         "rows_overlap",
         "consensus_rows",
         "unresolved_rows",
@@ -648,6 +712,11 @@ def main() -> int:
                 lines.append(f"- {key}: {_fmt_pct(value)}")
             else:
                 lines.append(f"- {key}: {value}")
+    reason_counts = label_summary.get("unresolved_reason_counts")
+    if isinstance(reason_counts, dict) and reason_counts:
+        lines.append("- unresolved_reason_counts:")
+        for reason, count in sorted(reason_counts.items(), key=lambda kv: kv[0]):
+            lines.append(f"  - {reason}: {count}")
     lines.append("")
     lines.append("## Row Detail (first 100)")
     lines.append("")

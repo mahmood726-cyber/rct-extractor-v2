@@ -1,0 +1,83 @@
+{
+  "generated_at_utc": "2026-02-26T11:25:09.242408+00:00",
+  "inputs": {
+    "spotcheck_csv": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v3b_reextract_pdfpick_20260225/ensemble_pre_adjudication/spotcheck_packet/spotcheck_sheet.csv",
+    "override_summary_json": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v3b_reextract_pdfpick_20260225/ensemble_pre_adjudication/spotcheck_packet/spotcheck_override_summary.json",
+    "eval_json": "C:/Users/user/rct-extractor-v2/output/cardiology_ahmad_m_trials_extract_20260225/cardiology_meta_linked_ahmad_m_trials_v3b_reextract_pdfpick_20260225_benchmark_eval_ai_validated.json"
+  },
+  "spotcheck": {
+    "rows_checked": 10,
+    "agree": 6,
+    "disagree": 4,
+    "false_positive": 4,
+    "false_negative": 0,
+    "true_positive": 3,
+    "true_negative": 3,
+    "agreement_rate": 0.6,
+    "include_precision_checked": 0.42857142857142855,
+    "false_positive_rate_checked_on_consensus_includes": 0.5714285714285714
+  },
+  "override_application": {
+    "rows_total": 127,
+    "spotcheck_rows_total": 10,
+    "manual_overrides_applied": 10,
+    "manual_include_true": 3,
+    "manual_include_false": 7,
+    "manual_flip_count": 4,
+    "manual_unchanged_count": 6,
+    "missing_override_ids": 0
+  },
+  "evaluation_summary": {
+    "benchmark_rows_total": 127,
+    "gold_rows_resolved": 127,
+    "gold_rows_unresolved": 0,
+    "gold_rows_included": 112,
+    "gold_rows_excluded": 15,
+    "extracted_on_gold_included": 91,
+    "extracted_on_gold_excluded": 0,
+    "point_comparable_rows": 91,
+    "ci_comparable_rows": 91,
+    "type_comparable_rows": 91,
+    "calibration_rows": 91,
+    "extraction_coverage_on_gold_included": 0.8125,
+    "false_positive_extraction_rate_on_gold_excluded": 0.0,
+    "point_within_1pct_rate": 1.0,
+    "point_within_2pct_rate": 1.0,
+    "point_within_5pct_rate": 1.0,
+    "point_within_10pct_rate": 1.0,
+    "ci_within_10pct_rate": 1.0,
+    "effect_type_match_rate": 1.0,
+    "source_presence_on_extracted_gold_included": 1.0,
+    "page_presence_on_extracted_gold_included": 0.0,
+    "point_within_10pct_bootstrap_95ci": {
+      "point": 1.0,
+      "ci_low_95": 1.0,
+      "ci_high_95": 1.0
+    },
+    "ci_within_10pct_bootstrap_95ci": {
+      "point": 1.0,
+      "ci_low_95": 1.0,
+      "ci_high_95": 1.0
+    },
+    "calibration_brier_point10": 0.19718956043956049,
+    "calibration_ece_point10": 0.3667032967032967
+  },
+  "label_summary": {
+    "mode": "adjudicated",
+    "rows_loaded": 127,
+    "rows_unresolved": 0,
+    "rows_missing": 0,
+    "duplicate_benchmark_ids": 0,
+    "rows_present_in_file": 127,
+    "unresolved_reason_counts": {}
+  },
+  "readiness": {
+    "independent_gold_labels": false,
+    "publication_ready_external_claims": false,
+    "internal_iteration_ready": true,
+    "blocking_issues": [
+      "spotcheck_found_false_positive_includes",
+      "gold_is_not_independently_adjudicated_from_extractor"
+    ]
+  }
+}

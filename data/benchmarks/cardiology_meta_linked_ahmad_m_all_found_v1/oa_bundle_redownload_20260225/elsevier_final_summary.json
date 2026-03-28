@@ -1,0 +1,43 @@
+{
+  "generated_at_utc": "2026-02-25T17:03:03.478937+00:00",
+  "inputs": {
+    "bundle_dir": "data\\benchmarks\\cardiology_meta_linked_ahmad_m_all_found_v1\\oa_bundle_redownload_20260225",
+    "timeout_sec": 12.0,
+    "max_retries": 1,
+    "workers": 8
+  },
+  "counts": {
+    "meta_elsevier_final": {
+      "target_rows": 2,
+      "downloaded_new": 0,
+      "still_unresolved": 2
+    },
+    "trial_elsevier_final": {
+      "target_rows": 125,
+      "downloaded_new": 0,
+      "still_unresolved": 125
+    },
+    "meta_status_after": {
+      "copied_existing": 10,
+      "downloaded": 14,
+      "downloaded_fallback_doi_landing": 3,
+      "downloaded_fallback_pmcid_direct": 6,
+      "downloaded_fallback_unpaywall_url_for_pdf": 1,
+      "fallback_failed": 8
+    },
+    "trial_status_after": {
+      "copied_existing": 5,
+      "downloaded_fallback_doi_landing": 17,
+      "downloaded_fallback_pmcid_direct": 68,
+      "downloaded_fallback_unpaywall_url": 11,
+      "downloaded_fallback_unpaywall_url_for_pdf": 20,
+      "downloaded_thirdpass_crossref_link": 1,
+      "fallback_failed": 325
+    }
+  },
+  "paths": {
+    "meta_downloads_json": "data\\benchmarks\\cardiology_meta_linked_ahmad_m_all_found_v1\\oa_bundle_redownload_20260225\\meta_downloads.json",
+    "rct_trial_downloads_json": "data\\benchmarks\\cardiology_meta_linked_ahmad_m_all_found_v1\\oa_bundle_redownload_20260225\\rct_trial_downloads.json",
+    "elsevier_final_summary_json": "data\\benchmarks\\cardiology_meta_linked_ahmad_m_all_found_v1\\oa_bundle_redownload_20260225\\elsevier_final_summary.json"
+  }
+}

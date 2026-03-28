@@ -1,0 +1,54 @@
+{
+  "generated_at_utc": "2026-02-25T17:24:47.249340+00:00",
+  "benchmark_version": "cardiology_meta_linked_ahmad_m_trials_v3_reextract_20260225",
+  "counts": {
+    "rows_total": 127,
+    "batches_total": 6,
+    "status_counts": {
+      "extracted": 111,
+      "no_extraction": 16
+    },
+    "priority_tier_counts": {
+      "1": 36,
+      "2": 75,
+      "3": 16
+    },
+    "recommended_route_counts": {
+      "fast_verify_model_seed": 36,
+      "full_read_negative_check": 16,
+      "full_verify_model_seed": 75
+    },
+    "batch_status_counts": {
+      "batch_001": {
+        "extracted": 19,
+        "no_extraction": 3
+      },
+      "batch_002": {
+        "extracted": 19,
+        "no_extraction": 2
+      },
+      "batch_003": {
+        "extracted": 19,
+        "no_extraction": 2
+      },
+      "batch_004": {
+        "extracted": 18,
+        "no_extraction": 3
+      },
+      "batch_005": {
+        "extracted": 18,
+        "no_extraction": 3
+      },
+      "batch_006": {
+        "extracted": 18,
+        "no_extraction": 3
+      }
+    }
+  },
+  "paths": {
+    "worklist_jsonl": "data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v3_reextract_20260225/adjudication_worklist.jsonl",
+    "worklist_csv": "data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v3_reextract_20260225/adjudication_worklist.csv",
+    "protocol_json": "data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v3_reextract_20260225/adjudication_freeze_protocol.json",
+    "protocol_md": "data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v3_reextract_20260225/adjudication_freeze_protocol.md"
+  }
+}

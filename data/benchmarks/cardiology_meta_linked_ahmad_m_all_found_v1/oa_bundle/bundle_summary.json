@@ -1,0 +1,44 @@
+{
+  "generated_at_utc": "2026-02-25T08:53:45.341567+00:00",
+  "inputs": {
+    "meta_pmids_file": "C:\\Users\\user\\rct-extractor-v2\\data\\benchmarks\\cardiology_meta_linked_ahmad_m_all_found_v1\\author_meta_pmids.json",
+    "output_dir": "C:\\Users\\user\\rct-extractor-v2\\data\\benchmarks\\cardiology_meta_linked_ahmad_m_all_found_v1\\oa_bundle",
+    "existing_pdf_roots": [
+      "C:\\Users\\user\\cardiology_rcts"
+    ],
+    "copy_existing": false,
+    "timeout_sec": 10.0,
+    "sleep_sec": 0.08,
+    "workers": 6,
+    "retries": 1,
+    "api_key_present": true
+  },
+  "counts": {
+    "meta_pmids_total": 42,
+    "meta_pmids_with_refs": 28,
+    "unique_ref_pmids_total": 1308,
+    "rct_ref_pmids_total": 447,
+    "meta_pdfs_available_total": 30,
+    "rct_trial_pdfs_available_total": 55,
+    "meta_download_status": {
+      "already_downloaded": 20,
+      "existing_local": 10,
+      "no_pmcid": 12
+    },
+    "rct_trial_download_status": {
+      "already_downloaded": 33,
+      "download_failed": 30,
+      "downloaded": 17,
+      "existing_local": 5,
+      "no_pmcid": 362
+    }
+  },
+  "paths": {
+    "meta_pdfs_dir": "C:\\Users\\user\\rct-extractor-v2\\data\\benchmarks\\cardiology_meta_linked_ahmad_m_all_found_v1\\oa_bundle\\meta_pdfs",
+    "rct_trial_pdfs_dir": "C:\\Users\\user\\rct-extractor-v2\\data\\benchmarks\\cardiology_meta_linked_ahmad_m_all_found_v1\\oa_bundle\\rct_trial_pdfs",
+    "meta_downloads_json": "C:\\Users\\user\\rct-extractor-v2\\data\\benchmarks\\cardiology_meta_linked_ahmad_m_all_found_v1\\oa_bundle\\meta_downloads.json",
+    "rct_trial_downloads_json": "C:\\Users\\user\\rct-extractor-v2\\data\\benchmarks\\cardiology_meta_linked_ahmad_m_all_found_v1\\oa_bundle\\rct_trial_downloads.json",
+    "meta_to_rct_refs_json": "C:\\Users\\user\\rct-extractor-v2\\data\\benchmarks\\cardiology_meta_linked_ahmad_m_all_found_v1\\oa_bundle\\meta_to_rct_refs.json",
+    "bundle_summary_json": "C:\\Users\\user\\rct-extractor-v2\\data\\benchmarks\\cardiology_meta_linked_ahmad_m_all_found_v1\\oa_bundle\\bundle_summary.json"
+  }
+}

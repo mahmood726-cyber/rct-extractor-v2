@@ -1,0 +1,55 @@
+{
+  "generated_at_utc": "2026-02-25T11:57:44.307846+00:00",
+  "inputs": {
+    "benchmark_cohort_jsonl": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v1/benchmark_cohort.jsonl",
+    "system_results_jsonl": "C:/Users/user/rct-extractor-v2/output/cardiology_oa_full_v1_fast/results.jsonl",
+    "adjudicated_jsonl": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v1/adjudication_template.jsonl",
+    "annotator_a_jsonl": null,
+    "annotator_b_jsonl": null,
+    "consensus_point_tol": 0.1,
+    "consensus_ci_tol": 0.15,
+    "zero_abs_tolerance": 0.02,
+    "n_bootstrap": 10000,
+    "rng_seed": 20260224,
+    "ece_bins": 10
+  },
+  "label_summary": {
+    "mode": "adjudicated",
+    "rows_loaded": 0,
+    "rows_unresolved": 126,
+    "rows_missing": 0,
+    "duplicate_benchmark_ids": 0,
+    "rows_present_in_file": 126,
+    "unresolved_reason_counts": {
+      "missing_included": 126
+    }
+  },
+  "summary": {
+    "benchmark_rows_total": 126,
+    "gold_rows_resolved": 0,
+    "gold_rows_unresolved": 126,
+    "gold_rows_included": 0,
+    "gold_rows_excluded": 0,
+    "extracted_on_gold_included": 0,
+    "extracted_on_gold_excluded": 0,
+    "point_comparable_rows": 0,
+    "ci_comparable_rows": 0,
+    "type_comparable_rows": 0,
+    "calibration_rows": 0,
+    "extraction_coverage_on_gold_included": null,
+    "false_positive_extraction_rate_on_gold_excluded": null,
+    "point_within_1pct_rate": null,
+    "point_within_2pct_rate": null,
+    "point_within_5pct_rate": null,
+    "point_within_10pct_rate": null,
+    "ci_within_10pct_rate": null,
+    "effect_type_match_rate": null,
+    "source_presence_on_extracted_gold_included": null,
+    "page_presence_on_extracted_gold_included": null,
+    "point_within_10pct_bootstrap_95ci": null,
+    "ci_within_10pct_bootstrap_95ci": null,
+    "calibration_brier_point10": null,
+    "calibration_ece_point10": null
+  },
+  "rows": []
+}

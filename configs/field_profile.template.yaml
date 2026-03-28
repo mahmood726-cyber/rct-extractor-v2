@@ -1,0 +1,46 @@
+# Template field profile for porting the pipeline to a new specialty.
+# Copy to data/field_portability/<field_slug>/field_profile.yaml and edit.
+
+field_name: "Template Specialty"
+field_slug: "template_specialty"
+
+author:
+  full_name: "Surname Given"
+  meta_pmids_file: "author_meta_pmids.json"
+
+search:
+  pubmed_term_override: null
+  require_meta: true
+  require_author_name_in_authors: true
+  require_field_keyword_match: true
+  field_keywords:
+    - "keyword1"
+    - "keyword2"
+    - "keyword3"
+
+corpus:
+  pdf_input_dir: "data/field_portability/template_specialty/rct_trial_pdfs"
+
+validators:
+  mode: "balanced"
+  effect_override_confidence: 0.97
+  rct_override_confidence: 0.99
+  dual_validator:
+    enabled: true
+    provider_a: "rules_a"   # rules_a|rules_b|openai|anthropic|mock
+    provider_b: "rules_b"   # rules_a|rules_b|openai|anthropic|mock
+    min_agreement_confidence: 0.65
+    conflict_policy: "keep" # keep|exclude
+    max_candidates: 120
+
+quality_targets:
+  min_coverage_on_included_gold: 0.95
+  max_fp_rate_on_excluded_gold: 0.02
+  min_effect_type_match_rate: 0.98
+  min_point_within_10pct_rate: 0.98
+  min_ci_within_10pct_rate: 0.98
+
+paths:
+  benchmark_dir: "data/benchmarks/template_specialty_meta_linked_v1"
+  output_dir: "output/template_specialty_extract_v1"
+

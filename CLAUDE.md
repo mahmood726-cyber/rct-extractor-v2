@@ -46,7 +46,20 @@ python -m pytest C:/Users/user/rct-extractor-v2/tests/test_team_of_rivals.py
 - Compare floats with `===` or exact equality
 - Use `round(value, N)` for clustering/grouping (use tolerance-based)
 
-## Workflow Rules (from usage insights)
+## Workflow Rules (from 1,600+ message usage analysis)
+
+### Test-First Verification (CRITICAL)
+- **Never say "done" without test verification.** After any round of fixes, run the full test suite and report pass/fail counts before declaring complete.
+- **Test each feature immediately upon implementation** — do not batch test runs at the end.
+- If fixes introduce new failures, fix those too before declaring done. Track fixes with IDs (e.g., P0-1, P1-3).
+
+### Data Model Verification Before Implementation
+- **Before implementing any feature**, grep the codebase for all data objects/structures related to that feature. Verify actual property names, types, and where they are set.
+- **Never guess property names or element IDs.** Confirm properties exist in the actual data model before writing access paths.
+
+### Context Persistence
+- **Save review findings to files** (e.g., `review-findings.md`) so they persist across sessions.
+- **Never report features as "missing" without evidence.** Search thoroughly with Grep before claiming a feature is absent.
 
 ### Data Integrity
 Never fabricate or hallucinate identifiers (NCT IDs, DOIs, trial names, PMIDs). If you don't have the real identifier, say so and ask the user to provide it. Always verify identifiers against existing data files before using them in configs or gold standards.

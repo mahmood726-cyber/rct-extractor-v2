@@ -1,0 +1,44 @@
+{
+  "generated_at_utc": "2026-02-25T14:38:06.992588+00:00",
+  "inputs": {
+    "meta_pmids_file": "data\\benchmarks\\cardiology_meta_linked_ahmad_m_all_found_v1\\author_meta_pmids.json",
+    "output_dir": "data\\benchmarks\\cardiology_meta_linked_ahmad_m_all_found_v1\\oa_bundle_redownload_20260225",
+    "existing_pdf_roots": [
+      "C:\\Users\\user\\cardiology_rcts",
+      "data\\benchmarks\\cardiology_meta_linked_ahmad_m_all_found_v1\\oa_bundle\\rct_trial_pdfs"
+    ],
+    "copy_existing": true,
+    "timeout_sec": 30.0,
+    "sleep_sec": 0.12,
+    "workers": 8,
+    "retries": 3,
+    "api_key_present": true
+  },
+  "counts": {
+    "meta_pmids_total": 42,
+    "meta_pmids_with_refs": 28,
+    "unique_ref_pmids_total": 1308,
+    "rct_ref_pmids_total": 447,
+    "meta_pdfs_available_total": 24,
+    "rct_trial_pdfs_available_total": 5,
+    "meta_download_status": {
+      "copied_existing": 10,
+      "download_failed": 6,
+      "downloaded": 14,
+      "no_pmcid": 12
+    },
+    "rct_trial_download_status": {
+      "copied_existing": 5,
+      "download_failed": 80,
+      "no_pmcid": 362
+    }
+  },
+  "paths": {
+    "meta_pdfs_dir": "data\\benchmarks\\cardiology_meta_linked_ahmad_m_all_found_v1\\oa_bundle_redownload_20260225\\meta_pdfs",
+    "rct_trial_pdfs_dir": "data\\benchmarks\\cardiology_meta_linked_ahmad_m_all_found_v1\\oa_bundle_redownload_20260225\\rct_trial_pdfs",
+    "meta_downloads_json": "data\\benchmarks\\cardiology_meta_linked_ahmad_m_all_found_v1\\oa_bundle_redownload_20260225\\meta_downloads.json",
+    "rct_trial_downloads_json": "data\\benchmarks\\cardiology_meta_linked_ahmad_m_all_found_v1\\oa_bundle_redownload_20260225\\rct_trial_downloads.json",
+    "meta_to_rct_refs_json": "data\\benchmarks\\cardiology_meta_linked_ahmad_m_all_found_v1\\oa_bundle_redownload_20260225\\meta_to_rct_refs.json",
+    "bundle_summary_json": "data\\benchmarks\\cardiology_meta_linked_ahmad_m_all_found_v1\\oa_bundle_redownload_20260225\\bundle_summary.json"
+  }
+}

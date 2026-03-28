@@ -1,0 +1,69 @@
+{
+  "generated_at_utc": "2026-02-26T13:30:00+00:00",
+  "current_best": {
+    "system_results_jsonl": "C:/Users/user/rct-extractor-v2/output/cardiology_ahmad_m_trials_extract_20260225/results_ai_validated_balanced.jsonl",
+    "benchmark_eval_json": "C:/Users/user/rct-extractor-v2/output/cardiology_ahmad_m_trials_extract_20260225/cardiology_meta_linked_ahmad_m_trials_v3b_reextract_pdfpick_20260225_benchmark_eval_ai_validated_balanced.json",
+    "gold_rows_included": 112,
+    "gold_rows_excluded": 15,
+    "extracted_on_gold_included": 109,
+    "extracted_on_gold_excluded": 0,
+    "extraction_coverage_on_gold_included": 0.9732142857142857,
+    "false_positive_extraction_rate_on_gold_excluded": 0.0
+  },
+  "progression": [
+    {
+      "label": "baseline_spotcheck_applied",
+      "coverage": 1.0,
+      "fp_rate_excluded": 0.26666666666666666,
+      "extracted_on_gold_included": 112,
+      "extracted_on_gold_excluded": 4
+    },
+    {
+      "label": "strict_ai_validated",
+      "coverage": 0.8125,
+      "fp_rate_excluded": 0.0,
+      "extracted_on_gold_included": 91,
+      "extracted_on_gold_excluded": 0
+    },
+    {
+      "label": "balanced_tuned_current",
+      "coverage": 0.9732142857142857,
+      "fp_rate_excluded": 0.0,
+      "extracted_on_gold_included": 109,
+      "extracted_on_gold_excluded": 0
+    }
+  ],
+  "remaining_misses": {
+    "count": 3,
+    "packet_dir": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v3b_reextract_pdfpick_20260225/adjudication_remaining_misses_20260226",
+    "sheet_csv": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v3b_reextract_pdfpick_20260225/adjudication_remaining_misses_20260226/remaining_miss_sheet.csv",
+    "ids": [
+      "author_meta_trial_00046",
+      "author_meta_trial_00081",
+      "author_meta_trial_00095"
+    ]
+  },
+  "dual_validator": {
+    "script": "C:/Users/user/rct-extractor-v2/scripts/apply_dual_llm_borderline_validators.py",
+    "no_key_mode": {
+      "providers": [
+        "rules_a",
+        "rules_b"
+      ],
+      "summary_json": "C:/Users/user/rct-extractor-v2/output/cardiology_ahmad_m_trials_extract_20260225/results_ai_validated_balanced_dual_rules_summary.json",
+      "note": "audit/conflict layer; no metric gain in keep mode"
+    },
+    "real_llm_mode_requires": [
+      "OPENAI_API_KEY",
+      "ANTHROPIC_API_KEY"
+    ]
+  },
+  "next_actions": [
+    "adjudicate 3 rows in remaining_miss_sheet.csv",
+    "apply overrides to adjudication_template_spotcheck_applied.jsonl",
+    "re-run evaluate_cardiology_linked_benchmark.py with updated adjudicated file",
+    "freeze reports and commit scripts/results"
+  ],
+  "handoff_markdown": "C:/Users/user/rct-extractor-v2/output/cardiology_ahmad_m_trials_extract_20260225/HANDOFF_2026-02-26.md"
+}
+

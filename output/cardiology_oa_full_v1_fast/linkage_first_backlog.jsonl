@@ -93,4 +93,5 @@
 {"pdf_relpath": "PMC11433594.pdf", "study_id": "PMC11433594", "status": "no_extraction", "pmcid": "PMC11433594", "pmid": "39337063", "meta_matches_total": 1, "citing_total_considered": 4, "meta_pmids": ["39839563"]}
 {"pdf_relpath": "PMC11440142.pdf", "study_id": "PMC11440142", "status": "no_extraction", "pmcid": "PMC11440142", "pmid": "39355099", "meta_matches_total": 1, "citing_total_considered": 3, "meta_pmids": ["40572646"]}
 {"pdf_relpath": "PMC11455679.pdf", "study_id": "PMC11455679", "status": "no_extraction", "pmcid": "PMC11455679", "pmid": "39117958", "meta_matches_total": 1, "citing_total_considered": 3, "meta_pmids": ["41584276"]}
+{"pdf_relpath": "PMC11471557.pdf", "study_id": "PMC11471557", "status": "no_extraction", "pmcid": "PMC11471557", "pmid": "39403576", "meta_matches_total": 1, "citing_total_considered": 8, "meta_pmids": ["40630122"]}
 {"pdf_relpath": "PMC11000153.pdf", "study_id": "PMC11000153", "status": "timeout", "pmcid": "PMC11000153", "pmid": "38587017", "meta_matches_total": 4, "citing_total_considered": 100, "meta_pmids": ["39278992", "40433752", "40676688", "40966626"]}

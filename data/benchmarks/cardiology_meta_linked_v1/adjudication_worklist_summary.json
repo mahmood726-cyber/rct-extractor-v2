@@ -1,0 +1,92 @@
+{
+  "generated_at_utc": "2026-02-25T10:29:02.756271+00:00",
+  "benchmark_version": "cardiology_meta_linked_v1_full533",
+  "counts": {
+    "rows_total": 533,
+    "batches_total": 14,
+    "status_counts": {
+      "extracted": 414,
+      "no_extraction": 116,
+      "timeout": 3
+    },
+    "priority_tier_counts": {
+      "1": 299,
+      "2": 115,
+      "3": 116,
+      "4": 3
+    },
+    "recommended_route_counts": {
+      "fast_verify_model_seed": 299,
+      "full_read_negative_check": 116,
+      "full_verify_model_seed": 115,
+      "retry_pdf_then_full_read": 3
+    },
+    "batch_status_counts": {
+      "batch_001": {
+        "extracted": 30,
+        "no_extraction": 8,
+        "timeout": 1
+      },
+      "batch_002": {
+        "extracted": 30,
+        "no_extraction": 8
+      },
+      "batch_003": {
+        "extracted": 30,
+        "no_extraction": 8
+      },
+      "batch_004": {
+        "extracted": 30,
+        "no_extraction": 8
+      },
+      "batch_005": {
+        "extracted": 30,
+        "no_extraction": 8
+      },
+      "batch_006": {
+        "extracted": 30,
+        "no_extraction": 8
+      },
+      "batch_007": {
+        "extracted": 30,
+        "no_extraction": 8
+      },
+      "batch_008": {
+        "extracted": 30,
+        "no_extraction": 8
+      },
+      "batch_009": {
+        "extracted": 29,
+        "no_extraction": 9
+      },
+      "batch_010": {
+        "extracted": 29,
+        "no_extraction": 9
+      },
+      "batch_011": {
+        "extracted": 29,
+        "no_extraction": 9
+      },
+      "batch_012": {
+        "extracted": 29,
+        "no_extraction": 9
+      },
+      "batch_013": {
+        "extracted": 29,
+        "no_extraction": 8,
+        "timeout": 1
+      },
+      "batch_014": {
+        "extracted": 29,
+        "no_extraction": 8,
+        "timeout": 1
+      }
+    }
+  },
+  "paths": {
+    "worklist_jsonl": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_v1/adjudication_worklist.jsonl",
+    "worklist_csv": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_v1/adjudication_worklist.csv",
+    "protocol_json": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_v1/adjudication_freeze_protocol.json",
+    "protocol_md": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_v1/adjudication_freeze_protocol.md"
+  }
+}

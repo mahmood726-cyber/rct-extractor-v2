@@ -1,0 +1,52 @@
+{
+  "generated_at_utc": "2026-02-25T18:30:09.358891+00:00",
+  "expected_total_pdfs": 10,
+  "processed_total": 10,
+  "pending_total": 0,
+  "status_counts": {
+    "extracted": 9,
+    "no_extraction": 1
+  },
+  "rates": {
+    "processed_fraction": 1.0,
+    "extraction_coverage": 0.9,
+    "best_match_rate": 0.9,
+    "best_match_with_ci_rate": 1.0,
+    "best_match_with_se_rate": 1.0,
+    "computed_best_share": 0.5555555555555556
+  },
+  "counts": {
+    "extracted_rows": 9,
+    "best_match_rows": 9,
+    "best_match_with_ci": 9,
+    "best_match_with_se": 9,
+    "computed_best_rows": 5
+  },
+  "best_effect_type_counts": {
+    "HR": 2,
+    "MD": 5,
+    "OR": 2
+  },
+  "timing_sec": {
+    "count": 10,
+    "median_sec": 32.781,
+    "mean_sec": 37.402,
+    "max_sec": 73.258
+  },
+  "run": {
+    "processed_now": 10,
+    "resume_skipped": 0,
+    "workers": 4,
+    "timeout_sec": 180.0,
+    "shard_index": 0,
+    "num_shards": 1,
+    "recursive": false,
+    "max_pdfs": null
+  },
+  "paths": {
+    "input_dir": "C:\\Users\\user\\rct-extractor-v2\\data\\benchmarks\\cardiology_ahmad_subset10_20260225\\subset_pdfs",
+    "output_jsonl": "C:\\Users\\user\\rct-extractor-v2\\output\\cardiology_ahmad_subset10_ensemble_c\\results.jsonl",
+    "summary_json": "C:\\Users\\user\\rct-extractor-v2\\output\\cardiology_ahmad_subset10_ensemble_c\\summary.json",
+    "summary_md": "C:\\Users\\user\\rct-extractor-v2\\output\\cardiology_ahmad_subset10_ensemble_c\\report.md"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "generated_at_utc": "2026-02-24T15:16:51.566814+00:00",
+  "expected_total_pdfs": 80,
+  "processed_total": 80,
+  "pending_total": 0,
+  "status_counts": {
+    "extracted": 52,
+    "no_extraction": 28
+  },
+  "rates": {
+    "processed_fraction": 1.0,
+    "extraction_coverage": 0.65,
+    "best_match_rate": 0.65,
+    "best_match_with_ci_rate": 0.75,
+    "best_match_with_se_rate": 0.75,
+    "computed_best_share": 0.0
+  },
+  "counts": {
+    "extracted_rows": 52,
+    "best_match_rows": 52,
+    "best_match_with_ci": 39,
+    "best_match_with_se": 39,
+    "computed_best_rows": 0
+  },
+  "best_effect_type_counts": {
+    "HR": 30,
+    "MD": 6,
+    "OR": 10,
+    "RR": 6
+  },
+  "timing_sec": {
+    "count": 80,
+    "median_sec": 33.907,
+    "mean_sec": 34.172,
+    "max_sec": 43.702
+  },
+  "run": {
+    "processed_now": 80,
+    "resume_skipped": 0,
+    "workers": 8,
+    "timeout_sec": 90.0,
+    "shard_index": 0,
+    "num_shards": 1,
+    "recursive": false,
+    "max_pdfs": 80
+  },
+  "paths": {
+    "input_dir": "C:\\Users\\user\\cardiology_rcts",
+    "output_jsonl": "C:\\Users\\user\\rct-extractor-v2\\output\\cardiology_oa_speed_probe\\results.jsonl",
+    "summary_json": "C:\\Users\\user\\rct-extractor-v2\\output\\cardiology_oa_speed_probe\\summary.json",
+    "summary_md": "C:\\Users\\user\\rct-extractor-v2\\output\\cardiology_oa_speed_probe\\report.md"
+  }
+}

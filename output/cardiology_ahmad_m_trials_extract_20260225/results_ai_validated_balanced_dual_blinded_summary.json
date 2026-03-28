@@ -1,0 +1,118 @@
+{
+  "generated_at_utc": "2026-02-26",
+  "method": "blinded_dual_subagent_validation",
+  "judge_a": "Study Design Methodologist (Task subagent)",
+  "judge_b": "Statistical Plausibility Reviewer (Task subagent)",
+  "conflict_policy": "keep",
+  "min_agreement_confidence": 0.65,
+  "candidates": {
+    "total": 85,
+    "from_130_rows": true
+  },
+  "judge_a_votes": {
+    "accept": 13,
+    "reject": 32,
+    "review": 40
+  },
+  "judge_b_votes": {
+    "accept": 13,
+    "reject": 19,
+    "review": 53
+  },
+  "inter_judge_agreement": "48.2% (41/85)",
+  "merged_decisions": {
+    "dual_reject": 13,
+    "conflict_keep": 72
+  },
+  "rows_gated": 13,
+  "gold_standard_note": "13 rejected rows had gold values auto-seeded from system (garbage: years, impossible MDs). Gold contamination inflates apparent recall loss.",
+  "benchmark_comparison": {
+    "baseline": {
+      "coverage_gold_included": "92.9% (104/112)",
+      "fp_rate_gold_excluded": "0.0% (0/15)",
+      "point_within_5pct": "100.0%",
+      "brier": 0.1954
+    },
+    "dual_rules_no_key": {
+      "coverage_gold_included": "92.9% (104/112)",
+      "fp_rate_gold_excluded": "0.0% (0/15)",
+      "point_within_5pct": "100.0%",
+      "brier": 0.1954,
+      "note": "rules_a vs rules_b disagreed on 94% of rows; 0 gated"
+    },
+    "dual_blinded_subagents": {
+      "coverage_gold_included": "81.2% (91/112)",
+      "fp_rate_gold_excluded": "0.0% (0/15)",
+      "point_within_5pct": "100.0%",
+      "brier": 0.1809,
+      "note": "13 garbage rows correctly gated; recall loss is gold contamination artifact"
+    }
+  },
+  "rejected_rows_detail": [
+    {
+      "study_id": "rct_trial__24706088__NO_PMCID",
+      "gold_value": 2011.0,
+      "issue": "year as MD"
+    },
+    {
+      "study_id": "rct_trial__18313982__NO_PMCID",
+      "gold_value": 1988.0,
+      "issue": "year as MD"
+    },
+    {
+      "study_id": "rct_trial__19615296__NO_PMCID",
+      "gold_value": 1972.0,
+      "issue": "year as MD"
+    },
+    {
+      "study_id": "rct_trial__14988338__PMC1726258",
+      "gold_value": -1996.0,
+      "issue": "year as MD"
+    },
+    {
+      "study_id": "rct_trial__26343814__PMC5057299",
+      "gold_value": -2013.0,
+      "issue": "year as MD"
+    },
+    {
+      "study_id": "rct_trial__35452688__PMC9243606",
+      "gold_value": -2021.0,
+      "issue": "year as MD"
+    },
+    {
+      "study_id": "rct_trial__32089046__PMC7335586",
+      "gold_value": -3711.9,
+      "issue": "extreme MD, imaging study"
+    },
+    {
+      "study_id": "rct_trial__36030390__NO_PMCID",
+      "gold_value": 3228.0,
+      "issue": "extreme MD"
+    },
+    {
+      "study_id": "rct_trial__26650684__PMC4674155",
+      "gold_value": 766.4,
+      "issue": "pregnancy morbidity, not cardiology"
+    },
+    {
+      "study_id": "rct_trial__28964382__PMC6485413",
+      "gold_value": -527.0,
+      "issue": "CDC surveillance, not RCT"
+    },
+    {
+      "study_id": "rct_trial__33560320__PMC7873782",
+      "gold_value": -107.0,
+      "issue": "protocol document"
+    },
+    {
+      "study_id": "rct_trial__20129283__PMC2822446",
+      "gold_value": 53.0,
+      "issue": "genetic testing, not RCT"
+    },
+    {
+      "study_id": "rct_trial__39935283__NO_PMCID",
+      "gold_value": 49.0,
+      "issue": "CME document, not RCT"
+    }
+  ]
+}

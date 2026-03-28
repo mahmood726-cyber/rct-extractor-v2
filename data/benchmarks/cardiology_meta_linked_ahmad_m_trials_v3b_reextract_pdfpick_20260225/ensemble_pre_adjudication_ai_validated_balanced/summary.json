@@ -1,0 +1,63 @@
+{
+  "generated_at_utc": "2026-02-26T11:41:58.332449+00:00",
+  "inputs": {
+    "benchmark_dir": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v3b_reextract_pdfpick_20260225",
+    "cohort_jsonl": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v3b_reextract_pdfpick_20260225/benchmark_cohort.jsonl",
+    "adjudication_template_jsonl": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v3b_reextract_pdfpick_20260225/adjudication_template.jsonl",
+    "pass_specs": [
+      {
+        "label": "A",
+        "results_jsonl": "C:/Users/user/rct-extractor-v2/output/cardiology_ahmad_m_trials_extract_20260225/results_ai_validated_balanced.jsonl"
+      },
+      {
+        "label": "B",
+        "results_jsonl": "C:/Users/user/rct-extractor-v2/output/cardiology_ahmad_all127_ensemble_b/results_ai_validated_balanced.jsonl"
+      },
+      {
+        "label": "C",
+        "results_jsonl": "C:/Users/user/rct-extractor-v2/output/cardiology_ahmad_all127_ensemble_c/results_ai_validated_balanced.jsonl"
+      }
+    ],
+    "consensus_point_tol": 0.1,
+    "consensus_ci_tol": 0.2,
+    "zero_abs_tolerance": 0.02,
+    "allow_majority_weak_exclude": true,
+    "weak_single_conf_max": 0.6,
+    "weak_single_source_len_max": 30
+  },
+  "counts": {
+    "rows_total": 127,
+    "auto_accept_total": 127,
+    "conflict_total": 0,
+    "decision_counts": {
+      "auto_exclude": 25,
+      "auto_include": 102
+    },
+    "reason_counts": {
+      "multi_agent_pair_agreement": 102,
+      "unanimous_no_extraction": 25
+    },
+    "pass_status_counts": {
+      "A": {
+        "extracted": 102,
+        "no_extraction": 25
+      },
+      "B": {
+        "extracted": 34,
+        "no_extraction": 93
+      },
+      "C": {
+        "extracted": 102,
+        "no_extraction": 25
+      }
+    }
+  },
+  "paths": {
+    "votes_jsonl": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v3b_reextract_pdfpick_20260225/ensemble_pre_adjudication_ai_validated_balanced/ensemble_votes.jsonl",
+    "auto_accept_jsonl": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v3b_reextract_pdfpick_20260225/ensemble_pre_adjudication_ai_validated_balanced/auto_accept.jsonl",
+    "conflicts_jsonl": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v3b_reextract_pdfpick_20260225/ensemble_pre_adjudication_ai_validated_balanced/conflicts.jsonl",
+    "adjudication_prefill_jsonl": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v3b_reextract_pdfpick_20260225/ensemble_pre_adjudication_ai_validated_balanced/adjudication_template_ensemble_prefill.jsonl",
+    "summary_json": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v3b_reextract_pdfpick_20260225/ensemble_pre_adjudication_ai_validated_balanced/summary.json",
+    "summary_md": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v3b_reextract_pdfpick_20260225/ensemble_pre_adjudication_ai_validated_balanced/summary.md"
+  }
+}

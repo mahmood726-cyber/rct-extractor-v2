@@ -1,0 +1,573 @@
+{
+  "rows": [
+    {
+      "pmid": "38828867",
+      "linked_trial_rows": 24,
+      "title": "External electrical and pharmacological cardioversion for atrial fibrillation, atrial flutter or atrial tachycardias: a network meta-analysis.",
+      "pubdate": "2024 Jun 3",
+      "journal": "The Cochrane database of systematic reviews",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review",
+        "Network Meta-Analysis"
+      ],
+      "authors": [
+        "Kukendrarajah K",
+        "Ahmad M",
+        "Carrington M",
+        "Ioannou A",
+        "Taylor J",
+        "Razvi Y",
+        "Papageorgiou N",
+        "Mead GE",
+        "Nevis IF",
+        "D'Ascenzo F",
+        "Wilton SB",
+        "Lambiase PD",
+        "Morillo CA",
+        "Kwong JS",
+        "Providencia R"
+      ]
+    },
+    {
+      "pmid": "30950507",
+      "linked_trial_rows": 14,
+      "title": "Non-invasive positive pressure ventilation (CPAP or bilevel NPPV) for cardiogenic pulmonary oedema.",
+      "pubdate": "2019 Apr 5",
+      "journal": "The Cochrane database of systematic reviews",
+      "pubtype": [
+        "Journal Article",
+        "Meta-Analysis",
+        "Research Support, Non-U.S. Gov't",
+        "Systematic Review"
+      ],
+      "authors": [
+        "Berbenetz N",
+        "Wang Y",
+        "Brown J",
+        "Godfrey C",
+        "Ahmad M",
+        "Vital FM",
+        "Lambiase P",
+        "Banerjee A",
+        "Bakhai A",
+        "Chong M"
+      ]
+    },
+    {
+      "pmid": "40955256",
+      "linked_trial_rows": 12,
+      "title": "Empagliflozin and Cardiovascular Outcomes: A Systematic Review of Randomized Controlled Trials in Populations With Diabetes and Heart Failure.",
+      "pubdate": "2025 Aug",
+      "journal": "Cureus",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ],
+      "authors": [
+        "Ansar F",
+        "Azzam A",
+        "Zafar U",
+        "Ahmed S",
+        "Ghauri FK",
+        "Khan AM",
+        "Mehmood Khan AR",
+        "Khalil MU",
+        "Iftikhar H",
+        "Faiz AR",
+        "Ahmad MB"
+      ]
+    },
+    {
+      "pmid": "38982996",
+      "linked_trial_rows": 7,
+      "title": "Exercise training improves exercise capacity and quality of life in heart failure with preserved ejection fraction: a systematic review and meta-analysis of randomized controlled trials.",
+      "pubdate": "2024 Jul",
+      "journal": "European heart journal open",
+      "pubtype": [
+        "Journal Article"
+      ],
+      "authors": [
+        "Baral R",
+        "Ho JSY",
+        "Soroya AN",
+        "Hanger M",
+        "Clarke RE",
+        "Memon SF",
+        "Glatzel H",
+        "Ahmad M",
+        "Providencia R",
+        "Bray JJH",
+        "D'Ascenzo F"
+      ]
+    },
+    {
+      "pmid": "40468584",
+      "linked_trial_rows": 7,
+      "title": "Fibrosis-Guided Ablation in Patients With Atrial Fibrillation: A Meta-Analysis of Randomized Controlled Trials.",
+      "pubdate": "2025 Aug",
+      "journal": "Journal of cardiovascular electrophysiology",
+      "pubtype": [
+        "Journal Article",
+        "Meta-Analysis",
+        "Systematic Review"
+      ],
+      "authors": [
+        "Salih A",
+        "Sutaria A",
+        "Montaser Z",
+        "Magar TP",
+        "El Ashal G",
+        "Zaghloul S",
+        "Tom AJ",
+        "Ahmad M",
+        "Creta A",
+        "Ali H",
+        "Barra S",
+        "Farkowski M",
+        "Cappato R",
+        "Providencia R"
+      ]
+    },
+    {
+      "pmid": "36915032",
+      "linked_trial_rows": 6,
+      "title": "Oral Class I and III antiarrhythmic drugs for maintaining sinus rhythm after catheter ablation of atrial fibrillation.",
+      "pubdate": "2023 Mar 13",
+      "journal": "The Cochrane database of systematic reviews",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review",
+        "Research Support, Non-U.S. Gov't"
+      ],
+      "authors": [
+        "Bray JJH",
+        "Warraich M",
+        "Whitfield MG",
+        "Peter CU",
+        "Baral R",
+        "Ahmad M",
+        "Ahmad S",
+        "Abraham GR",
+        "Kirresh A",
+        "Sahibzada MS",
+        "Muzaffar A",
+        "Tomson J",
+        "Lambiase PD",
+        "Captur G",
+        "Banerjee A",
+        "Providencia R"
+      ]
+    },
+    {
+      "pmid": "40642671",
+      "linked_trial_rows": 6,
+      "title": "Effect of Empagliflozin on Cardiovascular Mortality and Heart Failure Hospitalizations: A Systematic Review and Meta-Analysis of Randomized Controlled Trials.",
+      "pubdate": "2025 Jun",
+      "journal": "Cureus",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ],
+      "authors": [
+        "Rauf U",
+        "Ansar F",
+        "Ali MS",
+        "Chudhary F",
+        "Zafar MH",
+        "Azzam A",
+        "Amjad MA",
+        "Siddique MQ",
+        "Rauf MS",
+        "Ahmad MB"
+      ]
+    },
+    {
+      "pmid": "40761959",
+      "linked_trial_rows": 6,
+      "title": "Impact of Systemic Sclerosis-Associated Interstitial Lung Disease, With and Without Pulmonary Hypertension, on Survival: A Systematic Review.",
+      "pubdate": "2025 Jul",
+      "journal": "Cureus",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ],
+      "authors": [
+        "Rana SS",
+        "Dilshad RA",
+        "Nawaz S",
+        "Usman M",
+        "Asif A",
+        "Jabeen F",
+        "Ahmad MA",
+        "Haider T"
+      ]
+    },
+    {
+      "pmid": "40918811",
+      "linked_trial_rows": 6,
+      "title": "Cardiovascular Benefits of Glucagon-Like Peptide-1 (GLP-1) Receptor Agonists in Type 2 Diabetes Mellitus With Atherosclerotic Cardiovascular Disease: A Systematic Review of Randomized Controlled Trials.",
+      "pubdate": "2025 Aug",
+      "journal": "Cureus",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ],
+      "authors": [
+        "Ahmad M",
+        "Sikandar A",
+        "Aziz A",
+        "Bachar Al Sumodi W",
+        "Hans A",
+        "Usman M"
+      ]
+    },
+    {
+      "pmid": "35919128",
+      "linked_trial_rows": 5,
+      "title": "Machine learning applications in cardiac computed tomography: a composite systematic review.",
+      "pubdate": "2022 Mar",
+      "journal": "European heart journal open",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ],
+      "authors": [
+        "Bray JJH",
+        "Hanif MA",
+        "Alradhawi M",
+        "Ibbetson J",
+        "Dosanjh SS",
+        "Smith SL",
+        "Ahmad M",
+        "Pimenta D"
+      ]
+    },
+    {
+      "pmid": "39312290",
+      "linked_trial_rows": 5,
+      "title": "Long-term antibiotic prophylaxis for prevention of rheumatic fever recurrence and progression to rheumatic heart disease.",
+      "pubdate": "2024 Sep 23",
+      "journal": "The Cochrane database of systematic reviews",
+      "pubtype": [
+        "Systematic Review",
+        "Journal Article",
+        "Meta-Analysis"
+      ],
+      "authors": [
+        "Bray JJ",
+        "Thompson S",
+        "Seitler S",
+        "Ali SA",
+        "Yiu J",
+        "Salehi M",
+        "Ahmad M",
+        "Pelone F",
+        "Gashau H",
+        "Shokraneh F",
+        "Ahmed N",
+        "Cassandra M",
+        "Marijon E",
+        "Celermajer DS",
+        "Providencia R"
+      ]
+    },
+    {
+      "pmid": "39175848",
+      "linked_trial_rows": 4,
+      "title": "Efficacy of renal denervation as an adjunct to pulmonary vein isolation for atrial fibrillation treatment: a systematic review and meta-analysis.",
+      "pubdate": "2024 Jul",
+      "journal": "European heart journal open",
+      "pubtype": [
+        "Journal Article"
+      ],
+      "authors": [
+        "Thavabalan K",
+        "Sheikh M",
+        "Phuah Y",
+        "Rajput SK",
+        "Fatima N",
+        "Sutaria A",
+        "Bray JJH",
+        "Ahmad M",
+        "Glatzel H",
+        "Ahmad R",
+        "Snell L",
+        "Kumar NS",
+        "García-Pérez CL",
+        "Candilio L",
+        "Providencia R"
+      ]
+    },
+    {
+      "pmid": "40800680",
+      "linked_trial_rows": 4,
+      "title": "Mechanical circulatory support for infarct-related cardiogenic shock: a systematic review, pairwise and network meta-analysis.",
+      "pubdate": "2025 Jul",
+      "journal": "European heart journal open",
+      "pubtype": [
+        "Journal Article"
+      ],
+      "authors": [
+        "Butt Z",
+        "Sharif S",
+        "Ahmad M",
+        "Daly MJ",
+        "O'Neill J",
+        "Gentry-Maharaj A",
+        "Godolphin PJ"
+      ]
+    },
+    {
+      "pmid": "40834158",
+      "linked_trial_rows": 4,
+      "title": "Pulsed Field Ablation Versus Very High-Power Short-Duration Radiofrequency Ablation in Atrial Fibrillation: A Systematic Review and Meta-Analysis.",
+      "pubdate": "2025 Jul",
+      "journal": "Arquivos brasileiros de cardiologia",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review",
+        "Meta-Analysis"
+      ],
+      "authors": [
+        "Iqbal A",
+        "Amador WFO",
+        "Cevallos-Cueva M",
+        "Ahmad M",
+        "Alarcón JAP",
+        "Diniz RV"
+      ]
+    },
+    {
+      "pmid": "40991241",
+      "linked_trial_rows": 4,
+      "title": "Efficacy and Safety of Lorundrostat in Uncontrolled Hypertension: A Systematic Review and Meta-Analysis.",
+      "pubdate": "2025 Sep",
+      "journal": "Journal of clinical hypertension (Greenwich, Conn.)",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review",
+        "Meta-Analysis"
+      ],
+      "authors": [
+        "Dad A",
+        "Bakht K",
+        "Tahir HB",
+        "Arham M",
+        "Goel A",
+        "Ahmad MM",
+        "Raza S",
+        "Qadri SH",
+        "Rathi D",
+        "Javed S",
+        "Hamdani SSQ",
+        "Arshad H",
+        "Abubakar FNU",
+        "Awais MN",
+        "Nizam MA"
+      ]
+    },
+    {
+      "pmid": "41149262",
+      "linked_trial_rows": 4,
+      "title": "Impact of Atrial Fibrillation on the Outcome of Patients with Brugada Syndrome: A Meta-Analysis.",
+      "pubdate": "2025 Oct 3",
+      "journal": "Journal of cardiovascular development and disease",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ],
+      "authors": [
+        "Aboutorabi M",
+        "Ahmad M",
+        "Bray JJH",
+        "Gomes DA",
+        "Providencia R"
+      ]
+    },
+    {
+      "pmid": "38646329",
+      "linked_trial_rows": 3,
+      "title": "Comparison of the Effectiveness and Safety of Metoprolol and Diltiazem in Atrial Fibrillation With Rapid Ventricular Rate Patients: A Systematic Review and Meta-Analysis.",
+      "pubdate": "2024 Mar",
+      "journal": "Cureus",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ],
+      "authors": [
+        "Mayow AH",
+        "Sinha T",
+        "Ahmad M",
+        "Myint YK",
+        "Balaji S",
+        "Chaudhari SS",
+        "Arrey Agbor DB",
+        "Khan A"
+      ]
+    },
+    {
+      "pmid": "38681969",
+      "linked_trial_rows": 3,
+      "title": "Routine Antenatal Echocardiography in High-Prevalence Areas of Rheumatic Heart Disease: A WHO-Guideline Systematic Review.",
+      "pubdate": "2024",
+      "journal": "Global heart",
+      "pubtype": [
+        "Systematic Review",
+        "Journal Article",
+        "Research Support, Non-U.S. Gov't"
+      ],
+      "authors": [
+        "Seitler S",
+        "Ahmad M",
+        "Ahuja SAC",
+        "Ahmed MT",
+        "Stevenson A",
+        "Schreiber TR",
+        "Sodhi PS",
+        "Diyasena HK",
+        "Ogbeide O",
+        "Arularooran S",
+        "Shokraneh F",
+        "Cassandra M",
+        "Marijon E",
+        "Celermajer DS",
+        "Khanji MY",
+        "Providencia R"
+      ]
+    },
+    {
+      "pmid": "40726194",
+      "linked_trial_rows": 3,
+      "title": "Evaluating the Safety and Efficacy of Asundexian in Cardiovascular Disease: A Systematic Review and Meta-Analysis of Randomized Controlled Trials.",
+      "pubdate": "2025 Jan-Dec",
+      "journal": "Clinical and applied thrombosis/hemostasis : official journal of the International Academy of Clinical and Applied Thrombosis/Hemostasis",
+      "pubtype": [
+        "Journal Article",
+        "Meta-Analysis",
+        "Systematic Review"
+      ],
+      "authors": [
+        "Arif Z",
+        "Wadood MA",
+        "Malahat S",
+        "Ahmad M",
+        "Khalid M",
+        "Adnan S",
+        "Siddiqui E",
+        "Waafira A"
+      ]
+    },
+    {
+      "pmid": "39276199",
+      "linked_trial_rows": 2,
+      "title": "Isolated diastolic hypertension and cardiovascular outcomes across different diagnostic guidelines: a systematic review and meta-analysis.",
+      "pubdate": "2024 Sep 14",
+      "journal": "The Egyptian heart journal : (EHJ) : official bulletin of the Egyptian Society of Cardiology",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ],
+      "authors": [
+        "Agarwal A",
+        "Mostafa MA",
+        "Ahmad MI",
+        "Soliman EZ"
+      ]
+    },
+    {
+      "pmid": "38394539",
+      "linked_trial_rows": 1,
+      "title": "Brain natriuretic peptide in acute heart failure and its association with glomerular filtration rate: A systematic review and meta-analysis.",
+      "pubdate": "2024 Feb 23",
+      "journal": "Medicine",
+      "pubtype": [
+        "Meta-Analysis",
+        "Systematic Review",
+        "Journal Article"
+      ],
+      "authors": [
+        "Mughal HB",
+        "Majeed AI",
+        "Aftab M",
+        "Ubaid MF",
+        "Zahra S",
+        "Abbasi MSR",
+        "Qadir M",
+        "Ahmad M",
+        "Akbar A",
+        "Tasneem S",
+        "Jadoon SK",
+        "Tariq M",
+        "Hussain S",
+        "Khandker SS",
+        "Alvi S"
+      ]
+    },
+    {
+      "pmid": "38673694",
+      "linked_trial_rows": 1,
+      "title": "Exploring the Link between Anticoagulation, Cognitive Impairment and Dementia in Atrial Fibrillation: A Systematic Review.",
+      "pubdate": "2024 Apr 21",
+      "journal": "Journal of clinical medicine",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ],
+      "authors": [
+        "Agarwal A",
+        "Mostafa MA",
+        "Ahmad MI",
+        "Soliman EZ"
+      ]
+    },
+    {
+      "pmid": "38681338",
+      "linked_trial_rows": 1,
+      "title": "Risk Factors for the Development of Pneumonia in Stroke Patients: A Systematic Review and Meta-Analysis.",
+      "pubdate": "2024 Mar",
+      "journal": "Cureus",
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ],
+      "authors": [
+        "Ahmad M",
+        "Ayaz Z",
+        "Sinha T",
+        "Soe TM",
+        "Tutwala N",
+        "Alrahahleh AA",
+        "Arrey Agbor DB",
+        "Ali N"
+      ]
+    },
+    {
+      "pmid": "38710670",
+      "linked_trial_rows": 1,
+      "title": "Cardiac resynchronization therapy in inotrope-dependent heart failure: a meta-analysis.",
+      "pubdate": "2024 Oct",
+      "journal": "ESC heart failure",
+      "pubtype": [
+        "Meta-Analysis",
+        "Journal Article"
+      ],
+      "authors": [
+        "Al-Shakarchi NJ",
+        "Ho JSY",
+        "Bray JJH",
+        "D'Ascenzo F",
+        "Duffy E",
+        "Hewett J",
+        "Adegbie D",
+        "Khan F",
+        "Kumar NS",
+        "Patel N",
+        "Ahmad M",
+        "Banerjee A",
+        "Haq I",
+        "Providencia R"
+      ]
+    }
+  ]
+}

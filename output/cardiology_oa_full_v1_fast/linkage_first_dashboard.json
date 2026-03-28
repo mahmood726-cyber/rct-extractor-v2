@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-02-24T17:56:46.749701+00:00",
+  "generated_at_utc": "2026-02-24T18:04:02.606442+00:00",
   "inputs": {
     "results_jsonl": "output/cardiology_oa_full_v1_fast/results.jsonl",
     "mapping_summary_json": "output/cardiology_oa_full_v1_fast/meta_mapping_summary.json",
@@ -9,7 +9,7 @@
     "backlog_preview_limit": 50
   },
   "mapping_snapshot": {
-    "mapping_generated_at_utc": "2026-02-24T17:56:36.960621+00:00",
+    "mapping_generated_at_utc": "2026-02-24T18:03:53.808408+00:00",
     "mapping_inputs": {
       "results_jsonl": "output/cardiology_oa_full_v1_fast/results.jsonl",
       "max_trials": null,
@@ -20,52 +20,52 @@
       "meta_mode": "strict"
     },
     "mapping_counts": {
-      "trial_rows_considered": 2041,
-      "trial_rows_extractable_considered": 1416,
-      "trial_rows_with_pmid": 2023,
+      "trial_rows_considered": 2127,
+      "trial_rows_extractable_considered": 1475,
+      "trial_rows_with_pmid": 2109,
       "unresolved_pmcid_rows": 18,
-      "unique_trial_pmids": 2023,
-      "unique_citing_pmids_considered": 8494,
-      "unique_candidate_meta_pmids": 592,
-      "trials_with_meta_matches": 451,
-      "edge_rows": 752
+      "unique_trial_pmids": 2109,
+      "unique_citing_pmids_considered": 8656,
+      "unique_candidate_meta_pmids": 599,
+      "trials_with_meta_matches": 462,
+      "edge_rows": 768
     },
     "mapping_rates": {
-      "trial_pmid_resolution_rate": 0.9911807937285644,
-      "extractable_share_considered": 0.6937775600195982,
-      "trial_with_meta_rate": 0.22293623331685616
+      "trial_pmid_resolution_rate": 0.9915373765867419,
+      "extractable_share_considered": 0.693464974141984,
+      "trial_with_meta_rate": 0.21906116642958748
     }
   },
   "counts": {
-    "full_total_rows": 2049,
-    "full_rows_with_pmcid": 2048,
-    "full_rows_with_pmid": 2023,
-    "full_extractable_rows": 1419,
-    "linked_trial_pmids_with_meta": 451,
-    "linked_trial_pmids_observed_in_results": 451,
-    "linked_rows": 451,
-    "linked_extractable_rows": 355,
-    "linked_extractable_with_ci": 264,
-    "linked_extractable_high_conf": 253,
-    "linked_backlog_rows": 96
+    "full_total_rows": 2136,
+    "full_rows_with_pmcid": 2135,
+    "full_rows_with_pmid": 2109,
+    "full_extractable_rows": 1481,
+    "linked_trial_pmids_with_meta": 462,
+    "linked_trial_pmids_observed_in_results": 462,
+    "linked_rows": 462,
+    "linked_extractable_rows": 365,
+    "linked_extractable_with_ci": 272,
+    "linked_extractable_high_conf": 260,
+    "linked_backlog_rows": 97
   },
   "rates": {
-    "full_extraction_coverage": 0.6925329428989752,
-    "linked_extraction_coverage": 0.7871396895787139,
-    "linked_ci_completeness_among_extracted": 0.7436619718309859,
-    "linked_high_conf_share_among_extracted": 0.7126760563380282,
-    "linked_backlog_share": 0.21286031042128603,
-    "linked_minus_full_extraction_coverage_delta": 0.09460674667973878
+    "full_extraction_coverage": 0.6933520599250936,
+    "linked_extraction_coverage": 0.79004329004329,
+    "linked_ci_completeness_among_extracted": 0.7452054794520548,
+    "linked_high_conf_share_among_extracted": 0.7123287671232876,
+    "linked_backlog_share": 0.20995670995670995,
+    "linked_minus_full_extraction_coverage_delta": 0.09669123011819636
   },
   "distributions": {
     "full_status_counts": {
-      "extracted": 1419,
-      "no_extraction": 629,
+      "extracted": 1481,
+      "no_extraction": 654,
       "timeout": 1
     },
     "linked_status_counts": {
-      "extracted": 355,
-      "no_extraction": 95,
+      "extracted": 365,
+      "no_extraction": 96,
       "timeout": 1
     }
   },

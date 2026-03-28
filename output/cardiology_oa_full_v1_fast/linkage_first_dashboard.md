@@ -1,20 +1,20 @@
 # Linkage-First Cardiology Dashboard
 
-- Generated UTC: 2026-02-24T17:56:46.749701+00:00
+- Generated UTC: 2026-02-24T18:04:02.606442+00:00
 - Mapping extracted-only mode: False
-- Linked trial PMIDs with >=1 meta match: 451
-- Linked rows in corpus (denominator): 451
-- Linked extraction coverage: 78.7%
-- Linked CI completeness among extracted: 74.4%
-- Linked high-confidence share among extracted: 71.3%
-- Linked backlog rows (not extractable): 96
+- Linked trial PMIDs with >=1 meta match: 462
+- Linked rows in corpus (denominator): 462
+- Linked extraction coverage: 79.0%
+- Linked CI completeness among extracted: 74.5%
+- Linked high-confidence share among extracted: 71.2%
+- Linked backlog rows (not extractable): 97
 - Full-corpus extraction coverage: 69.3%
-- Linked vs full extraction delta: 9.5%
+- Linked vs full extraction delta: 9.7%
 
 ## Status Counts (Linked Cohort)
 
-- extracted: 355
-- no_extraction: 95
+- extracted: 365
+- no_extraction: 96
 - timeout: 1
 
 ## Backlog Preview

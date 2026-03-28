@@ -1,0 +1,39 @@
+{
+  "generated_at_utc": "2026-02-24T23:14:02.786341+00:00",
+  "inputs": {
+    "benchmark_cohort_jsonl": "data/benchmarks/cardiology_meta_linked_v1/benchmark_cohort.jsonl",
+    "author_full_name": "Mahmood Ahmad",
+    "pubmed_term": "Ahmad M[Author] AND (Meta-Analysis[Publication Type] OR Systematic Review[Publication Type] OR systematic[sb] OR meta-analysis[Title] OR systematic review[Title]) AND (cardio*[Title/Abstract] OR heart[Title/Abstract] OR coronary[Title/Abstract] OR atrial[Title/Abstract] OR myocard*[Title/Abstract] OR hypertension[Title/Abstract])",
+    "retmax": 800,
+    "require_author_name_in_authors": false,
+    "require_meta": true,
+    "require_cardiology": true,
+    "target_n": 200,
+    "seed": 20260224,
+    "api_key_present": false
+  },
+  "counts": {
+    "pubmed_ids_retrieved": 57,
+    "author_meta_candidates_after_filters": 42,
+    "author_meta_linked_to_benchmark": 2,
+    "subset_rows_before_sampling": 2,
+    "selected_rows": 2,
+    "selected_unique_pmids": 2,
+    "selected_status_counts": {
+      "extracted": 1,
+      "no_extraction": 1
+    }
+  },
+  "paths": {
+    "author_meta_candidates_json": "author_meta_candidates.json",
+    "author_meta_pmids_json": "author_meta_pmids.json",
+    "linked_author_meta_json": "linked_author_meta.json",
+    "benchmark_subset_jsonl": "benchmark_subset.jsonl",
+    "blinded_template_annotator_a_jsonl": "blinded_template_annotator_a.jsonl",
+    "blinded_template_annotator_b_jsonl": "blinded_template_annotator_b.jsonl",
+    "adjudication_template_jsonl": "adjudication_template.jsonl",
+    "model_seed_adjudicator_only_jsonl": "model_seed_adjudicator_only.jsonl",
+    "manifest_json": "manifest.json",
+    "readme_md": "README.md"
+  }
+}

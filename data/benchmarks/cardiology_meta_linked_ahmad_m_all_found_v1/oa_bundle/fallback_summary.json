@@ -1,0 +1,52 @@
+{
+  "generated_at_utc": "2026-02-25T09:26:33.397837+00:00",
+  "inputs": {
+    "bundle_dir": "C:\\Users\\user\\rct-extractor-v2\\data\\benchmarks\\cardiology_meta_linked_ahmad_m_all_found_v1\\oa_bundle",
+    "unpaywall_email": "tooling@proton.me",
+    "timeout_sec": 12.0,
+    "sleep_sec": 0.06,
+    "max_retries": 1,
+    "workers": 8,
+    "max_candidates": 8,
+    "max_links_per_landing": 8,
+    "api_key_present": false
+  },
+  "counts": {
+    "meta_fallback": {
+      "input_rows": 42,
+      "fallback_target_rows": 12,
+      "downloaded_new": 4,
+      "still_unresolved": 8,
+      "skipped_already_available": 30
+    },
+    "trial_fallback": {
+      "input_rows": 447,
+      "fallback_target_rows": 392,
+      "downloaded_new": 66,
+      "still_unresolved": 326,
+      "skipped_already_available": 55
+    },
+    "meta_status_after": {
+      "already_downloaded": 20,
+      "downloaded_fallback_doi_landing": 3,
+      "downloaded_fallback_unpaywall_url_for_pdf": 1,
+      "existing_local": 10,
+      "fallback_failed": 8
+    },
+    "trial_status_after": {
+      "already_downloaded": 33,
+      "downloaded": 17,
+      "downloaded_fallback_doi_landing": 22,
+      "downloaded_fallback_pmcid_direct": 14,
+      "downloaded_fallback_unpaywall_url": 10,
+      "downloaded_fallback_unpaywall_url_for_pdf": 20,
+      "existing_local": 5,
+      "fallback_failed": 326
+    }
+  },
+  "paths": {
+    "meta_downloads_json": "C:\\Users\\user\\rct-extractor-v2\\data\\benchmarks\\cardiology_meta_linked_ahmad_m_all_found_v1\\oa_bundle\\meta_downloads.json",
+    "rct_trial_downloads_json": "C:\\Users\\user\\rct-extractor-v2\\data\\benchmarks\\cardiology_meta_linked_ahmad_m_all_found_v1\\oa_bundle\\rct_trial_downloads.json",
+    "fallback_summary_json": "C:\\Users\\user\\rct-extractor-v2\\data\\benchmarks\\cardiology_meta_linked_ahmad_m_all_found_v1\\oa_bundle\\fallback_summary.json"
+  }
+}

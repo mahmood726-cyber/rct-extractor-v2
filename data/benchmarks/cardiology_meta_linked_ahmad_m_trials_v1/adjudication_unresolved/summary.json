@@ -1,0 +1,32 @@
+{
+  "generated_at_utc": "2026-02-25T11:42:53.132870+00:00",
+  "inputs": {
+    "benchmark_dir": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v1",
+    "annotator_a_jsonl": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v1/blinded_template_annotator_a.jsonl",
+    "annotator_b_jsonl": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v1/blinded_template_annotator_b.jsonl",
+    "model_seed_jsonl": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v1/model_seed_adjudicator_only.jsonl",
+    "consensus_point_tol": 0.1,
+    "consensus_ci_tol": 0.15,
+    "zero_abs_tolerance": 0.02
+  },
+  "counts": {
+    "benchmark_rows_total": 126,
+    "consensus_auto_rows": 0,
+    "unresolved_rows": 126,
+    "reason_counts": {
+      "missing_included_label": 126
+    }
+  },
+  "agreement": {
+    "included_match_rate": null,
+    "type_match_rate": null,
+    "point_within_10pct_rate": null,
+    "ci_within_10pct_rate": null
+  },
+  "paths": {
+    "unresolved_packet_jsonl": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v1/adjudication_unresolved/unresolved_packet.jsonl",
+    "consensus_auto_jsonl": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v1/adjudication_unresolved/consensus_auto.jsonl",
+    "unresolved_ids_txt": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v1/adjudication_unresolved/unresolved_benchmark_ids.txt",
+    "summary_json": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v1/adjudication_unresolved/summary.json"
+  }
+}

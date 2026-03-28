@@ -1,0 +1,21 @@
+{
+  "generated_at_utc": "2026-02-26T13:24:02.321754+00:00",
+  "inputs": {
+    "eval_json": "C:/Users/user/rct-extractor-v2/output/cardiology_ahmad_m_trials_extract_20260225/cardiology_meta_linked_ahmad_m_trials_v3b_reextract_pdfpick_20260225_benchmark_eval_ai_validated_balanced.json",
+    "validated_results_jsonl": "C:/Users/user/rct-extractor-v2/output/cardiology_ahmad_m_trials_extract_20260225/results_ai_validated_balanced.jsonl",
+    "raw_results_jsonl": "C:/Users/user/rct-extractor-v2/output/cardiology_ahmad_m_trials_extract_20260225/results.jsonl",
+    "max_pages": 1,
+    "max_chars": 3500
+  },
+  "counts": {
+    "remaining_misses": 3
+  },
+  "paths": {
+    "sheet_csv": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v3b_reextract_pdfpick_20260225/adjudication_remaining_misses_20260226/remaining_miss_sheet.csv",
+    "sheet_jsonl": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v3b_reextract_pdfpick_20260225/adjudication_remaining_misses_20260226/remaining_miss_sheet.jsonl",
+    "head_text_jsonl": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v3b_reextract_pdfpick_20260225/adjudication_remaining_misses_20260226/remaining_miss_head_text.jsonl",
+    "benchmark_ids_txt": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v3b_reextract_pdfpick_20260225/adjudication_remaining_misses_20260226/remaining_miss_benchmark_ids.txt",
+    "summary_json": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v3b_reextract_pdfpick_20260225/adjudication_remaining_misses_20260226/summary.json",
+    "readme_md": "C:/Users/user/rct-extractor-v2/data/benchmarks/cardiology_meta_linked_ahmad_m_trials_v3b_reextract_pdfpick_20260225/adjudication_remaining_misses_20260226/README.md"
+  }
+}

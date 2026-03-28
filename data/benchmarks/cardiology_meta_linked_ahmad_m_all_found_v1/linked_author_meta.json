@@ -1,0 +1,53 @@
+{
+  "rows": [
+    {
+      "pmid": "39312290",
+      "linked_trial_rows": 1,
+      "title": "Long-term antibiotic prophylaxis for prevention of rheumatic fever recurrence and progression to rheumatic heart disease.",
+      "pubdate": "2024 Sep 23",
+      "journal": "The Cochrane database of systematic reviews",
+      "pubtype": [
+        "Systematic Review",
+        "Journal Article",
+        "Meta-Analysis"
+      ],
+      "authors": [
+        "Bray JJ",
+        "Thompson S",
+        "Seitler S",
+        "Ali SA",
+        "Yiu J",
+        "Salehi M",
+        "Ahmad M",
+        "Pelone F",
+        "Gashau H",
+        "Shokraneh F",
+        "Ahmed N",
+        "Cassandra M",
+        "Marijon E",
+        "Celermajer DS",
+        "Providencia R"
+      ]
+    },
+    {
+      "pmid": "40834158",
+      "linked_trial_rows": 1,
+      "title": "Pulsed Field Ablation Versus Very High-Power Short-Duration Radiofrequency Ablation in Atrial Fibrillation: A Systematic Review and Meta-Analysis.",
+      "pubdate": "2025 Jul",
+      "journal": "Arquivos brasileiros de cardiologia",
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review",
+        "Meta-Analysis"
+      ],
+      "authors": [
+        "Iqbal A",
+        "Amador WFO",
+        "Cevallos-Cueva M",
+        "Ahmad M",
+        "Alarcón JAP",
+        "Diniz RV"
+      ]
+    }
+  ]
+}
