@@ -186,8 +186,14 @@ class TestCIDeduplication:
         assert result_b.ci_lower == 0.70
 
 
+@pytest.mark.slow
 class TestSnippetValidationBaseline:
-    """Regression test: snippet validation must meet baseline thresholds."""
+    """Regression test: snippet validation must meet baseline thresholds.
+
+    Marked slow: the class-scoped fixture runs EnhancedExtractor.extract over
+    the full ground-truth snippet set (~9s on Python 3.13, Windows). Available
+    in the default smoke run via --runslow and still run in nightly CI.
+    """
 
     @pytest.fixture(scope="class")
     def snippet_results(self):

@@ -185,8 +185,14 @@ def validation_metrics():
     return calculate_metrics(ground_truth)
 
 
+@pytest.mark.slow
 class TestExtractionAccuracy:
-    """Test extraction accuracy against baselines"""
+    """Test extraction accuracy against baselines.
+
+    Marked slow: the `validation_metrics` module-scoped fixture runs the full
+    extractor over the external validation dataset (~11-15s typical, up to 25s+
+    under load). Run with --runslow for the threshold regression guards.
+    """
 
     def test_extractor_available(self):
         """Test that extractor module is available"""
@@ -380,8 +386,14 @@ class TestPatternCoverage:
         assert found, f"{expected_type} {expected_value} not found in: {text}"
 
 
+@pytest.mark.slow
 class TestNegativeControls:
-    """Test that negative controls produce minimal false positives"""
+    """Test that negative controls produce minimal false positives.
+
+    Marked slow: class-scoped fixture runs extractor over NEGATIVE_CONTROLS
+    (~5s). Smoke-mode coverage of false-positive control is handled by
+    TestSpecificTrials and TestPatternCoverage; this suite runs in --runslow.
+    """
 
     @pytest.fixture(scope="class")
     def negative_control_results(self):
@@ -468,8 +480,14 @@ class TestHardDifficultyTrials:
         assert found, f"{trial_name}: {expected_type} {expected_value} not found"
 
 
+@pytest.mark.slow
 def test_print_metrics():
-    """Print current metrics for manual inspection"""
+    """Print current metrics for manual inspection.
+
+    Marked slow: duplicates the work already done by the `validation_metrics`
+    module-scoped fixture used by TestExtractionAccuracy. Run with --runslow
+    when you want the human-readable metrics dump.
+    """
     if not HAS_EXTRACTOR:
         pytest.skip("Extractor not available")
 
