@@ -73,10 +73,13 @@ if (-not $NoStart) {
 
 # Locate pythonw.exe next to python.exe (runs hidden, no console flash).
 $pythonw = & python -c "import sys, os; print(os.path.join(os.path.dirname(sys.executable), 'pythonw.exe'))" 2>$null
-if (-not $pythonw -or -not (Test-Path $pythonw)) {
+$pythonwResolved = $pythonw -and (Test-Path $pythonw)
+if (-not $pythonwResolved) {
     if ($NoStart) {
-        # In test mode, synthesise a plausible pythonw path — the lnk won't be executed.
-        $pythonw = Join-Path $env:TEMP "pythonw.exe"
+        # Test mode: point at a sentinel path that cannot be writable+executable. The .lnk
+        # is created for the installer's artifact-creation test, then deleted at script end
+        # so it can't be promoted to login-time execution if the user forgets to clean up.
+        $pythonw = Join-Path $env:TEMP "allmeta-pythonw-sentinel-DO-NOT-EXECUTE.exe"
     } else {
         Write-Host "ERROR: pythonw.exe not found alongside python.exe" -ForegroundColor Red
         exit 1
@@ -116,9 +119,17 @@ if (Test-Path $LauncherPath) {
 }
 
 # Fail closed on path that would break shortcut argument quoting.
-if ($LauncherPath -match '"') {
-    Write-Host "ERROR: the install path contains a double-quote character, which can't be safely quoted into a Startup shortcut. Move the repo to a path without quotes." -ForegroundColor Red
-    exit 1
+# The shortcut is invoked via CreateProcess (not a shell), so shell metacharacters
+# would not be re-evaluated today. But a future refactor to `cmd /c` or similar
+# would make these unsafe -- fail closed on any of them as defense-in-depth.
+# Enumerate the characters explicitly to avoid PowerShell parser ambiguity around
+# backtick/dollar inside regex char classes in single-quoted strings.
+$unsafeChars = @('"', [char]0x60, '$', '%', ';')   # 0x60 == backtick
+foreach ($ch in $unsafeChars) {
+    if ($LauncherPath.Contains($ch)) {
+        Write-Host "ERROR: the install path contains an unsafe character ('$ch') that could break shortcut argument quoting. Move the repo to a path without any of: $([string]::Join(' ', $unsafeChars))" -ForegroundColor Red
+        exit 1
+    }
 }
 
 # Create a .lnk in the Startup folder pointing at pythonw + launcher.
@@ -133,7 +144,17 @@ $lnk.Save()
 Write-Host "Startup shortcut created at $ShortcutPath" -ForegroundColor Green
 
 if ($NoStart) {
-    Write-Host "NoStart mode: skipped server start + health check. Artifacts only." -ForegroundColor Gray
+    # Remove the .lnk we just created — in test mode the target path points at a
+    # sentinel that doesn't exist, so leaving the .lnk around would (a) fail silently
+    # at login and (b) represent a promotion hazard if an attacker could later drop a
+    # file at the sentinel path. The test asserts the .lnk existed BEFORE this cleanup
+    # by inspecting the file mid-script-run.
+    if (-not $pythonwResolved -and (Test-Path $ShortcutPath)) {
+        Remove-Item $ShortcutPath -Force
+        Write-Host "NoStart mode: removed sentinel-target .lnk ($ShortcutPath)." -ForegroundColor Gray
+    } else {
+        Write-Host "NoStart mode: skipped server start + health check. Artifacts only." -ForegroundColor Gray
+    }
     exit 0
 }
 
