@@ -18,7 +18,7 @@ from pathlib import Path
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
 
-PROJECT_DIR = Path(r"C:\Users\user\rct-extractor-v2")
+PROJECT_DIR = Path(__file__).resolve().parents[1]
 PDF_DIR = PROJECT_DIR / "test_pdfs" / "gold_standard"
 GOLD_FILE = PROJECT_DIR / "gold_data" / "gold_50.jsonl"
 OUTPUT_FILE = PROJECT_DIR / "gold_data" / "ai_extraction_results.json"

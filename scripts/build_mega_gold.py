@@ -18,6 +18,11 @@ import time
 from pathlib import Path
 from collections import defaultdict
 
+try:
+    from _path_utils import find_pairwise70_dir
+except ImportError:
+    from scripts._path_utils import find_pairwise70_dir
+
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
 
@@ -33,8 +38,8 @@ except ImportError:
     print("pip install requests")
     sys.exit(1)
 
-PROJECT_DIR = Path(r"C:\Users\user\rct-extractor-v2")
-PAIRWISE_DIR = Path(r"C:\Users\user\OneDrive - NHS\Documents\Pairwise70\data")
+PROJECT_DIR = Path(__file__).resolve().parents[1]
+PAIRWISE_DIR = find_pairwise70_dir()
 OUTPUT_DIR = PROJECT_DIR / "gold_data" / "mega"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 

@@ -266,7 +266,7 @@ const D = {
   "doi": "",
   "protocol": "",
   "source_article": "",
-  "body": "Can a deterministic regex pipeline extract effect estimates from randomized controlled trial PDFs accurately enough for automated meta-analysis? We applied RCT Extractor v10.3 to 407 published trial PDFs spanning nine effect types including hazard ratios, odds ratios, risk ratios, mean differences, and standardized mean differences. The system chains 180 regex patterns, a finite-state-machine tokenizer, and team-of-rivals consensus voting through pdfplumber, PyMuPDF, table parsing, and OCR with provenance tracking attaching source text and content hash to every extraction. Against ClinicalTrials.gov registry data for 33 validated trials, the pipeline achieved 97.7 percent sensitivity (95% CI 92.0-99.7) for primary endpoint extraction, with 757 pattern-level tests passing across all types. Leave-one-type-out analysis confirmed stable performance across all nine effect measures and multiple publication formats. Deterministic extraction can serve as a scalable first-pass audit layer for systematic reviews requiring rapid effect-size verification from source documents. However, generalizability beyond English-language cardiology-heavy corpora remains a limitation requiring prospective validation on broader clinical domains.",
+  "body": "Will a deterministic regex pipeline extract effect estimates from randomized controlled trial PDFs accurately enough for automated meta-analysis? We applied the RCT Extractor v10.3 to 407 published trial PDFs spanning nine effect types including hazard ratios, odds ratios, risk ratios, mean differences, and standardized mean differences. The system brings together 180 regex patterns, a finite-state-machine tokenizer, and team-of-rivals consensus voting through pdfplumber, PyMuPDF, table parsing, and OCR with provenance tracking attaching source text and content hash to every extraction. We used ClinicalTrials.gov registry data for 33 validated trials, the pipeline achieved 97.7 percent sensitivity (95% CI 92.0-99.7) for primary endpoint extraction (with 757 pattern-level tests passing across all types). Leave-one-type-out analysis confirmed stable performance across all nine effect measures in multiple publication formats. Deterministic extraction can serve as a scalable first-pass audit layer for systematic reviews requiring rapid effect-size verification. However, generalizability beyond English-language cardiology-heavy corpora is a limitation requiring prospective validation.",
   "validation": {
     "status": "pass",
     "checks": [
@@ -283,7 +283,7 @@ const D = {
       {
         "name": "word count",
         "ok": true,
-        "detail": "Found 156 words."
+        "detail": "Found 152 words."
       },
       {
         "name": "no headings",
@@ -298,7 +298,7 @@ const D = {
       {
         "name": "result sentence has interval",
         "ok": true,
-        "detail": "Sentence 4 should include a confidence interval."
+        "detail": "Sentence 4 should include a quantitative result such as a percentage, count, or interval."
       },
       {
         "name": "result sentence has estimand",
@@ -315,31 +315,31 @@ const D = {
   "sentences": [
     {
       "role": "Question",
-      "text": "Can a deterministic regex pipeline extract effect estimates from randomized controlled trial PDFs accurately enough for automated meta-analysis?"
+      "text": "Will a deterministic regex pipeline extract effect estimates from randomized controlled trial PDFs accurately enough for automated meta-analysis?"
     },
     {
       "role": "Dataset",
-      "text": "We applied RCT Extractor v10.3 to 407 published trial PDFs spanning nine effect types including hazard ratios, odds ratios, risk ratios, mean differences, and standardized mean differences."
+      "text": "We applied the RCT Extractor v10.3 to 407 published trial PDFs spanning nine effect types including hazard ratios, odds ratios, risk ratios, mean differences, and standardized mean differences."
     },
     {
       "role": "Method",
-      "text": "The system chains 180 regex patterns, a finite-state-machine tokenizer, and team-of-rivals consensus voting through pdfplumber, PyMuPDF, table parsing, and OCR with provenance tracking attaching source text and content hash to every extraction."
+      "text": "The system brings together 180 regex patterns, a finite-state-machine tokenizer, and team-of-rivals consensus voting through pdfplumber, PyMuPDF, table parsing, and OCR with provenance tracking attaching source text and content hash to every extraction."
     },
     {
       "role": "Primary result",
-      "text": "Against ClinicalTrials.gov registry data for 33 validated trials, the pipeline achieved 97.7 percent sensitivity (95% CI 92.0-99.7) for primary endpoint extraction, with 757 pattern-level tests passing across all types."
+      "text": "We used ClinicalTrials.gov registry data for 33 validated trials, the pipeline achieved 97.7 percent sensitivity (95% CI 92.0-99.7) for primary endpoint extraction (with 757 pattern-level tests passing across all types)."
     },
     {
       "role": "Robustness",
-      "text": "Leave-one-type-out analysis confirmed stable performance across all nine effect measures and multiple publication formats."
+      "text": "Leave-one-type-out analysis confirmed stable performance across all nine effect measures in multiple publication formats."
     },
     {
       "role": "Interpretation",
-      "text": "Deterministic extraction can serve as a scalable first-pass audit layer for systematic reviews requiring rapid effect-size verification from source documents."
+      "text": "Deterministic extraction can serve as a scalable first-pass audit layer for systematic reviews requiring rapid effect-size verification."
     },
     {
       "role": "Boundary",
-      "text": "However, generalizability beyond English-language cardiology-heavy corpora remains a limitation requiring prospective validation on broader clinical domains."
+      "text": "However, generalizability beyond English-language cardiology-heavy corpora is a limitation requiring prospective validation."
     }
   ],
   "primary_plot": {},
@@ -350,12 +350,11 @@ const D = {
   "analysis_modules": [],
   "author": "Mahmood Ahmad",
   "affiliation": "Tahir Heart Institute",
-  "email": "author@example.com",
+  "email": "mahmood.ahmad2@nhs.net",
   "slug": "rct-extractor-v10",
   "references": [
-    "Marshall IJ, Noel-Storr A, Kuber J, et al. Machine learning for identifying randomized controlled trials: an evaluation and practitioner's guide. Res Synth Methods. 2018;9(4):602-614.",
-    "Jonnalagadda SR, Goyal P, Huffman MD. Automating data extraction in systematic reviews: a systematic review. Syst Rev. 2015;4:78.",
-    "Borenstein M, Hedges LV, Higgins JPT, Rothstein HR. Introduction to Meta-Analysis. 2nd ed. Wiley; 2021."
+    "Royston P, Parmar MK. Restricted mean survival time: an alternative to the hazard ratio for the design and analysis of randomized trials with a time-to-event outcome. BMC Med Res Methodol. 2013;13:152. doi:10.1186/1471-2288-13-152.",
+    "Tierney JF, Stewart LA, Ghersi D, Burdett S, Sydes MR. Practical methods for incorporating summary time-to-event data into meta-analysis. Trials. 2007;8:16. doi:10.1186/1745-6215-8-16."
   ],
   "_assets": [
     "dashboard.html",

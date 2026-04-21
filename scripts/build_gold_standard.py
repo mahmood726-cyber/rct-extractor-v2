@@ -32,13 +32,18 @@ from pathlib import Path
 from dataclasses import dataclass, asdict, field
 from typing import Optional
 
+try:
+    from _path_utils import find_pairwise70_dir
+except ImportError:
+    from scripts._path_utils import find_pairwise70_dir
+
 # Fix Windows cp1252 encoding
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
 
 # Paths
-PAIRWISE70_DIR = Path(r"C:\Users\user\OneDrive - NHS\Documents\Pairwise70\data")
-PROJECT_DIR = Path(r"C:\Users\user\rct-extractor-v2")
+PROJECT_DIR = Path(__file__).resolve().parents[1]
+PAIRWISE70_DIR = find_pairwise70_dir()
 GOLD_DIR = PROJECT_DIR / "gold_data"
 PDF_DIR = PROJECT_DIR / "test_pdfs" / "gold_standard"
 CANDIDATES_FILE = GOLD_DIR / "candidates.json"

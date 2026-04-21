@@ -12,6 +12,11 @@ from pathlib import Path
 from random import Random
 from typing import Dict, Iterable, List, Optional, Sequence, Tuple
 
+try:
+    from _path_utils import default_corpus_dir
+except ImportError:
+    from scripts._path_utils import default_corpus_dir
+
 
 def _utc_now() -> str:
     return datetime.now(timezone.utc).isoformat()
@@ -413,7 +418,7 @@ def main() -> int:
         type=Path,
         default=Path("output/cardiology_oa_full_v1_fast/cache_meta_map/pmcid_to_pmid.json"),
     )
-    parser.add_argument("--input-dir", type=Path, default=Path(r"C:\Users\user\cardiology_rcts"))
+    parser.add_argument("--input-dir", type=Path, default=default_corpus_dir("cardiology_rcts"))
     parser.add_argument(
         "--output-dir",
         type=Path,

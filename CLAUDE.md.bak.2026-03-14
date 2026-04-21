@@ -16,11 +16,11 @@ See STRAIGHT_PATH_PLAN.md — Phase 0 (strip) complete. Next: Phase 1 (gold stan
 ## Testing
 ```bash
 # Run all tests
-python -m pytest C:/Users/user/rct-extractor-v2/ --tb=short -q
+python -m pytest tests/ --tb=short -q
 
 # Critical test suites
-python -m pytest C:/Users/user/rct-extractor-v2/tests/test_proof_carrying_numbers.py
-python -m pytest C:/Users/user/rct-extractor-v2/tests/test_team_of_rivals.py
+python -m pytest tests/test_proof_carrying_numbers.py
+python -m pytest tests/test_team_of_rivals.py
 ```
 
 ## Critical Warnings

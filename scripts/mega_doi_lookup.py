@@ -20,7 +20,7 @@ from collections import defaultdict
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
 
-PROJECT_DIR = Path(r"C:\Users\user\rct-extractor-v2")
+PROJECT_DIR = Path(__file__).resolve().parents[1]
 MEGA_DIR = PROJECT_DIR / "gold_data" / "mega"
 MEGA_STUDIES_FILE = MEGA_DIR / "mega_studies.jsonl"
 MEGA_MATCHED_FILE = MEGA_DIR / "mega_matched.jsonl"

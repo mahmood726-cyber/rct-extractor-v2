@@ -17,6 +17,11 @@ from pathlib import Path
 from statistics import median
 from typing import Dict, Iterable, List, Optional, Sequence, Tuple
 
+try:
+    from _path_utils import default_corpus_dir
+except ImportError:
+    from scripts._path_utils import default_corpus_dir
+
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
@@ -608,7 +613,7 @@ def main() -> int:
     parser.add_argument(
         "--input-dir",
         type=Path,
-        default=Path(r"C:\Users\user\cardiology_rcts"),
+        default=default_corpus_dir("cardiology_rcts"),
         help="Directory containing PDF files.",
     )
     parser.add_argument(

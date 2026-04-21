@@ -3,37 +3,37 @@
   "slug": "rct-extractor-v10",
   "author": "Mahmood Ahmad",
   "date": "2026-03-26",
-  "body": "Can a deterministic regex pipeline extract effect estimates from randomized controlled trial PDFs accurately enough for automated meta-analysis? We applied RCT Extractor v10.3 to 407 published trial PDFs spanning nine effect types including hazard ratios, odds ratios, risk ratios, mean differences, and standardized mean differences. The system chains 180 regex patterns, a finite-state-machine tokenizer, and team-of-rivals consensus voting through pdfplumber, PyMuPDF, table parsing, and OCR with provenance tracking attaching source text and content hash to every extraction. Against ClinicalTrials.gov registry data for 33 validated trials, the pipeline achieved 97.7 percent sensitivity (95% CI 92.0-99.7) for primary endpoint extraction, with 757 pattern-level tests passing across all types. Leave-one-type-out analysis confirmed stable performance across all nine effect measures and multiple publication formats. Deterministic extraction can serve as a scalable first-pass audit layer for systematic reviews requiring rapid effect-size verification from source documents. However, generalizability beyond English-language cardiology-heavy corpora remains a limitation requiring prospective validation on broader clinical domains.",
-  "word_count": 156,
+  "body": "Will a deterministic regex pipeline extract effect estimates from randomized controlled trial PDFs accurately enough for automated meta-analysis? We applied the RCT Extractor v10.3 to 407 published trial PDFs spanning nine effect types including hazard ratios, odds ratios, risk ratios, mean differences, and standardized mean differences. The system brings together 180 regex patterns, a finite-state-machine tokenizer, and team-of-rivals consensus voting through pdfplumber, PyMuPDF, table parsing, and OCR with provenance tracking attaching source text and content hash to every extraction. We used ClinicalTrials.gov registry data for 33 validated trials, the pipeline achieved 97.7 percent sensitivity (95% CI 92.0-99.7) for primary endpoint extraction (with 757 pattern-level tests passing across all types). Leave-one-type-out analysis confirmed stable performance across all nine effect measures in multiple publication formats. Deterministic extraction can serve as a scalable first-pass audit layer for systematic reviews requiring rapid effect-size verification. However, generalizability beyond English-language cardiology-heavy corpora is a limitation requiring prospective validation.",
+  "word_count": 152,
   "sentence_count": 7,
   "sentences": [
     {
       "role": "Question",
-      "text": "Can a deterministic regex pipeline extract effect estimates from randomized controlled trial PDFs accurately enough for automated meta-analysis?"
+      "text": "Will a deterministic regex pipeline extract effect estimates from randomized controlled trial PDFs accurately enough for automated meta-analysis?"
     },
     {
       "role": "Dataset",
-      "text": "We applied RCT Extractor v10.3 to 407 published trial PDFs spanning nine effect types including hazard ratios, odds ratios, risk ratios, mean differences, and standardized mean differences."
+      "text": "We applied the RCT Extractor v10.3 to 407 published trial PDFs spanning nine effect types including hazard ratios, odds ratios, risk ratios, mean differences, and standardized mean differences."
     },
     {
       "role": "Method",
-      "text": "The system chains 180 regex patterns, a finite-state-machine tokenizer, and team-of-rivals consensus voting through pdfplumber, PyMuPDF, table parsing, and OCR with provenance tracking attaching source text and content hash to every extraction."
+      "text": "The system brings together 180 regex patterns, a finite-state-machine tokenizer, and team-of-rivals consensus voting through pdfplumber, PyMuPDF, table parsing, and OCR with provenance tracking attaching source text and content hash to every extraction."
     },
     {
       "role": "Primary result",
-      "text": "Against ClinicalTrials.gov registry data for 33 validated trials, the pipeline achieved 97.7 percent sensitivity (95% CI 92.0-99.7) for primary endpoint extraction, with 757 pattern-level tests passing across all types."
+      "text": "We used ClinicalTrials.gov registry data for 33 validated trials, the pipeline achieved 97.7 percent sensitivity (95% CI 92.0-99.7) for primary endpoint extraction (with 757 pattern-level tests passing across all types)."
     },
     {
       "role": "Robustness",
-      "text": "Leave-one-type-out analysis confirmed stable performance across all nine effect measures and multiple publication formats."
+      "text": "Leave-one-type-out analysis confirmed stable performance across all nine effect measures in multiple publication formats."
     },
     {
       "role": "Interpretation",
-      "text": "Deterministic extraction can serve as a scalable first-pass audit layer for systematic reviews requiring rapid effect-size verification from source documents."
+      "text": "Deterministic extraction can serve as a scalable first-pass audit layer for systematic reviews requiring rapid effect-size verification."
     },
     {
       "role": "Boundary",
-      "text": "However, generalizability beyond English-language cardiology-heavy corpora remains a limitation requiring prospective validation on broader clinical domains."
+      "text": "However, generalizability beyond English-language cardiology-heavy corpora is a limitation requiring prospective validation."
     }
   ],
   "notes": {
@@ -63,7 +63,7 @@
       {
         "name": "word count",
         "ok": true,
-        "detail": "Found 156 words."
+        "detail": "Found 152 words."
       },
       {
         "name": "no headings",
@@ -78,7 +78,7 @@
       {
         "name": "result sentence has interval",
         "ok": true,
-        "detail": "Sentence 4 should include a confidence interval."
+        "detail": "Sentence 4 should include a quantitative result such as a percentage, count, or interval."
       },
       {
         "name": "result sentence has estimand",

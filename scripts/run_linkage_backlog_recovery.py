@@ -17,6 +17,11 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
+try:
+    from _path_utils import default_corpus_dir
+except ImportError:
+    from scripts._path_utils import default_corpus_dir
+
 from scripts.extract_pdf_corpus import (
     _extract_one,
     _file_signature,
@@ -229,7 +234,7 @@ def main() -> int:
     parser.add_argument(
         "--input-dir",
         type=Path,
-        default=Path(r"C:\Users\user\cardiology_rcts"),
+        default=default_corpus_dir("cardiology_rcts"),
     )
     parser.add_argument(
         "--backlog-jsonl",

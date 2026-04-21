@@ -37,7 +37,7 @@ if _ENV_PROJECT_DIR:
 elif (_DEFAULT_PROJECT_DIR / "src").exists() and (_DEFAULT_PROJECT_DIR / "scripts").exists():
     PROJECT_DIR = _DEFAULT_PROJECT_DIR
 else:
-    PROJECT_DIR = Path(r"C:\Users\user\rct-extractor-v2")
+    PROJECT_DIR = _DEFAULT_PROJECT_DIR
 
 if str(PROJECT_DIR) not in sys.path:
     sys.path.insert(0, str(PROJECT_DIR))

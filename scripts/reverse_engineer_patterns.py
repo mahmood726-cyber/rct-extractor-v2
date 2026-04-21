@@ -9,20 +9,22 @@ import os
 import sys
 import re
 from collections import Counter, defaultdict
+from pathlib import Path
 
 # UTF-8 stdout for Windows
 sys.stdout = open(sys.stdout.fileno(), mode='w', encoding='utf-8', errors='replace', buffering=1)
 
-EVAL_FILE = "C:/Users/user/rct-extractor-v2/gold_data/mega/mega_eval_v3.jsonl"
-PDF_DIR = "C:/Users/user/rct-extractor-v2/gold_data/mega/pdfs"
+PROJECT_DIR = Path(__file__).resolve().parents[1]
+EVAL_FILE = PROJECT_DIR / "gold_data" / "mega" / "mega_eval_v3.jsonl"
+PDF_DIR = PROJECT_DIR / "gold_data" / "mega" / "pdfs"
 
 # Add project to path for PDFParser
-sys.path.insert(0, "C:/Users/user/rct-extractor-v2")
+sys.path.insert(0, str(PROJECT_DIR))
 from src.pdf.pdf_parser import PDFParser
 
 # Build PMCID -> filename lookup (PDFs named Author_Year_Year_PMCID.pdf)
 _PMCID_TO_FILE = {}
-if os.path.isdir(PDF_DIR):
+if PDF_DIR.is_dir():
     for fname in os.listdir(PDF_DIR):
         if fname.endswith(".pdf"):
             # Extract PMCID from filename like "Abbate_2020_2020_PMC7335541.pdf"
@@ -37,12 +39,12 @@ def get_pdf_text(pmcid):
     fname = _PMCID_TO_FILE.get(pmcid)
     if not fname:
         return None
-    pdf_path = os.path.join(PDF_DIR, fname)
-    if not os.path.exists(pdf_path):
+    pdf_path = PDF_DIR / fname
+    if not pdf_path.exists():
         return None
     try:
         parser = PDFParser()
-        result = parser.parse(pdf_path)
+        result = parser.parse(str(pdf_path))
         text = "\n".join(p.full_text for p in result.pages if p.full_text)
         return text
     except Exception as e:
@@ -343,7 +345,7 @@ def main():
                 break
 
     # === PART 4: Save full results ===
-    output_path = "C:/Users/user/rct-extractor-v2/gold_data/mega/pattern_gap_analysis.jsonl"
+    output_path = PROJECT_DIR / "gold_data" / "mega" / "pattern_gap_analysis.jsonl"
     with open(output_path, "w", encoding="utf-8") as f:
         for ctx in all_contexts:
             f.write(json.dumps(ctx, ensure_ascii=False) + "\n")
