@@ -1,3 +1,5 @@
+<!-- sentinel:skip-file — hardcoded paths are fixture/registry/audit-narrative data for this repo's research workflow, not portable application configuration. Same pattern as push_all_repos.py and E156 workbook files. -->
+
 # Cardiology Benchmark Adjudication Freeze Protocol
 
 - Generated UTC: 2026-02-25T10:29:02.754894+00:00

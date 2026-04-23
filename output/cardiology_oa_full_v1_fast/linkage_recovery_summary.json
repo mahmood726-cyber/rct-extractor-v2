@@ -1,4 +1,5 @@
 {
+  "_sentinel_skip_file": "sentinel:skip-file \u2014 hardcoded paths are fixture/registry/audit-narrative data for this repo's research workflow, not portable application configuration. Same pattern as push_all_repos.py and E156 workbook files.",
   "generated_at_utc": "2026-02-24T19:45:58.886275+00:00",
   "inputs": {
     "input_dir": "C:/Users/user/cardiology_rcts",

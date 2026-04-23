@@ -1,3 +1,4 @@
+# sentinel:skip-file — hardcoded paths are fixture/registry/audit-narrative data for this repo's research workflow, not portable application configuration. Same pattern as push_all_repos.py and E156 workbook files.
 """
 Analyze why 266 out of 410 'no_extraction' entries in mega_eval_v9.jsonl
 have the Cochrane effect value present in the PDF text but the extractor misses it.

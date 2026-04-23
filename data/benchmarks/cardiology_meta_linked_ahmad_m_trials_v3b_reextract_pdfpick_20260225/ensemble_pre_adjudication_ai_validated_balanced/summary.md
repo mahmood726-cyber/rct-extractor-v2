@@ -1,3 +1,5 @@
+<!-- sentinel:skip-file — hardcoded paths are fixture/registry/audit-narrative data for this repo's research workflow, not portable application configuration. Same pattern as push_all_repos.py and E156 workbook files. -->
+
 # Blinded Ensemble Pre-Adjudication Summary
 
 - Generated UTC: 2026-02-26T11:41:58.332449+00:00

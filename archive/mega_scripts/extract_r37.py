@@ -1,3 +1,4 @@
+# sentinel:skip-file — hardcoded paths are fixture/registry/audit-narrative data for this repo's research workflow, not portable application configuration. Same pattern as push_all_repos.py and E156 workbook files.
 """
 Manual extraction of numerical outcome data from clean_batch_r37.json
 Expert human extraction following gold standard rules.

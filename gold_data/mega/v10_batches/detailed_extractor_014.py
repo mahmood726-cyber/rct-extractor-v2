@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# sentinel:skip-file — hardcoded paths are fixture/registry/audit-narrative data for this repo's research workflow, not portable application configuration. Same pattern as push_all_repos.py and E156 workbook files.
 # -*- coding: utf-8 -*-
 """Detailed manual extraction for batch_014.jsonl
 This is a HUMAN-GUIDED extraction - read each paper carefully and extract explicit numbers"""

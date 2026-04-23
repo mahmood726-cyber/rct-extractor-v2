@@ -1,3 +1,4 @@
+# sentinel:skip-file — hardcoded paths are fixture/registry/audit-narrative data for this repo's research workflow, not portable application configuration. Same pattern as push_all_repos.py and E156 workbook files.
 ﻿import os, sys, datetime
 log_dir = os.path.join(os.environ.get('LOCALAPPDATA', '.'), 'allmeta-rct-extractor')
 os.makedirs(log_dir, exist_ok=True)

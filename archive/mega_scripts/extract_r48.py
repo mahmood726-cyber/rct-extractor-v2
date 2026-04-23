@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# sentinel:skip-file — hardcoded paths are fixture/registry/audit-narrative data for this repo's research workflow, not portable application configuration. Same pattern as push_all_repos.py and E156 workbook files.
 """
 Extract numerical outcome data from clean_batch_r48.json.
 For each study entry, extract explicitly stated outcome data matching the specified outcome field.
