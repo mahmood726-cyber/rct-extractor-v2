@@ -9,11 +9,20 @@ from collections import Counter
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 
+import os
+
 INPUT_PATH = 'C:/Users/user/rct-extractor-v2/output/cardiology_ahmad_m_trials_extract_20260225/borderline_candidates_for_blinded_review.jsonl'
 OUTPUT_PATH = 'C:/Users/user/rct-extractor-v2/output/cardiology_ahmad_m_trials_extract_20260225/blinded_judge_b_verdicts.jsonl'
 
-with open(INPUT_PATH, 'r', encoding='utf-8') as f:
-    rows = [json.loads(line) for line in f]
+# Make the module import-safe when the dataset file is missing (e.g.,
+# Overmind smoke discovery on a fresh clone). The eval still runs end-to-end
+# when invoked as a script and the data file is present. Fix 2026-04-25
+# after Overmind nightly REJECT.
+if os.path.exists(INPUT_PATH):
+    with open(INPUT_PATH, 'r', encoding='utf-8') as f:
+        rows = [json.loads(line) for line in f]
+else:
+    rows = []
 
 verdicts = []
 
@@ -588,11 +597,13 @@ override(
 # ============================================================
 # Write output
 # ============================================================
-with open(OUTPUT_PATH, 'w', encoding='utf-8') as f:
-    for v in verdicts:
-        f.write(json.dumps(v, ensure_ascii=False) + '\n')
-
-print('Wrote %d verdicts to %s' % (len(verdicts), OUTPUT_PATH))
+# Skip the write entirely when there are no verdicts (e.g., the dataset file
+# was missing at import time and the module is being smoke-imported, not run).
+if verdicts:
+    with open(OUTPUT_PATH, 'w', encoding='utf-8') as f:
+        for v in verdicts:
+            f.write(json.dumps(v, ensure_ascii=False) + '\n')
+    print('Wrote %d verdicts to %s' % (len(verdicts), OUTPUT_PATH))
 
 # Summary
 vote_counts = Counter(v['vote'] for v in verdicts)
@@ -602,8 +613,9 @@ print('  reject: %d' % vote_counts.get('reject', 0))
 print('  review: %d' % vote_counts.get('review', 0))
 print('  TOTAL:  %d' % len(verdicts))
 
-avg_conf = sum(v['confidence'] for v in verdicts) / len(verdicts)
-print('\nAverage confidence: %.3f' % avg_conf)
+if verdicts:
+    avg_conf = sum(v['confidence'] for v in verdicts) / len(verdicts)
+    print('\nAverage confidence: %.3f' % avg_conf)
 
 # Breakdown by effect type
 for et in ['HR', 'OR', 'MD']:
