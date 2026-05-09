@@ -29,6 +29,28 @@ $StartupFolder = [Environment]::GetFolderPath("Startup")
 $ShortcutPath = Join-Path $StartupFolder "allmeta-rct-extractor.lnk"
 $LauncherPath = Join-Path $Root "_autostart_launcher.py"
 
+function Remove-ShortcutWithRetry {
+    param(
+        [Parameter(Mandatory=$true)][string]$Path,
+        [int]$Attempts = 8,
+        [int]$DelayMilliseconds = 250
+    )
+
+    for ($attempt = 1; $attempt -le $Attempts; $attempt++) {
+        if (-not (Test-Path $Path)) { return $false }
+        try {
+            Remove-Item $Path -Force -ErrorAction Stop
+            return $true
+        } catch {
+            if ($attempt -eq $Attempts) { throw }
+            [System.GC]::Collect()
+            [System.GC]::WaitForPendingFinalizers()
+            Start-Sleep -Milliseconds $DelayMilliseconds
+        }
+    }
+    return $false
+}
+
 # ----- Uninstall path -----
 if ($Uninstall) {
     # Kill any running instance first.
@@ -44,8 +66,7 @@ if ($Uninstall) {
     # Old task-scheduler entry, if it existed.
     try { Unregister-ScheduledTask -TaskName "allmeta-rct-extractor" -Confirm:$false -ErrorAction Stop }
     catch {}
-    if (Test-Path $ShortcutPath) {
-        Remove-Item $ShortcutPath -Force
+    if (Remove-ShortcutWithRetry -Path $ShortcutPath) {
         Write-Host "Removed Startup shortcut." -ForegroundColor Green
     } else {
         Write-Host "No Startup shortcut to remove." -ForegroundColor Yellow
@@ -150,7 +171,7 @@ if ($NoStart) {
     # file at the sentinel path. The test asserts the .lnk existed BEFORE this cleanup
     # by inspecting the file mid-script-run.
     if (-not $pythonwResolved -and (Test-Path $ShortcutPath)) {
-        Remove-Item $ShortcutPath -Force
+        Remove-ShortcutWithRetry -Path $ShortcutPath | Out-Null
         Write-Host "NoStart mode: removed sentinel-target .lnk ($ShortcutPath)." -ForegroundColor Gray
     } else {
         Write-Host "NoStart mode: skipped server start + health check. Artifacts only." -ForegroundColor Gray
