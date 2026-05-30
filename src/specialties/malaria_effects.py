@@ -155,14 +155,25 @@ def augment_malaria_effects(text: str, existing: Optional[List[Dict]] = None) ->
     return out
 
 
-def extract_malaria_effects(extractor, text):
-    """One-call malaria extraction: core engine + malaria augmenter, deduped.
+def extract_malaria_effects(extractor, text, consistency=True, drop_inconsistent=True):
+    """One-call malaria extraction: core engine + malaria augmenter, deduped,
+    then screened for internal consistency.
 
     `extractor` is an EnhancedExtractor instance. Returns a list of effect dicts
     (core + augmenter) in to_dict() shape. This is what student-facing tooling
     should call so malaria-specific formats (efficacy %, bracketed adjusted
     ratios) are captured without touching the core engine.
+
+    When consistency=True, each effect gets a 'consistency' score + 'needs_review'
+    flag (Altman-Bland / statcheck / CI-midpoint checks) and reversed CI bounds
+    are repaired. drop_inconsistent removes hard failures (point outside its CI,
+    non-positive ratio bounds, significance flip vs a reported p) -- almost
+    always extraction errors.
     """
     from src.core.enhanced_extractor_v3 import to_dict
+    from src.specialties.internal_consistency import annotate
     core = [to_dict(x) for x in extractor.extract(text)] if text else []
-    return core + augment_malaria_effects(text, core)
+    merged = core + augment_malaria_effects(text, core)
+    if consistency:
+        merged = annotate(merged, drop_hard=drop_inconsistent)
+    return merged

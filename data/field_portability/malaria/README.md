@@ -12,6 +12,16 @@ ClinicalTrials.gov / AACT.
   malaria-specific augmenter that catches formats the core misses
   (protective/vaccine **efficacy %**, bracketed adjusted ratios `[aOR]: …`,
   Lancet middle-dot decimals, `incidence rate ratio, 0.67; 95% CI, 0.50-0.90`).
+- An **internal-consistency layer** (`src/specialties/internal_consistency.py`)
+  that screens every extracted `(point, CI, p)` triple — these are
+  over-determined, so a misread digit breaks their agreement. Grounded in
+  Altman & Bland (BMJ 2011, CI↔p via the log-scale SE), statcheck
+  (Nuijten 2016, significance-flip = "gross inconsistency"), and the
+  geometric/arithmetic CI-midpoint rule. It drops internally-impossible
+  extractions (point outside its CI, non-positive ratio, p↔CI significance
+  flip), auto-repairs reversed CI bounds, and flags probable misread digits
+  (e.g. CI upper `0.85` read as `85.0`) for review. On 1,200 corpus abstracts:
+  5 impossible extractions dropped, 40 probable misread-digit errors surfaced.
 - A malaria corpus: **4,094** PubMed malaria RCTs, **2,472** with open-access
   PDFs, **891** NCT-linked, **248** ISRCTN/PACTR-linked, **4,031** abstracts.
 - Automatic cross-checking: every trial reconciled across PDF ↔ PubMed abstract
