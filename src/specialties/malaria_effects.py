@@ -91,6 +91,16 @@ _RATIO_RE = re.compile(
 )
 
 
+# Bare uppercase abbreviation with a mandatory "=" or ":" (e.g. "OR = 0.45,
+# 95% CI: 0.36, 0.56"). CASE-SENSITIVE (no re.I) + required '='/':' so the
+# English conjunction "or" can never match. Handles non-breaking spaces via \s.
+_BARE_RATIO_RE = re.compile(
+    r"\b(?P<label>aOR|aHR|aRR|aIRR|OR|HR|RR|IRR|RD)\s*[:=]\s*"
+    r"(?P<val>" + _NUM + r")"
+    r"[^\d]{0,30}?" + _CI +
+    r"(?P<lo>" + _NUM + r")\s*(?:" + _DASH + r"|,)\s*(?P<hi>" + _NUM + r")")
+
+
 def _ratio_type(label: str) -> Optional[str]:
     for rx, code in _RATIO_TYPE:
         if rx.search(label):
@@ -125,21 +135,22 @@ def augment_malaria_effects(text: str, existing: Optional[List[Dict]] = None) ->
         out.append(_mk("EFFICACY_PCT", val, lo, hi, text, s, e))
         seen.append((s, e))
 
-    for m in _RATIO_RE.finditer(text):
-        etype = _ratio_type(m["label"])
-        if not etype:
-            continue
-        val, lo, hi = _f(m["val"]), _f(m["lo"]), _f(m["hi"])
-        if val is None or lo is None or hi is None:
-            continue
-        # Plausibility: point estimate should sit within (or near) its CI.
-        if not (min(lo, hi) - 0.05 <= val <= max(lo, hi) + 0.05):
-            continue
-        s, e = m.start(), m.end()
-        if overlaps(s, e) or any(not (e <= ss or s >= ee) for ss, ee in seen):
-            continue
-        out.append(_mk(etype, val, lo, hi, text, s, e))
-        seen.append((s, e))
+    for rx in (_RATIO_RE, _BARE_RATIO_RE):
+        for m in rx.finditer(text):
+            etype = _ratio_type(m["label"])
+            if not etype:
+                continue
+            val, lo, hi = _f(m["val"]), _f(m["lo"]), _f(m["hi"])
+            if val is None or lo is None or hi is None:
+                continue
+            # Plausibility: point estimate should sit within (or near) its CI.
+            if not (min(lo, hi) - 0.05 <= val <= max(lo, hi) + 0.05):
+                continue
+            s, e = m.start(), m.end()
+            if overlaps(s, e) or any(not (e <= ss or s >= ee) for ss, ee in seen):
+                continue
+            out.append(_mk(etype, val, lo, hi, text, s, e))
+            seen.append((s, e))
 
     return out
 

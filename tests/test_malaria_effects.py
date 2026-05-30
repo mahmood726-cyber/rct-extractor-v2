@@ -27,6 +27,10 @@ from src.specialties.malaria_effects import augment_malaria_effects as aug
     ("incidence rate ratio, 0.74; 95% CI, .58-.95", "IRR", 0.74, 0.58, 0.95),
     # Mean difference with negatives + paren CI label
     ("mean difference (MD): -7.63; 95% confidence interval (CI): -11.06, -4.21", "MD", -7.63, -11.06, -4.21),
+    # Bare uppercase abbreviation with '=' and comma-separated CI (+ nbsp)
+    ("reduced malaria (OR = 0.45, 95% CI: 0.36, 0.56, P<0.01)", "OR", 0.45, 0.36, 0.56),
+    ("OR = 0.82, 95 % CI: 0.69, 0.97", "OR", 0.82, 0.69, 0.97),
+    ("HR = 0.67 (95% CI 0.50-0.90)", "HR", 0.67, 0.50, 0.90),
 ])
 def test_augmenter_recovers(text, etype, val, lo, hi):
     r = aug(text)
@@ -45,6 +49,8 @@ def test_augmenter_recovers(text, etype, val, lo, hi):
     "Relative risks for binomial outcomes and mean differences for continuous outcomes were calculated",
     "the rate of malaria was 0.5 per person year",
     "expressing the data as a risk ratio",
+    # lowercase conjunction "or" must never be read as an odds ratio
+    "treated with artemether or 0.45 mg/kg primaquine (95% CI 0.36, 0.56)",
 ])
 def test_augmenter_rejects_non_numeric(text):
     assert aug(text) == [], f"false positive on: {text}"

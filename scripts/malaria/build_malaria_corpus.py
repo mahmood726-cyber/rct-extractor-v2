@@ -29,8 +29,12 @@ import urllib.error
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
-sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
+# Only reassign stdout when run as a script. Doing it at import time double-wraps
+# the stream for any importer and closes it at exit (lessons.md: module-level
+# sys.stdout reassignment). Importers should set PYTHONUTF8=1 instead.
+if __name__ == "__main__":
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
 
 PROJECT_DIR = Path(__file__).resolve().parents[2]
 OUT_DIR = PROJECT_DIR / "data" / "field_portability" / "malaria"

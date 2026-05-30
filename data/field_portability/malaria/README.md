@@ -51,15 +51,24 @@ python scripts/malaria/cross_check.py
 ```
 
 ## Measured performance (honest)
+- **Published-meta-analysis agreement: 87.9%** (`validate_against_ma.py`) — across
+  73 published malaria meta-analyses, of the comparative effect estimates the
+  *reviewers hand-extracted* (HR/OR/RR/IRR/MD/efficacy), we reproduce **153/174**
+  with the same point estimate AND the same CI (5% tol). This is a *silver*
+  standard: MA data is human-extracted, so some non-recoveries are MA-side error.
 - **Abstract→PDF recall: 95.6%** — effects reported in a trial's abstract are
   recovered from its full-text PDF (internal consistency; n=169 PDFs so far).
-- **Malaria-augmenter lift: 62.8% → 72.3%** recall on abstracts that contain a
+- **Malaria-augmenter lift: 62.8% → 72.6%** recall on abstracts that contain a
   genuine effect phrase (the rest are non-numeric method-sentence mentions).
 - **AACT external gold** (independent numeric truth) exists for only ~43 of the
   4,094 trials, because most malaria RCTs register on PACTR/ISRCTN (no posted
   numeric results) rather than ClinicalTrials.gov. AACT-vs-PDF agreement
   strengthens as more PDFs download; AACT-vs-abstract is intentionally weak
   (abstracts carry headline numbers, AACT carries the full results table).
+
+Validation sources, in order of independence: (1) **published meta-analyses**
+(human-extracted, broad coverage — primary silver standard), (2) **AACT**
+(machine truth, narrow coverage), (3) **abstract↔PDF** (internal consistency).
 
 ## Honesty / governance
 - These numbers are **machine-measured** (extraction recall and source
