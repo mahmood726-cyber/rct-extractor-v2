@@ -68,3 +68,12 @@ sentinel-findings.md
 sentinel-findings.jsonl
 review-findings.md
 review-findings.jsonl
+
+# Malaria field bundle — large/transient data (keep README.md; code is under scripts/)
+data/field_portability/malaria/rct_trial_pdfs/
+data/field_portability/malaria/*.jsonl
+data/field_portability/malaria/*.json
+data/field_portability/malaria/*.log
+data/field_portability/malaria/PROGRESS.md
+data/field_portability/malaria/validation_report.md
+data/field_portability/malaria/cross_check_report.md

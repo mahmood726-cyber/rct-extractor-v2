@@ -24,6 +24,16 @@ from .oncology import (
     normalize_oncology_endpoint
 )
 
+from .malaria import (
+    MALARIA_ENDPOINTS,
+    TREATMENT_PATTERNS as MALARIA_TREATMENT_PATTERNS,
+    PREVENTION_PATTERNS as MALARIA_PREVENTION_PATTERNS,
+    SEVERE_PATTERNS as MALARIA_SEVERE_PATTERNS,
+    TRANSMISSION_PATTERNS as MALARIA_TRANSMISSION_PATTERNS,
+    detect_malaria_subspecialty,
+    normalize_malaria_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -51,6 +61,18 @@ SPECIALTY_REGISTRY = {
             'breast': BREAST_CANCER_PATTERNS,
             'lung': LUNG_CANCER_PATTERNS,
             'gi': GI_ONCOLOGY_PATTERNS
+        }
+    },
+    'malaria': {
+        'subspecialties': ['treatment', 'prevention', 'severe', 'transmission'],
+        'detection_function': detect_malaria_subspecialty,
+        'normalizer': normalize_malaria_endpoint,
+        'endpoints': MALARIA_ENDPOINTS,
+        'patterns': {
+            'treatment': MALARIA_TREATMENT_PATTERNS,
+            'prevention': MALARIA_PREVENTION_PATTERNS,
+            'severe': MALARIA_SEVERE_PATTERNS,
+            'transmission': MALARIA_TRANSMISSION_PATTERNS
         }
     },
     'infectious_disease': {
@@ -129,6 +151,14 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'chemotherapy', r'immunotherapy', r'progression[- ]?free', r'pfs',
             r'response\s+rate', r'her2', r'egfr', r'pd[- ]?l1', r'checkpoint'
         ],
+        'malaria': [
+            r'malaria', r'plasmodium', r'falciparum', r'vivax',
+            r'antimalarial', r'artemisinin', r'\bacpr\b', r'parasit[ae]emia',
+            r'parasite\s+clearance', r'recrudescen', r'gametocyt',
+            r'artemether[- ]?lumefantrine', r'dihydroartemisinin',
+            r'sulfadoxine[- ]?pyrimethamine', r'rts,?\s?s', r'\bsmc\b',
+            r'chemoprevention'
+        ],
         'infectious_disease': [
             r'covid', r'sars[- ]?cov', r'hiv', r'aids', r'hepatitis',
             r'viral', r'bacterial', r'antiviral', r'antibiotic', r'infection'
@@ -170,6 +200,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'oncology':
         subspecialty, _, conf = detect_oncology_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'malaria':
+        subspecialty, conf = detect_malaria_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)
