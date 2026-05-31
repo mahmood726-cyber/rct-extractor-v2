@@ -90,3 +90,16 @@ def test_effect_dict_to_trial_needs_ci():
     assert effect_dict_to_trial({"effect_size": 0.5, "ci_lower": None, "ci_upper": None}, "x") is None
     t = effect_dict_to_trial({"effect_size": 0.5, "ci_lower": 0.3, "ci_upper": 0.8}, "x", pmid="9")
     assert t["effect"] == 0.5 and t["ci_low"] == 0.3 and t["pmid"] == "9"
+
+
+def test_hiv_2x2_path():
+    e = EnhancedExtractor()
+    recs = [
+        {"name": "T1", "nct": "N1", "text": "viral suppression by 320/350 (91.4%) in the dolutegravir group and 290/345 (84.1%) in the efavirenz group"},
+        {"name": "T2", "nct": "N2", "text": "viral suppression in 200/220 (90.9%) on dolutegravir versus 180/215 (83.7%) on efavirenz"},
+    ]
+    cfg = build_config_from_records(recs, e, title="DTG vs EFV", effect_measure="RR",
+                                    endpoint="VIRAL_SUPPRESSION", topics=["hiv"])
+    assert len(cfg["trials"]) == 2
+    assert (cfg["trials"][0]["tE"], cfg["trials"][0]["tN"]) == (320, 350)
+    _validate(cfg)

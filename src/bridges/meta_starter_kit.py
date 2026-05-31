@@ -115,8 +115,10 @@ def build_config_from_records(records: List[Dict], extractor, *, title: str,
     only for those topics and leaves everything else to the caller's own flow.
     """
     from src.specialties.malaria_effects import extract_malaria_effects
-    from src.specialties.malaria_arm_data import extract_arm_level
+    from src.specialties.malaria_arm_data import extract_arm_level as _malaria_arm
+    from src.specialties.hiv_arm_data import extract_arm_level as _hiv_arm
     from src.specialties.registry import detect_specialty
+    _ARM_BY_SPEC = {"malaria": _malaria_arm, "hiv": _hiv_arm}
 
     em = effect_measure.upper()
     want = {t.lower() for t in topics} if topics else None
@@ -130,9 +132,9 @@ def build_config_from_records(records: List[Dict], extractor, *, title: str,
         if want is not None and spec not in want:
             continue   # auto-detect: only engage for the requested topics
         row = None
-        # malaria + ratio measure -> prefer raw 2x2
-        if prefer_2x2 and em in _RATIO_MEASURES and spec == "malaria":
-            tables = extract_arm_level(text)["poolable_2x2"]
+        # malaria/HIV + ratio measure -> prefer raw 2x2 from arm-level extraction
+        if prefer_2x2 and em in _RATIO_MEASURES and spec in _ARM_BY_SPEC:
+            tables = _ARM_BY_SPEC[spec](text)["poolable_2x2"]
             if endpoint:
                 tables = [t for t in tables if t["endpoint"] == endpoint] or tables
             if tables:

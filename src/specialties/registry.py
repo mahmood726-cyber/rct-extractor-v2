@@ -34,6 +34,16 @@ from .malaria import (
     normalize_malaria_endpoint
 )
 
+from .hiv import (
+    HIV_ENDPOINTS,
+    TREATMENT_PATTERNS as HIV_TREATMENT_PATTERNS,
+    PREVENTION_PATTERNS as HIV_PREVENTION_PATTERNS,
+    PMTCT_PATTERNS as HIV_PMTCT_PATTERNS,
+    COINFECTION_PATTERNS as HIV_COINFECTION_PATTERNS,
+    detect_hiv_subspecialty,
+    normalize_hiv_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -75,8 +85,20 @@ SPECIALTY_REGISTRY = {
             'transmission': MALARIA_TRANSMISSION_PATTERNS
         }
     },
+    'hiv': {
+        'subspecialties': ['treatment', 'prevention', 'pmtct', 'coinfection'],
+        'detection_function': detect_hiv_subspecialty,
+        'normalizer': normalize_hiv_endpoint,
+        'endpoints': HIV_ENDPOINTS,
+        'patterns': {
+            'treatment': HIV_TREATMENT_PATTERNS,
+            'prevention': HIV_PREVENTION_PATTERNS,
+            'pmtct': HIV_PMTCT_PATTERNS,
+            'coinfection': HIV_COINFECTION_PATTERNS
+        }
+    },
     'infectious_disease': {
-        'subspecialties': ['covid', 'hiv', 'hepatitis', 'bacterial'],
+        'subspecialties': ['covid', 'hepatitis', 'bacterial'],
         'endpoints': {
             'MORTALITY': {'aliases': ['mortality', 'death', 'all-cause mortality']},
             'HOSPITALIZATION': {'aliases': ['hospitalization', 'hospital admission']},
@@ -159,8 +181,15 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'sulfadoxine[- ]?pyrimethamine', r'rts,?\s?s', r'\bsmc\b',
             r'chemoprevention'
         ],
+        'hiv': [
+            r'\bhiv\b', r'\baids\b', r'antiretroviral', r'\bart\b', r'\bhaart\b',
+            r'viral\s+(?:load\s+)?suppression', r'virologic', r'\bcd4\b',
+            r'pre[- ]?exposure\s+prophylaxis', r'\bprep\b', r'dolutegravir',
+            r'tenofovir|emtricitabine', r'mother[- ]to[- ]child\s+transmission',
+            r'efavirenz', r'undetectable'
+        ],
         'infectious_disease': [
-            r'covid', r'sars[- ]?cov', r'hiv', r'aids', r'hepatitis',
+            r'covid', r'sars[- ]?cov', r'hepatitis',
             r'viral', r'bacterial', r'antiviral', r'antibiotic', r'infection'
         ],
         'diabetes': [
@@ -203,6 +232,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'malaria':
         subspecialty, conf = detect_malaria_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'hiv':
+        subspecialty, conf = detect_hiv_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)

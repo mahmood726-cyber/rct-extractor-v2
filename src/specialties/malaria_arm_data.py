@@ -175,14 +175,15 @@ def _tag(text, start, end, patterns, window):
     return None
 
 
-def _tag_endpoint(text, start, end, window=120):
+def _tag_endpoint(text, start, end, window=120, patterns=None):
     # NEAREST endpoint to the proportion, not first-in-list (P0-1): otherwise
     # "ACPR aside, anaemia in 8 of 150" mislabels the anaemia count as ACPR.
+    patterns = _ALL_ENDPOINT_PATTERNS if patterns is None else patterns
     lo, hi = max(0, start - window), min(len(text), end + window)
     ctx = text[lo:hi].lower()
     prop_mid = (start + end) // 2 - lo
     best, best_dist = None, 10 ** 9
-    for pat, ep in _ALL_ENDPOINT_PATTERNS:
+    for pat, ep in patterns:
         for m in re.finditer(pat, ctx):
             d = abs(((m.start() + m.end()) // 2) - prop_mid)
             if d < best_dist:
@@ -190,14 +191,15 @@ def _tag_endpoint(text, start, end, window=120):
     return best
 
 
-def _tag_arm(text, start, end, window=70):
+def _tag_arm(text, start, end, window=70, compiled=None):
     # nearest arm label in EITHER direction (drug names may precede or follow the
     # proportion: "AL group 121/125" vs "8 of 150 chloroquine recipients").
+    compiled = _ARM_COMPILED if compiled is None else compiled
     lo, hi = max(0, start - window), min(len(text), end + window)
     region = text[lo:hi]
     prop_mid = (start + end) // 2 - lo
     best, best_dist = None, 10 ** 9
-    for pat, name in _ARM_COMPILED:
+    for pat, name in compiled:
         for m in pat.finditer(region):
             d = abs(((m.start() + m.end()) // 2) - prop_mid)
             if d < best_dist:
@@ -205,11 +207,14 @@ def _tag_arm(text, start, end, window=70):
     return best
 
 
-def extract_proportions(text: str, pct_tol: float = 1.5) -> List[Dict]:
+def extract_proportions(text: str, pct_tol: float = 1.5, *,
+                        endpoint_patterns=None, arm_compiled=None) -> List[Dict]:
     """Extract per-arm binary proportions with a built-in consistency check.
 
     pct_tol: max absolute difference (percentage points) between the reported
     percentage and 100*events/total before the proportion is flagged inconsistent.
+    endpoint_patterns / arm_compiled: override the malaria defaults to reuse this
+    engine for another specialty (e.g. HIV).
     """
     if not text:
         return []
@@ -233,15 +238,15 @@ def extract_proportions(text: str, pct_tol: float = 1.5) -> List[Dict]:
             computed = 100.0 * n / N
             pct = float(m.group("pct")) if m.groupdict().get("pct") else round(computed, 1)
             consistent = abs(pct - computed) <= pct_tol
-            ep = _tag_endpoint(text, s, e)
-            if ep is None:               # only keep proportions tied to a malaria endpoint
+            ep = _tag_endpoint(text, s, e, patterns=endpoint_patterns)
+            if ep is None:               # only keep proportions tied to an endpoint
                 continue
             out.append({
                 "events": n, "total": N, "pct": pct,
                 "computed_pct": round(computed, 2),
                 "pct_consistent": consistent,
                 "endpoint": ep,
-                "arm": _tag_arm(text, s, e),
+                "arm": _tag_arm(text, s, e, compiled=arm_compiled),
                 "pcr_status": _pcr_status(text, s, e),
                 "analysis_population": _analysis_population(text, s, e),
                 "source_text": re.sub(r"\s+", " ", text[max(0, s - 25):e + 5]).strip()[:120],
@@ -341,8 +346,11 @@ _LOGNORMAL_CONTINUOUS = {"PARASITE_CLEARANCE_TIME", "PARASITAEMIA",
                          "PARASITE_REDUCTION_RATIO"}
 # A ± term that is really a between-arm difference or a standard error, not a
 # per-arm SD -- must not be captured as poolable per-arm mean+SD.
+# Reject a ± term that is a between-arm DIFFERENCE or a STANDARD ERROR (not a
+# per-arm SD). NB: bare "change"/"reduction" are legitimate per-arm continuous
+# outcomes (CD4 change, viral-load reduction) and are NOT rejected here.
 _DIFF_OR_SE = re.compile(
-    r"(?:mean\s+difference|difference|\bMD\b|\bΔ\b|change|reduction|"
+    r"(?:difference|\bMD\b|\bΔ\b|between[- ]group|"
     r"\bSE\b|standard\s+error|\bSEM\b)", re.I)
 _MEAN_SD = re.compile(
     r"(?:mean\s+(?:of\s+)?)?(?P<mean>" + _NUM_C + r")\s*"
@@ -376,11 +384,15 @@ def _iqr_to_mean_sd(q1, median, q3, n):
     return round(mean, 4), (round(sd, 4) if sd is not None else None)
 
 
-def extract_continuous(text: str) -> List[Dict]:
+def extract_continuous(text: str, *, endpoint_patterns=None, arm_compiled=None,
+                       continuous_endpoints=None, lognormal_endpoints=None) -> List[Dict]:
     """Per-arm continuous data (mean+SD poolable; median+IQR flagged as needing
-    transformation) for continuous malaria outcomes. Tagged with endpoint + arm."""
+    transformation). Tagged with endpoint + arm. Override the *_endpoints sets and
+    patterns to reuse for another specialty (e.g. HIV: CD4, HIV-RNA)."""
     if not text:
         return []
+    cont = _CONTINUOUS_ENDPOINTS if continuous_endpoints is None else continuous_endpoints
+    logn = _LOGNORMAL_CONTINUOUS if lognormal_endpoints is None else lognormal_endpoints
     text = normalize_text(text)
     out, spans = [], []
 
@@ -394,8 +406,8 @@ def extract_continuous(text: str) -> List[Dict]:
 
     for m in _MEDIAN_IQR.finditer(text):
         s, e = m.start(), m.end()
-        ep = _tag_endpoint(text, s, e)
-        if ep not in _CONTINUOUS_ENDPOINTS:
+        ep = _tag_endpoint(text, s, e, patterns=endpoint_patterns)
+        if ep not in cont:
             continue
         out_med, lo, hi = _fc(m["median"]), _fc(m["lo"]), _fc(m["hi"])
         if None in (out_med, lo, hi):
@@ -403,7 +415,7 @@ def extract_continuous(text: str) -> List[Dict]:
         nm = _N_NEAR.search(text[max(0, s - 40):e + 25])
         n = int(nm.group(1)) if nm else None
         est_mean, est_sd = _iqr_to_mean_sd(lo, out_med, hi, n)   # Wan 2014
-        _emit(ep, _tag_arm(text, s, e), s, e, stat="median_iqr",
+        _emit(ep, _tag_arm(text, s, e, compiled=arm_compiled), s, e, stat="median_iqr",
               median=out_med, iqr_lower=lo, iqr_upper=hi,
               est_mean=est_mean, est_sd=est_sd, poolable="after_iqr_to_sd")
 
@@ -414,14 +426,14 @@ def extract_continuous(text: str) -> List[Dict]:
         # the ± term must be a per-arm SD, not a between-arm difference or SE
         if _DIFF_OR_SE.search(text[max(0, s - 32):e]):
             continue
-        ep = _tag_endpoint(text, s, e)
-        if ep not in _CONTINUOUS_ENDPOINTS:
+        ep = _tag_endpoint(text, s, e, patterns=endpoint_patterns)
+        if ep not in cont:
             continue
         mean, sd = _fc(m["mean"]), _fc(m["sd"])
         if mean is None or sd is None or sd < 0:
             continue
-        lognormal = ep in _LOGNORMAL_CONTINUOUS
-        _emit(ep, _tag_arm(text, s, e), s, e, stat="mean_sd", mean=mean, sd=sd,
+        lognormal = ep in logn
+        _emit(ep, _tag_arm(text, s, e, compiled=arm_compiled), s, e, stat="mean_sd", mean=mean, sd=sd,
               poolable=not lognormal,
               pooling_note=("log-normal: pool on log scale / use GMR, not raw MD"
                             if lognormal else None))
@@ -436,14 +448,20 @@ def poolable_ready(tables):
             and t.get("both_consistent")]
 
 
-def extract_arm_level(text: str) -> Dict:
+def extract_arm_level(text: str, *, endpoint_patterns=None, arm_compiled=None,
+                      continuous_endpoints=None, lognormal_endpoints=None) -> Dict:
     """Convenience: proportions + paired 2x2 tables for a piece of text.
 
     `tables_2x2` is ALL paired tables (verify arm labels before pooling);
-    `poolable_2x2` is the high-confidence subset safe to pool as-is.
+    `poolable_2x2` is the high-confidence subset safe to pool as-is. The pattern
+    overrides let another specialty (e.g. HIV) reuse this engine.
     """
-    props = extract_proportions(text)
+    props = extract_proportions(text, endpoint_patterns=endpoint_patterns,
+                                arm_compiled=arm_compiled)
     tables = pair_2x2(props)
     return {"proportions": props, "tables_2x2": tables,
             "poolable_2x2": poolable_ready(tables),
-            "continuous": extract_continuous(text)}
+            "continuous": extract_continuous(
+                text, endpoint_patterns=endpoint_patterns, arm_compiled=arm_compiled,
+                continuous_endpoints=continuous_endpoints,
+                lognormal_endpoints=lognormal_endpoints)}
