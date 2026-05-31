@@ -207,6 +207,7 @@ TREATMENT_PATTERNS = {
         (r'adequate\s+clinical\s+and\s+parasitolog\w+\s+response', 'ACPR'),
         (r'\bacpr\b', 'ACPR'),
         (r'pcr[- ]?(?:corrected|adjusted)\s+(?:cure|acpr)', 'ACPR'),
+        (r'(?:parasitological\s+|day[- ]?\d+\s+)?cure\s+rate', 'ACPR'),
         (r'early\s+treatment\s+failure|\betf\b', 'EARLY_TREATMENT_FAILURE'),
         (r'late\s+clinical\s+failure|\blcf\b', 'LATE_CLINICAL_FAILURE'),
         (r'late\s+parasitolog\w+\s+failure|\blpf\b', 'LATE_PARASITOLOGICAL_FAILURE'),
