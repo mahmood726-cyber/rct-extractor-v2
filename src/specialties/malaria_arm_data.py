@@ -58,7 +58,16 @@ _ARM_PATTERNS = [
     (r"RTS,?\s?S|AS01", "RTS,S"),
     (r"\bR21\b|Matrix[- ]?M", "R21"),
     (r"\bSMC\b|seasonal malaria chemoprevention", "SMC"),
-    (r"control(?:\s+group|\s+arm)?", "control"),
+    # Generic arm labels (lower priority; nearest-distance still wins). Many
+    # trials name arms by role, not drug ("intervention group" vs "control").
+    (r"intervention\s+(?:group|arm)|interventions?\b", "intervention"),
+    (r"treatment\s+(?:group|arm)|treated\s+group", "treatment"),
+    (r"experimental\s+(?:group|arm)", "experimental"),
+    (r"active\s+(?:treatment|group|arm)", "active"),
+    (r"vaccine\s+(?:group|arm|recipients?)", "vaccine"),
+    (r"\bgroup\s+(?:1|i|a)\b|\barm\s+(?:1|i|a)\b", "group_1"),
+    (r"\bgroup\s+(?:2|ii|b)\b|\barm\s+(?:2|ii|b)\b", "group_2"),
+    (r"control(?:\s+group|\s+arm)?|usual\s+care|standard\s+care", "control"),
 ]
 _ARM_COMPILED = [(re.compile(p, re.I), name) for p, name in _ARM_PATTERNS]
 
@@ -142,8 +151,16 @@ def pair_2x2(proportions: List[Dict]) -> List[Dict]:
         by_ep.setdefault(p["endpoint"], []).append(p)
     tables = []
     for ep, props in by_ep.items():
+        # drop identical (events,total) duplicates (same datum repeated in the
+        # abstract + results + a table)
+        deduped, seen_counts = [], set()
+        for p in props:
+            key = (p["events"], p["total"])
+            if key not in seen_counts:
+                seen_counts.add(key)
+                deduped.append(p)
         # distinct arms only; take the first two distinct-armed proportions
-        armed = [p for p in props if p["arm"]]
+        armed = [p for p in deduped if p["arm"]]
         seen_arms = {}
         for p in armed:
             seen_arms.setdefault(p["arm"], p)
