@@ -28,6 +28,9 @@ def main():
     ap = argparse.ArgumentParser(description="Extractor -> meta-starter-kit config")
     ap.add_argument("records", help="input records JSON")
     ap.add_argument("--out", default="metakit_config.json")
+    ap.add_argument("--topics", default=None,
+                    help="comma list (e.g. malaria,cardiology): only engage for "
+                         "these auto-detected topics")
     args = ap.parse_args()
 
     spec = json.loads(Path(args.records).read_text(encoding="utf-8"))
@@ -38,11 +41,14 @@ def main():
     extractor = EnhancedExtractor()
     meta = {k: spec[k] for k in ("intervention", "comparator", "condition",
                                  "outcome", "authors") if spec.get(k)}
+    topics = [t.strip() for t in args.topics.split(",")] if args.topics else \
+        (spec.get("topics") if isinstance(spec.get("topics"), list) else None)
     cfg = build_config_from_records(
         records, extractor,
         title=spec.get("title", "Meta-analysis"),
         effect_measure=spec.get("effect_measure", "RR"),
         endpoint=spec.get("endpoint"),
+        topics=topics,
         **meta)
     Path(args.out).write_text(json.dumps(cfg, indent=2), encoding="utf-8")
     print(f"Wrote {args.out}: {len(cfg['trials'])}/{len(records)} records -> trials "

@@ -102,18 +102,24 @@ def metakit_measure_for(effect_type: str) -> Optional[str]:
 
 def build_config_from_records(records: List[Dict], extractor, *, title: str,
                               effect_measure: str, endpoint: Optional[str] = None,
-                              prefer_2x2: bool = True, **meta) -> Dict[str, Any]:
+                              prefer_2x2: bool = True,
+                              topics: Optional[List[str]] = None, **meta) -> Dict[str, Any]:
     """Topic-routed: build a config from a list of trial records.
 
     records: [{name, text, nct?, pmid?, year?}]. For each record, pick the effect
     that matches `effect_measure` (and `endpoint`, if given). For a ratio measure
     on malaria text, prefer a poolable 2x2 (raw counts) over a precomputed ratio.
+
+    topics: if given (e.g. ['malaria','cardiology']), only records whose
+    auto-detected specialty is in the list are processed -- the extractor engages
+    only for those topics and leaves everything else to the caller's own flow.
     """
     from src.specialties.malaria_effects import extract_malaria_effects
     from src.specialties.malaria_arm_data import extract_arm_level
     from src.specialties.registry import detect_specialty
 
     em = effect_measure.upper()
+    want = {t.lower() for t in topics} if topics else None
     trials = []
     for r in records:
         text = r.get("text", "")
@@ -121,6 +127,8 @@ def build_config_from_records(records: List[Dict], extractor, *, title: str,
             continue
         m = _meta_fields(r.get("nct"), r.get("pmid"), r.get("year"))
         spec = detect_specialty(text)[0]
+        if want is not None and spec not in want:
+            continue   # auto-detect: only engage for the requested topics
         row = None
         # malaria + ratio measure -> prefer raw 2x2
         if prefer_2x2 and em in _RATIO_MEASURES and spec == "malaria":
