@@ -49,7 +49,16 @@ cross-mention dedup, multi-arm flagging, ITT/PP tagging, poolable_ready(),
 continuous per-arm mean+SD/median+IQR extraction, the [ae] spelling bug, the
 efficacy-% guard, and the README honesty box. Full suite: 880 passed, 0 failures.
 
-STILL OPEN (low impact, documented): char-offset drift after ligature
-normalization (source_text stays internally consistent); the hardcoded 95% z
-for the rare 90%/97.5% non-inferiority CIs (now only adds a review flag, never
-drops, since gross_sig is soft). Both are candidates for a future pass.
+Round 3 ("close low-impact"): char-offset translation back to the ORIGINAL text
+frame (ligature-aware omap); log_rr / log_rr_lower/upper field on EFFICACY_PCT &
+RRR (pool on log(1-VE/100), not raw %); Wan (2014) median+IQR -> est_mean/est_sd
+with poolable="after_iqr_to_sd"; conjoined "PCR-corrected and uncorrected" ->
+ambiguous (kept out of poolable); multi_arm also triggers on >=3 distinct
+denominators (catches label-collapsed dose arms); [ae]+ -> (?:ae|e). Full suite:
+887 passed, 0 failures.
+
+REMAINING (genuinely minor): the hardcoded 95% z for rare 90%/97.5%
+non-inferiority CIs (gross_sig is soft, so only ever adds a review flag, never
+drops) and _MEDIAN_IQR's conservative "return nothing rather than grab the wrong
+number" when a digit sits between "median" and the value -- both deliberately
+left as safe-by-default.

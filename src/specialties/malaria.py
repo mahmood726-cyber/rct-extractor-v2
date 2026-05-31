@@ -320,11 +320,11 @@ TREATMENT_PATTERNS = {
         (r'kelch\s?13|pfk(?:elch)?13|\bk13\b|artemisinin\s+partial\s+resistance|'
          r'\bpfcrt\b|\bpfmdr1\b|\bpfpm2\b|plasmepsin|copy\s+number',
          'MOLECULAR_MARKER'),
-        (r'h[ae]+molysis|haemoglobinuria|g6pd\s+deficien', 'HAEMOLYSIS'),
-        (r'parasite\s+density|parasit[ae]+mia', 'PARASITAEMIA'),
+        (r'h(?:ae|e)molysis|haemoglobinuria|g6pd\s+deficien', 'HAEMOLYSIS'),
+        (r'parasite\s+density|parasit(?:ae|e)mia', 'PARASITAEMIA'),
         (r'gametocyt', 'GAMETOCYTE_CARRIAGE'),
-        (r'h[ae]+moglobin|\bhb\b', 'HAEMOGLOBIN'),
-        (r'an[ae]+mia', 'ANAEMIA'),
+        (r'h(?:ae|e)moglobin|\bhb\b', 'HAEMOGLOBIN'),
+        (r'an(?:ae|e)mia', 'ANAEMIA'),
     ],
     'context_patterns': [
         r'day\s+(?:28|42|63)\s+(?:acpr|cure|efficacy)',
@@ -360,7 +360,7 @@ PREVENTION_PATTERNS = {
         (r'placental\s+malaria|placental\s+(?:parasit|infection)', 'PLACENTAL_MALARIA'),
         (r'low\s+birth\s*weight|\blbw\b|birth\s*weight\s*<\s*2500', 'LOW_BIRTH_WEIGHT'),
         (r'(?<!low\s)(?<!low)birth\s*weight', 'BIRTH_WEIGHT'),   # mean BW (not LBW)
-        (r'maternal\s+an[ae]+mia|an[ae]+mia\s+at\s+delivery', 'MATERNAL_ANAEMIA'),
+        (r'maternal\s+an(?:ae|e)mia|an(?:ae|e)mia\s+at\s+delivery', 'MATERNAL_ANAEMIA'),
         (r'preterm\s+(?:birth|delivery)|prematurity|small\s+for\s+gestational|stillbirth',
          'PRETERM_BIRTH'),
         (r'(?:malaria|parasite|p\.?\s*falciparum)\s+infection', 'MALARIA_INFECTION'),
@@ -397,7 +397,7 @@ SEVERE_PATTERNS = {
         (r'cerebral\s+malaria|coma|neurological\s+sequelae', 'CEREBRAL_MALARIA'),
         (r'metabolic\s+acidosis|base\s+deficit|hyperlactat|respiratory\s+distress',
          'ACIDOSIS'),
-        (r'hypoglyc[ae]+mia', 'HYPOGLYCAEMIA'),
+        (r'hypoglyc(?:ae|e)mia', 'HYPOGLYCAEMIA'),
         (r'acute\s+kidney\s+injury|acute\s+renal\s+failure|renal\s+failure|blackwater',
          'ACUTE_KIDNEY_INJURY'),
         (r'hospital(?:isation|ization|\s+admission)', 'HOSPITALISATION'),
@@ -405,7 +405,7 @@ SEVERE_PATTERNS = {
     'context_patterns': [
         r'blantyre\s+coma\s+score',
         r'parenteral|intravenous|intramuscular',
-        r'lactate|acidosis|hypoglyc[ae]+mia',
+        r'lactate|acidosis|hypoglyc(?:ae|e)mia',
     ]
 }
 
@@ -425,7 +425,7 @@ TRANSMISSION_PATTERNS = {
     ],
     'endpoint_patterns': [
         (r'gametocyte\s+(?:carriage|prevalence|positivity|density)', 'GAMETOCYTE_CARRIAGE'),
-        (r'gametocyt[ae]+mia', 'GAMETOCYTE_CARRIAGE'),
+        (r'gametocyt(?:ae|e)mia', 'GAMETOCYTE_CARRIAGE'),
         (r'mosquito\s+infectivity|membrane\s+feeding', 'GAMETOCYTE_CARRIAGE'),
     ],
     'context_patterns': [

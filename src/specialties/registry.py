@@ -153,7 +153,7 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         ],
         'malaria': [
             r'malaria', r'plasmodium', r'falciparum', r'vivax',
-            r'antimalarial', r'artemisinin', r'\bacpr\b', r'parasit[ae]emia',
+            r'antimalarial', r'artemisinin', r'\bacpr\b', r'parasit(?:ae|e)mia',
             r'parasite\s+clearance', r'recrudescen', r'gametocyt',
             r'artemether[- ]?lumefantrine', r'dihydroartemisinin',
             r'sulfadoxine[- ]?pyrimethamine', r'rts,?\s?s', r'\bsmc\b',

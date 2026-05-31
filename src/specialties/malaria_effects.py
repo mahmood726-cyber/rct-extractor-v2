@@ -249,17 +249,66 @@ def extract_malaria_effects(extractor, text, consistency=True, drop_inconsistent
     """
     from src.core.enhanced_extractor_v3 import to_dict
     from src.specialties.internal_consistency import annotate
-    text = normalize_text(text) if text else text   # fi/fl ligatures -> ascii
-    core = [to_dict(x) for x in extractor.extract(text)] if text else []
-    merged = core + augment_malaria_effects(text, core)
-    merged = [e for e in merged if not _is_vital_sign(e, text)]   # P0-2 (core too)
+    norm, omap = _normalize_with_offsets(text) if text else (text, None)
+    core = [to_dict(x) for x in extractor.extract(norm)] if norm else []
+    merged = core + augment_malaria_effects(norm, core)
+    merged = [e for e in merged if not _is_vital_sign(e, norm)]   # P0-2 (core too)
     for e in merged:                                              # tag endpoint
-        e["endpoint"] = _tag_effect_endpoint(text, e.get("char_start", 0), e.get("char_end", 0))
+        e["endpoint"] = _tag_effect_endpoint(norm, e.get("char_start", 0), e.get("char_end", 0))
     if dedup:
         merged = _dedup_effects(merged)                           # P1: cross-mention
+    _add_log_rr(merged)                                           # log-scale pooling field
     if consistency:
         merged = annotate(merged, drop_hard=drop_inconsistent)
+    # translate char offsets from the normalized frame back to the ORIGINAL text
+    if omap is not None:
+        for e in merged:
+            for k in ("char_start", "char_end"):
+                p = e.get(k)
+                if isinstance(p, int) and 0 <= p < len(omap):
+                    e[k] = omap[p]
     return merged
+
+
+_LIG_LENS = {lig: len(rep) for lig, rep in _LIGATURES.items()}
+
+
+def _normalize_with_offsets(text):
+    """normalize_text() but also return omap: omap[i] = index in the ORIGINAL
+    text of normalized-char i (so returned char_start/char_end can be mapped
+    back to the input even though ligature expansion changes length)."""
+    if not any(lig in text for lig in _LIGATURES):
+        return text, list(range(len(text) + 1))
+    out, omap = [], []
+    for i, ch in enumerate(text):
+        rep = _LIGATURES.get(ch)
+        if rep:
+            for c in rep:
+                out.append(c); omap.append(i)
+        else:
+            out.append(ch); omap.append(i)
+    omap.append(len(text))
+    return "".join(out), omap
+
+
+def _add_log_rr(effects):
+    """For EFFICACY_PCT / RRR, attach the log-RR field they must be POOLED on:
+    log_rr = ln(1 - VE/100). Pooling these on the raw % scale is wrong. (stats review)"""
+    import math
+
+    def lr(x):
+        if x is None or x >= 100:
+            return None
+        v = 1.0 - x / 100.0
+        return round(math.log(v), 6) if v > 0 else None
+
+    for e in effects:
+        if e.get("type") in ("EFFICACY_PCT", "RRR"):
+            e["log_rr"] = lr(e.get("effect_size"))
+            e["log_rr_lower"] = lr(e.get("ci_upper"))   # CI flips on 1-VE
+            e["log_rr_upper"] = lr(e.get("ci_lower"))
+            e["pooling_note"] = "pool on log(1-VE/100) scale, not raw %"
+    return effects
 
 
 def _round(x):

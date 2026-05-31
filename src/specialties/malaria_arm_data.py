@@ -59,9 +59,35 @@ def _nearest_status(text, start, end, options, window=90, default="unspecified")
     return best
 
 
-def _pcr_status(text, start, end):
-    return _nearest_status(text, start, end,
-                           ((_PCR_CORRECTED, "corrected"), (_PCR_UNCORRECTED, "uncorrected")))
+def _pcr_status(text, start, end, window=90, conjoined_gap=25):
+    """Nearest PCR keyword -- but 'ambiguous' when the corrected and uncorrected
+    keywords are CONJOINED (adjacent in one phrase, e.g. 'PCR-corrected and
+    uncorrected ACPR were 96% and 80%'), so neither number can be assigned. When
+    the two keywords are far apart (each next to its own arm) the nearer wins."""
+    lo, hi = max(0, start - window), min(len(text), end + window)
+    region = text[lo:hi]
+    mid = (start + end) // 2 - lo
+
+    def _nearest(rx):
+        best, best_c = None, None
+        for m in rx.finditer(region):
+            c = (m.start() + m.end()) // 2
+            d = abs(c - mid)
+            if best is None or d < best:
+                best, best_c = d, c
+        return best, best_c
+
+    dc, cc = _nearest(_PCR_CORRECTED)
+    du, uc = _nearest(_PCR_UNCORRECTED)
+    if dc is not None and du is not None:
+        if abs(cc - uc) < conjoined_gap:     # keywords adjacent -> conjoined phrase
+            return "ambiguous"
+        return "corrected" if dc < du else "uncorrected"
+    if dc is not None:
+        return "corrected"
+    if du is not None:
+        return "uncorrected"
+    return "unspecified"
 
 
 # ITT vs per-protocol: different denominator conventions for the same arm.
@@ -249,9 +275,11 @@ def pair_2x2(proportions: List[Dict], max_gap: int = 260) -> List[Dict]:
                 seen_counts.add(key)
                 deduped.append(p)
         # ≥3 distinct arms for this endpoint -> multi-arm trial; naive pairwise
-        # pooling double-counts a shared control, so flag every pair. (P1)
+        # pooling double-counts a shared control, so flag every pair. Also trigger
+        # on >=3 distinct denominators (catches same-drug dose arms that collapse
+        # to one label). (P1 + review refinement)
         distinct_arms = {p["arm"] for p in deduped if p["arm"]}
-        multi_arm = len(distinct_arms) >= 3
+        multi_arm = len(distinct_arms) >= 3 or len({p["total"] for p in deduped}) >= 3
         used = set()
         for i in range(len(deduped)):
             if i in used:
@@ -273,8 +301,9 @@ def pair_2x2(proportions: List[Dict], max_gap: int = 260) -> List[Dict]:
                 sa, sb = a.get("pcr_status", "unspecified"), b.get("pcr_status", "unspecified")
                 if {sa, sb} == {"corrected", "uncorrected"}:
                     continue
-                # one known PCR status + one unspecified: allow but never auto-pool
-                pcr_uncertain = (sa != sb) and ("unspecified" in (sa, sb))
+                # ambiguous, or one known + one unspecified: allow but never auto-pool
+                pcr_uncertain = ("ambiguous" in (sa, sb)
+                                 or (sa != sb and "unspecified" in (sa, sb)))
                 pop_mismatch = (a.get("analysis_population", "unspecified") != "unspecified"
                                 and b.get("analysis_population", "unspecified") != "unspecified"
                                 and a["analysis_population"] != b["analysis_population"])
@@ -333,6 +362,20 @@ def _fc(s):
         return None
 
 
+def _iqr_to_mean_sd(q1, median, q3, n):
+    """Wan et al. (2014) median+IQR -> mean+SD estimation so median/IQR rows are
+    poolable after transformation. mean ~ (Q1+median+Q3)/3; SD ~ IQR/denom where
+    denom = 2*Phi^-1((0.75n-0.125)/(n+0.25)) (n known) or 1.35 (normal approx)."""
+    mean = (q1 + median + q3) / 3.0
+    if n and n > 1:
+        from statistics import NormalDist
+        denom = 2.0 * NormalDist().inv_cdf((0.75 * n - 0.125) / (n + 0.25))
+    else:
+        denom = 1.35
+    sd = (q3 - q1) / denom if denom > 0 else None
+    return round(mean, 4), (round(sd, 4) if sd is not None else None)
+
+
 def extract_continuous(text: str) -> List[Dict]:
     """Per-arm continuous data (mean+SD poolable; median+IQR flagged as needing
     transformation) for continuous malaria outcomes. Tagged with endpoint + arm."""
@@ -357,8 +400,12 @@ def extract_continuous(text: str) -> List[Dict]:
         out_med, lo, hi = _fc(m["median"]), _fc(m["lo"]), _fc(m["hi"])
         if None in (out_med, lo, hi):
             continue
+        nm = _N_NEAR.search(text[max(0, s - 40):e + 25])
+        n = int(nm.group(1)) if nm else None
+        est_mean, est_sd = _iqr_to_mean_sd(lo, out_med, hi, n)   # Wan 2014
         _emit(ep, _tag_arm(text, s, e), s, e, stat="median_iqr",
-              median=out_med, iqr_lower=lo, iqr_upper=hi, poolable=False)
+              median=out_med, iqr_lower=lo, iqr_upper=hi,
+              est_mean=est_mean, est_sd=est_sd, poolable="after_iqr_to_sd")
 
     for m in _MEAN_SD.finditer(text):
         s, e = m.start(), m.end()

@@ -153,10 +153,14 @@ def test_mean_sd_rejects_difference_or_se():
     assert extract_continuous("adjusted mean difference in haemoglobin was 1.8 ± 0.4 g/dL") == []
 
 
-def test_continuous_median_iqr_not_poolable():
+def test_continuous_median_iqr_wan_estimate():
     from src.specialties.malaria_arm_data import extract_continuous
-    r = extract_continuous("median fever clearance time was 18 (IQR 12-26) hours")
-    assert r and r[0]["stat"] == "median_iqr" and r[0]["poolable"] is False
+    r = extract_continuous("median fever clearance time was 18 (IQR 12-26) hours (n=40)")
+    assert r and r[0]["stat"] == "median_iqr"
+    # poolable only AFTER IQR->SD transformation; Wan estimates provided
+    assert r[0]["poolable"] == "after_iqr_to_sd"
+    assert abs(r[0]["est_mean"] - (12 + 18 + 26) / 3) < 1e-3   # est_mean rounded to 4dp
+    assert r[0]["est_sd"] is not None and r[0]["est_sd"] > 0
 
 
 def test_haemoglobin_spelling_both():

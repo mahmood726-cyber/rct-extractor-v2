@@ -122,3 +122,15 @@ def test_dedup_keys_on_endpoint():
          "Severe malaria risk ratio 0.74 (95% CI 0.61 to 0.90).")
     eps = {x.get("endpoint") for x in extract_malaria_effects(e, t) if x["type"] == "RR"}
     assert {"CLINICAL_MALARIA", "SEVERE_MALARIA"} <= eps
+
+
+def test_efficacy_log_rr_field():
+    import math
+    from src.core.enhanced_extractor_v3 import EnhancedExtractor
+    from src.specialties.malaria_effects import extract_malaria_effects
+    e = EnhancedExtractor()
+    eff = [x for x in extract_malaria_effects(e, "vaccine efficacy was 56% (95% CI 51-60)")
+           if x["type"] in ("RRR", "EFFICACY_PCT")][0]
+    assert abs(eff["log_rr"] - math.log(0.44)) < 1e-4   # ln(1 - 56/100)
+    assert eff["log_rr_lower"] < eff["log_rr_upper"]    # CI flips, stays ordered
+    assert "log" in eff["pooling_note"]
