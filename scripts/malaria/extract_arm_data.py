@@ -58,6 +58,7 @@ def main():
     total_props = 0
     consistent_props = 0
     total_2x2 = 0
+    hi_conf_2x2 = 0        # both arms drug-named AND both % consistent
     unlocked = 0           # zero-effect PDFs that now yield >=1 2x2
     records = []
 
@@ -74,6 +75,7 @@ def main():
         total_props += len(props)
         consistent_props += sum(1 for p in props if p["pct_consistent"])
         total_2x2 += len(tables)
+        hi_conf_2x2 += sum(1 for t in tables if not t.get("needs_review"))
         if props:
             trials_with_prop += 1
         if tables:
@@ -100,7 +102,9 @@ def main():
         f"- Trials with >=1 per-arm proportion: **{trials_with_prop}**",
         f"- Trials with >=1 paired 2x2 table: **{trials_with_2x2}**",
         f"- Total per-arm proportions extracted: **{total_props}**",
-        f"- Total 2x2 tables: **{total_2x2}**",
+        f"- Total 2x2 tables (counts paired within a comparative clause): **{total_2x2}**",
+        f"  - of which high-confidence (both arms drug-named + consistent): **{hi_conf_2x2}**",
+        f"  - remainder flagged needs_review (generic/uncertain arm label): **{total_2x2 - hi_conf_2x2}**",
         f"- Proportion internal-consistency (reported % == 100*n/N): "
         f"**{consistent_props}/{total_props}** ({cons_rate:.1%})",
         f"- **Coverage unlock:** zero-effect-estimate PDFs now yielding a 2x2: "

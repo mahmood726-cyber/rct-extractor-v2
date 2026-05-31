@@ -144,35 +144,58 @@ def extract_proportions(text: str, pct_tol: float = 1.5) -> List[Dict]:
     return out
 
 
-def pair_2x2(proportions: List[Dict]) -> List[Dict]:
-    """Pair same-endpoint proportions from two different arms into 2x2 tables."""
+def pair_2x2(proportions: List[Dict], max_gap: int = 260) -> List[Dict]:
+    """Pair same-endpoint proportions into 2x2 tables -- but only when the two
+    proportions sit in the SAME comparative statement (within max_gap chars).
+
+    Pairing across the whole document grabs unrelated table cells; requiring
+    proximity targets real "X (n1/N1) vs Y (n2/N2)" comparisons. A 2x2 is flagged
+    needs_review when an arm label is missing/generic or the % is inconsistent.
+    """
+    _GENERIC = {"intervention", "treatment", "control", "active", "experimental",
+                "vaccine", "group_1", "group_2", None}
     by_ep = {}
     for p in proportions:
         by_ep.setdefault(p["endpoint"], []).append(p)
+
     tables = []
     for ep, props in by_ep.items():
-        # drop identical (events,total) duplicates (same datum repeated in the
-        # abstract + results + a table)
+        # drop identical (events,total) duplicates
         deduped, seen_counts = [], set()
-        for p in props:
+        for p in sorted(props, key=lambda x: x.get("char_start", 0)):
             key = (p["events"], p["total"])
             if key not in seen_counts:
                 seen_counts.add(key)
                 deduped.append(p)
-        # distinct arms only; take the first two distinct-armed proportions
-        armed = [p for p in deduped if p["arm"]]
-        seen_arms = {}
-        for p in armed:
-            seen_arms.setdefault(p["arm"], p)
-        arms = list(seen_arms.values())
-        if len(arms) >= 2:
-            a, b = arms[0], arms[1]
-            tables.append({
-                "endpoint": ep,
-                "arm1": {"label": a["arm"], "events": a["events"], "total": a["total"]},
-                "arm2": {"label": b["arm"], "events": b["events"], "total": b["total"]},
-                "both_consistent": a["pct_consistent"] and b["pct_consistent"],
-            })
+        used = set()
+        for i in range(len(deduped)):
+            if i in used:
+                continue
+            a = deduped[i]
+            for j in range(i + 1, len(deduped)):
+                if j in used:
+                    continue
+                b = deduped[j]
+                gap = abs(b.get("char_start", 0) - a.get("char_start", 0))
+                if gap > max_gap:
+                    break  # sorted -> no closer candidate further on
+                if a["total"] == b["total"] and a["events"] == b["events"]:
+                    continue
+                if a["arm"] and b["arm"] and a["arm"] == b["arm"]:
+                    continue  # same named arm -> not a between-arm pair
+                review = (a["arm"] in _GENERIC or b["arm"] in _GENERIC
+                          or not a["pct_consistent"] or not b["pct_consistent"])
+                tables.append({
+                    "endpoint": ep,
+                    "arm1": {"label": a["arm"] or "arm_1", "events": a["events"], "total": a["total"]},
+                    "arm2": {"label": b["arm"] or "arm_2", "events": b["events"], "total": b["total"]},
+                    "both_consistent": a["pct_consistent"] and b["pct_consistent"],
+                    "needs_review": review,
+                    "char_gap": gap,
+                })
+                used.add(i)
+                used.add(j)
+                break
     return tables
 
 

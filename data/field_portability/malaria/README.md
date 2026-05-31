@@ -91,7 +91,20 @@ extract_arm_level("ACPR was 121/125 (96.8%) in the AL group and 130/148 (87.8%) 
   endpoint and tagged with its arm (drug name).
 - **Built-in consistency check:** the reported % must equal 100*events/total
   (catches OCR/transcription errors); inconsistent proportions are flagged.
-- Pairs same-endpoint proportions from two arms into a 2x2 table.
+- Pairs same-endpoint proportions from two arms into a 2x2 table, but only when
+  they sit in the same comparative clause (proximity-constrained, so it doesn't
+  grab unrelated table cells).
+
+### Corpus yield + honest accuracy split (2,001 PDFs)
+- **741 trials** yield >=1 per-arm proportion; **3,591 proportions** total.
+- **Proportion accuracy: 98.6%** internally consistent (reported % == 100*n/N).
+  This is the reliable, primary output for pooling.
+- **769 2x2 tables** (counts paired within a clause; **90 zero-effect papers
+  unlocked**). The COUNTS are accurate (consistency-checked), but **arm-label
+  assignment from flattened PDF text is unreliable** — e.g. an "AS+AQ" arm can be
+  mislabeled. Only ~33 are high-confidence (both arms drug-named); the rest are
+  flagged `needs_review` so a human verifies which count belongs to which arm.
+- Bottom line: trust the proportions + counts; verify the arm labels.
 - **Malaria-augmenter lift: 62.8% → 72.6%** recall on abstracts that contain a
   genuine effect phrase (the rest are non-numeric method-sentence mentions).
 - **AACT external gold** (independent numeric truth) exists for only ~43 of the
