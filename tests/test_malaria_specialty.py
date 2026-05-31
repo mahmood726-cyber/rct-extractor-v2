@@ -147,3 +147,43 @@ def test_protective_efficacy_context():
             "incidence (incidence rate ratio 0.26, 95% CI 0.20-0.34).")
     results = [to_dict(x) for x in extractor.extract(text)]
     assert any(abs(r["effect_size"] - 0.26) < 1e-6 for r in results)
+
+
+# --- Multi-persona review: clinical vocabulary additions ---
+
+@pytest.mark.parametrize("phrase,canonical", [
+    ("vivax relapse", "RELAPSE"),
+    ("time to first recurrence", "RELAPSE"),
+    ("recurrence-free efficacy", "RELAPSE"),
+    ("recurrent parasitaemia", "RECURRENT_PARASITAEMIA"),
+    ("kelch13 mutation", "MOLECULAR_MARKER"),
+    ("parasite reduction ratio", "PARASITE_REDUCTION_RATIO"),
+    ("placental malaria", "PLACENTAL_MALARIA"),
+    ("low birth weight", "LOW_BIRTH_WEIGHT"),
+    ("maternal anaemia", "MATERNAL_ANAEMIA"),
+    ("preterm birth", "PRETERM_BIRTH"),
+    ("acute haemolytic anaemia", "HAEMOLYSIS"),
+    ("hypoglycaemia", "HYPOGLYCAEMIA"),
+    ("acute kidney injury", "ACUTE_KIDNEY_INJURY"),
+])
+def test_new_endpoint_normalization(phrase, canonical):
+    assert normalize_malaria_endpoint(phrase) == canonical
+
+
+def test_relapse_routes_before_recrudescence():
+    import re
+    pats = get_malaria_endpoint_patterns("treatment")
+    def route(t):
+        for p, ep in pats:
+            if re.search(p, t.lower()):
+                return ep
+    assert route("day 42 recurrence-free efficacy") == "RELAPSE"
+    assert route("PCR-confirmed recrudescence") == "RECRUDESCENCE"
+    # recurrent parasitaemia is PCR-uncorrected -> not TREATMENT_FAILURE
+    assert route("recurrent parasitaemia at day 28") == "RECURRENT_PARASITAEMIA"
+
+
+def test_generic_aliases_not_shadowed():
+    # specific endpoints must win over generic substrings
+    assert normalize_malaria_endpoint("anaemia") == "ANAEMIA"
+    assert normalize_malaria_endpoint("parasitaemia") == "PARASITAEMIA"

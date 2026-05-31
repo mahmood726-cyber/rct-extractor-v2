@@ -42,8 +42,7 @@ MALARIA_ENDPOINTS = {
     'TREATMENT_FAILURE': {
         'aliases': ['treatment failure', 'total treatment failure',
                     'therapeutic failure', 'clinical failure',
-                    'parasitological failure', 'recurrent parasitaemia',
-                    'recurrent parasitemia', 'failure rate'],
+                    'parasitological failure', 'failure rate'],
         'subspecialty': 'treatment',
         'measure_types': ['RR', 'RD', 'HR', 'OR']
     },
@@ -129,9 +128,9 @@ MALARIA_ENDPOINTS = {
         'measure_types': ['IRR', 'HR', 'RR']
     },
     'MALARIA_INFECTION': {
-        'aliases': ['malaria infection', 'parasite prevalence',
-                    'parasitaemia prevalence', 'asymptomatic parasitaemia',
-                    'p. falciparum infection', 'incident infection'],
+        'aliases': ['malaria infection', 'asymptomatic parasitaemia',
+                    'incident malaria infection', 'incident infection',
+                    'time to first infection'],
         'subspecialty': 'prevention',
         'measure_types': ['IRR', 'HR', 'RR', 'OR']
     },
@@ -175,6 +174,89 @@ MALARIA_ENDPOINTS = {
         'subspecialty': 'severe',
         'measure_types': ['IRR', 'HR', 'RR']
     },
+
+    # --- P. vivax radical cure (relapse is distinct from recrudescence/reinfection) ---
+    'RELAPSE': {
+        'aliases': ['relapse', 'vivax relapse', 'p. vivax recurrence',
+                    'recurrent vivax', 'recurrence-free efficacy',
+                    'first recurrence', 'time to first recurrence',
+                    'freedom from recurrence', 'radical cure'],
+        'subspecialty': 'treatment',
+        'measure_types': ['HR', 'RR', 'OR']
+    },
+    'RECURRENT_PARASITAEMIA': {
+        'aliases': ['recurrent parasitaemia', 'recurrent parasitemia',
+                    'pcr-uncorrected recurrence', 'any recurrence',
+                    'recurrent infection (uncorrected)'],
+        'subspecialty': 'treatment',
+        'measure_types': ['RR', 'HR', 'OR']
+    },
+
+    # --- Molecular / pharmacodynamic (resistance surveillance) ---
+    'MOLECULAR_MARKER': {
+        'aliases': ['kelch13', 'k13', 'pfkelch13', 'pfk13',
+                    'artemisinin partial resistance', 'validated marker',
+                    'pfcrt', 'pfmdr1', 'pfpm2', 'plasmepsin', 'copy number'],
+        'subspecialty': 'treatment',
+        'measure_types': ['RR', 'OR']
+    },
+    'PARASITE_REDUCTION_RATIO': {
+        'aliases': ['parasite reduction ratio', 'prr', 'prr48', 'prr24',
+                    'log10 parasite reduction', 'parasite clearance estimator'],
+        'subspecialty': 'treatment',
+        'measure_types': ['MD', 'GMR']
+    },
+    'HAEMOLYSIS': {
+        'aliases': ['haemolysis', 'hemolysis', 'acute haemolytic anaemia',
+                    'haemoglobin drop', 'haemoglobinuria', 'g6pd deficiency'],
+        'subspecialty': 'treatment',
+        'measure_types': ['RR', 'OR', 'MD']
+    },
+
+    # --- IPTp / maternal malaria outcomes ---
+    'PLACENTAL_MALARIA': {
+        'aliases': ['placental malaria', 'placental parasitaemia',
+                    'placental infection'],
+        'subspecialty': 'prevention',
+        'measure_types': ['RR', 'OR', 'RD']
+    },
+    'LOW_BIRTH_WEIGHT': {
+        'aliases': ['low birth weight', 'low birthweight', 'lbw',
+                    'birth weight', 'birthweight'],
+        'subspecialty': 'prevention',
+        'measure_types': ['RR', 'OR', 'MD']
+    },
+    'MATERNAL_ANAEMIA': {
+        'aliases': ['maternal anaemia', 'maternal anemia',
+                    'third-trimester anaemia', 'anaemia at delivery'],
+        'subspecialty': 'prevention',
+        'measure_types': ['RR', 'OR']
+    },
+    'PRETERM_BIRTH': {
+        'aliases': ['preterm birth', 'prematurity', 'preterm delivery',
+                    'small for gestational age', 'stillbirth'],
+        'subspecialty': 'prevention',
+        'measure_types': ['RR', 'OR']
+    },
+
+    # --- Severe-malaria component outcomes ---
+    'ACIDOSIS': {
+        'aliases': ['metabolic acidosis', 'base deficit', 'hyperlactataemia',
+                    'respiratory distress', 'acidosis'],
+        'subspecialty': 'severe',
+        'measure_types': ['RR', 'OR']
+    },
+    'HYPOGLYCAEMIA': {
+        'aliases': ['hypoglycaemia', 'hypoglycemia'],
+        'subspecialty': 'severe',
+        'measure_types': ['RR', 'OR']
+    },
+    'ACUTE_KIDNEY_INJURY': {
+        'aliases': ['acute kidney injury', 'aki', 'renal failure',
+                    'blackwater fever'],
+        'subspecialty': 'severe',
+        'measure_types': ['RR', 'OR', 'HR']
+    },
 }
 
 
@@ -212,12 +294,23 @@ TREATMENT_PATTERNS = {
         (r'late\s+clinical\s+failure|\blcf\b', 'LATE_CLINICAL_FAILURE'),
         (r'late\s+parasitolog\w+\s+failure|\blpf\b', 'LATE_PARASITOLOGICAL_FAILURE'),
         (r'(?:total\s+|therapeutic\s+)?treatment\s+failure', 'TREATMENT_FAILURE'),
-        (r'recurrent\s+parasit', 'TREATMENT_FAILURE'),
+        # vivax relapse / radical-cure recurrence -- BEFORE recrudescence/reinfection
+        (r'recurrence[- ]free|radical\s+cure|vivax\s+(?:relapse|recurrence)|'
+         r'recurrent\s+vivax|time\s+to\s+first\s+recurrence', 'RELAPSE'),
+        (r'\brelapse', 'RELAPSE'),
         (r'recrudescen\w+', 'RECRUDESCENCE'),
         (r're[- ]?infection|new\s+infection', 'REINFECTION'),
+        # PCR-UNCORRECTED recurrent parasitaemia != treatment failure (failure is
+        # the PCR-corrected recrudescent fraction). Map to the neutral endpoint.
+        (r'recurrent\s+parasit', 'RECURRENT_PARASITAEMIA'),
+        (r'parasite\s+reduction\s+ratio|\bprr(?:48|24)?\b|'
+         r'log10?\s+parasite\s+reduction', 'PARASITE_REDUCTION_RATIO'),
         (r'parasite\s+clearance\s+(?:time|half[- ]?life)|\bpct\b', 'PARASITE_CLEARANCE_TIME'),
         (r'day[- ]?3\s+(?:parasit|positiv)', 'DAY3_POSITIVITY'),
         (r'fever\s+clearance\s+time|\bfct\b', 'FEVER_CLEARANCE_TIME'),
+        (r'kelch\s?13|pfk(?:elch)?13|\bk13\b|artemisinin\s+partial\s+resistance',
+         'MOLECULAR_MARKER'),
+        (r'h[ae]molysis|haemoglobinuria|g6pd\s+deficien', 'HAEMOLYSIS'),
         (r'parasite\s+density|parasit[ae]emia', 'PARASITAEMIA'),
         (r'gametocyt', 'GAMETOCYTE_CARRIAGE'),
         (r'h[ae]moglobin|\bhb\b', 'HAEMOGLOBIN'),
@@ -254,6 +347,11 @@ PREVENTION_PATTERNS = {
         (r'clinical\s+malaria|symptomatic\s+malaria|uncomplicated\s+malaria', 'CLINICAL_MALARIA'),
         (r'incidence\s+of\s+(?:clinical\s+)?malaria|malaria\s+incidence', 'CLINICAL_MALARIA'),
         (r'(?:vaccine|protective)\s+efficacy|efficacy\s+against', 'PROTECTIVE_EFFICACY'),
+        (r'placental\s+malaria|placental\s+(?:parasit|infection)', 'PLACENTAL_MALARIA'),
+        (r'low\s+birth\s*weight|\blbw\b|birth\s*weight', 'LOW_BIRTH_WEIGHT'),
+        (r'maternal\s+an[ae]emia|an[ae]emia\s+at\s+delivery', 'MATERNAL_ANAEMIA'),
+        (r'preterm\s+(?:birth|delivery)|prematurity|small\s+for\s+gestational|stillbirth',
+         'PRETERM_BIRTH'),
         (r'(?:malaria|parasite|p\.?\s*falciparum)\s+infection', 'MALARIA_INFECTION'),
         (r'(?:parasite|malaria)\s+prevalence', 'PREVALENCE'),
         (r'asymptomatic\s+parasit', 'MALARIA_INFECTION'),
@@ -286,6 +384,10 @@ SEVERE_PATTERNS = {
         (r'(?:in[- ]?hospital\s+|case\s+)?(?:mortality|fatality|death)', 'MORTALITY'),
         (r'severe\s+malaria|progression\s+to\s+severe', 'SEVERE_MALARIA'),
         (r'cerebral\s+malaria|coma|neurological\s+sequelae', 'CEREBRAL_MALARIA'),
+        (r'metabolic\s+acidosis|base\s+deficit|hyperlactat|respiratory\s+distress',
+         'ACIDOSIS'),
+        (r'hypoglyc[ae]emia', 'HYPOGLYCAEMIA'),
+        (r'acute\s+kidney\s+injury|\baki\b|renal\s+failure|blackwater', 'ACUTE_KIDNEY_INJURY'),
         (r'hospital(?:isation|ization|\s+admission)', 'HOSPITALISATION'),
     ],
     'context_patterns': [
@@ -379,12 +481,20 @@ def get_malaria_endpoint_patterns(subspecialty: str) -> List[Tuple[str, str]]:
 
 
 def normalize_malaria_endpoint(endpoint: str, subspecialty: str = None) -> str:
-    """Normalize endpoint name to canonical malaria form."""
+    """Normalize endpoint name to canonical malaria form.
+
+    Prefers the LONGEST matching alias so specific endpoints win over generic
+    substrings (e.g. "maternal anaemia" -> MATERNAL_ANAEMIA, not ANAEMIA;
+    "recurrent parasitaemia" -> RECURRENT_PARASITAEMIA, not PARASITAEMIA).
+    """
     endpoint_lower = endpoint.lower()
 
+    best, best_len = None, 0
     for canonical, info in MALARIA_ENDPOINTS.items():
         for alias in info['aliases']:
-            if alias in endpoint_lower:
-                return canonical
+            if alias in endpoint_lower and len(alias) > best_len:
+                best, best_len = canonical, len(alias)
+    if best:
+        return best
 
     return endpoint.upper()
