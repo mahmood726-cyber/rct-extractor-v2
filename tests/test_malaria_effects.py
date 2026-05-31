@@ -100,3 +100,14 @@ def test_p0_2_vital_signs_not_extracted():
 def test_p0_2_real_ratio_still_works():
     r = aug("recurrence RR, 0.18; 95% CI 0.10-0.30")
     assert any(x["type"] == "RR" and abs(x["effect_size"] - 0.18) < 1e-6 for x in r)
+
+
+def test_cross_mention_dedup():
+    from src.core.enhanced_extractor_v3 import EnhancedExtractor
+    from src.specialties.malaria_effects import extract_malaria_effects
+    e = EnhancedExtractor()
+    t = ("hazard ratio 0.45 (95% CI 0.30-0.68). Later: HR 0.45 (95% CI 0.30 to 0.68). "
+         "Figure: hazard ratio 0.45 [95% CI 0.30, 0.68].")
+    assert len([x for x in extract_malaria_effects(e, t) if x["type"] == "HR"]) == 1
+    # opting out keeps duplicates
+    assert len([x for x in extract_malaria_effects(e, t, dedup=False) if x["type"] == "HR"]) >= 2

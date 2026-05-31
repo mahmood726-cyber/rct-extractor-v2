@@ -205,7 +205,8 @@ def augment_malaria_effects(text: str, existing: Optional[List[Dict]] = None) ->
     return out
 
 
-def extract_malaria_effects(extractor, text, consistency=True, drop_inconsistent=True):
+def extract_malaria_effects(extractor, text, consistency=True, drop_inconsistent=True,
+                            dedup=True):
     """One-call malaria extraction: core engine + malaria augmenter, deduped,
     then screened for internal consistency.
 
@@ -226,9 +227,30 @@ def extract_malaria_effects(extractor, text, consistency=True, drop_inconsistent
     core = [to_dict(x) for x in extractor.extract(text)] if text else []
     merged = core + augment_malaria_effects(text, core)
     merged = [e for e in merged if not _is_vital_sign(e, text)]   # P0-2 (core too)
+    if dedup:
+        merged = _dedup_effects(merged)                           # P1: cross-mention
     if consistency:
         merged = annotate(merged, drop_hard=drop_inconsistent)
     return merged
+
+
+def _round(x):
+    return round(x, 3) if isinstance(x, (int, float)) else None
+
+
+def _dedup_effects(effects):
+    """Collapse the same effect reported more than once in one document (abstract
+    + results + forest-plot row) -- otherwise one trial enters a pool 2-3x,
+    inflating its weight and falsely narrowing the CI. (P1)"""
+    seen, out = set(), []
+    for e in effects:
+        key = (e.get("type"), _round(e.get("effect_size")),
+               _round(e.get("ci_lower")), _round(e.get("ci_upper")))
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append(e)
+    return out
 
 
 def _is_vital_sign(effect, text):

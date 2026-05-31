@@ -110,3 +110,21 @@ def test_same_pcr_status_pairs():
          "130/148 (87.8%) in the SP group")
     tabs = extract_arm_level(t)["tables_2x2"]
     assert len(tabs) == 1 and tabs[0]["pcr_status"] == "corrected"
+
+
+def test_multi_arm_flagged_not_poolable():
+    t = ("ACPR was 121/125 (96.8%) in AL group, 130/148 (87.8%) in SP group, "
+         "and 140/150 (93.3%) in DP group")
+    r = extract_arm_level(t)
+    assert r["tables_2x2"] and all(x["multi_arm"] for x in r["tables_2x2"])
+    assert r["poolable_2x2"] == []   # multi-arm excluded from poolable
+
+
+def test_clean_two_arm_is_poolable():
+    t = "ACPR was 121/125 (96.8%) in the AL group and 130/148 (87.8%) in the SP group"
+    assert len(extract_arm_level(t)["poolable_2x2"]) == 1
+
+
+def test_analysis_population_tagged():
+    p = extract_proportions("per-protocol ACPR was 121/125 (96.8%)")[0]
+    assert p["analysis_population"] == "pp"

@@ -44,18 +44,33 @@ _PCR_CORRECTED = re.compile(r"pcr[- ]?(?:corrected|adjusted|confirmed)", re.I)
 _PCR_UNCORRECTED = re.compile(r"pcr[- ]?uncorrected|uncorrected|crude", re.I)
 
 
-def _pcr_status(text, start, end, window=90):
-    # nearest PCR keyword to the proportion (a window can contain both).
+def _nearest_status(text, start, end, options, window=90, default="unspecified"):
+    """Return the status whose keyword is nearest the proportion (windows may
+    contain more than one)."""
     lo, hi = max(0, start - window), min(len(text), end + window)
     region = text[lo:hi]
     mid = (start + end) // 2 - lo
-    best, best_d = "unspecified", 10 ** 9
-    for rx, status in ((_PCR_CORRECTED, "corrected"), (_PCR_UNCORRECTED, "uncorrected")):
+    best, best_d = default, 10 ** 9
+    for rx, status in options:
         for m in rx.finditer(region):
             d = abs(((m.start() + m.end()) // 2) - mid)
             if d < best_d:
                 best_d, best = d, status
     return best
+
+
+def _pcr_status(text, start, end):
+    return _nearest_status(text, start, end,
+                           ((_PCR_CORRECTED, "corrected"), (_PCR_UNCORRECTED, "uncorrected")))
+
+
+# ITT vs per-protocol: different denominator conventions for the same arm.
+_ITT = re.compile(r"\bm?itt\b|intention[- ]to[- ]treat|intent[- ]to[- ]treat", re.I)
+_PP = re.compile(r"per[- ]protocol|\bpp\b|evaluable|per\s+protocol", re.I)
+
+
+def _analysis_population(text, start, end):
+    return _nearest_status(text, start, end, ((_ITT, "itt"), (_PP, "pp")))
 
 
 # Non-event contexts that precede a "<n> of <N>" that is NOT a clinical count.
@@ -201,6 +216,7 @@ def extract_proportions(text: str, pct_tol: float = 1.5) -> List[Dict]:
                 "endpoint": ep,
                 "arm": _tag_arm(text, s, e),
                 "pcr_status": _pcr_status(text, s, e),
+                "analysis_population": _analysis_population(text, s, e),
                 "source_text": re.sub(r"\s+", " ", text[max(0, s - 25):e + 5]).strip()[:120],
                 "char_start": s, "char_end": e,
             })
@@ -231,6 +247,10 @@ def pair_2x2(proportions: List[Dict], max_gap: int = 260) -> List[Dict]:
             if key not in seen_counts:
                 seen_counts.add(key)
                 deduped.append(p)
+        # ≥3 distinct arms for this endpoint -> multi-arm trial; naive pairwise
+        # pooling double-counts a shared control, so flag every pair. (P1)
+        distinct_arms = {p["arm"] for p in deduped if p["arm"]}
+        multi_arm = len(distinct_arms) >= 3
         used = set()
         for i in range(len(deduped)):
             if i in used:
@@ -252,15 +272,22 @@ def pair_2x2(proportions: List[Dict], max_gap: int = 260) -> List[Dict]:
                 sa, sb = a.get("pcr_status", "unspecified"), b.get("pcr_status", "unspecified")
                 if {sa, sb} == {"corrected", "uncorrected"}:
                     continue
+                pop_mismatch = (a.get("analysis_population", "unspecified") != "unspecified"
+                                and b.get("analysis_population", "unspecified") != "unspecified"
+                                and a["analysis_population"] != b["analysis_population"])
                 review = (a["arm"] in _GENERIC or b["arm"] in _GENERIC
-                          or not a["pct_consistent"] or not b["pct_consistent"])
+                          or not a["pct_consistent"] or not b["pct_consistent"]
+                          or multi_arm or pop_mismatch)
                 tables.append({
                     "endpoint": ep,
                     "pcr_status": sa if sa == sb else (sa if sb == "unspecified" else sb),
+                    "analysis_population": a.get("analysis_population", "unspecified"),
                     "arm1": {"label": a["arm"] or "arm_1", "events": a["events"], "total": a["total"]},
                     "arm2": {"label": b["arm"] or "arm_2", "events": b["events"], "total": b["total"]},
                     "both_consistent": a["pct_consistent"] and b["pct_consistent"],
                     "needs_review": review,
+                    "multi_arm": multi_arm,
+                    "population_mismatch": pop_mismatch,
                     "char_gap": gap,
                 })
                 used.add(i)
@@ -269,7 +296,21 @@ def pair_2x2(proportions: List[Dict], max_gap: int = 260) -> List[Dict]:
     return tables
 
 
+def poolable_ready(tables):
+    """Return only 2x2 tables safe to pool WITHOUT human verification: both arms
+    drug-named (not generic), consistent percentages, and not flagged for review
+    (so multi-arm / population-mismatch / PCR issues are excluded). (P2)"""
+    return [t for t in tables if not t.get("needs_review")
+            and t.get("both_consistent")]
+
+
 def extract_arm_level(text: str) -> Dict:
-    """Convenience: proportions + paired 2x2 tables for a piece of text."""
+    """Convenience: proportions + paired 2x2 tables for a piece of text.
+
+    `tables_2x2` is ALL paired tables (verify arm labels before pooling);
+    `poolable_2x2` is the high-confidence subset safe to pool as-is.
+    """
     props = extract_proportions(text)
-    return {"proportions": props, "tables_2x2": pair_2x2(props)}
+    tables = pair_2x2(props)
+    return {"proportions": props, "tables_2x2": tables,
+            "poolable_2x2": poolable_ready(tables)}
