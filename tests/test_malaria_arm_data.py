@@ -88,3 +88,25 @@ def test_p0_3_uppercase_AL_still_tags():
 def test_p0_4_page_x_of_y_rejected():
     assert extract_proportions("see ACPR data on page 8 of 150 of the report") == []
     assert extract_proportions("at day 8 of 150 follow-up, ACPR was assessed") == []
+
+
+# --- P0-7: PCR-corrected vs uncorrected separation ---
+
+def test_pcr_status_tagged():
+    p = extract_proportions("PCR-corrected ACPR was 121/125 (96.8%)")[0]
+    assert p["pcr_status"] == "corrected"
+    p2 = extract_proportions("PCR-uncorrected ACPR was 100/125 (80.0%)")[0]
+    assert p2["pcr_status"] == "uncorrected"
+
+
+def test_pcr_corrected_uncorrected_not_paired():
+    t = ("PCR-corrected ACPR was 121/125 (96.8%) in the AL group versus "
+         "PCR-uncorrected ACPR 110/148 (74.3%) in the SP group")
+    assert extract_arm_level(t)["tables_2x2"] == []
+
+
+def test_same_pcr_status_pairs():
+    t = ("PCR-corrected ACPR was 121/125 (96.8%) in the AL group and "
+         "130/148 (87.8%) in the SP group")
+    tabs = extract_arm_level(t)["tables_2x2"]
+    assert len(tabs) == 1 and tabs[0]["pcr_status"] == "corrected"

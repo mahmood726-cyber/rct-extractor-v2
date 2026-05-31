@@ -37,6 +37,27 @@ _PROP_PATTERNS = [
                r"(?:\s*\(\s*(?P<pct>\d{1,3}(?:\.\d+)?)\s*%\)?)?"),
 ]
 
+# PCR-correction status: corrected and uncorrected ACPR/failure have DIFFERENT
+# numerators AND denominators (uncorrected counts all recurrences; corrected
+# reclassifies reinfections) and must never be pooled together.
+_PCR_CORRECTED = re.compile(r"pcr[- ]?(?:corrected|adjusted|confirmed)", re.I)
+_PCR_UNCORRECTED = re.compile(r"pcr[- ]?uncorrected|uncorrected|crude", re.I)
+
+
+def _pcr_status(text, start, end, window=90):
+    # nearest PCR keyword to the proportion (a window can contain both).
+    lo, hi = max(0, start - window), min(len(text), end + window)
+    region = text[lo:hi]
+    mid = (start + end) // 2 - lo
+    best, best_d = "unspecified", 10 ** 9
+    for rx, status in ((_PCR_CORRECTED, "corrected"), (_PCR_UNCORRECTED, "uncorrected")):
+        for m in rx.finditer(region):
+            d = abs(((m.start() + m.end()) // 2) - mid)
+            if d < best_d:
+                best_d, best = d, status
+    return best
+
+
 # Non-event contexts that precede a "<n> of <N>" that is NOT a clinical count.
 _NEGATED_CONTEXT = re.compile(
     r"\b(?:page|pages|figure|fig|table|ref|reference|chapter|section|"
@@ -179,6 +200,7 @@ def extract_proportions(text: str, pct_tol: float = 1.5) -> List[Dict]:
                 "pct_consistent": consistent,
                 "endpoint": ep,
                 "arm": _tag_arm(text, s, e),
+                "pcr_status": _pcr_status(text, s, e),
                 "source_text": re.sub(r"\s+", " ", text[max(0, s - 25):e + 5]).strip()[:120],
                 "char_start": s, "char_end": e,
             })
@@ -225,10 +247,16 @@ def pair_2x2(proportions: List[Dict], max_gap: int = 260) -> List[Dict]:
                     continue
                 if a["arm"] and b["arm"] and a["arm"] == b["arm"]:
                     continue  # same named arm -> not a between-arm pair
+                # NEVER pair PCR-corrected with PCR-uncorrected (P0-7): different
+                # numerator AND denominator conventions -> meaningless ratio.
+                sa, sb = a.get("pcr_status", "unspecified"), b.get("pcr_status", "unspecified")
+                if {sa, sb} == {"corrected", "uncorrected"}:
+                    continue
                 review = (a["arm"] in _GENERIC or b["arm"] in _GENERIC
                           or not a["pct_consistent"] or not b["pct_consistent"])
                 tables.append({
                     "endpoint": ep,
+                    "pcr_status": sa if sa == sb else (sa if sb == "unspecified" else sb),
                     "arm1": {"label": a["arm"] or "arm_1", "events": a["events"], "total": a["total"]},
                     "arm2": {"label": b["arm"] or "arm_2", "events": b["events"], "total": b["total"]},
                     "both_consistent": a["pct_consistent"] and b["pct_consistent"],
