@@ -60,6 +60,15 @@ python scripts/malaria/build_aact_malaria_gold.py --aact "F:/AACT-storage/AACT/<
 python scripts/malaria/cross_check.py
 ```
 
+## What these numbers do NOT cover (read before pooling)
+The headline metrics are **self-consistency and recovery**, not certified
+correctness. They do **not** verify: which arm a count belongs to (arm labels are
+heuristic — verify them), PCR-corrected vs uncorrected status, ITT vs
+per-protocol denominators, or that a trial appears only once. **Do not pool the
+2x2 / effect output without human verification of arm labels, PCR status, and
+denominator basis.** Use `extract_arm_level(...)["poolable_2x2"]` for the
+high-confidence subset, and treat `needs_review` rows as "verify first".
+
 ## Measured performance (honest)
 - **Published-meta-analysis agreement: 87.9%** (`validate_against_ma.py`) — across
   73 published malaria meta-analyses, of the comparative effect estimates the

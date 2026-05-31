@@ -128,3 +128,25 @@ def test_clean_two_arm_is_poolable():
 def test_analysis_population_tagged():
     p = extract_proportions("per-protocol ACPR was 121/125 (96.8%)")[0]
     assert p["analysis_population"] == "pp"
+
+
+# --- Continuous per-arm extraction ---
+
+def test_continuous_mean_sd_poolable():
+    from src.specialties.malaria_arm_data import extract_continuous
+    r = extract_continuous("mean parasite clearance time 28.4 ± 6.2 h (n=50) in the AL group")
+    assert r and r[0]["stat"] == "mean_sd" and r[0]["mean"] == 28.4 and r[0]["sd"] == 6.2
+    assert r[0]["n"] == 50 and r[0]["poolable"] and r[0]["endpoint"] == "PARASITE_CLEARANCE_TIME"
+
+
+def test_continuous_median_iqr_not_poolable():
+    from src.specialties.malaria_arm_data import extract_continuous
+    r = extract_continuous("median fever clearance time was 18 (IQR 12-26) hours")
+    assert r and r[0]["stat"] == "median_iqr" and r[0]["poolable"] is False
+
+
+def test_haemoglobin_spelling_both():
+    # the [ae]+ fix: both British and American spellings route to HAEMOGLOBIN
+    from src.specialties.malaria_arm_data import extract_continuous
+    assert extract_continuous("haemoglobin mean 10.5 ± 1.2 g/dL")[0]["endpoint"] == "HAEMOGLOBIN"
+    assert extract_continuous("hemoglobin mean 10.5 ± 1.2 g/dL")[0]["endpoint"] == "HAEMOGLOBIN"

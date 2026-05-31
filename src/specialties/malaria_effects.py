@@ -172,6 +172,10 @@ def augment_malaria_effects(text: str, existing: Optional[List[Dict]] = None) ->
         val, lo, hi = _f(m["val"]), _f(m["lo"]), _f(m["hi"])
         if val is None or lo is None or hi is None:
             continue
+        # Efficacy is a percentage in [-100, 100] and the point sits in its CI;
+        # guard the standalone augmenter path too. (P1)
+        if not (-100 <= val <= 100) or not (min(lo, hi) - 0.5 <= val <= max(lo, hi) + 0.5):
+            continue
         s, e = m.start(), m.end()
         if overlaps(s, e):
             continue

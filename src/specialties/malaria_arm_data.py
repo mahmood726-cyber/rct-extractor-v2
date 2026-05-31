@@ -296,6 +296,73 @@ def pair_2x2(proportions: List[Dict], max_gap: int = 260) -> List[Dict]:
     return tables
 
 
+# ---- Continuous per-arm data (mean+SD / median+IQR) ----
+_NUM_C = r"[-+]?\d+(?:[.·]\d+)?"
+# Continuous malaria outcomes (the rest are binary proportions).
+_CONTINUOUS_ENDPOINTS = {
+    "PARASITE_CLEARANCE_TIME", "FEVER_CLEARANCE_TIME", "HAEMOGLOBIN",
+    "PARASITAEMIA", "PARASITE_REDUCTION_RATIO",
+}
+_MEAN_SD = re.compile(
+    r"(?:mean\s+(?:of\s+)?)?(?P<mean>" + _NUM_C + r")\s*"
+    r"(?:±|\+/-|\(\s*(?:SD|s\.d\.|standard\s+deviation)\s*[:=]?\s*)\s*"
+    r"(?P<sd>" + _NUM_C + r")\)?", re.I)
+_MEDIAN_IQR = re.compile(
+    r"median\b[^\d\n]{0,45}?(?P<median>" + _NUM_C + r")\s*[^\d\n]{0,8}?"
+    r"\(\s*(?:IQR|interquartile\s+range|range)\s*[:=]?\s*"
+    r"(?P<lo>" + _NUM_C + r")\s*(?:–|—|-|to|,)\s*(?P<hi>" + _NUM_C + r")\s*\)", re.I)
+_N_NEAR = re.compile(r"\bn\s*[=:]\s*(\d{1,6})", re.I)
+
+
+def _fc(s):
+    try:
+        return float(s.replace("·", "."))
+    except (ValueError, AttributeError):
+        return None
+
+
+def extract_continuous(text: str) -> List[Dict]:
+    """Per-arm continuous data (mean+SD poolable; median+IQR flagged as needing
+    transformation) for continuous malaria outcomes. Tagged with endpoint + arm."""
+    if not text:
+        return []
+    text = normalize_text(text)
+    out, spans = [], []
+
+    def _emit(ep, arm, s, e, **kw):
+        spans.append((s, e))
+        nm = _N_NEAR.search(text[max(0, s - 40):e + 25])
+        out.append({"endpoint": ep, "arm": arm, "n": int(nm.group(1)) if nm else None,
+                    "char_start": s, "char_end": e,
+                    "source_text": re.sub(r"\s+", " ", text[max(0, s - 20):e + 5]).strip()[:120],
+                    **kw})
+
+    for m in _MEDIAN_IQR.finditer(text):
+        s, e = m.start(), m.end()
+        ep = _tag_endpoint(text, s, e)
+        if ep not in _CONTINUOUS_ENDPOINTS:
+            continue
+        out_med, lo, hi = _fc(m["median"]), _fc(m["lo"]), _fc(m["hi"])
+        if None in (out_med, lo, hi):
+            continue
+        _emit(ep, _tag_arm(text, s, e), s, e, stat="median_iqr",
+              median=out_med, iqr_lower=lo, iqr_upper=hi, poolable=False)
+
+    for m in _MEAN_SD.finditer(text):
+        s, e = m.start(), m.end()
+        if any(not (e <= ss or s >= ee) for ss, ee in spans):
+            continue
+        ep = _tag_endpoint(text, s, e)
+        if ep not in _CONTINUOUS_ENDPOINTS:
+            continue
+        mean, sd = _fc(m["mean"]), _fc(m["sd"])
+        if mean is None or sd is None or sd < 0:
+            continue
+        _emit(ep, _tag_arm(text, s, e), s, e, stat="mean_sd",
+              mean=mean, sd=sd, poolable=True)
+    return out
+
+
 def poolable_ready(tables):
     """Return only 2x2 tables safe to pool WITHOUT human verification: both arms
     drug-named (not generic), consistent percentages, and not flagged for review
@@ -313,4 +380,5 @@ def extract_arm_level(text: str) -> Dict:
     props = extract_proportions(text)
     tables = pair_2x2(props)
     return {"proportions": props, "tables_2x2": tables,
-            "poolable_2x2": poolable_ready(tables)}
+            "poolable_2x2": poolable_ready(tables),
+            "continuous": extract_continuous(text)}
