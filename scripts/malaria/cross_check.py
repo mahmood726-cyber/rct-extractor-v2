@@ -36,7 +36,7 @@ sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="repla
 from src.core.enhanced_extractor_v3 import EnhancedExtractor, to_dict
 from src.pdf.pdf_parser import PDFParser
 from src.specialties.malaria import get_malaria_endpoint_patterns
-from src.specialties.malaria_effects import augment_malaria_effects
+from src.specialties.malaria_effects import augment_malaria_effects, extract_malaria_effects
 
 import re
 
@@ -67,10 +67,9 @@ def extract_effects(extractor, text):
     if not text:
         return out
     try:
-        core = [to_dict(x) for x in extractor.extract(text)]
+        merged = extract_malaria_effects(extractor, text)  # core + augment + consistency
     except Exception:
         return out
-    merged = core + augment_malaria_effects(text, core)
     for d in merged:
         out.append({
             "type": d["type"],
@@ -79,6 +78,7 @@ def extract_effects(extractor, text):
             "ci_upper": d.get("ci_upper"),
             "endpoint": tag_endpoint(text, d.get("char_start", 0), d.get("char_end", 0)),
             "origin": d.get("origin", "core"),
+            "needs_review": d.get("needs_review", False),
             "source_text": d.get("source_text", "")[:160],
         })
     return out

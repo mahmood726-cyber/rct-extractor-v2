@@ -91,13 +91,15 @@ _RATIO_RE = re.compile(
 )
 
 
-# Bare uppercase abbreviation with a mandatory "=" or ":" (e.g. "OR = 0.45,
-# 95% CI: 0.36, 0.56"). CASE-SENSITIVE (no re.I) + required '='/':' so the
-# English conjunction "or" can never match. Handles non-breaking spaces via \s.
+# Bare uppercase abbreviation followed by '=', ':' or ',' then the value and a
+# 95% CI (e.g. "OR = 0.45, 95% CI: 0.36, 0.56" or the table form "RR, 0.34;
+# 95% CI, 0.15 to 0.61"). CASE-SENSITIVE (no re.I) so the conjunction "or" can
+# never match; the mandatory trailing "95% CI lo-hi" disambiguates from prose
+# (e.g. "RR, 18 breaths"). Lets a second effect in a combined clause be caught.
 _BARE_RATIO_RE = re.compile(
-    r"\b(?P<label>aOR|aHR|aRR|aIRR|OR|HR|RR|IRR|RD)\s*[:=]\s*"
+    r"\b(?P<label>aOR|aHR|aRR|aIRR|OR|HR|RR|IRR|RD)\s*[:=,]\s*"
     r"(?P<val>" + _NUM + r")"
-    r"[^\d]{0,30}?" + _CI +
+    r"[^\d]{0,24}?" + _CI +
     r"(?P<lo>" + _NUM + r")\s*(?:" + _DASH + r"|,)\s*(?P<hi>" + _NUM + r")")
 
 

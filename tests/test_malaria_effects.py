@@ -51,6 +51,8 @@ def test_augmenter_recovers(text, etype, val, lo, hi):
     "expressing the data as a risk ratio",
     # lowercase conjunction "or" must never be read as an odds ratio
     "treated with artemether or 0.45 mg/kg primaquine (95% CI 0.36, 0.56)",
+    # a bare abbreviation with NO trailing 95% CI must not match (respiratory rate)
+    "respiratory rate (RR, 18 breaths per minute) was recorded at baseline",
 ])
 def test_augmenter_rejects_non_numeric(text):
     assert aug(text) == [], f"false positive on: {text}"
@@ -73,3 +75,13 @@ def test_efficacy_point_within_ci_not_required_but_plausible():
     r = aug("protective efficacy 42.7%, 95% CI 22.5-57.7")
     x = r[0]
     assert x["ci_lower"] <= x["effect_size"] <= x["ci_upper"]
+
+
+def test_multiple_effects_in_one_clause():
+    """A combined clause must yield every effect, not just the first."""
+    from src.core.enhanced_extractor_v3 import EnhancedExtractor
+    from src.specialties.malaria_effects import extract_malaria_effects
+    e = EnhancedExtractor()
+    text = "(OR, 0.26; 95% CI, 0.12 to 0.56; RR, 0.34; 95% CI, 0.15 to 0.61)"
+    types = {x["type"] for x in extract_malaria_effects(e, text)}
+    assert {"OR", "RR"} <= types
