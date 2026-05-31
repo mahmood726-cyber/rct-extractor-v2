@@ -103,6 +103,37 @@ _BARE_RATIO_RE = re.compile(
     r"(?P<lo>" + _NUM + r")\s*(?:" + _DASH + r"|,)\s*(?P<hi>" + _NUM + r")")
 
 
+# RevMan / Cochrane forest-plot rows put "95% CI" inside the method annotation
+# and the limits in brackets after the value:
+#   "Mean Difference (IV, Random, 95% CI) -6.07 [-10.66, -1.48]"
+#   "Risk Ratio (M-H, Fixed, 95% CI) 0.74 [0.61, 0.90]"
+_REVMAN_RE = re.compile(
+    r"(?P<label>mean difference|standardi[sz]ed mean difference|risk ratio|"
+    r"relative risk|odds ratio|hazard ratio|risk difference|rate ratio|"
+    r"incidence rate ratio)"
+    r"[^\d\n]{0,40}?95\s*%\s*CI[)\s,:=]*"
+    r"(?P<val>" + _NUM + r")\s*[\[(]\s*"
+    r"(?P<lo>" + _NUM + r")\s*[,;]\s*(?P<hi>" + _NUM + r")\s*[\])]",
+    re.IGNORECASE,
+)
+
+# PDF text frequently carries fi/fl ligatures ("conﬁdence interval") and odd
+# spaces; normalising lets the same patterns fire on PDF and abstract text alike.
+_LIGATURES = {
+    "ﬀ": "ff", "ﬁ": "fi", "ﬂ": "fl", "ﬃ": "ffi",
+    "ﬄ": "ffl", "ﬅ": "st", "ﬆ": "st",
+}
+
+
+def normalize_text(text: str) -> str:
+    if not text:
+        return text
+    for lig, repl in _LIGATURES.items():
+        if lig in text:
+            text = text.replace(lig, repl)
+    return text
+
+
 def _ratio_type(label: str) -> Optional[str]:
     for rx, code in _RATIO_TYPE:
         if rx.search(label):
@@ -118,6 +149,7 @@ def augment_malaria_effects(text: str, existing: Optional[List[Dict]] = None) ->
     """
     if not text:
         return []
+    text = normalize_text(text)
     existing = existing or []
     spans = [(e.get("char_start", -1), e.get("char_end", -1)) for e in existing]
 
@@ -137,7 +169,7 @@ def augment_malaria_effects(text: str, existing: Optional[List[Dict]] = None) ->
         out.append(_mk("EFFICACY_PCT", val, lo, hi, text, s, e))
         seen.append((s, e))
 
-    for rx in (_RATIO_RE, _BARE_RATIO_RE):
+    for rx in (_RATIO_RE, _BARE_RATIO_RE, _REVMAN_RE):
         for m in rx.finditer(text):
             etype = _ratio_type(m["label"])
             if not etype:
@@ -174,6 +206,7 @@ def extract_malaria_effects(extractor, text, consistency=True, drop_inconsistent
     """
     from src.core.enhanced_extractor_v3 import to_dict
     from src.specialties.internal_consistency import annotate
+    text = normalize_text(text) if text else text   # fi/fl ligatures -> ascii
     core = [to_dict(x) for x in extractor.extract(text)] if text else []
     merged = core + augment_malaria_effects(text, core)
     if consistency:
