@@ -64,3 +64,27 @@ def test_2x2_recovers_raw_counts():
     )["tables_2x2"][0]
     totals = {t["arm1"]["total"], t["arm2"]["total"]}
     assert totals == {106, 147}
+
+
+# --- Multi-persona review P0 regressions ---
+
+def test_p0_1_nearest_endpoint_not_first_in_list():
+    # proportion is anaemia's, even though "ACPR" appears earlier in the window
+    r = extract_proportions("ACPR analysis aside, anaemia occurred in 8 of 150 (5.3%) children")
+    assert r and r[0]["endpoint"] == "ANAEMIA"
+
+
+def test_p0_3_et_al_not_drug_arm():
+    # "et al." must NOT be read as the AL (artemether-lumefantrine) arm
+    r = extract_proportions("Smith et al. reported ACPR in 121 of 125 (96.8%)")
+    assert r and r[0]["arm"] != "artemether-lumefantrine"
+
+
+def test_p0_3_uppercase_AL_still_tags():
+    r = extract_proportions("ACPR was 121/125 (96.8%) in the AL group")
+    assert r and r[0]["arm"] == "artemether-lumefantrine"
+
+
+def test_p0_4_page_x_of_y_rejected():
+    assert extract_proportions("see ACPR data on page 8 of 150 of the report") == []
+    assert extract_proportions("at day 8 of 150 follow-up, ACPR was assessed") == []

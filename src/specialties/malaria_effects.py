@@ -134,6 +134,15 @@ def normalize_text(text: str) -> str:
     return text
 
 
+# Ratio effect-type codes (where a value must be ratio-shaped, and where bare
+# RR/HR abbreviations risk colliding with vital signs).
+_RATIO_CODES = {"HR", "OR", "RR", "IRR", "GMR"}
+_VITAL_CONTEXT = re.compile(
+    r"respiratory|heart\s*rate|pulse|breathing|\bbreaths?\b|\bbpm\b|"
+    r"beats?\s*(?:/|per)\s*min|/\s*min\b|per\s+minute|mm\s*hg|systolic|diastolic",
+    re.I)
+
+
 def _ratio_type(label: str) -> Optional[str]:
     for rx, code in _RATIO_TYPE:
         if rx.search(label):
@@ -181,6 +190,13 @@ def augment_malaria_effects(text: str, existing: Optional[List[Dict]] = None) ->
             if not (min(lo, hi) - 0.05 <= val <= max(lo, hi) + 0.05):
                 continue
             s, e = m.start(), m.end()
+            # Bare RR/HR/OR also abbreviate respiratory/heart rate, odds vs a
+            # boolean -- reject when the context is a vital sign or the value is
+            # outside any plausible ratio range. (P0-2)
+            if rx is _BARE_RATIO_RE and etype in _RATIO_CODES:
+                ctx = text[max(0, s - 26):min(len(text), e + 16)].lower()
+                if _VITAL_CONTEXT.search(ctx) or not (0.01 <= abs(val) <= 50):
+                    continue
             if overlaps(s, e) or any(not (e <= ss or s >= ee) for ss, ee in seen):
                 continue
             out.append(_mk(etype, val, lo, hi, text, s, e))
@@ -209,6 +225,21 @@ def extract_malaria_effects(extractor, text, consistency=True, drop_inconsistent
     text = normalize_text(text) if text else text   # fi/fl ligatures -> ascii
     core = [to_dict(x) for x in extractor.extract(text)] if text else []
     merged = core + augment_malaria_effects(text, core)
+    merged = [e for e in merged if not _is_vital_sign(e, text)]   # P0-2 (core too)
     if consistency:
         merged = annotate(merged, drop_hard=drop_inconsistent)
     return merged
+
+
+def _is_vital_sign(effect, text):
+    """Drop a ratio-typed extraction that is really a vital sign (respiratory
+    rate RR, heart rate HR) -- bare RR/HR collide with effect-measure codes."""
+    if effect.get("type") not in _RATIO_CODES:
+        return False
+    s = effect.get("char_start")
+    e = effect.get("char_end")
+    if s is None or e is None:
+        ctx = effect.get("source_text", "")
+    else:
+        ctx = text[max(0, s - 26):min(len(text), e + 18)]
+    return bool(_VITAL_CONTEXT.search(ctx))

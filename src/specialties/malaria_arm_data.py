@@ -37,27 +37,40 @@ _PROP_PATTERNS = [
                r"(?:\s*\(\s*(?P<pct>\d{1,3}(?:\.\d+)?)\s*%\)?)?"),
 ]
 
+# Non-event contexts that precede a "<n> of <N>" that is NOT a clinical count.
+_NEGATED_CONTEXT = re.compile(
+    r"\b(?:page|pages|figure|fig|table|ref|reference|chapter|section|"
+    r"appendix|version|step|item|panel|day|days|week|weeks|month|months|"
+    r"year|years|age|aged|visit|dose|doses|round|phase|part)\.?\s*$",
+    re.I)
+
 _ALL_ENDPOINT_PATTERNS = []
 for _sub in ("treatment", "prevention", "severe", "transmission"):
     _ALL_ENDPOINT_PATTERNS.extend(get_malaria_endpoint_patterns(_sub))
 
-# Trial-arm labels = antimalarial drug / intervention names.
+# Trial-arm labels. FULL names are matched case-insensitively; bare UPPERCASE
+# drug abbreviations are matched CASE-SENSITIVELY (P0-3) so "et al." != AL,
+# "the dp" != DP, etc.
 _ARM_PATTERNS = [
-    (r"artemether[- ]?lumefantrine|coartem|\bAL\b", "artemether-lumefantrine"),
-    (r"dihydroartemisinin[- ]?piperaquine|DHA[- ]?PPQ|\bDP\b|\bDHA-?P\b", "dihydroartemisinin-piperaquine"),
-    (r"artesunate[- ]?amodiaquine|\bASAQ\b|\bAS[- ]?AQ\b", "artesunate-amodiaquine"),
-    (r"artesunate[- ]?mefloquine|\bASMQ\b", "artesunate-mefloquine"),
-    (r"artesunate[- ]?pyronaridine|pyronaridine", "artesunate-pyronaridine"),
-    (r"sulfadoxine[- ]?pyrimethamine|\bSP\b", "sulfadoxine-pyrimethamine"),
-    (r"\bchloroquine\b|\bCQ\b", "chloroquine"),
-    (r"\bamodiaquine\b|\bAQ\b", "amodiaquine"),
+    (r"artemether[- ]?lumefantrine|coartem", "artemether-lumefantrine"),
+    (r"dihydroartemisinin[- ]?piperaquine", "dihydroartemisinin-piperaquine"),
+    (r"artesunate[- ]?amodiaquine", "artesunate-amodiaquine"),
+    (r"artesunate[- ]?mefloquine", "artesunate-mefloquine"),
+    (r"artesunate[- ]?pyronaridine|pyronaridine[- ]?piperaquine|pyronaridine", "artesunate-pyronaridine"),
+    (r"sulfadoxine[- ]?pyrimethamine", "sulfadoxine-pyrimethamine"),
+    (r"\bchloroquine\b", "chloroquine"),
+    (r"\bamodiaquine\b", "amodiaquine"),
     (r"\bquinine\b", "quinine"),
+    (r"\btafenoquine\b|krintafel", "tafenoquine"),
+    (r"atovaquone[- ]?proguanil|malarone", "atovaquone-proguanil"),
+    (r"\bmefloquine\b", "mefloquine"),
+    (r"arterolane[- ]?piperaquine|synriam", "arterolane-piperaquine"),
     (r"\bartesunate\b", "artesunate"),
+    (r"rectal\s+artesunate|artesunate\s+suppositor", "rectal-artesunate"),
     (r"primaquine", "primaquine"),
     (r"\bplacebo\b", "placebo"),
-    (r"RTS,?\s?S|AS01", "RTS,S"),
-    (r"\bR21\b|Matrix[- ]?M", "R21"),
-    (r"\bSMC\b|seasonal malaria chemoprevention", "SMC"),
+    (r"seasonal malaria chemoprevention", "SMC"),
+    (r"matrix[- ]?m", "R21"),
     # Generic arm labels (lower priority; nearest-distance still wins). Many
     # trials name arms by role, not drug ("intervention group" vs "control").
     (r"intervention\s+(?:group|arm)|interventions?\b", "intervention"),
@@ -69,7 +82,25 @@ _ARM_PATTERNS = [
     (r"\bgroup\s+(?:2|ii|b)\b|\barm\s+(?:2|ii|b)\b", "group_2"),
     (r"control(?:\s+group|\s+arm)?|usual\s+care|standard\s+care", "control"),
 ]
-_ARM_COMPILED = [(re.compile(p, re.I), name) for p, name in _ARM_PATTERNS]
+# Case-SENSITIVE uppercase abbreviations (no re.I).
+_ARM_ABBREV = [
+    (r"\bAL\b", "artemether-lumefantrine"),
+    (r"\bDHA[- ]?PPQ\b|\bDP\b|\bDHA-?P\b", "dihydroartemisinin-piperaquine"),
+    (r"\bASAQ\b|\bAS[- ]?AQ\b", "artesunate-amodiaquine"),
+    (r"\bASMQ\b", "artesunate-mefloquine"),
+    (r"\bSPAQ\b|\bSP\s*\+?\s*AQ\b", "SP-AQ"),
+    (r"\bSP\b", "sulfadoxine-pyrimethamine"),
+    (r"\bCQ\b", "chloroquine"),
+    (r"\bAQ\b", "amodiaquine"),
+    (r"\bMQ\b", "mefloquine"),
+    (r"\bTQ\b", "tafenoquine"),
+    (r"RTS,?\s?S|AS01", "RTS,S"),
+    (r"\bR21\b", "R21"),
+    (r"\bSMC\b", "SMC"),
+    (r"\bRAS\b", "rectal-artesunate"),
+]
+_ARM_COMPILED = ([(re.compile(p, re.I), name) for p, name in _ARM_PATTERNS]
+                 + [(re.compile(p), name) for p, name in _ARM_ABBREV])
 
 
 def _tag(text, start, end, patterns, window):
@@ -82,12 +113,18 @@ def _tag(text, start, end, patterns, window):
 
 
 def _tag_endpoint(text, start, end, window=120):
+    # NEAREST endpoint to the proportion, not first-in-list (P0-1): otherwise
+    # "ACPR aside, anaemia in 8 of 150" mislabels the anaemia count as ACPR.
     lo, hi = max(0, start - window), min(len(text), end + window)
     ctx = text[lo:hi].lower()
+    prop_mid = (start + end) // 2 - lo
+    best, best_dist = None, 10 ** 9
     for pat, ep in _ALL_ENDPOINT_PATTERNS:
-        if re.search(pat, ctx):
-            return ep
-    return None
+        for m in re.finditer(pat, ctx):
+            d = abs(((m.start() + m.end()) // 2) - prop_mid)
+            if d < best_dist:
+                best_dist, best = d, ep
+    return best
 
 
 def _tag_arm(text, start, end, window=70):
@@ -123,6 +160,11 @@ def extract_proportions(text: str, pct_tol: float = 1.5) -> List[Dict]:
             if N <= 1 or n > N:           # implausible proportion
                 continue
             s, e = m.start(), m.end()
+            # Reject "page 8 of 150", "figure 2 of 5", "day 8 of 14" etc. (P0-4):
+            # a count-of-total preceded by a non-event context word is not a
+            # clinical proportion. (lessons.md negated-counts rule.)
+            if _NEGATED_CONTEXT.search(text[max(0, s - 22):s]):
+                continue
             if any(not (e <= ss or s >= ee) for ss, ee in seen_spans):
                 continue
             computed = 100.0 * n / N

@@ -61,10 +61,11 @@ def test_nonpositive_ratio():
 
 
 def test_significance_flip_gross():
-    # CI excludes 1 (significant) but p reported as 0.6 (non-significant)
+    # CI excludes 1 (significant) but p reported as 0.6 (non-significant).
+    # P0-6: discordant REPORTING -> flagged + needs_review, NOT hard-dropped.
     c = check_consistency({"type": "OR", "effect_size": 0.45, "ci_lower": 0.36,
                            "ci_upper": 0.56, "p_value": 0.6})
-    assert "gross_sig_inconsistency" in c["flags"] and c["score"] == 0.0
+    assert "gross_sig_inconsistency" in c["flags"] and 0.0 < c["score"] < 1.0
 
 
 def test_reversed_ci_repaired():
@@ -92,3 +93,20 @@ def test_annotate_drops_hard_and_repairs():
     repaired = [e for e in kept if e["effect_size"] == 0.70][0]
     assert repaired["ci_lower"] == 0.49 and repaired["ci_upper"] == 0.90
     assert all("consistency" in e for e in kept)
+
+
+def test_p0_5_rrr_treated_as_percentage():
+    # RRR/efficacy 95% with CI 90.3-97.6: null=0 (excluded), consistent
+    c = check_consistency({"type": "RRR", "effect_size": 95.0, "ci_lower": 90.3, "ci_upper": 97.6})
+    assert c["consistent"] and c["ci_excludes_null"] is True
+    # a null efficacy result correctly shows CI includes the null
+    c2 = check_consistency({"type": "RRR", "effect_size": 2.0, "ci_lower": -10.0, "ci_upper": 13.0})
+    assert c2["ci_excludes_null"] is False
+
+
+def test_p0_6_sig_discordance_not_dropped():
+    # CI includes 1 but p<0.05 (discordant reporting) -> flagged, NOT hard-dropped
+    c = check_consistency({"type": "OR", "effect_size": 0.9, "ci_lower": 0.8, "ci_upper": 1.02, "p_value": 0.04})
+    assert "gross_sig_inconsistency" in c["flags"] and c["score"] > 0.0
+    kept = annotate([{"type": "OR", "effect_size": 0.9, "ci_lower": 0.8, "ci_upper": 1.02, "p_value": 0.04}], drop_hard=True)
+    assert len(kept) == 1 and kept[0]["needs_review"]

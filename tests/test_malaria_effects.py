@@ -85,3 +85,18 @@ def test_multiple_effects_in_one_clause():
     text = "(OR, 0.26; 95% CI, 0.12 to 0.56; RR, 0.34; 95% CI, 0.15 to 0.61)"
     types = {x["type"] for x in extract_malaria_effects(e, text)}
     assert {"OR", "RR"} <= types
+
+
+def test_p0_2_vital_signs_not_extracted():
+    from src.core.enhanced_extractor_v3 import EnhancedExtractor
+    from src.specialties.malaria_effects import extract_malaria_effects
+    e = EnhancedExtractor()
+    for t in ["respiratory rate RR, 18; 95% CI 16-20 breaths per minute",
+              "mean heart rate HR, 72; 95% CI 60-85 bpm"]:
+        types_vals = [(x["type"], x["effect_size"]) for x in extract_malaria_effects(e, t)]
+        assert ("RR", 18.0) not in types_vals and ("HR", 72.0) not in types_vals
+
+
+def test_p0_2_real_ratio_still_works():
+    r = aug("recurrence RR, 0.18; 95% CI 0.10-0.30")
+    assert any(x["type"] == "RR" and abs(x["effect_size"] - 0.18) < 1e-6 for x in r)

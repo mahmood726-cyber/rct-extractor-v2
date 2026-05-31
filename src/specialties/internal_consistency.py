@@ -25,9 +25,12 @@ from typing import Dict, Optional
 
 Z95 = 1.959964  # two-sided 95% normal quantile
 
-RATIO_TYPES = {"HR", "OR", "RR", "IRR", "GMR", "RRR"}
+RATIO_TYPES = {"HR", "OR", "RR", "IRR", "GMR"}
 DIFF_TYPES = {"MD", "SMD", "ARD", "RD", "WMD"}
-PCT_TYPES = {"EFFICACY_PCT"}            # percentage scale, null = 0, linear CI
+# Percentage 1-RR quantities: efficacy / relative-risk-reduction. These are on a
+# % scale with null = 0 (NOT ratio null = 1) -- treating RRR as a ratio gives a
+# wrong significance verdict for every vaccine-efficacy estimate. (P0-5)
+PCT_TYPES = {"EFFICACY_PCT", "RRR"}
 
 _EPS = 1e-9
 
@@ -133,11 +136,14 @@ def check_consistency(effect: Dict, mid_tol: float = 0.22,
         if (p < 0.05) != ci_excludes_null:
             flags.append("gross_sig_inconsistency")
 
-    # Score: hard flags zero it out; soft flags reduce it. A gross midpoint
-    # mismatch (misread digit) is near-hard but not auto-dropped, since a few
-    # genuine wide/boundary CIs can trip it -- surfaced for review instead.
-    hard = {"point_outside_ci", "nonpositive_ratio", "gross_sig_inconsistency"}
-    penalty = {"point_grossly_off_centre": 0.7, "point_off_ci_centre": 0.4}
+    # Score: hard flags zero it out (and get dropped); soft flags reduce it and
+    # surface needs_review. gross_sig_inconsistency is SOFT, not hard: a CI that
+    # includes the null while p<0.05 (or vice versa) is usually discordant
+    # REPORTING (different model/rounding), not a misread digit -- flag it for
+    # review, don't discard a correct extraction. (P0-6)
+    hard = {"point_outside_ci", "nonpositive_ratio"}
+    penalty = {"point_grossly_off_centre": 0.7, "point_off_ci_centre": 0.4,
+               "gross_sig_inconsistency": 0.4}
     score = 1.0
     if any(f in hard for f in flags):
         score = 0.0
