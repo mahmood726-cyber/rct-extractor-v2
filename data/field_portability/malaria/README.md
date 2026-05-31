@@ -66,8 +66,16 @@ python scripts/malaria/cross_check.py
   *reviewers hand-extracted* (HR/OR/RR/IRR/MD/efficacy), we reproduce **153/174**
   with the same point estimate AND the same CI (5% tol). This is a *silver*
   standard: MA data is human-extracted, so some non-recoveries are MA-side error.
-- **Abstract→PDF recall: 95.6%** — effects reported in a trial's abstract are
-  recovered from its full-text PDF (internal consistency; n=169 PDFs so far).
+- **Abstract→PDF recall: 94.9%** — effects reported in a trial's abstract are
+  recovered from its full-text PDF (n=2,001 PDFs; 12,996 effects extracted).
+- **PDF extraction precision: 87.3%** internally consistent; 12.7% surfaced as
+  needs_review (misread digits, table-mangled values) rather than emitted silently.
+- **Coverage note:** ~52% of PDFs yield zero effects — almost all because the
+  paper reports **per-arm proportions/counts or within-arm descriptive stats**
+  (e.g. "cure 95% vs 88%", "mean QT increase 28 ms, 95% CI 18-38"), NOT a
+  pre-computed ratio+CI. The extractor is deliberately conservative here; pooling
+  those trials needs ARM-LEVEL / 2x2 extraction (events/N per arm), a separate
+  capability from effect-estimate extraction.
 - **Malaria-augmenter lift: 62.8% → 72.6%** recall on abstracts that contain a
   genuine effect phrase (the rest are non-numeric method-sentence mentions).
 - **AACT external gold** (independent numeric truth) exists for only ~43 of the
