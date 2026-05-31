@@ -177,16 +177,19 @@ MALARIA_ENDPOINTS = {
 
     # --- P. vivax radical cure (relapse is distinct from recrudescence/reinfection) ---
     'RELAPSE': {
-        'aliases': ['relapse', 'vivax relapse', 'p. vivax recurrence',
-                    'recurrent vivax', 'recurrence-free efficacy',
-                    'first recurrence', 'time to first recurrence',
-                    'freedom from recurrence', 'radical cure'],
+        # vivax / radical-cure ONLY (relapse is a hypnozoite concept). Species-
+        # neutral "recurrence-free" terms live in RECURRENT_PARASITAEMIA so
+        # falciparum trials are not misrouted here.
+        'aliases': ['vivax relapse', 'p. vivax recurrence', 'recurrent vivax',
+                    'radical cure', 'relapse'],
         'subspecialty': 'treatment',
         'measure_types': ['HR', 'RR', 'OR']
     },
     'RECURRENT_PARASITAEMIA': {
         'aliases': ['recurrent parasitaemia', 'recurrent parasitemia',
                     'pcr-uncorrected recurrence', 'any recurrence',
+                    'recurrence-free efficacy', 'first recurrence',
+                    'time to first recurrence', 'freedom from recurrence',
                     'recurrent infection (uncorrected)'],
         'subspecialty': 'treatment',
         'measure_types': ['RR', 'HR', 'OR']
@@ -220,11 +223,15 @@ MALARIA_ENDPOINTS = {
         'subspecialty': 'prevention',
         'measure_types': ['RR', 'OR', 'RD']
     },
-    'LOW_BIRTH_WEIGHT': {
-        'aliases': ['low birth weight', 'low birthweight', 'lbw',
-                    'birth weight', 'birthweight'],
+    'LOW_BIRTH_WEIGHT': {     # binary: <2500 g
+        'aliases': ['low birth weight', 'low birthweight', 'lbw'],
         'subspecialty': 'prevention',
-        'measure_types': ['RR', 'OR', 'MD']
+        'measure_types': ['RR', 'OR', 'RD']
+    },
+    'BIRTH_WEIGHT': {         # continuous: mean grams
+        'aliases': ['mean birth weight', 'birth weight', 'birthweight'],
+        'subspecialty': 'prevention',
+        'measure_types': ['MD', 'SMD']
     },
     'MATERNAL_ANAEMIA': {
         'aliases': ['maternal anaemia', 'maternal anemia',
@@ -252,7 +259,7 @@ MALARIA_ENDPOINTS = {
         'measure_types': ['RR', 'OR']
     },
     'ACUTE_KIDNEY_INJURY': {
-        'aliases': ['acute kidney injury', 'aki', 'renal failure',
+        'aliases': ['acute kidney injury', 'acute renal failure', 'renal failure',
                     'blackwater fever'],
         'subspecialty': 'severe',
         'measure_types': ['RR', 'OR', 'HR']
@@ -294,10 +301,12 @@ TREATMENT_PATTERNS = {
         (r'late\s+clinical\s+failure|\blcf\b', 'LATE_CLINICAL_FAILURE'),
         (r'late\s+parasitolog\w+\s+failure|\blpf\b', 'LATE_PARASITOLOGICAL_FAILURE'),
         (r'(?:total\s+|therapeutic\s+)?treatment\s+failure', 'TREATMENT_FAILURE'),
-        # vivax relapse / radical-cure recurrence -- BEFORE recrudescence/reinfection
-        (r'recurrence[- ]free|radical\s+cure|vivax\s+(?:relapse|recurrence)|'
-         r'recurrent\s+vivax|time\s+to\s+first\s+recurrence', 'RELAPSE'),
-        (r'\brelapse', 'RELAPSE'),
+        # vivax relapse / radical cure ONLY -- BEFORE recrudescence/reinfection
+        (r'radical\s+cure|vivax\s+(?:relapse|recurrence)|recurrent\s+vivax|'
+         r'\brelapse', 'RELAPSE'),
+        # species-neutral recurrence terms (falciparum too) -> uncorrected recurrence
+        (r'recurrence[- ]free|time\s+to\s+first\s+recurrence|first\s+recurrence|'
+         r'freedom\s+from\s+recurrence', 'RECURRENT_PARASITAEMIA'),
         (r'recrudescen\w+', 'RECRUDESCENCE'),
         (r're[- ]?infection|new\s+infection', 'REINFECTION'),
         # PCR-UNCORRECTED recurrent parasitaemia != treatment failure (failure is
@@ -308,7 +317,8 @@ TREATMENT_PATTERNS = {
         (r'parasite\s+clearance\s+(?:time|half[- ]?life)|\bpct\b', 'PARASITE_CLEARANCE_TIME'),
         (r'day[- ]?3\s+(?:parasit|positiv)', 'DAY3_POSITIVITY'),
         (r'fever\s+clearance\s+time|\bfct\b', 'FEVER_CLEARANCE_TIME'),
-        (r'kelch\s?13|pfk(?:elch)?13|\bk13\b|artemisinin\s+partial\s+resistance',
+        (r'kelch\s?13|pfk(?:elch)?13|\bk13\b|artemisinin\s+partial\s+resistance|'
+         r'\bpfcrt\b|\bpfmdr1\b|\bpfpm2\b|plasmepsin|copy\s+number',
          'MOLECULAR_MARKER'),
         (r'h[ae]+molysis|haemoglobinuria|g6pd\s+deficien', 'HAEMOLYSIS'),
         (r'parasite\s+density|parasit[ae]+mia', 'PARASITAEMIA'),
@@ -348,7 +358,8 @@ PREVENTION_PATTERNS = {
         (r'incidence\s+of\s+(?:clinical\s+)?malaria|malaria\s+incidence', 'CLINICAL_MALARIA'),
         (r'(?:vaccine|protective)\s+efficacy|efficacy\s+against', 'PROTECTIVE_EFFICACY'),
         (r'placental\s+malaria|placental\s+(?:parasit|infection)', 'PLACENTAL_MALARIA'),
-        (r'low\s+birth\s*weight|\blbw\b|birth\s*weight', 'LOW_BIRTH_WEIGHT'),
+        (r'low\s+birth\s*weight|\blbw\b|birth\s*weight\s*<\s*2500', 'LOW_BIRTH_WEIGHT'),
+        (r'(?<!low\s)(?<!low)birth\s*weight', 'BIRTH_WEIGHT'),   # mean BW (not LBW)
         (r'maternal\s+an[ae]+mia|an[ae]+mia\s+at\s+delivery', 'MATERNAL_ANAEMIA'),
         (r'preterm\s+(?:birth|delivery)|prematurity|small\s+for\s+gestational|stillbirth',
          'PRETERM_BIRTH'),
@@ -387,7 +398,8 @@ SEVERE_PATTERNS = {
         (r'metabolic\s+acidosis|base\s+deficit|hyperlactat|respiratory\s+distress',
          'ACIDOSIS'),
         (r'hypoglyc[ae]+mia', 'HYPOGLYCAEMIA'),
-        (r'acute\s+kidney\s+injury|\baki\b|renal\s+failure|blackwater', 'ACUTE_KIDNEY_INJURY'),
+        (r'acute\s+kidney\s+injury|acute\s+renal\s+failure|renal\s+failure|blackwater',
+         'ACUTE_KIDNEY_INJURY'),
         (r'hospital(?:isation|ization|\s+admission)', 'HOSPITALISATION'),
     ],
     'context_patterns': [

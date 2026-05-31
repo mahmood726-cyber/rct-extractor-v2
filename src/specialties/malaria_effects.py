@@ -23,6 +23,28 @@ ci_upper, source_text, char_start, char_end) plus origin="malaria_augment".
 import re
 from typing import List, Dict, Optional
 
+from .malaria import get_malaria_endpoint_patterns
+
+# Malaria endpoint patterns, used to tag each effect's endpoint so dedup keys on
+# endpoint (not just shape) and doesn't merge distinct same-valued estimates.
+_ALL_EP = []
+for _s in ("treatment", "prevention", "severe", "transmission"):
+    _ALL_EP.extend((re.compile(p, re.I), ep) for p, ep in get_malaria_endpoint_patterns(_s))
+
+
+def _tag_effect_endpoint(text, start, end, window=120):
+    lo, hi = max(0, start - window), min(len(text), end + window)
+    ctx = text[lo:hi]
+    mid = (start + end) // 2 - lo
+    best, best_d = None, 10 ** 9
+    for rx, ep in _ALL_EP:
+        for m in rx.finditer(ctx):
+            d = abs(((m.start() + m.end()) // 2) - mid)
+            if d < best_d:
+                best_d, best = d, ep
+    return best
+
+
 # Lancet middle-dot decimal; numbers may omit the leading zero (".58").
 _NUM = r"[-+]?(?:\d+(?:[.·]\d+)?|[.·]\d+)"
 _DASH = r"(?:–|—|−|-|to)"
@@ -231,6 +253,8 @@ def extract_malaria_effects(extractor, text, consistency=True, drop_inconsistent
     core = [to_dict(x) for x in extractor.extract(text)] if text else []
     merged = core + augment_malaria_effects(text, core)
     merged = [e for e in merged if not _is_vital_sign(e, text)]   # P0-2 (core too)
+    for e in merged:                                              # tag endpoint
+        e["endpoint"] = _tag_effect_endpoint(text, e.get("char_start", 0), e.get("char_end", 0))
     if dedup:
         merged = _dedup_effects(merged)                           # P1: cross-mention
     if consistency:
@@ -245,10 +269,11 @@ def _round(x):
 def _dedup_effects(effects):
     """Collapse the same effect reported more than once in one document (abstract
     + results + forest-plot row) -- otherwise one trial enters a pool 2-3x,
-    inflating its weight and falsely narrowing the CI. (P1)"""
+    inflating its weight. Keys on ENDPOINT too (so an identical ratio for two
+    different outcomes is NOT merged) -- the review's false-merge concern. (P1)"""
     seen, out = set(), []
     for e in effects:
-        key = (e.get("type"), _round(e.get("effect_size")),
+        key = (e.get("type"), e.get("endpoint"), _round(e.get("effect_size")),
                _round(e.get("ci_lower")), _round(e.get("ci_upper")))
         if key in seen:
             continue

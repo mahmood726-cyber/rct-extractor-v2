@@ -111,3 +111,14 @@ def test_cross_mention_dedup():
     assert len([x for x in extract_malaria_effects(e, t) if x["type"] == "HR"]) == 1
     # opting out keeps duplicates
     assert len([x for x in extract_malaria_effects(e, t, dedup=False) if x["type"] == "HR"]) >= 2
+
+
+def test_dedup_keys_on_endpoint():
+    from src.core.enhanced_extractor_v3 import EnhancedExtractor
+    from src.specialties.malaria_effects import extract_malaria_effects
+    e = EnhancedExtractor()
+    # identical RR for two DIFFERENT endpoints must NOT be merged
+    t = ("Clinical malaria risk ratio 0.74 (95% CI 0.61-0.90). "
+         "Severe malaria risk ratio 0.74 (95% CI 0.61 to 0.90).")
+    eps = {x.get("endpoint") for x in extract_malaria_effects(e, t) if x["type"] == "RR"}
+    assert {"CLINICAL_MALARIA", "SEVERE_MALARIA"} <= eps

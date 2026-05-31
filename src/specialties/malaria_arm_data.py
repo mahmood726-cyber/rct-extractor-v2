@@ -101,8 +101,9 @@ _ARM_PATTERNS = [
     (r"atovaquone[- ]?proguanil|malarone", "atovaquone-proguanil"),
     (r"\bmefloquine\b", "mefloquine"),
     (r"arterolane[- ]?piperaquine|synriam", "arterolane-piperaquine"),
-    (r"\bartesunate\b", "artesunate"),
+    # rectal/pre-referral artesunate BEFORE plain artesunate (distinct intervention)
     (r"rectal\s+artesunate|artesunate\s+suppositor", "rectal-artesunate"),
+    (r"\bartesunate\b", "artesunate"),
     (r"primaquine", "primaquine"),
     (r"\bplacebo\b", "placebo"),
     (r"seasonal malaria chemoprevention", "SMC"),
@@ -272,12 +273,14 @@ def pair_2x2(proportions: List[Dict], max_gap: int = 260) -> List[Dict]:
                 sa, sb = a.get("pcr_status", "unspecified"), b.get("pcr_status", "unspecified")
                 if {sa, sb} == {"corrected", "uncorrected"}:
                     continue
+                # one known PCR status + one unspecified: allow but never auto-pool
+                pcr_uncertain = (sa != sb) and ("unspecified" in (sa, sb))
                 pop_mismatch = (a.get("analysis_population", "unspecified") != "unspecified"
                                 and b.get("analysis_population", "unspecified") != "unspecified"
                                 and a["analysis_population"] != b["analysis_population"])
                 review = (a["arm"] in _GENERIC or b["arm"] in _GENERIC
                           or not a["pct_consistent"] or not b["pct_consistent"]
-                          or multi_arm or pop_mismatch)
+                          or multi_arm or pop_mismatch or pcr_uncertain)
                 tables.append({
                     "endpoint": ep,
                     "pcr_status": sa if sa == sb else (sa if sb == "unspecified" else sb),
@@ -301,8 +304,17 @@ _NUM_C = r"[-+]?\d+(?:[.·]\d+)?"
 # Continuous malaria outcomes (the rest are binary proportions).
 _CONTINUOUS_ENDPOINTS = {
     "PARASITE_CLEARANCE_TIME", "FEVER_CLEARANCE_TIME", "HAEMOGLOBIN",
-    "PARASITAEMIA", "PARASITE_REDUCTION_RATIO",
+    "PARASITAEMIA", "PARASITE_REDUCTION_RATIO", "BIRTH_WEIGHT",
 }
+# Log-normal outcomes: a raw arithmetic mean+SD must NOT be pooled as a mean
+# difference -- pool on the log scale / use a geometric mean. (stats review)
+_LOGNORMAL_CONTINUOUS = {"PARASITE_CLEARANCE_TIME", "PARASITAEMIA",
+                         "PARASITE_REDUCTION_RATIO"}
+# A ± term that is really a between-arm difference or a standard error, not a
+# per-arm SD -- must not be captured as poolable per-arm mean+SD.
+_DIFF_OR_SE = re.compile(
+    r"(?:mean\s+difference|difference|\bMD\b|\bΔ\b|change|reduction|"
+    r"\bSE\b|standard\s+error|\bSEM\b)", re.I)
 _MEAN_SD = re.compile(
     r"(?:mean\s+(?:of\s+)?)?(?P<mean>" + _NUM_C + r")\s*"
     r"(?:±|\+/-|\(\s*(?:SD|s\.d\.|standard\s+deviation)\s*[:=]?\s*)\s*"
@@ -352,14 +364,20 @@ def extract_continuous(text: str) -> List[Dict]:
         s, e = m.start(), m.end()
         if any(not (e <= ss or s >= ee) for ss, ee in spans):
             continue
+        # the ± term must be a per-arm SD, not a between-arm difference or SE
+        if _DIFF_OR_SE.search(text[max(0, s - 32):e]):
+            continue
         ep = _tag_endpoint(text, s, e)
         if ep not in _CONTINUOUS_ENDPOINTS:
             continue
         mean, sd = _fc(m["mean"]), _fc(m["sd"])
         if mean is None or sd is None or sd < 0:
             continue
-        _emit(ep, _tag_arm(text, s, e), s, e, stat="mean_sd",
-              mean=mean, sd=sd, poolable=True)
+        lognormal = ep in _LOGNORMAL_CONTINUOUS
+        _emit(ep, _tag_arm(text, s, e), s, e, stat="mean_sd", mean=mean, sd=sd,
+              poolable=not lognormal,
+              pooling_note=("log-normal: pool on log scale / use GMR, not raw MD"
+                            if lognormal else None))
     return out
 
 

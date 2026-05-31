@@ -153,8 +153,10 @@ def test_protective_efficacy_context():
 
 @pytest.mark.parametrize("phrase,canonical", [
     ("vivax relapse", "RELAPSE"),
-    ("time to first recurrence", "RELAPSE"),
-    ("recurrence-free efficacy", "RELAPSE"),
+    ("radical cure", "RELAPSE"),
+    # species-neutral recurrence terms route to RECURRENT_PARASITAEMIA, not RELAPSE
+    ("time to first recurrence", "RECURRENT_PARASITAEMIA"),
+    ("recurrence-free efficacy", "RECURRENT_PARASITAEMIA"),
     ("recurrent parasitaemia", "RECURRENT_PARASITAEMIA"),
     ("kelch13 mutation", "MOLECULAR_MARKER"),
     ("parasite reduction ratio", "PARASITE_REDUCTION_RATIO"),
@@ -177,7 +179,9 @@ def test_relapse_routes_before_recrudescence():
         for p, ep in pats:
             if re.search(p, t.lower()):
                 return ep
-    assert route("day 42 recurrence-free efficacy") == "RELAPSE"
+    assert route("day 42 vivax relapse") == "RELAPSE"
+    # species-neutral "recurrence-free" is NOT relapse (falciparum trials use it)
+    assert route("day 42 recurrence-free efficacy") == "RECURRENT_PARASITAEMIA"
     assert route("PCR-confirmed recrudescence") == "RECRUDESCENCE"
     # recurrent parasitaemia is PCR-uncorrected -> not TREATMENT_FAILURE
     assert route("recurrent parasitaemia at day 28") == "RECURRENT_PARASITAEMIA"
@@ -187,3 +191,26 @@ def test_generic_aliases_not_shadowed():
     # specific endpoints must win over generic substrings
     assert normalize_malaria_endpoint("anaemia") == "ANAEMIA"
     assert normalize_malaria_endpoint("parasitaemia") == "PARASITAEMIA"
+
+
+def test_lbw_vs_mean_birthweight_split():
+    import re
+    pats = get_malaria_endpoint_patterns("prevention")
+    def route(t):
+        best=None
+        for p, ep in pats:
+            if re.search(p, t.lower()):
+                return ep
+    # binary LBW vs continuous mean birth weight must be different endpoints
+    assert route("low birth weight occurred in") == "LOW_BIRTH_WEIGHT"
+    assert route("mean birth weight was 3010 g") == "BIRTH_WEIGHT"
+
+
+def test_aki_no_name_collision():
+    import re
+    pats = get_malaria_endpoint_patterns("severe")
+    matched = any(re.search(p, "as reported by aki et al".lower()) and ep == "ACUTE_KIDNEY_INJURY"
+                  for p, ep in pats)
+    assert not matched
+    assert any(re.search(p, "acute kidney injury") and ep == "ACUTE_KIDNEY_INJURY"
+               for p, ep in pats)

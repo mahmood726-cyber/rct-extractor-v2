@@ -134,9 +134,23 @@ def test_analysis_population_tagged():
 
 def test_continuous_mean_sd_poolable():
     from src.specialties.malaria_arm_data import extract_continuous
+    # haemoglobin is ~symmetric -> mean+SD poolable as-is
+    r = extract_continuous("mean haemoglobin 10.5 ± 1.2 g/dL (n=50) in the AL group")
+    assert r and r[0]["stat"] == "mean_sd" and r[0]["mean"] == 10.5 and r[0]["sd"] == 1.2
+    assert r[0]["n"] == 50 and r[0]["poolable"] and r[0]["endpoint"] == "HAEMOGLOBIN"
+
+
+def test_continuous_lognormal_not_poolable_raw():
+    from src.specialties.malaria_arm_data import extract_continuous
+    # parasite clearance time is log-normal -> raw mean+SD not poolable as MD
     r = extract_continuous("mean parasite clearance time 28.4 ± 6.2 h (n=50) in the AL group")
-    assert r and r[0]["stat"] == "mean_sd" and r[0]["mean"] == 28.4 and r[0]["sd"] == 6.2
-    assert r[0]["n"] == 50 and r[0]["poolable"] and r[0]["endpoint"] == "PARASITE_CLEARANCE_TIME"
+    assert r and r[0]["endpoint"] == "PARASITE_CLEARANCE_TIME"
+    assert r[0]["poolable"] is False and r[0]["pooling_note"]
+
+
+def test_mean_sd_rejects_difference_or_se():
+    from src.specialties.malaria_arm_data import extract_continuous
+    assert extract_continuous("adjusted mean difference in haemoglobin was 1.8 ± 0.4 g/dL") == []
 
 
 def test_continuous_median_iqr_not_poolable():
