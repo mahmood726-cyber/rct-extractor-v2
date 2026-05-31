@@ -66,8 +66,10 @@ python scripts/malaria/cross_check.py
   *reviewers hand-extracted* (HR/OR/RR/IRR/MD/efficacy), we reproduce **153/174**
   with the same point estimate AND the same CI (5% tol). This is a *silver*
   standard: MA data is human-extracted, so some non-recoveries are MA-side error.
-- **Abstract→PDF recall: 94.9%** — effects reported in a trial's abstract are
-  recovered from its full-text PDF (n=2,001 PDFs; 12,996 effects extracted).
+- **Abstract→PDF recall: 95.3%** — effects reported in a trial's abstract are
+  recovered from its full-text PDF (2,071/2,173; 12,996+ effects extracted from
+  2,001 PDFs). Reached 95% after fi/fl-ligature normalization, RevMan
+  forest-plot parsing, and multi-effect-per-clause extraction.
 - **PDF extraction precision: 87.3%** internally consistent; 12.7% surfaced as
   needs_review (misread digits, table-mangled values) rather than emitted silently.
 - **Coverage note:** ~52% of PDFs yield zero effects — almost all because the
@@ -75,7 +77,21 @@ python scripts/malaria/cross_check.py
   (e.g. "cure 95% vs 88%", "mean QT increase 28 ms, 95% CI 18-38"), NOT a
   pre-computed ratio+CI. The extractor is deliberately conservative here; pooling
   those trials needs ARM-LEVEL / 2x2 extraction (events/N per arm), a separate
-  capability from effect-estimate extraction.
+  capability from effect-estimate extraction -- now implemented (below).
+
+## Arm-level / 2x2 extraction (`src/specialties/malaria_arm_data.py`)
+For the ~52% of papers that report raw per-arm proportions instead of a ratio+CI,
+this extracts the poolable 2x2 data:
+```python
+from src.specialties.malaria_arm_data import extract_arm_level
+extract_arm_level("ACPR was 121/125 (96.8%) in the AL group and 130/148 (87.8%) in the SP group")
+# -> 2x2: {AL 121/125, SP 130/148}, endpoint ACPR
+```
+- Forms: `n/N (pct%)`, `pct% (n/N)`, `n of N (pct%)`; each tied to a malaria
+  endpoint and tagged with its arm (drug name).
+- **Built-in consistency check:** the reported % must equal 100*events/total
+  (catches OCR/transcription errors); inconsistent proportions are flagged.
+- Pairs same-endpoint proportions from two arms into a 2x2 table.
 - **Malaria-augmenter lift: 62.8% → 72.6%** recall on abstracts that contain a
   genuine effect phrase (the rest are non-numeric method-sentence mentions).
 - **AACT external gold** (independent numeric truth) exists for only ~43 of the
