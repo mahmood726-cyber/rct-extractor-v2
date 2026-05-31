@@ -15,8 +15,8 @@ the persona(s) that raised each.
 | P0-4 | `n of N` matches "page 8 of 150", "8 of 12 sites" → fake proportion | `malaria_arm_data.py` `_PROP_PATTERNS` | red-team | FIXED |
 | P0-5 | `RRR` in `RATIO_TYPES` but emitted as a percentage (null=0, not ratio null=1) → wrong significance verdict for every vaccine-efficacy/RRR estimate | `internal_consistency.py` | biostatistician | FIXED |
 | P0-6 | `gross_sig_inconsistency` hard-drops correct extractions (CI-includes-1 but p<0.05 is common: different model/rounding) | `internal_consistency.py` | red-team | FIXED |
-| P0-7 | PCR-corrected and PCR-uncorrected ACPR collapsed into one endpoint → can pair mismatched denominators | `malaria.py`, `malaria_arm_data.py` | meta-analyst, clinician | DOCUMENTED (follow-up) |
-| P0-8 | P. vivax RELAPSE missing → radical-cure (primaquine/tafenoquine) recurrences misrouted to recrudescence/reinfection | `malaria.py` | clinician | DOCUMENTED (follow-up) |
+| P0-7 | PCR-corrected and PCR-uncorrected ACPR collapsed into one endpoint → can pair mismatched denominators | `malaria.py`, `malaria_arm_data.py` | meta-analyst, clinician | FIXED |
+| P0-8 | P. vivax RELAPSE missing → radical-cure (primaquine/tafenoquine) recurrences misrouted to recrudescence/reinfection | `malaria.py` | clinician | FIXED |
 
 ## P1 — systematic bias / silent loss
 
@@ -42,4 +42,14 @@ the persona(s) that raised each.
 Altman-Bland SE/z/P + inverse; geometric-vs-arithmetic midpoint split; mid_tol/gross_mid_tol values; `pct == 100·n/N` check + guards; aRR→RR vs MD ordering (no mislabel in the augmenter); no ReDoS (bounded lazy quantifiers).
 
 ## Disposition
-6 of 8 P0s are fixed in the follow-up commit with regression tests (exact reproducers from the red-team). The remaining two P0s (PCR-status separation, vivax relapse) plus the P1 clinical-vocabulary and pooling-safety items are scoped as the next work block.
+**All 8 P0s fixed**, plus the P1 block. Round 1 (commit 4ce2d40): P0-1..P0-6.
+Round 2 ("next block"): P0-7 PCR-status separation, P0-8 vivax relapse + 12 new
+clinical endpoints (K13, PRR, IPTp maternal, haemolysis, severe components),
+cross-mention dedup, multi-arm flagging, ITT/PP tagging, poolable_ready(),
+continuous per-arm mean+SD/median+IQR extraction, the [ae] spelling bug, the
+efficacy-% guard, and the README honesty box. Full suite: 880 passed, 0 failures.
+
+STILL OPEN (low impact, documented): char-offset drift after ligature
+normalization (source_text stays internally consistent); the hardcoded 95% z
+for the rare 90%/97.5% non-inferiority CIs (now only adds a review flag, never
+drops, since gross_sig is soft). Both are candidates for a future pass.
