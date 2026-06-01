@@ -69,6 +69,12 @@ sentinel-findings.jsonl
 review-findings.md
 review-findings.jsonl
 
+# HIV field bundle — large/transient data (code is under scripts/)
+data/field_portability/hiv/rct_trial_pdfs/
+data/field_portability/hiv/*.jsonl
+data/field_portability/hiv/*.json
+data/field_portability/hiv/*.log
+
 # Malaria field bundle — large/transient data (keep README.md; code is under scripts/)
 data/field_portability/malaria/rct_trial_pdfs/
 data/field_portability/malaria/*.jsonl

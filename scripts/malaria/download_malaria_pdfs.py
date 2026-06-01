@@ -26,8 +26,11 @@ import urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
-sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
+# Only reassign stdout when run as a script (lessons.md: module-level stdout
+# reassignment double-wraps + closes the stream for importers).
+if __name__ == "__main__":
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
 
 PROJECT_DIR = Path(__file__).resolve().parents[2]
 MAL_DIR = PROJECT_DIR / "data" / "field_portability" / "malaria"

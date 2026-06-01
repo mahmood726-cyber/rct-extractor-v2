@@ -24,8 +24,9 @@ from pathlib import Path
 
 import duckdb
 
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
-sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
+if __name__ == "__main__":   # guard: module-level reassignment breaks importers
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
 
 PROJECT_DIR = Path(__file__).resolve().parents[2]
 MAL_DIR = PROJECT_DIR / "data" / "field_portability" / "malaria"
