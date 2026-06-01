@@ -60,9 +60,19 @@ def test_augmenter_rejects_non_numeric(text):
 
 def test_dedup_against_core():
     text = "incidence rate ratio, 0.67; 95% CI, 0.50-0.90"
-    # Simulate a core extraction already covering this span -> augmenter must skip it
-    existing = [{"char_start": 0, "char_end": len(text)}]
+    # A core extraction already covering this span WITH a CI -> augmenter skips it
+    existing = [{"char_start": 0, "char_end": len(text),
+                 "ci_lower": 0.50, "ci_upper": 0.90}]
     assert aug(text, existing) == []
+
+
+def test_augmenter_supplies_ci_when_core_lacks_it():
+    # if core got the value but NO CI, the augmenter still emits its CI-bearing copy
+    text = "incidence rate ratio, 0.67; 95% CI, 0.50-0.90"
+    existing = [{"char_start": 0, "char_end": len(text),
+                 "ci_lower": None, "ci_upper": None}]
+    r = aug(text, existing)
+    assert r and r[0]["ci_lower"] == 0.50 and r[0]["ci_upper"] == 0.90
 
 
 def test_origin_tag():

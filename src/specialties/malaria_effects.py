@@ -119,7 +119,7 @@ _RATIO_RE = re.compile(
 # never match; the mandatory trailing "95% CI lo-hi" disambiguates from prose
 # (e.g. "RR, 18 breaths"). Lets a second effect in a combined clause be caught.
 _BARE_RATIO_RE = re.compile(
-    r"\b(?P<label>aOR|aHR|aRR|aIRR|OR|HR|RR|IRR|RD)\s*[:=,]\s*"
+    r"\b(?P<label>aOR|aHR|aRR|aIRR|OR|HR|RR|IRR|RD)[\s:=,]+"
     r"(?P<val>" + _NUM + r")"
     r"[^\d]{0,24}?" + _CI +
     r"(?P<lo>" + _NUM + r")\s*(?:" + _DASH + r"|,)\s*(?P<hi>" + _NUM + r")")
@@ -182,10 +182,16 @@ def augment_malaria_effects(text: str, existing: Optional[List[Dict]] = None) ->
         return []
     text = normalize_text(text)
     existing = existing or []
-    spans = [(e.get("char_start", -1), e.get("char_end", -1)) for e in existing]
+    # track whether each existing (core) extraction already has a CI; only
+    # suppress an augmenter hit that overlaps a CI-BEARING core extraction, so a
+    # CI-bearing augmenter match still emits when core got the value but no CI.
+    spans = [(e.get("char_start", -1), e.get("char_end", -1),
+              e.get("ci_lower") is not None and e.get("ci_upper") is not None)
+             for e in existing]
 
     def overlaps(s, e):
-        return any(not (e <= xs or s >= xe) for xs, xe in spans if xs >= 0)
+        return any((not (e <= xs or s >= xe)) and has_ci
+                   for xs, xe, has_ci in spans if xs >= 0)
 
     out = []
     seen = []
@@ -320,15 +326,23 @@ def _dedup_effects(effects):
     + results + forest-plot row) -- otherwise one trial enters a pool 2-3x,
     inflating its weight. Keys on ENDPOINT too (so an identical ratio for two
     different outcomes is NOT merged) -- the review's false-merge concern. (P1)"""
-    seen, out = set(), []
+    # key on (type, endpoint, value) WITHOUT the CI, and prefer the CI-bearing
+    # copy -- so core's value-only extraction is replaced by the augmenter's
+    # value+CI one for the same effect (instead of keeping both / the CI-less one).
+    by_key = {}
+    order = []
     for e in effects:
-        key = (e.get("type"), e.get("endpoint"), _round(e.get("effect_size")),
-               _round(e.get("ci_lower")), _round(e.get("ci_upper")))
-        if key in seen:
-            continue
-        seen.add(key)
-        out.append(e)
-    return out
+        key = (e.get("type"), e.get("endpoint"), _round(e.get("effect_size")))
+        has_ci = e.get("ci_lower") is not None and e.get("ci_upper") is not None
+        if key not in by_key:
+            by_key[key] = e
+            order.append(key)
+        else:
+            kept = by_key[key]
+            kept_ci = kept.get("ci_lower") is not None and kept.get("ci_upper") is not None
+            if has_ci and not kept_ci:
+                by_key[key] = e   # upgrade to the CI-bearing copy
+    return [by_key[k] for k in order]
 
 
 def _is_vital_sign(effect, text):
