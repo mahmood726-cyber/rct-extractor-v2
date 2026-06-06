@@ -54,6 +54,16 @@ from .typhoid import (
     normalize_typhoid_endpoint
 )
 
+from .schistosomiasis import (
+    SCHISTOSOMIASIS_ENDPOINTS,
+    TREATMENT_PATTERNS as SCHISTO_TREATMENT_PATTERNS,
+    PREVENTION_PATTERNS as SCHISTO_PREVENTION_PATTERNS,
+    MORBIDITY_PATTERNS as SCHISTO_MORBIDITY_PATTERNS,
+    VACCINE_PATTERNS as SCHISTO_VACCINE_PATTERNS,
+    detect_schistosomiasis_subspecialty,
+    normalize_schistosomiasis_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -117,6 +127,18 @@ SPECIALTY_REGISTRY = {
             'vaccine': TYPHOID_VACCINE_PATTERNS,
             'resistance': TYPHOID_RESISTANCE_PATTERNS,
             'complications': TYPHOID_COMPLICATIONS_PATTERNS
+        }
+    },
+    'schistosomiasis': {
+        'subspecialties': ['treatment', 'prevention', 'morbidity', 'vaccine'],
+        'detection_function': detect_schistosomiasis_subspecialty,
+        'normalizer': normalize_schistosomiasis_endpoint,
+        'endpoints': SCHISTOSOMIASIS_ENDPOINTS,
+        'patterns': {
+            'treatment': SCHISTO_TREATMENT_PATTERNS,
+            'prevention': SCHISTO_PREVENTION_PATTERNS,
+            'morbidity': SCHISTO_MORBIDITY_PATTERNS,
+            'vaccine': SCHISTO_VACCINE_PATTERNS
         }
     },
     'infectious_disease': {
@@ -216,6 +238,13 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'\btcv\b', r'\bty21a\b', r'vi\s+polysaccharide', r'anti[- ]vi',
             r'fever\s+clearance\s+time', r'widal'
         ],
+        'schistosomiasis': [
+            r'schistosom', r'bilharzia', r'praziquantel', r'\bpzq\b',
+            r's\.?\s*(?:mansoni|haematobium|hematobium|japonicum|mekongi|intercalatum)',
+            r'kato[- ]?katz', r'egg\s+reduction\s+rate', r'eggs\s+per\s+gram',
+            r'cercaria(?:e)?', r'miracidia', r'oxamniquine', r'sh28gst|bilhvax',
+            r'periportal\s+fibrosis'
+        ],
         'infectious_disease': [
             r'covid', r'sars[- ]?cov', r'hepatitis',
             r'viral', r'bacterial', r'antiviral', r'antibiotic', r'infection'
@@ -266,6 +295,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'typhoid':
         subspecialty, conf = detect_typhoid_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'schistosomiasis':
+        subspecialty, conf = detect_schistosomiasis_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)
