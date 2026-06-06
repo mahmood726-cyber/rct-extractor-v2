@@ -54,6 +54,16 @@ from .typhoid import (
     normalize_typhoid_endpoint
 )
 
+from .maternal_neonatal import (
+    MATERNAL_NEONATAL_ENDPOINTS,
+    MATERNAL_PATTERNS as MNH_MATERNAL_PATTERNS,
+    HYPERTENSIVE_PATTERNS as MNH_HYPERTENSIVE_PATTERNS,
+    NEONATAL_PATTERNS as MNH_NEONATAL_PATTERNS,
+    PRETERM_PATTERNS as MNH_PRETERM_PATTERNS,
+    detect_maternal_neonatal_subspecialty,
+    normalize_maternal_neonatal_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -117,6 +127,18 @@ SPECIALTY_REGISTRY = {
             'vaccine': TYPHOID_VACCINE_PATTERNS,
             'resistance': TYPHOID_RESISTANCE_PATTERNS,
             'complications': TYPHOID_COMPLICATIONS_PATTERNS
+        }
+    },
+    'maternal_neonatal': {
+        'subspecialties': ['maternal', 'hypertensive', 'neonatal', 'preterm'],
+        'detection_function': detect_maternal_neonatal_subspecialty,
+        'normalizer': normalize_maternal_neonatal_endpoint,
+        'endpoints': MATERNAL_NEONATAL_ENDPOINTS,
+        'patterns': {
+            'maternal': MNH_MATERNAL_PATTERNS,
+            'hypertensive': MNH_HYPERTENSIVE_PATTERNS,
+            'neonatal': MNH_NEONATAL_PATTERNS,
+            'preterm': MNH_PRETERM_PATTERNS
         }
     },
     'infectious_disease': {
@@ -216,6 +238,20 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'\btcv\b', r'\bty21a\b', r'vi\s+polysaccharide', r'anti[- ]vi',
             r'fever\s+clearance\s+time', r'widal'
         ],
+        'maternal_neonatal': [
+            r'maternal\s+(?:mortalit|death|sepsis|morbidit)',
+            r'postpartum\s+ha?emorrhage', r'\bpph\b', r'pre[- ]?eclampsia',
+            r'eclampsia', r'eclamptic', r'magnesium\s+sul(?:f|ph)ate',
+            r'gestational\s+(?:age|hypertension|diabetes)',
+            r'neonatal\s+(?:mortalit|death|sepsis|encephalopathy)',
+            r'stillbirth', r'perinatal\s+(?:mortalit|death)',
+            r'preterm\s+(?:birth|delivery|labou?r)', r'premature\s+(?:birth|delivery)',
+            r'low\s+birth\s?weight', r'\blbw\b', r'birth\s?weight',
+            r'birth\s+asphyxia', r'\bapgar\b', r'caesarean|cesarean',
+            r'oxytocin', r'misoprostol', r'carbetocin', r'tranexamic\s+acid',
+            r'antenatal\s+cortico?steroids?', r'kangaroo\s+mother\s+care',
+            r'\bneonate', r'\bnewborn\b', r'obstetric', r'intrapartum'
+        ],
         'infectious_disease': [
             r'covid', r'sars[- ]?cov', r'hepatitis',
             r'viral', r'bacterial', r'antiviral', r'antibiotic', r'infection'
@@ -266,6 +302,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'typhoid':
         subspecialty, conf = detect_typhoid_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'maternal_neonatal':
+        subspecialty, conf = detect_maternal_neonatal_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)

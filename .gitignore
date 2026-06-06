@@ -81,6 +81,12 @@ data/field_portability/typhoid/*.jsonl
 data/field_portability/typhoid/*.json
 data/field_portability/typhoid/*.log
 
+# Maternal & neonatal field bundle — large/transient data (keep README.md; code is under scripts/)
+data/field_portability/maternal_neonatal/rct_trial_pdfs/
+data/field_portability/maternal_neonatal/*.jsonl
+data/field_portability/maternal_neonatal/*.json
+data/field_portability/maternal_neonatal/*.log
+
 # Malaria field bundle — large/transient data (keep README.md; code is under scripts/)
 data/field_portability/malaria/rct_trial_pdfs/
 data/field_portability/malaria/*.jsonl
