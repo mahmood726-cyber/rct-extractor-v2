@@ -44,6 +44,16 @@ from .hiv import (
     normalize_hiv_endpoint
 )
 
+from .hepatitis import (
+    HEPATITIS_ENDPOINTS,
+    TREATMENT_PATTERNS as HEPATITIS_TREATMENT_PATTERNS,
+    PREVENTION_PATTERNS as HEPATITIS_PREVENTION_PATTERNS,
+    PMTCT_PATTERNS as HEPATITIS_PMTCT_PATTERNS,
+    OUTCOMES_PATTERNS as HEPATITIS_OUTCOMES_PATTERNS,
+    detect_hepatitis_subspecialty,
+    normalize_hepatitis_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -95,6 +105,18 @@ SPECIALTY_REGISTRY = {
             'prevention': HIV_PREVENTION_PATTERNS,
             'pmtct': HIV_PMTCT_PATTERNS,
             'coinfection': HIV_COINFECTION_PATTERNS
+        }
+    },
+    'hepatitis': {
+        'subspecialties': ['treatment', 'prevention', 'pmtct', 'outcomes'],
+        'detection_function': detect_hepatitis_subspecialty,
+        'normalizer': normalize_hepatitis_endpoint,
+        'endpoints': HEPATITIS_ENDPOINTS,
+        'patterns': {
+            'treatment': HEPATITIS_TREATMENT_PATTERNS,
+            'prevention': HEPATITIS_PREVENTION_PATTERNS,
+            'pmtct': HEPATITIS_PMTCT_PATTERNS,
+            'outcomes': HEPATITIS_OUTCOMES_PATTERNS
         }
     },
     'infectious_disease': {
@@ -188,8 +210,16 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'tenofovir|emtricitabine', r'mother[- ]to[- ]child\s+transmission',
             r'efavirenz', r'undetectable'
         ],
+        'hepatitis': [
+            r'hepatitis\s+[bc]\b', r'\bhbv\b', r'\bhcv\b', r'chronic\s+hepatitis',
+            r'\bhbsag\b', r'\bhbeag\b', r'hbv\s+dna', r'sustained\s+virologic\w*\s+response',
+            r'\bsvr\b', r'sofosbuvir|ledipasvir|velpatasvir|glecaprevir|daclatasvir',
+            r'entecavir|tenofovir\s+(?:disoproxil|alafenamide)|telbivudine',
+            r'hepatocellular\s+carcinoma', r'cirrhosis', r'direct[- ]acting\s+antiviral',
+            r'anti[- ]?hbs', r'liver\s+stiffness'
+        ],
         'infectious_disease': [
-            r'covid', r'sars[- ]?cov', r'hepatitis',
+            r'covid', r'sars[- ]?cov',
             r'viral', r'bacterial', r'antiviral', r'antibiotic', r'infection'
         ],
         'diabetes': [
@@ -235,6 +265,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'hiv':
         subspecialty, conf = detect_hiv_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'hepatitis':
+        subspecialty, conf = detect_hepatitis_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)
