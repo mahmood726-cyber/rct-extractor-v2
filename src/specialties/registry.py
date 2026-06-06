@@ -44,6 +44,16 @@ from .hiv import (
     normalize_hiv_endpoint
 )
 
+from .tuberculosis import (
+    TUBERCULOSIS_ENDPOINTS,
+    TREATMENT_PATTERNS as TB_TREATMENT_PATTERNS,
+    DRUG_RESISTANT_PATTERNS as TB_DRUG_RESISTANT_PATTERNS,
+    PREVENTION_PATTERNS as TB_PREVENTION_PATTERNS,
+    LATENT_PATTERNS as TB_LATENT_PATTERNS,
+    detect_tuberculosis_subspecialty,
+    normalize_tuberculosis_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -95,6 +105,18 @@ SPECIALTY_REGISTRY = {
             'prevention': HIV_PREVENTION_PATTERNS,
             'pmtct': HIV_PMTCT_PATTERNS,
             'coinfection': HIV_COINFECTION_PATTERNS
+        }
+    },
+    'tuberculosis': {
+        'subspecialties': ['treatment', 'drug_resistant', 'prevention', 'latent'],
+        'detection_function': detect_tuberculosis_subspecialty,
+        'normalizer': normalize_tuberculosis_endpoint,
+        'endpoints': TUBERCULOSIS_ENDPOINTS,
+        'patterns': {
+            'treatment': TB_TREATMENT_PATTERNS,
+            'drug_resistant': TB_DRUG_RESISTANT_PATTERNS,
+            'prevention': TB_PREVENTION_PATTERNS,
+            'latent': TB_LATENT_PATTERNS
         }
     },
     'infectious_disease': {
@@ -188,6 +210,15 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'tenofovir|emtricitabine', r'mother[- ]to[- ]child\s+transmission',
             r'efavirenz', r'undetectable'
         ],
+        'tuberculosis': [
+            r'tuberculosis', r'\btb\b', r'mycobacterium\s+tuberculosis',
+            r'pulmonary\s+tuberculosis', r'\bmdr[- ]?tb\b|\brr[- ]?tb\b|\bxdr[- ]?tb\b',
+            r'sputum\s+culture', r'culture\s+conversion', r'smear[- ]positive',
+            r'rifampic?in', r'isoniazid', r'rifapentine', r'pyrazinamide',
+            r'bedaquiline', r'pretomanid|delamanid', r'\bhrze\b|\bbpalm?\b',
+            r'latent\s+(?:tb|tuberculosis)|\bltbi\b', r'anti[- ]tuberculosis',
+            r'tb\s+preventive\s+(?:therapy|treatment)|\btpt\b', r'\bbcg\b'
+        ],
         'infectious_disease': [
             r'covid', r'sars[- ]?cov', r'hepatitis',
             r'viral', r'bacterial', r'antiviral', r'antibiotic', r'infection'
@@ -235,6 +266,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'hiv':
         subspecialty, conf = detect_hiv_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'tuberculosis':
+        subspecialty, conf = detect_tuberculosis_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)
