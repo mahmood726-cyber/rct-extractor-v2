@@ -54,6 +54,16 @@ from .typhoid import (
     normalize_typhoid_endpoint
 )
 
+from .sickle_cell import (
+    SICKLE_CELL_ENDPOINTS,
+    DISEASE_MODIFYING_PATTERNS as SCD_DISEASE_MODIFYING_PATTERNS,
+    ACUTE_PAIN_PATTERNS as SCD_ACUTE_PAIN_PATTERNS,
+    PREVENTION_PATTERNS as SCD_PREVENTION_PATTERNS,
+    TRANSFUSION_PATTERNS as SCD_TRANSFUSION_PATTERNS,
+    detect_sickle_cell_subspecialty,
+    normalize_sickle_cell_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -117,6 +127,18 @@ SPECIALTY_REGISTRY = {
             'vaccine': TYPHOID_VACCINE_PATTERNS,
             'resistance': TYPHOID_RESISTANCE_PATTERNS,
             'complications': TYPHOID_COMPLICATIONS_PATTERNS
+        }
+    },
+    'sickle_cell': {
+        'subspecialties': ['disease_modifying', 'acute_pain', 'prevention', 'transfusion'],
+        'detection_function': detect_sickle_cell_subspecialty,
+        'normalizer': normalize_sickle_cell_endpoint,
+        'endpoints': SICKLE_CELL_ENDPOINTS,
+        'patterns': {
+            'disease_modifying': SCD_DISEASE_MODIFYING_PATTERNS,
+            'acute_pain': SCD_ACUTE_PAIN_PATTERNS,
+            'prevention': SCD_PREVENTION_PATTERNS,
+            'transfusion': SCD_TRANSFUSION_PATTERNS
         }
     },
     'infectious_disease': {
@@ -216,6 +238,12 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'\btcv\b', r'\bty21a\b', r'vi\s+polysaccharide', r'anti[- ]vi',
             r'fever\s+clearance\s+time', r'widal'
         ],
+        'sickle_cell': [
+            r'sickle\s+cell', r'\bscd\b', r'sickle\s+cell\s+(?:disease|ana?emia)',
+            r'\bhbss\b', r'\bhbsc\b', r'ha?emoglobin\s+s\b', r'\bsickle\b',
+            r'vaso[- ]?occlusive', r'hydroxyurea|hydroxycarbamide', r'voxelotor',
+            r'crizanlizumab', r'acute\s+chest\s+syndrome', r'fetal\s+ha?emoglobin|\bhbf\b'
+        ],
         'infectious_disease': [
             r'covid', r'sars[- ]?cov', r'hepatitis',
             r'viral', r'bacterial', r'antiviral', r'antibiotic', r'infection'
@@ -266,6 +294,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'typhoid':
         subspecialty, conf = detect_typhoid_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'sickle_cell':
+        subspecialty, conf = detect_sickle_cell_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)
