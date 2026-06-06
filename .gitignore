@@ -75,6 +75,12 @@ data/field_portability/hiv/*.jsonl
 data/field_portability/hiv/*.json
 data/field_portability/hiv/*.log
 
+# Typhoid field bundle — large/transient data (keep README.md; code is under scripts/)
+data/field_portability/typhoid/rct_trial_pdfs/
+data/field_portability/typhoid/*.jsonl
+data/field_portability/typhoid/*.json
+data/field_portability/typhoid/*.log
+
 # Malaria field bundle — large/transient data (keep README.md; code is under scripts/)
 data/field_portability/malaria/rct_trial_pdfs/
 data/field_portability/malaria/*.jsonl

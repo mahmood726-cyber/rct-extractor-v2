@@ -104,8 +104,12 @@ _RATIO_RE = re.compile(
     r"hazard\s+ratio|odds\s+ratio|risk\s+ratio|relative\s+risk|risk\s+difference|"
     r"standardi[sz]ed\s+mean\s+difference|mean\s+difference)"
     r"|\b(?:aOR|aHR|aRR|aIRR|aRD|SMD|MD)\b)"
-    r"\s*(?:\[[^\]]{1,12}\]|\([^)]{1,12}\))?\s*"   # optional [aOR] / (aIRR)
-    r"(?:[:=,]|\bof\b|\bwas\b)?\s*"
+    r"\s*(?:\[[^\]]{1,12}\]|\([^)]{1,12}\))?"      # optional [aOR] / (aIRR)
+    r"(?:s|es)?"                                    # plural: 'relative risks', 'odds ratios'
+    # linking phrase the core misses: "<measure> for <subgroup> was/were <val>",
+    # bounded and digit/clause-free so it can't reach across to a distant number.
+    r"(?:\s*[^\d;:=()\[\]]{0,30}?\b(?:was|were|of)\b)?"
+    r"\s*[:=,]?\s*"
     r"(?P<val>" + _NUM + r")"
     r"[^\d]{0,30}?" + _CI +
     r"(?P<lo>" + _NUM + r")\s*(?:" + _DASH + r"|,)\s*(?P<hi>" + _NUM + r")",

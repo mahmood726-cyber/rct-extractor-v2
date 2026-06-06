@@ -31,6 +31,13 @@ from src.specialties.malaria_effects import augment_malaria_effects as aug
     ("reduced malaria (OR = 0.45, 95% CI: 0.36, 0.56, P<0.01)", "OR", 0.45, 0.36, 0.56),
     ("OR = 0.82, 95 % CI: 0.69, 0.97", "OR", 0.82, 0.69, 0.97),
     ("HR = 0.67 (95% CI 0.50-0.90)", "HR", 0.67, 0.50, 0.90),
+    # Linking phrase between measure and value (found mining published typhoid MAs):
+    # "<measure> for <subgroup> was/were <value>", incl. zero MD, spelled-out CI,
+    # and plural ("risks, were") + Lancet middle dot.
+    ("mean difference for diarrhoea was 0 days (95% CI -0.54 to 0.54)", "MD", 0.0, -0.54, 0.54),
+    ("weighted mean difference for length of illness was -0.07 days, "
+     "95% confidence interval -0.55 to 0.40", "MD", -0.07, -0.55, 0.40),
+    ("relative risks, were 1·05 (95% CI 1·04-1·07; I2 97%)", "RR", 1.05, 1.04, 1.07),
 ])
 def test_augmenter_recovers(text, etype, val, lo, hi):
     r = aug(text)
