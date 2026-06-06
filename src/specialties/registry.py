@@ -44,6 +44,16 @@ from .hiv import (
     normalize_hiv_endpoint
 )
 
+from .typhoid import (
+    TYPHOID_ENDPOINTS,
+    TREATMENT_PATTERNS as TYPHOID_TREATMENT_PATTERNS,
+    VACCINE_PATTERNS as TYPHOID_VACCINE_PATTERNS,
+    RESISTANCE_PATTERNS as TYPHOID_RESISTANCE_PATTERNS,
+    COMPLICATIONS_PATTERNS as TYPHOID_COMPLICATIONS_PATTERNS,
+    detect_typhoid_subspecialty,
+    normalize_typhoid_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -95,6 +105,18 @@ SPECIALTY_REGISTRY = {
             'prevention': HIV_PREVENTION_PATTERNS,
             'pmtct': HIV_PMTCT_PATTERNS,
             'coinfection': HIV_COINFECTION_PATTERNS
+        }
+    },
+    'typhoid': {
+        'subspecialties': ['treatment', 'vaccine', 'resistance', 'complications'],
+        'detection_function': detect_typhoid_subspecialty,
+        'normalizer': normalize_typhoid_endpoint,
+        'endpoints': TYPHOID_ENDPOINTS,
+        'patterns': {
+            'treatment': TYPHOID_TREATMENT_PATTERNS,
+            'vaccine': TYPHOID_VACCINE_PATTERNS,
+            'resistance': TYPHOID_RESISTANCE_PATTERNS,
+            'complications': TYPHOID_COMPLICATIONS_PATTERNS
         }
     },
     'infectious_disease': {
@@ -188,6 +210,12 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'tenofovir|emtricitabine', r'mother[- ]to[- ]child\s+transmission',
             r'efavirenz', r'undetectable'
         ],
+        'typhoid': [
+            r'typhoid', r'enteric\s+fever', r'paratyphoid', r'paratyphi',
+            r'salmonella\s+typhi', r'\bs\.?\s*typhi\b', r'typhoid\s+conjugate\s+vaccine',
+            r'\btcv\b', r'\bty21a\b', r'vi\s+polysaccharide', r'anti[- ]vi',
+            r'fever\s+clearance\s+time', r'widal'
+        ],
         'infectious_disease': [
             r'covid', r'sars[- ]?cov', r'hepatitis',
             r'viral', r'bacterial', r'antiviral', r'antibiotic', r'infection'
@@ -235,6 +263,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'hiv':
         subspecialty, conf = detect_hiv_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'typhoid':
+        subspecialty, conf = detect_typhoid_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)
