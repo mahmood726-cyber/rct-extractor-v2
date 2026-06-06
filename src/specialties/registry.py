@@ -54,6 +54,16 @@ from .typhoid import (
     normalize_typhoid_endpoint
 )
 
+from .cholera import (
+    CHOLERA_ENDPOINTS,
+    TREATMENT_PATTERNS as CHOLERA_TREATMENT_PATTERNS,
+    REHYDRATION_PATTERNS as CHOLERA_REHYDRATION_PATTERNS,
+    VACCINE_PATTERNS as CHOLERA_VACCINE_PATTERNS,
+    SEVERE_PATTERNS as CHOLERA_SEVERE_PATTERNS,
+    detect_cholera_subspecialty,
+    normalize_cholera_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -117,6 +127,18 @@ SPECIALTY_REGISTRY = {
             'vaccine': TYPHOID_VACCINE_PATTERNS,
             'resistance': TYPHOID_RESISTANCE_PATTERNS,
             'complications': TYPHOID_COMPLICATIONS_PATTERNS
+        }
+    },
+    'cholera': {
+        'subspecialties': ['treatment', 'rehydration', 'vaccine', 'severe'],
+        'detection_function': detect_cholera_subspecialty,
+        'normalizer': normalize_cholera_endpoint,
+        'endpoints': CHOLERA_ENDPOINTS,
+        'patterns': {
+            'treatment': CHOLERA_TREATMENT_PATTERNS,
+            'rehydration': CHOLERA_REHYDRATION_PATTERNS,
+            'vaccine': CHOLERA_VACCINE_PATTERNS,
+            'severe': CHOLERA_SEVERE_PATTERNS
         }
     },
     'infectious_disease': {
@@ -216,6 +238,13 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'\btcv\b', r'\bty21a\b', r'vi\s+polysaccharide', r'anti[- ]vi',
             r'fever\s+clearance\s+time', r'widal'
         ],
+        'cholera': [
+            r'cholera', r'vibrio\s+cholerae', r'v\.?\s*cholerae',
+            r'oral\s+cholera\s+vaccine', r'\bocv\b', r'vibriocidal',
+            r'dukoral|shanchol|euvichol|hillchol', r'el\s+tor',
+            r'cholera\s+toxin', r'ogawa|inaba', r'rice[- ]based\s+ors',
+            r'watery\s+diarrh(?:oea|ea)'
+        ],
         'infectious_disease': [
             r'covid', r'sars[- ]?cov', r'hepatitis',
             r'viral', r'bacterial', r'antiviral', r'antibiotic', r'infection'
@@ -266,6 +295,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'typhoid':
         subspecialty, conf = detect_typhoid_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'cholera':
+        subspecialty, conf = detect_cholera_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)
