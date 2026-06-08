@@ -61,7 +61,8 @@ _TB_ARM_FULL = [
     (r"isoniazid\s+preventive\s+therapy", "IPT"),
     (r"weekly\s+rifapentine(?:\s+(?:plus|and|\+)\s+isoniazid)?", "rifapentine-isoniazid"),
     (r"\bplacebo\b", "placebo"),
-    (r"standard\s+(?:of\s+)?care|usual\s+care|standard\s+(?:tb\s+)?(?:regimen|therapy|treatment)",
+    (r"standard[\s-]+(?:of[\s-]+)?care|usual\s+care|"
+     r"standard\s+(?:tb\s+)?(?:regimen|therapy|treatment)",
      "standard-of-care"),
     (r"control\s+(?:regimen|group|arm)|control(?:\s+group|\s+arm)?", "control"),
     (r"intervention\s+(?:group|arm)", "intervention"),

@@ -178,7 +178,7 @@ TREATMENT_PATTERNS = {
         (r'(?:sputum\s+)?smear\s+(?:conversion|negativity)', 'SMEAR_CONVERSION'),
         (r'unfavou?rable\s+(?:outcome|status)|poor\s+outcome|'
          r'treatment\s+failure\s+or\s+relapse', 'UNFAVORABLE_OUTCOME'),
-        (r'treatment\s+success|favou?rable\s+(?:outcome|status)|\bcured?\b|'
+        (r'treatment\s+success|(?<!un)favou?rable\s+(?:outcome|status)|\bcured?\b|'
          r'successful\s+treatment\s+outcome', 'TREATMENT_SUCCESS'),
         (r'(?:bacteriolog\w+|microbiolog\w+)?\s*treatment\s+failure|failure\s+of\s+treatment',
          'TREATMENT_FAILURE'),
@@ -214,7 +214,7 @@ DRUG_RESISTANT_PATTERNS = {
         (r'serious\s+adverse\s+events?|grade\s+3(?:\s*[-/]\s*4|\s+or\s+4)?\s+adverse|'
          r'qtc?f?\s+prolongation', 'ADVERSE_EVENTS'),
         (r'unfavou?rable\s+(?:outcome|status)|poor\s+outcome', 'UNFAVORABLE_OUTCOME'),
-        (r'favou?rable\s+(?:outcome|status)|treatment\s+success|\bcured?\b',
+        (r'(?<!un)favou?rable\s+(?:outcome|status)|treatment\s+success|\bcured?\b',
          'TREATMENT_SUCCESS'),
         (r'(?:sputum\s+)?culture\s+(?:conversion|negativity)', 'CULTURE_CONVERSION'),
         (r'relapse|recurrence|recurrent\s+(?:tuberculosis|tb)', 'RELAPSE'),
