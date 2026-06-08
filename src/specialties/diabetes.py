@@ -259,7 +259,7 @@ CARDIORENAL_PATTERNS = {
         (r'cardiovascular\s+(?:death|mortality)|death\s+from\s+cardiovascular\s+causes|'
          r'\bcv\s+death\b', 'CV_DEATH'),
         (r'(?:non[- ]?fatal\s+)?myocardial\s+infarction|heart\s+attack', 'MYOCARDIAL_INFARCTION'),
-        (r'(?:non[- ]?fatal\s+|isch[ae]mic\s+)?stroke|cerebrovascular\s+event', 'STROKE'),
+        (r'(?:non[- ]?fatal\s+|ischa?emic\s+)?stroke|cerebrovascular\s+event', 'STROKE'),
         (r'hospitali[sz]ation\s+for\s+heart\s+failure|heart\s+failure\s+hospitali[sz]ation|'
          r'\bhhf\b|worsening\s+heart\s+failure', 'HF_HOSPITALIZATION'),
         (r'all[- ]cause\s+mortality|death\s+from\s+any\s+cause|total\s+mortality',

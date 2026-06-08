@@ -259,7 +259,7 @@ VACCINE_PATTERNS = {
         (r'vaccine\s+(?:efficacy|effectiveness)|protective\s+efficacy|'
          r'efficacy\s+against\s+(?:pneumonia|invasive\s+pneumococcal)', 'VACCINE_EFFICACY'),
         (r'invasive\s+pneumococcal\s+disease|vaccine[- ]type\s+ipd|\bipd\b|'
-         r'bacterae?mic\s+pneumonia|pneumococcal\s+bacterae?mia', 'INVASIVE_PNEUMOCOCCAL_DISEASE'),
+         r'bactera?emic\s+pneumonia|pneumococcal\s+bactera?emia', 'INVASIVE_PNEUMOCOCCAL_DISEASE'),
         (r'nasopharyngeal\s+(?:carriage|colon[is]ation)|vaccine[- ]type\s+carriage|'
          r'pneumococcal\s+(?:carriage|colon[is]ation)|carriage\s+prevalence',
          'NASOPHARYNGEAL_CARRIAGE'),

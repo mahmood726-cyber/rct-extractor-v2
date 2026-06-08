@@ -210,7 +210,7 @@ CV_EVENTS_PATTERNS = {
          r'\bmace\b|cardiovascular\s+composite|composite\s+cardiovascular\s+(?:outcome|endpoint)|'
          r'(?:major\s+)?cardiovascular\s+events', 'MACE'),
         (r'(?:fatal\s+|nonfatal\s+|non[- ]fatal\s+|first\s+|incident\s+|ischa?emic\s+|'
-         r'h[ae]morrhagic\s+|cerebrovascular\s+)?stroke|cerebrovascular\s+accident', 'STROKE'),
+         r'ha?emorrhagic\s+|cerebrovascular\s+)?stroke|cerebrovascular\s+accident', 'STROKE'),
         (r'(?:acute\s+|fatal\s+|nonfatal\s+|non[- ]fatal\s+)?myocardial\s+infarction|'
          r'heart\s+attack|coronary\s+(?:event|heart\s+disease\s+event)', 'MYOCARDIAL_INFARCTION'),
         (r'cardiovascular\s+(?:death|mortality)|cv\s+death|death\s+from\s+cardiovascular',

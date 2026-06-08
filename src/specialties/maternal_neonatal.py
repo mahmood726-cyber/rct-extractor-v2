@@ -305,7 +305,7 @@ NEONATAL_PATTERNS = {
         r'neonatal\s+(?:mortalit|death|sepsis|infection|encephalopathy)',
         r'stillbirth|fetal\s+death|foetal\s+death|intrauterine\s+death',
         r'perinatal\s+(?:mortalit|death)', r'birth\s+asphyxia|perinatal\s+asphyxia',
-        r'hypoxic[- ]isch[ae]mic\s+encephalopathy|\bhie\b',
+        r'hypoxic[- ]ischa?emic\s+encephalopathy|\bhie\b',
         r'\bnicu\b|neonatal\s+intensive\s+care|special\s+care\s+nursery',
         r'\bapgar\b', r'neonatal\s+resuscitation', r'chlorhexidine',
         r'kangaroo\s+mother\s+care|\bkmc\b', r'\bnewborn\b|\bneonate',
@@ -317,7 +317,7 @@ NEONATAL_PATTERNS = {
         (r'perinatal\s+(?:mortalit|death|loss)', 'PERINATAL_MORTALITY'),
         (r'neonatal\s+sepsis|newborn\s+sepsis|(?:early|late)[- ]onset\s+sepsis|'
          r'neonatal\s+(?:bacterial\s+)?infection', 'NEONATAL_SEPSIS'),
-        (r'birth\s+asphyxia|perinatal\s+asphyxia|hypoxic[- ]isch[ae]mic\s+encephalopathy|'
+        (r'birth\s+asphyxia|perinatal\s+asphyxia|hypoxic[- ]ischa?emic\s+encephalopathy|'
          r'neonatal\s+encephalopathy|\bhie\b', 'BIRTH_ASPHYXIA'),
         (r'nicu\s+admission|admission\s+to\s+(?:the\s+)?(?:nicu|neonatal\s+intensive)|'
          r'special\s+care\s+nursery|neonatal\s+unit\s+admission', 'NICU_ADMISSION'),

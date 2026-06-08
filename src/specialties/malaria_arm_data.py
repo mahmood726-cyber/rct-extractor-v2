@@ -415,9 +415,17 @@ def extract_continuous(text: str, *, endpoint_patterns=None, arm_compiled=None,
         nm = _N_NEAR.search(text[max(0, s - 40):e + 25])
         n = int(nm.group(1)) if nm else None
         est_mean, est_sd = _iqr_to_mean_sd(lo, out_med, hi, n)   # Wan 2014
+        # Log-normal endpoints (parasite clearance/density, viral load, EPG, ...)
+        # must NOT be pooled as a raw-scale MD even after the Wan transform --
+        # mirror the mean+SD branch and flag them, else median+IQR rows silently
+        # enter a pool on the wrong scale. (stats review)
+        lognormal = ep in logn
         _emit(ep, _tag_arm(text, s, e, compiled=arm_compiled), s, e, stat="median_iqr",
               median=out_med, iqr_lower=lo, iqr_upper=hi,
-              est_mean=est_mean, est_sd=est_sd, poolable="after_iqr_to_sd")
+              est_mean=est_mean, est_sd=est_sd,
+              poolable=False if lognormal else "after_iqr_to_sd",
+              pooling_note=("log-normal: pool on log scale / use GMR, not raw MD"
+                            if lognormal else None))
 
     for m in _MEAN_SD.finditer(text):
         s, e = m.start(), m.end()

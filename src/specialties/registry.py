@@ -471,6 +471,14 @@ SPECIALTY_REGISTRY = {
 # REGISTRY FUNCTIONS
 # ============================================================
 
+# Generic catch-all buckets that lack a detection_function / normalizer /
+# arm-level extractor. They must never outrank a specific specialty (see
+# detect_specialty). `infectious_disease` is the one with bare-word keywords;
+# the others are kept here too so a future generic keyword can't silently steal
+# routing from a specific specialty.
+_FALLBACK_SPECIALTIES = {'infectious_disease'}
+
+
 def detect_specialty(text: str) -> Tuple[str, str, float]:
     """
     Detect therapeutic specialty and subspecialty from text.
@@ -664,6 +672,21 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
 
     if best_score == 0:
         return ('unknown', None, 0.0)
+
+    # `infectious_disease` is a deliberate catch-all whose keywords (viral,
+    # bacterial, infection, antibiotic, antiviral) are intentionally broad and
+    # co-occur with EVERY specific infectious-disease specialty (hepatitis,
+    # typhoid, TB, cholera, pneumonia, meningitis, ...). Left alone, those bare
+    # words let it outscore a specific specialty on a borderline abstract and
+    # route it to a bucket with no detection/normalizer/arm-level extractor --
+    # i.e. lose all specialty-specific extraction. So treat it as a fallback:
+    # it only wins when NO specific specialty matched at all.
+    if best_specialty in _FALLBACK_SPECIALTIES:
+        specific = {s: sc for s, sc in specialty_scores.items()
+                    if s not in _FALLBACK_SPECIALTIES and sc > 0}
+        if specific:
+            best_specialty = max(specific, key=specific.get)
+            best_score = specialty_scores[best_specialty]
 
     # Detect subspecialty
     subspecialty = None

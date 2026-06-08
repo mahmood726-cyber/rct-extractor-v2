@@ -58,16 +58,16 @@ def _read_inputs(args) -> List[Dict[str, str]]:
     return [{"name": "<stdin>", "text": data}]
 
 
-def _print_summary(name: str, res: Dict[str, Any]) -> None:
-    print(f"\n{'=' * 60}")
-    print(f"{name}")
-    print(f"{'=' * 60}")
+def _format_summary(name: str, res: Dict[str, Any]) -> str:
+    """Build the human-readable summary for one record (returned, not printed,
+    so the same text can go to stdout AND to --output)."""
+    out = [f"\n{'=' * 60}", f"{name}", f"{'=' * 60}"]
     conf = res.get("confidence")
     conf_s = f"{conf:.2f}" if isinstance(conf, (int, float)) else str(conf)
-    print(f"specialty   : {res['specialty']}")
-    print(f"subspecialty: {res.get('subspecialty')}  (confidence {conf_s})")
+    out.append(f"specialty   : {res['specialty']}")
+    out.append(f"subspecialty: {res.get('subspecialty')}  (confidence {conf_s})")
     effects = res.get("effects") or []
-    print(f"effects     : {len(effects)}")
+    out.append(f"effects     : {len(effects)}")
     for e in effects[:10]:
         et = e.get("type", "?")
         es = e.get("effect_size")
@@ -75,19 +75,20 @@ def _print_summary(name: str, res: Dict[str, Any]) -> None:
         ep = e.get("endpoint", "")
         ci = f" [{lo}-{hi}]" if lo is not None and hi is not None else ""
         es_s = f"{es}" if es is not None else "?"
-        print(f"  - {et}={es_s}{ci}  {ep}".rstrip())
+        out.append(f"  - {et}={es_s}{ci}  {ep}".rstrip())
     arm = res.get("arm_level")
     if arm:
         p2 = arm.get("poolable_2x2") or []
         cont = arm.get("continuous") or []
-        print(f"arm-level   : {len(p2)} poolable 2x2, {len(cont)} continuous")
+        out.append(f"arm-level   : {len(p2)} poolable 2x2, {len(cont)} continuous")
         for t in p2[:5]:
             a1, a2 = t.get("arm1", {}), t.get("arm2", {})
-            print(
+            out.append(
                 f"  - {t.get('endpoint','?')}: "
                 f"{a1.get('label','?')} {a1.get('events','?')}/{a1.get('total','?')} vs "
                 f"{a2.get('label','?')} {a2.get('events','?')}/{a2.get('total','?')}"
             )
+    return "\n".join(out)
 
 
 def main(argv=None) -> int:
@@ -169,7 +170,9 @@ def main(argv=None) -> int:
             out = {"name": name, **res}
             lines.append(json.dumps(out, default=str))
         else:
-            _print_summary(name, res)
+            summary = _format_summary(name, res)
+            print(summary)
+            lines.append(summary)
 
     if args.json:
         payload = "\n".join(lines) + ("\n" if lines else "")
@@ -179,8 +182,9 @@ def main(argv=None) -> int:
         else:
             sys.stdout.write(payload)
     elif args.output and not args.detect:
-        # human format + --output: still honour the file for convenience
-        Path(args.output).write_text("\n".join(lines), encoding="utf-8")
+        # human format + --output: also persist the printed summaries (lines is
+        # now populated above, so this no longer writes an empty file).
+        Path(args.output).write_text("\n".join(lines) + "\n", encoding="utf-8")
 
     return 0
 

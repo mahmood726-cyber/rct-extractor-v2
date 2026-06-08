@@ -276,14 +276,14 @@ RESISTANCE_PATTERNS = {
 COMPLICATIONS_PATTERNS = {
     'detection_keywords': [
         r'intestinal\s+perforation|ileal\s+perforation|bowel\s+perforation',
-        r'gastrointestinal\s+(?:bleeding|h[ae]morrhage)|intestinal\s+(?:bleeding|h[ae]morrhage)',
+        r'gastrointestinal\s+(?:bleeding|ha?emorrhage)|intestinal\s+(?:bleeding|ha?emorrhage)',
         r'encephalopathy', r'severe\s+typhoid|complicated\s+(?:typhoid|enteric)',
         r'peritonitis', r'altered\s+(?:consciousness|mental\s+status)',
     ],
     'endpoint_patterns': [
         (r'(?:intestinal|ileal|bowel|gastrointestinal|enteric)\s+perforation',
          'INTESTINAL_PERFORATION'),
-        (r'(?:gastrointestinal|intestinal)\s+(?:bleeding|h[ae]morrhage)|\bgi\s+bleeding',
+        (r'(?:gastrointestinal|intestinal)\s+(?:bleeding|ha?emorrhage)|\bgi\s+bleeding',
          'GI_BLEEDING'),
         (r'encephalopathy|altered\s+(?:consciousness|mental\s+status)', 'ENCEPHALOPATHY'),
         (r'severe\s+(?:typhoid|enteric\s+fever)|complicated\s+(?:typhoid|enteric\s+fever)',

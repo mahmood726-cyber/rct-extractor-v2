@@ -75,3 +75,17 @@ def test_input_directory_batch(tmp_path, capsys):
     assert len(lines) == 2
     specialties = {json.loads(line)["specialty"] for line in lines}
     assert "diabetes" in specialties
+
+
+def test_human_output_to_file_is_not_empty(tmp_path, capsys):
+    # Regression: `rct-extract -i FILE -o OUT` (human format, no --json) used to
+    # write a 0-byte file while printing to stdout. Fixed 2026-06-08.
+    src = tmp_path / "abstract.txt"
+    src.write_text(DIABETES_ABSTRACT, encoding="utf-8")
+    out = tmp_path / "out.txt"
+    rc = main(["--specialty", "diabetes", "-i", str(src), "-o", str(out)])
+    capsys.readouterr()
+    assert rc == 0
+    written = out.read_text(encoding="utf-8")
+    assert written.strip(), "human-format --output wrote an empty file"
+    assert "specialty   : diabetes" in written

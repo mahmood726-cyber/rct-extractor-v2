@@ -3,7 +3,7 @@ Tests for arm-level / 2x2 extraction (src/specialties/malaria_arm_data.py).
 """
 import pytest
 from src.specialties.malaria_arm_data import (
-    extract_proportions, pair_2x2, extract_arm_level,
+    extract_proportions, pair_2x2, extract_arm_level, extract_continuous,
 )
 
 
@@ -168,3 +168,24 @@ def test_haemoglobin_spelling_both():
     from src.specialties.malaria_arm_data import extract_continuous
     assert extract_continuous("haemoglobin mean 10.5 ± 1.2 g/dL")[0]["endpoint"] == "HAEMOGLOBIN"
     assert extract_continuous("hemoglobin mean 10.5 ± 1.2 g/dL")[0]["endpoint"] == "HAEMOGLOBIN"
+
+
+def test_median_iqr_lognormal_flagged_not_poolable():
+    # parasite clearance time is log-normal; a median+IQR row must be flagged
+    # non-poolable on the raw scale even after the Wan transform (stats fix).
+    res = extract_continuous(
+        "Parasite clearance time: median 24 (IQR 12-36) hours in the "
+        "artemether-lumefantrine arm (n=50).")
+    pct = [r for r in res if r["endpoint"] == "PARASITE_CLEARANCE_TIME"]
+    assert pct, "parasite clearance time not extracted"
+    r = pct[0]
+    assert r["stat"] == "median_iqr"
+    assert r["poolable"] is False
+    assert "log scale" in (r.get("pooling_note") or "")
+
+
+def test_median_iqr_non_lognormal_remains_poolable_after_transform():
+    res = extract_continuous("Haemoglobin: median 10.5 (IQR 9.0-12.0) g/dL (n=40).")
+    hb = [r for r in res if r["endpoint"] == "HAEMOGLOBIN"]
+    assert hb and hb[0]["poolable"] == "after_iqr_to_sd"
+    assert hb[0].get("pooling_note") is None

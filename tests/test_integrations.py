@@ -139,3 +139,42 @@ def test_allmeta_cli_writes_payload(tmp_path):
     payload = json.loads(out.read_text(encoding="utf-8"))
     assert payload["_schema"] == "ma-studies-v1"
     assert len(payload["studies"]) == 2
+
+
+# --- regression: percentage-reduction measures must NOT be logged as ratios ---
+# (RRR/EFFICACY_PCT effect_size is a PERCENT on 0-100; the correct analysis scale
+# is log(1 - x/100) = log(RR), not log(percent). Fixed 2026-06-08.)
+
+def test_rrr_pooled_on_log_rr_scale_not_as_raw_ratio():
+    # VE/RRR = 56% (95% CI 51-60) -> RR = 0.44 (CI 0.40-0.49) -> est = log(0.44)
+    est, se = effect_to_est_se(
+        {"type": "RRR", "effect_size": 56.0, "ci_lower": 51.0, "ci_upper": 60.0})
+    assert math.isclose(est, math.log(1 - 56 / 100), rel_tol=1e-9)
+    # CI flips: se derived from log(1-0.60) .. log(1-0.51)
+    exp_se = (math.log(1 - 51 / 100) - math.log(1 - 60 / 100)) / (2 * Z975)
+    assert math.isclose(se, exp_se, rel_tol=1e-9)
+    # and it must NOT be the (wrong) old behaviour log(56)
+    assert not math.isclose(est, math.log(56.0), rel_tol=1e-6)
+
+
+def test_efficacy_pct_uses_same_log_rr_conversion():
+    a = effect_to_est_se(
+        {"type": "EFFICACY_PCT", "effect_size": 56.0, "ci_lower": 51.0, "ci_upper": 60.0})
+    b = effect_to_est_se(
+        {"type": "RRR", "effect_size": 56.0, "ci_lower": 51.0, "ci_upper": 60.0})
+    assert a == b
+
+
+def test_pct_measure_at_or_above_100_is_rejected():
+    # x>=100 -> RR<=0 -> log undefined -> None (not a crash, not a bogus number)
+    assert effect_to_est_se(
+        {"type": "RRR", "effect_size": 100.0, "ci_lower": 90.0, "ci_upper": 100.0}) is None
+
+
+def test_negative_efficacy_handled():
+    # VE = -20% (harm) -> RR = 1.2 > 0, finite est/se
+    res = effect_to_est_se(
+        {"type": "EFFICACY_PCT", "effect_size": -20.0, "ci_lower": -50.0, "ci_upper": 5.0})
+    assert res is not None
+    est, se = res
+    assert math.isclose(est, math.log(1.2), rel_tol=1e-9) and se > 0

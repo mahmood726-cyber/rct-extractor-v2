@@ -129,3 +129,20 @@ def test_immunogenicity_is_lognormal():
     r = extract_continuous("mean anti-pneumococcal IgG 4.2 ± 1.3 mcg/ml in the PCV13 arm")
     assert r and r[0]["endpoint"] == "IMMUNOGENICITY" and r[0]["poolable"] is False
     assert r[0]["pooling_note"]
+
+
+# --- regression: American "bacteremia/bacteremic" spelling (ae-trap fix 2026-06-08) ---
+# `bacterae?mic`/`bacterae?mia` matched only the British spelling and silently
+# missed the dominant American forms, dropping IPD/bacteraemic-pneumonia events.
+
+@pytest.mark.parametrize("phrase", [
+    "bacteremic pneumonia", "bacteraemic pneumonia",
+    "pneumococcal bacteremia", "pneumococcal bacteraemia",
+])
+def test_bacteremia_both_spellings_tag_ipd(phrase):
+    import re
+    pats = []
+    for sub in ("treatment", "vaccine", "mortality", "severe"):
+        pats += get_pneumonia_endpoint_patterns(sub)
+    ep = next((e for p, e in pats if re.search(p, phrase, re.I)), None)
+    assert ep == "INVASIVE_PNEUMOCOCCAL_DISEASE", phrase

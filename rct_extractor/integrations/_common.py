@@ -13,8 +13,14 @@ from typing import Dict, Optional, Tuple
 # Two-sided 95% normal quantile (matches allmeta's shared/ma-studies-v1.js).
 Z975 = 1.959963984540054
 
-RATIO_TYPES = {"OR", "RR", "HR", "IRR", "GMR", "RRR"}
+RATIO_TYPES = {"OR", "RR", "HR", "IRR", "GMR"}
 DIFF_TYPES = {"MD", "SMD", "ARD", "RD", "WMD"}
+# Percentage-reduction measures (relative risk reduction, vaccine/protective
+# efficacy). These are NOT loggable ratios: effect_size is a PERCENT in (-inf,100]
+# (e.g. VE=56 means RR=1-0.56=0.44). The core extractor stores RRR on a 0-100
+# scale and ma_contract classifies it as a difference type, so log(effect_size)
+# here would be nonsense. The correct analysis scale is log(1 - x/100) = log(RR).
+PCT_TYPES = {"RRR", "EFFICACY_PCT"}
 
 
 def effect_to_est_se(effect: Dict) -> Optional[Tuple[float, float]]:
@@ -31,7 +37,18 @@ def effect_to_est_se(effect: Dict) -> Optional[Tuple[float, float]]:
         return None
     etype = str(effect.get("type", "")).upper()
     try:
-        if etype in RATIO_TYPES:
+        if etype in PCT_TYPES:
+            # x% reduction -> RR = 1 - x/100; pool on log(RR). The CI flips
+            # because a HIGHER reduction is a LOWER RR.
+            eff_f, lo_f, hi_f = float(eff), float(lo), float(hi)
+            if max(eff_f, lo_f, hi_f) >= 100:
+                return None
+            rr, rr_lo, rr_hi = 1 - eff_f / 100, 1 - hi_f / 100, 1 - lo_f / 100
+            if min(rr, rr_lo, rr_hi) <= 0:
+                return None
+            est = math.log(rr)
+            se = (math.log(rr_hi) - math.log(rr_lo)) / (2 * Z975)
+        elif etype in RATIO_TYPES:
             if eff <= 0 or lo <= 0 or hi <= 0:
                 return None
             est = math.log(float(eff))

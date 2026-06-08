@@ -108,3 +108,22 @@ def test_hbv_dna_is_lognormal():
     r = extract_continuous("mean HBV DNA reduction 4.5 ± 0.8 log10 IU/mL in the tenofovir arm")
     assert r and r[0]["endpoint"] == "HBV_DNA_LEVEL" and r[0]["poolable"] is False
     assert r[0]["pooling_note"]
+
+
+# --- regression: generic infectious_disease catch-all must not steal routing ---
+# (ID keywords viral/bacterial/infection/antibiotic/antiviral are deliberately
+# broad; a specific specialty that also matched must win. Fixed 2026-06-08.)
+
+def test_infectious_disease_does_not_steal_from_hepatitis():
+    spec, _, _ = detect_specialty(
+        "Antiviral treatment of viral hepatitis B (HBV) infection reduced HBV "
+        "DNA; bacterial co-infection excluded; antibiotic prophylaxis given.")
+    assert spec == "hepatitis"
+
+
+def test_infectious_disease_still_wins_for_generic_covid():
+    # When NO specific specialty matches, the ID fallback is still selected.
+    spec, _, _ = detect_specialty(
+        "covid-19 sars-cov-2 antiviral therapy; viral infection; "
+        "bacterial superinfection; antibiotic stewardship.")
+    assert spec == "infectious_disease"
