@@ -54,6 +54,16 @@ from .typhoid import (
     normalize_typhoid_endpoint
 )
 
+from .pneumonia import (
+    PNEUMONIA_ENDPOINTS,
+    TREATMENT_PATTERNS as PNEUMONIA_TREATMENT_PATTERNS,
+    VACCINE_PATTERNS as PNEUMONIA_VACCINE_PATTERNS,
+    MORTALITY_PATTERNS as PNEUMONIA_MORTALITY_PATTERNS,
+    SEVERE_PATTERNS as PNEUMONIA_SEVERE_PATTERNS,
+    detect_pneumonia_subspecialty,
+    normalize_pneumonia_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -117,6 +127,18 @@ SPECIALTY_REGISTRY = {
             'vaccine': TYPHOID_VACCINE_PATTERNS,
             'resistance': TYPHOID_RESISTANCE_PATTERNS,
             'complications': TYPHOID_COMPLICATIONS_PATTERNS
+        }
+    },
+    'pneumonia': {
+        'subspecialties': ['treatment', 'vaccine', 'mortality', 'severe'],
+        'detection_function': detect_pneumonia_subspecialty,
+        'normalizer': normalize_pneumonia_endpoint,
+        'endpoints': PNEUMONIA_ENDPOINTS,
+        'patterns': {
+            'treatment': PNEUMONIA_TREATMENT_PATTERNS,
+            'vaccine': PNEUMONIA_VACCINE_PATTERNS,
+            'mortality': PNEUMONIA_MORTALITY_PATTERNS,
+            'severe': PNEUMONIA_SEVERE_PATTERNS
         }
     },
     'infectious_disease': {
@@ -216,6 +238,16 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'\btcv\b', r'\bty21a\b', r'vi\s+polysaccharide', r'anti[- ]vi',
             r'fever\s+clearance\s+time', r'widal'
         ],
+        'pneumonia': [
+            r'pneumonia', r'pneumococc', r'streptococcus\s+pneumoniae',
+            r's\.?\s*pneumoniae', r'community[- ]acquired\s+pneumonia|\bcap\b',
+            r'pneumococcal\s+conjugate\s+vaccine|\bpcv\s*\d*\b', r'\bppsv\s*\d*\b',
+            r'\bhib\b|haemophilus\s+influenzae', r'invasive\s+pneumococcal\s+disease|\bipd\b',
+            r'lower\s+respiratory\s+(?:tract\s+)?infection|\blrti\b',
+            r'acute\s+respiratory\s+infection', r'radiolog(?:ically|ic)[- ]confirmed\s+pneumonia',
+            r'chest\s+indrawing', r'fast\s+breathing', r'bronchopneumonia',
+            r'nasopharyngeal\s+(?:carriage|colon[is]ation)', r'empyema'
+        ],
         'infectious_disease': [
             r'covid', r'sars[- ]?cov', r'hepatitis',
             r'viral', r'bacterial', r'antiviral', r'antibiotic', r'infection'
@@ -266,6 +298,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'typhoid':
         subspecialty, conf = detect_typhoid_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'pneumonia':
+        subspecialty, conf = detect_pneumonia_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)
