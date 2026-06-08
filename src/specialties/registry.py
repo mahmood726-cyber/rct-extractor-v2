@@ -54,6 +54,16 @@ from .typhoid import (
     normalize_typhoid_endpoint
 )
 
+from .diarrhoeal import (
+    DIARRHOEAL_ENDPOINTS,
+    REHYDRATION_PATTERNS as DIARRHOEAL_REHYDRATION_PATTERNS,
+    ROTAVIRUS_PATTERNS as DIARRHOEAL_ROTAVIRUS_PATTERNS,
+    TREATMENT_PATTERNS as DIARRHOEAL_TREATMENT_PATTERNS,
+    MORTALITY_DURATION_PATTERNS as DIARRHOEAL_MORTALITY_DURATION_PATTERNS,
+    detect_diarrhoeal_subspecialty,
+    normalize_diarrhoeal_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -117,6 +127,18 @@ SPECIALTY_REGISTRY = {
             'vaccine': TYPHOID_VACCINE_PATTERNS,
             'resistance': TYPHOID_RESISTANCE_PATTERNS,
             'complications': TYPHOID_COMPLICATIONS_PATTERNS
+        }
+    },
+    'diarrhoeal': {
+        'subspecialties': ['rehydration', 'rotavirus', 'treatment', 'mortality_duration'],
+        'detection_function': detect_diarrhoeal_subspecialty,
+        'normalizer': normalize_diarrhoeal_endpoint,
+        'endpoints': DIARRHOEAL_ENDPOINTS,
+        'patterns': {
+            'rehydration': DIARRHOEAL_REHYDRATION_PATTERNS,
+            'rotavirus': DIARRHOEAL_ROTAVIRUS_PATTERNS,
+            'treatment': DIARRHOEAL_TREATMENT_PATTERNS,
+            'mortality_duration': DIARRHOEAL_MORTALITY_DURATION_PATTERNS
         }
     },
     'infectious_disease': {
@@ -216,6 +238,13 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'\btcv\b', r'\bty21a\b', r'vi\s+polysaccharide', r'anti[- ]vi',
             r'fever\s+clearance\s+time', r'widal'
         ],
+        'diarrhoeal': [
+            r'diarrho?eal?', r'rotavirus', r'gastroenteritis', r'oral\s+rehydration',
+            r'\bors\b', r'zinc', r'rotarix|rotateq|rotavac|rotasiil',
+            r'dysentery', r'shigell', r'dehydration', r'stool\s+(?:output|frequency)',
+            r'acute\s+(?:watery\s+)?diarrho?ea', r'racecadotril',
+            r'reduced[- ]osmolarity', r'persistent\s+diarrho?ea'
+        ],
         'infectious_disease': [
             r'covid', r'sars[- ]?cov', r'hepatitis',
             r'viral', r'bacterial', r'antiviral', r'antibiotic', r'infection'
@@ -266,6 +295,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'typhoid':
         subspecialty, conf = detect_typhoid_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'diarrhoeal':
+        subspecialty, conf = detect_diarrhoeal_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)
