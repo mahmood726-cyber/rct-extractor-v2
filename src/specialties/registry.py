@@ -54,6 +54,16 @@ from .typhoid import (
     normalize_typhoid_endpoint
 )
 
+from .cervical_cancer import (
+    CERVICAL_CANCER_ENDPOINTS,
+    VACCINE_PATTERNS as CC_VACCINE_PATTERNS,
+    SCREENING_PATTERNS as CC_SCREENING_PATTERNS,
+    TREATMENT_PATTERNS as CC_TREATMENT_PATTERNS,
+    MORTALITY_PATTERNS as CC_MORTALITY_PATTERNS,
+    detect_cervical_cancer_subspecialty,
+    normalize_cervical_cancer_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -117,6 +127,18 @@ SPECIALTY_REGISTRY = {
             'vaccine': TYPHOID_VACCINE_PATTERNS,
             'resistance': TYPHOID_RESISTANCE_PATTERNS,
             'complications': TYPHOID_COMPLICATIONS_PATTERNS
+        }
+    },
+    'cervical_cancer': {
+        'subspecialties': ['vaccine', 'screening', 'treatment', 'mortality'],
+        'detection_function': detect_cervical_cancer_subspecialty,
+        'normalizer': normalize_cervical_cancer_endpoint,
+        'endpoints': CERVICAL_CANCER_ENDPOINTS,
+        'patterns': {
+            'vaccine': CC_VACCINE_PATTERNS,
+            'screening': CC_SCREENING_PATTERNS,
+            'treatment': CC_TREATMENT_PATTERNS,
+            'mortality': CC_MORTALITY_PATTERNS
         }
     },
     'infectious_disease': {
@@ -216,6 +238,17 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'\btcv\b', r'\bty21a\b', r'vi\s+polysaccharide', r'anti[- ]vi',
             r'fever\s+clearance\s+time', r'widal'
         ],
+        'cervical_cancer': [
+            r'cervical\s+cancer', r'cervical\s+carcinoma', r'cervical\s+intraepithelial',
+            r'\bcin\s?[123]\b', r'cin\s?2\+|cin\s?3\+', r'\bhpv\b', r'human\s+papillomavirus',
+            r'cervical\s+(?:dysplasia|lesion|precancer)', r'\bhsil\b|\blsil\b',
+            r'visual\s+inspection\s+with\s+acetic\s+acid|\bvia\b', r'\bvili\b',
+            r'cervical\s+screening', r'pap\s+smear|cervical\s+cytology',
+            r'gardasil|cervarix|cecolin|walrinvax', r'colposcopy',
+            r'\bleep\b|\blletz\b|cryotherapy|thermal\s+ablation|coni[sz]ation',
+            r'high[- ]grade\s+squamous\s+intraepithelial', r'persistent\s+hpv',
+            r'quadrivalent|bivalent|nonavalent'
+        ],
         'infectious_disease': [
             r'covid', r'sars[- ]?cov', r'hepatitis',
             r'viral', r'bacterial', r'antiviral', r'antibiotic', r'infection'
@@ -266,6 +299,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'typhoid':
         subspecialty, conf = detect_typhoid_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'cervical_cancer':
+        subspecialty, conf = detect_cervical_cancer_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)
