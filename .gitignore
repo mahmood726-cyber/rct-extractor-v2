@@ -81,6 +81,12 @@ data/field_portability/typhoid/*.jsonl
 data/field_portability/typhoid/*.json
 data/field_portability/typhoid/*.log
 
+# Malnutrition field bundle — large/transient data (keep README.md; code is under scripts/)
+data/field_portability/malnutrition/rct_trial_pdfs/
+data/field_portability/malnutrition/*.jsonl
+data/field_portability/malnutrition/*.json
+data/field_portability/malnutrition/*.log
+
 # Malaria field bundle — large/transient data (keep README.md; code is under scripts/)
 data/field_portability/malaria/rct_trial_pdfs/
 data/field_portability/malaria/*.jsonl

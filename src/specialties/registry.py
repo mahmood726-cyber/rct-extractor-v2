@@ -54,6 +54,16 @@ from .typhoid import (
     normalize_typhoid_endpoint
 )
 
+from .malnutrition import (
+    MALNUTRITION_ENDPOINTS,
+    THERAPEUTIC_FEEDING_PATTERNS as MALN_THERAPEUTIC_FEEDING_PATTERNS,
+    MICRONUTRIENT_PATTERNS as MALN_MICRONUTRIENT_PATTERNS,
+    MORTALITY_PATTERNS as MALN_MORTALITY_PATTERNS,
+    RECOVERY_GROWTH_PATTERNS as MALN_RECOVERY_GROWTH_PATTERNS,
+    detect_malnutrition_subspecialty,
+    normalize_malnutrition_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -117,6 +127,18 @@ SPECIALTY_REGISTRY = {
             'vaccine': TYPHOID_VACCINE_PATTERNS,
             'resistance': TYPHOID_RESISTANCE_PATTERNS,
             'complications': TYPHOID_COMPLICATIONS_PATTERNS
+        }
+    },
+    'malnutrition': {
+        'subspecialties': ['therapeutic_feeding', 'micronutrient', 'mortality', 'recovery_growth'],
+        'detection_function': detect_malnutrition_subspecialty,
+        'normalizer': normalize_malnutrition_endpoint,
+        'endpoints': MALNUTRITION_ENDPOINTS,
+        'patterns': {
+            'therapeutic_feeding': MALN_THERAPEUTIC_FEEDING_PATTERNS,
+            'micronutrient': MALN_MICRONUTRIENT_PATTERNS,
+            'mortality': MALN_MORTALITY_PATTERNS,
+            'recovery_growth': MALN_RECOVERY_GROWTH_PATTERNS
         }
     },
     'infectious_disease': {
@@ -216,6 +238,15 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'\btcv\b', r'\bty21a\b', r'vi\s+polysaccharide', r'anti[- ]vi',
             r'fever\s+clearance\s+time', r'widal'
         ],
+        'malnutrition': [
+            r'malnutrition', r'undernutrition', r'severe\s+acute\s+malnutrition',
+            r'moderate\s+acute\s+malnutrition', r'kwashiorkor', r'marasmus',
+            r'ready[- ]to[- ]use\s+therapeutic\s+food', r'\brutf\b', r'\brusf\b',
+            r'mid[- ]upper\s+arm\s+circumference', r'\bmuac\b', r'weight[- ]for[- ]height',
+            r'\bwhz\b', r'\bstunting\b', r'\bwasting\b', r'\bcmam\b',
+            r'therapeutic\s+feeding', r'nutritional\s+rehabilitation',
+            r'supplementary\s+feeding', r'\bf-?75\b', r'\bf-?100\b'
+        ],
         'infectious_disease': [
             r'covid', r'sars[- ]?cov', r'hepatitis',
             r'viral', r'bacterial', r'antiviral', r'antibiotic', r'infection'
@@ -266,6 +297,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'typhoid':
         subspecialty, conf = detect_typhoid_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'malnutrition':
+        subspecialty, conf = detect_malnutrition_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)
