@@ -117,13 +117,15 @@ _RATIO_RE = re.compile(
 )
 
 
-# Bare uppercase abbreviation followed by '=', ':' or ',' then the value and a
-# 95% CI (e.g. "OR = 0.45, 95% CI: 0.36, 0.56" or the table form "RR, 0.34;
-# 95% CI, 0.15 to 0.61"). CASE-SENSITIVE (no re.I) so the conjunction "or" can
-# never match; the mandatory trailing "95% CI lo-hi" disambiguates from prose
-# (e.g. "RR, 18 breaths"). Lets a second effect in a combined clause be caught.
+# Bare uppercase abbreviation followed by '=', ':' or ',' (or a spelled-out
+# connector "of"/"was") then the value and a 95% CI (e.g. "OR = 0.45, 95% CI:
+# 0.36, 0.56", the table form "RR, 0.34; 95% CI, 0.15 to 0.61", or the prose form
+# "OR of 1.65 (95% CI 0.96 to 2.84)" / "the OR was 3.35 (95% CI 2.23-5.03)").
+# CASE-SENSITIVE (no re.I) so the conjunction "or" can never match; the mandatory
+# trailing "95% CI lo-hi" disambiguates from prose (e.g. "RR, 18 breaths"). Lets
+# a second effect in a combined clause be caught.
 _BARE_RATIO_RE = re.compile(
-    r"\b(?P<label>aOR|aHR|aRR|aIRR|OR|HR|RR|IRR|RD)[\s:=,]+"
+    r"\b(?P<label>aOR|aHR|aRR|aIRR|OR|HR|RR|IRR|RD)(?:\s+(?:of|was)\s+|[\s:=,]+)"
     r"(?P<val>" + _NUM + r")"
     r"[^\d]{0,24}?" + _CI +
     r"(?P<lo>" + _NUM + r")\s*(?:" + _DASH + r"|,)\s*(?P<hi>" + _NUM + r")")
@@ -209,8 +211,11 @@ def augment_malaria_effects(text: str, existing: Optional[List[Dict]] = None) ->
         if not (-100 <= val <= 100) or not (min(lo, hi) - 0.5 <= val <= max(lo, hi) + 0.5):
             continue
         s, e = m.start(), m.end()
-        if overlaps(s, e):
-            continue
+        # Efficacy phrasing "(protective|vaccine) efficacy ... NN% ... 95% CI" is
+        # highly specific; emit even when the core mis-typed the same span (it
+        # often reads "efficacy of NN% (95% CI ...)" as a mean difference).
+        # extract_malaria_effects drops the overlapping core copy so the
+        # authoritative EFFICACY_PCT (with its log(1-VE) pooling field) wins.
         out.append(_mk("EFFICACY_PCT", val, lo, hi, text, s, e))
         seen.append((s, e))
 
@@ -263,6 +268,15 @@ def extract_malaria_effects(extractor, text, consistency=True, drop_inconsistent
     core = [to_dict(x) for x in extractor.extract(norm)] if norm else []
     merged = core + augment_malaria_effects(norm, core)
     merged = [e for e in merged if not _is_vital_sign(e, norm)]   # P0-2 (core too)
+    # EFFICACY_PCT precedence: a (protective|vaccine) efficacy % is authoritative,
+    # so drop any non-efficacy core copy covering the same span (the core often
+    # mis-types "efficacy of NN% (95% CI ...)" as MD -> wrong pooling scale).
+    _eff_spans = [(e.get("char_start", -1), e.get("char_end", -1))
+                  for e in merged if e.get("type") == "EFFICACY_PCT"]
+    if _eff_spans:
+        merged = [e for e in merged if e.get("type") == "EFFICACY_PCT"
+                  or not any(not (e.get("char_end", -2) <= s or e.get("char_start", -2) >= en)
+                             for s, en in _eff_spans)]
     for e in merged:                                              # tag endpoint
         e["endpoint"] = _tag_effect_endpoint(norm, e.get("char_start", 0), e.get("char_end", 0))
     if dedup:
