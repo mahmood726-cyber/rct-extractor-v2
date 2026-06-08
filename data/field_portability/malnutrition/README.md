@@ -26,7 +26,9 @@ abstracts** (search term in `scripts/malnutrition/build_malnutrition_corpus.py`)
 |---|---|---|
 | **Published malnutrition meta-analyses** (silver gold) | **98.2%** (371/378) | point+CI agreement across 108 nutrition MAs (effect estimates HR/OR/RR/IRR/MD); `ma_validation.json` |
 | **All-CI numeric recovery** | **81.2%** (377/464) | includes bare prevalences/proportions the reviewers restate without a labelled effect measure |
-| **Corpus extraction / subspecialty routing** | reproducible | `python scripts/malnutrition/validate_malnutrition.py --limit 3000` writes `validation.json` (effect coverage, internal-consistency, arm-level 2×2 / continuous yield, subspecialty histogram over the 2,977 abstracts) |
+| **Effect internal-consistency** | **92.9%** | of 2,301 abstract effects (Altman-Bland / midpoint checks) over the 2,977 abstracts |
+| **Arm-level proportion consistency** | **97.1%** | reported % == 100·events/total (70 proportions; 17 2×2 tables across 14 trials; 205 continuous rows) |
+| **Subspecialty routing** | micronutrient 708 / mortality 279 / recovery_growth 249 / therapeutic_feeding 171 / general 525 | of corpus docs detected as malnutrition; effect-type mix MD 980 / RR 486 / OR 484 / HR 213 / SMD 78 / IRR 28 |
 | **AACT external gold** | sparse (nutrition trials register on ISRCTN/PACTR/CTRI) | `build_aact_malnutrition_gold.py` provided; many SAM trials carry no posted numeric results on CT.gov |
 | **Abstract→PDF cross-check** | tooling in place | run `download_malnutrition_pdfs.py` + `cross_check.py` (1,998 OA PMCIDs available) |
 
