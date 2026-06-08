@@ -31,6 +31,10 @@ from src.specialties.malaria_effects import augment_malaria_effects as aug
     ("reduced malaria (OR = 0.45, 95% CI: 0.36, 0.56, P<0.01)", "OR", 0.45, 0.36, 0.56),
     ("OR = 0.82, 95 % CI: 0.69, 0.97", "OR", 0.82, 0.69, 0.97),
     ("HR = 0.67 (95% CI 0.50-0.90)", "HR", 0.67, 0.50, 0.90),
+    # Bare abbreviation with an "of" / "for <subgroup> of" linking phrase
+    # (hepatitis MA misses; strict-superset extension of _BARE_RATIO_RE)
+    ("pooled OR of 1.02 (95% CI 0.86-1.20)", "OR", 1.02, 0.86, 1.20),
+    ("the pooled HR for OS of 1.04 (95%CI: 0.93-1.16)", "HR", 1.04, 0.93, 1.16),
 ])
 def test_augmenter_recovers(text, etype, val, lo, hi):
     r = aug(text)
@@ -51,6 +55,8 @@ def test_augmenter_recovers(text, etype, val, lo, hi):
     "expressing the data as a risk ratio",
     # lowercase conjunction "or" must never be read as an odds ratio
     "treated with artemether or 0.45 mg/kg primaquine (95% CI 0.36, 0.56)",
+    # the "of" linker must not fire without a ratio abbreviation in front
+    "we saw an improvement of 12 points (95% CI 10-14) over baseline",
     # a bare abbreviation with NO trailing 95% CI must not match (respiratory rate)
     "respiratory rate (RR, 18 breaths per minute) was recorded at baseline",
 ])

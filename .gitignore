@@ -85,3 +85,9 @@ data/field_portability/malaria/validation_report.md
 data/field_portability/malaria/cross_check_report.md
 data/field_portability/malaria/ma_validation_report.md
 data/field_portability/malaria/arm_data_report.md
+
+# Hepatitis field bundle — large/transient data (keep README.md; code is under scripts/)
+data/field_portability/hepatitis/rct_trial_pdfs/
+data/field_portability/hepatitis/*.jsonl
+data/field_portability/hepatitis/*.json
+data/field_portability/hepatitis/*.log

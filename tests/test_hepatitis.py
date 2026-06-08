@@ -87,7 +87,8 @@ def test_svr_2x2():
     assert len(tabs) == 1
     t0 = tabs[0]
     assert t0["endpoint"] == "SVR"
-    assert {t0["arm1"]["label"], t0["arm2"]["label"]} == {"glecaprevir", "sofosbuvir"}
+    # fixed-dose combo regimen kept whole (audit P1-6), not fragmented to a component
+    assert {t0["arm1"]["label"], t0["arm2"]["label"]} == {"glecaprevir-pibrentasvir", "sofosbuvir"}
     assert (t0["arm1"]["events"], t0["arm1"]["total"]) == (285, 300)
 
 

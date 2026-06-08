@@ -118,8 +118,16 @@ _RATIO_RE = re.compile(
 # 95% CI, 0.15 to 0.61"). CASE-SENSITIVE (no re.I) so the conjunction "or" can
 # never match; the mandatory trailing "95% CI lo-hi" disambiguates from prose
 # (e.g. "RR, 18 breaths"). Lets a second effect in a combined clause be caught.
+# The separator also accepts a lower-case linking phrase "of" / "for <subgroup>
+# of" between the abbreviation and its value ("pooled OR of 1.015 (95% CI ...)",
+# "HR for OS of 1.04 (95% CI ...)") -- a STRICT SUPERSET: the original [\s:=,]+
+# alternative is kept first, so every previously-matched estimate still matches
+# (surfaced by the hepatitis MA misses; same linking-phrase class as the typhoid
+# was/were/of fix in _RATIO_RE). Linker stays lower-case so "OR" the word/"For"
+# at a sentence start can't supply it.
 _BARE_RATIO_RE = re.compile(
-    r"\b(?P<label>aOR|aHR|aRR|aIRR|OR|HR|RR|IRR|RD)[\s:=,]+"
+    r"\b(?P<label>aOR|aHR|aRR|aIRR|OR|HR|RR|IRR|RD)"
+    r"(?:[\s:=,]+|\s+(?:for\s+[A-Za-z][\w ]{0,18}?\s+)?of\s+)"
     r"(?P<val>" + _NUM + r")"
     r"[^\d]{0,24}?" + _CI +
     r"(?P<lo>" + _NUM + r")\s*(?:" + _DASH + r"|,)\s*(?P<hi>" + _NUM + r")")

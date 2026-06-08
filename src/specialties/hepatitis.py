@@ -37,29 +37,72 @@ HEPATITIS_ENDPOINTS = {
     # --- HCV treatment efficacy ---
     'SVR': {
         'aliases': ['sustained virologic response', 'sustained virological response',
-                    'svr', 'svr12', 'svr 12', 'svr24', 'svr 24', 'hcv cure', 'viral cure',
-                    'undetectable hcv rna 12 weeks', 'sustained viral response'],
+                    'svr12', 'svr 12', 'svr24', 'svr 24', 'svr4', 'svr', 'hcv cure', 'viral cure',
+                    'undetectable hcv rna 12 weeks', 'sustained viral response', 'sustained response'],
         'subspecialty': 'treatment',
         'measure_types': ['RR', 'RD', 'OR']
     },
+    # Interferon-era HCV milestones (still common in older / genotype-4 / African
+    # trials). Distinct endpoints -- pooling them into SVR would corrupt the estimand.
+    'RVR': {
+        'aliases': ['rapid virologic response', 'rapid virological response', 'rvr'],
+        'subspecialty': 'treatment',
+        'measure_types': ['RR', 'OR']
+    },
+    'EVR': {
+        'aliases': ['early virologic response', 'early virological response', 'evr',
+                    'complete early virologic response', 'partial early virologic response',
+                    'cevr', 'pevr'],
+        'subspecialty': 'treatment',
+        'measure_types': ['RR', 'OR']
+    },
+    'ETR': {
+        'aliases': ['end-of-treatment response', 'end of treatment response',
+                    'end-of-treatment virologic response', 'etr'],
+        'subspecialty': 'treatment',
+        'measure_types': ['RR', 'OR']
+    },
     'VIROLOGIC_RELAPSE': {
-        'aliases': ['virologic relapse', 'virological relapse', 'relapse',
+        'aliases': ['virologic relapse', 'virological relapse',
                     'post-treatment relapse', 'viral relapse'],
         'subspecialty': 'treatment',
         'measure_types': ['RR', 'OR']
     },
     'ON_TREATMENT_FAILURE': {
         'aliases': ['on-treatment virologic failure', 'virologic failure',
-                    'virological failure', 'viral breakthrough', 'virologic breakthrough',
-                    'non-response', 'null response', 'treatment failure'],
+                    'virological failure', 'null response', 'non-response',
+                    'treatment failure', 'non-responder'],
         'subspecialty': 'treatment',
         'measure_types': ['RR', 'OR']
+    },
+    'VIROLOGIC_BREAKTHROUGH': {
+        'aliases': ['virologic breakthrough', 'virological breakthrough', 'viral breakthrough',
+                    'biochemical breakthrough', 'hepatic flare', 'alt flare'],
+        'subspecialty': 'treatment',
+        'measure_types': ['RR', 'OR']
+    },
+    'DRUG_RESISTANCE': {
+        'aliases': ['genotypic resistance', 'antiviral resistance', 'drug resistance',
+                    'resistance mutation', 'resistance-associated mutation', 'rtm204',
+                    'ymdd', 'resistant virus'],
+        'subspecialty': 'treatment',
+        'measure_types': ['RR', 'OR']
+    },
+    'SERIOUS_AE': {
+        'aliases': ['serious adverse event', 'serious adverse events', 'sae', 'saes'],
+        'subspecialty': 'treatment',
+        'measure_types': ['RR', 'OR', 'RD']
+    },
+    'HCV_RNA_LEVEL': {
+        'aliases': ['hcv rna level', 'change in hcv rna', 'hcv rna reduction',
+                    'hcv rna decline', 'baseline hcv rna', 'mean hcv rna'],
+        'subspecialty': 'treatment',
+        'measure_types': ['MD', 'SMD', 'GMR']
     },
 
     # --- HBV treatment efficacy ---
     'HBV_DNA_SUPPRESSION': {
-        'aliases': ['hbv dna suppression', 'undetectable hbv dna', 'hbv dna < ',
-                    'virologic response', 'virological response', 'hbv dna negativity',
+        'aliases': ['hbv dna suppression', 'undetectable hbv dna', 'hbv dna negativity',
                     'undetectable hepatitis b virus dna', 'complete virologic response'],
         'subspecialty': 'treatment',
         'measure_types': ['RR', 'RD', 'OR']
@@ -125,6 +168,13 @@ HEPATITIS_ENDPOINTS = {
         'subspecialty': 'prevention',
         'measure_types': ['RR', 'IRR', 'HR']
     },
+    'ANTI_HBS_TITRE': {
+        'aliases': ['geometric mean titre', 'geometric mean titer', 'geometric mean concentration',
+                    'gmt', 'gmc', 'anti-hbs titre', 'anti-hbs titer', 'anti-hbs concentration',
+                    'geometric mean antibody'],
+        'subspecialty': 'prevention',
+        'measure_types': ['MD', 'SMD', 'GMR']
+    },
 
     # --- PMTCT (HBV vertical transmission) ---
     'PERINATAL_TRANSMISSION': {
@@ -157,14 +207,14 @@ HEPATITIS_ENDPOINTS = {
         'measure_types': ['HR', 'RR']
     },
     'MORTALITY': {
-        'aliases': ['mortality', 'death', 'all-cause mortality', 'overall survival',
-                    'all-cause death', 'survival'],
+        'aliases': ['all-cause mortality', 'all-cause death', 'overall survival',
+                    'mortality', 'death'],
         'subspecialty': 'outcomes',
         'measure_types': ['HR', 'RR', 'OR']
     },
     'LIVER_TRANSPLANT': {
         'aliases': ['liver transplantation', 'liver transplant', 'transplant-free survival',
-                    'need for transplantation', 'transplantation'],
+                    'need for transplantation'],
         'subspecialty': 'outcomes',
         'measure_types': ['HR', 'RR']
     },
@@ -186,11 +236,19 @@ TREATMENT_PATTERNS = {
         r'\bSOF\b|\bLDV\b|\bVEL\b|\bGLE\b|\bPIB\b|\bDCV\b|\bETV\b|\bTDF\b|\bTAF\b|\bLAM\b',
     ],
     'endpoint_patterns': [
-        (r'sustained\s+virologic\w*\s+response|\bsvr\s*-?\s*(?:12|24)\b|\bsvr\b|hcv\s+cure',
+        (r'sustained\s+virologic\w*\s+response|\bsvr\s*-?\s*(?:4|12|24)\b|\bsvr\b|hcv\s+cure',
          'SVR'),
+        (r'rapid\s+virologic\w*\s+response|\brvr\b', 'RVR'),
+        (r'(?:complete\s+|partial\s+)?early\s+virologic\w*\s+response|\b[cp]?evr\b', 'EVR'),
+        (r'end[- ]of[- ]treatment\s+(?:virologic\w*\s+)?response|\betr\b', 'ETR'),
         (r'virologic\w*\s+relapse|post[- ]treatment\s+relapse', 'VIROLOGIC_RELAPSE'),
-        (r'on[- ]treatment\s+virologic\w*\s+failure|viral\s+breakthrough|'
-         r'virologic\w*\s+breakthrough|null\s+response|non[- ]response', 'ON_TREATMENT_FAILURE'),
+        (r'on[- ]treatment\s+virologic\w*\s+failure|null\s+response|non[- ]respon(?:se|der)|'
+         r'virologic\w*\s+failure', 'ON_TREATMENT_FAILURE'),
+        (r'virologic\w*\s+breakthrough|viral\s+breakthrough|biochemical\s+breakthrough|'
+         r'hepatic\s+flare|alt\s+flare', 'VIROLOGIC_BREAKTHROUGH'),
+        (r'genotypic\s+resistance|antiviral\s+resistance|drug\s+resistance|'
+         r'resistance[- ]associated\s+mutation|resistance\s+mutation|rtm204|\bymdd\b', 'DRUG_RESISTANCE'),
+        (r'serious\s+adverse\s+events?|\bsaes?\b', 'SERIOUS_AE'),
         (r'undetectable\s+hbv\s+dna|hbv\s+dna\s+suppression|hbv\s+dna\s+negativ|'
          r'complete\s+virologic\w*\s+response', 'HBV_DNA_SUPPRESSION'),
         (r'hbeag\s+seroconversion|hbeag\s+(?:loss|clearance)|e[- ]antigen\s+seroconversion',
@@ -199,13 +257,16 @@ TREATMENT_PATTERNS = {
          r'surface\s+antigen\s+loss', 'HBSAG_LOSS'),
         (r'alt\s+normali[sz]ation|biochemical\s+response|normali[sz]ation\s+of\s+alt',
          'ALT_NORMALIZATION'),
-        (r'hbv\s+dna\s+(?:level|reduction)|change\s+in\s+hbv\s+dna|log10?\s+iu/ml', 'HBV_DNA_LEVEL'),
+        (r'hbv\s+dna\s+(?:level|reduction|decline)|change\s+in\s+hbv\s+dna|'
+         r'serum\s+hbv\s+dna|mean\s+hbv\s+dna', 'HBV_DNA_LEVEL'),
+        (r'hcv\s+rna\s+(?:level|reduction|decline)|change\s+in\s+hcv\s+rna|'
+         r'baseline\s+hcv\s+rna|mean\s+hcv\s+rna', 'HCV_RNA_LEVEL'),
         (r'change\s+in\s+alt|mean\s+alt|serum\s+alt\b|alanine\s+aminotransferase\s+level',
          'ALT_LEVEL'),
         (r'liver\s+stiffness|fibroscan|transient\s+elastography|fibrosis\s+regression',
          'LIVER_STIFFNESS'),
-        (r'discontinuation|treatment[- ]limiting|premature\s+discontinuation',
-         'TREATMENT_DISCONTINUATION'),
+        (r'treatment\s+discontinuation|discontinuation\s+due\s+to|treatment[- ]limiting|'
+         r'drug\s+discontinuation|premature\s+discontinuation', 'TREATMENT_DISCONTINUATION'),
     ],
     'context_patterns': [
         r'week\s+12\s+(?:after|post)', r'intention[- ]to[- ]treat|per[- ]protocol',
@@ -226,7 +287,9 @@ PREVENTION_PATTERNS = {
         r'\bhbvax\b|\bengerix\b|three[- ]dose\s+schedule',
     ],
     'endpoint_patterns': [
-        (r'seroprotection|seroprotective|anti[- ]?hbs\s*(?:>=?|>|≥)\s*10|'
+        (r'geometric\s+mean\s+(?:titre|titer|concentration|antibody)|\bgm[tc]\b|'
+         r'anti[- ]?hbs\s+(?:titre|titer|concentration)', 'ANTI_HBS_TITRE'),
+        (r'seroprotection|seroprotective|anti[- ]?hbs[^.\n]{0,12}?(?:>=?|>|≥)\s*10|'
          r'protective\s+antibody|vaccine\s+seroconversion', 'SEROPROTECTION'),
         (r'incident\s+hepatitis\s+b|new\s+hbv\s+infection|hbv\s+infection|'
          r'incidence\s+of\s+hepatitis\s+b|breakthrough\s+hepatitis\s+b', 'HBV_INFECTION'),
@@ -276,7 +339,11 @@ OUTCOMES_PATTERNS = {
         (r'liver[- ]related\s+(?:death|mortality)|hepatic\s+death|death\s+from\s+liver',
          'LIVER_MORTALITY'),
         (r'liver\s+transplant\w*|transplant[- ]free\s+survival', 'LIVER_TRANSPLANT'),
-        (r'(?:all[- ]cause\s+)?(?:mortality|death)\b|overall\s+survival', 'MORTALITY'),
+        # Generic mortality, but NOT when qualified as liver-related/hepatic (those
+        # are LIVER_MORTALITY; without the guards the bare word "death" sits closer
+        # to the proportion and steals the tag -- audit P0-3).
+        (r'(?<!liver[- ]related )(?<!hepatic )(?:all[- ]cause\s+)?(?:mortality|death)\b|'
+         r'overall\s+survival', 'MORTALITY'),
     ],
     'context_patterns': [
         r'cumulative\s+incidence', r'per\s+(?:100\s+)?person[- ]years', r'kaplan[- ]meier',

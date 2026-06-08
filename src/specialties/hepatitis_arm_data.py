@@ -26,49 +26,91 @@ _HEP_ENDPOINT_PATTERNS = []
 for _sub in ("treatment", "prevention", "pmtct", "outcomes"):
     _HEP_ENDPOINT_PATTERNS.extend(get_hepatitis_endpoint_patterns(_sub))
 
+# HCV DAA components that combine into fixed-dose regimens. A singleton component
+# is suppressed when it sits next to a joiner+partner (so "sofosbuvir-velpatasvir"
+# is labelled as the combo, not fragmented into two arms that then fail to pair --
+# audit P1-6), but plain "sofosbuvir-based" still matches (the suppressor requires
+# a *partner* after the joiner, not any hyphenated word). _tag_arm uses NEAREST
+# match, not longest, so without this a combo would lose to its leftmost component.
+_DAA_PARTNER = (r"sofosbuvir|velpatasvir|ledipasvir|voxilaprevir|glecaprevir|pibrentasvir|"
+                r"daclatasvir|grazoprevir|elbasvir|ombitasvir|paritaprevir|dasabuvir|ritonavir|"
+                r"SOF|VEL|LDV|VOX|GLE|PIB|DCV|GZR|EBR")
+_J = r"[/\-+ ]"   # combo joiner in text: slash, hyphen, plus, or space
+_JLB = r"[/\-+]"  # joiner for the lookbehind ONLY -- excludes space (a leading
+                  # space is normal word separation, not a combo boundary)
+
+
+def _solo(drug):
+    """A combinable DAA matched only when NOT part of a hyphen/slash/plus combo.
+    Suppressed as the 2nd component (preceded by a joiner) or the 1st component
+    (followed by joiner+partner); plain 'sofosbuvir-based' still matches."""
+    return rf"(?<!{_JLB}){drug}(?!{_J}(?:{_DAA_PARTNER}))"
+
+
 # Antiviral / vaccine arm labels. Full names case-insensitive; bare UPPERCASE
 # drug abbreviations CASE-SENSITIVE (so SOF/ETV/TDF etc. only match uppercase).
 _HEP_ARM_FULL = [
-    # HCV direct-acting antivirals
-    (r"sofosbuvir", "sofosbuvir"),
-    (r"ledipasvir", "ledipasvir"),
-    (r"velpatasvir", "velpatasvir"),
-    (r"voxilaprevir", "voxilaprevir"),
-    (r"glecaprevir", "glecaprevir"),
-    (r"pibrentasvir", "pibrentasvir"),
-    (r"daclatasvir", "daclatasvir"),
-    (r"grazoprevir", "grazoprevir"),
-    (r"elbasvir", "elbasvir"),
+    # HCV fixed-dose combination regimens (match as a unit; brand names are common
+    # in abstracts and often the only form spelled out).
+    (rf"sofosbuvir{_J}velpatasvir{_J}voxilaprevir|\bvosevi\b",
+     "sofosbuvir-velpatasvir-voxilaprevir"),
+    (rf"sofosbuvir{_J}velpatasvir|\bepclusa\b", "sofosbuvir-velpatasvir"),
+    (rf"ledipasvir{_J}sofosbuvir|sofosbuvir{_J}ledipasvir|\bharvoni\b", "ledipasvir-sofosbuvir"),
+    (rf"glecaprevir{_J}pibrentasvir|\bmavyret\b|\bmaviret\b", "glecaprevir-pibrentasvir"),
+    (rf"elbasvir{_J}grazoprevir|grazoprevir{_J}elbasvir|\bzepatier\b", "elbasvir-grazoprevir"),
+    (rf"ombitasvir{_J}paritaprevir(?:{_J}ritonavir)?(?:\s*(?:\+|plus|and)\s*dasabuvir)?|"
+     r"\bviekira\w*\b|\bviekirax\b|\btechnivie\b|\b[23]d\s+regimen\b",
+     "ombitasvir-paritaprevir-ritonavir"),
+    # HCV direct-acting antivirals (combinable singletons -- combo-suppressed)
+    (_solo("sofosbuvir"), "sofosbuvir"),
+    (_solo("ledipasvir"), "ledipasvir"),
+    (_solo("velpatasvir"), "velpatasvir"),
+    (_solo("voxilaprevir"), "voxilaprevir"),
+    (_solo("glecaprevir"), "glecaprevir"),
+    (_solo("pibrentasvir"), "pibrentasvir"),
+    (_solo("daclatasvir"), "daclatasvir"),
+    (_solo("grazoprevir"), "grazoprevir"),
+    (_solo("elbasvir"), "elbasvir"),
+    (_solo("ombitasvir"), "ombitasvir"),
+    (_solo("paritaprevir"), "paritaprevir"),
+    (_solo("dasabuvir"), "dasabuvir"),
     (r"simeprevir", "simeprevir"),
-    (r"ombitasvir", "ombitasvir"),
-    (r"paritaprevir", "paritaprevir"),
+    (r"\britonavir\b", "ritonavir"),
     (r"ribavirin", "ribavirin"),
-    (r"peg(?:ylated)?[- ]?interferon(?:\s+alfa(?:-2[ab])?)?", "peg-interferon"),
+    (r"peg(?:ylated)?[- ]?interferon(?:\s+alf?a(?:-2[ab])?)?", "peg-interferon"),
     # HBV nucleos(t)ides
     (r"entecavir", "entecavir"),
     (r"tenofovir\s+alafenamide", "tenofovir-alafenamide"),
-    (r"tenofovir(?:\s+disoproxil)?", "tenofovir"),
+    (r"tenofovir(?:\s+disoproxil(?:\s+fumarate)?)?", "tenofovir"),
+    (r"besifovir(?:\s+dipivoxil)?", "besifovir"),
     (r"telbivudine", "telbivudine"),
     (r"adefovir", "adefovir"),
     (r"lamivudine", "lamivudine"),
     # Prevention / PMTCT
     (r"hepatitis\s+b\s+immunoglobulin|\bhbig\b", "HBIG"),
-    (r"(?:recombinant\s+)?hepatitis\s+b\s+vaccine|hbv\s+vaccine", "hepatitis-b-vaccine"),
+    (r"(?:recombinant\s+)?hepatitis\s+b\s+vaccine|hbv\s+vaccine|\bengerix\b|\brecombivax\b",
+     "hepatitis-b-vaccine"),
     # Generic
     (r"\bplacebo\b", "placebo"),
     (r"standard\s+(?:of\s+)?care|usual\s+care", "standard-of-care"),
     (r"intervention\s+(?:group|arm)", "intervention"),
-    (r"control(?:\s+group|\s+arm)?", "control"),
+    (r"control\s+(?:group|arm|subjects?)", "control"),
     (r"\bgroup\s+(?:1|i|a)\b|\barm\s+(?:1|i|a)\b", "group_1"),
     (r"\bgroup\s+(?:2|ii|b)\b|\barm\s+(?:2|ii|b)\b", "group_2"),
 ]
 _HEP_ARM_ABBREV = [   # case-sensitive uppercase
-    (r"\bSOF\b", "sofosbuvir"),
-    (r"\bLDV\b", "ledipasvir"),
-    (r"\bVEL\b", "velpatasvir"),
-    (r"\bVOX\b", "voxilaprevir"),
-    (r"\bGLE\b", "glecaprevir"),
-    (r"\bPIB\b", "pibrentasvir"),
+    # combo abbreviations first (suppress the singleton abbrevs below)
+    (rf"\bSOF{_J}VEL{_J}VOX\b", "sofosbuvir-velpatasvir-voxilaprevir"),
+    (rf"\bSOF{_J}VEL\b", "sofosbuvir-velpatasvir"),
+    (rf"\b(?:LDV{_J}SOF|SOF{_J}LDV)\b", "ledipasvir-sofosbuvir"),
+    (rf"\b(?:GLE{_J}PIB|G{_J}P)\b", "glecaprevir-pibrentasvir"),
+    (rf"\bEBR{_J}GZR\b", "elbasvir-grazoprevir"),
+    (rf"\bSOF\b(?!{_J}(?:{_DAA_PARTNER}))", "sofosbuvir"),
+    (rf"\bLDV\b(?!{_J}(?:{_DAA_PARTNER}))", "ledipasvir"),
+    (rf"\bVEL\b(?!{_J}(?:{_DAA_PARTNER}))", "velpatasvir"),
+    (rf"\bVOX\b(?!{_J}(?:{_DAA_PARTNER}))", "voxilaprevir"),
+    (rf"\bGLE\b(?!{_J}(?:{_DAA_PARTNER}))", "glecaprevir"),
+    (rf"\bPIB\b(?!{_J}(?:{_DAA_PARTNER}))", "pibrentasvir"),
     (r"\bDCV\b", "daclatasvir"),
     (r"\bGZR\b", "grazoprevir"),
     (r"\bEBR\b", "elbasvir"),
@@ -85,9 +127,10 @@ _HEP_ARM_ABBREV = [   # case-sensitive uppercase
 _HEP_ARM_COMPILED = ([(re.compile(p, re.I), n) for p, n in _HEP_ARM_FULL]
                      + [(re.compile(p), n) for p, n in _HEP_ARM_ABBREV])
 
-# Hepatitis continuous outcomes; HBV DNA (viral load) is log-normal.
-_HEP_CONTINUOUS = {"HBV_DNA_LEVEL", "ALT_LEVEL", "LIVER_STIFFNESS"}
-_HEP_LOGNORMAL = {"HBV_DNA_LEVEL"}
+# Hepatitis continuous outcomes; viral loads (HBV DNA, HCV RNA) and antibody
+# titres (anti-HBs GMT) are log-normal -- pool on the log scale.
+_HEP_CONTINUOUS = {"HBV_DNA_LEVEL", "HCV_RNA_LEVEL", "ALT_LEVEL", "LIVER_STIFFNESS", "ANTI_HBS_TITRE"}
+_HEP_LOGNORMAL = {"HBV_DNA_LEVEL", "HCV_RNA_LEVEL", "ANTI_HBS_TITRE"}
 
 
 def extract_proportions(text: str, pct_tol: float = 1.5) -> List[Dict]:
