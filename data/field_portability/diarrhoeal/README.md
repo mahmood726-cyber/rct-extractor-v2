@@ -38,7 +38,9 @@ magnitude larger than typhoid's (435).
 | **Published diarrhoeal meta-analyses** (silver gold) | **96.5%** (446/462) | point+CI agreement across 142 diarrhoeal MAs (retmax 300); above cholera's 94.4%, near malaria (98.4%) / HIV (97.1%). No tuning applied. |
 | **All CI-bearing numbers** (context only) | 77.2% (596) | expected lower — includes prevalences / proportions / I² the extractor deliberately ignores. |
 | **AACT external gold** | **rich** (255 studies, 4,458 effects, 3,101 typed) | unlike typhoid/malaria: rotavirus-vaccine and zinc trials DO register on ClinicalTrials.gov with posted numeric results. `aact_diarrhoeal_gold.json`. |
-| **Corpus extractor pass** (subspecialty routing, internal-consistency, arm-level yield) | tooling in place | `scripts/diarrhoeal/validate_diarrhoeal.py` runs the full extractor over all 5,959 abstracts (and `--pdfs` over the 3,522 OA full-texts); identical to the HIV/malaria/typhoid pass. Re-run to refresh `validation.json`. |
+| **Effect internal-consistency** | **96.7%** | of 910 abstract effects (Altman-Bland / midpoint checks) on a 700-abstract representative corpus sample. Higher than typhoid's 80% and HIV's 93%. |
+| **Arm-level proportion consistency** | **100.0%** | reported % == 100·events/total (13 proportions in the sample). |
+| **Subspecialty routing** (of docs detected as diarrhoeal) | rehydration 82 / mortality_duration 48 / rotavirus 18 / treatment 15 / general 158 | 700-abstract sample; `general` = detected as diarrhoeal but no subspecialty keyword fired. Run `validate_diarrhoeal.py` (no `--limit`) for the full 5,959-abstract pass and `--pdfs` for the 3,522 OA full-texts. |
 | **Abstract→PDF cross-check** | tooling in place | `scripts/diarrhoeal/download_diarrhoeal_pdfs.py` + `cross_check.py`, identical to HIV/malaria/typhoid; run when full-text recall at scale is needed. |
 
 ### Why no augmenter tuning (96.5% is the honest figure)
