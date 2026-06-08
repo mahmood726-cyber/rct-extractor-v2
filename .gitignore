@@ -109,3 +109,69 @@ data/field_portability/diabetes/rct_trial_pdfs/
 data/field_portability/diabetes/*.jsonl
 data/field_portability/diabetes/*.json
 data/field_portability/diabetes/*.log
+
+# Cholera field bundle — large/transient data (keep README.md; code is under scripts/)
+data/field_portability/cholera/rct_trial_pdfs/
+data/field_portability/cholera/*.jsonl
+data/field_portability/cholera/*.json
+data/field_portability/cholera/*.log
+
+# Maternal & neonatal field bundle — large/transient data (keep README.md; code is under scripts/)
+data/field_portability/maternal_neonatal/rct_trial_pdfs/
+data/field_portability/maternal_neonatal/*.jsonl
+data/field_portability/maternal_neonatal/*.json
+data/field_portability/maternal_neonatal/*.log
+
+# Tuberculosis field bundle — large/transient data (keep README.md; code is under scripts/)
+data/field_portability/tuberculosis/rct_trial_pdfs/
+data/field_portability/tuberculosis/*.jsonl
+data/field_portability/tuberculosis/*.json
+data/field_portability/tuberculosis/*.log
+
+# Hepatitis field bundle — large/transient data (keep README.md; code is under scripts/)
+data/field_portability/hepatitis/rct_trial_pdfs/
+data/field_portability/hepatitis/*.jsonl
+data/field_portability/hepatitis/*.json
+data/field_portability/hepatitis/*.log
+
+# Meningitis field bundle — large/transient data (keep README.md; code is under scripts/)
+data/field_portability/meningitis/rct_trial_pdfs/
+data/field_portability/meningitis/*.jsonl
+data/field_portability/meningitis/*.json
+data/field_portability/meningitis/*.log
+
+# Pneumonia field bundle — large/transient data (keep README.md; code is under scripts/)
+data/field_portability/pneumonia/rct_trial_pdfs/
+data/field_portability/pneumonia/*.jsonl
+data/field_portability/pneumonia/*.json
+data/field_portability/pneumonia/*.log
+
+# Diarrhoeal field bundle — large/transient data (keep README.md; code is under scripts/)
+data/field_portability/diarrhoeal/rct_trial_pdfs/
+data/field_portability/diarrhoeal/*.jsonl
+data/field_portability/diarrhoeal/*.json
+data/field_portability/diarrhoeal/*.log
+
+# Malnutrition field bundle — large/transient data (keep README.md; code is under scripts/)
+data/field_portability/malnutrition/rct_trial_pdfs/
+data/field_portability/malnutrition/*.jsonl
+data/field_portability/malnutrition/*.json
+data/field_portability/malnutrition/*.log
+
+# Helminths (STH / deworming) field bundle — large/transient data (keep README.md; code is under scripts/)
+data/field_portability/helminths/rct_trial_pdfs/
+data/field_portability/helminths/*.jsonl
+data/field_portability/helminths/*.json
+data/field_portability/helminths/*.log
+
+# Hypertension field bundle — large/transient data (keep README.md; code is under scripts/)
+data/field_portability/hypertension/rct_trial_pdfs/
+data/field_portability/hypertension/*.jsonl
+data/field_portability/hypertension/*.json
+data/field_portability/hypertension/*.log
+
+# Cervical-cancer / HPV field bundle — large/transient data (keep README.md; code is under scripts/)
+data/field_portability/cervical_cancer/rct_trial_pdfs/
+data/field_portability/cervical_cancer/*.jsonl
+data/field_portability/cervical_cancer/*.json
+data/field_portability/cervical_cancer/*.log
