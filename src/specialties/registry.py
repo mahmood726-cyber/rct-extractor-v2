@@ -54,6 +54,16 @@ from .typhoid import (
     normalize_typhoid_endpoint
 )
 
+from .hypertension import (
+    HYPERTENSION_ENDPOINTS,
+    BP_LOWERING_PATTERNS as HTN_BP_LOWERING_PATTERNS,
+    CV_EVENTS_PATTERNS as HTN_CV_EVENTS_PATTERNS,
+    BP_REDUCTION_PATTERNS as HTN_BP_REDUCTION_PATTERNS,
+    ADHERENCE_PATTERNS as HTN_ADHERENCE_PATTERNS,
+    detect_hypertension_subspecialty,
+    normalize_hypertension_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -117,6 +127,18 @@ SPECIALTY_REGISTRY = {
             'vaccine': TYPHOID_VACCINE_PATTERNS,
             'resistance': TYPHOID_RESISTANCE_PATTERNS,
             'complications': TYPHOID_COMPLICATIONS_PATTERNS
+        }
+    },
+    'hypertension': {
+        'subspecialties': ['bp_lowering', 'cv_events', 'bp_reduction', 'adherence'],
+        'detection_function': detect_hypertension_subspecialty,
+        'normalizer': normalize_hypertension_endpoint,
+        'endpoints': HYPERTENSION_ENDPOINTS,
+        'patterns': {
+            'bp_lowering': HTN_BP_LOWERING_PATTERNS,
+            'cv_events': HTN_CV_EVENTS_PATTERNS,
+            'bp_reduction': HTN_BP_REDUCTION_PATTERNS,
+            'adherence': HTN_ADHERENCE_PATTERNS
         }
     },
     'infectious_disease': {
@@ -216,6 +238,16 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'\btcv\b', r'\bty21a\b', r'vi\s+polysaccharide', r'anti[- ]vi',
             r'fever\s+clearance\s+time', r'widal'
         ],
+        'hypertension': [
+            r'hypertension', r'hypertensive', r'blood[- ]pressure', r'antihypertensive',
+            r'systolic|diastolic', r'mm\s?hg', r'\bsbp\b|\bdbp\b',
+            r'ambulatory\s+blood[- ]pressure',
+            r'blood[- ]pressure[- ](?:control|lowering|reduction|target|goal)',
+            r'ace\s+inhibitor|angiotensin[- ]converting[- ]enzyme\s+inhibitor',
+            r'angiotensin[- ]receptor\s+blocker|\barb\b',
+            r'calcium[- ]channel\s+blocker|\bccb\b', r'thiazide',
+            r'amlodipine|hydrochlorothiazide|chlort(?:h)?alidone|indapamide|atenolol',
+        ],
         'infectious_disease': [
             r'covid', r'sars[- ]?cov', r'hepatitis',
             r'viral', r'bacterial', r'antiviral', r'antibiotic', r'infection'
@@ -266,6 +298,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'typhoid':
         subspecialty, conf = detect_typhoid_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'hypertension':
+        subspecialty, conf = detect_hypertension_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)
