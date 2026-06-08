@@ -64,6 +64,24 @@ This repo now includes a reusable field-portability kit so other specialties can
 - Field profile template: `configs/field_profile.template.yaml`
 - Scaffold tool: `scripts/scaffold_field_portability_bundle.py`
 
+### Specialty profiles
+
+Disease-specific endpoint vocabularies and arm-level extractors live in
+`src/specialties/`, registered in `src/specialties/registry.py`:
+
+| Specialty | Module | Subspecialties |
+|-----------|--------|----------------|
+| Cardiology | `cardiology.py` | heart_failure, acs, af, valve |
+| Oncology | `oncology.py` | breast, lung, gi |
+| Malaria | `malaria.py` + `malaria_arm_data.py` | treatment, prevention, severe, transmission |
+| HIV | `hiv.py` + `hiv_arm_data.py` | treatment, prevention, pmtct, coinfection |
+| Hepatitis (HBV/HCV) | `hepatitis.py` + `hepatitis_arm_data.py` | treatment, prevention, pmtct, outcomes |
+
+Per-specialty corpus / validation scripts live under `scripts/<specialty>/`
+(e.g. `scripts/hepatitis/` mirrors `scripts/hiv/`: corpus build, OA-PDF download,
+extractor validation, AACT gold, published-MA validation, miss analysis,
+cross-check).
+
 ## Validation Status
 
 | Metric | Value | Notes |

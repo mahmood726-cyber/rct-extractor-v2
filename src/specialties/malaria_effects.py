@@ -117,15 +117,23 @@ _RATIO_RE = re.compile(
 )
 
 
-# Bare uppercase abbreviation followed by '=', ':' or ',' (or a spelled-out
-# connector "of"/"was") then the value and a 95% CI (e.g. "OR = 0.45, 95% CI:
-# 0.36, 0.56", the table form "RR, 0.34; 95% CI, 0.15 to 0.61", or the prose form
-# "OR of 1.65 (95% CI 0.96 to 2.84)" / "the OR was 3.35 (95% CI 2.23-5.03)").
-# CASE-SENSITIVE (no re.I) so the conjunction "or" can never match; the mandatory
-# trailing "95% CI lo-hi" disambiguates from prose (e.g. "RR, 18 breaths"). Lets
-# a second effect in a combined clause be caught.
+# Bare uppercase abbreviation followed by '=', ':' or ',' then the value and a
+# 95% CI (e.g. "OR = 0.45, 95% CI: 0.36, 0.56" or the table form "RR, 0.34;
+# 95% CI, 0.15 to 0.61"). CASE-SENSITIVE (no re.I) so the conjunction "or" can
+# never match; the mandatory trailing "95% CI lo-hi" disambiguates from prose
+# (e.g. "RR, 18 breaths"). Lets a second effect in a combined clause be caught.
+# The separator also accepts a lower-case spelled-out linking phrase between the
+# abbreviation and its value -- "was" / "of" / "for <subgroup> of" ("the OR was
+# 3.35 (95% CI 2.23-5.03)", "pooled OR of 1.015 (95% CI ...)", "HR for OS of 1.04
+# (95% CI ...)"). This is the UNION of the tuberculosis (was/of) and hepatitis
+# (for <subgroup> of) linker extensions: a STRICT SUPERSET of the original
+# [\s:=,]+ alternative, kept first so every previously-matched estimate still
+# matches. Linkers stay lower-case so "OR" the word / "For" at a sentence start
+# can't supply one. (Same linking-phrase class as the typhoid was/were/of fix in
+# _RATIO_RE; surfaced mining published TB + hepatitis MAs.)
 _BARE_RATIO_RE = re.compile(
-    r"\b(?P<label>aOR|aHR|aRR|aIRR|OR|HR|RR|IRR|RD)(?:\s+(?:of|was)\s+|[\s:=,]+)"
+    r"\b(?P<label>aOR|aHR|aRR|aIRR|OR|HR|RR|IRR|RD)"
+    r"(?:[\s:=,]+|\s+was\s+|\s+(?:for\s+[A-Za-z][\w ]{0,18}?\s+)?of\s+)"
     r"(?P<val>" + _NUM + r")"
     r"[^\d]{0,24}?" + _CI +
     r"(?P<lo>" + _NUM + r")\s*(?:" + _DASH + r"|,)\s*(?P<hi>" + _NUM + r")")
