@@ -78,19 +78,24 @@ dev = [
 ]
 
 [project.scripts]
-rct-extract = "src.cli.cli:main"
+# Primary CLI: unified text/abstract extractor across the 17 disease specialties.
+rct-extract = "rct_extractor.cli:main"
+# Original PDF-table extraction pipeline (cardiology vocabulary).
+rct-extract-pdf = "src.cli.cli:main"
+# Convert abstracts -> allmeta ma-studies-v1 JSON for the browser MA apps.
+rct-extract-allmeta = "rct_extractor.integrations.allmeta:main"
 
 [project.urls]
-Homepage = "https://github.com/rct-extractor/rct-extractor-v2"
-Documentation = "https://github.com/rct-extractor/rct-extractor-v2#readme"
-Repository = "https://github.com/rct-extractor/rct-extractor-v2"
+Homepage = "https://github.com/mahmood726-cyber/rct-extractor-v2"
+Documentation = "https://github.com/mahmood726-cyber/rct-extractor-v2#readme"
+Repository = "https://github.com/mahmood726-cyber/rct-extractor-v2"
 
 [tool.setuptools.dynamic]
 version = {attr = "src.__version__"}
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["src*", "configs*"]
+include = ["rct_extractor*", "src*", "configs*"]
 
 [tool.setuptools.package-data]
 "*" = ["*.yaml", "*.yml"]

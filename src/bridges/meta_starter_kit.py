@@ -100,6 +100,36 @@ def metakit_measure_for(effect_type: str) -> Optional[str]:
     return _TYPE_TO_MEASURE.get(str(effect_type).upper())
 
 
+# All 17 disease specialties ship a <name>_arm_data module with extract_arm_level().
+_ARM_SPECIALTIES = (
+    "hiv", "malaria", "typhoid", "schistosomiasis", "sickle_cell", "cholera",
+    "maternal_neonatal", "tuberculosis", "hepatitis", "meningitis", "pneumonia",
+    "diarrhoeal", "malnutrition", "helminths", "hypertension", "cervical_cancer",
+    "diabetes",
+)
+_ARM_CACHE: Dict[str, Any] = {}
+
+
+def _arm_extractor_for(specialty: str):
+    """Return the extract_arm_level() callable for a specialty, or None."""
+    if specialty not in _ARM_SPECIALTIES:
+        return None
+    if specialty not in _ARM_CACHE:
+        import importlib
+        mod = importlib.import_module(f"src.specialties.{specialty}_arm_data")
+        _ARM_CACHE[specialty] = getattr(mod, "extract_arm_level", None)
+    return _ARM_CACHE[specialty]
+
+
+def _effects_for(specialty: str, extractor, text: str) -> List[Dict]:
+    """Precomputed effect dicts: malaria augmenter for malaria, core otherwise."""
+    if specialty == "malaria":
+        from src.specialties.malaria_effects import extract_malaria_effects
+        return extract_malaria_effects(extractor, text)
+    from src.core.enhanced_extractor_v3 import to_dict
+    return [to_dict(x) for x in extractor.extract(text)]
+
+
 def build_config_from_records(records: List[Dict], extractor, *, title: str,
                               effect_measure: str, endpoint: Optional[str] = None,
                               prefer_2x2: bool = True,
@@ -107,18 +137,19 @@ def build_config_from_records(records: List[Dict], extractor, *, title: str,
     """Topic-routed: build a config from a list of trial records.
 
     records: [{name, text, nct?, pmid?, year?}]. For each record, pick the effect
-    that matches `effect_measure` (and `endpoint`, if given). For a ratio measure
-    on malaria text, prefer a poolable 2x2 (raw counts) over a precomputed ratio.
+    that matches `effect_measure` (and `endpoint`, if given). For a ratio measure,
+    prefer a poolable 2x2 (raw counts) over a precomputed ratio.
 
     topics: if given (e.g. ['malaria','cardiology']), only records whose
     auto-detected specialty is in the list are processed -- the extractor engages
     only for those topics and leaves everything else to the caller's own flow.
+
+    Works for all 17 disease specialties: raw 2x2 counts are recovered via each
+    specialty's <name>_arm_data.extract_arm_level(); precomputed effects come
+    from the malaria augmenter for malaria text and from the core extractor
+    otherwise.
     """
-    from src.specialties.malaria_effects import extract_malaria_effects
-    from src.specialties.malaria_arm_data import extract_arm_level as _malaria_arm
-    from src.specialties.hiv_arm_data import extract_arm_level as _hiv_arm
     from src.specialties.registry import detect_specialty
-    _ARM_BY_SPEC = {"malaria": _malaria_arm, "hiv": _hiv_arm}
 
     em = effect_measure.upper()
     want = {t.lower() for t in topics} if topics else None
@@ -132,19 +163,23 @@ def build_config_from_records(records: List[Dict], extractor, *, title: str,
         if want is not None and spec not in want:
             continue   # auto-detect: only engage for the requested topics
         row = None
-        # malaria/HIV + ratio measure -> prefer raw 2x2 from arm-level extraction
-        if prefer_2x2 and em in _RATIO_MEASURES and spec in _ARM_BY_SPEC:
-            tables = _ARM_BY_SPEC[spec](text)["poolable_2x2"]
-            if endpoint:
-                tables = [t for t in tables if t["endpoint"] == endpoint] or tables
-            if tables:
-                row = table2x2_to_trial(tables[0], r["name"], **m)
+        # ratio measure -> prefer raw 2x2 from this specialty's arm-level extractor
+        if prefer_2x2 and em in _RATIO_MEASURES:
+            arm = _arm_extractor_for(spec)
+            if arm is not None:
+                tables = arm(text).get("poolable_2x2", [])
+                if endpoint:
+                    tables = [t for t in tables if t["endpoint"] == endpoint] or tables
+                if tables:
+                    row = table2x2_to_trial(tables[0], r["name"], **m)
         if row is None:                              # fall back to precomputed effect
-            effs = [e for e in extract_malaria_effects(extractor, text)
-                    if metakit_measure_for(e["type"]) == em
-                    and (endpoint is None or e.get("endpoint") == endpoint)]
-            if effs:
-                row = effect_dict_to_trial(effs[0], r["name"], **m)
+            for e in _effects_for(spec, extractor, text):
+                if metakit_measure_for(e.get("type")) == em and (
+                    endpoint is None or e.get("endpoint") == endpoint
+                ):
+                    row = effect_dict_to_trial(e, r["name"], **m)
+                    if row:
+                        break
         if row:
             trials.append(row)
     return make_config(title, em, trials, **meta)
