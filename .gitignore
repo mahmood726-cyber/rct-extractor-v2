@@ -81,6 +81,12 @@ data/field_portability/typhoid/*.jsonl
 data/field_portability/typhoid/*.json
 data/field_portability/typhoid/*.log
 
+# Helminths (STH / deworming) field bundle — large/transient data (keep README.md; code is under scripts/)
+data/field_portability/helminths/rct_trial_pdfs/
+data/field_portability/helminths/*.jsonl
+data/field_portability/helminths/*.json
+data/field_portability/helminths/*.log
+
 # Malaria field bundle — large/transient data (keep README.md; code is under scripts/)
 data/field_portability/malaria/rct_trial_pdfs/
 data/field_portability/malaria/*.jsonl

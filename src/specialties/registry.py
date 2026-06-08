@@ -54,6 +54,16 @@ from .typhoid import (
     normalize_typhoid_endpoint
 )
 
+from .helminths import (
+    HELMINTHS_ENDPOINTS,
+    TREATMENT_PATTERNS as HELMINTHS_TREATMENT_PATTERNS,
+    MASS_DEWORMING_PATTERNS as HELMINTHS_MASS_DEWORMING_PATTERNS,
+    NUTRITION_PATTERNS as HELMINTHS_NUTRITION_PATTERNS,
+    REINFECTION_PATTERNS as HELMINTHS_REINFECTION_PATTERNS,
+    detect_helminths_subspecialty,
+    normalize_helminths_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -117,6 +127,18 @@ SPECIALTY_REGISTRY = {
             'vaccine': TYPHOID_VACCINE_PATTERNS,
             'resistance': TYPHOID_RESISTANCE_PATTERNS,
             'complications': TYPHOID_COMPLICATIONS_PATTERNS
+        }
+    },
+    'helminths': {
+        'subspecialties': ['treatment', 'mass_deworming', 'nutrition', 'reinfection'],
+        'detection_function': detect_helminths_subspecialty,
+        'normalizer': normalize_helminths_endpoint,
+        'endpoints': HELMINTHS_ENDPOINTS,
+        'patterns': {
+            'treatment': HELMINTHS_TREATMENT_PATTERNS,
+            'mass_deworming': HELMINTHS_MASS_DEWORMING_PATTERNS,
+            'nutrition': HELMINTHS_NUTRITION_PATTERNS,
+            'reinfection': HELMINTHS_REINFECTION_PATTERNS
         }
     },
     'infectious_disease': {
@@ -216,6 +238,15 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'\btcv\b', r'\bty21a\b', r'vi\s+polysaccharide', r'anti[- ]vi',
             r'fever\s+clearance\s+time', r'widal'
         ],
+        'helminths': [
+            r'soil[- ]transmitted\s+helminth', r'\bsth\b', r'geohelminth',
+            r'helminth', r'\bdeworming\b|de[- ]worming', r'anthelmin(?:t|th)ic',
+            r'ascaris|ascariasis', r'trichuris|trichuriasis|whipworm',
+            r'hookworm|necator|ancylostoma', r'strongyloides|strongyloidiasis',
+            r'roundworm|intestinal\s+worm', r'albendazole', r'mebendazole',
+            r'pyrantel', r'levamisole', r'tribendimidine', r'oxantel',
+            r'egg\s+reduction\s+rate', r'eggs\s+per\s+gram', r'kato[- ]?katz'
+        ],
         'infectious_disease': [
             r'covid', r'sars[- ]?cov', r'hepatitis',
             r'viral', r'bacterial', r'antiviral', r'antibiotic', r'infection'
@@ -266,6 +297,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'typhoid':
         subspecialty, conf = detect_typhoid_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'helminths':
+        subspecialty, conf = detect_helminths_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)
