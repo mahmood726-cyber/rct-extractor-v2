@@ -54,6 +54,16 @@ from .typhoid import (
     normalize_typhoid_endpoint
 )
 
+from .diabetes import (
+    DIABETES_ENDPOINTS,
+    GLYCEMIC_PATTERNS as DIABETES_GLYCEMIC_PATTERNS,
+    CARDIORENAL_PATTERNS as DIABETES_CARDIORENAL_PATTERNS,
+    HYPOGLYCEMIA_PATTERNS as DIABETES_HYPOGLYCEMIA_PATTERNS,
+    COMPLICATIONS_PATTERNS as DIABETES_COMPLICATIONS_PATTERNS,
+    detect_diabetes_subspecialty,
+    normalize_diabetes_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -129,12 +139,15 @@ SPECIALTY_REGISTRY = {
         }
     },
     'diabetes': {
-        'subspecialties': ['t2dm', 't1dm', 'obesity'],
-        'endpoints': {
-            'MACE': {'aliases': ['mace', 'major adverse cardiovascular events']},
-            'HBA1C': {'aliases': ['hba1c', 'glycated hemoglobin', 'a1c']},
-            'WEIGHT_LOSS': {'aliases': ['weight loss', 'body weight', 'weight reduction']},
-            'RENAL_COMPOSITE': {'aliases': ['renal composite', 'kidney composite', 'ckd progression']}
+        'subspecialties': ['glycemic', 'cardiorenal', 'hypoglycemia', 'complications'],
+        'detection_function': detect_diabetes_subspecialty,
+        'normalizer': normalize_diabetes_endpoint,
+        'endpoints': DIABETES_ENDPOINTS,
+        'patterns': {
+            'glycemic': DIABETES_GLYCEMIC_PATTERNS,
+            'cardiorenal': DIABETES_CARDIORENAL_PATTERNS,
+            'hypoglycemia': DIABETES_HYPOGLYCEMIA_PATTERNS,
+            'complications': DIABETES_COMPLICATIONS_PATTERNS
         }
     },
     'neurology': {
@@ -221,8 +234,12 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'viral', r'bacterial', r'antiviral', r'antibiotic', r'infection'
         ],
         'diabetes': [
-            r'diabetes', r'diabetic', r'hba1c', r'glucose', r'insulin',
-            r'sglt2', r'glp[- ]?1', r'metformin', r'obesity', r'weight\s+loss'
+            r'diabetes', r'diabetic', r'type\s+2\s+diabetes|\bt2dm\b',
+            r'hba1c', r'glycated\s+ha?emoglobin', r'fasting\s+plasma\s+glucose',
+            r'glucose', r'insulin', r'glyca?emic', r'hypoglyca?emia',
+            r'sglt[- ]?2', r'\w*gliflozin', r'glp[- ]?1', r'\w*glutide', r'tirzepatide',
+            r'\w*gliptin', r'dpp[- ]?4', r'metformin', r'sulfonylurea|sulphonylurea',
+            r'pioglitazone|rosiglitazone', r'obesity', r'weight\s+loss'
         ],
         'neurology': [
             r'alzheimer', r'dementia', r'multiple\s+sclerosis', r'\bms\b',
@@ -266,6 +283,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'typhoid':
         subspecialty, conf = detect_typhoid_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'diabetes':
+        subspecialty, conf = detect_diabetes_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)
