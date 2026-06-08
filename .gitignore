@@ -81,6 +81,12 @@ data/field_portability/typhoid/*.jsonl
 data/field_portability/typhoid/*.json
 data/field_portability/typhoid/*.log
 
+# Meningitis field bundle — large/transient data (keep README.md; code is under scripts/)
+data/field_portability/meningitis/rct_trial_pdfs/
+data/field_portability/meningitis/*.jsonl
+data/field_portability/meningitis/*.json
+data/field_portability/meningitis/*.log
+
 # Malaria field bundle — large/transient data (keep README.md; code is under scripts/)
 data/field_portability/malaria/rct_trial_pdfs/
 data/field_portability/malaria/*.jsonl

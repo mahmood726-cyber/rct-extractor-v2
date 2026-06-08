@@ -54,6 +54,16 @@ from .typhoid import (
     normalize_typhoid_endpoint
 )
 
+from .meningitis import (
+    MENINGITIS_ENDPOINTS,
+    TREATMENT_PATTERNS as MENINGITIS_TREATMENT_PATTERNS,
+    VACCINE_PATTERNS as MENINGITIS_VACCINE_PATTERNS,
+    MORTALITY_PATTERNS as MENINGITIS_MORTALITY_PATTERNS,
+    SEQUELAE_PATTERNS as MENINGITIS_SEQUELAE_PATTERNS,
+    detect_meningitis_subspecialty,
+    normalize_meningitis_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -117,6 +127,18 @@ SPECIALTY_REGISTRY = {
             'vaccine': TYPHOID_VACCINE_PATTERNS,
             'resistance': TYPHOID_RESISTANCE_PATTERNS,
             'complications': TYPHOID_COMPLICATIONS_PATTERNS
+        }
+    },
+    'meningitis': {
+        'subspecialties': ['treatment', 'vaccine', 'mortality', 'sequelae'],
+        'detection_function': detect_meningitis_subspecialty,
+        'normalizer': normalize_meningitis_endpoint,
+        'endpoints': MENINGITIS_ENDPOINTS,
+        'patterns': {
+            'treatment': MENINGITIS_TREATMENT_PATTERNS,
+            'vaccine': MENINGITIS_VACCINE_PATTERNS,
+            'mortality': MENINGITIS_MORTALITY_PATTERNS,
+            'sequelae': MENINGITIS_SEQUELAE_PATTERNS
         }
     },
     'infectious_disease': {
@@ -216,6 +238,13 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'\btcv\b', r'\bty21a\b', r'vi\s+polysaccharide', r'anti[- ]vi',
             r'fever\s+clearance\s+time', r'widal'
         ],
+        'meningitis': [
+            r'meningitis', r'meningococc', r'neisseria\s+meningitidis',
+            r'pneumococcal\s+meningitis', r'h[ae]mophilus\s+influenzae',
+            r'\bhib\b', r'menafrivac', r'\bmena[- ]?tt\b', r'\bmenacwy\b',
+            r'4cmenb', r'cerebrospinal\s+fluid', r'\bcsf\b', r'lumbar\s+puncture',
+            r'serum\s+bactericidal|\bsba\b', r'meningitis\s+belt'
+        ],
         'infectious_disease': [
             r'covid', r'sars[- ]?cov', r'hepatitis',
             r'viral', r'bacterial', r'antiviral', r'antibiotic', r'infection'
@@ -266,6 +295,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'typhoid':
         subspecialty, conf = detect_typhoid_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'meningitis':
+        subspecialty, conf = detect_meningitis_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)
