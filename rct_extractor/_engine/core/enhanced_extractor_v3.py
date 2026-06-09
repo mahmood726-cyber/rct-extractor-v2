@@ -514,6 +514,13 @@ class EnhancedExtractor:
         r'\bHR\b\s+(\d+\.?\d*)\s*[;,]\s*(?:95%?\s*)?CI\s*\[\s*(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)\s*\]',
         # v5.7: "HR 16.128; 95% CI[1.431, 181.778]" - comma-separated in brackets
         r'\bHR\b\s+(\d+\.?\d*)\s*[;,]\s*(?:95%?\s*)?CI\s*\[\s*(\d+\.?\d*)\s*,\s*(\d+\.?\d*)\s*\]',
+
+        # v6.3 (PDF-eval): bare HR / aHR bracket-free, comma OR dash OR "to" bounds:
+        #   "HR = 1.95; 95% CI: 1.03-3.69" / "aHR: 0.62, 95% CI 0.45 to 0.85"
+        r'(?<![A-Za-z])a?HR\b\s*[=:]?\s*(\d+\.?\d*)\s*[;,]\s*(?:95%?\s*)?(?:CI|confidence\s*interval)[:\s,]+(\d+\.?\d*)\s*(?:to|[-–—]|,)\s*(\d+\.?\d*)',
+        # v6.3 (PDF-eval): per-unit HR with a short qualifier before the colon:
+        #   "HR per +10 HU: 1.95; 95% CI: 1.03-3.69"
+        r'(?<![A-Za-z])a?HR\b\s+per\b[^.:\n]{0,25}:\s*(\d+\.?\d*)\s*[;,]\s*(?:95%?\s*)?(?:CI|confidence\s*interval)[:\s,]+(\d+\.?\d*)\s*(?:to|[-–—]|,)\s*(\d+\.?\d*)',
     ]
 
     # Odds Ratio patterns (25+ variants)
@@ -622,6 +629,15 @@ class EnhancedExtractor:
         r'(?:Pooled|Summary|Overall)\s+OR[^:]*:\s*(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?CI\s+(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
         # "Diagnostic odds ratio: DOR 15.3 (95% CI 9.8-23.9)"
         r'[Dd]iagnostic\s+odds\s+ratio[:\s]+(?:DOR\s+)?(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?CI\s+(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
+
+        # v6.3 (PDF-eval): bracket-free OR/aOR with CI bounds separated by comma,
+        # dash OR "to". Covers real abstract forms the prior variants missed:
+        #   "OR = 3.43; 95% CI: 1.17, 10.01"  (comma-separated bounds)
+        #   "aOR 1.06, 95% CI 1.02-1.11"      (no brackets, dash bounds)
+        #   "OR = 0.44, 95% CI: 0.06, 3.20"
+        # \baOR\b fails (the leading 'a' is a word char) so use a letter-boundary
+        # lookbehind that accepts both OR and aOR but never the word "for"/"or".
+        r'(?<![A-Za-z])a?OR\b\s*[=:]?\s*(\d+\.?\d*)\s*[;,]\s*(?:95%?\s*)?(?:CI|confidence\s*interval)[:\s,]+(\d+\.?\d*)\s*(?:to|[-–—]|,)\s*(\d+\.?\d*)',
 
         # =================================================================
         # MULTI-LANGUAGE OR PATTERNS
@@ -942,6 +958,14 @@ class EnhancedExtractor:
         r'\bRR\b[,;:\s=]+(\d+\.?\d*)\s*[\[\(]\s*95%?\s*[:\s]+(\d+\.?\d*)\s*[;,]\s*(\d+\.?\d*)\s*[\]\)]',
         # "RR: 0.87; 95% CI: 0.73-1.03" - colon + semicolon
         r'\bRR\b:\s*(\d+\.?\d*)\s*;\s*(?:95%?\s*)?CI[:\s]+(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)',
+
+        # v6.3 (PDF-eval): bracket-free spelled-out relative risk / risk ratio with
+        # CI bounds separated by comma, dash OR "to":
+        #   "relative risk (RR) = 2.7, 95% CI: 0.90-8.2"  (paren alias stripped upstream)
+        r'(?:relative\s+risk|risk\s*ratio)[,;:\s=]+(\d+\.?\d*)\s*[;,]\s*(?:95%?\s*)?(?:CI|confidence\s*interval)[:\s,]+(\d+\.?\d*)\s*(?:to|[-–—]|,)\s*(\d+\.?\d*)',
+        # v6.3 (PDF-eval): bare RR / aRR bracket-free, comma OR dash OR "to" bounds:
+        #   "RR = 0.44; 95% CI: 0.06, 3.20"
+        r'(?<![A-Za-z])a?RR\b\s*[=:]?\s*(\d+\.?\d*)\s*[;,]\s*(?:95%?\s*)?(?:CI|confidence\s*interval)[:\s,]+(\d+\.?\d*)\s*(?:to|[-–—]|,)\s*(\d+\.?\d*)',
     ]
 
     # Incidence Rate Ratio patterns
@@ -971,6 +995,15 @@ class EnhancedExtractor:
         r'(?:exacerbation|AECOPD)\s+(?:rate\s+)?(?:reduction|relative\s+rate)[:\s]+(\d+\.?\d*)%?\s*\(\s*(?:95%?\s*)?CI\s+(\d+\.?\d*)%?\s+to\s+(\d+\.?\d*)%?',
         # IRR for exacerbations
         r'\bIRR\b\s+(?:for\s+)?(?:exacerbation|AECOPD)[:\s]+(\d+\.?\d*)\s*\(\s*(?:95%?\s*)?CI\s+(\d+\.?\d*)\s+to\s+(\d+\.?\d*)',
+
+        # v6.3 (PDF-eval): bracket-free rate-ratio / IRR / aRR(rate) with CI bounds
+        # separated by comma, dash OR "to". Covers real abstract forms missed by
+        # the paren-only variants above:
+        #   "rate ratio = 0.37, 95% CI: 0.21-0.66"
+        #   "IRR: 1.36, 95% CI: 0.21 to 8.85"   (was leaking to MD)
+        #   "rate ratio (IRR)=3.6, 95% CI 1.6-8.1"  (paren alias stripped upstream)
+        r'(?:incidence\s+)?rate\s*ratio[,;:\s=]+(\d+\.?\d*)\s*[;,]\s*(?:95%?\s*)?(?:CI|confidence\s*interval)[:\s,]+(\d+\.?\d*)\s*(?:to|[-–—]|,)\s*(\d+\.?\d*)',
+        r'(?<![A-Za-z])a?IRR\b\s*[=:]?\s*(\d+\.?\d*)\s*[;,]?\s*(?:95%?\s*)?(?:CI|confidence\s*interval)[:\s,]+(\d+\.?\d*)\s*(?:to|[-–—]|,)\s*(\d+\.?\d*)',
     ]
 
     # =================================================================
@@ -1873,7 +1906,11 @@ class EnhancedExtractor:
         # "risk ratio [RR], 0.67" -> "risk ratio 0.67" (PMC12074564)
         # "hazard ratio [HR]:" -> "hazard ratio:"
         # "odds ratio [OR]" -> "odds ratio"
-        text = re.sub(r'((?:hazard|odds|risk|relative|rate|incidence|mean)\s+(?:ratio|difference|reduction))\s*\[(?:HR|OR|RR|RD|IRR|MD|ARD|ARR|SMD|WMD|GMR)\]', r'\1', text, flags=re.IGNORECASE)
+        # v6.3 (PDF-eval): also strip ROUND-paren aliases "odds ratio (OR)" /
+        # "odds ratio (aOR)" (previously only square brackets were handled), which
+        # otherwise broke the spelled-out OR/RR/HR/IRR patterns and leaked the
+        # effect to the generic MD fallback. Real-PDF abstracts use "(OR)" widely.
+        text = re.sub(r'((?:adjusted\s+)?(?:hazard\s+ratio|odds\s+ratio|risk\s+ratio|rate\s+ratio|incidence\s+rate\s+ratio|relative\s+risk(?:\s+reduction)?|risk\s+(?:difference|reduction)|mean\s+difference))\s*[\[(](?:a?HR|a?OR|a?RR|a?IRR|RD|MD|ARD|ARR|SMD|WMD|GMR)[\])]', r'\1', text, flags=re.IGNORECASE)
         # Also handle "confidence interval [CI]" -> "confidence interval"
         text = re.sub(r'(confidence\s+interval)\s*\[CI\]', r'\1', text, flags=re.IGNORECASE)
 
@@ -1915,6 +1952,16 @@ class EnhancedExtractor:
         # NOTE: "adjusted" excluded — it's a suffix too ("unadjusted", "maladjusted")
         # "confidence" excluded — handled by run_together list ("confidenceinterval")
         text = re.sub(r'([a-z])(hazard|odds|risk|mean|relative|incidence|standardized|weighted|absolute)', r'\1 \2', text, flags=re.IGNORECASE)
+
+        # v6.3 (PDF-eval): some journal fonts extract the "=" glyph as the digit
+        # "5" (observed across an entire Cochrane-style review PDF: "rate ratio 5
+        # 0.61, 95% CI: 0.40-0.92" where "5" is really "="). Restore it, but ONLY
+        # for a lone "5" sitting between a ratio term and a decimal value, so real
+        # numbers are never touched.  Spelled-out "ratio" is safe case-insensitively;
+        # the 2-letter abbreviations are matched case-SENSITIVELY so the English
+        # word "or" / "for" can never be rewritten.
+        text = re.sub(r'\b(ratio)\s+5\s+(?=\d+\.\d)', r'\1 = ', text, flags=re.IGNORECASE)
+        text = re.sub(r'(?<![A-Za-z])(a?RR|a?OR|a?HR|a?IRR)\s+5\s+(?=\d+\.\d)', r'\1 = ', text)
 
         # Split "of"/"was" stuck between letters and digits (run-together PDF text)
         # "ratioof4.17" -> "ratio of 4.17", "was98.8" -> "was 98.8"
@@ -2086,7 +2133,33 @@ class EnhancedExtractor:
         tabular_results = self._extract_tabular_effects(text, seen, seen_values)
         results.extend(tabular_results)
 
+        # v6.3 (PDF-eval): drop a generic MD/SMD/WMD extraction when a ratio
+        # (HR/OR/RR/IRR) extraction carries the IDENTICAL point estimate AND CI.
+        # A labelled ratio and a mean-difference can never describe the same
+        # value+interval, so an exact twin means the MD fallback mis-typed a
+        # ratio whose label sat just outside the matched span (e.g. "IRR: 1.36,
+        # 95% CI 0.21 to 8.85" produced both IRR and a spurious MD).
+        results = self._suppress_ratio_mistyped_as_difference(results)
+
         return results
+
+    @staticmethod
+    def _suppress_ratio_mistyped_as_difference(results: List["Extraction"]) -> List["Extraction"]:
+        """Remove MD/SMD/WMD twins of a ratio with identical point + CI bounds."""
+        ratio_types = {EffectType.HR, EffectType.OR, EffectType.RR, EffectType.IRR}
+        diff_types = {EffectType.MD, EffectType.SMD, EffectType.WMD}
+
+        def ci_key(e):
+            if e.ci is None:
+                return None
+            return (round(e.point_estimate, 3), round(e.ci.lower, 3), round(e.ci.upper, 3))
+
+        ratio_keys = {ci_key(e) for e in results
+                      if e.effect_type in ratio_types and ci_key(e) is not None}
+        if not ratio_keys:
+            return results
+        return [e for e in results
+                if not (e.effect_type in diff_types and ci_key(e) in ratio_keys)]
 
     def _extract_tabular_effects(self, text: str, seen: set, seen_values: set) -> list:
         """

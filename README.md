@@ -164,12 +164,19 @@ cross-check).
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| ClinicalTrials.gov (33 studies) | 97.7% sensitivity | Only credible external validation |
-| Pattern tests | 757 passing | Unit + integration |
-| Real PDF corpus | 407 PDFs | Collected, validation in progress |
-| Gold standard | IN PROGRESS | 50 manually-annotated PDFs planned |
+| **Real-PDF accuracy (HIV + malaria)** | **97%** correct (140/145 gold effects, 59 PMC-OA PDFs) | type + point + both CI bounds within tolerance; up from 83% baseline. See [`docs/PDF_ACCURACY_EVAL.md`](docs/PDF_ACCURACY_EVAL.md) |
+| ClinicalTrials.gov (33 studies) | 97.7% sensitivity | External validation |
+| Pattern tests | 1368 passing | Unit + integration |
 
-Real-world accuracy on arbitrary PDFs is still being validated. Do not assume 100% accuracy.
+**What the 97% does and does NOT mean** (full method + gaps in
+[`docs/PDF_ACCURACY_EVAL.md`](docs/PDF_ACCURACY_EVAL.md)): the gold standard is
+effect estimates **quoted verbatim from each article's abstract** (harvested
+independently, *not* from this extractor), and the extractor is scored on the
+**full PDF body text**. It covers **only 2 of 17 specialties** (HIV, malaria) and
+only abstract-stated effects. **Not yet measured on real PDFs:** the other 15
+specialties, effects reported only in body tables/figures, arm-level Ns / event
+counts, and scanned/OCR PDFs. Do not assume these numbers transfer; do not assume
+100% accuracy.
 
 ## Known Limitations
 
