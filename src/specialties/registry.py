@@ -64,6 +64,16 @@ from .schistosomiasis import (
     normalize_schistosomiasis_endpoint
 )
 
+from .onchocerciasis import (
+    ONCHOCERCIASIS_ENDPOINTS,
+    TREATMENT_PATTERNS as ONCHO_TREATMENT_PATTERNS,
+    MDA_PATTERNS as ONCHO_MDA_PATTERNS,
+    MORBIDITY_PATTERNS as ONCHO_MORBIDITY_PATTERNS,
+    SAFETY_PATTERNS as ONCHO_SAFETY_PATTERNS,
+    detect_onchocerciasis_subspecialty,
+    normalize_onchocerciasis_endpoint
+)
+
 from .sickle_cell import (
     SICKLE_CELL_ENDPOINTS,
     DISEASE_MODIFYING_PATTERNS as SCD_DISEASE_MODIFYING_PATTERNS,
@@ -269,6 +279,18 @@ SPECIALTY_REGISTRY = {
             'prevention': SCHISTO_PREVENTION_PATTERNS,
             'morbidity': SCHISTO_MORBIDITY_PATTERNS,
             'vaccine': SCHISTO_VACCINE_PATTERNS
+        }
+    },
+    'onchocerciasis': {
+        'subspecialties': ['treatment', 'mda', 'morbidity', 'safety'],
+        'detection_function': detect_onchocerciasis_subspecialty,
+        'normalizer': normalize_onchocerciasis_endpoint,
+        'endpoints': ONCHOCERCIASIS_ENDPOINTS,
+        'patterns': {
+            'treatment': ONCHO_TREATMENT_PATTERNS,
+            'mda': ONCHO_MDA_PATTERNS,
+            'morbidity': ONCHO_MORBIDITY_PATTERNS,
+            'safety': ONCHO_SAFETY_PATTERNS
         }
     },
     'sickle_cell': {
@@ -530,6 +552,15 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'cercaria(?:e)?', r'miracidia', r'oxamniquine', r'sh28gst|bilhvax',
             r'periportal\s+fibrosis'
         ],
+        'onchocerciasis': [
+            r'onchocerc', r'river\s+blindness', r'onchocerca\s+volvulus|o\.?\s*volvulus',
+            r'\bivermectin\b', r'\bivm\b', r'moxidectin',
+            r'microfilar(?:ia|iae|ial|emia|aemia|idermia)', r'skin\s+snip',
+            r'mazzotti', r'simulium|black\s?fl(?:y|ies)',
+            r'community[- ]directed\s+treatment|\bcdti\b', r'onchocercoma|palpable\s+nodule',
+            r'community\s+microfilarial\s+load|\bcmfl\b', r'anti[- ]?wolbachia',
+            r'annual\s+transmission\s+potential', r'ov[- ]?16', r'onchodermatitis'
+        ],
         'sickle_cell': [
             r'sickle\s+cell', r'\bscd\b', r'sickle\s+cell\s+(?:disease|ana?emia)',
             r'\bhbss\b', r'\bhbsc\b', r'ha?emoglobin\s+s\b', r'\bsickle\b',
@@ -709,6 +740,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'schistosomiasis':
         subspecialty, conf = detect_schistosomiasis_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'onchocerciasis':
+        subspecialty, conf = detect_onchocerciasis_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'sickle_cell':
         subspecialty, conf = detect_sickle_cell_subspecialty(text)

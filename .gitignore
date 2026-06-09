@@ -93,6 +93,12 @@ data/field_portability/schistosomiasis/*.jsonl
 data/field_portability/schistosomiasis/*.json
 data/field_portability/schistosomiasis/*.log
 
+# Onchocerciasis field bundle — large/transient data (keep README.md; code is under scripts/)
+data/field_portability/onchocerciasis/rct_trial_pdfs/
+data/field_portability/onchocerciasis/*.jsonl
+data/field_portability/onchocerciasis/*.json
+data/field_portability/onchocerciasis/*.log
+
 # Malaria field bundle — large/transient data (keep README.md; code is under scripts/)
 data/field_portability/malaria/rct_trial_pdfs/
 data/field_portability/malaria/*.jsonl
