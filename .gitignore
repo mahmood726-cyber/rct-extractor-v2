@@ -175,3 +175,9 @@ data/field_portability/cervical_cancer/rct_trial_pdfs/
 data/field_portability/cervical_cancer/*.jsonl
 data/field_portability/cervical_cancer/*.json
 data/field_portability/cervical_cancer/*.log
+
+# Epilepsy / AED field bundle — large/transient data (keep README.md; code is under scripts/)
+data/field_portability/epilepsy/rct_trial_pdfs/
+data/field_portability/epilepsy/*.jsonl
+data/field_portability/epilepsy/*.json
+data/field_portability/epilepsy/*.log

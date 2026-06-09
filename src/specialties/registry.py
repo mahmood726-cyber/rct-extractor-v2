@@ -194,6 +194,16 @@ from .diabetes import (
     normalize_diabetes_endpoint
 )
 
+from .epilepsy import (
+    EPILEPSY_ENDPOINTS,
+    EFFICACY_PATTERNS as EPILEPSY_EFFICACY_PATTERNS,
+    TOLERABILITY_PATTERNS as EPILEPSY_TOLERABILITY_PATTERNS,
+    STATUS_EPILEPTICUS_PATTERNS as EPILEPSY_STATUS_EPILEPTICUS_PATTERNS,
+    TREATMENT_GAP_PATTERNS as EPILEPSY_TREATMENT_GAP_PATTERNS,
+    detect_epilepsy_subspecialty,
+    normalize_epilepsy_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -436,6 +446,18 @@ SPECIALTY_REGISTRY = {
             'complications': DIABETES_COMPLICATIONS_PATTERNS
         }
     },
+    'epilepsy': {
+        'subspecialties': ['efficacy', 'tolerability', 'status_epilepticus', 'treatment_gap'],
+        'detection_function': detect_epilepsy_subspecialty,
+        'normalizer': normalize_epilepsy_endpoint,
+        'endpoints': EPILEPSY_ENDPOINTS,
+        'patterns': {
+            'efficacy': EPILEPSY_EFFICACY_PATTERNS,
+            'tolerability': EPILEPSY_TOLERABILITY_PATTERNS,
+            'status_epilepticus': EPILEPSY_STATUS_EPILEPTICUS_PATTERNS,
+            'treatment_gap': EPILEPSY_TREATMENT_GAP_PATTERNS
+        }
+    },
     'neurology': {
         'subspecialties': ['alzheimers', 'ms', 'parkinsons', 'stroke'],
         'endpoints': {
@@ -649,6 +671,17 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'\w*gliptin', r'dpp[- ]?4', r'metformin', r'sulfonylurea|sulphonylurea',
             r'pioglitazone|rosiglitazone', r'obesity', r'weight\s+loss'
         ],
+        'epilepsy': [
+            r'epileps(?:y|ies)', r'epileptic', r'\bseizures?\b', r'convuls',
+            r'status\s+epilepticus', r'anti[- ]?epileptic\s+drug|antiseizure\s+(?:medication|drug)',
+            r'anticonvulsant', r'\baed\b|\basm\b', r'seizure\s+freedom|seizure[- ]free',
+            r'responder\s+rate', r'seizure\s+frequency',
+            r'focal\s+(?:onset\s+)?seizure|generali[sz]ed\s+(?:tonic[- ]clonic|seizure)|tonic[- ]clonic',
+            r'carbamazepine|valproate|valproic|levetiracetam|phenobarbit(?:al|one)',
+            r'lamotrigine|phenytoin|topiramate|oxcarbazepine|lacosamide|zonisamide',
+            r'perampanel|brivaracetam|ethosuximide|clobazam|vigabatrin|eslicarbazepine|cenobamate',
+            r'epilepsy\s+treatment\s+gap', r'qolie'
+        ],
         'neurology': [
             r'alzheimer', r'dementia', r'multiple\s+sclerosis', r'\bms\b',
             r'parkinson', r'stroke', r'neurological', r'cognitive', r'relapse'
@@ -748,6 +781,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'diabetes':
         subspecialty, conf = detect_diabetes_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'epilepsy':
+        subspecialty, conf = detect_epilepsy_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)
