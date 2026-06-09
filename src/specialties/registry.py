@@ -64,6 +64,16 @@ from .schistosomiasis import (
     normalize_schistosomiasis_endpoint
 )
 
+from .trachoma import (
+    TRACHOMA_ENDPOINTS,
+    MDA_PATTERNS as TRACHOMA_MDA_PATTERNS,
+    SURGERY_PATTERNS as TRACHOMA_SURGERY_PATTERNS,
+    TRANSMISSION_PATTERNS as TRACHOMA_TRANSMISSION_PATTERNS,
+    MORTALITY_SAFETY_PATTERNS as TRACHOMA_MORTALITY_SAFETY_PATTERNS,
+    detect_trachoma_subspecialty,
+    normalize_trachoma_endpoint
+)
+
 from .sickle_cell import (
     SICKLE_CELL_ENDPOINTS,
     DISEASE_MODIFYING_PATTERNS as SCD_DISEASE_MODIFYING_PATTERNS,
@@ -269,6 +279,18 @@ SPECIALTY_REGISTRY = {
             'prevention': SCHISTO_PREVENTION_PATTERNS,
             'morbidity': SCHISTO_MORBIDITY_PATTERNS,
             'vaccine': SCHISTO_VACCINE_PATTERNS
+        }
+    },
+    'trachoma': {
+        'subspecialties': ['mda', 'surgery', 'transmission', 'mortality_safety'],
+        'detection_function': detect_trachoma_subspecialty,
+        'normalizer': normalize_trachoma_endpoint,
+        'endpoints': TRACHOMA_ENDPOINTS,
+        'patterns': {
+            'mda': TRACHOMA_MDA_PATTERNS,
+            'surgery': TRACHOMA_SURGERY_PATTERNS,
+            'transmission': TRACHOMA_TRANSMISSION_PATTERNS,
+            'mortality_safety': TRACHOMA_MORTALITY_SAFETY_PATTERNS
         }
     },
     'sickle_cell': {
@@ -530,6 +552,15 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'cercaria(?:e)?', r'miracidia', r'oxamniquine', r'sh28gst|bilhvax',
             r'periportal\s+fibrosis'
         ],
+        'trachoma': [
+            r'trachoma', r'trachomatous', r'chlamydia\s+trachomatis',
+            r'ocular\s+chlamydia', r'trichiasis', r'trachomatous\s+inflammation',
+            r'follicular\s+trachoma|active\s+trachoma',
+            r'tetracycline\s+(?:1%\s+)?(?:eye\s+)?ointment',
+            r'bilamellar\s+tarsal\s+rotation|\bbltr\b', r'safe\s+strateg',
+            r'corneal\s+opacity', r'conjunctival\s+scarring|trachomatous\s+scarring',
+            r'\bmordor\b', r'musca\s+sorbens', r'azithromycin'
+        ],
         'sickle_cell': [
             r'sickle\s+cell', r'\bscd\b', r'sickle\s+cell\s+(?:disease|ana?emia)',
             r'\bhbss\b', r'\bhbsc\b', r'ha?emoglobin\s+s\b', r'\bsickle\b',
@@ -709,6 +740,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'schistosomiasis':
         subspecialty, conf = detect_schistosomiasis_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'trachoma':
+        subspecialty, conf = detect_trachoma_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'sickle_cell':
         subspecialty, conf = detect_sickle_cell_subspecialty(text)
