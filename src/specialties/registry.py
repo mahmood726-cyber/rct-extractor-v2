@@ -194,6 +194,16 @@ from .diabetes import (
     normalize_diabetes_endpoint
 )
 
+from .lymphatic_filariasis import (
+    LYMPHATIC_FILARIASIS_ENDPOINTS,
+    MDA_PATTERNS as LF_MDA_PATTERNS,
+    TRANSMISSION_PATTERNS as LF_TRANSMISSION_PATTERNS,
+    MORBIDITY_PATTERNS as LF_MORBIDITY_PATTERNS,
+    SAFETY_PATTERNS as LF_SAFETY_PATTERNS,
+    detect_lymphatic_filariasis_subspecialty,
+    normalize_lymphatic_filariasis_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -389,6 +399,18 @@ SPECIALTY_REGISTRY = {
             'mass_deworming': HELMINTHS_MASS_DEWORMING_PATTERNS,
             'nutrition': HELMINTHS_NUTRITION_PATTERNS,
             'reinfection': HELMINTHS_REINFECTION_PATTERNS
+        }
+    },
+    'lymphatic_filariasis': {
+        'subspecialties': ['mda', 'transmission', 'morbidity', 'safety'],
+        'detection_function': detect_lymphatic_filariasis_subspecialty,
+        'normalizer': normalize_lymphatic_filariasis_endpoint,
+        'endpoints': LYMPHATIC_FILARIASIS_ENDPOINTS,
+        'patterns': {
+            'mda': LF_MDA_PATTERNS,
+            'transmission': LF_TRANSMISSION_PATTERNS,
+            'morbidity': LF_MORBIDITY_PATTERNS,
+            'safety': LF_SAFETY_PATTERNS
         }
     },
     'hypertension': {
@@ -616,6 +638,18 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'pyrantel', r'levamisole', r'tribendimidine', r'oxantel',
             r'egg\s+reduction\s+rate', r'eggs\s+per\s+gram', r'kato[- ]?katz'
         ],
+        'lymphatic_filariasis': [
+            r'lymphatic\s+filariasis', r'filariasis', r'\bfilaria(?:l)?\b',
+            r'wuchereria|bancrofti', r'brugia|malayi|timori',
+            r'microfilar(?:ia[el]?|a?emia)', r'\bmicrofilar',
+            r'diethylcarbamazine', r'\bdec\b',
+            r'dec[- ]medicated\s+salt', r'elephantiasis',
+            r'lymph(?:o)?(?:ae|e)dema|lymphedema', r'hydroc(?:o)?ele',
+            r'circulating\s+filarial\s+antigen|\bcfa\b',
+            r'\bida\b|triple[- ]drug', r'aden(?:o)?lymphangitis|\badla?\b',
+            r'og4c3|\bbm14\b|wb123|filariasis\s+test\s+strip|\bfts\b',
+            r'transmission\s+assessment\s+survey|\btas\b'
+        ],
         'hypertension': [
             r'hypertension', r'hypertensive', r'blood[- ]pressure', r'antihypertensive',
             r'systolic|diastolic', r'mm\s?hg', r'\bsbp\b|\bdbp\b',
@@ -739,6 +773,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'helminths':
         subspecialty, conf = detect_helminths_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'lymphatic_filariasis':
+        subspecialty, conf = detect_lymphatic_filariasis_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'hypertension':
         subspecialty, conf = detect_hypertension_subspecialty(text)
