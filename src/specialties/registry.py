@@ -64,6 +64,16 @@ from .schistosomiasis import (
     normalize_schistosomiasis_endpoint
 )
 
+from .leishmaniasis import (
+    LEISHMANIASIS_ENDPOINTS,
+    VISCERAL_PATTERNS as LEISH_VISCERAL_PATTERNS,
+    CUTANEOUS_PATTERNS as LEISH_CUTANEOUS_PATTERNS,
+    COMBINATION_PATTERNS as LEISH_COMBINATION_PATTERNS,
+    SAFETY_PATTERNS as LEISH_SAFETY_PATTERNS,
+    detect_leishmaniasis_subspecialty,
+    normalize_leishmaniasis_endpoint
+)
+
 from .sickle_cell import (
     SICKLE_CELL_ENDPOINTS,
     DISEASE_MODIFYING_PATTERNS as SCD_DISEASE_MODIFYING_PATTERNS,
@@ -269,6 +279,18 @@ SPECIALTY_REGISTRY = {
             'prevention': SCHISTO_PREVENTION_PATTERNS,
             'morbidity': SCHISTO_MORBIDITY_PATTERNS,
             'vaccine': SCHISTO_VACCINE_PATTERNS
+        }
+    },
+    'leishmaniasis': {
+        'subspecialties': ['visceral', 'cutaneous', 'combination', 'safety'],
+        'detection_function': detect_leishmaniasis_subspecialty,
+        'normalizer': normalize_leishmaniasis_endpoint,
+        'endpoints': LEISHMANIASIS_ENDPOINTS,
+        'patterns': {
+            'visceral': LEISH_VISCERAL_PATTERNS,
+            'cutaneous': LEISH_CUTANEOUS_PATTERNS,
+            'combination': LEISH_COMBINATION_PATTERNS,
+            'safety': LEISH_SAFETY_PATTERNS
         }
     },
     'sickle_cell': {
@@ -530,6 +552,15 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'cercaria(?:e)?', r'miracidia', r'oxamniquine', r'sh28gst|bilhvax',
             r'periportal\s+fibrosis'
         ],
+        'leishmaniasis': [
+            r'leishman', r'kala[- ]?azar', r'visceral\s+leishmaniasis',
+            r'cutaneous\s+leishmaniasis', r'mucocutaneous\s+leishmaniasis',
+            r'l(?:eishmania)?\.?\s*(?:donovani|infantum|major|tropica|braziliensis|mexicana|aethiopica)',
+            r'miltefosine', r'paromomycin|aminosidine',
+            r'sodium\s+stibogluconate|\bssg\b', r'meglumine\s+antimoniate|glucantime',
+            r'pentavalent\s+antimon', r'liposomal\s+amphotericin|ambisome',
+            r'pkdl|post[- ]kala[- ]?azar', r'amastigote', r'sand\s?fly'
+        ],
         'sickle_cell': [
             r'sickle\s+cell', r'\bscd\b', r'sickle\s+cell\s+(?:disease|ana?emia)',
             r'\bhbss\b', r'\bhbsc\b', r'ha?emoglobin\s+s\b', r'\bsickle\b',
@@ -709,6 +740,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'schistosomiasis':
         subspecialty, conf = detect_schistosomiasis_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'leishmaniasis':
+        subspecialty, conf = detect_leishmaniasis_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'sickle_cell':
         subspecialty, conf = detect_sickle_cell_subspecialty(text)
