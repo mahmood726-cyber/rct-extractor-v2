@@ -1767,6 +1767,21 @@ class EnhancedExtractor:
             EffectType.GMR: self.GMR_VALUE_ONLY_PATTERNS,
         }
 
+        # Precompile every pattern ONCE (v6.1 perf). There are ~590 patterns
+        # across the maps -- more than CPython's re cache (_MAXCACHE=512), so the
+        # previous `re.finditer(string_pattern, ...)` per call evicted and
+        # recompiled essentially the whole bank on every extract() (profiled at
+        # ~94% of runtime). Compiling here makes it a one-time cost. Output is
+        # identical: same pattern strings, same re.IGNORECASE, same order.
+        self.compiled_pattern_map = {
+            et: [re.compile(p, re.IGNORECASE) for p in ps]
+            for et, ps in self.pattern_map.items()
+        }
+        self.compiled_value_only_pattern_map = {
+            et: [re.compile(p, re.IGNORECASE) for p in ps]
+            for et, ps in self.value_only_pattern_map.items()
+        }
+
         # Calibration thresholds (tuned for automation)
         self.FULL_AUTO_THRESHOLD = 0.92   # High confidence for auto-accept
         self.SPOT_CHECK_THRESHOLD = 0.85  # Good confidence for spot-check
@@ -2002,9 +2017,9 @@ class EnhancedExtractor:
         seen_values = set()  # Track values for value-only deduplication
 
         # First pass: patterns with CI (full extraction)
-        for effect_type, patterns in self.pattern_map.items():
+        for effect_type, patterns in self.compiled_pattern_map.items():
             for pattern in patterns:
-                for match in re.finditer(pattern, text, re.IGNORECASE):
+                for match in pattern.finditer(text):
                     try:
                         value = float(match.group(1))
                         ci_low = float(match.group(2))
@@ -2037,9 +2052,9 @@ class EnhancedExtractor:
 
         # Second pass: value-only patterns (for CTG validation)
         if include_value_only:
-            for effect_type, patterns in self.value_only_pattern_map.items():
+            for effect_type, patterns in self.compiled_value_only_pattern_map.items():
                 for pattern in patterns:
-                    for match in re.finditer(pattern, text, re.IGNORECASE):
+                    for match in pattern.finditer(text):
                         try:
                             value = float(match.group(1))
 
