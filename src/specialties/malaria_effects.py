@@ -105,6 +105,10 @@ _RATIO_RE = re.compile(
     r"standardi[sz]ed\s+mean\s+difference|mean\s+difference)"
     r"|\b(?:aOR|aHR|aRR|aIRR|aRD|SMD|MD)\b)"
     r"\s*(?:\[[^\]]{1,12}\]|\([^)]{1,12}\))?"      # optional [aOR] / (aIRR)
+    # stray close-bracket when the LABEL itself was opened in a bracket the core
+    # didn't see -- "(weighted mean difference) was 0.74", "(SMD) = 1.4". Optional,
+    # so every previously-matched estimate still matches (strict superset).
+    r"(?:\s*[\])])?"
     r"(?:s|es)?"                                    # plural: 'relative risks', 'odds ratios'
     # linking phrase the core misses: "<measure> for <subgroup> was/were <val>",
     # bounded and digit/clause-free so it can't reach across to a distant number.
@@ -132,7 +136,14 @@ _RATIO_RE = re.compile(
 # can't supply one. (Same linking-phrase class as the typhoid was/were/of fix in
 # _RATIO_RE; surfaced mining published TB + hepatitis MAs.)
 _BARE_RATIO_RE = re.compile(
+    # optional opening + closing bracket AROUND the abbreviation, so the form
+    # where the abbreviation is parenthesised and its spelled name sits far away
+    # (or is absent) still matches -- "risk (RR) 1.94 (95% CI 1.52 to 2.48)",
+    # "[aOR] 0.50; 95% CI 0.34-0.75". Both groups are optional, so the original
+    # bare "RR, 0.34 ..." still matches exactly (strict superset).
+    r"[\[(]?\s*"
     r"\b(?P<label>aOR|aHR|aRR|aIRR|OR|HR|RR|IRR|RD)"
+    r"(?:\s*[\])])?"
     r"(?:[\s:=,]+|\s+was\s+|\s+(?:for\s+[A-Za-z][\w ]{0,18}?\s+)?of\s+)"
     r"(?P<val>" + _NUM + r")"
     r"[^\d]{0,24}?" + _CI +

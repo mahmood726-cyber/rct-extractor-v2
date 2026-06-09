@@ -42,6 +42,17 @@ from src.specialties.malaria_effects import augment_malaria_effects as aug
     # (hepatitis MA misses; strict-superset extension of _BARE_RATIO_RE)
     ("pooled OR of 1.02 (95% CI 0.86-1.20)", "OR", 1.02, 0.86, 1.20),
     ("the pooled HR for OS of 1.04 (95%CI: 0.93-1.16)", "HR", 1.04, 0.93, 1.16),
+    # Parenthesised abbreviation as the trigger (spelled name far away / absent)
+    # and a stray close-bracket before the value when the LABEL was opened in a
+    # bracket -- both strict-superset extensions, surfaced mining the cached
+    # HIV / malaria MA corpora (data/field_portability/<sp>/<sp>_matched.jsonl).
+    ("relative risk (RR) 1.94 (95% CI: 1.52 to 2.48)", "RR", 1.94, 1.52, 2.48),
+    ("standardized mean differences (SMD) = 1.4, 95% CI 0.59-2.20", "SMD", 1.4, 0.59, 2.20),
+    ("(IRR) 1.30, 95% CI 1.01-1.67", "IRR", 1.30, 1.01, 1.67),
+    ("adjusted odds ratio (aOR) 1.37, 95% CI 1.17 to 1.61", "OR", 1.37, 1.17, 1.61),
+    ("[HR] = 0.32, 95% confidence interval [CI] = 0.19,0.54", "HR", 0.32, 0.19, 0.54),
+    ("(weighted mean difference) was 0.74 g/dL (95% CI, 0.61-0.87)", "MD", 0.74, 0.61, 0.87),
+    ("risk difference (RD) of -0.03 (95% CI: -0.04 to -0.01)", "ARD", -0.03, -0.04, -0.01),
 ])
 def test_augmenter_recovers(text, etype, val, lo, hi):
     r = aug(text)
@@ -66,9 +77,33 @@ def test_augmenter_recovers(text, etype, val, lo, hi):
     "we saw an improvement of 12 points (95% CI 10-14) over baseline",
     # a bare abbreviation with NO trailing 95% CI must not match (respiratory rate)
     "respiratory rate (RR, 18 breaths per minute) was recorded at baseline",
+    # the optional bracket wrapper must not turn a bare parenthesis + later
+    # mention of OR into a spurious match when there is no value+CI
+    "(see Table 1) shows the OR was not statistically significant",
 ])
 def test_augmenter_rejects_non_numeric(text):
     assert aug(text) == [], f"false positive on: {text}"
+
+
+def test_strict_superset_invariant():
+    """The bracket / linker extensions are additive: a representative bank of
+    estimates that matched BEFORE the extension must still match. This is the
+    in-repo proxy for the full-corpus additivity proof in
+    scripts/benchmark_augmenter_offline.py (--compare), which verified 0 drops /
+    +25 adds over 7,413 cached MA abstracts."""
+    pre_extension_forms = [
+        ("OR = 0.45, 95% CI: 0.36, 0.56", "OR", 0.45),
+        ("HR = 0.67 (95% CI 0.50-0.90)", "HR", 0.67),
+        ("incidence rate ratio, 0.34; 95% CI, 0.23 to 0.51", "IRR", 0.34),
+        ("adjusted odds ratio [aOR]: 0.50; 95%CI: 0.34-0.75", "OR", 0.50),
+        ("vaccine efficacy (VE) was 56% (95% CI 51-60)", "EFFICACY_PCT", 56.0),
+        ("mean difference (MD): -7.63; 95% confidence interval (CI): -11.06, -4.21", "MD", -7.63),
+        ("RR, 0.34; 95% CI, 0.15 to 0.61", "RR", 0.34),
+    ]
+    for text, etype, val in pre_extension_forms:
+        r = aug(text)
+        assert any(x["type"] == etype and abs(x["effect_size"] - val) < 1e-6 for x in r), \
+            f"strict-superset regression: lost {etype}={val} on {text!r}"
 
 
 def test_dedup_against_core():
