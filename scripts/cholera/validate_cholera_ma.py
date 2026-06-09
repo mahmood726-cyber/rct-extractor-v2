@@ -17,8 +17,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from src.core.enhanced_extractor_v3 import EnhancedExtractor
-from src.specialties.malaria_effects import extract_malaria_effects
+from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor
+from rct_extractor._engine.specialties.malaria_effects import extract_malaria_effects
 from scripts.malaria.validate_against_ma import reviewer_data, recover
 
 OUT = Path(__file__).resolve().parents[2] / "data" / "field_portability" / "cholera" / "ma_validation.json"

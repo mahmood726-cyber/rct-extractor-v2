@@ -23,8 +23,8 @@ import argparse, json, sys
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from src.core.enhanced_extractor_v3 import EnhancedExtractor
-from src.specialties.malaria_effects import augment_malaria_effects, extract_malaria_effects
+from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor
+from rct_extractor._engine.specialties.malaria_effects import augment_malaria_effects, extract_malaria_effects
 from scripts.malaria.validate_against_ma import reviewer_data, recover
 
 CORPORA = {

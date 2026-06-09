@@ -10,13 +10,13 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from src.core.evaluation import (
+from rct_extractor._engine.core.evaluation import (
     Evaluator, EvaluationReport, EvaluationMetrics,
     GoldRecord, GoldDataset, load_gold_dataset,
     compare_numeric, compare_ci, compare_events,
     MatchLevel
 )
-from src.core.models import (
+from rct_extractor._engine.core.models import (
     ExtractionOutput, ExtractionRecord, HazardRatioCI, BinaryOutcome,
     Arm, PaperMetadata, Provenance, Timepoint, EndpointType, ExtractionConfidence
 )

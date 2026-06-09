@@ -25,7 +25,7 @@ TRANSIENT_HTTP_CODES = {408, 425, 429, 500, 502, 503, 504}
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from src.pdf.pdf_parser import PDFParser
+from rct_extractor._engine.pdf.pdf_parser import PDFParser
 
 
 def _load_json(path: Path):
@@ -312,7 +312,7 @@ def _pdf_contains_doi(
             "from pathlib import Path;"
             "ROOT=Path(sys.argv[3]);"
             "sys.path.insert(0,str(ROOT));"
-            "from src.pdf.pdf_parser import PDFParser;"
+            "from rct_extractor._engine.pdf.pdf_parser import PDFParser;"
             "pdf=sys.argv[1]; doi=sys.argv[2].lower();"
             "p=PDFParser(); c=p.parse(pdf);"
             "t='\\n'.join((pg.full_text or '') for pg in c.pages).lower();"

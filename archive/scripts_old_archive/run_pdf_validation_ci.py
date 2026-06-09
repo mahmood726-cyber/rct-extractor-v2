@@ -133,7 +133,7 @@ def run_text_validation() -> Dict[str, Any]:
     logger.info("Running text-based validation...")
 
     try:
-        from src.core.enhanced_extractor_v3 import EnhancedExtractor
+        from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor
         from data.external_validation_dataset import ALL_EXTERNAL_VALIDATION_TRIALS
 
         extractor = EnhancedExtractor()
@@ -188,8 +188,8 @@ def run_pdf_validation(max_pdfs: int = 10) -> Dict[str, Any]:
     logger.info(f"Running PDF validation (max {max_pdfs} PDFs)...")
 
     try:
-        from src.pdf.pdf_parser import PDFParser
-        from src.core.enhanced_extractor_v3 import EnhancedExtractor
+        from rct_extractor._engine.pdf.pdf_parser import PDFParser
+        from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor
 
         parser = PDFParser()
         extractor = EnhancedExtractor()

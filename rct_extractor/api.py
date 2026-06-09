@@ -61,7 +61,7 @@ def detect_specialty(text: str) -> Tuple[str, Optional[str], float]:
     Thin re-export of ``src.specialties.registry.detect_specialty`` so callers
     do not have to reach into the internal package layout.
     """
-    from src.specialties.registry import detect_specialty as _detect
+    from rct_extractor._engine.specialties.registry import detect_specialty as _detect
 
     return _detect(text)
 
@@ -69,20 +69,20 @@ def detect_specialty(text: str) -> Tuple[str, Optional[str], float]:
 @lru_cache(maxsize=None)
 def _arm_module(specialty: str):
     """Import and cache the per-specialty arm-data module."""
-    return importlib.import_module(f"src.specialties.{specialty}_arm_data")
+    return importlib.import_module(f"rct_extractor._engine.specialties.{specialty}_arm_data")
 
 
 @lru_cache(maxsize=1)
 def _shared_extractor():
     """A single cached EnhancedExtractor instance (reused across calls)."""
-    from src.core.enhanced_extractor_v3 import EnhancedExtractor
+    from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor
 
     return EnhancedExtractor()
 
 
 def _subspecialty_for(specialty: str, text: str) -> Tuple[Optional[str], Optional[float]]:
     """Run a forced specialty's own subspecialty detector, if it has one."""
-    from src.specialties.registry import SPECIALTY_REGISTRY
+    from rct_extractor._engine.specialties.registry import SPECIALTY_REGISTRY
 
     reg = SPECIALTY_REGISTRY.get(specialty, {})
     fn = reg.get("detection_function")
@@ -146,13 +146,13 @@ def extract(
     if with_effects:
         extractor = _shared_extractor()
         if spec == "malaria":
-            from src.specialties.malaria_effects import extract_malaria_effects
+            from rct_extractor._engine.specialties.malaria_effects import extract_malaria_effects
 
             out["effects"] = extract_malaria_effects(
                 extractor, text, consistency=consistency
             )
         else:
-            from src.core.enhanced_extractor_v3 import to_dict
+            from rct_extractor._engine.core.enhanced_extractor_v3 import to_dict
 
             out["effects"] = [to_dict(x) for x in extractor.extract(text)]
 
@@ -208,7 +208,7 @@ def to_metakit_config(
 
     Thin wrapper over ``src.bridges.meta_starter_kit.build_config_from_records``.
     """
-    from src.bridges.meta_starter_kit import build_config_from_records
+    from rct_extractor._engine.bridges.meta_starter_kit import build_config_from_records
 
     return build_config_from_records(
         records,

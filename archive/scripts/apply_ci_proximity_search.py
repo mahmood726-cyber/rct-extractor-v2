@@ -20,7 +20,7 @@ from datetime import datetime
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from scripts.ci_proximity_search import CIProximitySearch
-from src.pdf.pdf_parser import PDFParser
+from rct_extractor._engine.pdf.pdf_parser import PDFParser
 
 
 def load_classification(path: Path) -> dict:

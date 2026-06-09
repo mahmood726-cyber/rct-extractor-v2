@@ -1,6 +1,6 @@
 """Regression tests for verified extraction reporting."""
 
-from src.core.verified_extraction_pipeline import (
+from rct_extractor._engine.core.verified_extraction_pipeline import (
     PipelineResult,
     PipelineStatus,
     generate_verification_report,

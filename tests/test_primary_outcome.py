@@ -20,11 +20,11 @@ project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
 import pytest
-from src.core.primary_outcome_detector import PrimaryOutcomeDetector
-from src.core.enhanced_extractor_v3 import (
+from rct_extractor._engine.core.primary_outcome_detector import PrimaryOutcomeDetector
+from rct_extractor._engine.core.enhanced_extractor_v3 import (
     Extraction, EffectType, ConfidenceInterval, AutomationTier
 )
-from src.core.pdf_extraction_pipeline import PDFExtractionPipeline
+from rct_extractor._engine.core.pdf_extraction_pipeline import PDFExtractionPipeline
 
 
 def make_extraction(

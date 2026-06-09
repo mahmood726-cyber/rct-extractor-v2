@@ -5,7 +5,7 @@ from collections import Counter
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 sys.path.insert(0, "C:/Users/user/rct-extractor-v2")
-from src.pdf.pdf_parser import PDFParser
+from rct_extractor._engine.pdf.pdf_parser import PDFParser
 
 PDF_DIR = "C:/Users/user/rct-extractor-v2/gold_data/mega/pdfs"
 EVAL_FILE = "C:/Users/user/rct-extractor-v2/gold_data/mega/mega_eval_v3.jsonl"

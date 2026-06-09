@@ -20,8 +20,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
-from src.core.enhanced_extractor_v3 import EnhancedExtractor
-from src.bridges.meta_starter_kit import build_config_from_records
+from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor
+from rct_extractor._engine.bridges.meta_starter_kit import build_config_from_records
 
 
 def main():

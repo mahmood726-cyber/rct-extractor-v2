@@ -48,8 +48,8 @@ try:
     from ..core.enhanced_extractor_v3 import EnhancedExtractor, Extraction, EffectType, AutomationTier
     from .. import __version__
 except ImportError:
-    from src.core.enhanced_extractor_v3 import EnhancedExtractor, Extraction, EffectType, AutomationTier
-    from src import __version__
+    from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor, Extraction, EffectType, AutomationTier
+    from rct_extractor._engine import __version__
 
 # Maximum PDF upload size: 50 MB
 MAX_PDF_SIZE_BYTES = 50 * 1024 * 1024
@@ -183,7 +183,7 @@ def create_app() -> "FastAPI":
 
         # Check PDF parser
         try:
-            from src.pdf.pdf_parser import PDFParser
+            from rct_extractor._engine.pdf.pdf_parser import PDFParser
             components["pdf_parser"] = "healthy"
         except ImportError:
             components["pdf_parser"] = "unavailable"
@@ -283,7 +283,7 @@ def create_app() -> "FastAPI":
             try:
                 from ..pdf.pdf_parser import PDFParser
             except ImportError:
-                from src.pdf.pdf_parser import PDFParser
+                from rct_extractor._engine.pdf.pdf_parser import PDFParser
             parser = PDFParser()
 
             # Save uploaded file temporarily
@@ -509,7 +509,7 @@ def main():
     print("Documentation: http://localhost:8000/docs")
 
     uvicorn.run(
-        "src.api.main:app",
+        "rct_extractor._engine.api.main:app",
         host="0.0.0.0",
         port=8000,
         reload=True

@@ -65,21 +65,21 @@ def gold_dir(data_dir):
 @pytest.fixture
 def enhanced_extractor():
     """Enhanced extractor v3 instance"""
-    from src.core.enhanced_extractor_v3 import EnhancedExtractor
+    from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor
     return EnhancedExtractor()
 
 
 @pytest.fixture
 def pdf_parser():
     """PDF parser instance"""
-    from src.pdf.pdf_parser import PDFParser
+    from rct_extractor._engine.pdf.pdf_parser import PDFParser
     return PDFParser()
 
 
 @pytest.fixture
 def ocr_preprocessor():
     """OCR preprocessor instance"""
-    from src.core.ocr_preprocessor import OCRPreprocessor
+    from rct_extractor._engine.core.ocr_preprocessor import OCRPreprocessor
     return OCRPreprocessor()
 
 

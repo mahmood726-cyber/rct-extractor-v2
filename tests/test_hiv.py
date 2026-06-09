@@ -4,15 +4,15 @@ Mirrors the malaria tests.
 """
 import pytest
 
-from src.specialties.hiv import (
+from rct_extractor._engine.specialties.hiv import (
     HIV_ENDPOINTS, detect_hiv_subspecialty, normalize_hiv_endpoint,
     get_hiv_endpoint_patterns,
 )
-from src.specialties.registry import (
+from rct_extractor._engine.specialties.registry import (
     detect_specialty, normalize_endpoint_by_specialty, get_all_endpoints,
     SPECIALTY_REGISTRY,
 )
-from src.specialties.hiv_arm_data import (
+from rct_extractor._engine.specialties.hiv_arm_data import (
     extract_arm_level, extract_proportions, extract_continuous,
 )
 

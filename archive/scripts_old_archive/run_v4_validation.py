@@ -21,13 +21,13 @@ import os
 # Add project root to path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from src.core.team_of_rivals import team_extract, get_verified_extractions, ConsensusEngine
-from src.core.deterministic_verifier import verify_extraction, VerificationLevel
-from src.core.verified_extraction_pipeline import (
+from rct_extractor._engine.core.team_of_rivals import team_extract, get_verified_extractions, ConsensusEngine
+from rct_extractor._engine.core.deterministic_verifier import verify_extraction, VerificationLevel
+from rct_extractor._engine.core.verified_extraction_pipeline import (
     verified_extract, VerifiedExtractionPipeline, PipelineStatus,
     generate_verification_report
 )
-from src.core.proof_carrying_numbers import (
+from rct_extractor._engine.core.proof_carrying_numbers import (
     create_verified_extraction, ProofCarryingExtraction
 )
 

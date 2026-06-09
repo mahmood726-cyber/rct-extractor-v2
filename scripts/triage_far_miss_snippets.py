@@ -16,7 +16,7 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from scripts.mega_evaluate import _canonical_study_key, _load_latest_eval_rows, load_entries_with_pdfs
-from src.pdf.pdf_parser import PDFParser
+from rct_extractor._engine.pdf.pdf_parser import PDFParser
 
 
 STOPWORDS = {

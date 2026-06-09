@@ -2,7 +2,7 @@
 
 import math
 
-from src.core.enhanced_extractor_v3 import extract_p_value
+from rct_extractor._engine.core.enhanced_extractor_v3 import extract_p_value
 
 
 def test_extract_p_value_e_notation():

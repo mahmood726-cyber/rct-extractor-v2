@@ -31,7 +31,7 @@ sys.path.insert(0, str(PROJECT_DIR))
 
 def parse_pdf_text(pdf_path):
     """Parse PDF and return full text + page texts."""
-    from src.pdf.pdf_parser import PDFParser
+    from rct_extractor._engine.pdf.pdf_parser import PDFParser
     parser = PDFParser()
     try:
         content = parser.parse(str(pdf_path))

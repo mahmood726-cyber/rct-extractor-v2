@@ -4,15 +4,15 @@ Mirrors the typhoid, HIV and malaria tests.
 """
 import pytest
 
-from src.specialties.meningitis import (
+from rct_extractor._engine.specialties.meningitis import (
     MENINGITIS_ENDPOINTS, detect_meningitis_subspecialty, normalize_meningitis_endpoint,
     get_meningitis_endpoint_patterns,
 )
-from src.specialties.registry import (
+from rct_extractor._engine.specialties.registry import (
     detect_specialty, normalize_endpoint_by_specialty, get_all_endpoints,
     SPECIALTY_REGISTRY,
 )
-from src.specialties.meningitis_arm_data import (
+from rct_extractor._engine.specialties.meningitis_arm_data import (
     extract_arm_level, extract_proportions, extract_continuous,
 )
 

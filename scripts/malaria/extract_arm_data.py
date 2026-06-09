@@ -24,8 +24,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
-from src.pdf.pdf_parser import PDFParser
-from src.specialties.malaria_arm_data import extract_proportions, pair_2x2
+from rct_extractor._engine.pdf.pdf_parser import PDFParser
+from rct_extractor._engine.specialties.malaria_arm_data import extract_proportions, pair_2x2
 
 MAL = Path(__file__).resolve().parents[2] / "data" / "field_portability" / "malaria"
 PDF_DIR = MAL / "rct_trial_pdfs"

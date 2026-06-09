@@ -118,7 +118,7 @@ log = os.path.join(log_dir, 'server.log')
 sys.stdout = sys.stderr = open(log, 'a', encoding='utf-8', buffering=1)
 print('--- launch', datetime.datetime.now().isoformat(), flush=True)
 import uvicorn
-uvicorn.run('src.api.main:app', host='127.0.0.1', port=8000, log_level='info')
+uvicorn.run('rct_extractor._engine.api.main:app', host='127.0.0.1', port=8000, log_level='info')
 '@
 
 # Don't blow away a user-edited launcher: only overwrite if the existing file is

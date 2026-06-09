@@ -11,12 +11,12 @@ from typing import Dict, List, Tuple
 
 sys.path.insert(0, str(Path(__file__).parent / 'src'))
 
-from src.core.multilang_patterns import (
+from rct_extractor._engine.core.multilang_patterns import (
     MultiLanguageExtractor,
     get_supported_languages,
     get_language_name
 )
-from src.benchmark.statistics import clopper_pearson_ci
+from rct_extractor._engine.benchmark.statistics import clopper_pearson_ci
 
 
 def load_multilang_cases() -> List[Dict]:

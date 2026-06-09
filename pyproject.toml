@@ -81,7 +81,7 @@ dev = [
 # Primary CLI: unified text/abstract extractor across the 17 disease specialties.
 rct-extract = "rct_extractor.cli:main"
 # Original PDF-table extraction pipeline (cardiology vocabulary).
-rct-extract-pdf = "src.cli.cli:main"
+rct-extract-pdf = "rct_extractor._engine.cli.cli:main"
 # Convert abstracts -> allmeta ma-studies-v1 JSON for the browser MA apps.
 rct-extract-allmeta = "rct_extractor.integrations.allmeta:main"
 
@@ -91,14 +91,19 @@ Documentation = "https://github.com/mahmood726-cyber/rct-extractor-v2#readme"
 Repository = "https://github.com/mahmood726-cyber/rct-extractor-v2"
 
 [tool.setuptools.dynamic]
-version = {attr = "src.__version__"}
+version = {attr = "rct_extractor._engine.__version__"}
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["rct_extractor*", "src*", "configs*"]
+# Only the namespaced package is installed. The engine now lives under
+# rct_extractor/_engine and the cardiology vocab under rct_extractor/configs, so
+# no generic top-level `src`/`configs` package is published to site-packages
+# (this was the collision risk for external installers).
+include = ["rct_extractor*"]
 
 [tool.setuptools.package-data]
-"*" = ["*.yaml", "*.yml"]
+# Ship the YAML vocab/profile files bundled under the package (rct_extractor/configs).
+"rct_extractor" = ["configs/*.yaml", "configs/*.yml"]
 
 [tool.black]
 line-length = 100

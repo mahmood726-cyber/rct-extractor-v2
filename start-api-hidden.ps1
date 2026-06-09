@@ -15,7 +15,7 @@ $venvPython = Join-Path $root ".venv\Scripts\python.exe"
 if (Test-Path $venvPython) { $python = $venvPython }
 
 # Launch python/uvicorn hidden, redirecting stdout+stderr to the log.
-$args = @("-m", "uvicorn", "src.api.main:app", "--host", "127.0.0.1", "--port", "8000", "--log-level", "info")
+$args = @("-m", "uvicorn", "rct_extractor._engine.api.main:app", "--host", "127.0.0.1", "--port", "8000", "--log-level", "info")
 Start-Process -FilePath $python -ArgumentList $args `
     -WorkingDirectory $root `
     -WindowStyle Hidden `

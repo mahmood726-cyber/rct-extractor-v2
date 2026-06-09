@@ -20,7 +20,7 @@ from dataclasses import dataclass
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from src.core.enhanced_extractor_v3 import EnhancedExtractor
+from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor
 from scripts.ci_proximity_search import CIProximitySearch
 
 PROJECT_ROOT = Path(__file__).parent.parent

@@ -260,7 +260,7 @@ class StatisticalValidator:
 
     def run_validation(self) -> Dict[str, Any]:
         """Run complete validation suite"""
-        from src.core.enhanced_extractor_v3 import EnhancedExtractor
+        from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor
         from data.stratified_validation_dataset import STRATIFIED_VALIDATION_TRIALS
 
         extractor = EnhancedExtractor()

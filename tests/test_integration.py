@@ -11,8 +11,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from src.core.enhanced_extractor_v3 import EnhancedExtractor, EffectType, correct_ocr_errors
-from src.core.proof_carrying_numbers import (
+from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor, EffectType, correct_ocr_errors
+from rct_extractor._engine.core.proof_carrying_numbers import (
     ProofCarryingNumber,
     ProofCertificate,
     ProofCarryingExtraction,
@@ -20,7 +20,7 @@ from src.core.proof_carrying_numbers import (
     run_all_checks,
     CheckResult,
 )
-from src.core.team_of_rivals import (
+from rct_extractor._engine.core.team_of_rivals import (
     PatternExtractor,
     GrammarExtractor,
     StateMachineExtractor,

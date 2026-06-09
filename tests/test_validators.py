@@ -11,11 +11,11 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from pydantic import ValidationError
 
-from src.core.models import (
+from rct_extractor._engine.core.models import (
     BinaryOutcome, HazardRatioCI, OddsRatioCI, RiskRatioCI,
     MeanDifference, Provenance, ReviewSeverity
 )
-from src.validators.validators import (
+from rct_extractor._engine.validators.validators import (
     validate_binary_outcome,
     validate_hazard_ratio,
     validate_odds_ratio,

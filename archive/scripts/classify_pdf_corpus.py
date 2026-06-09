@@ -19,7 +19,7 @@ from datetime import datetime
 # Add parent to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from src.utils.rct_classifier import RCTClassifier, StudyType, classify_pdf_text
+from rct_extractor._engine.utils.rct_classifier import RCTClassifier, StudyType, classify_pdf_text
 
 
 def extract_text_from_pdf(pdf_path: str, max_pages: int = 10) -> str:

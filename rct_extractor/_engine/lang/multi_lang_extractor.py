@@ -6,7 +6,7 @@ Provides language detection and language-specific extraction patterns
 for RCT effect estimates in German, French, Spanish, Italian, and Portuguese.
 
 Usage:
-    from src.lang.multi_lang_extractor import MultiLangExtractor
+    from rct_extractor._engine.lang.multi_lang_extractor import MultiLangExtractor
 
     extractor = MultiLangExtractor()
     effects = extractor.extract(text, language='auto')  # Auto-detect

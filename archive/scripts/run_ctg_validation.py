@@ -27,7 +27,7 @@ from datetime import datetime
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from scripts.ctg_scraper import CTGScraper, CTGStudy, EffectEstimate
-from src.core.enhanced_extractor_v3 import EnhancedExtractor, Extraction
+from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor, Extraction
 
 
 @dataclass

@@ -7,7 +7,7 @@ separators, Lancet middle dot), dedup against core, and precision on
 non-numeric method sentences.
 """
 import pytest
-from src.specialties.malaria_effects import augment_malaria_effects as aug
+from rct_extractor._engine.specialties.malaria_effects import augment_malaria_effects as aug
 
 
 @pytest.mark.parametrize("text,etype,val,lo,hi", [
@@ -137,8 +137,8 @@ def test_efficacy_point_within_ci_not_required_but_plausible():
 
 def test_multiple_effects_in_one_clause():
     """A combined clause must yield every effect, not just the first."""
-    from src.core.enhanced_extractor_v3 import EnhancedExtractor
-    from src.specialties.malaria_effects import extract_malaria_effects
+    from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor
+    from rct_extractor._engine.specialties.malaria_effects import extract_malaria_effects
     e = EnhancedExtractor()
     text = "(OR, 0.26; 95% CI, 0.12 to 0.56; RR, 0.34; 95% CI, 0.15 to 0.61)"
     types = {x["type"] for x in extract_malaria_effects(e, text)}
@@ -146,8 +146,8 @@ def test_multiple_effects_in_one_clause():
 
 
 def test_p0_2_vital_signs_not_extracted():
-    from src.core.enhanced_extractor_v3 import EnhancedExtractor
-    from src.specialties.malaria_effects import extract_malaria_effects
+    from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor
+    from rct_extractor._engine.specialties.malaria_effects import extract_malaria_effects
     e = EnhancedExtractor()
     for t in ["respiratory rate RR, 18; 95% CI 16-20 breaths per minute",
               "mean heart rate HR, 72; 95% CI 60-85 bpm"]:
@@ -161,8 +161,8 @@ def test_p0_2_real_ratio_still_works():
 
 
 def test_cross_mention_dedup():
-    from src.core.enhanced_extractor_v3 import EnhancedExtractor
-    from src.specialties.malaria_effects import extract_malaria_effects
+    from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor
+    from rct_extractor._engine.specialties.malaria_effects import extract_malaria_effects
     e = EnhancedExtractor()
     t = ("hazard ratio 0.45 (95% CI 0.30-0.68). Later: HR 0.45 (95% CI 0.30 to 0.68). "
          "Figure: hazard ratio 0.45 [95% CI 0.30, 0.68].")
@@ -172,8 +172,8 @@ def test_cross_mention_dedup():
 
 
 def test_dedup_keys_on_endpoint():
-    from src.core.enhanced_extractor_v3 import EnhancedExtractor
-    from src.specialties.malaria_effects import extract_malaria_effects
+    from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor
+    from rct_extractor._engine.specialties.malaria_effects import extract_malaria_effects
     e = EnhancedExtractor()
     # identical RR for two DIFFERENT endpoints must NOT be merged
     t = ("Clinical malaria risk ratio 0.74 (95% CI 0.61-0.90). "
@@ -184,8 +184,8 @@ def test_dedup_keys_on_endpoint():
 
 def test_efficacy_log_rr_field():
     import math
-    from src.core.enhanced_extractor_v3 import EnhancedExtractor
-    from src.specialties.malaria_effects import extract_malaria_effects
+    from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor
+    from rct_extractor._engine.specialties.malaria_effects import extract_malaria_effects
     e = EnhancedExtractor()
     eff = [x for x in extract_malaria_effects(e, "vaccine efficacy was 56% (95% CI 51-60)")
            if x["type"] in ("RRR", "EFFICACY_PCT")][0]

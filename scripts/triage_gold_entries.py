@@ -101,8 +101,8 @@ def classify_paper(text, extractions, cochrane_type):
 
 
 def main():
-    from src.pdf.pdf_parser import PDFParser
-    from src.core.enhanced_extractor_v3 import EnhancedExtractor, to_dict
+    from rct_extractor._engine.pdf.pdf_parser import PDFParser
+    from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor, to_dict
 
     # Load entries
     entries = []

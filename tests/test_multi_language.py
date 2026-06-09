@@ -13,7 +13,7 @@ from pathlib import Path
 # Add parent to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from src.lang.multi_lang_extractor import (
+from rct_extractor._engine.lang.multi_lang_extractor import (
     MultiLangExtractor,
     detect_language,
     normalize_european_decimals,
@@ -217,7 +217,7 @@ class TestMultiLangPatterns:
 
     def setup_method(self):
         """Set up extractor"""
-        from src.core.enhanced_extractor_v3 import EnhancedExtractor
+        from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor
         self.extractor = EnhancedExtractor()
 
     def test_german_hr_pattern(self):

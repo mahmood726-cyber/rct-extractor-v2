@@ -50,13 +50,13 @@ ENV TESSERACT_CMD=/usr/bin/tesseract
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-    CMD python -c "from src.core.enhanced_extractor_v3 import EnhancedExtractor; e = EnhancedExtractor(); print('OK')"
+    CMD python -c "from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor; e = EnhancedExtractor(); print('OK')"
 
 # Default command: run API server
-CMD ["python", "-m", "uvicorn", "src.api.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["python", "-m", "uvicorn", "rct_extractor._engine.api.main:app", "--host", "0.0.0.0", "--port", "8000"]
 
 # Alternative entrypoints:
 # - Run tests: docker run rct-extractor pytest tests/ -v
 # - Interactive: docker run -it rct-extractor python
-# - CLI: docker run -v /path/to/pdfs:/data rct-extractor python -m src.cli extract /data/paper.pdf
+# - CLI: docker run -v /path/to/pdfs:/data rct-extractor python -m rct_extractor._engine.cli extract /data/paper.pdf
 # - Validation: docker run rct-extractor python regulatory_validation_suite.py

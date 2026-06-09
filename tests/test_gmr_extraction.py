@@ -19,7 +19,7 @@ project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
 import pytest
-from src.core.enhanced_extractor_v3 import EnhancedExtractor, EffectType
+from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor, EffectType
 
 
 @pytest.fixture

@@ -25,7 +25,7 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_DIR = os.path.join(SCRIPT_DIR, '..')
 sys.path.insert(0, PROJECT_DIR)
 
-from src.core.effect_calculator import (
+from rct_extractor._engine.core.effect_calculator import (
     compute_effect_family_from_raw_data,
 )
 
@@ -135,7 +135,7 @@ EFFECT_PATTERNS = [
 
 def extract_guided(text, cochrane_entries):
     """Extract effects from text guided by Cochrane outcome name and type."""
-    from src.core.effect_calculator import compute_or, compute_rr, compute_rd, compute_md, compute_smd
+    from rct_extractor._engine.core.effect_calculator import compute_or, compute_rr, compute_rd, compute_md, compute_smd
 
     computed = []
 
@@ -205,7 +205,7 @@ def extract_guided(text, cochrane_entries):
                     try:
                         val = float(m.group(1))
                         if abs(val) < 100000:
-                            from src.core.effect_calculator import ComputedEffect
+                            from rct_extractor._engine.core.effect_calculator import ComputedEffect
                             computed.append(ComputedEffect(
                                 effect_type=etype,
                                 point_estimate=val,

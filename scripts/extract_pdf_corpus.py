@@ -30,8 +30,8 @@ import json
 import sys
 import traceback
 
-from src.core.pdf_extraction_pipeline import PDFExtractionPipeline
-from src.core.enhanced_extractor_v3 import to_dict
+from rct_extractor._engine.core.pdf_extraction_pipeline import PDFExtractionPipeline
+from rct_extractor._engine.core.enhanced_extractor_v3 import to_dict
 
 pdf_path = sys.argv[1]
 opts = json.loads(sys.argv[2])

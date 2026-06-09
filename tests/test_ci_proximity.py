@@ -23,7 +23,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from scripts.ci_proximity_search import CIProximitySearch, _ci_key
 
 try:
-    from src.core.enhanced_extractor_v3 import EnhancedExtractor
+    from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor
     HAS_EXTRACTOR = True
 except ImportError:
     HAS_EXTRACTOR = False

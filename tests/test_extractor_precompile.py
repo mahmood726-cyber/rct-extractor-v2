@@ -11,7 +11,7 @@ regress back to recompile-per-call.
 """
 import re
 
-from src.core.enhanced_extractor_v3 import EnhancedExtractor
+from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor
 
 
 def test_compiled_maps_cover_every_source_pattern():

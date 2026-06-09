@@ -25,7 +25,7 @@ import pytest
 # Ensure project root is on sys.path (mirrors conftest.py)
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from src.core.team_of_rivals import (
+from rct_extractor._engine.core.team_of_rivals import (
     CandidateExtraction,
     ChunkExtractor,
     ConsensusEngine,

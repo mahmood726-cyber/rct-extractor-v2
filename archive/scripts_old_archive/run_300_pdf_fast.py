@@ -16,7 +16,7 @@ logging.disable(logging.CRITICAL)
 
 sys.path.insert(0, str(Path(__file__).parent / 'src'))
 
-from src.core.extractor import NumericParser
+from rct_extractor._engine.core.extractor import NumericParser
 
 # Try to import fitz
 try:

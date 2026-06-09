@@ -176,7 +176,7 @@ class OCRQualityAssessor:
 
         try:
             # Parse PDF with OCR
-            from src.pdf.pdf_parser import PDFParser
+            from rct_extractor._engine.pdf.pdf_parser import PDFParser
             parser = PDFParser()
             content = parser.parse(str(pdf_path))
 

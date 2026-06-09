@@ -168,8 +168,8 @@ def _extract_effects_subprocess(
 ) -> List[Dict]:
     inline = (
         "import json,sys;"
-        "from src.core.pdf_extraction_pipeline import PDFExtractionPipeline;"
-        "from src.core.enhanced_extractor_v3 import to_dict;"
+        "from rct_extractor._engine.core.pdf_extraction_pipeline import PDFExtractionPipeline;"
+        "from rct_extractor._engine.core.enhanced_extractor_v3 import to_dict;"
         "pdf=sys.argv[1];adv=sys.argv[2]=='1';"
         "p=PDFExtractionPipeline(extract_diagnostics=False,extract_tables=True,enable_advanced=adv);"
         "r=p.extract_from_pdf(pdf);"
@@ -1656,8 +1656,8 @@ def main() -> int:
                     )
                 else:
                     if pipeline is None or to_dict_fn is None:
-                        from src.core.enhanced_extractor_v3 import to_dict as to_dict_fn  # local import avoids heavy startup
-                        from src.core.pdf_extraction_pipeline import PDFExtractionPipeline
+                        from rct_extractor._engine.core.enhanced_extractor_v3 import to_dict as to_dict_fn  # local import avoids heavy startup
+                        from rct_extractor._engine.core.pdf_extraction_pipeline import PDFExtractionPipeline
 
                         pipeline = PDFExtractionPipeline(
                             extract_diagnostics=False,
@@ -1833,7 +1833,7 @@ def main() -> int:
 
             if needs_page_text:
                 if parser_obj is None:
-                    from src.pdf.pdf_parser import PDFParser
+                    from rct_extractor._engine.pdf.pdf_parser import PDFParser
 
                     parser_obj = PDFParser()
                 cache_key = str(pdf_path.resolve())

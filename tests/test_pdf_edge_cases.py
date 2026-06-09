@@ -65,7 +65,7 @@ def tables_spanning_dir(edge_cases_dir):
 def pdf_parser():
     """Create PDF parser instance"""
     try:
-        from src.pdf.pdf_parser import PDFParser
+        from rct_extractor._engine.pdf.pdf_parser import PDFParser
         return PDFParser()
     except ImportError:
         pytest.skip("PDFParser not available")
@@ -75,7 +75,7 @@ def pdf_parser():
 def extractor():
     """Create extractor instance"""
     try:
-        from src.core.enhanced_extractor_v3 import EnhancedExtractor
+        from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor
         return EnhancedExtractor()
     except ImportError:
         pytest.skip("EnhancedExtractor not available")
@@ -85,7 +85,7 @@ def extractor():
 def ocr_preprocessor():
     """Create OCR preprocessor instance"""
     try:
-        from src.core.ocr_preprocessor import OCRPreprocessor
+        from rct_extractor._engine.core.ocr_preprocessor import OCRPreprocessor
         return OCRPreprocessor()
     except ImportError:
         pytest.skip("OCRPreprocessor not available")

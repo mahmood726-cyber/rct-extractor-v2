@@ -57,7 +57,7 @@ def get_pdf_path_for_entry(entry):
 def extract_text_from_pdf(pdf_path):
     """Get raw text from a PDF using the project's text extraction."""
     try:
-        from src.core.pdf_extraction_pipeline import PDFExtractionPipeline
+        from rct_extractor._engine.core.pdf_extraction_pipeline import PDFExtractionPipeline
         pipeline = PDFExtractionPipeline()
         # Use the pipeline's text extraction
         full_text = pipeline.extract_text(str(pdf_path))

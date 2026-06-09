@@ -281,8 +281,8 @@ def extract_malaria_effects(extractor, text, consistency=True, drop_inconsistent
     non-positive ratio bounds, significance flip vs a reported p) -- almost
     always extraction errors.
     """
-    from src.core.enhanced_extractor_v3 import to_dict
-    from src.specialties.internal_consistency import annotate
+    from rct_extractor._engine.core.enhanced_extractor_v3 import to_dict
+    from rct_extractor._engine.specialties.internal_consistency import annotate
     norm, omap = _normalize_with_offsets(text) if text else (text, None)
     core = [to_dict(x) for x in extractor.extract(norm)] if norm else []
     merged = core + augment_malaria_effects(norm, core)

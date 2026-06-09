@@ -15,7 +15,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
-from src.pdf.pdf_parser import PDFParser
+from rct_extractor._engine.pdf.pdf_parser import PDFParser
 
 MAL = Path(__file__).resolve().parents[2] / "data" / "field_portability" / "malaria"
 PDFS = {os.path.basename(p).split("_PMC")[0]: p

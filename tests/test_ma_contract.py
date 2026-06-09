@@ -3,7 +3,7 @@
 import pytest
 from pydantic import ValidationError
 
-from src.core.ma_contract import MAExtractionRecord
+from rct_extractor._engine.core.ma_contract import MAExtractionRecord
 
 
 def _base_record():

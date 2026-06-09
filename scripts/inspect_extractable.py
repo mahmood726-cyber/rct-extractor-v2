@@ -8,7 +8,7 @@ PROJECT_DIR = Path(__file__).resolve().parents[1]
 PDF_DIR = PROJECT_DIR / "test_pdfs" / "gold_standard"
 sys.path.insert(0, str(PROJECT_DIR))
 
-from src.pdf.pdf_parser import PDFParser
+from rct_extractor._engine.pdf.pdf_parser import PDFParser
 parser = PDFParser()
 
 for pdf_name in ["PMC9826910_Chung_2022.pdf", "PMC3349002_Berry_2013.pdf", "PMC6798625_Rajanbabu_2019.pdf", "PMC6614855_Hutchins_2019.pdf"]:

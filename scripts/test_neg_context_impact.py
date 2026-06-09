@@ -17,8 +17,8 @@ GOLD_FILE = GOLD_DIR / "gold_50.jsonl"
 
 sys.path.insert(0, str(PROJECT_DIR))
 
-from src.pdf.pdf_parser import PDFParser
-from src.core.enhanced_extractor_v3 import EnhancedExtractor, correct_ocr_errors
+from rct_extractor._engine.pdf.pdf_parser import PDFParser
+from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor, correct_ocr_errors
 
 
 def main():

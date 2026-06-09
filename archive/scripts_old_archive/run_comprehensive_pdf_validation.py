@@ -12,8 +12,8 @@ from typing import Dict, List, Optional, Tuple
 
 sys.path.insert(0, str(Path(__file__).parent / 'src'))
 
-from src.core.extractor import NumericParser
-from src.pdf.pdf_parser import PDFParser
+from rct_extractor._engine.core.extractor import NumericParser
+from rct_extractor._engine.pdf.pdf_parser import PDFParser
 
 
 def extract_all_hrs(text: str) -> List[Dict]:

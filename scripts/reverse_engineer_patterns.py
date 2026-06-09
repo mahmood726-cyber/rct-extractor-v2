@@ -20,7 +20,7 @@ PDF_DIR = PROJECT_DIR / "gold_data" / "mega" / "pdfs"
 
 # Add project to path for PDFParser
 sys.path.insert(0, str(PROJECT_DIR))
-from src.pdf.pdf_parser import PDFParser
+from rct_extractor._engine.pdf.pdf_parser import PDFParser
 
 # Build PMCID -> filename lookup (PDFs named Author_Year_Year_PMCID.pdf)
 _PMCID_TO_FILE = {}

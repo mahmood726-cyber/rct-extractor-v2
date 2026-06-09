@@ -310,7 +310,7 @@ def main():
         prog='rct-extract',
         description='RCT Extractor - Extract clinical trial data from PDFs'
     )
-    from src import __version__
+    from rct_extractor._engine import __version__
     parser.add_argument('--version', action='version', version=__version__)
 
     subparsers = parser.add_subparsers(dest='command', help='Commands')

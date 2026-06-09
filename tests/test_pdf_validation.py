@@ -29,8 +29,8 @@ import pytest
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from src.pdf.pdf_parser import PDFParser, PDFContent, PageContent, TextBlock
-from src.core.ocr_preprocessor import OCRPreprocessor, OCRQualityAssessment
+from rct_extractor._engine.pdf.pdf_parser import PDFParser, PDFContent, PageContent, TextBlock
+from rct_extractor._engine.core.ocr_preprocessor import OCRPreprocessor, OCRQualityAssessment
 
 
 # =============================================================================
@@ -683,7 +683,7 @@ class TestEffectEstimateExtraction:
     @pytest.fixture
     def extractor(self):
         """Create extractor instance"""
-        from src.core.enhanced_extractor_v3 import EnhancedExtractor
+        from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor
         return EnhancedExtractor()
 
     def test_hr_extraction_from_pdf(self, extractor, pmc_pdfs_dir):

@@ -31,7 +31,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from src.utils.rct_classifier import RCTClassifier, StudyType
+from rct_extractor._engine.utils.rct_classifier import RCTClassifier, StudyType
 
 
 ALLOWED_EFFECT_TYPES = {"HR", "OR", "RR", "MD", "SMD", "WMD", "RD", "ARD"}

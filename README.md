@@ -104,7 +104,7 @@ The unified API above is the recommended entry point. The raw effect extractor
 is still available directly:
 
 ```python
-from src.core.enhanced_extractor_v3 import EnhancedExtractor, to_dict
+from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor, to_dict
 extractor = EnhancedExtractor()
 extractions = [to_dict(x) for x in extractor.extract(
     "The primary endpoint showed a hazard ratio of 0.74 (95% CI 0.65-0.85, P<0.001).")]
@@ -129,7 +129,7 @@ This repo now includes a reusable field-portability kit so other specialties can
 ### Specialty profiles
 
 Disease-specific endpoint vocabularies and arm-level extractors live in
-`src/specialties/`, registered in `src/specialties/registry.py`:
+`rct_extractor/_engine/specialties/`, registered in `rct_extractor/_engine/specialties/registry.py`:
 
 | Specialty | Module | Subspecialties |
 |-----------|--------|----------------|

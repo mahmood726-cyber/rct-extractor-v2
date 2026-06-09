@@ -12,7 +12,7 @@ Features:
 4. Link effects to outcome names from row headers
 
 Usage:
-    from src.tables.table_effect_extractor import TableEffectExtractor
+    from rct_extractor._engine.tables.table_effect_extractor import TableEffectExtractor
 
     extractor = TableEffectExtractor()
     effects = extractor.extract_from_table(table_structure)

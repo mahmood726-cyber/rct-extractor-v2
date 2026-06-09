@@ -3,8 +3,8 @@
 import sys, os, re, time
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from src.pdf.pdf_parser import PDFParser
-from src.core.enhanced_extractor_v3 import EnhancedExtractor
+from rct_extractor._engine.pdf.pdf_parser import PDFParser
+from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor
 
 parser = PDFParser()
 extractor = EnhancedExtractor()

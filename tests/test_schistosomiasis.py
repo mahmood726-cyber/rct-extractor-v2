@@ -4,15 +4,15 @@ extraction. Mirrors the HIV, malaria and typhoid tests.
 """
 import pytest
 
-from src.specialties.schistosomiasis import (
+from rct_extractor._engine.specialties.schistosomiasis import (
     SCHISTOSOMIASIS_ENDPOINTS, detect_schistosomiasis_subspecialty,
     normalize_schistosomiasis_endpoint, get_schistosomiasis_endpoint_patterns,
 )
-from src.specialties.registry import (
+from rct_extractor._engine.specialties.registry import (
     detect_specialty, normalize_endpoint_by_specialty, get_all_endpoints,
     SPECIALTY_REGISTRY,
 )
-from src.specialties.schistosomiasis_arm_data import (
+from rct_extractor._engine.specialties.schistosomiasis_arm_data import (
     extract_arm_level, extract_proportions, extract_continuous,
 )
 

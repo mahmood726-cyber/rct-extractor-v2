@@ -21,7 +21,7 @@ def __getattr__(name):
             VerificationResult, verify_against_ctgov, fetch_ctgov_results,
         )
         return locals()[name]
-    raise AttributeError(f"module 'src.bridges' has no attribute {name!r}")
+    raise AttributeError(f"module 'rct_extractor._engine.bridges' has no attribute {name!r}")
 
 
 __all__ = [

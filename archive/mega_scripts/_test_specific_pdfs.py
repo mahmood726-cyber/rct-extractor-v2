@@ -4,7 +4,7 @@ import json, sys, io, os
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 sys.path.insert(0, "C:/Users/user/rct-extractor-v2")
 
-from src.core.pdf_extraction_pipeline import PDFExtractionPipeline
+from rct_extractor._engine.core.pdf_extraction_pipeline import PDFExtractionPipeline
 
 PDF_DIR = "C:/Users/user/rct-extractor-v2/gold_data/mega/pdfs"
 
@@ -49,8 +49,8 @@ for pmcid, expected_pattern, cochrane_val, data_type in test_cases:
 
             # Show a snippet of processed text to understand why
             # Re-extract to get processed text
-            from src.pdf.pdf_parser import PDFParser
-            from src.core.text_preprocessor import TextPreprocessor, TextLine
+            from rct_extractor._engine.pdf.pdf_parser import PDFParser
+            from rct_extractor._engine.core.text_preprocessor import TextPreprocessor, TextLine
             parser = PDFParser()
             pdf_content = parser.parse(pdf_path)
             text = "\n".join(p.full_text for p in pdf_content.pages if p.full_text)

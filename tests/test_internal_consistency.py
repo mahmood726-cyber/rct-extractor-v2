@@ -8,7 +8,7 @@ CI bounds, significance flip) without flagging correct extractions.
 import math
 import pytest
 
-from src.specialties.internal_consistency import (
+from rct_extractor._engine.specialties.internal_consistency import (
     two_sided_p_from_z, z_from_p, check_consistency, annotate,
 )
 

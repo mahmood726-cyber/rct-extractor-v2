@@ -46,7 +46,7 @@ jobs:
       - name: Run unit tests
         run: |
           pytest tests/ -v --tb=short -m "not slow and not pdf and not integration" \
-            --cov=src --cov-report=xml --cov-report=term-missing
+            --cov=rct_extractor --cov-report=xml --cov-report=term-missing
 
       - name: Upload coverage
         uses: codecov/codecov-action@v4
@@ -361,16 +361,16 @@ jobs:
           pip install ruff mypy black isort
 
       - name: Check formatting with Black
-        run: black --check --diff src/ tests/ || true
+        run: black --check --diff rct_extractor/ tests/ || true
 
       - name: Check imports with isort
-        run: isort --check-only --diff src/ tests/ || true
+        run: isort --check-only --diff rct_extractor/ tests/ || true
 
       - name: Lint with Ruff
-        run: ruff check src/ tests/ || true
+        run: ruff check rct_extractor/ tests/ || true
 
       - name: Type check with mypy
-        run: mypy src/ --ignore-missing-imports || true
+        run: mypy rct_extractor/ --ignore-missing-imports || true
 
   # ===========================================================================
   # SUMMARY

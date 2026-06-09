@@ -332,7 +332,7 @@ def run_validation(
         output_path: Path to write JSON results
         tolerance: Matching tolerance for effect values
     """
-    from src.core.pdf_extraction_pipeline import PDFExtractionPipeline
+    from rct_extractor._engine.core.pdf_extraction_pipeline import PDFExtractionPipeline
 
     proj_root = Path(__file__).parent.parent
 

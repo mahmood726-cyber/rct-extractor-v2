@@ -32,7 +32,7 @@ from enum import Enum
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).parent))
 
-from src.core.enhanced_extractor_v3 import EnhancedExtractor
+from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor
 
 # Configure logging
 logging.basicConfig(

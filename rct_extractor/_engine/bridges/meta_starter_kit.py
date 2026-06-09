@@ -116,7 +116,7 @@ def _arm_extractor_for(specialty: str):
         return None
     if specialty not in _ARM_CACHE:
         import importlib
-        mod = importlib.import_module(f"src.specialties.{specialty}_arm_data")
+        mod = importlib.import_module(f"rct_extractor._engine.specialties.{specialty}_arm_data")
         _ARM_CACHE[specialty] = getattr(mod, "extract_arm_level", None)
     return _ARM_CACHE[specialty]
 
@@ -124,9 +124,9 @@ def _arm_extractor_for(specialty: str):
 def _effects_for(specialty: str, extractor, text: str) -> List[Dict]:
     """Precomputed effect dicts: malaria augmenter for malaria, core otherwise."""
     if specialty == "malaria":
-        from src.specialties.malaria_effects import extract_malaria_effects
+        from rct_extractor._engine.specialties.malaria_effects import extract_malaria_effects
         return extract_malaria_effects(extractor, text)
-    from src.core.enhanced_extractor_v3 import to_dict
+    from rct_extractor._engine.core.enhanced_extractor_v3 import to_dict
     return [to_dict(x) for x in extractor.extract(text)]
 
 
@@ -149,7 +149,7 @@ def build_config_from_records(records: List[Dict], extractor, *, title: str,
     from the malaria augmenter for malaria text and from the core extractor
     otherwise.
     """
-    from src.specialties.registry import detect_specialty
+    from rct_extractor._engine.specialties.registry import detect_specialty
 
     em = effect_measure.upper()
     want = {t.lower() for t in topics} if topics else None

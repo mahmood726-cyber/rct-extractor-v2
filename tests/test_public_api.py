@@ -34,7 +34,7 @@ def test_public_symbols_present():
 @pytest.mark.parametrize("specialty", sorted(EXPECTED_17))
 def test_each_specialty_arm_module_importable(specialty):
     """Every specialty must have an importable arm-data module with extract_arm_level."""
-    mod = importlib.import_module(f"src.specialties.{specialty}_arm_data")
+    mod = importlib.import_module(f"rct_extractor._engine.specialties.{specialty}_arm_data")
     assert hasattr(mod, "extract_arm_level")
 
 

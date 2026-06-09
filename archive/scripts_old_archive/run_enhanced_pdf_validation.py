@@ -16,8 +16,8 @@ from typing import Dict, List, Tuple
 
 sys.path.insert(0, str(Path(__file__).parent / 'src'))
 
-from src.core.enhanced_extractor_v3 import EnhancedExtractor, EffectType
-from src.pdf.pdf_parser import PDFParser
+from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor, EffectType
+from rct_extractor._engine.pdf.pdf_parser import PDFParser
 
 
 def run_enhanced_validation():

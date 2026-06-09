@@ -4,15 +4,15 @@ and arm-level extraction. Mirrors the typhoid, HIV and malaria tests.
 """
 import pytest
 
-from src.specialties.hypertension import (
+from rct_extractor._engine.specialties.hypertension import (
     HYPERTENSION_ENDPOINTS, detect_hypertension_subspecialty,
     normalize_hypertension_endpoint, get_hypertension_endpoint_patterns,
 )
-from src.specialties.registry import (
+from rct_extractor._engine.specialties.registry import (
     detect_specialty, normalize_endpoint_by_specialty, get_all_endpoints,
     SPECIALTY_REGISTRY,
 )
-from src.specialties.hypertension_arm_data import (
+from rct_extractor._engine.specialties.hypertension_arm_data import (
     extract_arm_level, extract_proportions, extract_continuous,
 )
 

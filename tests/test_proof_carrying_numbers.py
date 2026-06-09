@@ -24,7 +24,7 @@ import pytest
 # Ensure project root is on sys.path (mirrors conftest.py)
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from src.core.proof_carrying_numbers import (
+from rct_extractor._engine.core.proof_carrying_numbers import (
     CheckResult,
     ProofCarryingNumber,
     ProofCarryingExtraction,

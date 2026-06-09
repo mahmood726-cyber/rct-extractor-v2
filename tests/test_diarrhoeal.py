@@ -4,15 +4,15 @@ arm-level extraction. Mirrors the HIV / malaria / typhoid tests.
 """
 import pytest
 
-from src.specialties.diarrhoeal import (
+from rct_extractor._engine.specialties.diarrhoeal import (
     DIARRHOEAL_ENDPOINTS, detect_diarrhoeal_subspecialty, normalize_diarrhoeal_endpoint,
     get_diarrhoeal_endpoint_patterns,
 )
-from src.specialties.registry import (
+from rct_extractor._engine.specialties.registry import (
     detect_specialty, normalize_endpoint_by_specialty, get_all_endpoints,
     SPECIALTY_REGISTRY,
 )
-from src.specialties.diarrhoeal_arm_data import (
+from rct_extractor._engine.specialties.diarrhoeal_arm_data import (
     extract_arm_level, extract_proportions, extract_continuous,
 )
 

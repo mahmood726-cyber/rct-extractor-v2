@@ -10,7 +10,7 @@ def test_ensemble_improvements():
     print("Testing Ensemble Improvements (from TruthCert)")
     print("=" * 60)
 
-    from src.core.ensemble import EnsembleMerger, OutcomeTextMatcher, ValueValidator
+    from rct_extractor._engine.core.ensemble import EnsembleMerger, OutcomeTextMatcher, ValueValidator
 
     # Test outcome matching
     print("\n1. OutcomeTextMatcher Tests:")
@@ -66,7 +66,7 @@ def test_wasserstein_improvements():
     print("Testing Wasserstein Improvements (CEN-KM)")
     print("=" * 60)
 
-    from src.bridges.wasserstein_bridge import (
+    from rct_extractor._engine.bridges.wasserstein_bridge import (
         CenKMReconstructor, UnifiedQualityGrader, QualityGrade, NAtRiskEntry
     )
 
@@ -129,8 +129,8 @@ def test_validators():
     print("Testing Validator Improvements")
     print("=" * 60)
 
-    from src.validators.validators import validate_hazard_ratio, validate_measure_type
-    from src.core.models import HazardRatioCI, Provenance
+    from rct_extractor._engine.validators.validators import validate_hazard_ratio, validate_measure_type
+    from rct_extractor._engine.core.models import HazardRatioCI, Provenance
     from datetime import datetime
 
     # Create a dummy provenance for testing

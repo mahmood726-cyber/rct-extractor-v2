@@ -20,8 +20,8 @@ from pathlib import Path
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from src.core.verified_extraction_pipeline import VerifiedExtractionPipeline
-from src.core.ocr_preprocessor import OCRPreprocessor
+from rct_extractor._engine.core.verified_extraction_pipeline import VerifiedExtractionPipeline
+from rct_extractor._engine.core.ocr_preprocessor import OCRPreprocessor
 
 
 @dataclass
@@ -376,7 +376,7 @@ class RegulatoryTestRunner:
 
         # Check imports
         try:
-            from src.core.verified_extraction_pipeline import VerifiedExtractionPipeline
+            from rct_extractor._engine.core.verified_extraction_pipeline import VerifiedExtractionPipeline
             passed = True
         except ImportError:
             passed = False
@@ -397,7 +397,7 @@ class RegulatoryTestRunner:
             iq_results["failed"] += 1
 
         try:
-            from src.core.ocr_preprocessor import OCRPreprocessor
+            from rct_extractor._engine.core.ocr_preprocessor import OCRPreprocessor
             passed = True
         except ImportError:
             passed = False

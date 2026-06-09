@@ -191,7 +191,7 @@ def main():
     dev_pdfs = split_data["development"]["pdfs"]
 
     # Import pipeline
-    from src.core.pdf_extraction_pipeline import PDFExtractionPipeline
+    from rct_extractor._engine.core.pdf_extraction_pipeline import PDFExtractionPipeline
     pipeline = PDFExtractionPipeline(extract_diagnostics=False)
 
     # Results

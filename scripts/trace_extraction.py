@@ -21,8 +21,8 @@ sys.path.insert(0, str(PROJECT_DIR))
 
 def trace_pdf(entry):
     """Trace full extraction pipeline on a single PDF."""
-    from src.pdf.pdf_parser import PDFParser
-    from src.core.enhanced_extractor_v3 import EnhancedExtractor, correct_ocr_errors
+    from rct_extractor._engine.pdf.pdf_parser import PDFParser
+    from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor, correct_ocr_errors
 
     pdf_path = PDF_DIR / entry["pdf_filename"]
     study_id = entry["study_id"]

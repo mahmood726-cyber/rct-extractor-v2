@@ -21,8 +21,8 @@ from datetime import datetime
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from src.core.enhanced_extractor_v3 import EnhancedExtractor
-from src.pdf.pdf_parser import PDFParser
+from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor
+from rct_extractor._engine.pdf.pdf_parser import PDFParser
 
 
 def extract_pdf_info(pdf_path: Path) -> dict:

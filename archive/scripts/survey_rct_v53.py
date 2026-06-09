@@ -2,7 +2,7 @@
 """Survey rct_results PDFs with v5.3 extractor (with per-PDF timeout)."""
 import os, json, sys, signal, time
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
-from src.core.pdf_extraction_pipeline import PDFExtractionPipeline
+from rct_extractor._engine.core.pdf_extraction_pipeline import PDFExtractionPipeline
 
 pdfs = {
     'PMC12719702': 'test_pdfs/real_pdfs/diabetes/PMC12719702.pdf',

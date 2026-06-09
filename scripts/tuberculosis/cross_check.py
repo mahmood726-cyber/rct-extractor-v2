@@ -17,9 +17,9 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
-from src.core.enhanced_extractor_v3 import EnhancedExtractor, to_dict
-from src.pdf.pdf_parser import PDFParser
-from src.specialties.malaria_effects import extract_malaria_effects
+from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor, to_dict
+from rct_extractor._engine.pdf.pdf_parser import PDFParser
+from rct_extractor._engine.specialties.malaria_effects import extract_malaria_effects
 
 TB = Path(__file__).resolve().parents[2] / "data" / "field_portability" / "tuberculosis"
 MATCHED = TB / "tuberculosis_matched.jsonl"

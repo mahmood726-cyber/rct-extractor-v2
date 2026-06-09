@@ -3,7 +3,7 @@ REM =====================================================================
 REM  start-api.bat — launch the rct-extractor-v2 FastAPI server
 REM
 REM  Serves on 127.0.0.1:8000 so the allmeta RCT Extractor page can
-REM  call POST /extract and /extract/pdf. CORS in src/api/main.py is
+REM  call POST /extract and /extract/pdf. CORS in rct_extractor/_engine/api/main.py is
 REM  already permissive; no extra env needed.
 REM
 REM  Manual use:     double-click this file
@@ -22,6 +22,6 @@ if exist ".venv\Scripts\python.exe" set "PY=.venv\Scripts\python.exe"
 
 REM Bind to loopback only — no external access.
 echo [rct-extractor] starting on http://127.0.0.1:8000
-"%PY%" -m uvicorn src.api.main:app --host 127.0.0.1 --port 8000 --log-level info
+"%PY%" -m uvicorn rct_extractor._engine.api.main:app --host 127.0.0.1 --port 8000 --log-level info
 
 endlocal

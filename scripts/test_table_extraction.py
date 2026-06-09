@@ -24,8 +24,8 @@ sys.path.insert(0, str(PROJECT_DIR))
 
 def main():
     import pdfplumber
-    from src.tables.table_effect_extractor import TableEffectExtractor
-    from src.tables.table_extractor import TableStructure, TableCell
+    from rct_extractor._engine.tables.table_effect_extractor import TableEffectExtractor
+    from rct_extractor._engine.tables.table_extractor import TableStructure, TableCell
 
     tee = TableEffectExtractor()
 

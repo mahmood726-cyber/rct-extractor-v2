@@ -2,8 +2,8 @@
 
 from types import SimpleNamespace
 
-from src.core.enhanced_extractor_v3 import ConfidenceInterval, EffectType, Extraction
-from src.core.pdf_extraction_pipeline import PDFExtractionPipeline
+from rct_extractor._engine.core.enhanced_extractor_v3 import ConfidenceInterval, EffectType, Extraction
+from rct_extractor._engine.core.pdf_extraction_pipeline import PDFExtractionPipeline
 
 
 def test_confidence_uses_final_merged_effects(monkeypatch, tmp_path):

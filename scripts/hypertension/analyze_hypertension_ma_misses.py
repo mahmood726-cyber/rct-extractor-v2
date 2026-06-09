@@ -15,8 +15,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
-from src.core.enhanced_extractor_v3 import EnhancedExtractor
-from src.specialties.malaria_effects import extract_malaria_effects
+from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor
+from rct_extractor._engine.specialties.malaria_effects import extract_malaria_effects
 from scripts.malaria.validate_against_ma import (
     MA_DATUM, _f, _EFFECT_LABEL_PHRASE as HINT_PHRASE, _EFFECT_LABEL_ABBR as HINT_ABBR)
 from scripts.hypertension.validate_hypertension_ma import HYPERTENSION_MA_TERM

@@ -2,7 +2,7 @@
 Tests for arm-level / 2x2 extraction (src/specialties/malaria_arm_data.py).
 """
 import pytest
-from src.specialties.malaria_arm_data import (
+from rct_extractor._engine.specialties.malaria_arm_data import (
     extract_proportions, pair_2x2, extract_arm_level, extract_continuous,
 )
 
@@ -133,7 +133,7 @@ def test_analysis_population_tagged():
 # --- Continuous per-arm extraction ---
 
 def test_continuous_mean_sd_poolable():
-    from src.specialties.malaria_arm_data import extract_continuous
+    from rct_extractor._engine.specialties.malaria_arm_data import extract_continuous
     # haemoglobin is ~symmetric -> mean+SD poolable as-is
     r = extract_continuous("mean haemoglobin 10.5 ± 1.2 g/dL (n=50) in the AL group")
     assert r and r[0]["stat"] == "mean_sd" and r[0]["mean"] == 10.5 and r[0]["sd"] == 1.2
@@ -141,7 +141,7 @@ def test_continuous_mean_sd_poolable():
 
 
 def test_continuous_lognormal_not_poolable_raw():
-    from src.specialties.malaria_arm_data import extract_continuous
+    from rct_extractor._engine.specialties.malaria_arm_data import extract_continuous
     # parasite clearance time is log-normal -> raw mean+SD not poolable as MD
     r = extract_continuous("mean parasite clearance time 28.4 ± 6.2 h (n=50) in the AL group")
     assert r and r[0]["endpoint"] == "PARASITE_CLEARANCE_TIME"
@@ -149,12 +149,12 @@ def test_continuous_lognormal_not_poolable_raw():
 
 
 def test_mean_sd_rejects_difference_or_se():
-    from src.specialties.malaria_arm_data import extract_continuous
+    from rct_extractor._engine.specialties.malaria_arm_data import extract_continuous
     assert extract_continuous("adjusted mean difference in haemoglobin was 1.8 ± 0.4 g/dL") == []
 
 
 def test_continuous_median_iqr_wan_estimate():
-    from src.specialties.malaria_arm_data import extract_continuous
+    from rct_extractor._engine.specialties.malaria_arm_data import extract_continuous
     r = extract_continuous("median fever clearance time was 18 (IQR 12-26) hours (n=40)")
     assert r and r[0]["stat"] == "median_iqr"
     # poolable only AFTER IQR->SD transformation; Wan estimates provided
@@ -165,7 +165,7 @@ def test_continuous_median_iqr_wan_estimate():
 
 def test_haemoglobin_spelling_both():
     # the [ae]+ fix: both British and American spellings route to HAEMOGLOBIN
-    from src.specialties.malaria_arm_data import extract_continuous
+    from rct_extractor._engine.specialties.malaria_arm_data import extract_continuous
     assert extract_continuous("haemoglobin mean 10.5 ± 1.2 g/dL")[0]["endpoint"] == "HAEMOGLOBIN"
     assert extract_continuous("hemoglobin mean 10.5 ± 1.2 g/dL")[0]["endpoint"] == "HAEMOGLOBIN"
 

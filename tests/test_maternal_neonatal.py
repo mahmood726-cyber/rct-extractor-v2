@@ -4,15 +4,15 @@ arm-level extraction. Mirrors the HIV, malaria and typhoid tests.
 """
 import pytest
 
-from src.specialties.maternal_neonatal import (
+from rct_extractor._engine.specialties.maternal_neonatal import (
     MATERNAL_NEONATAL_ENDPOINTS, detect_maternal_neonatal_subspecialty,
     normalize_maternal_neonatal_endpoint, get_maternal_neonatal_endpoint_patterns,
 )
-from src.specialties.registry import (
+from rct_extractor._engine.specialties.registry import (
     detect_specialty, normalize_endpoint_by_specialty, get_all_endpoints,
     SPECIALTY_REGISTRY,
 )
-from src.specialties.maternal_neonatal_arm_data import (
+from rct_extractor._engine.specialties.maternal_neonatal_arm_data import (
     extract_arm_level, extract_proportions, extract_continuous,
 )
 

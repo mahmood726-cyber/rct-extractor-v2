@@ -20,8 +20,8 @@ import os
 import time
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from src.core.verified_extraction_pipeline import VerifiedExtractionPipeline, verified_extract
-from src.core.ocr_preprocessor import OCRPreprocessor, preprocess_for_extraction
+from rct_extractor._engine.core.verified_extraction_pipeline import VerifiedExtractionPipeline, verified_extract
+from rct_extractor._engine.core.ocr_preprocessor import OCRPreprocessor, preprocess_for_extraction
 from dataclasses import dataclass
 from typing import List, Optional, Tuple
 import random

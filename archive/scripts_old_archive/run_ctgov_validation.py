@@ -17,8 +17,8 @@ import urllib.parse
 
 sys.path.insert(0, str(Path(__file__).parent / 'src'))
 
-from src.core.extractor import NumericParser
-from src.benchmark.statistics import clopper_pearson_ci
+from rct_extractor._engine.core.extractor import NumericParser
+from rct_extractor._engine.benchmark.statistics import clopper_pearson_ci
 
 # CTgov API endpoint
 CTGOV_API = "https://clinicaltrials.gov/api/v2/studies"

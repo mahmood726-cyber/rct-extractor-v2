@@ -23,17 +23,17 @@ from typing import List, Dict, Tuple, Optional
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 # Import v3.0 extractor for comparison
-from src.core.enhanced_extractor_v3 import EnhancedExtractor
+from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor
 
 # Import v4.0 components
-from src.core.team_of_rivals import (
+from rct_extractor._engine.core.team_of_rivals import (
     PatternExtractor, GrammarExtractor, StateMachineExtractor, ChunkExtractor,
     ConsensusEngine, ExtractorType
 )
-from src.core.verified_extraction_pipeline import (
+from rct_extractor._engine.core.verified_extraction_pipeline import (
     VerifiedExtractionPipeline, PipelineStatus
 )
-from src.core.deterministic_verifier import verify_extraction, VerificationLevel
+from rct_extractor._engine.core.deterministic_verifier import verify_extraction, VerificationLevel
 
 # Import test cases
 from data.expanded_validation_v3 import ALL_VALIDATION_CASES as VALIDATION_CASES
@@ -185,7 +185,7 @@ def test_individual_extractors():
     print_header("ABLATION: Individual Extractor Performance")
 
     # Import V3 wrapper
-    from src.core.v3_extractor_wrapper import V3ExtractorWrapper
+    from rct_extractor._engine.core.v3_extractor_wrapper import V3ExtractorWrapper
 
     extractors = {
         'V3Pattern': V3ExtractorWrapper(),

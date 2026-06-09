@@ -62,7 +62,7 @@ FOLD_PAT = re.compile(
 
 
 def main():
-    from src.pdf.pdf_parser import PDFParser
+    from rct_extractor._engine.pdf.pdf_parser import PDFParser
 
     parser = PDFParser()
 

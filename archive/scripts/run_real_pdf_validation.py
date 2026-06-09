@@ -96,7 +96,7 @@ class RealPDFValidator:
         # Lazy-load extractor
         if self.extractor is None:
             try:
-                from src.core.enhanced_extractor_v3 import EnhancedExtractor
+                from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor
                 self.extractor = EnhancedExtractor()
             except ImportError:
                 logger.warning("EnhancedExtractor not available, using fallback")
@@ -176,7 +176,7 @@ class RealPDFValidator:
 
         try:
             # Parse PDF
-            from src.pdf.pdf_parser import PDFParser
+            from rct_extractor._engine.pdf.pdf_parser import PDFParser
             parser = PDFParser()
             pdf_content = parser.parse(str(pdf_path))
 

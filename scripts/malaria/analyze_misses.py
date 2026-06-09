@@ -20,8 +20,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
 
-from src.core.enhanced_extractor_v3 import EnhancedExtractor, to_dict
-from src.specialties.malaria_effects import augment_malaria_effects
+from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor, to_dict
+from rct_extractor._engine.specialties.malaria_effects import augment_malaria_effects
 
 PROJECT_DIR = Path(__file__).resolve().parents[2]
 MAL_DIR = PROJECT_DIR / "data" / "field_portability" / "malaria"

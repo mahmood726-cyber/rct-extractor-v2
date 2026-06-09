@@ -9,8 +9,8 @@ import json
 import os
 import pytest
 
-from src.core.enhanced_extractor_v3 import EnhancedExtractor
-from src.bridges.meta_starter_kit import (
+from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor
+from rct_extractor._engine.bridges.meta_starter_kit import (
     effect_trial, binary_trial, table2x2_to_trial, effect_dict_to_trial,
     make_config, metakit_measure_for, build_config_from_records,
 )

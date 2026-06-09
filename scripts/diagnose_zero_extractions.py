@@ -41,7 +41,7 @@ EFFECT_KEYWORDS = [
 
 def extract_text(pdf_path):
     """Parse PDF and return full text + per-page texts."""
-    from src.pdf.pdf_parser import PDFParser
+    from rct_extractor._engine.pdf.pdf_parser import PDFParser
     parser = PDFParser()
     try:
         pdf_content = parser.parse(str(pdf_path))

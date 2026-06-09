@@ -18,7 +18,7 @@ The 17 supported disease specialties are in :data:`rct_extractor.SPECIALTIES`.
 from __future__ import annotations
 
 try:
-    from src import __version__ as __version__  # single source of truth
+    from rct_extractor._engine import __version__ as __version__  # single source of truth
 except Exception:  # pragma: no cover - fallback if src metadata unavailable
     __version__ = "0.0.0"
 

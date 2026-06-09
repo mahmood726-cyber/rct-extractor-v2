@@ -139,7 +139,7 @@ def test_install_creates_launcher_and_lnk(sandbox: Path):
     assert launcher.exists(), "launcher script not created"
     body = launcher.read_text(encoding="utf-8", errors="replace")
     assert "uvicorn.run" in body
-    assert "src.api.main:app" in body
+    assert "rct_extractor._engine.api.main:app" in body
     assert "port=8000" in body
     lnk = startup_folder() / "allmeta-rct-extractor.lnk"
     assert lnk.exists(), "Startup .lnk not created"

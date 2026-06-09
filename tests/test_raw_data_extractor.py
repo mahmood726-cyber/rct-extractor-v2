@@ -1,6 +1,6 @@
 """Regression tests for raw_data_extractor pattern coverage."""
 
-from src.core.raw_data_extractor import extract_raw_data
+from rct_extractor._engine.core.raw_data_extractor import extract_raw_data
 
 
 def test_extracts_mean_pm_sd_with_cid_separator() -> None:

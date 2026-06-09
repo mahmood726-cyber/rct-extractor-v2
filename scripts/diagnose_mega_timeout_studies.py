@@ -22,7 +22,7 @@ if str(PROJECT_ROOT) not in sys.path:
 def _run_parse_worker(pdf_path: str, queue: mp.Queue) -> None:
     started = time.perf_counter()
     try:
-        from src.pdf.pdf_parser import PDFParser
+        from rct_extractor._engine.pdf.pdf_parser import PDFParser
 
         parser = PDFParser()
         parsed = parser.parse(pdf_path)
@@ -53,7 +53,7 @@ def _run_parse_worker(pdf_path: str, queue: mp.Queue) -> None:
 def _run_extract_worker(pdf_path: str, fast_mode: bool, queue: mp.Queue) -> None:
     started = time.perf_counter()
     try:
-        from src.core.pdf_extraction_pipeline import PDFExtractionPipeline
+        from rct_extractor._engine.core.pdf_extraction_pipeline import PDFExtractionPipeline
 
         if fast_mode:
             pipeline = PDFExtractionPipeline(

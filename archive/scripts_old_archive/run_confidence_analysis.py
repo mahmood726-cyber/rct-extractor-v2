@@ -15,8 +15,8 @@ from typing import Dict, Tuple, List
 
 sys.path.insert(0, str(Path(__file__).parent / 'src'))
 
-from src.core.extractor import NumericParser
-from src.benchmark.statistics import (
+from rct_extractor._engine.core.extractor import NumericParser
+from rct_extractor._engine.benchmark.statistics import (
     calculate_roc_curve,
     calculate_precision_recall_curve,
     calculate_calibration_curve,

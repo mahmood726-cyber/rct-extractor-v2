@@ -7,7 +7,7 @@ and end-to-end effect extraction on representative malaria-trial sentences.
 import re
 import pytest
 
-from src.specialties.malaria import (
+from rct_extractor._engine.specialties.malaria import (
     MALARIA_ENDPOINTS,
     detect_malaria_subspecialty,
     normalize_malaria_endpoint,
@@ -17,13 +17,13 @@ from src.specialties.malaria import (
     SEVERE_PATTERNS,
     TRANSMISSION_PATTERNS,
 )
-from src.specialties.registry import (
+from rct_extractor._engine.specialties.registry import (
     detect_specialty,
     normalize_endpoint_by_specialty,
     get_all_endpoints,
     SPECIALTY_REGISTRY,
 )
-from src.core.enhanced_extractor_v3 import EnhancedExtractor, to_dict
+from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor, to_dict
 
 
 # --------------------------------------------------------------------------

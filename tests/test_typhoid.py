@@ -4,15 +4,15 @@ Mirrors the HIV and malaria tests.
 """
 import pytest
 
-from src.specialties.typhoid import (
+from rct_extractor._engine.specialties.typhoid import (
     TYPHOID_ENDPOINTS, detect_typhoid_subspecialty, normalize_typhoid_endpoint,
     get_typhoid_endpoint_patterns,
 )
-from src.specialties.registry import (
+from rct_extractor._engine.specialties.registry import (
     detect_specialty, normalize_endpoint_by_specialty, get_all_endpoints,
     SPECIALTY_REGISTRY,
 )
-from src.specialties.typhoid_arm_data import (
+from rct_extractor._engine.specialties.typhoid_arm_data import (
     extract_arm_level, extract_proportions, extract_continuous,
 )
 

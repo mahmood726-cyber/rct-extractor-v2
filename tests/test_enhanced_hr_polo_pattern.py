@@ -1,4 +1,4 @@
-from src.core.enhanced_extractor_v3 import EnhancedExtractor, to_dict
+from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor, to_dict
 
 
 def test_extracts_hr_with_for_context_and_confidence_interval_brackets() -> None:

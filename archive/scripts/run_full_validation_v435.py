@@ -22,9 +22,9 @@ from datetime import datetime
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from src.core.enhanced_extractor_v3 import EnhancedExtractor, Extraction
-from src.core.text_preprocessor import TextPreprocessor, TextLine
-from src.pdf.pdf_parser import PDFParser
+from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor, Extraction
+from rct_extractor._engine.core.text_preprocessor import TextPreprocessor, TextLine
+from rct_extractor._engine.pdf.pdf_parser import PDFParser
 from scripts.ci_proximity_search import CIProximitySearch, _ci_key
 
 

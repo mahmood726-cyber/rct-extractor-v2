@@ -30,8 +30,8 @@ sys.path.insert(0, str(PROJECT_DIR))
 
 
 def main():
-    from src.pdf.pdf_parser import PDFParser
-    from src.core.enhanced_extractor_v3 import EnhancedExtractor, to_dict
+    from rct_extractor._engine.pdf.pdf_parser import PDFParser
+    from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor, to_dict
 
     parser = PDFParser()
     extractor = EnhancedExtractor()

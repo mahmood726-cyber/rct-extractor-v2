@@ -25,7 +25,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 import pdfplumber
 
-from src.pdf.pdf_parser import PDFParser, PDFContent
+from rct_extractor._engine.pdf.pdf_parser import PDFParser, PDFContent
 
 
 # ---------------------------------------------------------------------------

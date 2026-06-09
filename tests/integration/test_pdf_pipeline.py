@@ -23,9 +23,9 @@ import pytest
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-from src.pdf.pdf_parser import PDFParser, PDFContent
-from src.core.ocr_preprocessor import OCRPreprocessor
-from src.core.enhanced_extractor_v3 import EnhancedExtractor
+from rct_extractor._engine.pdf.pdf_parser import PDFParser, PDFContent
+from rct_extractor._engine.core.ocr_preprocessor import OCRPreprocessor
+from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor
 
 
 # =============================================================================

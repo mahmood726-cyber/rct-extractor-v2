@@ -24,7 +24,7 @@ from datetime import datetime
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from src.pdf.pdf_parser import PDFParser
+from rct_extractor._engine.pdf.pdf_parser import PDFParser
 
 
 def load_results(proximity_results_path: Path, enhanced_classification_path: Path) -> tuple:

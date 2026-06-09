@@ -285,7 +285,7 @@ def create_pipeline(
     Fast mode disables expensive extraction branches so large resumes can
     make forward progress under external batch timeouts.
     """
-    from src.core.pdf_extraction_pipeline import PDFExtractionPipeline
+    from rct_extractor._engine.core.pdf_extraction_pipeline import PDFExtractionPipeline
     if fast_mode:
         return PDFExtractionPipeline(
             extract_diagnostics=False,
@@ -336,7 +336,7 @@ def _parser_probe(pdf_path: str) -> dict:
     }
     started = time.perf_counter()
     try:
-        from src.pdf.pdf_parser import PDFParser
+        from rct_extractor._engine.pdf.pdf_parser import PDFParser
 
         parser = PDFParser()
         parsed = parser.parse(pdf_path)
@@ -376,7 +376,7 @@ def _quick_fallback_extract_from_pdf(pdf_path: str, max_effects: int = 8) -> lis
     Uses simple regex anchors on parsed PDF text to recover obvious effect values
     (OR/RR/HR/MD/SMD) without running the full extraction pipeline.
     """
-    from src.pdf.pdf_parser import PDFParser
+    from rct_extractor._engine.pdf.pdf_parser import PDFParser
 
     parser = PDFParser()
     parsed = parser.parse(pdf_path)

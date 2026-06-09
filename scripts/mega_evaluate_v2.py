@@ -33,7 +33,7 @@ sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='repla
 PROJECT_DIR = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(PROJECT_DIR))
 
-from src.core.effect_calculator import (
+from rct_extractor._engine.core.effect_calculator import (
     compute_or, compute_rr, compute_rd, compute_md, compute_smd,
     ComputedEffect,
 )
@@ -189,7 +189,7 @@ def extract_from_pdf(pdf_path):
     try:
         global _pipeline
         if _pipeline is None:
-            from src.core.pdf_extraction_pipeline import PDFExtractionPipeline
+            from rct_extractor._engine.core.pdf_extraction_pipeline import PDFExtractionPipeline
             _pipeline = PDFExtractionPipeline(**_pipeline_kwargs)
         result = _pipeline.extract_from_pdf(pdf_path)
         extractions = []
@@ -1565,7 +1565,7 @@ def llm_guided_worker(args):
         # Initialize LLM extractor (once per worker)
         global _llm_extractor
         if _llm_extractor is None:
-            from src.core.advanced_extraction import OutcomeGuidedExtractor
+            from rct_extractor._engine.core.advanced_extraction import OutcomeGuidedExtractor
             _llm_extractor = OutcomeGuidedExtractor()
 
         # Run LLM extraction for each Cochrane outcome
@@ -2051,7 +2051,7 @@ def reextract_noext():
         EVAL_INPUT_FILE = MEGA_DIR / "mega_eval_v9.jsonl"
     EVAL_OUTPUT_FILE = MEGA_DIR / "mega_eval_v9_2.jsonl"
 
-    from src.core.raw_data_extractor import extract_raw_data
+    from rct_extractor._engine.core.raw_data_extractor import extract_raw_data
 
     # Load existing results
     results = []

@@ -272,7 +272,7 @@ def run_calibration_from_validation():
     # Import validation results
     try:
         from data.stratified_validation_dataset import STRATIFIED_VALIDATION_TRIALS
-        from src.core.enhanced_extractor_v3 import EnhancedExtractor
+        from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor
 
         extractor = EnhancedExtractor()
 

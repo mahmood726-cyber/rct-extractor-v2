@@ -19,8 +19,8 @@ project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
 import pytest
-from src.core.pdf_extraction_pipeline import PDFExtractionPipeline, PDFExtractionResult
-from src.utils.rct_classifier import RCTClassifier, StudyType, ClassificationResult
+from rct_extractor._engine.core.pdf_extraction_pipeline import PDFExtractionPipeline, PDFExtractionResult
+from rct_extractor._engine.utils.rct_classifier import RCTClassifier, StudyType, ClassificationResult
 
 
 # =============================================================================

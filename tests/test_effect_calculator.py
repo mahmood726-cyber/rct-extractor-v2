@@ -13,7 +13,7 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from src.core.effect_calculator import (
+from rct_extractor._engine.core.effect_calculator import (
     compute_or,
     compute_rr,
     compute_rd,

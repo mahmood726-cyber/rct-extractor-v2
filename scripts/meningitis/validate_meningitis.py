@@ -18,10 +18,10 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
-from src.core.enhanced_extractor_v3 import EnhancedExtractor
-from src.specialties.malaria_effects import extract_malaria_effects
-from src.specialties.meningitis_arm_data import extract_arm_level
-from src.specialties.registry import detect_specialty
+from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor
+from rct_extractor._engine.specialties.malaria_effects import extract_malaria_effects
+from rct_extractor._engine.specialties.meningitis_arm_data import extract_arm_level
+from rct_extractor._engine.specialties.registry import detect_specialty
 
 MENINGITIS = Path(__file__).resolve().parents[2] / "data" / "field_portability" / "meningitis"
 MATCHED = MENINGITIS / "meningitis_matched.jsonl"
@@ -44,7 +44,7 @@ def main():
     parser = None
     pdfmap = {}
     if args.pdfs:
-        from src.pdf.pdf_parser import PDFParser
+        from rct_extractor._engine.pdf.pdf_parser import PDFParser
         parser = PDFParser()
         pdfmap = {os.path.basename(p).split("_PMC")[0]: p
                   for p in glob.glob(str(PDF_DIR / "*.pdf"))}

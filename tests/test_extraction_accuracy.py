@@ -24,7 +24,7 @@ from data.external_validation_dataset import (
 )
 
 try:
-    from src.core.enhanced_extractor_v3 import EnhancedExtractor, EffectType
+    from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor, EffectType
     HAS_EXTRACTOR = True
 except ImportError:
     HAS_EXTRACTOR = False

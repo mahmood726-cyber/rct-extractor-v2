@@ -47,7 +47,7 @@ def extract_from_pdf(pdf_path: str) -> Dict[str, Any]:
     Returns dict with extractions and metadata.
     """
     try:
-        from src.core.pdf_extraction_pipeline import PDFExtractionPipeline
+        from rct_extractor._engine.core.pdf_extraction_pipeline import PDFExtractionPipeline
 
         pipeline = PDFExtractionPipeline(
             extract_diagnostics=False,

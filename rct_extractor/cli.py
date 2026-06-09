@@ -99,7 +99,7 @@ def main(argv=None) -> int:
         epilog=__doc__,
     )
     try:
-        from src import __version__
+        from rct_extractor._engine import __version__
     except Exception:
         __version__ = "?"
     parser.add_argument("--version", action="version", version=str(__version__))

@@ -42,7 +42,7 @@ from data.negative_controls import (
 
 # Try to import extractor
 try:
-    from src.core.enhanced_extractor_v3 import EnhancedExtractor, EffectType, Extraction
+    from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor, EffectType, Extraction
     HAS_EXTRACTOR = True
 except ImportError:
     HAS_EXTRACTOR = False

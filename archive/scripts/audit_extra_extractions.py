@@ -28,7 +28,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from data.external_validation_dataset import ALL_EXTERNAL_VALIDATION_TRIALS
 
 try:
-    from src.core.enhanced_extractor_v3 import EnhancedExtractor, EffectType
+    from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor, EffectType
     HAS_EXTRACTOR = True
 except ImportError:
     HAS_EXTRACTOR = False

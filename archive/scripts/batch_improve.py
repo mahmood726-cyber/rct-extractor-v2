@@ -36,8 +36,8 @@ from collections import Counter
 PROJECT_ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from src.core.pdf_extraction_pipeline import PDFExtractionPipeline
-from src.utils.rct_classifier import RCTClassifier
+from rct_extractor._engine.core.pdf_extraction_pipeline import PDFExtractionPipeline
+from rct_extractor._engine.utils.rct_classifier import RCTClassifier
 
 MANIFEST_PATH = PROJECT_ROOT / "data" / "batch_rct_manifest.json"
 OUTPUT_DIR = PROJECT_ROOT / "output"
@@ -287,7 +287,7 @@ def analyze_failures(batch_num: int):
 
         if pdf_path:
             try:
-                from src.pdf.pdf_parser import PDFParser
+                from rct_extractor._engine.pdf.pdf_parser import PDFParser
                 parser = PDFParser()
                 pages = parser.parse(pdf_path)
                 text_preview = " ".join(p.text for p in pages[:3])[:3000]
@@ -635,7 +635,7 @@ def classify_manifest():
             pdf_path = alt
 
         try:
-            from src.pdf.pdf_parser import PDFParser
+            from rct_extractor._engine.pdf.pdf_parser import PDFParser
             parser = PDFParser()
             pages = parser.parse(pdf_path)
             text = " ".join(p.text for p in pages[:5])[:10000]

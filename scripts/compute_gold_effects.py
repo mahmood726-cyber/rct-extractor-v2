@@ -18,7 +18,7 @@ PROJECT_DIR = Path(__file__).resolve().parents[1]
 GOLD_FILE = PROJECT_DIR / "gold_data" / "gold_50.jsonl"
 
 sys.path.insert(0, str(PROJECT_DIR))
-from src.core.effect_calculator import compute_effect_from_raw_data
+from rct_extractor._engine.core.effect_calculator import compute_effect_from_raw_data
 
 
 # Map study_id → inferred effect type based on Cochrane value analysis

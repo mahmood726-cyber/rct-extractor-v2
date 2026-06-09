@@ -33,8 +33,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from src.core.enhanced_extractor_v3 import EnhancedExtractor
-from src.specialties.malaria_effects import extract_malaria_effects
+from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor
+from rct_extractor._engine.specialties.malaria_effects import extract_malaria_effects
 # PubMed helpers reused without importing the corpus module (which reassigns
 # stdout at import time -> closes the stream). Imported lazily inside main().
 

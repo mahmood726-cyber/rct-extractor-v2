@@ -21,7 +21,7 @@ sys.path.insert(0, str(PROJECT_DIR))
 
 def extract_text(pdf_path):
     """Extract raw text from PDF."""
-    from src.pdf.pdf_parser import PDFParser
+    from rct_extractor._engine.pdf.pdf_parser import PDFParser
     parser = PDFParser()
     try:
         pdf_content = parser.parse(str(pdf_path))

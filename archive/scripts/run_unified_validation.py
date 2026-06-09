@@ -36,7 +36,7 @@ from data.external_validation_dataset import (
 
 # Try to import extractor
 try:
-    from src.core.enhanced_extractor_v3 import EnhancedExtractor, EffectType, Extraction
+    from rct_extractor._engine.core.enhanced_extractor_v3 import EnhancedExtractor, EffectType, Extraction
     HAS_EXTRACTOR = True
 except ImportError:
     HAS_EXTRACTOR = False
@@ -44,7 +44,7 @@ except ImportError:
 
 # Try to import PDF parser
 try:
-    from src.pdf.pdf_parser import extract_text_from_pdf
+    from rct_extractor._engine.pdf.pdf_parser import extract_text_from_pdf
     HAS_PDF_PARSER = True
 except ImportError:
     HAS_PDF_PARSER = False
