@@ -107,6 +107,15 @@ class Extraction:
     primary_score: float = 0.0
 
 
+# v6.4 (PDF-eval, multi-specialty): shared CI building blocks. The real-PDF gold
+# for TB/hepatitis/typhoid/… surfaced structural matrix holes the per-type lists
+# missed: a `95 %` space, a square-bracket/paren-wrapped CI directly after the
+# point, and the word "to" or a comma between the two bounds. These tokens are
+# unambiguous parts of a 95% CI, so requiring the CI keyword keeps them precise.
+_CIKW = r'(?:95\s*%?\s*(?:CI|C\.I\.|confidence\s*interval))'   # 95%/95 %/95%CI
+_BND = r'(\d+\.?\d*)\s*(?:to|[-–—‐‑]|,)\s*(\d+\.?\d*)'         # lo (to|dash|,) hi
+
+
 class EnhancedExtractor:
     """
     Production-grade effect estimate extractor with full automation support.
@@ -521,6 +530,10 @@ class EnhancedExtractor:
         # v6.3 (PDF-eval): per-unit HR with a short qualifier before the colon:
         #   "HR per +10 HU: 1.95; 95% CI: 1.03-3.69"
         r'(?<![A-Za-z])a?HR\b\s+per\b[^.:\n]{0,25}:\s*(\d+\.?\d*)\s*[;,]\s*(?:95%?\s*)?(?:CI|confidence\s*interval)[:\s,]+(\d+\.?\d*)\s*(?:to|[-–—]|,)\s*(\d+\.?\d*)',
+        # v6.4 (PDF-eval): bracket/paren CI directly after the point, "95 %" space,
+        # or "to"/comma bounds. CI keyword mandatory -> precise.
+        #   "HR 0.65 [95% CI 0.54 to 0.77]" / "HR=2.4 (95 % CI 1.3, 9.4)"
+        rf'(?<![A-Za-z])a?HR\b\s*[=:]?\s*(\d+\.?\d*)\s*[\(\[]\s*{_CIKW}[:\s,]*{_BND}',
     ]
 
     # Odds Ratio patterns (25+ variants)
@@ -743,6 +756,14 @@ class EnhancedExtractor:
         r'\bOR\b[,;:\s=]+(\d+\.?\d*)\s*[\[\(]\s*95%?\s*[:\s]+(\d+\.?\d*)\s*[;,]\s*(\d+\.?\d*)\s*[\]\)]',
         # "OR: 1.47 (1.05, 2.05)" - parenthesized comma-separated (already partially covered)
         r'\bOR\b:\s*(\d+\.?\d*)\s*\(\s*(\d+\.?\d*)\s*,\s*(\d+\.?\d*)\s*\)',
+        # v6.4 (PDF-eval): bracket/paren CI directly after the point ("OR=40.4 (95%
+        # CI 21.6 to 75.7)", "OR 1.52 [95 % CI 1.03,2.26]"); and point-then-[;,]-then
+        # -CI with an optional open bracket before lo ("RR-style: OR 4.86, 95% CI
+        # 1.71-13.81", "OR 1.00; 95% CI (0.80, 1.26)"). CI keyword mandatory.
+        rf'(?<![A-Za-z])a?OR\b\s*[=:]?\s*(\d+\.?\d*)\s*[\(\[]\s*{_CIKW}[:\s,]*{_BND}',
+        rf'(?<![A-Za-z])a?OR\b\s*[=:]?\s*(\d+\.?\d*)\s*[;,]\s*{_CIKW}[:\s,(\[]*{_BND}',
+        # v6.4: spelled odds ratio with bracket/paren CI + to/comma/dash bounds
+        rf'odds\s*ratio\s+(?:of\s+|was\s+)?(\d+\.?\d*)\s*[\(\[]\s*{_CIKW}[:\s,]*{_BND}',
     ]
 
     # Risk Ratio / Relative Risk patterns (25+ variants)
@@ -966,6 +987,14 @@ class EnhancedExtractor:
         # v6.3 (PDF-eval): bare RR / aRR bracket-free, comma OR dash OR "to" bounds:
         #   "RR = 0.44; 95% CI: 0.06, 3.20"
         r'(?<![A-Za-z])a?RR\b\s*[=:]?\s*(\d+\.?\d*)\s*[;,]\s*(?:95%?\s*)?(?:CI|confidence\s*interval)[:\s,]+(\d+\.?\d*)\s*(?:to|[-–—]|,)\s*(\d+\.?\d*)',
+        # v6.4 (PDF-eval): bracket/paren CI directly after the point ("RR 0.50 [95%
+        # CI 0.26 to 0.95]"); point-then-[;,]-then-CI with optional open bracket
+        # before lo ("RR 1.00; 95% CI (0.80, 1.26)", "RR 1.52, 95 % CI 1.03,2.26");
+        # and spelled risk/relative risk with bracket CI ("risk ratio of 1.41
+        # (95% CI: 1.15, 1.73)"). CI keyword mandatory -> precise.
+        rf'(?<![A-Za-z])a?RR\b\s*[=:]?\s*(\d+\.?\d*)\s*[\(\[]\s*{_CIKW}[:\s,]*{_BND}',
+        rf'(?<![A-Za-z])a?RR\b\s*[=:]?\s*(\d+\.?\d*)\s*[;,]\s*{_CIKW}[:\s,(\[]*{_BND}',
+        rf'(?:relative\s+risk|risk\s*ratio)\s+(?:of\s+|was\s+)?(\d+\.?\d*)\s*[\(\[]\s*{_CIKW}[:\s,]*{_BND}',
     ]
 
     # Incidence Rate Ratio patterns
@@ -1004,6 +1033,10 @@ class EnhancedExtractor:
         #   "rate ratio (IRR)=3.6, 95% CI 1.6-8.1"  (paren alias stripped upstream)
         r'(?:incidence\s+)?rate\s*ratio[,;:\s=]+(\d+\.?\d*)\s*[;,]\s*(?:95%?\s*)?(?:CI|confidence\s*interval)[:\s,]+(\d+\.?\d*)\s*(?:to|[-–—]|,)\s*(\d+\.?\d*)',
         r'(?<![A-Za-z])a?IRR\b\s*[=:]?\s*(\d+\.?\d*)\s*[;,]?\s*(?:95%?\s*)?(?:CI|confidence\s*interval)[:\s,]+(\d+\.?\d*)\s*(?:to|[-–—]|,)\s*(\d+\.?\d*)',
+        # v6.4 (PDF-eval): bracket/paren CI directly after the point + "95 %" space +
+        # to/comma bounds, for IRR and spelled (incidence) rate ratio. CI mandatory.
+        rf'(?<![A-Za-z])a?IRR\b\s*[=:]?\s*(\d+\.?\d*)\s*[\(\[]\s*{_CIKW}[:\s,]*{_BND}',
+        rf'(?:incidence\s+)?rate\s*ratio\s+(?:of\s+|was\s+)?(\d+\.?\d*)\s*[\(\[]\s*{_CIKW}[:\s,]*{_BND}',
     ]
 
     # =================================================================

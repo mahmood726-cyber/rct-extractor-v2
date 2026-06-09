@@ -17,6 +17,11 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
 
+# A specialty needs at least this many gold effect tuples for its measured
+# accuracy to be reported as meaningful (vs indicative-only). Below this the OA
+# literature with an explicit effect+95% CI in the abstract is too thin.
+MEANINGFUL_GOLD = 10
+
 
 def load(p):
     return json.loads((REPO / p).read_text("utf-8"))
@@ -93,15 +98,19 @@ def main():
       f"{pct(pdf_b['missed'],pdf_b['n_gold'])} to {pct(pdf_a['missed'],pdf_a['n_gold'])}.")
     w("- **The PDF text layer was not the main bottleneck**: born-digital PMC PDFs "
       "parse cleanly (PyMuPDF), so PDF-text accuracy tracks abstract accuracy "
-      "closely. The gains came from fixing effect-pattern gaps in the core "
-      "extractor (en-dash / comma CI separators, parenthetical type aliases, "
-      "MD-mislabelling, and an `=`→`5` PDF glyph artifact).")
+      "closely. The gains came from closing effect-pattern gaps in the core "
+      "extractor — a 95% CI joined by `to`/comma, a bracketed CI right after the "
+      "point, and a `95 %` space — generalising across OR/RR/HR/IRR and the "
+      "spelled-out forms (§4).")
     w("- All **1368** existing extractor tests still pass (no regressions).\n")
 
     w("## 1. Dataset (traceable)\n")
     w(f"- **{n_papers} real PMC Open-Access RCT articles**, **{n_eff} gold effect "
-      f"tuples**. Every paper is identified by PMID + PMCID; PDFs were already in "
-      f"the local PMC-OA corpus (`data/field_portability/<sp>/rct_trial_pdfs/`).")
+      f"tuples**. Every paper is identified by PMID + PMCID. HIV/malaria PDFs come "
+      f"from the existing local PMC-OA corpus; the other 15 specialties were "
+      f"acquired this session with "
+      f"`scripts/pdf_eval/acquire_specialty_gold_corpus.py` (real EuropePMC-rendered "
+      f"PDFs, verified `%PDF`) into `data/field_portability/<sp>/rct_trial_pdfs/`.")
     w("- Specialty coverage in THIS evaluation:\n")
     w("| Specialty | Papers | Gold effects |")
     w("|---|---|---|")
@@ -164,21 +173,25 @@ def main():
     w("All fixes are in `rct_extractor/_engine/core/enhanced_extractor_v3.py` and "
       "therefore benefit every one of the 16 non-malaria specialties that use the "
       "core extractor (malaria already had an augmented path).\n")
-    w("1. **Unicode/comma CI separators** — added bracket-free OR/RR/HR/IRR patterns "
-      "accepting `–` (en-dash, U+2013), `‐`/`‑` (U+2010/2011), `—`, `to`, or `,` "
-      "between CI bounds (e.g. `aOR 1.06, 95% CI 1.02–1.11`, `OR = 3.43; 95% CI: "
-      "1.17, 10.01`). These were dropping the CI or the whole effect.")
-    w("2. **Parenthetical type aliases** — extended alias-stripping to round parens "
-      "`odds ratio (OR)` / `(aOR)` (previously only `[OR]` square brackets), and "
-      "added `relative risk` to the stripped phrases. Without this the effect "
-      "leaked to the generic mean-difference fallback.")
-    w("3. **MD masquerading suppression** — when a labelled ratio (HR/OR/RR/IRR) and "
-      "a mean-difference carry the *identical* point + CI, the MD twin is dropped "
-      "(a ratio and an MD can never describe the same value+interval).")
-    w("4. **`=`→`5` PDF glyph artifact** — some journal fonts extract the equals "
-      "sign as the digit `5` (`rate ratio 5 0.61` = `rate ratio = 0.61`). Restored, "
-      "tightly scoped to a lone `5` between a ratio term and a decimal so real "
-      "numbers are never altered.\n")
+    w("**This pass (v6.4) — multi-specialty real-PDF gold.** Expanding the gold to "
+      "TB, hepatitis, typhoid, pneumonia, hypertension and the rest surfaced "
+      "structural holes in the per-type pattern matrix: a 95% CI whose two bounds "
+      "are joined by the word **`to`** or a **comma**, a CI wrapped in a "
+      "**bracket/paren directly after the point estimate**, and a **`95 %`** space. "
+      "Each was already handled for *some* type/format combinations but not "
+      "uniformly. The fix adds a small, precise family of patterns (CI keyword "
+      "mandatory, so false positives stay rare) covering OR / RR / HR / IRR and the "
+      "spelled-out forms:")
+    w("- `RR 0.50 [95% CI 0.26 to 0.95]`  (square bracket + `to`)")
+    w("- `OR=40.4 (95% CI 21.6 to 75.7)`  (paren + `to`)")
+    w("- `risk ratio of 1.41 (95% CI: 1.15, 1.73)`  (spelled + comma bounds)")
+    w("- `RR 1.00; 95% CI (0.80, 1.26)`  (open paren before the lower bound)")
+    w("- `OR 1.52, 95 % CI 1.03–2.26`  (space in `95 %`)\n")
+    w("**Prior pass (v6.3), already in the baseline above.** The earlier HIV/malaria "
+      "pass added bracket-free Unicode/comma CI separators, parenthetical type-alias "
+      "stripping (`odds ratio (OR)`), mean-difference-masquerading suppression, and "
+      "an `=`→`5` PDF-glyph repair. Those are part of the **before** column here — "
+      "this report's before→after delta isolates only the v6.4 additions.\n")
 
     # remaining failures
     w("## 5. Honest remaining gaps\n")
@@ -195,10 +208,36 @@ def main():
       "very long descriptive glue between the type word and the value, and the "
       "`aRR`=rate-ratio vs risk-ratio type ambiguity. These are low-frequency and "
       "carry rising false-positive risk; left unfixed deliberately.\n")
+    w("Two further families — a CI separated from the point by **whitespace only** "
+      "(`RR 0.54 95% CI 0.40–0.74`) and an **`of`/`was` glue** (`OR of 0.67 (95% CI "
+      "…)`) — were prototyped (a candidate v6.5) but **reverted**: over a small "
+      "number of very large PDFs the whitespace-anchored variants triggered "
+      "catastrophic regex backtracking (a multi-minute hang), which is a worse "
+      "regression than the ~0.5% they recovered. They are left for a future "
+      "bounded-quantifier rewrite. The shipped extractor has no such hang.\n")
     w("**Not covered by this evaluation (measure before claiming):**\n")
-    w("- Only **2 of 17 specialties** (HIV, malaria) have real-PDF gold here. The "
-      "other 15 (TB, hepatitis, typhoid, pneumonia, …) are **not measured on real "
-      "PDFs** — do not assume these numbers transfer.")
+    # Coverage computed from the actual gold + the canonical specialty registry.
+    try:
+        import rct_extractor as _rx
+        all_sp = list(_rx.SPECIALTIES)
+    except Exception:
+        all_sp = sorted(by_sp)
+    measured = {sp for sp, (np_, ne_) in by_sp.items() if ne_ >= MEANINGFUL_GOLD}
+    thin = {sp: by_sp[sp] for sp in by_sp if by_sp[sp][1] < MEANINGFUL_GOLD}
+    unmeasured = [sp for sp in all_sp if sp not in by_sp]
+    w(f"- **{len(measured)} of {len(all_sp)} specialties** now have a meaningful "
+      f"real-PDF gold sample (>= {MEANINGFUL_GOLD} gold effect tuples): "
+      f"{', '.join(sorted(measured))}.")
+    if thin:
+        w(f"- **Thin sample** (measured but below the {MEANINGFUL_GOLD}-tuple bar — "
+          f"numbers shown but treat as indicative only): "
+          f"{', '.join(f'{sp} ({thin[sp][1]} tuples, {thin[sp][0]} papers)' for sp in sorted(thin))}. "
+          "The open-access RCT literature with an explicit effect+95% CI in the "
+          "abstract is genuinely small for these.")
+    if unmeasured:
+        w(f"- **Still not measured on real PDFs** (no qualifying OA gold acquired): "
+          f"{', '.join(sorted(unmeasured))}. Do not assume the measured numbers "
+          "transfer to these.")
     w("- Gold is abstract-sourced; effects reported **only** in body tables/figures "
       "(not the abstract) are not in the gold and not scored.")
     w("- **Arm-level Ns / event counts**: harvested best-effort but **not** scored "
@@ -209,8 +248,19 @@ def main():
       "out of scope.\n")
     w("## 6. Reproduce\n")
     w("```bash\n"
-      "python scripts/pdf_eval/build_gold_from_abstracts.py --specialty malaria hiv "
-      "--per-specialty 220 --target 32 --out data/pdf_eval/gold_abstract.jsonl\n"
+      "# 1. acquire real PMC-OA PDFs for the non-HIV/malaria specialties (idempotent;\n"
+      "#    only downloads papers whose ABSTRACT already states an effect + 95% CI)\n"
+      "python scripts/pdf_eval/acquire_specialty_gold_corpus.py \\\n"
+      "    --specialty tuberculosis hepatitis typhoid pneumonia hypertension diabetes \\\n"
+      "      maternal_neonatal cholera meningitis schistosomiasis sickle_cell helminths \\\n"
+      "      cervical_cancer diarrhoeal malnutrition --retmax 1500 --max-download 45\n"
+      "# 2. harvest gold from each article's abstract (independent regex, verbatim guard)\n"
+      "python scripts/pdf_eval/build_gold_from_abstracts.py \\\n"
+      "    --specialty hiv malaria tuberculosis hepatitis typhoid pneumonia hypertension \\\n"
+      "      diabetes maternal_neonatal cholera meningitis schistosomiasis sickle_cell \\\n"
+      "      helminths cervical_cancer diarrhoeal malnutrition \\\n"
+      "    --per-specialty 220 --target 45 --out data/pdf_eval/gold_abstract.jsonl\n"
+      "# 3. score the extractor on the full PDF body (before = git stash the v6.4 patch)\n"
       "python scripts/pdf_eval/run_pdf_eval.py --gold data/pdf_eval/gold_abstract.jsonl "
       "--out data/pdf_eval/eval_results_after.json --preprocess\n"
       "python scripts/pdf_eval/generate_report.py\n"

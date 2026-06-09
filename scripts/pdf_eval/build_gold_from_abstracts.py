@@ -38,10 +38,14 @@ import urllib.request
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
+_FP = REPO / "data" / "field_portability"
+# Auto-discover every specialty that has a downloaded PMC-OA PDF corpus. This is
+# a faithful generalisation of the original {malaria, hiv} map: the gold source
+# and scoring surface are unchanged; only the set of specialties probed grows.
 PDF_DIRS = {
-    "malaria": REPO / "data" / "field_portability" / "malaria" / "rct_trial_pdfs",
-    "hiv": REPO / "data" / "field_portability" / "hiv" / "rct_trial_pdfs",
-}
+    d.name: d / "rct_trial_pdfs"
+    for d in sorted(_FP.iterdir()) if (d / "rct_trial_pdfs").is_dir()
+} if _FP.is_dir() else {}
 CACHE = REPO / "data" / "pdf_eval" / "xml_cache"
 UA = "rct-extractor-v2-eval/1.0 (mahmood726@gmail.com)"
 EFETCH = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pmc&id={}&rettype=xml"

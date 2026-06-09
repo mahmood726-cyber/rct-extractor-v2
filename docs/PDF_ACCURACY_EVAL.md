@@ -4,21 +4,36 @@
 
 ## TL;DR (honest)
 
-- On **real PDFs** (full text parsed by the shipped PDF pipeline), exact correct extraction (right effect type **and** point **and** both CI bounds, within tolerance) rose from **83%** to **97%** of 145 gold effects.
-- Misses (gold effect not found at all) fell from 9% to 3%.
-- **The PDF text layer was not the main bottleneck**: born-digital PMC PDFs parse cleanly (PyMuPDF), so PDF-text accuracy tracks abstract accuracy closely. The gains came from fixing effect-pattern gaps in the core extractor (en-dash / comma CI separators, parenthetical type aliases, MD-mislabelling, and an `=`→`5` PDF glyph artifact).
+- On **real PDFs** (full text parsed by the shipped PDF pipeline), exact correct extraction (right effect type **and** point **and** both CI bounds, within tolerance) rose from **91%** to **94%** of 1869 gold effects.
+- Misses (gold effect not found at all) fell from 4% to 3%.
+- **The PDF text layer was not the main bottleneck**: born-digital PMC PDFs parse cleanly (PyMuPDF), so PDF-text accuracy tracks abstract accuracy closely. The gains came from closing effect-pattern gaps in the core extractor — a 95% CI joined by `to`/comma, a bracketed CI right after the point, and a `95 %` space — generalising across OR/RR/HR/IRR and the spelled-out forms (§4).
 - All **1368** existing extractor tests still pass (no regressions).
 
 ## 1. Dataset (traceable)
 
-- **59 real PMC Open-Access RCT articles**, **145 gold effect tuples**. Every paper is identified by PMID + PMCID; PDFs were already in the local PMC-OA corpus (`data/field_portability/<sp>/rct_trial_pdfs/`).
+- **563 real PMC Open-Access RCT articles**, **1869 gold effect tuples**. Every paper is identified by PMID + PMCID. HIV/malaria PDFs come from the existing local PMC-OA corpus; the other 15 specialties were acquired this session with `scripts/pdf_eval/acquire_specialty_gold_corpus.py` (real EuropePMC-rendered PDFs, verified `%PDF`) into `data/field_portability/<sp>/rct_trial_pdfs/`.
 - Specialty coverage in THIS evaluation:
 
 | Specialty | Papers | Gold effects |
 |---|---|---|
+| cervical_cancer | 38 | 126 |
+| cholera | 16 | 51 |
+| diabetes | 38 | 100 |
+| diarrhoeal | 40 | 146 |
+| helminths | 43 | 134 |
+| hepatitis | 38 | 153 |
 | hiv | 27 | 52 |
+| hypertension | 38 | 104 |
 | malaria | 32 | 93 |
-| **total** | **59** | **145** |
+| malnutrition | 38 | 100 |
+| maternal_neonatal | 30 | 130 |
+| meningitis | 39 | 156 |
+| pneumonia | 36 | 100 |
+| schistosomiasis | 23 | 67 |
+| sickle_cell | 37 | 186 |
+| tuberculosis | 41 | 143 |
+| typhoid | 9 | 28 |
+| **total** | **563** | **1869** |
 
 Full PMCID list and every gold quote are in `data/pdf_eval/gold_abstract.jsonl` (one JSON object per paper).
 
@@ -43,33 +58,52 @@ Three input surfaces: **abstract** (clean text the gold came from — isolates e
 
 | surface | gold | correct | point_only | missed | type (matched) | CI lo/hi (matched) |
 |---|---|---|---|---|---|---|
-| abstract | 145 | 118 (81%) | 17 (12%) | 10 (7%) | 99% | 88%/88% |
-| pdf_raw | 145 | 120 (83%) | 12 (8%) | 13 (9%) | 100% | 91%/91% |
-| pdf_pp | 145 | 122 (84%) | 11 (8%) | 12 (8%) | 100% | 92%/92% |
+| abstract | 1869 | 1657 (89%) | 100 (5%) | 112 (6%) | 100% | 95%/95% |
+| pdf_raw | 1869 | 1695 (91%) | 105 (6%) | 69 (4%) | 99% | 95%/94% |
+| pdf_pp | 1869 | 1700 (91%) | 102 (5%) | 67 (4%) | 99% | 95%/95% |
 
 ### AFTER improvements
 
 | surface | gold | correct | point_only | missed | type (matched) | CI lo/hi (matched) |
 |---|---|---|---|---|---|---|
-| abstract | 145 | 142 (98%) | 1 (1%) | 2 (1%) | 99% | 100%/100% |
-| pdf_raw | 145 | 140 (97%) | 1 (1%) | 4 (3%) | 99% | 100%/100% |
-| pdf_pp | 145 | 141 (97%) | 1 (1%) | 3 (2%) | 99% | 100%/100% |
+| abstract | 1869 | 1738 (93%) | 33 (2%) | 98 (5%) | 100% | 99%/98% |
+| pdf_raw | 1869 | 1765 (94%) | 45 (2%) | 59 (3%) | 100% | 98%/98% |
+| pdf_pp | 1869 | 1770 (95%) | 42 (2%) | 57 (3%) | 100% | 98%/98% |
 
 ### Per-specialty (pdf_raw, AFTER)
 
 | specialty | papers | gold | correct | missed |
 |---|---|---|---|---|
+| cervical_cancer | 38 | 126 | 114 (90%) | 8 (6%) |
+| cholera | 16 | 51 | 44 (86%) | 5 (10%) |
+| diabetes | 38 | 100 | 95 (95%) | 0 (0%) |
+| diarrhoeal | 40 | 146 | 146 (100%) | 0 (0%) |
+| helminths | 43 | 134 | 129 (96%) | 4 (3%) |
+| hepatitis | 38 | 153 | 146 (95%) | 4 (3%) |
 | hiv | 27 | 52 | 48 (92%) | 3 (6%) |
+| hypertension | 38 | 104 | 93 (89%) | 7 (7%) |
 | malaria | 32 | 93 | 92 (99%) | 1 (1%) |
+| malnutrition | 38 | 100 | 94 (94%) | 1 (1%) |
+| maternal_neonatal | 30 | 130 | 122 (94%) | 6 (5%) |
+| meningitis | 39 | 156 | 141 (90%) | 5 (3%) |
+| pneumonia | 36 | 100 | 95 (95%) | 3 (3%) |
+| schistosomiasis | 23 | 67 | 61 (91%) | 4 (6%) |
+| sickle_cell | 37 | 186 | 184 (99%) | 1 (1%) |
+| tuberculosis | 41 | 143 | 133 (93%) | 7 (5%) |
+| typhoid | 9 | 28 | 28 (100%) | 0 (0%) |
 
 ## 4. What was fixed (only changes proven to help; suite stayed green)
 
 All fixes are in `rct_extractor/_engine/core/enhanced_extractor_v3.py` and therefore benefit every one of the 16 non-malaria specialties that use the core extractor (malaria already had an augmented path).
 
-1. **Unicode/comma CI separators** — added bracket-free OR/RR/HR/IRR patterns accepting `–` (en-dash, U+2013), `‐`/`‑` (U+2010/2011), `—`, `to`, or `,` between CI bounds (e.g. `aOR 1.06, 95% CI 1.02–1.11`, `OR = 3.43; 95% CI: 1.17, 10.01`). These were dropping the CI or the whole effect.
-2. **Parenthetical type aliases** — extended alias-stripping to round parens `odds ratio (OR)` / `(aOR)` (previously only `[OR]` square brackets), and added `relative risk` to the stripped phrases. Without this the effect leaked to the generic mean-difference fallback.
-3. **MD masquerading suppression** — when a labelled ratio (HR/OR/RR/IRR) and a mean-difference carry the *identical* point + CI, the MD twin is dropped (a ratio and an MD can never describe the same value+interval).
-4. **`=`→`5` PDF glyph artifact** — some journal fonts extract the equals sign as the digit `5` (`rate ratio 5 0.61` = `rate ratio = 0.61`). Restored, tightly scoped to a lone `5` between a ratio term and a decimal so real numbers are never altered.
+**This pass (v6.4) — multi-specialty real-PDF gold.** Expanding the gold to TB, hepatitis, typhoid, pneumonia, hypertension and the rest surfaced structural holes in the per-type pattern matrix: a 95% CI whose two bounds are joined by the word **`to`** or a **comma**, a CI wrapped in a **bracket/paren directly after the point estimate**, and a **`95 %`** space. Each was already handled for *some* type/format combinations but not uniformly. The fix adds a small, precise family of patterns (CI keyword mandatory, so false positives stay rare) covering OR / RR / HR / IRR and the spelled-out forms:
+- `RR 0.50 [95% CI 0.26 to 0.95]`  (square bracket + `to`)
+- `OR=40.4 (95% CI 21.6 to 75.7)`  (paren + `to`)
+- `risk ratio of 1.41 (95% CI: 1.15, 1.73)`  (spelled + comma bounds)
+- `RR 1.00; 95% CI (0.80, 1.26)`  (open paren before the lower bound)
+- `OR 1.52, 95 % CI 1.03–2.26`  (space in `95 %`)
+
+**Prior pass (v6.3), already in the baseline above.** The earlier HIV/malaria pass added bracket-free Unicode/comma CI separators, parenthetical type-alias stripping (`odds ratio (OR)`), mean-difference-masquerading suppression, and an `=`→`5` PDF-glyph repair. Those are part of the **before** column here — this report's before→after delta isolates only the v6.4 additions.
 
 ## 5. Honest remaining gaps
 
@@ -80,12 +114,113 @@ All fixes are in `rct_extractor/_engine/core/enhanced_extractor_v3.py` and there
 - `PMC10582356` (hiv) missed: gold RR 0.97 CI[0.76,1.24] — quote: "risk ratio [aRR]: 0.97, 95% confidence interval 0.76–1.24"
 - `PMC10919617` (hiv) point_only: gold IRR 1.0 CI[0.94,1.06] — quote: "rate ratio aRR: 1.00; 95% CI, 0.94–1.06"
 - `PMC11979587` (hiv) missed: gold HR 3.5 CI[1.3,9.4] — quote: "HR, 3.5 [95% CI, 1.3–9.4"
+- `PMC11213038` (tuberculosis) point_only: gold OR 0.21 CI[0.1,0.46] — quote: "odds ratio [AOR] 0.21, 95% CI 0.10–0.46"
+- `PMC11213038` (tuberculosis) missed: gold OR 4.86 CI[1.71,13.81] — quote: "OR 4.86, 95% CI 1.71–13.81"
+- `PMC11490045` (tuberculosis) point_only: gold OR 4.0 CI[3.0,6.0] — quote: "OR 4, 95% CI, 3–6"
+- `PMC11526018` (tuberculosis) missed: gold HR 0.65 CI[0.54,0.77] — quote: "HR 0.65 for every 100 µg∙h/mL increase, 95%CI 0.54–0.77"
+- `PMC11526018` (tuberculosis) point_only: gold HR 1.43 CI[1.07,1.91] — quote: "HR 1.43 for every 3-cycle-threshold decrease, 95%CI 1.07–1.91"
+- `PMC12004605` (tuberculosis) missed: gold OR 0.49 CI[0.3,0.82] — quote: "OR 0.49, 95% CI 0.30–0.82"
+- `PMC12004605` (tuberculosis) missed: gold OR 0.43 CI[0.21,0.91] — quote: "OR 0.43, 95% CI 0.21–0.91"
+- `PMC12004605` (tuberculosis) missed: gold OR 0.52 CI[0.3,0.91] — quote: "OR 0.52, 95% CI 0.30–0.91"
+- `PMC12004605` (tuberculosis) missed: gold OR 0.34 CI[0.19,0.62] — quote: "OR 0.34, 95% CI 0.19–0.62"
+- `PMC12004605` (tuberculosis) missed: gold OR 0.49 CI[0.28,0.85] — quote: "OR 0.49, 95% CI 0.28–0.85"
+- `PMC11602491` (hepatitis) missed: gold RR 2.261 CI[1.327,3.851] — quote: "RR of 2.261 (95% CI: 1.327–3.851"
+- `PMC12240589` (hepatitis) point_only: gold HR 0.41 CI[0.3,0.58] — quote: "hazard ratio of 0.41 (95% confidence interval, 0.30–0.58"
+- `PMC13026359` (hepatitis) point_only: gold OR 3.64 CI[2.92,4.55] — quote: "OR = 3.64, 95% CI: 2.92–4.55"
+- `PMC13026359` (hepatitis) missed: gold OR 3.93 CI[2.29,6.77] — quote: "OR = 3.93, 95% CI: 2.29–6.77"
+- `PMC13026359` (hepatitis) point_only: gold OR 4.12 CI[2.24,7.56] — quote: "OR = 4.12, 95% CI: 2.24–7.56"
+- `PMC13026359` (hepatitis) missed: gold OR 3.68 CI[2.89,4.7] — quote: "OR = 3.68, 95% CI: 2.89–4.70"
+- `PMC13026359` (hepatitis) missed: gold OR 4.13 CI[1.69,10.09] — quote: "OR = 4.13, 95% CI: 1.69–10.09"
+- `PMC9705346` (pneumonia) missed: gold OR 0.29 CI[0.09,0.95] — quote: "OR adjusted = 0.29; 95% CI: 0.09–0.95"
+- `PMC9705346` (pneumonia) missed: gold OR 0.09 CI[0.01,0.96] — quote: "OR adjusted = 0.09; 95% CI: 0.01–0.96"
+- `PMC10260254` (pneumonia) point_only: gold RR 1.26 CI[1.12,1.42] — quote: "RR 1.26 95% CI 1.12–1.42"
+- `PMC12178878` (pneumonia) point_only: gold OR 0.53 CI[0.45,0.62] — quote: "aOR 0.53, (95% CI 0.45, 0.62"
+- `PMC12595037` (pneumonia) missed: gold OR 0.45 CI[0.25,0.82] — quote: "aOR]: 0.45, 95% CI 0.25-0.82"
+- `PMC12959449` (hypertension) missed: gold OR 6.55 CI[1.89,22.71] — quote: "odds ratio, 6.55 [95% CI, 1.89–22.71"
+- `PMC13053319` (hypertension) missed: gold RR 55.0 CI[7.65,395.32] — quote: "RR 55.0, 95% CI 7.65-395.32"
+- `PMC13144120` (hypertension) point_only: gold OR 2.25 CI[1.78,2.83] — quote: "odds ratio = 2.25: 95% CI: 1.78–2.83"
+- `PMC13144120` (hypertension) point_only: gold RR 0.93 CI[0.82,1.05] — quote: "risk ratio = 0.93: 95% CI: 0.82–1.05"
+- `PMC13186090` (hypertension) missed: gold OR 0.67 CI[0.41,1.09] — quote: "OR of 0.67 (95%CI, 0.41 to 1.09"
+- `PMC13186090` (hypertension) missed: gold OR 2.41 CI[0.65,8.92] — quote: "OR was 2.41 (95%CI, 0.65 to 8.92"
+- `PMC13186090` (hypertension) missed: gold OR 0.41 CI[0.06,2.77] — quote: "OR was 0.41 (95%CI, 0.06 to 2.77"
+- `PMC13186090` (hypertension) missed: gold OR 0.84 CI[0.48,1.48] — quote: "OR was 0.84 (95%CI, 0.48 to 1.48"
+- `PMC13199698` (hypertension) point_only: gold HR 0.56 CI[0.36,0.9] — quote: "HR = 0.56, 95% CI: 0.36–0.90"
+- `PMC13219965` (hypertension) point_only: gold RR 0.8 CI[0.67,0.96] — quote: "RR: 0.80, (95% CI: 0.67, 0.96"
+- `PMC13227382` (hypertension) missed: gold RR 1.07 CI[0.9,1.27] — quote: "relative risk of overall adverse events was 1.07 (95% CI: 0.90–1.27"
+- `PMC13071220` (diabetes) point_only: gold OR 1.01 CI[0.99,1.02] — quote: "OR: 1.01 per mmol/mol, 95% CI: 0.99–1.02"
+- `PMC13126886` (diabetes) point_only: gold OR 0.53 CI[0.29,0.97] — quote: "aOR 0.53 [95%CI 0.29–0.97"
+- `PMC13126886` (diabetes) point_only: gold OR 0.31 CI[0.15,0.61] — quote: "OR 0.31 [95%CI 0.15–0.61"
+- `PMC13111083` (diabetes) point_only: gold HR 1.19 CI[1.11,1.28] — quote: "HR 1.19, 95% CI 1.11–1.28"
+- `PMC13111083` (diabetes) point_only: gold HR 0.32 CI[0.16,0.63] — quote: "HR 0.32, 95% CI 0.16–0.63"
+- `PMC12797446` (maternal_neonatal) point_only: gold RR 1.3 CI[1.01,1.6] — quote: "RR = 1.30 95% CI 1.01–1.60"
+- `PMC13197901` (maternal_neonatal) missed: gold OR 1.04 CI[0.95,1.14] — quote: "OR: 1.04; 95% CI: 0.95, 1.14"
+- `PMC13197901` (maternal_neonatal) missed: gold OR 2.36 CI[1.09,5.12] — quote: "OR T3 compared with T1 : 2.36; 95% CI: 1.09, 5.12"
+- `PMC13125424` (maternal_neonatal) missed: gold OR 7.05 CI[4.22,11.78] — quote: "OR 7.05, 95% CI: 4.22–11.78"
+- `PMC13125424` (maternal_neonatal) missed: gold OR 1.69 CI[1.06,2.71] — quote: "OR 1.69, 95% CI: 1.06–2.71"
+- `PMC13196848` (maternal_neonatal) missed: gold OR 0.47 CI[0.24,0.91] — quote: "OR [aOR], 0.47; 95% CI, 0.24, 0.91"
+- `PMC13196848` (maternal_neonatal) missed: gold OR 0.45 CI[0.21,0.99] — quote: "aOR, 0.45; 95% CI, 0.21, 0.99"
+- `PMC13196848` (maternal_neonatal) point_only: gold OR 2.08 CI[1.25,3.45] — quote: "aOR, 2.08; 95% CI, 1.25, 3.45"
+- `PMC3216950` (cholera) missed: gold RR 0.54 CI[0.4,0.74] — quote: "RR 0.54 95% CI 0.40–0.74"
+- `PMC3216950` (cholera) missed: gold RR 0.35 CI[0.18,0.66] — quote: "RR 0.35 95% CI 0.18–0.66"
+- `PMC3216950` (cholera) missed: gold RR 0.39 CI[0.29,0.51] — quote: "RR 0.39 95% CI 0.29–0.51"
+- `PMC4464855` (cholera) point_only: gold OR 0.56 CI[0.46,0.67] — quote: "odds ratio 0.56, 95 % CI 0.46-0.67"
+- `PMC7138051` (cholera) point_only: gold RR 0.02 CI[0.0,0.3] — quote: "RR 0.02, 95% CI 0.00 to 0.30"
+- `PMC6402932` (cholera) missed: gold RR 0.82 CI[0.69,0.98] — quote: "risk ratio adjusted : 0.82; 95% CI: 0.69–0.98"
+- `PMC6518748` (cholera) missed: gold RR 0.97 CI[0.58,1.61] — quote: "relative risk for pregnancy loss was 0.97 (95% CI: 0.58–1.61"
+- `PMC6312212` (meningitis) missed: gold HR 1.09 CI[1.04,1.13] — quote: "hazard ratio = 1.09, 95%CI, 1.04–1.13"
+- `PMC7015757` (meningitis) missed: gold RR 0.53 CI[0.2,1.39] — quote: "RR women:men 0.53, 95% CI 0.20–1.39"
+- `PMC7169657` (meningitis) point_only: gold IRR 0.9 CI[0.5,1.61] — quote: "rate ratio 0.90, 95% CI 0.50 to 1.61"
+- `PMC7169657` (meningitis) point_only: gold IRR 0.93 CI[0.85,1.01] — quote: "rate ratio 0.93, 95% CI 0.85 to 1.01"
+- `PMC7291520` (meningitis) missed: gold RR 7.64 CI[2.96,19.73] — quote: "RR: 7.64, 95%CI: 2.96–19.73"
+- `PMC8080028` (meningitis) point_only: gold HR 0.78 CI[0.45,1.35] — quote: "hazard ratio 0.78 (95% CI 0.45–1.35"
+- `PMC8080028` (meningitis) point_only: gold HR 0.86 CI[0.6,1.24] — quote: "hazard ratio 0.86 (95% CI 0.60–1.24"
+- `PMC8080028` (meningitis) point_only: gold HR 0.51 CI[0.29,0.87] — quote: "hazard ratio of 0.51 (95% CI 0.29–0.87"
+- `PMC8607336` (meningitis) point_only: gold IRR 0.9 CI[0.5,1.61] — quote: "rate ratio 0.90, 95% CI 0.50 to 1.61"
+- `PMC8607336` (meningitis) point_only: gold IRR 0.93 CI[0.85,1.01] — quote: "rate ratio 0.93, 95% CI 0.85 to 1.01"
+- `PMC9307099` (meningitis) point_only: gold HR 1.87 CI[1.26,2.79] — quote: "hazard ratio, 1.87 [95% confidence interval, 1.26–2.79"
+- `PMC12230414` (meningitis) missed: gold RR 0.98 CI[0.2,4.82] — quote: "aRR 0.98 [95% CI 0.20–4.82"
+- `PMC12267014` (meningitis) point_only: gold OR 1.13 CI[1.04,1.22] — quote: "OR = 1.13 per day; 95%CI: 1.04–1.22"
+- `PMC12267014` (meningitis) point_only: gold OR 1.02 CI[1.0,1.03] — quote: "OR = 1.02 per day; 95%CI: 1.00–1.03"
+- `PMC13235151` (meningitis) missed: gold RR 1.14 CI[0.26,5.01] — quote: "risk ratio for seizure recurrence was 1.14 (95% CI, 0.26–5.01"
+- `PMC1352364` (schistosomiasis) missed: gold OR 0.14 CI[0.02,0.83] — quote: "odds ratio for IFN-γ > median response: 0.14 (95% confidence interval 0.02–0.83"
+- `PMC2265431` (schistosomiasis) missed: gold IRR 4.94 CI[2.45,9.98] — quote: "incidence rate ratio] = 4.94, 95% confidence interval 2.45–9.98"
+- `PMC3042811` (schistosomiasis) point_only: gold OR 1.9 CI[1.2,3.0] — quote: "odds ratio = 1.9 and 95% confidence interval = 1.2–3.0"
+- `PMC3042811` (schistosomiasis) missed: gold OR 1.9 CI[1.03,3.5] — quote: "odds ratio = 1.9 and 95% confidence interval = 1.03–3.5"
+- `PMC4730633` (schistosomiasis) point_only: gold OR 7.5 CI[1.1,49.5] — quote: "aOR = 7.5 (95 % CI = 1.1-49.5"
+- `PMC7112237` (schistosomiasis) missed: gold IRR 72.0 CI[55.0,83.0] — quote: "IRR was 72% (95% CI 55–83"
+- `PMC10624245` (sickle_cell) point_only: gold RR 0.03 CI[0.0,0.47] — quote: "RR 0.03, 95% CI 0.00 to 0.47"
+- `PMC9335109` (sickle_cell) missed: gold OR 0.13 CI[0.04,0.45] — quote: "OR=0.13, 95% CI: 0.04-0.45"
+- `PMC11980818` (helminths) point_only: gold OR 0.62 CI[0.34,1.1] — quote: "odds ratios, 0.62; 95% confidence interval, 0.34–1.10"
+- `PMC6590784` (helminths) missed: gold OR 1.15 CI[0.87,1.52] — quote: "odds ratio for IDA versus DA 1.15, 95% CI 0.87–1.52"
+- `PMC8184002` (helminths) missed: gold OR 21.4 CI[12.3,37.2] — quote: "odds ratio [mOR] 21.4, 95%CI: 12.3–37.2"
+- `PMC9156991` (helminths) missed: gold HR 0.48 CI[0.27,0.85] — quote: "HR-0.48, 95% CI 0.27–0.85"
+- `PMC10943894` (helminths) missed: gold OR 2.704 CI[1.27,5.749] — quote: "OR 0: > 10 mfAC 2.704, 95% CI 1.27–5.749"
+- `PMC12155710` (cervical_cancer) missed: gold OR 0.75 CI[0.38,1.46] — quote: "OR 0.75; 95% CI 0.38–1.46"
+- `PMC12155710` (cervical_cancer) missed: gold OR 0.73 CI[0.44,1.2] — quote: "OR 0.73; 95% CI 0.44–1.20"
+- `PMC12155710` (cervical_cancer) missed: gold OR 0.97 CI[0.52,1.8] — quote: "OR 0.97; 95% CI 0.52–1.80"
+- `PMC12155710` (cervical_cancer) point_only: gold OR 1.22 CI[0.36,4.18] — quote: "OR 1.22; 95% CI 0.36–4.18"
+- `PMC12155710` (cervical_cancer) missed: gold OR 0.78 CI[0.42,1.43] — quote: "OR 0.78; 95% CI 0.42–1.43"
+- `PMC12326121` (cervical_cancer) missed: gold RR 1.93 CI[1.47,2.53] — quote: "relative risk = 1.93, 95% confidence interval: 1.47–2.53"
+- `PMC12326121` (cervical_cancer) missed: gold RR 1.39 CI[1.0,1.94] — quote: "relative risk = 1.39, 95% confidence interval: 1.00–1.94"
+- `PMC12640735` (cervical_cancer) point_only: gold RR 0.2 CI[0.09,0.44] — quote: "RR 0.20, 95% CI 0.09 to 0.44"
+- `PMC12642371` (cervical_cancer) point_only: gold RR 0.35 CI[0.18,0.65] — quote: "RR = 0.35, 95% CI: 0.18–0.65"
+- `PMC13036839` (cervical_cancer) missed: gold OR 1.41 CI[0.98,2.03] — quote: "OR = 1.41 (95% CI, 0.98–2.03"
+- `PMC13036839` (cervical_cancer) missed: gold OR 0.6 CI[0.25,1.41] — quote: "OR = 0.60 (95% CI, 0.25–1.41"
+- `PMC12995759` (cervical_cancer) point_only: gold HR 0.99 CI[0.0,855.48] — quote: "HR = 0.99, 95%CI: 0.00–855.48"
+- `PMC11863844` (malnutrition) point_only: gold IRR 0.32 CI[0.27,0.37] — quote: "IRR = 0.32, 95% CI (0.27, 0.37"
+- `PMC11863844` (malnutrition) point_only: gold IRR 0.75 CI[0.73,0.78] — quote: "IRR = 0.75, 95% CI (0.73, 0.78"
+- `PMC12178878` (malnutrition) point_only: gold OR 0.53 CI[0.45,0.62] — quote: "aOR 0.53, (95% CI 0.45, 0.62"
+- `PMC12322543` (malnutrition) point_only: gold HR 1.4 CI[0.85,2.31] — quote: "HR adjusting for infant age and sex: 1.40, 95% CI: 0.85 to 2.31"
+- `PMC12322543` (malnutrition) point_only: gold HR 1.44 CI[0.87,2.39] — quote: "HR adjusting for infant age and sex=1.44, 95% CI: 0.87, 2.39"
+- `PMC12880669` (malnutrition) missed: gold RR 0.49 CI[0.34,0.69] — quote: "risk ratio (RRR): 0.49; 95% CI: 0.34-0.69"
 
 Residual causes: stray parentheses inside the CI (`(1.01, 95% CI: (0.98`), very long descriptive glue between the type word and the value, and the `aRR`=rate-ratio vs risk-ratio type ambiguity. These are low-frequency and carry rising false-positive risk; left unfixed deliberately.
 
+Two further families — a CI separated from the point by **whitespace only** (`RR 0.54 95% CI 0.40–0.74`) and an **`of`/`was` glue** (`OR of 0.67 (95% CI …)`) — were prototyped (a candidate v6.5) but **reverted**: over a small number of very large PDFs the whitespace-anchored variants triggered catastrophic regex backtracking (a multi-minute hang), which is a worse regression than the ~0.5% they recovered. They are left for a future bounded-quantifier rewrite. The shipped extractor has no such hang.
+
 **Not covered by this evaluation (measure before claiming):**
 
-- Only **2 of 17 specialties** (HIV, malaria) have real-PDF gold here. The other 15 (TB, hepatitis, typhoid, pneumonia, …) are **not measured on real PDFs** — do not assume these numbers transfer.
+- **17 of 17 specialties** now have a meaningful real-PDF gold sample (>= 10 gold effect tuples): cervical_cancer, cholera, diabetes, diarrhoeal, helminths, hepatitis, hiv, hypertension, malaria, malnutrition, maternal_neonatal, meningitis, pneumonia, schistosomiasis, sickle_cell, tuberculosis, typhoid.
 - Gold is abstract-sourced; effects reported **only** in body tables/figures (not the abstract) are not in the gold and not scored.
 - **Arm-level Ns / event counts**: harvested best-effort but **not** scored for accuracy here — treat as *not measured*.
 - Scanned/OCR PDFs are **not** represented (the PMC-OA sample is all born-digital). OCR-path accuracy remains unmeasured.
@@ -94,7 +229,19 @@ Residual causes: stray parentheses inside the CI (`(1.01, 95% CI: (0.98`), very 
 ## 6. Reproduce
 
 ```bash
-python scripts/pdf_eval/build_gold_from_abstracts.py --specialty malaria hiv --per-specialty 220 --target 32 --out data/pdf_eval/gold_abstract.jsonl
+# 1. acquire real PMC-OA PDFs for the non-HIV/malaria specialties (idempotent;
+#    only downloads papers whose ABSTRACT already states an effect + 95% CI)
+python scripts/pdf_eval/acquire_specialty_gold_corpus.py \
+    --specialty tuberculosis hepatitis typhoid pneumonia hypertension diabetes \
+      maternal_neonatal cholera meningitis schistosomiasis sickle_cell helminths \
+      cervical_cancer diarrhoeal malnutrition --retmax 1500 --max-download 45
+# 2. harvest gold from each article's abstract (independent regex, verbatim guard)
+python scripts/pdf_eval/build_gold_from_abstracts.py \
+    --specialty hiv malaria tuberculosis hepatitis typhoid pneumonia hypertension \
+      diabetes maternal_neonatal cholera meningitis schistosomiasis sickle_cell \
+      helminths cervical_cancer diarrhoeal malnutrition \
+    --per-specialty 220 --target 45 --out data/pdf_eval/gold_abstract.jsonl
+# 3. score the extractor on the full PDF body (before = git stash the v6.4 patch)
 python scripts/pdf_eval/run_pdf_eval.py --gold data/pdf_eval/gold_abstract.jsonl --out data/pdf_eval/eval_results_after.json --preprocess
 python scripts/pdf_eval/generate_report.py
 ```
