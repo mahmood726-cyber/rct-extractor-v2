@@ -190,11 +190,24 @@ def main():
             except Exception as e:
                 texts["pdf_pp"] = ""
                 pdf_meta["pp_error"] = f"{type(e).__name__}: {e}"
+        # Score against IN-SCOPE gold only (the extractor targets the randomised
+        # RCT arm-comparison effect). Tuples flagged out_of_scope by the harvester
+        # -- propensity-score/observational/NMA-indirect/modelling estimates the
+        # extractor declines by design -- are reported separately, never scored as
+        # a miss. Old gold files (no flag) are entirely in-scope (backward-compat).
+        all_gold = p["gold_effects"]
+        in_scope = [g for g in all_gold if not g.get("out_of_scope")]
+        oos = [g for g in all_gold if g.get("out_of_scope")]
         rec = {"pmcid": p["pmcid"], "pmid": p["pmid"], "specialty": sp,
-               "pdf_meta": pdf_meta, "n_gold": len(p["gold_effects"]), "surfaces": {}}
+               "pdf_meta": pdf_meta, "n_gold": len(in_scope),
+               "n_out_of_scope": len(oos),
+               "out_of_scope": [{"effect_type": g["effect_type"],
+                                 "point_estimate": g["point_estimate"],
+                                 "reason": g.get("out_of_scope_reason")} for g in oos],
+               "surfaces": {}}
         for s in surfaces:
             extracted = extract_effects(texts[s], sp)
-            per_gold, field, extra = score_surface(p["gold_effects"], extracted)
+            per_gold, field, extra = score_surface(in_scope, extracted)
             rec["surfaces"][s] = {
                 "n_extracted": len([e for e in extracted if "_error" not in e]),
                 "per_gold": per_gold, "field": field,
@@ -211,7 +224,11 @@ def main():
                    indent=2), "utf-8")
 
     # ---- console summary ----
+    n_oos = sum(r.get("n_out_of_scope", 0) for r in results)
     print("\n==== SUMMARY ====")
+    if n_oos:
+        print(f"(excluded {n_oos} out-of-scope gold tuple(s): non-randomised / "
+              f"NMA-indirect / modelling estimates the extractor declines by design)")
     for s in surfaces:
         agg = {"correct": 0, "point_only": 0, "missed": 0, "n_gold": 0,
                "type_exact": 0, "pt_tol": 0, "pt_exact": 0,

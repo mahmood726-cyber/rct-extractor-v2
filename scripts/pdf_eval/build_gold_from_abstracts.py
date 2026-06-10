@@ -132,9 +132,45 @@ def extract_abstract(xml: str) -> str:
     return txt
 
 
+# --- Out-of-scope (non-RCT-effect) context markers --------------------------- #
+# The extractor's job is the RANDOMISED arm-comparison effect of an RCT. Some OA
+# abstracts ALSO state effect estimates from NON-randomised sub-analyses that share
+# the same "OR/RR/HR + 95% CI" surface form but are out of scope by design:
+#   * propensity-score / retrospective-cohort / observational comparisons
+#   * network-meta-analysis INDIRECT comparisons and modelling inputs (ICER models)
+# The extractor deliberately declines these (its negative-context filter). To keep
+# the gold MEASURING WHAT THE EXTRACTOR IS FOR, we FLAG (never delete) such tuples
+# with out_of_scope=True + the reason. This is an INDEPENDENT design-marker set --
+# it does NOT call the extractor, so the gold stays non-circular; values are still
+# harvested verbatim from the abstract and remain in the file for full audit.
+_OOS_MARKERS = re.compile(
+    r"propensity[- ]score|propensity[- ]matched|propensity matching|"
+    r"retrospective cohort|observational (?:stud|analys|data|cohort)|real[- ]world|"
+    r"network meta[- ]analysis|\bNMA\b|indirect (?:comparison|treatment comparison)|"
+    r"comparative effectiveness|incremental cost|cost[- ]effectiveness|\bICER\b",
+    re.IGNORECASE,
+)
+
+
+def _out_of_scope_reason(abstract: str, match_start: int, window: int = 220):
+    """Return a short reason string if the effect at match_start sits in a
+    non-randomised / indirect / modelling context (window chars BEFORE it),
+    else None. Deliberately CONSERVATIVE: a ~220-char window keeps the marker in
+    the same local sentence/clause as the effect, so only effects that are
+    PLAINLY observational/indirect are flagged (the extractor's own window is
+    wider at 500; we under-claim rather than over-flag). Uses an INDEPENDENT
+    marker set, not the extractor's code, preserving non-circularity. Effects
+    that are observational but sit further from their marker are left in-scope
+    and counted as honest misses."""
+    ctx = abstract[max(0, match_start - window): match_start]
+    m = _OOS_MARKERS.search(ctx)
+    return m.group(0).lower() if m else None
+
+
 def harvest_effects(abstract: str):
     """Return list of gold effect dicts found in the abstract. Independent of
-    the extractor under test. Each dict carries a verbatim quote."""
+    the extractor under test. Each dict carries a verbatim quote. Effects in a
+    non-randomised / indirect context are FLAGGED out_of_scope (not dropped)."""
     found = []
     seen = set()
     for pat, label in PATTERNS:
@@ -162,6 +198,7 @@ def harvest_effects(abstract: str):
             if key in seen:
                 continue
             seen.add(key)
+            oos = _out_of_scope_reason(abstract, m.start())
             found.append({
                 "effect_type": label,
                 "point_estimate": pt,
@@ -171,6 +208,8 @@ def harvest_effects(abstract: str):
                 "source_text": m.group(0).strip(),
                 "quote_context": quote.strip(),
                 "harvest_pattern": pat.pattern[:40] + "...",
+                "out_of_scope": bool(oos),
+                "out_of_scope_reason": oos,
             })
     return found
 
