@@ -234,6 +234,17 @@ from .psychiatry import (
     normalize_psychiatry_endpoint
 )
 
+from .rheumatology import (
+    RHEUMATOLOGY_ENDPOINTS,
+    RA_PATTERNS as RHEUM_RA_PATTERNS,
+    PSA_PATTERNS as RHEUM_PSA_PATTERNS,
+    AXSPA_PATTERNS as RHEUM_AXSPA_PATTERNS,
+    GOUT_PATTERNS as RHEUM_GOUT_PATTERNS,
+    SLE_PATTERNS as RHEUM_SLE_PATTERNS,
+    detect_rheumatology_subspecialty,
+    normalize_rheumatology_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -485,14 +496,17 @@ SPECIALTY_REGISTRY = {
             'BRAIN_ATROPHY': {'aliases': ['brain atrophy', 'brain volume loss']}
         }
     },
-    'autoimmune': {
-        'subspecialties': ['ra', 'sle', 'psoriasis', 'ibd'],
-        'endpoints': {
-            'ACR20': {'aliases': ['acr20', 'acr 20', 'acr20 response']},
-            'ACR50': {'aliases': ['acr50', 'acr 50']},
-            'ACR70': {'aliases': ['acr70', 'acr 70']},
-            'PASI90': {'aliases': ['pasi90', 'pasi 90', '90% improvement in pasi']},
-            'SRI': {'aliases': ['sri', 'sle responder index']}
+    'rheumatology': {
+        'subspecialties': ['ra', 'psa', 'axspa', 'gout', 'sle'],
+        'detection_function': detect_rheumatology_subspecialty,
+        'normalizer': normalize_rheumatology_endpoint,
+        'endpoints': RHEUMATOLOGY_ENDPOINTS,
+        'patterns': {
+            'ra': RHEUM_RA_PATTERNS,
+            'psa': RHEUM_PSA_PATTERNS,
+            'axspa': RHEUM_AXSPA_PATTERNS,
+            'gout': RHEUM_GOUT_PATTERNS,
+            'sle': RHEUM_SLE_PATTERNS
         }
     },
     'respiratory': {
@@ -776,9 +790,15 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'alzheimer', r'dementia', r'multiple\s+sclerosis', r'\bms\b',
             r'parkinson', r'stroke', r'neurological', r'cognitive', r'relapse'
         ],
-        'autoimmune': [
-            r'rheumatoid\s+arthritis', r'lupus', r'psoriasis', r'psoriatic',
-            r'inflammatory\s+bowel', r'crohn', r'colitis', r'acr\d{2}', r'pasi'
+        'rheumatology': [
+            r'rheumatoid\s+arthritis', r'psoriatic\s+arthritis',
+            r'ankylosing\s+spondylitis', r'axial\s+spondyloarthritis', r'spondyloarthritis',
+            r'systemic\s+lupus\s+erythematosus', r'\blupus\b', r'\bgout\b', r'gouty',
+            r'\bacr\s?(?:20|50|70)\b|acr[- ]?(?:20|50|70)', r'\bdas28\b',
+            r'\basas\s?(?:20|40)\b|asas[- ]?(?:20|40)', r'\bbasdai\b', r'\basdas\b',
+            r'\bsledai\b', r'\bsri[- ]?4\b', r'\bbicla\b',
+            r'serum\s+urate', r'urate[- ]lowering', r'\bdmard\b|csdmard',
+            r'minimal\s+disease\s+activity'
         ],
         'respiratory': [
             r'chronic\s+obstructive\s+pulmonary\s+disease', r'\bcopd\b', r'\baecopd\b',
@@ -889,6 +909,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'psychiatry':
         subspecialty, conf = detect_psychiatry_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'rheumatology':
+        subspecialty, conf = detect_rheumatology_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)
