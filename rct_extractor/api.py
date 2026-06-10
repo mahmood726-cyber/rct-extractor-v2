@@ -43,6 +43,7 @@ SPECIALTIES: Tuple[str, ...] = (
     "oncology",
     "stroke",
     "nephrology",
+    "psychiatry",
 )
 
 __all__ = [

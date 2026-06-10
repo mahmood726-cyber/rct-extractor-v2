@@ -224,6 +224,16 @@ from .nephrology import (
     normalize_nephrology_endpoint
 )
 
+from .psychiatry import (
+    PSYCHIATRY_ENDPOINTS,
+    DEPRESSION_PATTERNS as PSYCH_DEPRESSION_PATTERNS,
+    ANXIETY_PATTERNS as PSYCH_ANXIETY_PATTERNS,
+    BIPOLAR_PATTERNS as PSYCH_BIPOLAR_PATTERNS,
+    PSYCHOSIS_PATTERNS as PSYCH_PSYCHOSIS_PATTERNS,
+    detect_psychiatry_subspecialty,
+    normalize_psychiatry_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -520,6 +530,18 @@ SPECIALTY_REGISTRY = {
             'aki': NEPHRO_AKI_PATTERNS,
             'glomerular': NEPHRO_GLOMERULAR_PATTERNS
         }
+    },
+    'psychiatry': {
+        'subspecialties': ['depression', 'anxiety', 'bipolar', 'psychosis'],
+        'detection_function': detect_psychiatry_subspecialty,
+        'normalizer': normalize_psychiatry_endpoint,
+        'endpoints': PSYCHIATRY_ENDPOINTS,
+        'patterns': {
+            'depression': PSYCH_DEPRESSION_PATTERNS,
+            'anxiety': PSYCH_ANXIETY_PATTERNS,
+            'bipolar': PSYCH_BIPOLAR_PATTERNS,
+            'psychosis': PSYCH_PSYCHOSIS_PATTERNS
+        }
     }
 }
 
@@ -734,6 +756,22 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'membranous\s+nephropathy', r'lupus\s+nephritis', r'\bfsgs\b',
             r'kt/v', r'vascular\s+access'
         ],
+        'psychiatry': [
+            r'major\s+depressive\s+disorder|\bmdd\b',
+            r'\bdepression\b|depressive\s+(?:disorder|episode|symptoms?)',
+            r'antidepressant', r'treatment[- ]resistant\s+depression|\btrd\b',
+            r'schizophrenia|schizoaffective',
+            r'\bpsychosis\b|psychotic\s+(?:disorder|symptoms?|episode|relapse)',
+            r'antipsychotic', r'\bbipolar\b', r'\bmania\b|\bmanic\b', r'mood\s+stabili[sz]er',
+            r'generali[sz]ed\s+anxiety\s+disorder|anxiety\s+disorder',
+            r'\bmadrs\b|montgomery[- ]asberg',
+            r'hamilton\s+depression|hamilton\s+rating\s+scale\s+for\s+depression|\bham-?d\b|\bhdrs\b',
+            r'hamilton\s+anxiety|\bham-?a\b',
+            r'\bpanss\b|positive\s+and\s+negative\s+syndrome\s+scale',
+            r'\bymrs\b|young\s+mania\s+rating\s+scale',
+            r'\bphq-?9\b', r'\bgad-?7\b', r'\bssri\b|\bsnri\b',
+            r'esketamine|zuranolone|brexanolone|vortioxetine|cariprazine|lurasidone|lumateperone|brexpiprazole'
+        ],
         'neurology': [
             r'alzheimer', r'dementia', r'multiple\s+sclerosis', r'\bms\b',
             r'parkinson', r'stroke', r'neurological', r'cognitive', r'relapse'
@@ -848,6 +886,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'nephrology':
         subspecialty, conf = detect_nephrology_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'psychiatry':
+        subspecialty, conf = detect_psychiatry_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)

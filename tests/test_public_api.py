@@ -13,7 +13,7 @@ EXPECTED_17 = {
     "maternal_neonatal", "tuberculosis", "hepatitis", "meningitis", "pneumonia",
     "diarrhoeal", "malnutrition", "helminths", "hypertension", "cervical_cancer",
     "diabetes", "respiratory", "cardiology", "oncology", "stroke",
-    "nephrology",
+    "nephrology", "psychiatry",
 }
 
 
