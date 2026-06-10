@@ -194,6 +194,16 @@ from .diabetes import (
     normalize_diabetes_endpoint
 )
 
+from .migraine import (
+    MIGRAINE_ENDPOINTS,
+    TREATMENT_PATTERNS as MIGRAINE_ACUTE_PATTERNS,
+    DRUG_RESISTANT_PATTERNS as MIGRAINE_PREVENTIVE_PATTERNS,
+    PREVENTION_PATTERNS as MIGRAINE_CHRONIC_PATTERNS,
+    LATENT_PATTERNS as MIGRAINE_DEVICE_PATTERNS,
+    detect_migraine_subspecialty,
+    normalize_migraine_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -463,6 +473,18 @@ SPECIALTY_REGISTRY = {
             'FVC': {'aliases': ['fvc', 'forced vital capacity']},
             'FVC_DECLINE': {'aliases': ['fvc decline', 'annual fvc decline', 'rate of fvc decline']}
         }
+    },
+    'migraine': {
+        'subspecialties': ['acute', 'preventive', 'chronic', 'device_neuromod'],
+        'detection_function': detect_migraine_subspecialty,
+        'normalizer': normalize_migraine_endpoint,
+        'endpoints': MIGRAINE_ENDPOINTS,
+        'patterns': {
+            'acute': MIGRAINE_ACUTE_PATTERNS,
+            'preventive': MIGRAINE_PREVENTIVE_PATTERNS,
+            'chronic': MIGRAINE_CHRONIC_PATTERNS,
+            'device_neuromod': MIGRAINE_DEVICE_PATTERNS
+        }
     }
 }
 
@@ -476,7 +498,7 @@ SPECIALTY_REGISTRY = {
 # detect_specialty). `infectious_disease` is the one with bare-word keywords;
 # the others are kept here too so a future generic keyword can't silently steal
 # routing from a specific specialty.
-_FALLBACK_SPECIALTIES = {'infectious_disease'}
+_FALLBACK_SPECIALTIES = {'infectious_disease', 'neurology'}
 
 
 def detect_specialty(text: str) -> Tuple[str, str, float]:
@@ -649,6 +671,16 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'\w*gliptin', r'dpp[- ]?4', r'metformin', r'sulfonylurea|sulphonylurea',
             r'pioglitazone|rosiglitazone', r'obesity', r'weight\s+loss'
         ],
+        'migraine': [
+            r'migraine',
+            r'\\btriptan|sumatriptan|rizatriptan|eletriptan|zolmitriptan',
+            r'ubrogepant|rimegepant|zavegepant|atogepant|gepant|lasmiditan',
+            r'erenumab|fremanezumab|galcanezumab|eptinezumab|anti[- ]cgrp|calcitonin\\s+gene',
+            r'monthly\\s+migraine\\s+days|\\bmmd\\b|monthly\\s+headache\\s+days|\\bmhd\\b',
+            r'2[- ]h(?:our|r)?\\s+pain\\s+(?:freedom|relief)|most\\s+bothersome\\s+symptom',
+            r'chronic\\s+migraine|episodic\\s+migraine|onabotulinumtoxin',
+            r'headache\\s+days|50\\s*%\\s+responder|midas|hit[- ]?6',
+        ],
         'neurology': [
             r'alzheimer', r'dementia', r'multiple\s+sclerosis', r'\bms\b',
             r'parkinson', r'stroke', r'neurological', r'cognitive', r'relapse'
@@ -748,6 +780,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'diabetes':
         subspecialty, conf = detect_diabetes_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'migraine':
+        subspecialty, conf = detect_migraine_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)
