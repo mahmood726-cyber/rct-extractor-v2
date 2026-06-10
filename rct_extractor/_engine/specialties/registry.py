@@ -204,6 +204,16 @@ from .respiratory import (
     normalize_respiratory_endpoint
 )
 
+from .stroke import (
+    STROKE_ENDPOINTS,
+    ACUTE_ISCHEMIC_PATTERNS as STROKE_ACUTE_ISCHEMIC_PATTERNS,
+    HEMORRHAGIC_PATTERNS as STROKE_HEMORRHAGIC_PATTERNS,
+    SECONDARY_PREVENTION_PATTERNS as STROKE_SECONDARY_PREVENTION_PATTERNS,
+    RECOVERY_PATTERNS as STROKE_RECOVERY_PATTERNS,
+    detect_stroke_subspecialty,
+    normalize_stroke_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -476,6 +486,18 @@ SPECIALTY_REGISTRY = {
             'ild': RESP_ILD_PATTERNS,
             'general_respiratory': RESP_GENERAL_PATTERNS
         }
+    },
+    'stroke': {
+        'subspecialties': ['acute_ischemic', 'hemorrhagic', 'secondary_prevention', 'recovery'],
+        'detection_function': detect_stroke_subspecialty,
+        'normalizer': normalize_stroke_endpoint,
+        'endpoints': STROKE_ENDPOINTS,
+        'patterns': {
+            'acute_ischemic': STROKE_ACUTE_ISCHEMIC_PATTERNS,
+            'hemorrhagic': STROKE_HEMORRHAGIC_PATTERNS,
+            'secondary_prevention': STROKE_SECONDARY_PREVENTION_PATTERNS,
+            'recovery': STROKE_RECOVERY_PATTERNS
+        }
     }
 }
 
@@ -662,6 +684,20 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'\w*gliptin', r'dpp[- ]?4', r'metformin', r'sulfonylurea|sulphonylurea',
             r'pioglitazone|rosiglitazone', r'obesity', r'weight\s+loss'
         ],
+        'stroke': [
+            r'\bstroke\b', r'ischa?emic\s+stroke', r'acute\s+ischa?emic\s+stroke',
+            r'ha?emorrhagic\s+stroke', r'\bnihss\b', r'nih\s+stroke\s+scale',
+            r'modified\s+rankin', r'rankin\s+scale',
+            r'thrombectomy', r'endovascular\s+(?:therapy|treatment|thrombectomy)', r'\bevt\b',
+            r'thrombolysis|thrombolytic', r'alteplase', r'tenecteplase', r'\btpa\b|\btnk\b',
+            r'intracerebral\s+ha?emorrhage', r'ha?ematoma\s+(?:expansion|growth)',
+            r'\btici\b', r'recanali[sz]ation',
+            r'large\s+vessel\s+occlusion|\blvo\b',
+            r'recurrent\s+stroke|stroke\s+recurrence',
+            r'transient\s+ischa?emic\s+attack|\btia\b',
+            r'fugl[- ]meyer', r'barthel\s+index',
+            r'stroke\s+rehabilitation|neurorehabilitation', r'secondary\s+stroke\s+prevention'
+        ],
         'neurology': [
             r'alzheimer', r'dementia', r'multiple\s+sclerosis', r'\bms\b',
             r'parkinson', r'stroke', r'neurological', r'cognitive', r'relapse'
@@ -770,6 +806,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'respiratory':
         subspecialty, conf = detect_respiratory_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'stroke':
+        subspecialty, conf = detect_stroke_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)

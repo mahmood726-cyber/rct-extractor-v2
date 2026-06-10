@@ -12,7 +12,7 @@ EXPECTED_17 = {
     "hiv", "malaria", "typhoid", "schistosomiasis", "sickle_cell", "cholera",
     "maternal_neonatal", "tuberculosis", "hepatitis", "meningitis", "pneumonia",
     "diarrhoeal", "malnutrition", "helminths", "hypertension", "cervical_cancer",
-    "diabetes", "respiratory", "cardiology", "oncology",
+    "diabetes", "respiratory", "cardiology", "oncology", "stroke",
 }
 
 
