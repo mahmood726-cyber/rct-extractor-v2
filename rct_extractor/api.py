@@ -40,6 +40,7 @@ SPECIALTIES: Tuple[str, ...] = (
     "diabetes",
     "respiratory",
     "cardiology",
+    "oncology",
 )
 
 __all__ = [
@@ -91,7 +92,13 @@ def _subspecialty_for(specialty: str, text: str) -> Tuple[Optional[str], Optiona
     if fn is None:
         return None, None
     try:
-        sub, conf = fn(text)
+        result = fn(text)
+        # Most detectors return (subspecialty, confidence); oncology returns
+        # (subspecialty, subtype, confidence). Tolerate both shapes.
+        if isinstance(result, tuple) and len(result) == 3:
+            sub, _subtype, conf = result
+        else:
+            sub, conf = result
         return sub, conf
     except Exception:
         return None, None
