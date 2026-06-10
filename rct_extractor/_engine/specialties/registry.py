@@ -255,6 +255,16 @@ from .gastroenterology import (
     normalize_gastroenterology_endpoint
 )
 
+from .dermatology import (
+    DERMATOLOGY_ENDPOINTS,
+    PSORIASIS_PATTERNS as DERM_PSORIASIS_PATTERNS,
+    ATOPIC_DERMATITIS_PATTERNS as DERM_ATOPIC_DERMATITIS_PATTERNS,
+    ACNE_PATTERNS as DERM_ACNE_PATTERNS,
+    HIDRADENITIS_PATTERNS as DERM_HIDRADENITIS_PATTERNS,
+    detect_dermatology_subspecialty,
+    normalize_dermatology_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -529,6 +539,18 @@ SPECIALTY_REGISTRY = {
             'hpylori': GI_HPYLORI_PATTERNS,
             'gerd': GI_GERD_PATTERNS,
             'mash': GI_MASH_PATTERNS
+        }
+    },
+    'dermatology': {
+        'subspecialties': ['psoriasis', 'atopic_dermatitis', 'acne', 'hidradenitis'],
+        'detection_function': detect_dermatology_subspecialty,
+        'normalizer': normalize_dermatology_endpoint,
+        'endpoints': DERMATOLOGY_ENDPOINTS,
+        'patterns': {
+            'psoriasis': DERM_PSORIASIS_PATTERNS,
+            'atopic_dermatitis': DERM_ATOPIC_DERMATITIS_PATTERNS,
+            'acne': DERM_ACNE_PATTERNS,
+            'hidradenitis': DERM_HIDRADENITIS_PATTERNS
         }
     },
     'respiratory': {
@@ -836,6 +858,15 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'nonalcoholic\s+fatty\s+liver(?:\s+disease)?|non[- ]alcoholic\s+fatty\s+liver|\bnafld\b|\bmafld\b|\bmasld\b',
             r'mri[- ]?pdff'
         ],
+        'dermatology': [
+            r'plaque\s+psoriasis', r'\bpsoriasis\b', r'psoriasis\s+vulgaris',
+            r'\bpasi\b', r'psoriasis\s+area\s+and\s+severity\s+index',
+            r'atopic\s+dermatitis', r'\beczema\b', r'atopic\s+eczema',
+            r'\beasi\b', r'easi\s*\d', r'eczema\s+area\s+and\s+severity\s+index',
+            r'\bscorad\b', r'viga[- ]ad', r'pruritus\s+nrs', r'itch\s+nrs',
+            r'peak\s+pruritus', r'acne\s+vulgaris', r'\bacne\b',
+            r'hidradenitis\s+suppurativa', r'\bhiscr\b', r'hi-scr'
+        ],
         'respiratory': [
             r'chronic\s+obstructive\s+pulmonary\s+disease', r'\bcopd\b', r'\baecopd\b',
             r'\basthma\b', r'asthmatic', r'pulmonary\s+fibrosis', r'\bipf\b',
@@ -951,6 +982,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'gastroenterology':
         subspecialty, conf = detect_gastroenterology_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'dermatology':
+        subspecialty, conf = detect_dermatology_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)
