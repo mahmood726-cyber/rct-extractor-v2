@@ -4,11 +4,12 @@
 
 ## TL;DR (honest)
 
-- On **real PDFs** (full text parsed by the shipped PDF pipeline), exact correct extraction (right effect type **and** point **and** both CI bounds, within tolerance) rose from **94%** to **98%** of 1869 gold effects.
-- Misses (gold effect not found at all) fell from 3% to 1%.
-- **15 of 17 specialties now reach ≥95% correct** on real-PDF pdf_raw. The 2 below — cervical_cancer, meningitis — are bounded by causes that are NOT pattern gaps (observational/propensity-score estimates the extractor deliberately declines, glyph-corrupted CI separators, and multi-column type/value splits); see §5 for the per-paper reason.
-- **The PDF text layer was not the main bottleneck**: born-digital PMC PDFs parse cleanly (PyMuPDF), so PDF-text accuracy tracks abstract accuracy closely. The v6.5 gains came from one *generalized* CI tail (a single bounded glue family covering whitespace-only / colon / per-unit / descriptive-phrase separators and a bracket on either side of the CI, uniform across OR/RR/HR/IRR and the spelled-out forms), plus Latin-ligature and `=`-glyph repairs and a line-number splice (§4).
-- All **1368** existing extractor tests still pass (no regressions); the new patterns are bounded (no catastrophic backtracking — worst-case extract on the largest 1.3 MB PDF rose only ~2%), and abstract-surface precision is essentially unchanged (+7 extra extractions across 563 abstracts).
+- On **real PDFs** (full text parsed by the shipped PDF pipeline), exact correct extraction (right effect type **and** point **and** both CI bounds, within tolerance) rose from **98%** to **99%** of 1869 gold effects.
+- Misses (gold effect not found at all) fell from 1% to 1%.
+- **All 17 of 17 specialties now reach ≥95% correct** on real-PDF pdf_raw. The two that previously lagged — cervical_cancer 94%→98%; meningitis 91%→97% — cleared the bar this pass; their few remaining residuals are NOT pattern gaps (observational estimates the extractor declines by design, a body value that differs from the abstract, page-break type/value splits); see §5 for the per-paper reason.
+- The same dedup-ordering fix is a **broad** win, not a two-specialty patch: 9 specialties improved with **zero** regressions — also diabetes 97%→99%, hepatitis 98%→100%, hiv 96%→98%, hypertension 98%→99%, maternal_neonatal 98%→98%, schistosomiasis 97%→99%, tuberculosis 96%→98%.
+- **The PDF text layer was not the main bottleneck**: born-digital PMC PDFs parse cleanly (PyMuPDF), so PDF-text accuracy tracks abstract accuracy closely. The v6.6 gains came from a single *generalizable* dedup-ordering fix (a suppressed negative-context occurrence no longer poisons an identical clean occurrence elsewhere in the body) plus a control-character→dash glyph repair (§4) — no new effect patterns were added.
+- All **1654** existing extractor tests still pass (no regressions); the dedup fix only ever *adds* a previously-suppressed clean extraction and the glyph repair is scoped strictly to digit-<control>-digit, so no real CI bound is altered (verified: no catastrophic backtracking — the v6.6 changes are fixed-cost text substitutions and a set-ordering swap).
 
 ## 1. Dataset (traceable)
 
@@ -59,45 +60,51 @@ Three input surfaces: **abstract** (clean text the gold came from — isolates e
 
 | surface | gold | correct | point_only | missed | type (matched) | CI lo/hi (matched) |
 |---|---|---|---|---|---|---|
-| abstract | 1869 | 1738 (93%) | 33 (2%) | 98 (5%) | 100% | 99%/98% |
-| pdf_raw | 1869 | 1765 (94%) | 45 (2%) | 59 (3%) | 100% | 98%/98% |
-| pdf_pp | 1869 | 1770 (95%) | 42 (2%) | 57 (3%) | 100% | 98%/98% |
+| abstract | 1869 | 1832 (98%) | 4 (0%) | 33 (2%) | 100% | 100%/100% |
+| pdf_raw | 1869 | 1823 (98%) | 21 (1%) | 25 (1%) | 100% | 99%/99% |
+| pdf_pp | 1869 | 1823 (98%) | 21 (1%) | 25 (1%) | 100% | 99%/99% |
 
 ### AFTER improvements
 
 | surface | gold | correct | point_only | missed | type (matched) | CI lo/hi (matched) |
 |---|---|---|---|---|---|---|
 | abstract | 1869 | 1832 (98%) | 4 (0%) | 33 (2%) | 100% | 100%/100% |
-| pdf_raw | 1869 | 1823 (98%) | 21 (1%) | 25 (1%) | 100% | 99%/99% |
-| pdf_pp | 1869 | 1823 (98%) | 21 (1%) | 25 (1%) | 100% | 99%/99% |
+| pdf_raw | 1869 | 1848 (99%) | 4 (0%) | 17 (1%) | 100% | 100%/100% |
+| pdf_pp | 1869 | 1848 (99%) | 4 (0%) | 17 (1%) | 100% | 100%/100% |
 
 ### Per-specialty (pdf_raw, AFTER)
 
 | specialty | papers | gold | correct | missed |
 |---|---|---|---|---|
-| cervical_cancer | 38 | 126 | 119 (94%) | 4 (3%) |
+| cervical_cancer | 38 | 126 | 123 (98%) | 2 (2%) |
 | cholera | 16 | 51 | 50 (98%) | 1 (2%) |
-| diabetes | 38 | 100 | 97 (97%) | 0 (0%) |
+| diabetes | 38 | 100 | 99 (99%) | 0 (0%) |
 | diarrhoeal | 40 | 146 | 146 (100%) | 0 (0%) |
 | helminths | 43 | 134 | 133 (99%) | 1 (1%) |
-| hepatitis | 38 | 153 | 150 (98%) | 2 (1%) |
-| hiv | 27 | 52 | 50 (96%) | 1 (2%) |
-| hypertension | 38 | 104 | 102 (98%) | 1 (1%) |
+| hepatitis | 38 | 153 | 153 (100%) | 0 (0%) |
+| hiv | 27 | 52 | 51 (98%) | 0 (0%) |
+| hypertension | 38 | 104 | 103 (99%) | 1 (1%) |
 | malaria | 32 | 93 | 92 (99%) | 1 (1%) |
 | malnutrition | 38 | 100 | 100 (100%) | 0 (0%) |
-| maternal_neonatal | 30 | 130 | 127 (98%) | 3 (2%) |
-| meningitis | 39 | 156 | 142 (91%) | 4 (3%) |
+| maternal_neonatal | 30 | 130 | 128 (98%) | 2 (2%) |
+| meningitis | 39 | 156 | 151 (97%) | 4 (3%) |
 | pneumonia | 36 | 100 | 100 (100%) | 0 (0%) |
-| schistosomiasis | 23 | 67 | 65 (97%) | 1 (1%) |
+| schistosomiasis | 23 | 67 | 66 (99%) | 1 (1%) |
 | sickle_cell | 37 | 186 | 185 (99%) | 1 (1%) |
-| tuberculosis | 41 | 143 | 137 (96%) | 5 (3%) |
+| tuberculosis | 41 | 143 | 140 (98%) | 3 (2%) |
 | typhoid | 9 | 28 | 28 (100%) | 0 (0%) |
 
 ## 4. What was fixed (only changes proven to help; suite stayed green)
 
 All fixes are in `rct_extractor/_engine/core/enhanced_extractor_v3.py` and therefore benefit every one of the 16 non-malaria specialties that use the core extractor (malaria already had an augmented path).
 
-**This pass (v6.5) — generalize the CI tail + PDF-glyph robustness.** Enumerating all 104 non-correct gold tuples from the v6.4 state, classifying each by root cause, and fixing only the *recurring, generalizable* causes (never a specific value or PMCID). The before→after delta below isolates exactly these v6.5 additions:
+**This pass (v6.6) — dedup-ordering fix + control-character dash repair.** Two generalizable root causes, found by classifying every non-correct `cervical_cancer` and `meningitis` tuple from the v6.5 state. Neither change adds an effect pattern or touches a specific value/PMCID:
+1. **Negative-context dedup poisoning (the dominant cause).** The first-pass deduplicator recorded a `(type, value, CI)` key in its `seen` set *before* the negative-context filter ran. So when the same effect appeared twice in a body — once inside a negative context (a GRADE / summary-of-findings table cell next to `observational data` or `case-control study`) and once in a clean results sentence — the suppressed occurrence recorded the key and `continue`d, which then silently dropped the *identical clean* occurrence as a "duplicate", and a CI-less value-only match leaked in its place (classified `point_only`). Moving `seen.add(key)` to run only **after** the filter keeps a suppressed twin from poisoning a legitimate one. This recovered the Cochrane-review rate ratios (`PMC7169657`, `PMC8607336`), the per-day odds ratios (`PMC12267014`), and 4 of the 7 cervical residuals — **without** relaxing the non-RCT filter: every occurrence that actually sits in negative context is still individually suppressed.
+2. **Control-character → dash glyph repair.** Some born-digital PDF fonts map the en-dash glyph between CI bounds onto a C0 control character (observed `U+0001`: `95% CI 0.45\x011.35`), which split the interval and dropped the whole CI. A control char wedged strictly between two digits is never legitimate text, so it is restored to a dash — scoped to digit-`<control>`-digit (excluding tab/newline/CR), so no real CI bound is ever altered. Fixed `PMC8080028` (×3).
+
+Both changes are O(n) text substitutions / a set-ordering swap — no new regex quantifiers, hence no catastrophic-backtracking surface (the v6.5 lesson). The full suite stayed green.
+
+**Earlier pass (v6.5) — generalize the CI tail + PDF-glyph robustness.** Enumerating all 104 non-correct gold tuples from the v6.4 state, classifying each by root cause, and fixing only the *recurring, generalizable* causes (never a specific value or PMCID). The before→after delta below isolates exactly these v6.5 additions:
 1. **One generalized CI tail** appended after the point estimate, replacing the previously case-by-case separators. It is built from bounded sub-pieces (each forbids the `,`/`;`/`.` that terminates it, so there is **no** catastrophic backtracking) and the CI keyword always anchors on the literal `95`, keeping whitespace-only separation precise. One tail, uniform across OR/RR/HR/IRR and the spelled-out names, now covers:
    - `RR 1.26 95% CI 1.12–1.42`  (whitespace-only separator)
    - `odds ratio = 2.25: 95% CI: 1.78–2.83`  (colon after the point)
@@ -119,57 +126,32 @@ All fixes are in `rct_extractor/_engine/core/enhanced_extractor_v3.py` and there
 
 - `PMC11542398` (malaria) missed: gold OR 0.5 CI[0.04,5.79] — quote: "odds ratio comparing 20 vs 10 mg/kg was 0.50 (95% CI 0.04, 5.79"
 - `PMC10919617` (hiv) point_only: gold IRR 1.0 CI[0.94,1.06] — quote: "rate ratio aRR: 1.00; 95% CI, 0.94–1.06"
-- `PMC11979587` (hiv) missed: gold HR 3.5 CI[1.3,9.4] — quote: "HR, 3.5 [95% CI, 1.3–9.4"
-- `PMC11490045` (tuberculosis) point_only: gold OR 4.0 CI[3.0,6.0] — quote: "OR 4, 95% CI, 3–6"
-- `PMC12004605` (tuberculosis) missed: gold OR 0.49 CI[0.3,0.82] — quote: "OR 0.49, 95% CI 0.30–0.82"
 - `PMC12004605` (tuberculosis) missed: gold OR 0.43 CI[0.21,0.91] — quote: "OR 0.43, 95% CI 0.21–0.91"
 - `PMC12004605` (tuberculosis) missed: gold OR 0.52 CI[0.3,0.91] — quote: "OR 0.52, 95% CI 0.30–0.91"
 - `PMC12004605` (tuberculosis) missed: gold OR 0.34 CI[0.19,0.62] — quote: "OR 0.34, 95% CI 0.19–0.62"
-- `PMC12004605` (tuberculosis) missed: gold OR 0.49 CI[0.28,0.85] — quote: "OR 0.49, 95% CI 0.28–0.85"
-- `PMC13026359` (hepatitis) missed: gold OR 3.93 CI[2.29,6.77] — quote: "OR = 3.93, 95% CI: 2.29–6.77"
-- `PMC13026359` (hepatitis) point_only: gold OR 4.12 CI[2.24,7.56] — quote: "OR = 4.12, 95% CI: 2.24–7.56"
-- `PMC13026359` (hepatitis) missed: gold OR 4.13 CI[1.69,10.09] — quote: "OR = 4.13, 95% CI: 1.69–10.09"
 - `PMC13053319` (hypertension) missed: gold RR 55.0 CI[7.65,395.32] — quote: "RR 55.0, 95% CI 7.65-395.32"
-- `PMC13199698` (hypertension) point_only: gold HR 0.56 CI[0.36,0.9] — quote: "HR = 0.56, 95% CI: 0.36–0.90"
-- `PMC13126886` (diabetes) point_only: gold OR 0.53 CI[0.29,0.97] — quote: "aOR 0.53 [95%CI 0.29–0.97"
 - `PMC13126886` (diabetes) point_only: gold OR 0.31 CI[0.15,0.61] — quote: "OR 0.31 [95%CI 0.15–0.61"
-- `PMC13111083` (diabetes) point_only: gold HR 0.32 CI[0.16,0.63] — quote: "HR 0.32, 95% CI 0.16–0.63"
 - `PMC13197901` (maternal_neonatal) missed: gold OR 2.36 CI[1.09,5.12] — quote: "OR T3 compared with T1 : 2.36; 95% CI: 1.09, 5.12"
 - `PMC13125424` (maternal_neonatal) missed: gold OR 7.05 CI[4.22,11.78] — quote: "OR 7.05, 95% CI: 4.22–11.78"
-- `PMC13125424` (maternal_neonatal) missed: gold OR 1.69 CI[1.06,2.71] — quote: "OR 1.69, 95% CI: 1.06–2.71"
 - `PMC6402932` (cholera) missed: gold RR 0.82 CI[0.69,0.98] — quote: "risk ratio adjusted : 0.82; 95% CI: 0.69–0.98"
 - `PMC6312212` (meningitis) missed: gold HR 1.09 CI[1.04,1.13] — quote: "hazard ratio = 1.09, 95%CI, 1.04–1.13"
 - `PMC7015757` (meningitis) missed: gold RR 0.53 CI[0.2,1.39] — quote: "RR women:men 0.53, 95% CI 0.20–1.39"
-- `PMC7169657` (meningitis) point_only: gold IRR 0.9 CI[0.5,1.61] — quote: "rate ratio 0.90, 95% CI 0.50 to 1.61"
-- `PMC7169657` (meningitis) point_only: gold IRR 0.93 CI[0.85,1.01] — quote: "rate ratio 0.93, 95% CI 0.85 to 1.01"
 - `PMC7291520` (meningitis) missed: gold RR 7.64 CI[2.96,19.73] — quote: "RR: 7.64, 95%CI: 2.96–19.73"
-- `PMC8080028` (meningitis) point_only: gold HR 0.78 CI[0.45,1.35] — quote: "hazard ratio 0.78 (95% CI 0.45–1.35"
-- `PMC8080028` (meningitis) point_only: gold HR 0.86 CI[0.6,1.24] — quote: "hazard ratio 0.86 (95% CI 0.60–1.24"
-- `PMC8080028` (meningitis) point_only: gold HR 0.51 CI[0.29,0.87] — quote: "hazard ratio of 0.51 (95% CI 0.29–0.87"
-- `PMC8607336` (meningitis) point_only: gold IRR 0.9 CI[0.5,1.61] — quote: "rate ratio 0.90, 95% CI 0.50 to 1.61"
-- `PMC8607336` (meningitis) point_only: gold IRR 0.93 CI[0.85,1.01] — quote: "rate ratio 0.93, 95% CI 0.85 to 1.01"
 - `PMC9307099` (meningitis) point_only: gold HR 1.87 CI[1.26,2.79] — quote: "hazard ratio, 1.87 [95% confidence interval, 1.26–2.79"
 - `PMC12230414` (meningitis) missed: gold RR 0.98 CI[0.2,4.82] — quote: "aRR 0.98 [95% CI 0.20–4.82"
-- `PMC12267014` (meningitis) point_only: gold OR 1.13 CI[1.04,1.22] — quote: "OR = 1.13 per day; 95%CI: 1.04–1.22"
-- `PMC12267014` (meningitis) point_only: gold OR 1.02 CI[1.0,1.03] — quote: "OR = 1.02 per day; 95%CI: 1.00–1.03"
-- `PMC4730633` (schistosomiasis) point_only: gold OR 7.5 CI[1.1,49.5] — quote: "aOR = 7.5 (95 % CI = 1.1-49.5"
 - `PMC7112237` (schistosomiasis) missed: gold IRR 72.0 CI[55.0,83.0] — quote: "IRR was 72% (95% CI 55–83"
 - `PMC9335109` (sickle_cell) missed: gold OR 0.13 CI[0.04,0.45] — quote: "OR=0.13, 95% CI: 0.04-0.45"
 - `PMC10943894` (helminths) missed: gold OR 2.704 CI[1.27,5.749] — quote: "OR 0: > 10 mfAC 2.704, 95% CI 1.27–5.749"
 - `PMC12155710` (cervical_cancer) missed: gold OR 0.75 CI[0.38,1.46] — quote: "OR 0.75; 95% CI 0.38–1.46"
 - `PMC12155710` (cervical_cancer) missed: gold OR 0.73 CI[0.44,1.2] — quote: "OR 0.73; 95% CI 0.44–1.20"
-- `PMC12155710` (cervical_cancer) missed: gold OR 0.97 CI[0.52,1.8] — quote: "OR 0.97; 95% CI 0.52–1.80"
-- `PMC12155710` (cervical_cancer) point_only: gold OR 1.22 CI[0.36,4.18] — quote: "OR 1.22; 95% CI 0.36–4.18"
-- `PMC12155710` (cervical_cancer) missed: gold OR 0.78 CI[0.42,1.43] — quote: "OR 0.78; 95% CI 0.42–1.43"
 - `PMC12640735` (cervical_cancer) point_only: gold RR 0.2 CI[0.09,0.44] — quote: "RR 0.20, 95% CI 0.09 to 0.44"
-- `PMC12642371` (cervical_cancer) point_only: gold RR 0.35 CI[0.18,0.65] — quote: "RR = 0.35, 95% CI: 0.18–0.65"
 
-**Why the two specialties still below 95% cannot honestly reach it.** Each residual was opened in the real PDF and classified; none is a generalizable pattern gap, and every one of these gold *sentences* already parses in isolation. Forcing them would mean special-casing PMCIDs (benchmark gaming) or degrading the extractor's deliberate filtering of non-RCT estimates.
+**The two specialties that previously lagged now clear 95%; their few remaining residuals are honestly non-fixable.** Each was opened in the real PDF and classified. None is a generalizable pattern gap; forcing them would mean special-casing PMCIDs (benchmark gaming) or relaxing the extractor's deliberate filtering of non-RCT estimates (which adds false positives corpus-wide).
 
-- **cervical_cancer (119/126, 94.4%)** — `PMC12155710` (×5) are pooled estimates from a meta-analysis of **retrospective cohorts**; the extractor suppresses them via the `retrospective cohort` negative-context filter (by design — these are not RCT effects). `PMC12640735` is a pooled cohort+case-control estimate whose nearby adjusted **HR** is matched instead. `PMC12642371` prints the CI in a forest table **without the `95% CI` keyword** (`RR = 0.35 (0.18−0.65)`); the extractor requires the keyword for precision. (The `=`→`¼` glyph papers `PMC13036839`/`PMC12326121` **were** fixed this pass.)
-- **meningitis (142/156, 91.0%)** — dominated by two GBS/meningitis **meta-analyses of observational studies** (`PMC7169657`, `PMC8607336`: pooled rate ratios whose point and CI sit in separate GRADE-table cells; `PMC7291520`: `observational data` negative-context) and by genuine PDF-layer corruption: `PMC8080028` (×3) has its en-dash extracted as the control character `\x01` (`0.45\x011.35`); `PMC6312212` and `PMC12230414` split the type label from its value across a **column break**; `PMC12267014` (×2) is a `Propensity score` observational adjustment (suppressed by design); `PMC9307099` reports a *different* adjusted HR in the body (`aHR 1.88`) than the abstract's `1.87`; `PMC7015757` uses a subgroup notation (`RR women:men 0.53`).
+- **cervical_cancer (123/126, 98%)** — all residuals are observational estimates the extractor declines by design: `PMC12155710` (×2) are pooled estimates from a meta-analysis of **retrospective cohorts** (`retrospective cohort` negative-context — every occurrence of these two sits next to that marker); `PMC12640735` is a pooled **cohort + case-control** cervical-cancer incidence estimate (`case-control study` negative-context) whose nearby adjusted **HR** is matched instead. None is an RCT effect. (The v6.6 dedup-ordering fix recovered the other 5 former cervical residuals — `PMC12155710` ×3 clean restatements and `PMC12642371`'s pooled RR — which had been dropped as duplicates of a negative-context twin.)
+- **meningitis (151/156, 97%)** — the residuals are: `PMC7291520` (a pooled **observational-data** estimate, `observational data` negative-context, suppressed by design); `PMC9307099` (the body reports a *different* adjusted HR — `aHR 1.88 [1.33–2.66]` — than the abstract's `1.87 [1.26–2.79]`; the extractor correctly reads the body, so this can never match an abstract-sourced gold); `PMC7015757` (a ratio-of-ratios subgroup notation, `RR women:men 0.53`); and `PMC6312212` / `PMC12230414` (genuine PDF-layer corruption — the type label is split from its value across a page-header / footer **column break**). (The v6.6 control-char repair fixed `PMC8080028` ×3 and the dedup-ordering fix fixed the `PMC7169657` / `PMC8607336` Cochrane rate ratios and the `PMC12267014` per-day odds ratios.)
 
-These are body-table-only / glyph-corrupted / observational-by-design cases — an honest 94.4% and 91.0% beat a number manufactured by relaxing the non-RCT filter (which would add false positives corpus-wide) or by hard-coding these papers.
+These are observational-by-design / body-value-differs-from-abstract / glyph-corrupted / subgroup-notation cases. An honest 98% and 97% — both now ≥95% — beat any number manufactured by relaxing the non-RCT filter or hard-coding papers.
 
 **Not covered by this evaluation (measure before claiming):**
 

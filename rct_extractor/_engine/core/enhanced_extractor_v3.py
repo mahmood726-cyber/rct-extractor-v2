@@ -1958,6 +1958,15 @@ class EnhancedExtractor:
         for old, new in self.NORMALIZATIONS.items():
             text = text.replace(old, new)
 
+        # v6.6: some born-digital PDF fonts map the en-dash glyph (between CI
+        # bounds) onto a C0 control character — observed U+0001 in PMC8080028
+        # ("95% CI 0.45\x011.35"), which split the interval and dropped the CI.
+        # A control char wedged between two digits is never legitimate text, so
+        # restore it to a dash. Scoped strictly to digit-<control>-digit (and
+        # excluding tab/newline/CR) so stray control chars elsewhere are untouched
+        # and no real CI bound is ever altered.
+        text = re.sub(r'(?<=\d)[\x00-\x08\x0b\x0c\x0e-\x1f](?=\d)', '-', text)
+
         # v5.4: Convert comma before CI label to semicolon BEFORE European decimal conversion
         # "HR=0.468,95%CI" -> "HR=0.468; 95%CI" (prevents "8,9" -> "8.9" corruption)
         # PMC12608838: "HR=0.468,95%CI,0.320-0.683"
@@ -2204,11 +2213,21 @@ class EnhancedExtractor:
                         key = (effect_type.value, round(value, 3), round(ci_low, 3), round(ci_high, 3))
                         if key in seen:
                             continue
-                        seen.add(key)
 
                         # v4.3.1: Check for negative context (skip if in protocol/methods/review)
+                        # v6.6: run the negative-context check BEFORE marking the key as
+                        # seen. Otherwise an occurrence that happens to sit in negative
+                        # context (e.g. a GRADE / summary-of-findings table cell next to
+                        # "observational data") records the (type, value, CI) key and then
+                        # `continue`s — which silently suppresses an IDENTICAL but CLEAN
+                        # occurrence of the same effect later in the body, and a CI-less
+                        # value-only match then leaks in its place (seen in Cochrane-style
+                        # reviews: PMC7169657/PMC8607336 rate ratios, PMC12267014 per-day
+                        # ORs). Committing to `seen` only after the filter keeps dedup from
+                        # being poisoned by a suppressed twin.
                         if self._has_negative_context(text, match.start()):
                             continue
+                        seen.add(key)
 
                         # Track this value for value-only deduplication
                         seen_values.add((effect_type.value, round(value, 3)))

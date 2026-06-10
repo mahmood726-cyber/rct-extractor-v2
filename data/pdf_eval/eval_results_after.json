@@ -136,7 +136,7 @@
         "method": "pymupdf",
         "num_pages": 17,
         "chars": 55870,
-        "secs": 0.11
+        "secs": 0.13
       },
       "n_gold": 4,
       "surfaces": {
@@ -560,7 +560,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 58207,
-        "secs": 0.18
+        "secs": 0.21
       },
       "n_gold": 1,
       "surfaces": {
@@ -682,7 +682,7 @@
         "method": "pymupdf",
         "num_pages": 9,
         "chars": 54579,
-        "secs": 0.1
+        "secs": 0.12
       },
       "n_gold": 2,
       "surfaces": {
@@ -864,7 +864,7 @@
         "method": "pymupdf",
         "num_pages": 89,
         "chars": 255801,
-        "secs": 0.51
+        "secs": 0.6
       },
       "n_gold": 7,
       "surfaces": {
@@ -1346,7 +1346,7 @@
         "method": "pymupdf",
         "num_pages": 9,
         "chars": 45459,
-        "secs": 0.13
+        "secs": 0.15
       },
       "n_gold": 1,
       "surfaces": {
@@ -1468,7 +1468,7 @@
         "method": "pymupdf",
         "num_pages": 37,
         "chars": 112586,
-        "secs": 0.24
+        "secs": 0.29
       },
       "n_gold": 4,
       "surfaces": {
@@ -1770,7 +1770,7 @@
         "method": "pymupdf",
         "num_pages": 8,
         "chars": 31068,
-        "secs": 0.08
+        "secs": 2.05
       },
       "n_gold": 2,
       "surfaces": {
@@ -1952,7 +1952,7 @@
         "method": "pymupdf",
         "num_pages": 9,
         "chars": 41096,
-        "secs": 0.11
+        "secs": 0.15
       },
       "n_gold": 2,
       "surfaces": {
@@ -2134,7 +2134,7 @@
         "method": "pymupdf",
         "num_pages": 70,
         "chars": 206122,
-        "secs": 0.42
+        "secs": 0.58
       },
       "n_gold": 7,
       "surfaces": {
@@ -2616,7 +2616,7 @@
         "method": "pymupdf",
         "num_pages": 13,
         "chars": 51947,
-        "secs": 0.08
+        "secs": 0.11
       },
       "n_gold": 1,
       "surfaces": {
@@ -2738,7 +2738,7 @@
         "method": "pymupdf",
         "num_pages": 7,
         "chars": 32229,
-        "secs": 0.06
+        "secs": 0.09
       },
       "n_gold": 2,
       "surfaces": {
@@ -2920,7 +2920,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 44381,
-        "secs": 0.13
+        "secs": 0.19
       },
       "n_gold": 1,
       "surfaces": {
@@ -3042,7 +3042,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 56882,
-        "secs": 0.15
+        "secs": 0.23
       },
       "n_gold": 3,
       "surfaces": {
@@ -3284,7 +3284,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 45578,
-        "secs": 0.14
+        "secs": 0.17
       },
       "n_gold": 1,
       "surfaces": {
@@ -3406,7 +3406,7 @@
         "method": "pymupdf",
         "num_pages": 18,
         "chars": 57071,
-        "secs": 0.12
+        "secs": 0.15
       },
       "n_gold": 1,
       "surfaces": {
@@ -3528,7 +3528,7 @@
         "method": "pymupdf",
         "num_pages": 20,
         "chars": 75218,
-        "secs": 0.14
+        "secs": 0.17
       },
       "n_gold": 3,
       "surfaces": {
@@ -3770,7 +3770,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 63199,
-        "secs": 0.16
+        "secs": 0.2
       },
       "n_gold": 4,
       "surfaces": {
@@ -4072,7 +4072,7 @@
         "method": "pymupdf",
         "num_pages": 104,
         "chars": 341711,
-        "secs": 0.73
+        "secs": 0.78
       },
       "n_gold": 9,
       "surfaces": {
@@ -4674,7 +4674,7 @@
         "method": "pymupdf",
         "num_pages": 85,
         "chars": 230455,
-        "secs": 0.5
+        "secs": 0.58
       },
       "n_gold": 4,
       "surfaces": {
@@ -4976,7 +4976,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 80390,
-        "secs": 0.17
+        "secs": 0.24
       },
       "n_gold": 1,
       "surfaces": {
@@ -5098,7 +5098,7 @@
         "method": "pymupdf",
         "num_pages": 13,
         "chars": 69306,
-        "secs": 0.21
+        "secs": 0.25
       },
       "n_gold": 1,
       "surfaces": {
@@ -5220,7 +5220,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 51574,
-        "secs": 0.18
+        "secs": 0.2
       },
       "n_gold": 2,
       "surfaces": {
@@ -5402,7 +5402,7 @@
         "method": "pymupdf",
         "num_pages": 85,
         "chars": 289816,
-        "secs": 0.59
+        "secs": 0.63
       },
       "n_gold": 6,
       "surfaces": {
@@ -5824,7 +5824,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 46311,
-        "secs": 0.14
+        "secs": 0.16
       },
       "n_gold": 1,
       "surfaces": {
@@ -5946,7 +5946,7 @@
         "method": "pymupdf",
         "num_pages": 19,
         "chars": 63959,
-        "secs": 0.14
+        "secs": 0.16
       },
       "n_gold": 6,
       "surfaces": {
@@ -6368,7 +6368,7 @@
         "method": "pymupdf",
         "num_pages": 44,
         "chars": 165379,
-        "secs": 0.33
+        "secs": 0.38
       },
       "n_gold": 3,
       "surfaces": {
@@ -6610,7 +6610,7 @@
         "method": "pymupdf",
         "num_pages": 9,
         "chars": 34728,
-        "secs": 0.08
+        "secs": 0.1
       },
       "n_gold": 4,
       "surfaces": {
@@ -6912,7 +6912,7 @@
         "method": "pymupdf",
         "num_pages": 13,
         "chars": 51676,
-        "secs": 0.42
+        "secs": 0.46
       },
       "n_gold": 5,
       "surfaces": {
@@ -7274,7 +7274,7 @@
         "method": "pymupdf",
         "num_pages": 15,
         "chars": 67766,
-        "secs": 0.12
+        "secs": 0.14
       },
       "n_gold": 1,
       "surfaces": {
@@ -7378,7 +7378,7 @@
         "method": "pymupdf",
         "num_pages": 13,
         "chars": 57818,
-        "secs": 0.27
+        "secs": 0.31
       },
       "n_gold": 2,
       "surfaces": {
@@ -7802,7 +7802,7 @@
         "method": "pymupdf",
         "num_pages": 8,
         "chars": 36875,
-        "secs": 0.08
+        "secs": 0.11
       },
       "n_gold": 1,
       "surfaces": {
@@ -7924,7 +7924,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 54295,
-        "secs": 0.11
+        "secs": 0.12
       },
       "n_gold": 7,
       "surfaces": {
@@ -8406,7 +8406,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 60194,
-        "secs": 0.14
+        "secs": 0.16
       },
       "n_gold": 2,
       "surfaces": {
@@ -8588,7 +8588,7 @@
         "method": "pymupdf",
         "num_pages": 16,
         "chars": 60670,
-        "secs": 0.2
+        "secs": 0.21
       },
       "n_gold": 1,
       "surfaces": {
@@ -8704,7 +8704,7 @@
         "method": "pymupdf",
         "num_pages": 320,
         "chars": 851780,
-        "secs": 1.86
+        "secs": 2.3
       },
       "n_gold": 1,
       "surfaces": {
@@ -8826,7 +8826,7 @@
         "method": "pymupdf",
         "num_pages": 15,
         "chars": 74971,
-        "secs": 0.21
+        "secs": 0.27
       },
       "n_gold": 3,
       "surfaces": {
@@ -9068,7 +9068,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 54600,
-        "secs": 0.16
+        "secs": 0.2
       },
       "n_gold": 1,
       "surfaces": {
@@ -9190,7 +9190,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 63137,
-        "secs": 0.18
+        "secs": 0.23
       },
       "n_gold": 1,
       "surfaces": {
@@ -9312,7 +9312,7 @@
         "method": "pymupdf",
         "num_pages": 13,
         "chars": 40355,
-        "secs": 0.09
+        "secs": 0.11
       },
       "n_gold": 1,
       "surfaces": {
@@ -9434,7 +9434,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 54989,
-        "secs": 0.11
+        "secs": 0.13
       },
       "n_gold": 2,
       "surfaces": {
@@ -9616,7 +9616,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 42918,
-        "secs": 0.11
+        "secs": 0.13
       },
       "n_gold": 1,
       "surfaces": {
@@ -9738,7 +9738,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 45411,
-        "secs": 0.1
+        "secs": 0.11
       },
       "n_gold": 1,
       "surfaces": {
@@ -9860,7 +9860,7 @@
         "method": "pymupdf",
         "num_pages": 8,
         "chars": 38724,
-        "secs": 0.17
+        "secs": 0.2
       },
       "n_gold": 1,
       "surfaces": {
@@ -9982,7 +9982,7 @@
         "method": "pymupdf",
         "num_pages": 23,
         "chars": 59025,
-        "secs": 0.12
+        "secs": 0.14
       },
       "n_gold": 1,
       "surfaces": {
@@ -10104,7 +10104,7 @@
         "method": "pymupdf",
         "num_pages": 13,
         "chars": 63808,
-        "secs": 0.11
+        "secs": 0.14
       },
       "n_gold": 2,
       "surfaces": {
@@ -10648,7 +10648,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 29956,
-        "secs": 0.06
+        "secs": 0.07
       },
       "n_gold": 3,
       "surfaces": {
@@ -10890,7 +10890,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 50245,
-        "secs": 0.1
+        "secs": 0.11
       },
       "n_gold": 1,
       "surfaces": {
@@ -10931,7 +10931,7 @@
           "n_extra": 2
         },
         "pdf_raw": {
-          "n_extracted": 12,
+          "n_extracted": 13,
           "per_gold": [
             {
               "gold": {
@@ -10944,24 +10944,30 @@
                 "quote_context": "ion (IPCW HR, 3.5 [95% CI, 1.3\u20139.4]). C",
                 "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
               },
-              "status": "missed",
-              "matched_extracted": null
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 3.5,
+                "ci_lower": 1.3,
+                "ci_upper": 9.4,
+                "source_text": "HR, \n3.5 [95% CI, 1.3-9.4]"
+              }
             }
           ],
           "field": {
-            "type_exact": 0,
-            "pt_exact": 0,
-            "pt_tol": 0,
-            "ci_lo_exact": 0,
-            "ci_lo_tol": 0,
-            "ci_hi_exact": 0,
-            "ci_hi_tol": 0,
-            "matched_pairs": 0
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
           },
           "n_extra": 12
         },
         "pdf_pp": {
-          "n_extracted": 12,
+          "n_extracted": 13,
           "per_gold": [
             {
               "gold": {
@@ -10974,19 +10980,25 @@
                 "quote_context": "ion (IPCW HR, 3.5 [95% CI, 1.3\u20139.4]). C",
                 "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
               },
-              "status": "missed",
-              "matched_extracted": null
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 3.5,
+                "ci_lower": 1.3,
+                "ci_upper": 9.4,
+                "source_text": "HR, 3.5 [95% CI, 1.3-9.4]"
+              }
             }
           ],
           "field": {
-            "type_exact": 0,
-            "pt_exact": 0,
-            "pt_tol": 0,
-            "ci_lo_exact": 0,
-            "ci_lo_tol": 0,
-            "ci_hi_exact": 0,
-            "ci_hi_tol": 0,
-            "matched_pairs": 0
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
           },
           "n_extra": 12
         }
@@ -11000,7 +11012,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 50754,
-        "secs": 1.09
+        "secs": 0.18
       },
       "n_gold": 2,
       "surfaces": {
@@ -11182,7 +11194,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 63552,
-        "secs": 0.18
+        "secs": 0.21
       },
       "n_gold": 1,
       "surfaces": {
@@ -11304,7 +11316,7 @@
         "method": "pymupdf",
         "num_pages": 9,
         "chars": 40560,
-        "secs": 0.23
+        "secs": 0.31
       },
       "n_gold": 1,
       "surfaces": {
@@ -11426,7 +11438,7 @@
         "method": "pymupdf",
         "num_pages": 23,
         "chars": 67772,
-        "secs": 0.09
+        "secs": 0.15
       },
       "n_gold": 3,
       "surfaces": {
@@ -11668,7 +11680,7 @@
         "method": "pymupdf",
         "num_pages": 23,
         "chars": 61648,
-        "secs": 0.11
+        "secs": 0.17
       },
       "n_gold": 1,
       "surfaces": {
@@ -11790,7 +11802,7 @@
         "method": "pymupdf",
         "num_pages": 9,
         "chars": 42353,
-        "secs": 0.1
+        "secs": 0.12
       },
       "n_gold": 2,
       "surfaces": {
@@ -11972,7 +11984,7 @@
         "method": "pymupdf",
         "num_pages": 20,
         "chars": 74772,
-        "secs": 0.27
+        "secs": 0.34
       },
       "n_gold": 1,
       "surfaces": {
@@ -12094,7 +12106,7 @@
         "method": "pymupdf",
         "num_pages": 27,
         "chars": 76544,
-        "secs": 0.15
+        "secs": 0.18
       },
       "n_gold": 3,
       "surfaces": {
@@ -12336,7 +12348,7 @@
         "method": "pymupdf",
         "num_pages": 13,
         "chars": 56483,
-        "secs": 0.17
+        "secs": 0.22
       },
       "n_gold": 3,
       "surfaces": {
@@ -12578,7 +12590,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 42067,
-        "secs": 0.08
+        "secs": 0.11
       },
       "n_gold": 4,
       "surfaces": {
@@ -12880,7 +12892,7 @@
         "method": "pymupdf",
         "num_pages": 8,
         "chars": 24434,
-        "secs": 0.09
+        "secs": 0.1
       },
       "n_gold": 2,
       "surfaces": {
@@ -13062,7 +13074,7 @@
         "method": "pymupdf",
         "num_pages": 8,
         "chars": 43788,
-        "secs": 0.26
+        "secs": 0.21
       },
       "n_gold": 4,
       "surfaces": {
@@ -13786,7 +13798,7 @@
         "method": "pymupdf",
         "num_pages": 18,
         "chars": 67793,
-        "secs": 0.17
+        "secs": 0.16
       },
       "n_gold": 3,
       "surfaces": {
@@ -14028,7 +14040,7 @@
         "method": "pymupdf",
         "num_pages": 24,
         "chars": 49694,
-        "secs": 0.17
+        "secs": 0.18
       },
       "n_gold": 3,
       "surfaces": {
@@ -14270,7 +14282,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 41111,
-        "secs": 0.11
+        "secs": 0.15
       },
       "n_gold": 3,
       "surfaces": {
@@ -14512,7 +14524,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 47509,
-        "secs": 0.14
+        "secs": 0.25
       },
       "n_gold": 3,
       "surfaces": {
@@ -14754,7 +14766,7 @@
         "method": "pymupdf",
         "num_pages": 17,
         "chars": 66026,
-        "secs": 0.24
+        "secs": 0.35
       },
       "n_gold": 3,
       "surfaces": {
@@ -14996,7 +15008,7 @@
         "method": "pymupdf",
         "num_pages": 22,
         "chars": 65080,
-        "secs": 0.17
+        "secs": 0.28
       },
       "n_gold": 5,
       "surfaces": {
@@ -15358,7 +15370,7 @@
         "method": "pymupdf",
         "num_pages": 13,
         "chars": 49561,
-        "secs": 0.15
+        "secs": 0.26
       },
       "n_gold": 5,
       "surfaces": {
@@ -15720,7 +15732,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 57287,
-        "secs": 0.12
+        "secs": 0.21
       },
       "n_gold": 2,
       "surfaces": {
@@ -15814,13 +15826,13 @@
                 "quote_context": "(adjusted OR 4, 95% CI, 3\u20136; p <",
                 "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
               },
-              "status": "point_only",
+              "status": "correct",
               "matched_extracted": {
                 "type": "OR",
                 "point": 4.0,
-                "ci_lower": null,
-                "ci_upper": null,
-                "source_text": "adjusted OR 4"
+                "ci_lower": 3.0,
+                "ci_upper": 6.0,
+                "source_text": "OR 4; 95% CI, 3-6"
               }
             }
           ],
@@ -15828,10 +15840,10 @@
             "type_exact": 2,
             "pt_exact": 2,
             "pt_tol": 2,
-            "ci_lo_exact": 1,
-            "ci_lo_tol": 1,
-            "ci_hi_exact": 1,
-            "ci_hi_tol": 1,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
             "matched_pairs": 2
           },
           "n_extra": 1
@@ -15870,13 +15882,13 @@
                 "quote_context": "(adjusted OR 4, 95% CI, 3\u20136; p <",
                 "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
               },
-              "status": "point_only",
+              "status": "correct",
               "matched_extracted": {
                 "type": "OR",
                 "point": 4.0,
-                "ci_lower": null,
-                "ci_upper": null,
-                "source_text": "adjusted OR 4"
+                "ci_lower": 3.0,
+                "ci_upper": 6.0,
+                "source_text": "OR 4; 95% CI, 3-6"
               }
             }
           ],
@@ -15884,10 +15896,10 @@
             "type_exact": 2,
             "pt_exact": 2,
             "pt_tol": 2,
-            "ci_lo_exact": 1,
-            "ci_lo_tol": 1,
-            "ci_hi_exact": 1,
-            "ci_hi_tol": 1,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
             "matched_pairs": 2
           },
           "n_extra": 1
@@ -15902,7 +15914,7 @@
         "method": "pymupdf",
         "num_pages": 17,
         "chars": 48784,
-        "secs": 0.09
+        "secs": 0.13
       },
       "n_gold": 6,
       "surfaces": {
@@ -16324,7 +16336,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 68708,
-        "secs": 0.22
+        "secs": 0.34
       },
       "n_gold": 3,
       "surfaces": {
@@ -16566,7 +16578,7 @@
         "method": "pymupdf",
         "num_pages": 19,
         "chars": 55468,
-        "secs": 0.12
+        "secs": 0.18
       },
       "n_gold": 2,
       "surfaces": {
@@ -16748,7 +16760,7 @@
         "method": "pymupdf",
         "num_pages": 9,
         "chars": 50485,
-        "secs": 0.16
+        "secs": 0.22
       },
       "n_gold": 2,
       "surfaces": {
@@ -16930,7 +16942,7 @@
         "method": "pymupdf",
         "num_pages": 8,
         "chars": 37897,
-        "secs": 0.12
+        "secs": 0.15
       },
       "n_gold": 3,
       "surfaces": {
@@ -17172,7 +17184,7 @@
         "method": "pymupdf",
         "num_pages": 13,
         "chars": 59581,
-        "secs": 0.11
+        "secs": 0.13
       },
       "n_gold": 4,
       "surfaces": {
@@ -17474,7 +17486,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 52389,
-        "secs": 0.17
+        "secs": 0.18
       },
       "n_gold": 2,
       "surfaces": {
@@ -17656,7 +17668,7 @@
         "method": "pymupdf",
         "num_pages": 19,
         "chars": 90122,
-        "secs": 0.28
+        "secs": 0.33
       },
       "n_gold": 6,
       "surfaces": {
@@ -18078,7 +18090,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 46174,
-        "secs": 0.13
+        "secs": 0.16
       },
       "n_gold": 6,
       "surfaces": {
@@ -18219,7 +18231,7 @@
           "n_extra": 0
         },
         "pdf_raw": {
-          "n_extracted": 1,
+          "n_extracted": 3,
           "per_gold": [
             {
               "gold": {
@@ -18252,8 +18264,14 @@
                 "quote_context": "justment [OR 0.49, 95% CI 0.30\u20130.82], ma",
                 "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
               },
-              "status": "missed",
-              "matched_extracted": null
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.49,
+                "ci_lower": 0.3,
+                "ci_upper": 0.82,
+                "source_text": "OR 0.49; 95% CI \n0.30-0.82"
+              }
             },
             {
               "gold": {
@@ -18308,24 +18326,30 @@
                 "quote_context": "timation (OR 0.49, 95% CI 0.28\u20130.85). Co",
                 "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
               },
-              "status": "missed",
-              "matched_extracted": null
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.49,
+                "ci_lower": 0.28,
+                "ci_upper": 0.85,
+                "source_text": "(OR 0.49; 95% CI 0.28-0.85)"
+              }
             }
           ],
           "field": {
-            "type_exact": 1,
-            "pt_exact": 1,
-            "pt_tol": 1,
-            "ci_lo_exact": 1,
-            "ci_lo_tol": 1,
-            "ci_hi_exact": 1,
-            "ci_hi_tol": 1,
-            "matched_pairs": 1
+            "type_exact": 3,
+            "pt_exact": 3,
+            "pt_tol": 3,
+            "ci_lo_exact": 3,
+            "ci_lo_tol": 3,
+            "ci_hi_exact": 3,
+            "ci_hi_tol": 3,
+            "matched_pairs": 3
           },
           "n_extra": 0
         },
         "pdf_pp": {
-          "n_extracted": 1,
+          "n_extracted": 3,
           "per_gold": [
             {
               "gold": {
@@ -18358,8 +18382,14 @@
                 "quote_context": "justment [OR 0.49, 95% CI 0.30\u20130.82], ma",
                 "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
               },
-              "status": "missed",
-              "matched_extracted": null
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.49,
+                "ci_lower": 0.3,
+                "ci_upper": 0.82,
+                "source_text": "OR 0.49; 95% CI 0.30-0.82"
+              }
             },
             {
               "gold": {
@@ -18414,19 +18444,25 @@
                 "quote_context": "timation (OR 0.49, 95% CI 0.28\u20130.85). Co",
                 "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
               },
-              "status": "missed",
-              "matched_extracted": null
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.49,
+                "ci_lower": 0.28,
+                "ci_upper": 0.85,
+                "source_text": "(OR 0.49; 95% CI 0.28-0.85)"
+              }
             }
           ],
           "field": {
-            "type_exact": 1,
-            "pt_exact": 1,
-            "pt_tol": 1,
-            "ci_lo_exact": 1,
-            "ci_lo_tol": 1,
-            "ci_hi_exact": 1,
-            "ci_hi_tol": 1,
-            "matched_pairs": 1
+            "type_exact": 3,
+            "pt_exact": 3,
+            "pt_tol": 3,
+            "ci_lo_exact": 3,
+            "ci_lo_tol": 3,
+            "ci_hi_exact": 3,
+            "ci_hi_tol": 3,
+            "matched_pairs": 3
           },
           "n_extra": 0
         }
@@ -18440,7 +18476,7 @@
         "method": "pymupdf",
         "num_pages": 13,
         "chars": 65155,
-        "secs": 0.14
+        "secs": 0.15
       },
       "n_gold": 3,
       "surfaces": {
@@ -18682,7 +18718,7 @@
         "method": "pymupdf",
         "num_pages": 15,
         "chars": 73358,
-        "secs": 0.22
+        "secs": 0.26
       },
       "n_gold": 4,
       "surfaces": {
@@ -18984,7 +19020,7 @@
         "method": "pymupdf",
         "num_pages": 17,
         "chars": 65671,
-        "secs": 0.23
+        "secs": 0.31
       },
       "n_gold": 5,
       "surfaces": {
@@ -19346,7 +19382,7 @@
         "method": "pymupdf",
         "num_pages": 16,
         "chars": 54081,
-        "secs": 0.13
+        "secs": 0.15
       },
       "n_gold": 3,
       "surfaces": {
@@ -19830,7 +19866,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 49280,
-        "secs": 0.14
+        "secs": 0.2
       },
       "n_gold": 5,
       "surfaces": {
@@ -20192,7 +20228,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 46520,
-        "secs": 0.17
+        "secs": 0.2
       },
       "n_gold": 3,
       "surfaces": {
@@ -20434,7 +20470,7 @@
         "method": "pymupdf",
         "num_pages": 8,
         "chars": 30499,
-        "secs": 0.09
+        "secs": 0.14
       },
       "n_gold": 2,
       "surfaces": {
@@ -20616,7 +20652,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 60170,
-        "secs": 0.29
+        "secs": 0.37
       },
       "n_gold": 2,
       "surfaces": {
@@ -21100,7 +21136,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 38582,
-        "secs": 0.18
+        "secs": 0.23
       },
       "n_gold": 2,
       "surfaces": {
@@ -21282,7 +21318,7 @@
         "method": "pymupdf",
         "num_pages": 13,
         "chars": 47889,
-        "secs": 0.12
+        "secs": 0.2
       },
       "n_gold": 6,
       "surfaces": {
@@ -21704,7 +21740,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 67358,
-        "secs": 0.13
+        "secs": 0.17
       },
       "n_gold": 2,
       "surfaces": {
@@ -21886,7 +21922,7 @@
         "method": "pymupdf",
         "num_pages": 29,
         "chars": 124658,
-        "secs": 0.26
+        "secs": 0.43
       },
       "n_gold": 3,
       "surfaces": {
@@ -22610,7 +22646,7 @@
         "method": "pymupdf",
         "num_pages": 9,
         "chars": 49947,
-        "secs": 0.14
+        "secs": 0.17
       },
       "n_gold": 4,
       "surfaces": {
@@ -22912,7 +22948,7 @@
         "method": "pymupdf",
         "num_pages": 8,
         "chars": 35914,
-        "secs": 0.13
+        "secs": 0.21
       },
       "n_gold": 1,
       "surfaces": {
@@ -23034,7 +23070,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 33373,
-        "secs": 0.12
+        "secs": 0.14
       },
       "n_gold": 1,
       "surfaces": {
@@ -23156,7 +23192,7 @@
         "method": "pymupdf",
         "num_pages": 15,
         "chars": 64652,
-        "secs": 0.18
+        "secs": 0.19
       },
       "n_gold": 3,
       "surfaces": {
@@ -23398,7 +23434,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 63765,
-        "secs": 0.19
+        "secs": 0.37
       },
       "n_gold": 2,
       "surfaces": {
@@ -23580,7 +23616,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 50157,
-        "secs": 0.13
+        "secs": 0.14
       },
       "n_gold": 2,
       "surfaces": {
@@ -23762,7 +23798,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 60194,
-        "secs": 0.15
+        "secs": 0.28
       },
       "n_gold": 2,
       "surfaces": {
@@ -23944,7 +23980,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 33991,
-        "secs": 0.09
+        "secs": 0.16
       },
       "n_gold": 2,
       "surfaces": {
@@ -24126,7 +24162,7 @@
         "method": "pymupdf",
         "num_pages": 83,
         "chars": 249427,
-        "secs": 0.62
+        "secs": 1.21
       },
       "n_gold": 23,
       "surfaces": {
@@ -25568,7 +25604,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 54287,
-        "secs": 0.21
+        "secs": 0.28
       },
       "n_gold": 4,
       "surfaces": {
@@ -25870,7 +25906,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 55244,
-        "secs": 0.17
+        "secs": 0.26
       },
       "n_gold": 3,
       "surfaces": {
@@ -26112,7 +26148,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 44753,
-        "secs": 0.11
+        "secs": 0.13
       },
       "n_gold": 4,
       "surfaces": {
@@ -26414,7 +26450,7 @@
         "method": "pymupdf",
         "num_pages": 53,
         "chars": 210829,
-        "secs": 0.45
+        "secs": 0.57
       },
       "n_gold": 5,
       "surfaces": {
@@ -26776,7 +26812,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 45478,
-        "secs": 0.18
+        "secs": 0.23
       },
       "n_gold": 4,
       "surfaces": {
@@ -27072,7 +27108,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 34215,
-        "secs": 0.12
+        "secs": 0.14
       },
       "n_gold": 2,
       "surfaces": {
@@ -27254,7 +27290,7 @@
         "method": "pymupdf",
         "num_pages": 16,
         "chars": 48877,
-        "secs": 0.09
+        "secs": 0.12
       },
       "n_gold": 2,
       "surfaces": {
@@ -27436,7 +27472,7 @@
         "method": "pymupdf",
         "num_pages": 9,
         "chars": 45942,
-        "secs": 0.12
+        "secs": 0.13
       },
       "n_gold": 3,
       "surfaces": {
@@ -27678,7 +27714,7 @@
         "method": "pymupdf",
         "num_pages": 13,
         "chars": 39130,
-        "secs": 0.19
+        "secs": 0.2
       },
       "n_gold": 3,
       "surfaces": {
@@ -27920,7 +27956,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 67750,
-        "secs": 0.15
+        "secs": 0.17
       },
       "n_gold": 4,
       "surfaces": {
@@ -28222,7 +28258,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 29870,
-        "secs": 0.12
+        "secs": 0.15
       },
       "n_gold": 3,
       "surfaces": {
@@ -28464,7 +28500,7 @@
         "method": "pymupdf",
         "num_pages": 16,
         "chars": 50135,
-        "secs": 0.13
+        "secs": 0.21
       },
       "n_gold": 2,
       "surfaces": {
@@ -28646,7 +28682,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 53582,
-        "secs": 0.18
+        "secs": 0.21
       },
       "n_gold": 1,
       "surfaces": {
@@ -28768,7 +28804,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 40124,
-        "secs": 0.1
+        "secs": 0.13
       },
       "n_gold": 4,
       "surfaces": {
@@ -29070,7 +29106,7 @@
         "method": "pymupdf",
         "num_pages": 9,
         "chars": 34534,
-        "secs": 0.15
+        "secs": 0.16
       },
       "n_gold": 4,
       "surfaces": {
@@ -29372,7 +29408,7 @@
         "method": "pymupdf",
         "num_pages": 8,
         "chars": 41063,
-        "secs": 0.09
+        "secs": 0.11
       },
       "n_gold": 1,
       "surfaces": {
@@ -29494,7 +29530,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 41932,
-        "secs": 0.13
+        "secs": 0.14
       },
       "n_gold": 1,
       "surfaces": {
@@ -29616,7 +29652,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 44608,
-        "secs": 0.13
+        "secs": 0.18
       },
       "n_gold": 1,
       "surfaces": {
@@ -29738,7 +29774,7 @@
         "method": "pymupdf",
         "num_pages": 15,
         "chars": 66902,
-        "secs": 0.22
+        "secs": 0.27
       },
       "n_gold": 5,
       "surfaces": {
@@ -30100,7 +30136,7 @@
         "method": "pymupdf",
         "num_pages": 138,
         "chars": 479537,
-        "secs": 1.06
+        "secs": 1.3
       },
       "n_gold": 12,
       "surfaces": {
@@ -30882,7 +30918,7 @@
         "method": "pymupdf",
         "num_pages": 43,
         "chars": 178946,
-        "secs": 0.47
+        "secs": 0.57
       },
       "n_gold": 1,
       "surfaces": {
@@ -31004,7 +31040,7 @@
         "method": "pymupdf",
         "num_pages": 164,
         "chars": 525948,
-        "secs": 1.28
+        "secs": 1.51
       },
       "n_gold": 10,
       "surfaces": {
@@ -32210,7 +32246,7 @@
         "method": "pymupdf",
         "num_pages": 18,
         "chars": 69633,
-        "secs": 0.41
+        "secs": 0.39
       },
       "n_gold": 1,
       "surfaces": {
@@ -32332,7 +32368,7 @@
         "method": "pymupdf",
         "num_pages": 15,
         "chars": 59466,
-        "secs": 0.14
+        "secs": 0.15
       },
       "n_gold": 3,
       "surfaces": {
@@ -32574,7 +32610,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 93643,
-        "secs": 0.26
+        "secs": 0.29
       },
       "n_gold": 3,
       "surfaces": {
@@ -32816,7 +32852,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 46354,
-        "secs": 0.19
+        "secs": 0.24
       },
       "n_gold": 1,
       "surfaces": {
@@ -32938,7 +32974,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 52430,
-        "secs": 0.1
+        "secs": 0.13
       },
       "n_gold": 7,
       "surfaces": {
@@ -33420,7 +33456,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 44696,
-        "secs": 0.18
+        "secs": 0.19
       },
       "n_gold": 2,
       "surfaces": {
@@ -33602,7 +33638,7 @@
         "method": "pymupdf",
         "num_pages": 26,
         "chars": 86209,
-        "secs": 0.24
+        "secs": 0.27
       },
       "n_gold": 7,
       "surfaces": {
@@ -33745,7 +33781,7 @@
           "n_extra": 0
         },
         "pdf_raw": {
-          "n_extracted": 29,
+          "n_extracted": 32,
           "per_gold": [
             {
               "gold": {
@@ -33761,10 +33797,10 @@
               "status": "correct",
               "matched_extracted": {
                 "type": "OR",
-                "point": 3.66,
-                "ci_lower": 2.87,
-                "ci_upper": 4.66,
-                "source_text": "OR was 3.66 (95% CI: 2.87-4.66"
+                "point": 3.64,
+                "ci_lower": 2.92,
+                "ci_upper": 4.55,
+                "source_text": "OR of approximately 3.64 (95% CI: 2.92-4.55"
               }
             },
             {
@@ -33778,8 +33814,14 @@
                 "quote_context": "2 years (OR = 3.93, 95% CI: 2.29\u20136.77), an",
                 "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
               },
-              "status": "missed",
-              "matched_extracted": null
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 3.93,
+                "ci_lower": 2.29,
+                "ci_upper": 6.77,
+                "source_text": "OR of\n3.93 (95% CI: 2.29-6.77"
+              }
             },
             {
               "gold": {
@@ -33792,13 +33834,13 @@
                 "quote_context": "3 years (OR = 4.12, 95% CI: 2.24\u20137.56). Th",
                 "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
               },
-              "status": "point_only",
+              "status": "correct",
               "matched_extracted": {
                 "type": "OR",
-                "point": 4.13,
-                "ci_lower": 1.69,
-                "ci_upper": 10.09,
-                "source_text": "OR = 4.13; 95% CI: 1.69-10.09"
+                "point": 4.12,
+                "ci_lower": 2.24,
+                "ci_upper": 7.56,
+                "source_text": "OR of 4.12\n(95% CI: 2.24-7.56"
               }
             },
             {
@@ -33832,8 +33874,14 @@
                 "quote_context": "otherapy (OR = 4.13, 95% CI: 1.69\u201310.09). Al",
                 "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
               },
-              "status": "missed",
-              "matched_extracted": null
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 4.13,
+                "ci_lower": 1.69,
+                "ci_upper": 10.09,
+                "source_text": "OR = 4.13; 95% CI: 1.69-10.09"
+              }
             },
             {
               "gold": {
@@ -33877,19 +33925,19 @@
             }
           ],
           "field": {
-            "type_exact": 5,
-            "pt_exact": 3,
-            "pt_tol": 5,
-            "ci_lo_exact": 3,
-            "ci_lo_tol": 4,
-            "ci_hi_exact": 3,
-            "ci_hi_tol": 4,
-            "matched_pairs": 5
+            "type_exact": 7,
+            "pt_exact": 7,
+            "pt_tol": 7,
+            "ci_lo_exact": 7,
+            "ci_lo_tol": 7,
+            "ci_hi_exact": 7,
+            "ci_hi_tol": 7,
+            "matched_pairs": 7
           },
-          "n_extra": 24
+          "n_extra": 25
         },
         "pdf_pp": {
-          "n_extracted": 29,
+          "n_extracted": 32,
           "per_gold": [
             {
               "gold": {
@@ -33905,10 +33953,10 @@
               "status": "correct",
               "matched_extracted": {
                 "type": "OR",
-                "point": 3.66,
-                "ci_lower": 2.87,
-                "ci_upper": 4.66,
-                "source_text": "OR was 3.66 (95% CI: 2.87-4.66"
+                "point": 3.64,
+                "ci_lower": 2.92,
+                "ci_upper": 4.55,
+                "source_text": "OR of approximately 3.64 (95% CI: 2.92-4.55"
               }
             },
             {
@@ -33922,8 +33970,14 @@
                 "quote_context": "2 years (OR = 3.93, 95% CI: 2.29\u20136.77), an",
                 "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
               },
-              "status": "missed",
-              "matched_extracted": null
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 3.93,
+                "ci_lower": 2.29,
+                "ci_upper": 6.77,
+                "source_text": "OR of 3.93 (95% CI: 2.29-6.77"
+              }
             },
             {
               "gold": {
@@ -33936,13 +33990,13 @@
                 "quote_context": "3 years (OR = 4.12, 95% CI: 2.24\u20137.56). Th",
                 "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
               },
-              "status": "point_only",
+              "status": "correct",
               "matched_extracted": {
                 "type": "OR",
-                "point": 4.13,
-                "ci_lower": 1.69,
-                "ci_upper": 10.09,
-                "source_text": "OR = 4.13; 95% CI: 1.69-10.09"
+                "point": 4.12,
+                "ci_lower": 2.24,
+                "ci_upper": 7.56,
+                "source_text": "OR of 4.12 (95% CI: 2.24-7.56"
               }
             },
             {
@@ -33976,8 +34030,14 @@
                 "quote_context": "otherapy (OR = 4.13, 95% CI: 1.69\u201310.09). Al",
                 "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
               },
-              "status": "missed",
-              "matched_extracted": null
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 4.13,
+                "ci_lower": 1.69,
+                "ci_upper": 10.09,
+                "source_text": "OR = 4.13; 95% CI: 1.69-10.09"
+              }
             },
             {
               "gold": {
@@ -34021,16 +34081,16 @@
             }
           ],
           "field": {
-            "type_exact": 5,
-            "pt_exact": 3,
-            "pt_tol": 5,
-            "ci_lo_exact": 3,
-            "ci_lo_tol": 4,
-            "ci_hi_exact": 3,
-            "ci_hi_tol": 4,
-            "matched_pairs": 5
+            "type_exact": 7,
+            "pt_exact": 7,
+            "pt_tol": 7,
+            "ci_lo_exact": 7,
+            "ci_lo_tol": 7,
+            "ci_hi_exact": 7,
+            "ci_hi_tol": 7,
+            "matched_pairs": 7
           },
-          "n_extra": 24
+          "n_extra": 25
         }
       }
     },
@@ -34042,7 +34102,7 @@
         "method": "pymupdf",
         "num_pages": 13,
         "chars": 45490,
-        "secs": 0.15
+        "secs": 0.13
       },
       "n_gold": 1,
       "surfaces": {
@@ -34164,7 +34224,7 @@
         "method": "pymupdf",
         "num_pages": 15,
         "chars": 55064,
-        "secs": 0.2
+        "secs": 0.25
       },
       "n_gold": 11,
       "surfaces": {
@@ -34886,7 +34946,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 61421,
-        "secs": 0.15
+        "secs": 0.18
       },
       "n_gold": 1,
       "surfaces": {
@@ -35008,7 +35068,7 @@
         "method": "pymupdf",
         "num_pages": 121,
         "chars": 309053,
-        "secs": 0.8
+        "secs": 1.03
       },
       "n_gold": 3,
       "surfaces": {
@@ -35554,7 +35614,7 @@
         "method": "pymupdf",
         "num_pages": 18,
         "chars": 63154,
-        "secs": 0.17
+        "secs": 0.15
       },
       "n_gold": 1,
       "surfaces": {
@@ -35676,7 +35736,7 @@
         "method": "pymupdf",
         "num_pages": 25,
         "chars": 92406,
-        "secs": 0.21
+        "secs": 0.22
       },
       "n_gold": 1,
       "surfaces": {
@@ -36522,7 +36582,7 @@
         "method": "pymupdf",
         "num_pages": 53,
         "chars": 201720,
-        "secs": 0.45
+        "secs": 0.47
       },
       "n_gold": 9,
       "surfaces": {
@@ -37124,7 +37184,7 @@
         "method": "pymupdf",
         "num_pages": 9,
         "chars": 40966,
-        "secs": 0.13
+        "secs": 0.14
       },
       "n_gold": 2,
       "surfaces": {
@@ -37306,7 +37366,7 @@
         "method": "pymupdf",
         "num_pages": 426,
         "chars": 1237216,
-        "secs": 3.23
+        "secs": 3.33
       },
       "n_gold": 6,
       "surfaces": {
@@ -37728,7 +37788,7 @@
         "method": "pymupdf",
         "num_pages": 17,
         "chars": 64215,
-        "secs": 0.14
+        "secs": 0.15
       },
       "n_gold": 4,
       "surfaces": {
@@ -38030,7 +38090,7 @@
         "method": "pymupdf",
         "num_pages": 21,
         "chars": 81312,
-        "secs": 0.16
+        "secs": 0.19
       },
       "n_gold": 4,
       "surfaces": {
@@ -38332,7 +38392,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 66748,
-        "secs": 0.2
+        "secs": 0.38
       },
       "n_gold": 3,
       "surfaces": {
@@ -38574,7 +38634,7 @@
         "method": "pymupdf",
         "num_pages": 81,
         "chars": 266014,
-        "secs": 0.67
+        "secs": 0.91
       },
       "n_gold": 2,
       "surfaces": {
@@ -38756,7 +38816,7 @@
         "method": "pymupdf",
         "num_pages": 49,
         "chars": 179461,
-        "secs": 0.39
+        "secs": 0.58
       },
       "n_gold": 2,
       "surfaces": {
@@ -38938,7 +38998,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 50993,
-        "secs": 0.11
+        "secs": 0.12
       },
       "n_gold": 8,
       "surfaces": {
@@ -39480,7 +39540,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 35862,
-        "secs": 0.09
+        "secs": 0.12
       },
       "n_gold": 5,
       "surfaces": {
@@ -39842,7 +39902,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 50276,
-        "secs": 0.19
+        "secs": 0.23
       },
       "n_gold": 6,
       "surfaces": {
@@ -40264,7 +40324,7 @@
         "method": "pymupdf",
         "num_pages": 9,
         "chars": 41630,
-        "secs": 0.12
+        "secs": 0.14
       },
       "n_gold": 3,
       "surfaces": {
@@ -40506,7 +40566,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 48137,
-        "secs": 0.12
+        "secs": 0.13
       },
       "n_gold": 5,
       "surfaces": {
@@ -41050,7 +41110,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 49398,
-        "secs": 0.19
+        "secs": 0.25
       },
       "n_gold": 2,
       "surfaces": {
@@ -41232,7 +41292,7 @@
         "method": "pymupdf",
         "num_pages": 44,
         "chars": 162764,
-        "secs": 0.34
+        "secs": 0.4
       },
       "n_gold": 1,
       "surfaces": {
@@ -41354,7 +41414,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 40115,
-        "secs": 0.19
+        "secs": 0.17
       },
       "n_gold": 1,
       "surfaces": {
@@ -41476,7 +41536,7 @@
         "method": "pymupdf",
         "num_pages": 15,
         "chars": 44166,
-        "secs": 0.18
+        "secs": 0.25
       },
       "n_gold": 3,
       "surfaces": {
@@ -41718,7 +41778,7 @@
         "method": "pymupdf",
         "num_pages": 15,
         "chars": 43781,
-        "secs": 0.18
+        "secs": 0.25
       },
       "n_gold": 3,
       "surfaces": {
@@ -41954,7 +42014,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 49087,
-        "secs": 0.15
+        "secs": 0.2
       },
       "n_gold": 2,
       "surfaces": {
@@ -42136,7 +42196,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 47531,
-        "secs": 0.13
+        "secs": 0.15
       },
       "n_gold": 2,
       "surfaces": {
@@ -42318,7 +42378,7 @@
         "method": "pymupdf",
         "num_pages": 7,
         "chars": 34330,
-        "secs": 0.09
+        "secs": 0.17
       },
       "n_gold": 1,
       "surfaces": {
@@ -42440,7 +42500,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 48695,
-        "secs": 0.17
+        "secs": 0.38
       },
       "n_gold": 2,
       "surfaces": {
@@ -42622,7 +42682,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 41298,
-        "secs": 0.12
+        "secs": 0.15
       },
       "n_gold": 1,
       "surfaces": {
@@ -42744,7 +42804,7 @@
         "method": "pymupdf",
         "num_pages": 13,
         "chars": 53113,
-        "secs": 0.11
+        "secs": 0.19
       },
       "n_gold": 1,
       "surfaces": {
@@ -42866,7 +42926,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 33168,
-        "secs": 0.16
+        "secs": 0.11
       },
       "n_gold": 1,
       "surfaces": {
@@ -42988,7 +43048,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 65281,
-        "secs": 0.28
+        "secs": 0.36
       },
       "n_gold": 3,
       "surfaces": {
@@ -43230,7 +43290,7 @@
         "method": "pymupdf",
         "num_pages": 17,
         "chars": 56332,
-        "secs": 0.38
+        "secs": 0.3
       },
       "n_gold": 3,
       "surfaces": {
@@ -43594,7 +43654,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 51728,
-        "secs": 0.28
+        "secs": 0.31
       },
       "n_gold": 3,
       "surfaces": {
@@ -43836,7 +43896,7 @@
         "method": "pymupdf",
         "num_pages": 16,
         "chars": 63838,
-        "secs": 0.19
+        "secs": 0.23
       },
       "n_gold": 1,
       "surfaces": {
@@ -43958,7 +44018,7 @@
         "method": "pymupdf",
         "num_pages": 18,
         "chars": 72130,
-        "secs": 0.25
+        "secs": 0.26
       },
       "n_gold": 4,
       "surfaces": {
@@ -44260,7 +44320,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 49080,
-        "secs": 0.11
+        "secs": 0.12
       },
       "n_gold": 2,
       "surfaces": {
@@ -44442,7 +44502,7 @@
         "method": "pymupdf",
         "num_pages": 9,
         "chars": 48040,
-        "secs": 0.26
+        "secs": 0.32
       },
       "n_gold": 3,
       "surfaces": {
@@ -44684,7 +44744,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 38004,
-        "secs": 0.1
+        "secs": 0.11
       },
       "n_gold": 3,
       "surfaces": {
@@ -44926,7 +44986,7 @@
         "method": "pymupdf",
         "num_pages": 9,
         "chars": 44746,
-        "secs": 0.15
+        "secs": 0.16
       },
       "n_gold": 1,
       "surfaces": {
@@ -45048,7 +45108,7 @@
         "method": "pymupdf",
         "num_pages": 9,
         "chars": 46750,
-        "secs": 0.12
+        "secs": 0.14
       },
       "n_gold": 4,
       "surfaces": {
@@ -45350,7 +45410,7 @@
         "method": "pymupdf",
         "num_pages": 9,
         "chars": 41101,
-        "secs": 0.11
+        "secs": 0.13
       },
       "n_gold": 1,
       "surfaces": {
@@ -45654,7 +45714,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 39777,
-        "secs": 0.22
+        "secs": 0.21
       },
       "n_gold": 2,
       "surfaces": {
@@ -46018,7 +46078,7 @@
         "method": "pymupdf",
         "num_pages": 8,
         "chars": 40973,
-        "secs": 0.14
+        "secs": 0.17
       },
       "n_gold": 2,
       "surfaces": {
@@ -46200,7 +46260,7 @@
         "method": "pymupdf",
         "num_pages": 16,
         "chars": 95738,
-        "secs": 0.37
+        "secs": 0.35
       },
       "n_gold": 4,
       "surfaces": {
@@ -46502,7 +46562,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 65749,
-        "secs": 0.2
+        "secs": 0.19
       },
       "n_gold": 7,
       "surfaces": {
@@ -46984,7 +47044,7 @@
         "method": "pymupdf",
         "num_pages": 8,
         "chars": 39048,
-        "secs": 0.11
+        "secs": 0.1
       },
       "n_gold": 1,
       "surfaces": {
@@ -47106,7 +47166,7 @@
         "method": "pymupdf",
         "num_pages": 13,
         "chars": 48608,
-        "secs": 0.22
+        "secs": 0.15
       },
       "n_gold": 3,
       "surfaces": {
@@ -47348,7 +47408,7 @@
         "method": "pymupdf",
         "num_pages": 15,
         "chars": 66239,
-        "secs": 0.38
+        "secs": 0.18
       },
       "n_gold": 1,
       "surfaces": {
@@ -47470,7 +47530,7 @@
         "method": "pymupdf",
         "num_pages": 9,
         "chars": 27057,
-        "secs": 0.12
+        "secs": 0.11
       },
       "n_gold": 3,
       "surfaces": {
@@ -47712,7 +47772,7 @@
         "method": "pymupdf",
         "num_pages": 9,
         "chars": 42510,
-        "secs": 0.21
+        "secs": 0.24
       },
       "n_gold": 1,
       "surfaces": {
@@ -47834,7 +47894,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 59527,
-        "secs": 0.24
+        "secs": 0.21
       },
       "n_gold": 3,
       "surfaces": {
@@ -48076,7 +48136,7 @@
         "method": "pymupdf",
         "num_pages": 15,
         "chars": 58260,
-        "secs": 0.27
+        "secs": 0.22
       },
       "n_gold": 6,
       "surfaces": {
@@ -48480,7 +48540,7 @@
         "method": "pymupdf",
         "num_pages": 13,
         "chars": 61803,
-        "secs": 0.4
+        "secs": 0.49
       },
       "n_gold": 1,
       "surfaces": {
@@ -48602,7 +48662,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 46281,
-        "secs": 0.11
+        "secs": 0.1
       },
       "n_gold": 1,
       "surfaces": {
@@ -48846,7 +48906,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 48874,
-        "secs": 0.28
+        "secs": 0.24
       },
       "n_gold": 5,
       "surfaces": {
@@ -49208,7 +49268,7 @@
         "method": "pymupdf",
         "num_pages": 15,
         "chars": 69218,
-        "secs": 0.3
+        "secs": 0.27
       },
       "n_gold": 1,
       "surfaces": {
@@ -49330,7 +49390,7 @@
         "method": "pymupdf",
         "num_pages": 13,
         "chars": 47944,
-        "secs": 0.16
+        "secs": 0.13
       },
       "n_gold": 2,
       "surfaces": {
@@ -49994,7 +50054,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 49668,
-        "secs": 0.15
+        "secs": 0.14
       },
       "n_gold": 5,
       "surfaces": {
@@ -50356,7 +50416,7 @@
         "method": "pymupdf",
         "num_pages": 20,
         "chars": 70411,
-        "secs": 0.34
+        "secs": 0.24
       },
       "n_gold": 2,
       "surfaces": {
@@ -50538,7 +50598,7 @@
         "method": "pymupdf",
         "num_pages": 9,
         "chars": 41168,
-        "secs": 0.11
+        "secs": 0.09
       },
       "n_gold": 2,
       "surfaces": {
@@ -50720,7 +50780,7 @@
         "method": "pymupdf",
         "num_pages": 9,
         "chars": 50480,
-        "secs": 0.19
+        "secs": 0.15
       },
       "n_gold": 1,
       "surfaces": {
@@ -50836,7 +50896,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 47810,
-        "secs": 0.12
+        "secs": 0.09
       },
       "n_gold": 4,
       "surfaces": {
@@ -51138,7 +51198,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 50736,
-        "secs": 0.18
+        "secs": 0.16
       },
       "n_gold": 2,
       "surfaces": {
@@ -51320,7 +51380,7 @@
         "method": "pymupdf",
         "num_pages": 13,
         "chars": 46396,
-        "secs": 0.2
+        "secs": 0.17
       },
       "n_gold": 5,
       "surfaces": {
@@ -51682,7 +51742,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 57284,
-        "secs": 0.11
+        "secs": 0.1
       },
       "n_gold": 3,
       "surfaces": {
@@ -51924,7 +51984,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 47187,
-        "secs": 0.1
+        "secs": 0.09
       },
       "n_gold": 1,
       "surfaces": {
@@ -52348,7 +52408,7 @@
         "method": "pymupdf",
         "num_pages": 15,
         "chars": 44740,
-        "secs": 0.11
+        "secs": 0.09
       },
       "n_gold": 2,
       "surfaces": {
@@ -52436,13 +52496,13 @@
                 "quote_context": "and DFS (HR = 0.56, 95% CI: 0.36\u20130.90, p =",
                 "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
               },
-              "status": "point_only",
+              "status": "correct",
               "matched_extracted": {
                 "type": "HR",
                 "point": 0.56,
-                "ci_lower": null,
-                "ci_upper": null,
-                "source_text": "HR = 0.56"
+                "ci_lower": 0.36,
+                "ci_upper": 0.9,
+                "source_text": "HR = 0.56; 95% CI: 0.36-0.90"
               }
             }
           ],
@@ -52450,10 +52510,10 @@
             "type_exact": 2,
             "pt_exact": 2,
             "pt_tol": 2,
-            "ci_lo_exact": 1,
-            "ci_lo_tol": 1,
-            "ci_hi_exact": 1,
-            "ci_hi_tol": 1,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
             "matched_pairs": 2
           },
           "n_extra": 5
@@ -52492,13 +52552,13 @@
                 "quote_context": "and DFS (HR = 0.56, 95% CI: 0.36\u20130.90, p =",
                 "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
               },
-              "status": "point_only",
+              "status": "correct",
               "matched_extracted": {
                 "type": "HR",
                 "point": 0.56,
-                "ci_lower": null,
-                "ci_upper": null,
-                "source_text": "HR = 0.56"
+                "ci_lower": 0.36,
+                "ci_upper": 0.9,
+                "source_text": "HR = 0.56; 95% CI: 0.36-0.90"
               }
             }
           ],
@@ -52506,10 +52566,10 @@
             "type_exact": 2,
             "pt_exact": 2,
             "pt_tol": 2,
-            "ci_lo_exact": 1,
-            "ci_lo_tol": 1,
-            "ci_hi_exact": 1,
-            "ci_hi_tol": 1,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
             "matched_pairs": 2
           },
           "n_extra": 5
@@ -52524,7 +52584,7 @@
         "method": "pymupdf",
         "num_pages": 24,
         "chars": 74573,
-        "secs": 0.38
+        "secs": 0.35
       },
       "n_gold": 2,
       "surfaces": {
@@ -52706,7 +52766,7 @@
         "method": "pymupdf",
         "num_pages": 9,
         "chars": 43208,
-        "secs": 0.13
+        "secs": 0.12
       },
       "n_gold": 3,
       "surfaces": {
@@ -52948,7 +53008,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 41982,
-        "secs": 0.15
+        "secs": 0.13
       },
       "n_gold": 1,
       "surfaces": {
@@ -53064,7 +53124,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 53887,
-        "secs": 0.19
+        "secs": 0.18
       },
       "n_gold": 1,
       "surfaces": {
@@ -53788,7 +53848,7 @@
         "method": "pymupdf",
         "num_pages": 7,
         "chars": 31352,
-        "secs": 0.1
+        "secs": 0.08
       },
       "n_gold": 1,
       "surfaces": {
@@ -53910,7 +53970,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 68119,
-        "secs": 0.29
+        "secs": 0.31
       },
       "n_gold": 3,
       "surfaces": {
@@ -54152,7 +54212,7 @@
         "method": "pymupdf",
         "num_pages": 8,
         "chars": 36042,
-        "secs": 0.13
+        "secs": 0.12
       },
       "n_gold": 3,
       "surfaces": {
@@ -54394,7 +54454,7 @@
         "method": "pymupdf",
         "num_pages": 9,
         "chars": 44353,
-        "secs": 0.17
+        "secs": 0.14
       },
       "n_gold": 2,
       "surfaces": {
@@ -54576,7 +54636,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 49696,
-        "secs": 0.39
+        "secs": 0.34
       },
       "n_gold": 2,
       "surfaces": {
@@ -54758,7 +54818,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 50984,
-        "secs": 0.17
+        "secs": 0.2
       },
       "n_gold": 2,
       "surfaces": {
@@ -54940,7 +55000,7 @@
         "method": "pymupdf",
         "num_pages": 15,
         "chars": 43156,
-        "secs": 0.16
+        "secs": 0.15
       },
       "n_gold": 2,
       "surfaces": {
@@ -55122,7 +55182,7 @@
         "method": "pymupdf",
         "num_pages": 13,
         "chars": 39503,
-        "secs": 0.26
+        "secs": 0.21
       },
       "n_gold": 3,
       "surfaces": {
@@ -55364,7 +55424,7 @@
         "method": "pymupdf",
         "num_pages": 16,
         "chars": 95738,
-        "secs": 0.33
+        "secs": 0.29
       },
       "n_gold": 4,
       "surfaces": {
@@ -55968,7 +56028,7 @@
         "method": "pymupdf",
         "num_pages": 21,
         "chars": 78507,
-        "secs": 0.2
+        "secs": 0.21
       },
       "n_gold": 5,
       "surfaces": {
@@ -56330,7 +56390,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 41511,
-        "secs": 0.18
+        "secs": 0.17
       },
       "n_gold": 2,
       "surfaces": {
@@ -56634,7 +56694,7 @@
         "method": "pymupdf",
         "num_pages": 8,
         "chars": 27850,
-        "secs": 0.17
+        "secs": 0.11
       },
       "n_gold": 6,
       "surfaces": {
@@ -57056,7 +57116,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 44430,
-        "secs": 0.14
+        "secs": 0.16
       },
       "n_gold": 3,
       "surfaces": {
@@ -57420,7 +57480,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 53479,
-        "secs": 0.26
+        "secs": 0.23
       },
       "n_gold": 2,
       "surfaces": {
@@ -57482,13 +57542,13 @@
                 "quote_context": "e events (aOR 0.53 [95%CI 0.29\u20130.97]), a",
                 "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
               },
-              "status": "point_only",
+              "status": "correct",
               "matched_extracted": {
                 "type": "OR",
                 "point": 0.53,
-                "ci_lower": null,
-                "ci_upper": null,
-                "source_text": "aOR 0.53"
+                "ci_lower": 0.29,
+                "ci_upper": 0.97,
+                "source_text": "aOR 0.53 [95% CI 0.29-0.97]"
               }
             },
             {
@@ -57516,10 +57576,10 @@
             "type_exact": 2,
             "pt_exact": 1,
             "pt_tol": 2,
-            "ci_lo_exact": 0,
-            "ci_lo_tol": 1,
-            "ci_hi_exact": 0,
-            "ci_hi_tol": 0,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
             "matched_pairs": 2
           },
           "n_extra": 2
@@ -57538,13 +57598,13 @@
                 "quote_context": "e events (aOR 0.53 [95%CI 0.29\u20130.97]), a",
                 "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
               },
-              "status": "point_only",
+              "status": "correct",
               "matched_extracted": {
                 "type": "OR",
                 "point": 0.53,
-                "ci_lower": null,
-                "ci_upper": null,
-                "source_text": "aOR 0.53"
+                "ci_lower": 0.29,
+                "ci_upper": 0.97,
+                "source_text": "aOR 0.53 [95% CI 0.29-0.97]"
               }
             },
             {
@@ -57572,10 +57632,10 @@
             "type_exact": 2,
             "pt_exact": 1,
             "pt_tol": 2,
-            "ci_lo_exact": 0,
-            "ci_lo_tol": 1,
-            "ci_hi_exact": 0,
-            "ci_hi_tol": 0,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
             "matched_pairs": 2
           },
           "n_extra": 2
@@ -57590,7 +57650,7 @@
         "method": "pymupdf",
         "num_pages": 9,
         "chars": 27057,
-        "secs": 0.13
+        "secs": 0.09
       },
       "n_gold": 3,
       "surfaces": {
@@ -57832,7 +57892,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 67057,
-        "secs": 0.27
+        "secs": 0.25
       },
       "n_gold": 2,
       "surfaces": {
@@ -58014,7 +58074,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 48625,
-        "secs": 0.16
+        "secs": 0.18
       },
       "n_gold": 5,
       "surfaces": {
@@ -58498,7 +58558,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 41542,
-        "secs": 0.15
+        "secs": 0.16
       },
       "n_gold": 1,
       "surfaces": {
@@ -58620,7 +58680,7 @@
         "method": "pymupdf",
         "num_pages": 9,
         "chars": 41041,
-        "secs": 0.28
+        "secs": 0.25
       },
       "n_gold": 1,
       "surfaces": {
@@ -58986,7 +59046,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 51947,
-        "secs": 0.13
+        "secs": 0.12
       },
       "n_gold": 4,
       "surfaces": {
@@ -59288,7 +59348,7 @@
         "method": "pymupdf",
         "num_pages": 21,
         "chars": 60468,
-        "secs": 0.13
+        "secs": 0.15
       },
       "n_gold": 1,
       "surfaces": {
@@ -59532,7 +59592,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 52362,
-        "secs": 0.22
+        "secs": 0.24
       },
       "n_gold": 3,
       "surfaces": {
@@ -59601,7 +59661,7 @@
           "n_extra": 0
         },
         "pdf_raw": {
-          "n_extracted": 7,
+          "n_extracted": 8,
           "per_gold": [
             {
               "gold": {
@@ -59634,13 +59694,13 @@
                 "quote_context": "emphigus (HR 0.32, 95% CI 0.16\u20130.63) and",
                 "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
               },
-              "status": "point_only",
+              "status": "correct",
               "matched_extracted": {
                 "type": "HR",
-                "point": 0.33,
-                "ci_lower": 0.15,
-                "ci_upper": 0.74,
-                "source_text": "HR 0.33; 95% CI 0.15-0.74"
+                "point": 0.32,
+                "ci_lower": 0.16,
+                "ci_upper": 0.63,
+                "source_text": "HR 0.32; 95% CI 0.16-0.63"
               }
             },
             {
@@ -59666,18 +59726,18 @@
           ],
           "field": {
             "type_exact": 3,
-            "pt_exact": 2,
+            "pt_exact": 3,
             "pt_tol": 3,
-            "ci_lo_exact": 2,
+            "ci_lo_exact": 3,
             "ci_lo_tol": 3,
-            "ci_hi_exact": 2,
-            "ci_hi_tol": 2,
+            "ci_hi_exact": 3,
+            "ci_hi_tol": 3,
             "matched_pairs": 3
           },
-          "n_extra": 4
+          "n_extra": 5
         },
         "pdf_pp": {
-          "n_extracted": 7,
+          "n_extracted": 8,
           "per_gold": [
             {
               "gold": {
@@ -59710,13 +59770,13 @@
                 "quote_context": "emphigus (HR 0.32, 95% CI 0.16\u20130.63) and",
                 "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
               },
-              "status": "point_only",
+              "status": "correct",
               "matched_extracted": {
                 "type": "HR",
-                "point": 0.33,
-                "ci_lower": 0.15,
-                "ci_upper": 0.74,
-                "source_text": "HR 0.33; 95% CI 0.15- 0.74"
+                "point": 0.32,
+                "ci_lower": 0.16,
+                "ci_upper": 0.63,
+                "source_text": "HR 0.32; 95% CI 0.16-0.63"
               }
             },
             {
@@ -59742,15 +59802,15 @@
           ],
           "field": {
             "type_exact": 3,
-            "pt_exact": 2,
+            "pt_exact": 3,
             "pt_tol": 3,
-            "ci_lo_exact": 2,
+            "ci_lo_exact": 3,
             "ci_lo_tol": 3,
-            "ci_hi_exact": 2,
-            "ci_hi_tol": 2,
+            "ci_hi_exact": 3,
+            "ci_hi_tol": 3,
             "matched_pairs": 3
           },
-          "n_extra": 4
+          "n_extra": 5
         }
       }
     },
@@ -59762,7 +59822,7 @@
         "method": "pymupdf",
         "num_pages": 16,
         "chars": 58316,
-        "secs": 0.32
+        "secs": 0.25
       },
       "n_gold": 1,
       "surfaces": {
@@ -59884,7 +59944,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 43883,
-        "secs": 0.12
+        "secs": 0.13
       },
       "n_gold": 1,
       "surfaces": {
@@ -60548,7 +60608,7 @@
         "method": "pymupdf",
         "num_pages": 18,
         "chars": 66872,
-        "secs": 0.27
+        "secs": 0.37
       },
       "n_gold": 3,
       "surfaces": {
@@ -60790,7 +60850,7 @@
         "method": "pymupdf",
         "num_pages": 17,
         "chars": 60348,
-        "secs": 0.19
+        "secs": 0.17
       },
       "n_gold": 2,
       "surfaces": {
@@ -60972,7 +61032,7 @@
         "method": "pymupdf",
         "num_pages": 16,
         "chars": 76632,
-        "secs": 0.2
+        "secs": 0.3
       },
       "n_gold": 2,
       "surfaces": {
@@ -61154,7 +61214,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 44872,
-        "secs": 0.15
+        "secs": 0.21
       },
       "n_gold": 2,
       "surfaces": {
@@ -61336,7 +61396,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 59332,
-        "secs": 0.19
+        "secs": 0.28
       },
       "n_gold": 2,
       "surfaces": {
@@ -62242,7 +62302,7 @@
         "method": "pymupdf",
         "num_pages": 6,
         "chars": 25233,
-        "secs": 0.08
+        "secs": 0.06
       },
       "n_gold": 5,
       "surfaces": {
@@ -62604,7 +62664,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 51486,
-        "secs": 0.19
+        "secs": 0.18
       },
       "n_gold": 2,
       "surfaces": {
@@ -62786,7 +62846,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 41358,
-        "secs": 0.2
+        "secs": 0.22
       },
       "n_gold": 4,
       "surfaces": {
@@ -63390,7 +63450,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 62457,
-        "secs": 0.23
+        "secs": 0.26
       },
       "n_gold": 3,
       "surfaces": {
@@ -63874,7 +63934,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 44442,
-        "secs": 0.16
+        "secs": 0.17
       },
       "n_gold": 8,
       "surfaces": {
@@ -64416,7 +64476,7 @@
         "method": "pymupdf",
         "num_pages": 13,
         "chars": 70112,
-        "secs": 0.39
+        "secs": 0.38
       },
       "n_gold": 10,
       "surfaces": {
@@ -65260,7 +65320,7 @@
         "method": "pymupdf",
         "num_pages": 17,
         "chars": 45906,
-        "secs": 0.18
+        "secs": 0.15
       },
       "n_gold": 4,
       "surfaces": {
@@ -65804,7 +65864,7 @@
         "method": "pymupdf",
         "num_pages": 8,
         "chars": 37447,
-        "secs": 0.13
+        "secs": 0.14
       },
       "n_gold": 3,
       "surfaces": {
@@ -66046,7 +66106,7 @@
         "method": "pymupdf",
         "num_pages": 7,
         "chars": 28892,
-        "secs": 0.1
+        "secs": 0.11
       },
       "n_gold": 2,
       "surfaces": {
@@ -66772,7 +66832,7 @@
         "method": "pymupdf",
         "num_pages": 15,
         "chars": 55302,
-        "secs": 0.13
+        "secs": 0.14
       },
       "n_gold": 7,
       "surfaces": {
@@ -67254,7 +67314,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 57875,
-        "secs": 0.12
+        "secs": 0.16
       },
       "n_gold": 3,
       "surfaces": {
@@ -67496,7 +67556,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 55288,
-        "secs": 0.21
+        "secs": 0.22
       },
       "n_gold": 2,
       "surfaces": {
@@ -67678,7 +67738,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 51701,
-        "secs": 0.18
+        "secs": 0.17
       },
       "n_gold": 2,
       "surfaces": {
@@ -67860,7 +67920,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 63649,
-        "secs": 0.42
+        "secs": 0.38
       },
       "n_gold": 2,
       "surfaces": {
@@ -68024,7 +68084,7 @@
         "method": "pymupdf",
         "num_pages": 13,
         "chars": 58099,
-        "secs": 0.13
+        "secs": 0.12
       },
       "n_gold": 14,
       "surfaces": {
@@ -68926,7 +68986,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 40996,
-        "secs": 0.09
+        "secs": 0.07
       },
       "n_gold": 7,
       "surfaces": {
@@ -69408,7 +69468,7 @@
         "method": "pymupdf",
         "num_pages": 19,
         "chars": 92622,
-        "secs": 0.31
+        "secs": 0.32
       },
       "n_gold": 1,
       "surfaces": {
@@ -69611,7 +69671,7 @@
           "n_extra": 0
         },
         "pdf_raw": {
-          "n_extracted": 2,
+          "n_extracted": 3,
           "per_gold": [
             {
               "gold": {
@@ -69658,24 +69718,30 @@
                 "quote_context": "% vs 42%, OR 1.69, 95% CI: 1.06\u20132.71). In",
                 "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
               },
-              "status": "missed",
-              "matched_extracted": null
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 1.69,
+                "ci_lower": 1.06,
+                "ci_upper": 2.71,
+                "source_text": "OR 1.69; 95% CI: 1.06, 2.71"
+              }
             }
           ],
           "field": {
-            "type_exact": 1,
-            "pt_exact": 1,
-            "pt_tol": 1,
-            "ci_lo_exact": 1,
-            "ci_lo_tol": 1,
-            "ci_hi_exact": 1,
-            "ci_hi_tol": 1,
-            "matched_pairs": 1
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
           },
           "n_extra": 1
         },
         "pdf_pp": {
-          "n_extracted": 2,
+          "n_extracted": 3,
           "per_gold": [
             {
               "gold": {
@@ -69722,19 +69788,25 @@
                 "quote_context": "% vs 42%, OR 1.69, 95% CI: 1.06\u20132.71). In",
                 "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
               },
-              "status": "missed",
-              "matched_extracted": null
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 1.69,
+                "ci_lower": 1.06,
+                "ci_upper": 2.71,
+                "source_text": "OR 1.69; 95% CI: 1.06, 2.71"
+              }
             }
           ],
           "field": {
-            "type_exact": 1,
-            "pt_exact": 1,
-            "pt_tol": 1,
-            "ci_lo_exact": 1,
-            "ci_lo_tol": 1,
-            "ci_hi_exact": 1,
-            "ci_hi_tol": 1,
-            "matched_pairs": 1
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
           },
           "n_extra": 1
         }
@@ -69748,7 +69820,7 @@
         "method": "pymupdf",
         "num_pages": 30,
         "chars": 70347,
-        "secs": 0.2
+        "secs": 0.19
       },
       "n_gold": 2,
       "surfaces": {
@@ -69930,7 +70002,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 60629,
-        "secs": 0.22
+        "secs": 0.21
       },
       "n_gold": 9,
       "surfaces": {
@@ -70954,7 +71026,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 50736,
-        "secs": 0.16
+        "secs": 0.15
       },
       "n_gold": 2,
       "surfaces": {
@@ -71136,7 +71208,7 @@
         "method": "pymupdf",
         "num_pages": 21,
         "chars": 94818,
-        "secs": 0.6
+        "secs": 0.56
       },
       "n_gold": 7,
       "surfaces": {
@@ -71618,7 +71690,7 @@
         "method": "pymupdf",
         "num_pages": 15,
         "chars": 37090,
-        "secs": 0.07
+        "secs": 0.08
       },
       "n_gold": 3,
       "surfaces": {
@@ -71860,7 +71932,7 @@
         "method": "pymupdf",
         "num_pages": 53,
         "chars": 159907,
-        "secs": 0.41
+        "secs": 0.4
       },
       "n_gold": 2,
       "surfaces": {
@@ -72042,7 +72114,7 @@
         "method": "pymupdf",
         "num_pages": 6,
         "chars": 30682,
-        "secs": 0.12
+        "secs": 0.09
       },
       "n_gold": 3,
       "surfaces": {
@@ -72284,7 +72356,7 @@
         "method": "pymupdf",
         "num_pages": 94,
         "chars": 216450,
-        "secs": 0.79
+        "secs": 0.77
       },
       "n_gold": 2,
       "surfaces": {
@@ -72466,7 +72538,7 @@
         "method": "pymupdf",
         "num_pages": 9,
         "chars": 38595,
-        "secs": 0.36
+        "secs": 0.17
       },
       "n_gold": 3,
       "surfaces": {
@@ -72708,7 +72780,7 @@
         "method": "pymupdf",
         "num_pages": 42,
         "chars": 135695,
-        "secs": 0.67
+        "secs": 0.3
       },
       "n_gold": 6,
       "surfaces": {
@@ -73130,7 +73202,7 @@
         "method": "pymupdf",
         "num_pages": 9,
         "chars": 45638,
-        "secs": 0.2
+        "secs": 0.15
       },
       "n_gold": 1,
       "surfaces": {
@@ -73252,7 +73324,7 @@
         "method": "pymupdf",
         "num_pages": 13,
         "chars": 74863,
-        "secs": 0.29
+        "secs": 0.21
       },
       "n_gold": 1,
       "surfaces": {
@@ -73374,7 +73446,7 @@
         "method": "pymupdf",
         "num_pages": 107,
         "chars": 266036,
-        "secs": 0.85
+        "secs": 0.65
       },
       "n_gold": 8,
       "surfaces": {
@@ -73916,7 +73988,7 @@
         "method": "pymupdf",
         "num_pages": 6,
         "chars": 34537,
-        "secs": 0.14
+        "secs": 0.13
       },
       "n_gold": 1,
       "surfaces": {
@@ -74038,7 +74110,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 67351,
-        "secs": 0.24
+        "secs": 0.17
       },
       "n_gold": 2,
       "surfaces": {
@@ -74220,7 +74292,7 @@
         "method": "pymupdf",
         "num_pages": 16,
         "chars": 84521,
-        "secs": 0.45
+        "secs": 0.4
       },
       "n_gold": 4,
       "surfaces": {
@@ -74522,7 +74594,7 @@
         "method": "pymupdf",
         "num_pages": 7,
         "chars": 36081,
-        "secs": 0.16
+        "secs": 0.07
       },
       "n_gold": 1,
       "surfaces": {
@@ -74644,7 +74716,7 @@
         "method": "pymupdf",
         "num_pages": 8,
         "chars": 44261,
-        "secs": 1.4
+        "secs": 1.05
       },
       "n_gold": 1,
       "surfaces": {
@@ -74754,7 +74826,7 @@
         "method": "pymupdf",
         "num_pages": 8,
         "chars": 35716,
-        "secs": 0.21
+        "secs": 0.2
       },
       "n_gold": 1,
       "surfaces": {
@@ -74876,7 +74948,7 @@
         "method": "pymupdf",
         "num_pages": 36,
         "chars": 119280,
-        "secs": 0.59
+        "secs": 0.27
       },
       "n_gold": 7,
       "surfaces": {
@@ -75358,7 +75430,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 74816,
-        "secs": 0.26
+        "secs": 0.24
       },
       "n_gold": 8,
       "surfaces": {
@@ -75900,7 +75972,7 @@
         "method": "pymupdf",
         "num_pages": 15,
         "chars": 54094,
-        "secs": 0.15
+        "secs": 0.13
       },
       "n_gold": 3,
       "surfaces": {
@@ -76130,7 +76202,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 36198,
-        "secs": 0.17
+        "secs": 0.14
       },
       "n_gold": 3,
       "surfaces": {
@@ -76372,7 +76444,7 @@
         "method": "pymupdf",
         "num_pages": 15,
         "chars": 49181,
-        "secs": 0.13
+        "secs": 0.14
       },
       "n_gold": 2,
       "surfaces": {
@@ -76718,7 +76790,7 @@
         "method": "pymupdf",
         "num_pages": 91,
         "chars": 270711,
-        "secs": 0.76
+        "secs": 0.66
       },
       "n_gold": 11,
       "surfaces": {
@@ -77440,7 +77512,7 @@
         "method": "pymupdf",
         "num_pages": 427,
         "chars": 1209530,
-        "secs": 3.63
+        "secs": 3.77
       },
       "n_gold": 14,
       "surfaces": {
@@ -77741,7 +77813,7 @@
           "n_extra": 3
         },
         "pdf_raw": {
-          "n_extracted": 143,
+          "n_extracted": 146,
           "per_gold": [
             {
               "gold": {
@@ -77774,13 +77846,13 @@
                 "quote_context": "alopathy (rate ratio 0.90, 95% CI 0.50 to 1.61; 2 o",
                 "harvest_pattern": "rate\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\...."
               },
-              "status": "point_only",
+              "status": "correct",
               "matched_extracted": {
                 "type": "IRR",
                 "point": 0.9,
-                "ci_lower": null,
-                "ci_upper": null,
-                "source_text": "rate ratio 0.90"
+                "ci_lower": 0.5,
+                "ci_upper": 1.61,
+                "source_text": "rate ratio 0.90; 95% CI 0.50 to\n1.61"
               }
             },
             {
@@ -77794,13 +77866,13 @@
                 "quote_context": "isorders (rate ratio 0.93, 95% CI 0.85 to 1.01; 2 o",
                 "harvest_pattern": "rate\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\...."
               },
-              "status": "point_only",
+              "status": "correct",
               "matched_extracted": {
                 "type": "IRR",
                 "point": 0.93,
-                "ci_lower": null,
-                "ci_upper": null,
-                "source_text": "rate ratio 0.93"
+                "ci_lower": 0.85,
+                "ci_upper": 1.01,
+                "source_text": "rate ratio 0.93; 95% CI 0.85 to\n1.01"
               }
             },
             {
@@ -78028,16 +78100,16 @@
             "type_exact": 14,
             "pt_exact": 14,
             "pt_tol": 14,
-            "ci_lo_exact": 12,
-            "ci_lo_tol": 12,
-            "ci_hi_exact": 11,
-            "ci_hi_tol": 12,
+            "ci_lo_exact": 14,
+            "ci_lo_tol": 14,
+            "ci_hi_exact": 13,
+            "ci_hi_tol": 14,
             "matched_pairs": 14
           },
-          "n_extra": 129
+          "n_extra": 132
         },
         "pdf_pp": {
-          "n_extracted": 143,
+          "n_extracted": 146,
           "per_gold": [
             {
               "gold": {
@@ -78070,13 +78142,13 @@
                 "quote_context": "alopathy (rate ratio 0.90, 95% CI 0.50 to 1.61; 2 o",
                 "harvest_pattern": "rate\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\...."
               },
-              "status": "point_only",
+              "status": "correct",
               "matched_extracted": {
                 "type": "IRR",
                 "point": 0.9,
-                "ci_lower": null,
-                "ci_upper": null,
-                "source_text": "rate ratio 0.90"
+                "ci_lower": 0.5,
+                "ci_upper": 1.61,
+                "source_text": "rate ratio 0.90; 95% CI 0.50 to 1.61"
               }
             },
             {
@@ -78090,13 +78162,13 @@
                 "quote_context": "isorders (rate ratio 0.93, 95% CI 0.85 to 1.01; 2 o",
                 "harvest_pattern": "rate\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\...."
               },
-              "status": "point_only",
+              "status": "correct",
               "matched_extracted": {
                 "type": "IRR",
                 "point": 0.93,
-                "ci_lower": null,
-                "ci_upper": null,
-                "source_text": "rate ratio 0.93"
+                "ci_lower": 0.85,
+                "ci_upper": 1.01,
+                "source_text": "rate ratio 0.93; 95% CI 0.85 to 1.01"
               }
             },
             {
@@ -78324,13 +78396,13 @@
             "type_exact": 14,
             "pt_exact": 14,
             "pt_tol": 14,
-            "ci_lo_exact": 12,
-            "ci_lo_tol": 12,
-            "ci_hi_exact": 11,
-            "ci_hi_tol": 12,
+            "ci_lo_exact": 14,
+            "ci_lo_tol": 14,
+            "ci_hi_exact": 13,
+            "ci_hi_tol": 14,
             "matched_pairs": 14
           },
-          "n_extra": 129
+          "n_extra": 132
         }
       }
     },
@@ -78342,7 +78414,7 @@
         "method": "pymupdf",
         "num_pages": 17,
         "chars": 61015,
-        "secs": 0.16
+        "secs": 0.14
       },
       "n_gold": 3,
       "surfaces": {
@@ -78584,7 +78656,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 38669,
-        "secs": 0.23
+        "secs": 0.21
       },
       "n_gold": 1,
       "surfaces": {
@@ -78688,7 +78760,7 @@
         "method": "pymupdf",
         "num_pages": 45,
         "chars": 192815,
-        "secs": 0.49
+        "secs": 0.41
       },
       "n_gold": 3,
       "surfaces": {
@@ -78930,7 +79002,7 @@
         "method": "pymupdf",
         "num_pages": 7,
         "chars": 30407,
-        "secs": 0.13
+        "secs": 0.11
       },
       "n_gold": 3,
       "surfaces": {
@@ -79024,13 +79096,13 @@
                 "quote_context": "ortality [hazard ratio 0.78 (95% CI 0.45\u20131.35, p =",
                 "harvest_pattern": "hazard\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:..."
               },
-              "status": "point_only",
+              "status": "correct",
               "matched_extracted": {
                 "type": "HR",
                 "point": 0.78,
-                "ci_lower": null,
-                "ci_upper": null,
-                "source_text": "hazard ratio 0.78"
+                "ci_lower": 0.45,
+                "ci_upper": 1.35,
+                "source_text": "hazard ratio 0.78 (95% CI\n0.45-1.35"
               }
             },
             {
@@ -79044,13 +79116,13 @@
                 "quote_context": "t stroke [hazard ratio 0.86 (95% CI 0.60\u20131.24, p =",
                 "harvest_pattern": "hazard\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:..."
               },
-              "status": "point_only",
+              "status": "correct",
               "matched_extracted": {
                 "type": "HR",
                 "point": 0.86,
-                "ci_lower": null,
-                "ci_upper": null,
-                "source_text": "hazard ratio 0.86"
+                "ci_lower": 0.6,
+                "ci_upper": 1.24,
+                "source_text": "hazard ratio 0.86 (95% CI\n0.60-1.24"
               }
             },
             {
@@ -79064,13 +79136,13 @@
                 "quote_context": "t stroke [hazard ratio of 0.51 (95% CI 0.29\u20130.87, p =",
                 "harvest_pattern": "hazard\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:..."
               },
-              "status": "point_only",
+              "status": "correct",
               "matched_extracted": {
                 "type": "HR",
                 "point": 0.51,
-                "ci_lower": null,
-                "ci_upper": null,
-                "source_text": "hazard ratio 0.51"
+                "ci_lower": 0.29,
+                "ci_upper": 0.87,
+                "source_text": "hazard ratio 0.51 (95% CI 0.29-0.87"
               }
             }
           ],
@@ -79078,10 +79150,10 @@
             "type_exact": 3,
             "pt_exact": 3,
             "pt_tol": 3,
-            "ci_lo_exact": 0,
-            "ci_lo_tol": 0,
-            "ci_hi_exact": 0,
-            "ci_hi_tol": 0,
+            "ci_lo_exact": 3,
+            "ci_lo_tol": 3,
+            "ci_hi_exact": 3,
+            "ci_hi_tol": 3,
             "matched_pairs": 3
           },
           "n_extra": 2
@@ -79100,13 +79172,13 @@
                 "quote_context": "ortality [hazard ratio 0.78 (95% CI 0.45\u20131.35, p =",
                 "harvest_pattern": "hazard\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:..."
               },
-              "status": "point_only",
+              "status": "correct",
               "matched_extracted": {
                 "type": "HR",
                 "point": 0.78,
-                "ci_lower": null,
-                "ci_upper": null,
-                "source_text": "hazard ratio 0.78"
+                "ci_lower": 0.45,
+                "ci_upper": 1.35,
+                "source_text": "hazard ratio 0.78 (95% CI 0.45-1.35"
               }
             },
             {
@@ -79120,13 +79192,13 @@
                 "quote_context": "t stroke [hazard ratio 0.86 (95% CI 0.60\u20131.24, p =",
                 "harvest_pattern": "hazard\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:..."
               },
-              "status": "point_only",
+              "status": "correct",
               "matched_extracted": {
                 "type": "HR",
                 "point": 0.86,
-                "ci_lower": null,
-                "ci_upper": null,
-                "source_text": "hazard ratio 0.86"
+                "ci_lower": 0.6,
+                "ci_upper": 1.24,
+                "source_text": "hazard ratio 0.86 (95% CI 0.60-1.24"
               }
             },
             {
@@ -79140,13 +79212,13 @@
                 "quote_context": "t stroke [hazard ratio of 0.51 (95% CI 0.29\u20130.87, p =",
                 "harvest_pattern": "hazard\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:..."
               },
-              "status": "point_only",
+              "status": "correct",
               "matched_extracted": {
                 "type": "HR",
                 "point": 0.51,
-                "ci_lower": null,
-                "ci_upper": null,
-                "source_text": "hazard ratio 0.51"
+                "ci_lower": 0.29,
+                "ci_upper": 0.87,
+                "source_text": "hazard ratio 0.51 (95% CI 0.29-0.87"
               }
             }
           ],
@@ -79154,10 +79226,10 @@
             "type_exact": 3,
             "pt_exact": 3,
             "pt_tol": 3,
-            "ci_lo_exact": 0,
-            "ci_lo_tol": 0,
-            "ci_hi_exact": 0,
-            "ci_hi_tol": 0,
+            "ci_lo_exact": 3,
+            "ci_lo_tol": 3,
+            "ci_hi_exact": 3,
+            "ci_hi_tol": 3,
             "matched_pairs": 3
           },
           "n_extra": 2
@@ -79172,7 +79244,7 @@
         "method": "pymupdf",
         "num_pages": 9,
         "chars": 49251,
-        "secs": 0.17
+        "secs": 0.11
       },
       "n_gold": 8,
       "surfaces": {
@@ -79714,7 +79786,7 @@
         "method": "pymupdf",
         "num_pages": 5,
         "chars": 24513,
-        "secs": 0.07
+        "secs": 0.06
       },
       "n_gold": 2,
       "surfaces": {
@@ -79896,7 +79968,7 @@
         "method": "pymupdf",
         "num_pages": 425,
         "chars": 1212546,
-        "secs": 3.97
+        "secs": 3.65
       },
       "n_gold": 14,
       "surfaces": {
@@ -80197,7 +80269,7 @@
           "n_extra": 3
         },
         "pdf_raw": {
-          "n_extracted": 159,
+          "n_extracted": 163,
           "per_gold": [
             {
               "gold": {
@@ -80230,13 +80302,13 @@
                 "quote_context": "alopathy (rate ratio 0.90, 95% CI 0.50 to 1.61; 2 o",
                 "harvest_pattern": "rate\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\...."
               },
-              "status": "point_only",
+              "status": "correct",
               "matched_extracted": {
                 "type": "IRR",
                 "point": 0.9,
-                "ci_lower": 0.71,
-                "ci_upper": 1.13,
-                "source_text": "Rate ratio 0.90\n(0.71 to 1.13"
+                "ci_lower": 0.5,
+                "ci_upper": 1.61,
+                "source_text": "rate ratio 0.90; 95% CI 0.50 to\n1.61"
               }
             },
             {
@@ -80250,13 +80322,13 @@
                 "quote_context": "isorders (rate ratio 0.93, 95% CI 0.85 to 1.01; 2 o",
                 "harvest_pattern": "rate\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\...."
               },
-              "status": "point_only",
+              "status": "correct",
               "matched_extracted": {
                 "type": "IRR",
                 "point": 0.93,
-                "ci_lower": null,
-                "ci_upper": null,
-                "source_text": "rate ratio 0.93"
+                "ci_lower": 0.85,
+                "ci_upper": 1.01,
+                "source_text": "rate ratio 0.93; 95% CI 0.85 to\n1.01"
               }
             },
             {
@@ -80484,16 +80556,16 @@
             "type_exact": 14,
             "pt_exact": 14,
             "pt_tol": 14,
-            "ci_lo_exact": 12,
-            "ci_lo_tol": 12,
-            "ci_hi_exact": 11,
-            "ci_hi_tol": 12,
+            "ci_lo_exact": 14,
+            "ci_lo_tol": 14,
+            "ci_hi_exact": 13,
+            "ci_hi_tol": 14,
             "matched_pairs": 14
           },
-          "n_extra": 145
+          "n_extra": 149
         },
         "pdf_pp": {
-          "n_extracted": 163,
+          "n_extracted": 166,
           "per_gold": [
             {
               "gold": {
@@ -80526,13 +80598,13 @@
                 "quote_context": "alopathy (rate ratio 0.90, 95% CI 0.50 to 1.61; 2 o",
                 "harvest_pattern": "rate\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\...."
               },
-              "status": "point_only",
+              "status": "correct",
               "matched_extracted": {
                 "type": "IRR",
                 "point": 0.9,
-                "ci_lower": null,
-                "ci_upper": null,
-                "source_text": "rate ratio 0.90"
+                "ci_lower": 0.5,
+                "ci_upper": 1.61,
+                "source_text": "rate ratio 0.90; 95% CI 0.50 to 1.61"
               }
             },
             {
@@ -80546,13 +80618,13 @@
                 "quote_context": "isorders (rate ratio 0.93, 95% CI 0.85 to 1.01; 2 o",
                 "harvest_pattern": "rate\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\...."
               },
-              "status": "point_only",
+              "status": "correct",
               "matched_extracted": {
                 "type": "IRR",
                 "point": 0.93,
-                "ci_lower": null,
-                "ci_upper": null,
-                "source_text": "rate ratio 0.93"
+                "ci_lower": 0.85,
+                "ci_upper": 1.01,
+                "source_text": "rate ratio 0.93; 95% CI 0.85 to 1.01"
               }
             },
             {
@@ -80780,13 +80852,13 @@
             "type_exact": 14,
             "pt_exact": 14,
             "pt_tol": 14,
-            "ci_lo_exact": 12,
-            "ci_lo_tol": 12,
-            "ci_hi_exact": 11,
-            "ci_hi_tol": 12,
+            "ci_lo_exact": 14,
+            "ci_lo_tol": 14,
+            "ci_hi_exact": 13,
+            "ci_hi_tol": 14,
             "matched_pairs": 14
           },
-          "n_extra": 149
+          "n_extra": 152
         }
       }
     },
@@ -80798,7 +80870,7 @@
         "method": "pymupdf",
         "num_pages": 49,
         "chars": 176245,
-        "secs": 0.48
+        "secs": 0.39
       },
       "n_gold": 6,
       "surfaces": {
@@ -81220,7 +81292,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 48229,
-        "secs": 0.21
+        "secs": 0.17
       },
       "n_gold": 6,
       "surfaces": {
@@ -81642,7 +81714,7 @@
         "method": "pymupdf",
         "num_pages": 120,
         "chars": 386074,
-        "secs": 1.08
+        "secs": 0.91
       },
       "n_gold": 10,
       "surfaces": {
@@ -82304,7 +82376,7 @@
         "method": "pymupdf",
         "num_pages": 7,
         "chars": 29000,
-        "secs": 0.11
+        "secs": 0.08
       },
       "n_gold": 1,
       "surfaces": {
@@ -82426,7 +82498,7 @@
         "method": "pymupdf",
         "num_pages": 9,
         "chars": 35273,
-        "secs": 0.2
+        "secs": 0.24
       },
       "n_gold": 2,
       "surfaces": {
@@ -82608,7 +82680,7 @@
         "method": "pymupdf",
         "num_pages": 17,
         "chars": 58375,
-        "secs": 0.26
+        "secs": 0.24
       },
       "n_gold": 1,
       "surfaces": {
@@ -83156,7 +83228,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 50188,
-        "secs": 0.92
+        "secs": 1.15
       },
       "n_gold": 4,
       "surfaces": {
@@ -83458,7 +83530,7 @@
         "method": "pymupdf",
         "num_pages": 7,
         "chars": 29328,
-        "secs": 0.16
+        "secs": 0.14
       },
       "n_gold": 1,
       "surfaces": {
@@ -83580,7 +83652,7 @@
         "method": "pymupdf",
         "num_pages": 8,
         "chars": 38724,
-        "secs": 0.25
+        "secs": 0.22
       },
       "n_gold": 1,
       "surfaces": {
@@ -83702,7 +83774,7 @@
         "method": "pymupdf",
         "num_pages": 138,
         "chars": 479537,
-        "secs": 1.18
+        "secs": 1.13
       },
       "n_gold": 12,
       "surfaces": {
@@ -84484,7 +84556,7 @@
         "method": "pymupdf",
         "num_pages": 164,
         "chars": 525948,
-        "secs": 1.43
+        "secs": 1.18
       },
       "n_gold": 10,
       "surfaces": {
@@ -85146,7 +85218,7 @@
         "method": "pymupdf",
         "num_pages": 72,
         "chars": 252198,
-        "secs": 0.68
+        "secs": 0.57
       },
       "n_gold": 1,
       "surfaces": {
@@ -85268,7 +85340,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 49035,
-        "secs": 0.32
+        "secs": 0.25
       },
       "n_gold": 4,
       "surfaces": {
@@ -85558,7 +85630,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 49280,
-        "secs": 0.23
+        "secs": 0.17
       },
       "n_gold": 5,
       "surfaces": {
@@ -85920,7 +85992,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 52718,
-        "secs": 0.27
+        "secs": 0.23
       },
       "n_gold": 3,
       "surfaces": {
@@ -86022,13 +86094,13 @@
                 "quote_context": "duration (OR = 1.13 per day; 95%CI: 1.04\u20131.22), an",
                 "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
               },
-              "status": "point_only",
+              "status": "correct",
               "matched_extracted": {
                 "type": "OR",
                 "point": 1.13,
-                "ci_lower": null,
-                "ci_upper": null,
-                "source_text": "OR = 1.13"
+                "ci_lower": 1.04,
+                "ci_upper": 1.22,
+                "source_text": "OR = 1.13 per day; 95% CI: 1.04-1.22"
               }
             },
             {
@@ -86042,13 +86114,13 @@
                 "quote_context": "tay (LOS; OR = 1.02 per day; 95%CI: 1.00\u20131.03) as",
                 "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
               },
-              "status": "point_only",
+              "status": "correct",
               "matched_extracted": {
                 "type": "OR",
                 "point": 1.02,
-                "ci_lower": null,
-                "ci_upper": null,
-                "source_text": "OR = 1.02"
+                "ci_lower": 1.0,
+                "ci_upper": 1.03,
+                "source_text": "OR = 1.02 per day; 95% CI: 1.00-1.03"
               }
             }
           ],
@@ -86056,10 +86128,10 @@
             "type_exact": 3,
             "pt_exact": 3,
             "pt_tol": 3,
-            "ci_lo_exact": 1,
-            "ci_lo_tol": 1,
-            "ci_hi_exact": 1,
-            "ci_hi_tol": 1,
+            "ci_lo_exact": 3,
+            "ci_lo_tol": 3,
+            "ci_hi_exact": 3,
+            "ci_hi_tol": 3,
             "matched_pairs": 3
           },
           "n_extra": 6
@@ -86098,13 +86170,13 @@
                 "quote_context": "duration (OR = 1.13 per day; 95%CI: 1.04\u20131.22), an",
                 "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
               },
-              "status": "point_only",
+              "status": "correct",
               "matched_extracted": {
                 "type": "OR",
                 "point": 1.13,
-                "ci_lower": null,
-                "ci_upper": null,
-                "source_text": "OR = 1.13"
+                "ci_lower": 1.04,
+                "ci_upper": 1.22,
+                "source_text": "OR = 1.13 per day; 95% CI: 1.04-1.22"
               }
             },
             {
@@ -86118,13 +86190,13 @@
                 "quote_context": "tay (LOS; OR = 1.02 per day; 95%CI: 1.00\u20131.03) as",
                 "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
               },
-              "status": "point_only",
+              "status": "correct",
               "matched_extracted": {
                 "type": "OR",
                 "point": 1.02,
-                "ci_lower": null,
-                "ci_upper": null,
-                "source_text": "OR = 1.02"
+                "ci_lower": 1.0,
+                "ci_upper": 1.03,
+                "source_text": "OR = 1.02 per day; 95% CI: 1.00-1.03"
               }
             }
           ],
@@ -86132,10 +86204,10 @@
             "type_exact": 3,
             "pt_exact": 3,
             "pt_tol": 3,
-            "ci_lo_exact": 1,
-            "ci_lo_tol": 1,
-            "ci_hi_exact": 1,
-            "ci_hi_tol": 1,
+            "ci_lo_exact": 3,
+            "ci_lo_tol": 3,
+            "ci_hi_exact": 3,
+            "ci_hi_tol": 3,
             "matched_pairs": 3
           },
           "n_extra": 6
@@ -86272,7 +86344,7 @@
         "method": "pymupdf",
         "num_pages": 7,
         "chars": 33259,
-        "secs": 0.11
+        "secs": 0.09
       },
       "n_gold": 1,
       "surfaces": {
@@ -86394,7 +86466,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 38582,
-        "secs": 0.24
+        "secs": 0.2
       },
       "n_gold": 2,
       "surfaces": {
@@ -86576,7 +86648,7 @@
         "method": "pymupdf",
         "num_pages": 20,
         "chars": 44381,
-        "secs": 0.11
+        "secs": 0.1
       },
       "n_gold": 1,
       "surfaces": {
@@ -86698,7 +86770,7 @@
         "method": "pymupdf",
         "num_pages": 16,
         "chars": 66475,
-        "secs": 0.26
+        "secs": 0.22
       },
       "n_gold": 6,
       "surfaces": {
@@ -87362,7 +87434,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 47394,
-        "secs": 0.14
+        "secs": 0.12
       },
       "n_gold": 1,
       "surfaces": {
@@ -87484,7 +87556,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 33373,
-        "secs": 0.14
+        "secs": 0.1
       },
       "n_gold": 1,
       "surfaces": {
@@ -87606,7 +87678,7 @@
         "method": "pymupdf",
         "num_pages": 8,
         "chars": 35322,
-        "secs": 0.09
+        "secs": 0.1
       },
       "n_gold": 1,
       "surfaces": {
@@ -87910,7 +87982,7 @@
         "method": "pymupdf",
         "num_pages": 17,
         "chars": 42380,
-        "secs": 0.11
+        "secs": 0.09
       },
       "n_gold": 2,
       "surfaces": {
@@ -88092,7 +88164,7 @@
         "method": "pymupdf",
         "num_pages": 58,
         "chars": 170150,
-        "secs": 0.45
+        "secs": 0.42
       },
       "n_gold": 3,
       "surfaces": {
@@ -88334,7 +88406,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 48434,
-        "secs": 0.17
+        "secs": 0.15
       },
       "n_gold": 3,
       "surfaces": {
@@ -88576,7 +88648,7 @@
         "method": "pymupdf",
         "num_pages": 7,
         "chars": 42935,
-        "secs": 0.1
+        "secs": 0.09
       },
       "n_gold": 2,
       "surfaces": {
@@ -88758,7 +88830,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 63579,
-        "secs": 0.22
+        "secs": 0.2
       },
       "n_gold": 2,
       "surfaces": {
@@ -88940,7 +89012,7 @@
         "method": "pymupdf",
         "num_pages": 149,
         "chars": 384107,
-        "secs": 1.12
+        "secs": 0.99
       },
       "n_gold": 6,
       "surfaces": {
@@ -89362,7 +89434,7 @@
         "method": "pymupdf",
         "num_pages": 198,
         "chars": 427363,
-        "secs": 1.31
+        "secs": 1.24
       },
       "n_gold": 6,
       "surfaces": {
@@ -89784,7 +89856,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 68233,
-        "secs": 0.28
+        "secs": 0.45
       },
       "n_gold": 2,
       "surfaces": {
@@ -90014,13 +90086,13 @@
                 "quote_context": "egularly (aOR = 7.5 (95 % CI = 1.1-49.5); p",
                 "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
               },
-              "status": "point_only",
+              "status": "correct",
               "matched_extracted": {
                 "type": "OR",
                 "point": 7.5,
-                "ci_lower": null,
-                "ci_upper": null,
-                "source_text": "OR = 7.5"
+                "ci_lower": 1.1,
+                "ci_upper": 49.5,
+                "source_text": "OR = 7.5 (95 % CI: 1.1-49.5"
               }
             }
           ],
@@ -90028,10 +90100,10 @@
             "type_exact": 1,
             "pt_exact": 1,
             "pt_tol": 1,
-            "ci_lo_exact": 0,
-            "ci_lo_tol": 0,
-            "ci_hi_exact": 0,
-            "ci_hi_tol": 0,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
             "matched_pairs": 1
           },
           "n_extra": 4
@@ -90050,13 +90122,13 @@
                 "quote_context": "egularly (aOR = 7.5 (95 % CI = 1.1-49.5); p",
                 "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
               },
-              "status": "point_only",
+              "status": "correct",
               "matched_extracted": {
                 "type": "OR",
                 "point": 7.5,
-                "ci_lower": null,
-                "ci_upper": null,
-                "source_text": "OR = 7.5"
+                "ci_lower": 1.1,
+                "ci_upper": 49.5,
+                "source_text": "OR = 7.5 (95 % CI: 1.1-49.5"
               }
             }
           ],
@@ -90064,10 +90136,10 @@
             "type_exact": 1,
             "pt_exact": 1,
             "pt_tol": 1,
-            "ci_lo_exact": 0,
-            "ci_lo_tol": 0,
-            "ci_hi_exact": 0,
-            "ci_hi_tol": 0,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
             "matched_pairs": 1
           },
           "n_extra": 4
@@ -90082,7 +90154,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 52232,
-        "secs": 0.16
+        "secs": 0.13
       },
       "n_gold": 5,
       "surfaces": {
@@ -90444,7 +90516,7 @@
         "method": "pymupdf",
         "num_pages": 43,
         "chars": 151078,
-        "secs": 0.39
+        "secs": 0.35
       },
       "n_gold": 3,
       "surfaces": {
@@ -90686,7 +90758,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 50619,
-        "secs": 0.13
+        "secs": 0.11
       },
       "n_gold": 4,
       "surfaces": {
@@ -90988,7 +91060,7 @@
         "method": "pymupdf",
         "num_pages": 19,
         "chars": 67572,
-        "secs": 0.19
+        "secs": 0.16
       },
       "n_gold": 1,
       "surfaces": {
@@ -91092,7 +91164,7 @@
         "method": "pymupdf",
         "num_pages": 8,
         "chars": 37677,
-        "secs": 0.16
+        "secs": 0.09
       },
       "n_gold": 1,
       "surfaces": {
@@ -91214,7 +91286,7 @@
         "method": "pymupdf",
         "num_pages": 15,
         "chars": 50430,
-        "secs": 0.14
+        "secs": 0.13
       },
       "n_gold": 2,
       "surfaces": {
@@ -91396,7 +91468,7 @@
         "method": "pymupdf",
         "num_pages": 73,
         "chars": 230780,
-        "secs": 0.9
+        "secs": 0.59
       },
       "n_gold": 5,
       "surfaces": {
@@ -91758,7 +91830,7 @@
         "method": "pymupdf",
         "num_pages": 13,
         "chars": 40822,
-        "secs": 0.11
+        "secs": 0.14
       },
       "n_gold": 6,
       "surfaces": {
@@ -92180,7 +92252,7 @@
         "method": "pymupdf",
         "num_pages": 15,
         "chars": 60563,
-        "secs": 0.24
+        "secs": 0.16
       },
       "n_gold": 1,
       "surfaces": {
@@ -92544,7 +92616,7 @@
         "method": "pymupdf",
         "num_pages": 44,
         "chars": 167003,
-        "secs": 0.43
+        "secs": 0.5
       },
       "n_gold": 5,
       "surfaces": {
@@ -92906,7 +92978,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 46551,
-        "secs": 0.16
+        "secs": 0.13
       },
       "n_gold": 1,
       "surfaces": {
@@ -93028,7 +93100,7 @@
         "method": "pymupdf",
         "num_pages": 112,
         "chars": 391398,
-        "secs": 1.12
+        "secs": 0.97
       },
       "n_gold": 3,
       "surfaces": {
@@ -93270,7 +93342,7 @@
         "method": "pymupdf",
         "num_pages": 93,
         "chars": 251338,
-        "secs": 0.52
+        "secs": 0.45
       },
       "n_gold": 12,
       "surfaces": {
@@ -94052,7 +94124,7 @@
         "method": "pymupdf",
         "num_pages": 65,
         "chars": 189170,
-        "secs": 2.77
+        "secs": 0.56
       },
       "n_gold": 1,
       "surfaces": {
@@ -94174,7 +94246,7 @@
         "method": "pymupdf",
         "num_pages": 64,
         "chars": 202145,
-        "secs": 7.77
+        "secs": 0.7
       },
       "n_gold": 4,
       "surfaces": {
@@ -94476,7 +94548,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 45578,
-        "secs": 0.21
+        "secs": 0.17
       },
       "n_gold": 1,
       "surfaces": {
@@ -95260,7 +95332,7 @@
         "method": "pymupdf",
         "num_pages": 25,
         "chars": 93935,
-        "secs": 0.26
+        "secs": 0.21
       },
       "n_gold": 6,
       "surfaces": {
@@ -95682,7 +95754,7 @@
         "method": "pymupdf",
         "num_pages": 74,
         "chars": 267214,
-        "secs": 0.76
+        "secs": 0.58
       },
       "n_gold": 12,
       "surfaces": {
@@ -96464,7 +96536,7 @@
         "method": "pymupdf",
         "num_pages": 29,
         "chars": 97888,
-        "secs": 0.3
+        "secs": 0.22
       },
       "n_gold": 1,
       "surfaces": {
@@ -96586,7 +96658,7 @@
         "method": "pymupdf",
         "num_pages": 98,
         "chars": 283667,
-        "secs": 1.17
+        "secs": 0.91
       },
       "n_gold": 12,
       "surfaces": {
@@ -97368,7 +97440,7 @@
         "method": "pymupdf",
         "num_pages": 28,
         "chars": 102784,
-        "secs": 0.3
+        "secs": 0.25
       },
       "n_gold": 2,
       "surfaces": {
@@ -97550,7 +97622,7 @@
         "method": "pymupdf",
         "num_pages": 30,
         "chars": 102934,
-        "secs": 0.3
+        "secs": 0.24
       },
       "n_gold": 4,
       "surfaces": {
@@ -97852,7 +97924,7 @@
         "method": "pymupdf",
         "num_pages": 125,
         "chars": 407628,
-        "secs": 1.14
+        "secs": 0.96
       },
       "n_gold": 12,
       "surfaces": {
@@ -98634,7 +98706,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 39600,
-        "secs": 0.18
+        "secs": 0.15
       },
       "n_gold": 3,
       "surfaces": {
@@ -98876,7 +98948,7 @@
         "method": "pymupdf",
         "num_pages": 104,
         "chars": 341711,
-        "secs": 1.22
+        "secs": 0.8
       },
       "n_gold": 9,
       "surfaces": {
@@ -99478,7 +99550,7 @@
         "method": "pymupdf",
         "num_pages": 140,
         "chars": 410696,
-        "secs": 1.33
+        "secs": 1.06
       },
       "n_gold": 6,
       "surfaces": {
@@ -99900,7 +99972,7 @@
         "method": "pymupdf",
         "num_pages": 27,
         "chars": 99864,
-        "secs": 0.37
+        "secs": 0.26
       },
       "n_gold": 1,
       "surfaces": {
@@ -100022,7 +100094,7 @@
         "method": "pymupdf",
         "num_pages": 29,
         "chars": 106255,
-        "secs": 0.35
+        "secs": 0.24
       },
       "n_gold": 2,
       "surfaces": {
@@ -100204,7 +100276,7 @@
         "method": "pymupdf",
         "num_pages": 25,
         "chars": 77056,
-        "secs": 0.23
+        "secs": 0.19
       },
       "n_gold": 3,
       "surfaces": {
@@ -100446,7 +100518,7 @@
         "method": "pymupdf",
         "num_pages": 79,
         "chars": 306527,
-        "secs": 0.87
+        "secs": 0.69
       },
       "n_gold": 12,
       "surfaces": {
@@ -101228,7 +101300,7 @@
         "method": "pymupdf",
         "num_pages": 51,
         "chars": 169334,
-        "secs": 0.48
+        "secs": 0.41
       },
       "n_gold": 1,
       "surfaces": {
@@ -101350,7 +101422,7 @@
         "method": "pymupdf",
         "num_pages": 54,
         "chars": 191669,
-        "secs": 0.56
+        "secs": 0.46
       },
       "n_gold": 9,
       "surfaces": {
@@ -101952,7 +102024,7 @@
         "method": "pymupdf",
         "num_pages": 78,
         "chars": 281528,
-        "secs": 0.8
+        "secs": 0.71
       },
       "n_gold": 12,
       "surfaces": {
@@ -102734,7 +102806,7 @@
         "method": "pymupdf",
         "num_pages": 31,
         "chars": 116763,
-        "secs": 0.38
+        "secs": 0.28
       },
       "n_gold": 2,
       "surfaces": {
@@ -102916,7 +102988,7 @@
         "method": "pymupdf",
         "num_pages": 8,
         "chars": 33584,
-        "secs": 0.14
+        "secs": 0.08
       },
       "n_gold": 5,
       "surfaces": {
@@ -103254,7 +103326,7 @@
         "method": "pymupdf",
         "num_pages": 32,
         "chars": 111967,
-        "secs": 0.34
+        "secs": 0.29
       },
       "n_gold": 2,
       "surfaces": {
@@ -103436,7 +103508,7 @@
         "method": "pymupdf",
         "num_pages": 19,
         "chars": 63959,
-        "secs": 0.2
+        "secs": 0.18
       },
       "n_gold": 6,
       "surfaces": {
@@ -103858,7 +103930,7 @@
         "method": "pymupdf",
         "num_pages": 188,
         "chars": 591593,
-        "secs": 1.88
+        "secs": 1.47
       },
       "n_gold": 3,
       "surfaces": {
@@ -104100,7 +104172,7 @@
         "method": "pymupdf",
         "num_pages": 152,
         "chars": 439071,
-        "secs": 1.46
+        "secs": 1.22
       },
       "n_gold": 7,
       "surfaces": {
@@ -104582,7 +104654,7 @@
         "method": "pymupdf",
         "num_pages": 154,
         "chars": 502656,
-        "secs": 1.71
+        "secs": 1.4
       },
       "n_gold": 11,
       "surfaces": {
@@ -105304,7 +105376,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 36806,
-        "secs": 0.12
+        "secs": 0.1
       },
       "n_gold": 1,
       "surfaces": {
@@ -105426,7 +105498,7 @@
         "method": "pymupdf",
         "num_pages": 19,
         "chars": 49586,
-        "secs": 0.14
+        "secs": 0.12
       },
       "n_gold": 3,
       "surfaces": {
@@ -105790,7 +105862,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 46122,
-        "secs": 0.17
+        "secs": 0.18
       },
       "n_gold": 1,
       "surfaces": {
@@ -106034,7 +106106,7 @@
         "method": "pymupdf",
         "num_pages": 26,
         "chars": 63840,
-        "secs": 0.19
+        "secs": 0.12
       },
       "n_gold": 1,
       "surfaces": {
@@ -106156,7 +106228,7 @@
         "method": "pymupdf",
         "num_pages": 6,
         "chars": 27161,
-        "secs": 0.18
+        "secs": 0.16
       },
       "n_gold": 4,
       "surfaces": {
@@ -106458,7 +106530,7 @@
         "method": "pymupdf",
         "num_pages": 69,
         "chars": 332996,
-        "secs": 1.02
+        "secs": 0.78
       },
       "n_gold": 4,
       "surfaces": {
@@ -106760,7 +106832,7 @@
         "method": "pymupdf",
         "num_pages": 43,
         "chars": 142806,
-        "secs": 0.4
+        "secs": 0.54
       },
       "n_gold": 5,
       "surfaces": {
@@ -107122,7 +107194,7 @@
         "method": "pymupdf",
         "num_pages": 15,
         "chars": 40571,
-        "secs": 0.13
+        "secs": 0.09
       },
       "n_gold": 3,
       "surfaces": {
@@ -107364,7 +107436,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 45413,
-        "secs": 0.16
+        "secs": 0.13
       },
       "n_gold": 2,
       "surfaces": {
@@ -107546,7 +107618,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 52232,
-        "secs": 0.21
+        "secs": 0.15
       },
       "n_gold": 5,
       "surfaces": {
@@ -107908,7 +107980,7 @@
         "method": "pymupdf",
         "num_pages": 26,
         "chars": 87904,
-        "secs": 0.39
+        "secs": 0.31
       },
       "n_gold": 2,
       "surfaces": {
@@ -108090,7 +108162,7 @@
         "method": "pymupdf",
         "num_pages": 18,
         "chars": 56319,
-        "secs": 0.16
+        "secs": 0.15
       },
       "n_gold": 1,
       "surfaces": {
@@ -108212,7 +108284,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 52034,
-        "secs": 0.25
+        "secs": 0.19
       },
       "n_gold": 2,
       "surfaces": {
@@ -108394,7 +108466,7 @@
         "method": "pymupdf",
         "num_pages": 9,
         "chars": 30987,
-        "secs": 0.14
+        "secs": 0.11
       },
       "n_gold": 3,
       "surfaces": {
@@ -108636,7 +108708,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 50619,
-        "secs": 0.21
+        "secs": 0.13
       },
       "n_gold": 4,
       "surfaces": {
@@ -108938,7 +109010,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 45253,
-        "secs": 0.28
+        "secs": 0.21
       },
       "n_gold": 1,
       "surfaces": {
@@ -109060,7 +109132,7 @@
         "method": "pymupdf",
         "num_pages": 16,
         "chars": 71007,
-        "secs": 0.47
+        "secs": 0.36
       },
       "n_gold": 5,
       "surfaces": {
@@ -109422,7 +109494,7 @@
         "method": "pymupdf",
         "num_pages": 106,
         "chars": 369039,
-        "secs": 1.3
+        "secs": 0.9
       },
       "n_gold": 4,
       "surfaces": {
@@ -109724,7 +109796,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 62220,
-        "secs": 0.43
+        "secs": 0.34
       },
       "n_gold": 1,
       "surfaces": {
@@ -109846,7 +109918,7 @@
         "method": "pymupdf",
         "num_pages": 20,
         "chars": 66705,
-        "secs": 0.2
+        "secs": 0.17
       },
       "n_gold": 1,
       "surfaces": {
@@ -109968,7 +110040,7 @@
         "method": "pymupdf",
         "num_pages": 229,
         "chars": 665720,
-        "secs": 2.03
+        "secs": 1.71
       },
       "n_gold": 12,
       "surfaces": {
@@ -110229,7 +110301,7 @@
           "n_extra": 3
         },
         "pdf_raw": {
-          "n_extracted": 65,
+          "n_extracted": 67,
           "per_gold": [
             {
               "gold": {
@@ -110482,10 +110554,10 @@
             "ci_hi_tol": 12,
             "matched_pairs": 12
           },
-          "n_extra": 53
+          "n_extra": 55
         },
         "pdf_pp": {
-          "n_extracted": 65,
+          "n_extracted": 67,
           "per_gold": [
             {
               "gold": {
@@ -110738,7 +110810,7 @@
             "ci_hi_tol": 12,
             "matched_pairs": 12
           },
-          "n_extra": 53
+          "n_extra": 55
         }
       }
     },
@@ -110750,7 +110822,7 @@
         "method": "pymupdf",
         "num_pages": 32,
         "chars": 101762,
-        "secs": 0.28
+        "secs": 0.26
       },
       "n_gold": 1,
       "surfaces": {
@@ -110872,7 +110944,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 52874,
-        "secs": 0.14
+        "secs": 0.13
       },
       "n_gold": 5,
       "surfaces": {
@@ -111234,7 +111306,7 @@
         "method": "pymupdf",
         "num_pages": 132,
         "chars": 479435,
-        "secs": 1.65
+        "secs": 1.18
       },
       "n_gold": 4,
       "surfaces": {
@@ -111536,7 +111608,7 @@
         "method": "pymupdf",
         "num_pages": 101,
         "chars": 309303,
-        "secs": 1.26
+        "secs": 0.82
       },
       "n_gold": 4,
       "surfaces": {
@@ -111838,7 +111910,7 @@
         "method": "pymupdf",
         "num_pages": 8,
         "chars": 34820,
-        "secs": 0.24
+        "secs": 0.17
       },
       "n_gold": 1,
       "surfaces": {
@@ -111960,7 +112032,7 @@
         "method": "pymupdf",
         "num_pages": 24,
         "chars": 83300,
-        "secs": 0.26
+        "secs": 0.21
       },
       "n_gold": 1,
       "surfaces": {
@@ -112082,7 +112154,7 @@
         "method": "pymupdf",
         "num_pages": 39,
         "chars": 127870,
-        "secs": 0.38
+        "secs": 0.31
       },
       "n_gold": 6,
       "surfaces": {
@@ -112504,7 +112576,7 @@
         "method": "pymupdf",
         "num_pages": 73,
         "chars": 230780,
-        "secs": 0.8
+        "secs": 0.65
       },
       "n_gold": 5,
       "surfaces": {
@@ -112866,7 +112938,7 @@
         "method": "pymupdf",
         "num_pages": 38,
         "chars": 123160,
-        "secs": 0.4
+        "secs": 0.3
       },
       "n_gold": 1,
       "surfaces": {
@@ -112988,7 +113060,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 57702,
-        "secs": 0.28
+        "secs": 0.2
       },
       "n_gold": 4,
       "surfaces": {
@@ -113290,7 +113362,7 @@
         "method": "pymupdf",
         "num_pages": 18,
         "chars": 62697,
-        "secs": 0.21
+        "secs": 0.16
       },
       "n_gold": 3,
       "surfaces": {
@@ -113532,7 +113604,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 60972,
-        "secs": 0.19
+        "secs": 0.15
       },
       "n_gold": 2,
       "surfaces": {
@@ -113714,7 +113786,7 @@
         "method": "pymupdf",
         "num_pages": 169,
         "chars": 496317,
-        "secs": 1.57
+        "secs": 1.5
       },
       "n_gold": 1,
       "surfaces": {
@@ -113830,7 +113902,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 38941,
-        "secs": 0.2
+        "secs": 0.16
       },
       "n_gold": 1,
       "surfaces": {
@@ -113952,7 +114024,7 @@
         "method": "pymupdf",
         "num_pages": 13,
         "chars": 39464,
-        "secs": 0.21
+        "secs": 0.19
       },
       "n_gold": 2,
       "surfaces": {
@@ -114256,7 +114328,7 @@
         "method": "pymupdf",
         "num_pages": 15,
         "chars": 54985,
-        "secs": 0.17
+        "secs": 0.13
       },
       "n_gold": 2,
       "surfaces": {
@@ -114438,7 +114510,7 @@
         "method": "pymupdf",
         "num_pages": 119,
         "chars": 402202,
-        "secs": 1.25
+        "secs": 0.97
       },
       "n_gold": 10,
       "surfaces": {
@@ -115100,7 +115172,7 @@
         "method": "pymupdf",
         "num_pages": 15,
         "chars": 60563,
-        "secs": 0.2
+        "secs": 0.18
       },
       "n_gold": 1,
       "surfaces": {
@@ -115222,7 +115294,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 52466,
-        "secs": 0.32
+        "secs": 0.29
       },
       "n_gold": 4,
       "surfaces": {
@@ -115688,7 +115760,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 47531,
-        "secs": 0.23
+        "secs": 0.22
       },
       "n_gold": 3,
       "surfaces": {
@@ -115930,7 +116002,7 @@
         "method": "pymupdf",
         "num_pages": 44,
         "chars": 167003,
-        "secs": 0.5
+        "secs": 0.44
       },
       "n_gold": 5,
       "surfaces": {
@@ -116292,7 +116364,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 49988,
-        "secs": 0.17
+        "secs": 0.13
       },
       "n_gold": 2,
       "surfaces": {
@@ -116474,7 +116546,7 @@
         "method": "pymupdf",
         "num_pages": 9,
         "chars": 41065,
-        "secs": 0.14
+        "secs": 0.11
       },
       "n_gold": 3,
       "surfaces": {
@@ -116716,7 +116788,7 @@
         "method": "pymupdf",
         "num_pages": 13,
         "chars": 57818,
-        "secs": 0.42
+        "secs": 0.36
       },
       "n_gold": 2,
       "surfaces": {
@@ -116892,7 +116964,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 70714,
-        "secs": 0.53
+        "secs": 0.49
       },
       "n_gold": 3,
       "surfaces": {
@@ -117134,7 +117206,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 42075,
-        "secs": 0.23
+        "secs": 0.15
       },
       "n_gold": 6,
       "surfaces": {
@@ -117245,7 +117317,7 @@
           "n_extra": 0
         },
         "pdf_raw": {
-          "n_extracted": 3,
+          "n_extracted": 6,
           "per_gold": [
             {
               "gold": {
@@ -117306,8 +117378,14 @@
                 "quote_context": "), death (OR 0.97; 95% CI 0.52\u20131.80; p =",
                 "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
               },
-              "status": "missed",
-              "matched_extracted": null
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.97,
+                "ci_lower": 0.52,
+                "ci_upper": 1.8,
+                "source_text": "OR 0.97; 95% CI 0.52-1.80"
+              }
             },
             {
               "gold": {
@@ -117320,13 +117398,13 @@
                 "quote_context": "), 5y-OS (OR 1.22; 95% CI 0.36\u20134.18; p =",
                 "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
               },
-              "status": "point_only",
+              "status": "correct",
               "matched_extracted": {
-                "type": "HR",
-                "point": 1.23,
-                "ci_lower": 0.62,
-                "ci_upper": 2.42,
-                "source_text": "HR 1.23; 95% CI 0.62-2.42"
+                "type": "OR",
+                "point": 1.22,
+                "ci_lower": 0.36,
+                "ci_upper": 4.18,
+                "source_text": "OR 1.22; 95% CI 0.36-4.18"
               }
             },
             {
@@ -117340,24 +117418,30 @@
                 "quote_context": "d 5y-DFS (OR 0.78; 95% CI 0.42\u20131.43 p =",
                 "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
               },
-              "status": "missed",
-              "matched_extracted": null
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.78,
+                "ci_lower": 0.42,
+                "ci_upper": 1.43,
+                "source_text": "OR 0.78; 95% CI 0.42-1.43"
+              }
             }
           ],
           "field": {
-            "type_exact": 1,
-            "pt_exact": 1,
-            "pt_tol": 2,
-            "ci_lo_exact": 1,
-            "ci_lo_tol": 1,
-            "ci_hi_exact": 1,
-            "ci_hi_tol": 1,
-            "matched_pairs": 2
+            "type_exact": 4,
+            "pt_exact": 4,
+            "pt_tol": 4,
+            "ci_lo_exact": 4,
+            "ci_lo_tol": 4,
+            "ci_hi_exact": 4,
+            "ci_hi_tol": 4,
+            "matched_pairs": 4
           },
-          "n_extra": 1
+          "n_extra": 2
         },
         "pdf_pp": {
-          "n_extracted": 3,
+          "n_extracted": 6,
           "per_gold": [
             {
               "gold": {
@@ -117418,8 +117502,14 @@
                 "quote_context": "), death (OR 0.97; 95% CI 0.52\u20131.80; p =",
                 "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
               },
-              "status": "missed",
-              "matched_extracted": null
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.97,
+                "ci_lower": 0.52,
+                "ci_upper": 1.8,
+                "source_text": "OR 0.97; 95% CI 0.52-1.80"
+              }
             },
             {
               "gold": {
@@ -117432,13 +117522,13 @@
                 "quote_context": "), 5y-OS (OR 1.22; 95% CI 0.36\u20134.18; p =",
                 "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
               },
-              "status": "point_only",
+              "status": "correct",
               "matched_extracted": {
-                "type": "HR",
-                "point": 1.23,
-                "ci_lower": 0.62,
-                "ci_upper": 2.42,
-                "source_text": "HR 1.23; 95% CI 0.62-2.42"
+                "type": "OR",
+                "point": 1.22,
+                "ci_lower": 0.36,
+                "ci_upper": 4.18,
+                "source_text": "OR 1.22; 95% CI 0.36-4.18"
               }
             },
             {
@@ -117452,21 +117542,27 @@
                 "quote_context": "d 5y-DFS (OR 0.78; 95% CI 0.42\u20131.43 p =",
                 "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
               },
-              "status": "missed",
-              "matched_extracted": null
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.78,
+                "ci_lower": 0.42,
+                "ci_upper": 1.43,
+                "source_text": "OR 0.78; 95% CI 0.42-1.43"
+              }
             }
           ],
           "field": {
-            "type_exact": 1,
-            "pt_exact": 1,
-            "pt_tol": 2,
-            "ci_lo_exact": 1,
-            "ci_lo_tol": 1,
-            "ci_hi_exact": 1,
-            "ci_hi_tol": 1,
-            "matched_pairs": 2
+            "type_exact": 4,
+            "pt_exact": 4,
+            "pt_tol": 4,
+            "ci_lo_exact": 4,
+            "ci_lo_tol": 4,
+            "ci_hi_exact": 4,
+            "ci_hi_tol": 4,
+            "matched_pairs": 4
           },
-          "n_extra": 1
+          "n_extra": 2
         }
       }
     },
@@ -117478,7 +117574,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 55082,
-        "secs": 0.18
+        "secs": 0.16
       },
       "n_gold": 5,
       "surfaces": {
@@ -118022,7 +118118,7 @@
         "method": "pymupdf",
         "num_pages": 15,
         "chars": 59466,
-        "secs": 0.18
+        "secs": 0.17
       },
       "n_gold": 3,
       "surfaces": {
@@ -118264,7 +118360,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 93643,
-        "secs": 0.41
+        "secs": 0.33
       },
       "n_gold": 3,
       "surfaces": {
@@ -118506,7 +118602,7 @@
         "method": "pymupdf",
         "num_pages": 19,
         "chars": 45465,
-        "secs": 0.12
+        "secs": 0.11
       },
       "n_gold": 2,
       "surfaces": {
@@ -118688,7 +118784,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 52202,
-        "secs": 0.38
+        "secs": 0.31
       },
       "n_gold": 2,
       "surfaces": {
@@ -119052,7 +119148,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 54213,
-        "secs": 0.19
+        "secs": 0.2
       },
       "n_gold": 4,
       "surfaces": {
@@ -119354,7 +119450,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 44174,
-        "secs": 0.26
+        "secs": 0.29
       },
       "n_gold": 2,
       "surfaces": {
@@ -119536,7 +119632,7 @@
         "method": "pymupdf",
         "num_pages": 516,
         "chars": 1293666,
-        "secs": 4.89
+        "secs": 3.98
       },
       "n_gold": 10,
       "surfaces": {
@@ -120198,7 +120294,7 @@
         "method": "pymupdf",
         "num_pages": 344,
         "chars": 933859,
-        "secs": 3.36
+        "secs": 3.24
       },
       "n_gold": 6,
       "surfaces": {
@@ -120333,7 +120429,7 @@
           "n_extra": 0
         },
         "pdf_raw": {
-          "n_extracted": 70,
+          "n_extracted": 73,
           "per_gold": [
             {
               "gold": {
@@ -120466,10 +120562,10 @@
             "ci_hi_tol": 5,
             "matched_pairs": 6
           },
-          "n_extra": 64
+          "n_extra": 67
         },
         "pdf_pp": {
-          "n_extracted": 70,
+          "n_extracted": 73,
           "per_gold": [
             {
               "gold": {
@@ -120602,7 +120698,7 @@
             "ci_hi_tol": 5,
             "matched_pairs": 6
           },
-          "n_extra": 64
+          "n_extra": 67
         }
       }
     },
@@ -120614,7 +120710,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 47033,
-        "secs": 0.17
+        "secs": 0.15
       },
       "n_gold": 3,
       "surfaces": {
@@ -120856,7 +120952,7 @@
         "method": "pymupdf",
         "num_pages": 15,
         "chars": 65095,
-        "secs": 0.42
+        "secs": 0.51
       },
       "n_gold": 2,
       "surfaces": {
@@ -120930,13 +121026,13 @@
                 "quote_context": "26 years (RR = 0.35, 95% CI: 0.18\u20130.65; I 2",
                 "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\..."
               },
-              "status": "point_only",
+              "status": "correct",
               "matched_extracted": {
                 "type": "RR",
                 "point": 0.35,
-                "ci_lower": null,
-                "ci_upper": null,
-                "source_text": "RR = 0.35"
+                "ci_lower": 0.18,
+                "ci_upper": 0.65,
+                "source_text": "RR = 0.35; 95% CI:  0.18-0.65"
               }
             },
             {
@@ -120964,10 +121060,10 @@
             "type_exact": 2,
             "pt_exact": 2,
             "pt_tol": 2,
-            "ci_lo_exact": 1,
-            "ci_lo_tol": 1,
-            "ci_hi_exact": 1,
-            "ci_hi_tol": 1,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
             "matched_pairs": 2
           },
           "n_extra": 28
@@ -120986,13 +121082,13 @@
                 "quote_context": "26 years (RR = 0.35, 95% CI: 0.18\u20130.65; I 2",
                 "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\..."
               },
-              "status": "point_only",
+              "status": "correct",
               "matched_extracted": {
                 "type": "RR",
                 "point": 0.35,
-                "ci_lower": null,
-                "ci_upper": null,
-                "source_text": "RR = 0.35"
+                "ci_lower": 0.18,
+                "ci_upper": 0.65,
+                "source_text": "RR = 0.35; 95% CI: 0.18-0.65"
               }
             },
             {
@@ -121020,10 +121116,10 @@
             "type_exact": 2,
             "pt_exact": 2,
             "pt_tol": 2,
-            "ci_lo_exact": 1,
-            "ci_lo_tol": 1,
-            "ci_hi_exact": 1,
-            "ci_hi_tol": 1,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
             "matched_pairs": 2
           },
           "n_extra": 28
@@ -121038,7 +121134,7 @@
         "method": "pymupdf",
         "num_pages": 19,
         "chars": 56766,
-        "secs": 0.29
+        "secs": 0.25
       },
       "n_gold": 2,
       "surfaces": {
@@ -121220,7 +121316,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 50633,
-        "secs": 0.26
+        "secs": 0.22
       },
       "n_gold": 1,
       "surfaces": {
@@ -121342,7 +121438,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 52430,
-        "secs": 0.19
+        "secs": 0.11
       },
       "n_gold": 7,
       "surfaces": {
@@ -121824,7 +121920,7 @@
         "method": "pymupdf",
         "num_pages": 13,
         "chars": 43953,
-        "secs": 0.34
+        "secs": 0.32
       },
       "n_gold": 4,
       "surfaces": {
@@ -122126,7 +122222,7 @@
         "method": "pymupdf",
         "num_pages": 8,
         "chars": 48338,
-        "secs": 0.19
+        "secs": 0.15
       },
       "n_gold": 1,
       "surfaces": {
@@ -122248,7 +122344,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 56570,
-        "secs": 0.29
+        "secs": 0.25
       },
       "n_gold": 7,
       "surfaces": {
@@ -122730,7 +122826,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 59340,
-        "secs": 0.37
+        "secs": 0.19
       },
       "n_gold": 3,
       "surfaces": {
@@ -122972,7 +123068,7 @@
         "method": "pymupdf",
         "num_pages": 20,
         "chars": 74772,
-        "secs": 0.44
+        "secs": 0.33
       },
       "n_gold": 1,
       "surfaces": {
@@ -123094,7 +123190,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 40381,
-        "secs": 0.17
+        "secs": 0.14
       },
       "n_gold": 4,
       "surfaces": {
@@ -123396,7 +123492,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 36055,
-        "secs": 0.18
+        "secs": 0.1
       },
       "n_gold": 3,
       "surfaces": {
@@ -123638,7 +123734,7 @@
         "method": "pymupdf",
         "num_pages": 8,
         "chars": 41765,
-        "secs": 0.19
+        "secs": 0.16
       },
       "n_gold": 2,
       "surfaces": {
@@ -123820,7 +123916,7 @@
         "method": "pymupdf",
         "num_pages": 7,
         "chars": 37201,
-        "secs": 0.31
+        "secs": 0.23
       },
       "n_gold": 1,
       "surfaces": {
@@ -123942,7 +124038,7 @@
         "method": "pymupdf",
         "num_pages": 13,
         "chars": 57433,
-        "secs": 0.27
+        "secs": 0.19
       },
       "n_gold": 3,
       "surfaces": {
@@ -124184,7 +124280,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 45083,
-        "secs": 0.31
+        "secs": 0.21
       },
       "n_gold": 5,
       "surfaces": {
@@ -124788,7 +124884,7 @@
         "method": "pymupdf",
         "num_pages": 13,
         "chars": 52184,
-        "secs": 0.19
+        "secs": 0.17
       },
       "n_gold": 2,
       "surfaces": {
@@ -124970,7 +125066,7 @@
         "method": "pymupdf",
         "num_pages": 15,
         "chars": 71533,
-        "secs": 0.33
+        "secs": 0.24
       },
       "n_gold": 5,
       "surfaces": {
@@ -125332,7 +125428,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 75232,
-        "secs": 0.42
+        "secs": 0.24
       },
       "n_gold": 4,
       "surfaces": {
@@ -125634,7 +125730,7 @@
         "method": "pymupdf",
         "num_pages": 15,
         "chars": 55404,
-        "secs": 0.18
+        "secs": 0.14
       },
       "n_gold": 3,
       "surfaces": {
@@ -125876,7 +125972,7 @@
         "method": "pymupdf",
         "num_pages": 7,
         "chars": 32030,
-        "secs": 0.09
+        "secs": 0.07
       },
       "n_gold": 1,
       "surfaces": {
@@ -125998,7 +126094,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 41712,
-        "secs": 0.19
+        "secs": 0.15
       },
       "n_gold": 7,
       "surfaces": {
@@ -126480,7 +126576,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 48334,
-        "secs": 0.26
+        "secs": 0.16
       },
       "n_gold": 2,
       "surfaces": {
@@ -126662,7 +126758,7 @@
         "method": "pymupdf",
         "num_pages": 13,
         "chars": 42357,
-        "secs": 0.13
+        "secs": 0.26
       },
       "n_gold": 1,
       "surfaces": {
@@ -126784,7 +126880,7 @@
         "method": "pymupdf",
         "num_pages": 13,
         "chars": 49912,
-        "secs": 0.28
+        "secs": 0.17
       },
       "n_gold": 2,
       "surfaces": {
@@ -126966,7 +127062,7 @@
         "method": "pymupdf",
         "num_pages": 9,
         "chars": 36615,
-        "secs": 0.12
+        "secs": 0.1
       },
       "n_gold": 5,
       "surfaces": {
@@ -127328,7 +127424,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 41583,
-        "secs": 0.25
+        "secs": 0.2
       },
       "n_gold": 4,
       "surfaces": {
@@ -127630,7 +127726,7 @@
         "method": "pymupdf",
         "num_pages": 17,
         "chars": 86301,
-        "secs": 0.44
+        "secs": 0.31
       },
       "n_gold": 6,
       "surfaces": {
@@ -128052,7 +128148,7 @@
         "method": "pymupdf",
         "num_pages": 13,
         "chars": 38857,
-        "secs": 0.2
+        "secs": 0.17
       },
       "n_gold": 7,
       "surfaces": {
@@ -128534,7 +128630,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 41054,
-        "secs": 0.18
+        "secs": 0.19
       },
       "n_gold": 8,
       "surfaces": {
@@ -129076,7 +129172,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 33058,
-        "secs": 0.15
+        "secs": 0.1
       },
       "n_gold": 8,
       "surfaces": {
@@ -129618,7 +129714,7 @@
         "method": "pymupdf",
         "num_pages": 15,
         "chars": 45901,
-        "secs": 0.21
+        "secs": 0.16
       },
       "n_gold": 2,
       "surfaces": {
@@ -129800,7 +129896,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 60017,
-        "secs": 0.17
+        "secs": 0.15
       },
       "n_gold": 3,
       "surfaces": {
@@ -130042,7 +130138,7 @@
         "method": "pymupdf",
         "num_pages": 13,
         "chars": 43789,
-        "secs": 0.19
+        "secs": 0.16
       },
       "n_gold": 3,
       "surfaces": {
@@ -130284,7 +130380,7 @@
         "method": "pymupdf",
         "num_pages": 18,
         "chars": 89217,
-        "secs": 0.61
+        "secs": 0.55
       },
       "n_gold": 4,
       "surfaces": {
@@ -130586,7 +130682,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 52017,
-        "secs": 0.29
+        "secs": 0.3
       },
       "n_gold": 7,
       "surfaces": {
@@ -131068,7 +131164,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 47557,
-        "secs": 0.48
+        "secs": 0.49
       },
       "n_gold": 1,
       "surfaces": {
@@ -131190,7 +131286,7 @@
         "method": "pymupdf",
         "num_pages": 13,
         "chars": 58555,
-        "secs": 0.2
+        "secs": 0.17
       },
       "n_gold": 3,
       "surfaces": {
@@ -131432,7 +131528,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 59437,
-        "secs": 0.25
+        "secs": 0.28
       },
       "n_gold": 3,
       "surfaces": {
@@ -131674,7 +131770,7 @@
         "method": "pymupdf",
         "num_pages": 15,
         "chars": 58822,
-        "secs": 0.5
+        "secs": 0.43
       },
       "n_gold": 2,
       "surfaces": {
@@ -131978,7 +132074,7 @@
         "method": "pymupdf",
         "num_pages": 17,
         "chars": 80952,
-        "secs": 0.59
+        "secs": 0.57
       },
       "n_gold": 5,
       "surfaces": {
@@ -132340,7 +132436,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 46644,
-        "secs": 0.24
+        "secs": 0.18
       },
       "n_gold": 1,
       "surfaces": {
@@ -132462,7 +132558,7 @@
         "method": "pymupdf",
         "num_pages": 9,
         "chars": 48040,
-        "secs": 0.47
+        "secs": 0.3
       },
       "n_gold": 3,
       "surfaces": {
@@ -132704,7 +132800,7 @@
         "method": "pymupdf",
         "num_pages": 17,
         "chars": 53748,
-        "secs": 0.17
+        "secs": 0.14
       },
       "n_gold": 2,
       "surfaces": {
@@ -132886,7 +132982,7 @@
         "method": "pymupdf",
         "num_pages": 13,
         "chars": 46639,
-        "secs": 0.21
+        "secs": 0.19
       },
       "n_gold": 2,
       "surfaces": {
@@ -133068,7 +133164,7 @@
         "method": "pymupdf",
         "num_pages": 9,
         "chars": 38691,
-        "secs": 0.28
+        "secs": 0.25
       },
       "n_gold": 1,
       "surfaces": {
@@ -133190,7 +133286,7 @@
         "method": "pymupdf",
         "num_pages": 9,
         "chars": 37684,
-        "secs": 0.14
+        "secs": 0.13
       },
       "n_gold": 1,
       "surfaces": {
@@ -133312,7 +133408,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 67567,
-        "secs": 0.21
+        "secs": 0.17
       },
       "n_gold": 3,
       "surfaces": {
@@ -133554,7 +133650,7 @@
         "method": "pymupdf",
         "num_pages": 18,
         "chars": 74469,
-        "secs": 0.69
+        "secs": 0.49
       },
       "n_gold": 2,
       "surfaces": {
@@ -133736,7 +133832,7 @@
         "method": "pymupdf",
         "num_pages": 17,
         "chars": 35651,
-        "secs": 0.22
+        "secs": 0.13
       },
       "n_gold": 11,
       "surfaces": {
@@ -134458,7 +134554,7 @@
         "method": "pymupdf",
         "num_pages": 26,
         "chars": 107605,
-        "secs": 0.63
+        "secs": 0.58
       },
       "n_gold": 9,
       "surfaces": {
@@ -135060,7 +135156,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 54836,
-        "secs": 0.17
+        "secs": 0.13
       },
       "n_gold": 1,
       "surfaces": {
@@ -135364,7 +135460,7 @@
         "method": "pymupdf",
         "num_pages": 23,
         "chars": 67304,
-        "secs": 0.41
+        "secs": 0.32
       },
       "n_gold": 2,
       "surfaces": {
@@ -135546,7 +135642,7 @@
         "method": "pymupdf",
         "num_pages": 8,
         "chars": 27850,
-        "secs": 0.18
+        "secs": 0.17
       },
       "n_gold": 6,
       "surfaces": {
@@ -135968,7 +136064,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 36839,
-        "secs": 0.16
+        "secs": 0.11
       },
       "n_gold": 2,
       "surfaces": {
@@ -136150,7 +136246,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 62285,
-        "secs": 0.32
+        "secs": 0.23
       },
       "n_gold": 3,
       "surfaces": {
@@ -136392,7 +136488,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 63700,
-        "secs": 0.49
+        "secs": 0.29
       },
       "n_gold": 1,
       "surfaces": {
@@ -136514,7 +136610,7 @@
         "method": "pymupdf",
         "num_pages": 13,
         "chars": 60660,
-        "secs": 0.33
+        "secs": 0.34
       },
       "n_gold": 6,
       "surfaces": {
@@ -136936,7 +137032,7 @@
         "method": "pymupdf",
         "num_pages": 26,
         "chars": 69218,
-        "secs": 0.33
+        "secs": 0.32
       },
       "n_gold": 6,
       "surfaces": {
@@ -137358,7 +137454,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 57396,
-        "secs": 0.21
+        "secs": 0.24
       },
       "n_gold": 3,
       "surfaces": {
@@ -137600,7 +137696,7 @@
         "method": "pymupdf",
         "num_pages": 18,
         "chars": 66872,
-        "secs": 0.43
+        "secs": 0.42
       },
       "n_gold": 3,
       "surfaces": {
@@ -137842,7 +137938,7 @@
         "method": "pymupdf",
         "num_pages": 7,
         "chars": 38769,
-        "secs": 0.31
+        "secs": 0.16
       },
       "n_gold": 2,
       "surfaces": {
@@ -138024,7 +138120,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 46869,
-        "secs": 0.12
+        "secs": 0.13
       },
       "n_gold": 2,
       "surfaces": {
@@ -138206,7 +138302,7 @@
         "method": "pymupdf",
         "num_pages": 18,
         "chars": 64400,
-        "secs": 0.24
+        "secs": 0.4
       },
       "n_gold": 3,
       "surfaces": {
@@ -138448,7 +138544,7 @@
         "method": "pymupdf",
         "num_pages": 28,
         "chars": 100216,
-        "secs": 0.29
+        "secs": 0.34
       },
       "n_gold": 2,
       "surfaces": {
@@ -138992,7 +139088,7 @@
         "method": "pymupdf",
         "num_pages": 13,
         "chars": 68591,
-        "secs": 0.26
+        "secs": 0.27
       },
       "n_gold": 2,
       "surfaces": {
@@ -139174,7 +139270,7 @@
         "method": "pymupdf",
         "num_pages": 18,
         "chars": 59806,
-        "secs": 0.69
+        "secs": 0.7
       },
       "n_gold": 7,
       "surfaces": {
@@ -139656,7 +139752,7 @@
         "method": "pymupdf",
         "num_pages": 144,
         "chars": 430830,
-        "secs": 1.41
+        "secs": 1.42
       },
       "n_gold": 13,
       "surfaces": {
@@ -140498,7 +140594,7 @@
         "method": "pymupdf",
         "num_pages": 114,
         "chars": 392762,
-        "secs": 1.18
+        "secs": 1.0
       },
       "n_gold": 2,
       "surfaces": {
@@ -140680,7 +140776,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 40350,
-        "secs": 0.16
+        "secs": 0.19
       },
       "n_gold": 1,
       "surfaces": {
@@ -140802,7 +140898,7 @@
         "method": "pymupdf",
         "num_pages": 13,
         "chars": 61453,
-        "secs": 0.19
+        "secs": 0.24
       },
       "n_gold": 1,
       "surfaces": {
@@ -140924,7 +141020,7 @@
         "method": "pymupdf",
         "num_pages": 9,
         "chars": 45818,
-        "secs": 0.22
+        "secs": 0.17
       },
       "n_gold": 1,
       "surfaces": {
@@ -141046,7 +141142,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 85558,
-        "secs": 0.41
+        "secs": 0.26
       },
       "n_gold": 1,
       "surfaces": {
@@ -141168,7 +141264,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 47531,
-        "secs": 0.16
+        "secs": 0.15
       },
       "n_gold": 2,
       "surfaces": {
@@ -141350,7 +141446,7 @@
         "method": "pymupdf",
         "num_pages": 34,
         "chars": 117667,
-        "secs": 0.39
+        "secs": 0.34
       },
       "n_gold": 2,
       "surfaces": {
@@ -141532,7 +141628,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 63734,
-        "secs": 0.29
+        "secs": 0.22
       },
       "n_gold": 3,
       "surfaces": {
@@ -141774,7 +141870,7 @@
         "method": "pymupdf",
         "num_pages": 8,
         "chars": 34114,
-        "secs": 0.12
+        "secs": 0.08
       },
       "n_gold": 4,
       "surfaces": {
@@ -142076,7 +142172,7 @@
         "method": "pymupdf",
         "num_pages": 13,
         "chars": 43585,
-        "secs": 0.24
+        "secs": 0.14
       },
       "n_gold": 1,
       "surfaces": {
@@ -142198,7 +142294,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 48706,
-        "secs": 0.15
+        "secs": 0.13
       },
       "n_gold": 2,
       "surfaces": {
@@ -142380,7 +142476,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 52993,
-        "secs": 0.26
+        "secs": 0.2
       },
       "n_gold": 1,
       "surfaces": {
@@ -142502,7 +142598,7 @@
         "method": "pymupdf",
         "num_pages": 13,
         "chars": 65057,
-        "secs": 0.26
+        "secs": 0.21
       },
       "n_gold": 1,
       "surfaces": {
@@ -142624,7 +142720,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 54453,
-        "secs": 0.2
+        "secs": 0.23
       },
       "n_gold": 2,
       "surfaces": {
@@ -142928,7 +143024,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 54057,
-        "secs": 0.16
+        "secs": 0.18
       },
       "n_gold": 1,
       "surfaces": {
@@ -143050,7 +143146,7 @@
         "method": "pymupdf",
         "num_pages": 24,
         "chars": 127798,
-        "secs": 0.94
+        "secs": 0.81
       },
       "n_gold": 2,
       "surfaces": {
@@ -143232,7 +143328,7 @@
         "method": "pymupdf",
         "num_pages": 18,
         "chars": 52779,
-        "secs": 0.33
+        "secs": 0.42
       },
       "n_gold": 2,
       "surfaces": {
@@ -143414,7 +143510,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 54981,
-        "secs": 0.34
+        "secs": 0.26
       },
       "n_gold": 3,
       "surfaces": {
@@ -143656,7 +143752,7 @@
         "method": "pymupdf",
         "num_pages": 13,
         "chars": 51938,
-        "secs": 0.18
+        "secs": 0.19
       },
       "n_gold": 1,
       "surfaces": {
@@ -143778,7 +143874,7 @@
         "method": "pymupdf",
         "num_pages": 11,
         "chars": 33555,
-        "secs": 0.12
+        "secs": 0.11
       },
       "n_gold": 2,
       "surfaces": {
@@ -143960,7 +144056,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 52260,
-        "secs": 0.26
+        "secs": 0.19
       },
       "n_gold": 1,
       "surfaces": {
@@ -144082,7 +144178,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 70714,
-        "secs": 1.0
+        "secs": 0.67
       },
       "n_gold": 3,
       "surfaces": {
@@ -144324,7 +144420,7 @@
         "method": "pymupdf",
         "num_pages": 9,
         "chars": 43558,
-        "secs": 0.15
+        "secs": 0.1
       },
       "n_gold": 1,
       "surfaces": {
@@ -144446,7 +144542,7 @@
         "method": "pymupdf",
         "num_pages": 16,
         "chars": 67636,
-        "secs": 0.28
+        "secs": 0.2
       },
       "n_gold": 1,
       "surfaces": {
@@ -144568,7 +144664,7 @@
         "method": "pymupdf",
         "num_pages": 12,
         "chars": 34914,
-        "secs": 0.18
+        "secs": 0.16
       },
       "n_gold": 3,
       "surfaces": {
@@ -144810,7 +144906,7 @@
         "method": "pymupdf",
         "num_pages": 10,
         "chars": 51932,
-        "secs": 0.21
+        "secs": 0.2
       },
       "n_gold": 2,
       "surfaces": {
@@ -144992,7 +145088,7 @@
         "method": "pymupdf",
         "num_pages": 14,
         "chars": 65287,
-        "secs": 0.27
+        "secs": 0.21
       },
       "n_gold": 2,
       "surfaces": {
@@ -145174,7 +145270,7 @@
         "method": "pymupdf",
         "num_pages": 26,
         "chars": 69218,
-        "secs": 0.31
+        "secs": 0.35
       },
       "n_gold": 6,
       "surfaces": {
@@ -145718,7 +145814,7 @@
         "method": "pymupdf",
         "num_pages": 15,
         "chars": 64652,
-        "secs": 0.22
+        "secs": 0.15
       },
       "n_gold": 3,
       "surfaces": {
@@ -145960,7 +146056,7 @@
         "method": "pymupdf",
         "num_pages": 9,
         "chars": 42923,
-        "secs": 0.19
+        "secs": 0.1
       },
       "n_gold": 9,
       "surfaces": {
