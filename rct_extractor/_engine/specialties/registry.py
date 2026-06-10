@@ -275,6 +275,16 @@ from .ophthalmology import (
     normalize_ophthalmology_endpoint
 )
 
+from .head_neck_cancer import (
+    HEAD_NECK_CANCER_ENDPOINTS,
+    DEFINITIVE_PATTERNS as HN_DEFINITIVE_PATTERNS,
+    RECURRENT_METASTATIC_PATTERNS as HN_RECURRENT_METASTATIC_PATTERNS,
+    NASOPHARYNGEAL_PATTERNS as HN_NASOPHARYNGEAL_PATTERNS,
+    MORTALITY_PATTERNS as HN_MORTALITY_PATTERNS,
+    detect_head_neck_cancer_subspecialty,
+    normalize_head_neck_cancer_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -494,6 +504,18 @@ SPECIALTY_REGISTRY = {
             'screening': CC_SCREENING_PATTERNS,
             'treatment': CC_TREATMENT_PATTERNS,
             'mortality': CC_MORTALITY_PATTERNS
+        }
+    },
+    'head_neck_cancer': {
+        'subspecialties': ['definitive', 'recurrent_metastatic', 'nasopharyngeal', 'mortality'],
+        'detection_function': detect_head_neck_cancer_subspecialty,
+        'normalizer': normalize_head_neck_cancer_endpoint,
+        'endpoints': HEAD_NECK_CANCER_ENDPOINTS,
+        'patterns': {
+            'definitive': HN_DEFINITIVE_PATTERNS,
+            'recurrent_metastatic': HN_RECURRENT_METASTATIC_PATTERNS,
+            'nasopharyngeal': HN_NASOPHARYNGEAL_PATTERNS,
+            'mortality': HN_MORTALITY_PATTERNS
         }
     },
     'infectious_disease': {
@@ -796,6 +818,14 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'high[- ]grade\s+squamous\s+intraepithelial', r'persistent\s+hpv',
             r'quadrivalent|bivalent|nonavalent'
         ],
+        'head_neck_cancer': [
+            r'head\s+and\s+neck\s+(?:cancer|squamous|carcinoma)|\bhnscc\b',
+            r'nasopharyngeal\s+(?:carcinoma|cancer)|\bnpc\b',
+            r'oropharyngeal|laryngeal\s+cancer|hypopharyngeal|oral\s+cavity\s+cancer',
+            r'chemoradi(?:o|ation)therapy|concurrent\s+chemoradi',
+            r'cetuximab', r'\btpf\b', r'locoregional\s+control',
+            r'gemcitabine[- ,/]+cisplatin', r'epstein[- ]barr', r'\bextreme\b'
+        ],
         'infectious_disease': [
             r'covid', r'sars[- ]?cov',
             r'viral', r'bacterial', r'antiviral', r'antibiotic', r'infection'
@@ -999,6 +1029,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'cervical_cancer':
         subspecialty, conf = detect_cervical_cancer_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'head_neck_cancer':
+        subspecialty, conf = detect_head_neck_cancer_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'diabetes':
         subspecialty, conf = detect_diabetes_subspecialty(text)
