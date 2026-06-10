@@ -275,6 +275,16 @@ from .ophthalmology import (
     normalize_ophthalmology_endpoint
 )
 
+from .covid19 import (
+    COVID19_ENDPOINTS,
+    TREATMENT_PATTERNS as COV_ANTIVIRAL_PATTERNS,
+    DRUG_RESISTANT_PATTERNS as COV_IMMUNO_PATTERNS,
+    PREVENTION_PATTERNS as COV_PROPHYLAXIS_PATTERNS,
+    LATENT_PATTERNS as COV_SEVERE_PATTERNS,
+    detect_covid19_subspecialty,
+    normalize_covid19_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -575,6 +585,18 @@ SPECIALTY_REGISTRY = {
             'dry_eye': OPHTH_DRY_EYE_PATTERNS
         }
     },
+    'covid19': {
+        'subspecialties': ['antiviral', 'immunomodulator', 'prophylaxis_vaccine', 'severe_supportive'],
+        'detection_function': detect_covid19_subspecialty,
+        'normalizer': normalize_covid19_endpoint,
+        'endpoints': COVID19_ENDPOINTS,
+        'patterns': {
+            'antiviral': COV_ANTIVIRAL_PATTERNS,
+            'immunomodulator': COV_IMMUNO_PATTERNS,
+            'prophylaxis_vaccine': COV_PROPHYLAXIS_PATTERNS,
+            'severe_supportive': COV_SEVERE_PATTERNS
+        }
+    },
     'respiratory': {
         'subspecialties': ['copd', 'asthma', 'ild', 'general_respiratory'],
         'detection_function': detect_respiratory_subspecialty,
@@ -852,6 +874,16 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'\bphq-?9\b', r'\bgad-?7\b', r'\bssri\b|\bsnri\b',
             r'esketamine|zuranolone|brexanolone|vortioxetine|cariprazine|lurasidone|lumateperone|brexpiprazole'
         ],
+        'covid19': [
+            r'covid|sars[- ]?cov[- ]?2|coronavirus\s+disease|2019[- ]ncov',
+            r'nirmatrelvir|paxlovid|molnupiravir|remdesivir|ensitrelvir',
+            r'hospitali[sz]ation\s+or\s+death|time\s+to\s+(?:sustained\s+)?recovery',
+            r'dexamethasone\s+covid|tocilizumab|sarilumab|baricitinib',
+            r'who\s+clinical\s+(?:progression|ordinal)|mechanical\s+ventilation',
+            r'vaccine\s+efficacy|symptomatic\s+covid|breakthrough\s+infection',
+            r'convalescent\s+plasma|casirivimab|sotrovimab|tixagevimab',
+            r'viral\s+clearance|sars[- ]cov[- ]2\s+rna',
+        ],
         'neurology': [
             r'alzheimer', r'dementia', r'multiple\s+sclerosis', r'\bms\b',
             r'parkinson', r'stroke', r'neurological', r'cognitive', r'relapse'
@@ -1026,6 +1058,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'ophthalmology':
         subspecialty, conf = detect_ophthalmology_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'covid19':
+        subspecialty, conf = detect_covid19_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)
