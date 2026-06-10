@@ -100,7 +100,7 @@ def metakit_measure_for(effect_type: str) -> Optional[str]:
     return _TYPE_TO_MEASURE.get(str(effect_type).upper())
 
 
-# All 17 disease specialties ship a <name>_arm_data module with extract_arm_level().
+# All 27 disease specialties ship a <name>_arm_data module with extract_arm_level().
 _ARM_SPECIALTIES = (
     "hiv", "malaria", "typhoid", "schistosomiasis", "sickle_cell", "cholera",
     "maternal_neonatal", "tuberculosis", "hepatitis", "meningitis", "pneumonia",
@@ -144,7 +144,7 @@ def build_config_from_records(records: List[Dict], extractor, *, title: str,
     auto-detected specialty is in the list are processed -- the extractor engages
     only for those topics and leaves everything else to the caller's own flow.
 
-    Works for all 17 disease specialties: raw 2x2 counts are recovered via each
+    Works for all 27 disease specialties: raw 2x2 counts are recovered via each
     specialty's <name>_arm_data.extract_arm_level(); precomputed effects come
     from the malaria augmenter for malaria text and from the core extractor
     otherwise.

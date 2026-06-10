@@ -125,7 +125,7 @@ class RctExtractorSource(Source):
 
     TopicSpec.params:
       corpus:    path to a JSON list [{study, text, year?}] or a dir of *.txt
-      specialty: one of the 17 disease specialties, or "auto" (default)
+      specialty: one of the 27 disease specialties, or "auto" (default)
       endpoint:  optional canonical endpoint to restrict to
     """
     name = "rct_extractor"
