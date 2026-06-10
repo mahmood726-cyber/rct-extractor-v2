@@ -178,3 +178,11 @@ data/field_portability/cervical_cancer/*.log
 
 # PDF accuracy eval: re-fetchable NCBI XML cache (61MB) - keep gold+results, not cache
 data/pdf_eval/xml_cache/
+
+# Gastric-cancer field bundle
+data/field_portability/gastric_cancer/rct_trial_pdfs/
+data/field_portability/gastric_cancer/*.jsonl
+data/field_portability/gastric_cancer/*.json
+data/field_portability/gastric_cancer/*.log
+data/pdf_eval/gold_gastric_cancer.jsonl
+data/pdf_eval/eval_onc_gastric_cancer.json
