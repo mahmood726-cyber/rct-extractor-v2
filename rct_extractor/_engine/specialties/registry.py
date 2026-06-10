@@ -194,6 +194,16 @@ from .diabetes import (
     normalize_diabetes_endpoint
 )
 
+from .respiratory import (
+    RESPIRATORY_ENDPOINTS,
+    COPD_PATTERNS as RESP_COPD_PATTERNS,
+    ASTHMA_PATTERNS as RESP_ASTHMA_PATTERNS,
+    ILD_PATTERNS as RESP_ILD_PATTERNS,
+    GENERAL_PATTERNS as RESP_GENERAL_PATTERNS,
+    detect_respiratory_subspecialty,
+    normalize_respiratory_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -456,12 +466,15 @@ SPECIALTY_REGISTRY = {
         }
     },
     'respiratory': {
-        'subspecialties': ['copd', 'asthma', 'ipf'],
-        'endpoints': {
-            'EXACERBATION': {'aliases': ['exacerbation', 'acute exacerbation', 'copd exacerbation']},
-            'FEV1': {'aliases': ['fev1', 'forced expiratory volume']},
-            'FVC': {'aliases': ['fvc', 'forced vital capacity']},
-            'FVC_DECLINE': {'aliases': ['fvc decline', 'annual fvc decline', 'rate of fvc decline']}
+        'subspecialties': ['copd', 'asthma', 'ild', 'general_respiratory'],
+        'detection_function': detect_respiratory_subspecialty,
+        'normalizer': normalize_respiratory_endpoint,
+        'endpoints': RESPIRATORY_ENDPOINTS,
+        'patterns': {
+            'copd': RESP_COPD_PATTERNS,
+            'asthma': RESP_ASTHMA_PATTERNS,
+            'ild': RESP_ILD_PATTERNS,
+            'general_respiratory': RESP_GENERAL_PATTERNS
         }
     }
 }
@@ -658,8 +671,14 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'inflammatory\s+bowel', r'crohn', r'colitis', r'acr\d{2}', r'pasi'
         ],
         'respiratory': [
-            r'copd', r'asthma', r'pulmonary\s+fibrosis', r'ipf',
-            r'exacerbation', r'fev1', r'fvc', r'broncho', r'inhale'
+            r'chronic\s+obstructive\s+pulmonary\s+disease', r'\bcopd\b', r'\baecopd\b',
+            r'\basthma\b', r'asthmatic', r'pulmonary\s+fibrosis', r'\bipf\b',
+            r'interstitial\s+lung\s+disease', r'\bild\b', r'emphysema',
+            r'exacerbation', r'\bfev1?\b', r'\bfvc\b', r'forced\s+(?:expiratory|vital)',
+            r'broncho', r'inhale[dr]?', r'\bsgrq\b', r'\bacq\b', r'\bfeno\b',
+            r'tiotropium|umeclidinium|salmeterol|formoterol|budesonide|fluticasone',
+            r'mepolizumab|benralizumab|dupilumab|omalizumab|tezepelumab',
+            r'nintedanib|pirfenidone'
         ]
     }
 
@@ -748,6 +767,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'diabetes':
         subspecialty, conf = detect_diabetes_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'respiratory':
+        subspecialty, conf = detect_respiratory_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)
