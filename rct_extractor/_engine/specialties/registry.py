@@ -194,6 +194,16 @@ from .diabetes import (
     normalize_diabetes_endpoint
 )
 
+from .schizophrenia import (
+    SCHIZOPHRENIA_ENDPOINTS,
+    TREATMENT_PATTERNS as SCZ_ACUTE_PATTERNS,
+    DRUG_RESISTANT_PATTERNS as SCZ_MAINTENANCE_PATTERNS,
+    PREVENTION_PATTERNS as SCZ_NEGCOG_PATTERNS,
+    LATENT_PATTERNS as SCZ_SAFETY_PATTERNS,
+    detect_schizophrenia_subspecialty,
+    normalize_schizophrenia_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -463,6 +473,18 @@ SPECIALTY_REGISTRY = {
             'FVC': {'aliases': ['fvc', 'forced vital capacity']},
             'FVC_DECLINE': {'aliases': ['fvc decline', 'annual fvc decline', 'rate of fvc decline']}
         }
+    },
+    'schizophrenia': {
+        'subspecialties': ['acute', 'maintenance', 'negative_cognitive', 'safety'],
+        'detection_function': detect_schizophrenia_subspecialty,
+        'normalizer': normalize_schizophrenia_endpoint,
+        'endpoints': SCHIZOPHRENIA_ENDPOINTS,
+        'patterns': {
+            'acute': SCZ_ACUTE_PATTERNS,
+            'maintenance': SCZ_MAINTENANCE_PATTERNS,
+            'negative_cognitive': SCZ_NEGCOG_PATTERNS,
+            'safety': SCZ_SAFETY_PATTERNS
+        }
     }
 }
 
@@ -476,7 +498,7 @@ SPECIALTY_REGISTRY = {
 # detect_specialty). `infectious_disease` is the one with bare-word keywords;
 # the others are kept here too so a future generic keyword can't silently steal
 # routing from a specific specialty.
-_FALLBACK_SPECIALTIES = {'infectious_disease'}
+_FALLBACK_SPECIALTIES = {'infectious_disease', 'neurology'}
 
 
 def detect_specialty(text: str) -> Tuple[str, str, float]:
@@ -649,6 +671,16 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'\w*gliptin', r'dpp[- ]?4', r'metformin', r'sulfonylurea|sulphonylurea',
             r'pioglitazone|rosiglitazone', r'obesity', r'weight\s+loss'
         ],
+        'schizophrenia': [
+            r'schizophreni|schizoaffective',
+            r'\\bpanss\\b|positive\\s+and\\s+negative\\s+syndrome',
+            r'antipsychotic|risperidone|olanzapine|quetiapine|aripiprazole|paliperidone|lurasidone|cariprazine|brexpiprazole|clozapine|haloperidol',
+            r'\\bcgi[- ]?[si]?\\b|clinical\\s+global\\s+impression',
+            r'long[- ]acting\\s+injectable|\\blai\\b|relapse\\s+prevention',
+            r'negative\\s+symptoms?|treatment[- ]resistant\\s+schizophreni',
+            r'psychosis|psychotic\\s+(?:symptoms|disorder|episode)',
+            r'xanomeline|karxt|extrapyramidal|akathisia',
+        ],
         'neurology': [
             r'alzheimer', r'dementia', r'multiple\s+sclerosis', r'\bms\b',
             r'parkinson', r'stroke', r'neurological', r'cognitive', r'relapse'
@@ -748,6 +780,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'diabetes':
         subspecialty, conf = detect_diabetes_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'schizophrenia':
+        subspecialty, conf = detect_schizophrenia_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)

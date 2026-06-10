@@ -6,12 +6,13 @@ import pytest
 import rct_extractor as rx
 from rct_extractor.api import SPECIALTIES
 
-# Canonical 17 disease specialties that the package promises to support.
-EXPECTED_17 = {
+# Canonical disease specialties that the package promises to support.
+EXPECTED_SPECIALTIES = {
     "hiv", "malaria", "typhoid", "schistosomiasis", "sickle_cell", "cholera",
     "maternal_neonatal", "tuberculosis", "hepatitis", "meningitis", "pneumonia",
     "diarrhoeal", "malnutrition", "helminths", "hypertension", "cervical_cancer",
     "diabetes",
+    "schizophrenia",
 }
 
 
@@ -19,10 +20,10 @@ def test_version_is_exposed():
     assert isinstance(rx.__version__, str) and rx.__version__
 
 
-def test_list_specialties_has_all_17():
-    assert set(rx.list_specialties()) == EXPECTED_17
-    assert set(SPECIALTIES) == EXPECTED_17
-    assert len(SPECIALTIES) == 17
+def test_list_specialties_has_all():
+    assert set(rx.list_specialties()) == EXPECTED_SPECIALTIES
+    assert set(SPECIALTIES) == EXPECTED_SPECIALTIES
+    assert len(SPECIALTIES) == len(EXPECTED_SPECIALTIES)
 
 
 def test_public_symbols_present():
@@ -31,14 +32,14 @@ def test_public_symbols_present():
         assert hasattr(rx, name), f"missing public symbol {name}"
 
 
-@pytest.mark.parametrize("specialty", sorted(EXPECTED_17))
+@pytest.mark.parametrize("specialty", sorted(EXPECTED_SPECIALTIES))
 def test_each_specialty_arm_module_importable(specialty):
     """Every specialty must have an importable arm-data module with extract_arm_level."""
     mod = importlib.import_module(f"rct_extractor._engine.specialties.{specialty}_arm_data")
     assert hasattr(mod, "extract_arm_level")
 
 
-@pytest.mark.parametrize("specialty", sorted(EXPECTED_17))
+@pytest.mark.parametrize("specialty", sorted(EXPECTED_SPECIALTIES))
 def test_extract_forced_specialty_smoke(specialty):
     """extract() returns the expected shape for every forced specialty."""
     text = ("In this randomized trial the primary outcome occurred in "

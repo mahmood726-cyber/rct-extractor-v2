@@ -178,3 +178,9 @@ data/field_portability/cervical_cancer/*.log
 
 # PDF accuracy eval: re-fetchable NCBI XML cache (61MB) - keep gold+results, not cache
 data/pdf_eval/xml_cache/
+
+# Schizophrenia field bundle — large/transient data (keep README.md; code is under scripts/)
+data/field_portability/schizophrenia/rct_trial_pdfs/
+data/field_portability/schizophrenia/*.jsonl
+data/field_portability/schizophrenia/*.json
+data/field_portability/schizophrenia/*.log
