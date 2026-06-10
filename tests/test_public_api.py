@@ -6,12 +6,12 @@ import pytest
 import rct_extractor as rx
 from rct_extractor.api import SPECIALTIES
 
-# Canonical 17 disease specialties that the package promises to support.
+# Canonical disease specialties that the package promises to support.
 EXPECTED_17 = {
     "hiv", "malaria", "typhoid", "schistosomiasis", "sickle_cell", "cholera",
     "maternal_neonatal", "tuberculosis", "hepatitis", "meningitis", "pneumonia",
     "diarrhoeal", "malnutrition", "helminths", "hypertension", "cervical_cancer",
-    "diabetes",
+    "diabetes", "venous_thromboembolism",
 }
 
 
@@ -22,7 +22,7 @@ def test_version_is_exposed():
 def test_list_specialties_has_all_17():
     assert set(rx.list_specialties()) == EXPECTED_17
     assert set(SPECIALTIES) == EXPECTED_17
-    assert len(SPECIALTIES) == 17
+    assert len(SPECIALTIES) == 18
 
 
 def test_public_symbols_present():

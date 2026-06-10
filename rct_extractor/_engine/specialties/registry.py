@@ -194,6 +194,16 @@ from .diabetes import (
     normalize_diabetes_endpoint
 )
 
+from .venous_thromboembolism import (
+    VTE_ENDPOINTS,
+    TREATMENT_PATTERNS as VTE_TREATMENT_PATTERNS,
+    PREVENTION_PATTERNS as VTE_PREVENTION_PATTERNS,
+    BLEEDING_PATTERNS as VTE_BLEEDING_PATTERNS,
+    MORTALITY_PATTERNS as VTE_MORTALITY_PATTERNS,
+    detect_venous_thromboembolism_subspecialty,
+    normalize_venous_thromboembolism_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -436,6 +446,18 @@ SPECIALTY_REGISTRY = {
             'complications': DIABETES_COMPLICATIONS_PATTERNS
         }
     },
+    'venous_thromboembolism': {
+        'subspecialties': ['treatment', 'prevention', 'bleeding', 'mortality'],
+        'detection_function': detect_venous_thromboembolism_subspecialty,
+        'normalizer': normalize_venous_thromboembolism_endpoint,
+        'endpoints': VTE_ENDPOINTS,
+        'patterns': {
+            'treatment': VTE_TREATMENT_PATTERNS,
+            'prevention': VTE_PREVENTION_PATTERNS,
+            'bleeding': VTE_BLEEDING_PATTERNS,
+            'mortality': VTE_MORTALITY_PATTERNS
+        }
+    },
     'neurology': {
         'subspecialties': ['alzheimers', 'ms', 'parkinsons', 'stroke'],
         'endpoints': {
@@ -649,6 +671,18 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'\w*gliptin', r'dpp[- ]?4', r'metformin', r'sulfonylurea|sulphonylurea',
             r'pioglitazone|rosiglitazone', r'obesity', r'weight\s+loss'
         ],
+        'venous_thromboembolism': [
+            r'venous\s+thromboembolism', r'\bvte\b', r'thromboprophylaxis',
+            r'deep[- ]vein\s+thrombosis', r'\bdvt\b', r'pulmonary\s+embolism',
+            r'recurrent\s+(?:venous\s+thromboembolism|vte|thrombosis)',
+            r'thromboembolic', r'anticoagulat(?:ion|ant)',
+            r'apixaban|rivaroxaban|edoxaban|dabigatran|betrixaban',
+            r'enoxaparin|dalteparin|tinzaparin|nadroparin|fondaparinux',
+            r'low[- ]molecular[- ]weight\s+heparin|unfractionated\s+heparin',
+            r'vitamin[- ]k\s+antagonist', r'post[- ]?thrombotic\s+syndrome',
+            r'major\s+bleeding|clinically\s+relevant\s+non[- ]?major',
+            r'\bdoac\b|\bnoac\b',
+        ],
         'neurology': [
             r'alzheimer', r'dementia', r'multiple\s+sclerosis', r'\bms\b',
             r'parkinson', r'stroke', r'neurological', r'cognitive', r'relapse'
@@ -748,6 +782,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'diabetes':
         subspecialty, conf = detect_diabetes_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'venous_thromboembolism':
+        subspecialty, conf = detect_venous_thromboembolism_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)
