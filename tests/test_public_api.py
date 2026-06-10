@@ -14,7 +14,7 @@ EXPECTED_17 = {
     "diarrhoeal", "malnutrition", "helminths", "hypertension", "cervical_cancer",
     "diabetes", "respiratory", "cardiology", "oncology", "stroke",
     "nephrology", "psychiatry", "rheumatology", "gastroenterology",
-    "dermatology", "ophthalmology",
+    "dermatology", "ophthalmology", "melanoma",
 }
 
 
