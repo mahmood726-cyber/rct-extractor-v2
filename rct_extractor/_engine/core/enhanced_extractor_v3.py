@@ -2090,6 +2090,14 @@ class EnhancedExtractor:
         # "¼ of patients") is never rewritten. Same case rules as the "5" repair.
         text = re.sub(r'\b(ratio)\s*[¼½¾]\s*(?=\d)', r'\1 = ', text, flags=re.IGNORECASE)
         text = re.sub(r'(?<![A-Za-z])(a?RR|a?OR|a?HR|a?IRR)\s*[¼½¾]\s*(?=\d)', r'\1 = ', text)
+        # v6.6 (PDF-eval): the SAME U+00BC "=" glyph also lands between the CI
+        # keyword and its lower bound ("95% CI ¼ 0.07 to 16.62"), seen across
+        # multiple osteoporosis / obesity RCT PDFs. The point's "OR ¼"/"HR ¼" is
+        # repaired above; without this the CI's "¼" stays and the whole interval
+        # is dropped (point-only extraction). Repair it in the CI-keyword position
+        # too, only when immediately followed by a digit (a real "¼" is untouched).
+        text = re.sub(r'\b(CI|C\.I\.|confidence\s+interval)\s*[¼½¾]\s*(?=\d)',
+                      r'\1 = ', text, flags=re.IGNORECASE)
 
         # Split "of"/"was" stuck between letters and digits (run-together PDF text)
         # "ratioof4.17" -> "ratio of 4.17", "was98.8" -> "was 98.8"

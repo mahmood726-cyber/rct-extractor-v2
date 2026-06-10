@@ -194,6 +194,16 @@ from .diabetes import (
     normalize_diabetes_endpoint
 )
 
+from .osteoporosis import (
+    OSTEOPOROSIS_ENDPOINTS,
+    FRACTURE_PATTERNS as OST_FRACTURE_PATTERNS,
+    BMD_PATTERNS as OST_BMD_PATTERNS,
+    BONE_TURNOVER_PATTERNS as OST_BONE_TURNOVER_PATTERNS,
+    SAFETY_PATTERNS as OST_SAFETY_PATTERNS,
+    detect_osteoporosis_subspecialty,
+    normalize_osteoporosis_endpoint
+)
+
 from .respiratory import (
     RESPIRATORY_ENDPOINTS,
     COPD_PATTERNS as RESP_COPD_PATTERNS,
@@ -517,6 +527,18 @@ SPECIALTY_REGISTRY = {
             'complications': DIABETES_COMPLICATIONS_PATTERNS
         }
     },
+    'osteoporosis': {
+        'subspecialties': ['fracture', 'bmd', 'bone_turnover', 'safety'],
+        'detection_function': detect_osteoporosis_subspecialty,
+        'normalizer': normalize_osteoporosis_endpoint,
+        'endpoints': OSTEOPOROSIS_ENDPOINTS,
+        'patterns': {
+            'fracture': OST_FRACTURE_PATTERNS,
+            'bmd': OST_BMD_PATTERNS,
+            'bone_turnover': OST_BONE_TURNOVER_PATTERNS,
+            'safety': OST_SAFETY_PATTERNS
+        }
+    },
     'neurology': {
         'subspecialties': ['alzheimers', 'ms', 'parkinsons', 'stroke'],
         'endpoints': {
@@ -808,6 +830,17 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'\w*gliptin', r'dpp[- ]?4', r'metformin', r'sulfonylurea|sulphonylurea',
             r'pioglitazone|rosiglitazone', r'obesity', r'weight\s+loss'
         ],
+        'osteoporosis': [
+            r'osteoporo(?:sis|tic)', r'osteopenia', r'bone\s+mineral\s+density|\bbmd\b',
+            r'vertebral\s+fracture', r'non[- ]?vertebral\s+fracture', r'hip\s+fracture',
+            r'fragility\s+fracture', r'osteoporotic\s+fracture',
+            r'bisphosphonate|alendronate|risedronate|ibandronate|zoledronic',
+            r'denosumab', r'teriparatide|abaloparatide', r'romosozumab',
+            r'raloxifene|bazedoxifene', r'strontium\s+ranelate',
+            r't[- ]score', r'\bfrax\b', r'bone[- ]turnover\s+marker',
+            r'postmenopausal\s+(?:women\s+)?(?:with\s+)?osteoporosis',
+            r'femoral\s+neck|lumbar\s+spine\s+(?:bmd|bone)',
+        ],
         'stroke': [
             r'\bstroke\b', r'ischa?emic\s+stroke', r'acute\s+ischa?emic\s+stroke',
             r'ha?emorrhagic\s+stroke', r'\bnihss\b', r'nih\s+stroke\s+scale',
@@ -1002,6 +1035,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'diabetes':
         subspecialty, conf = detect_diabetes_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'osteoporosis':
+        subspecialty, conf = detect_osteoporosis_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'respiratory':
         subspecialty, conf = detect_respiratory_subspecialty(text)
