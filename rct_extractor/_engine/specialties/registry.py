@@ -194,6 +194,16 @@ from .diabetes import (
     normalize_diabetes_endpoint
 )
 
+from .hepatocellular_carcinoma import (
+    HEPATOCELLULAR_CARCINOMA_ENDPOINTS,
+    SYSTEMIC_PATTERNS as HCC_SYSTEMIC_PATTERNS,
+    LOCOREGIONAL_PATTERNS as HCC_LOCOREGIONAL_PATTERNS,
+    CURATIVE_PATTERNS as HCC_CURATIVE_PATTERNS,
+    MORTALITY_PATTERNS as HCC_MORTALITY_PATTERNS,
+    detect_hepatocellular_carcinoma_subspecialty,
+    normalize_hepatocellular_carcinoma_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -413,6 +423,18 @@ SPECIALTY_REGISTRY = {
             'screening': CC_SCREENING_PATTERNS,
             'treatment': CC_TREATMENT_PATTERNS,
             'mortality': CC_MORTALITY_PATTERNS
+        }
+    },
+    'hepatocellular_carcinoma': {
+        'subspecialties': ['systemic', 'locoregional', 'curative', 'mortality'],
+        'detection_function': detect_hepatocellular_carcinoma_subspecialty,
+        'normalizer': normalize_hepatocellular_carcinoma_endpoint,
+        'endpoints': HEPATOCELLULAR_CARCINOMA_ENDPOINTS,
+        'patterns': {
+            'systemic': HCC_SYSTEMIC_PATTERNS,
+            'locoregional': HCC_LOCOREGIONAL_PATTERNS,
+            'curative': HCC_CURATIVE_PATTERNS,
+            'mortality': HCC_MORTALITY_PATTERNS
         }
     },
     'infectious_disease': {
@@ -637,6 +659,16 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'high[- ]grade\s+squamous\s+intraepithelial', r'persistent\s+hpv',
             r'quadrivalent|bivalent|nonavalent'
         ],
+        'hepatocellular_carcinoma': [
+            r'hepatocellular\s+carcinoma', r'\bhcc\b', r'liver\s+cancer',
+            r'sorafenib|lenvatinib|regorafenib|cabozantinib',
+            r'atezolizumab|durvalumab|tremelimumab',
+            r'\bbclc\b', r'child[- ]?pugh',
+            r'transarterial\s+(?:chemoembolization|radioembolization)|\btace\b|\btare\b',
+            r'alpha[- ]?fetoprotein|\bafp\b', r'radiofrequency\s+ablation|\brfa\b',
+            r'unresectable\s+(?:hepatocellular|hcc)|advanced\s+(?:hepatocellular|hcc)',
+            r'milan\s+criteria', r'hepatectomy|liver\s+resection'
+        ],
         'infectious_disease': [
             r'covid', r'sars[- ]?cov',
             r'viral', r'bacterial', r'antiviral', r'antibiotic', r'infection'
@@ -745,6 +777,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'cervical_cancer':
         subspecialty, conf = detect_cervical_cancer_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'hepatocellular_carcinoma':
+        subspecialty, conf = detect_hepatocellular_carcinoma_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'diabetes':
         subspecialty, conf = detect_diabetes_subspecialty(text)
