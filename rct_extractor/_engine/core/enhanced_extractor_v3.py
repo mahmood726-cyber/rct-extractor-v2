@@ -2090,6 +2090,12 @@ class EnhancedExtractor:
         # "¼ of patients") is never rewritten. Same case rules as the "5" repair.
         text = re.sub(r'\b(ratio)\s*[¼½¾]\s*(?=\d)', r'\1 = ', text, flags=re.IGNORECASE)
         text = re.sub(r'(?<![A-Za-z])(a?RR|a?OR|a?HR|a?IRR)\s*[¼½¾]\s*(?=\d)', r'\1 = ', text)
+        # v6.6 (PDF-eval): a journal font extracts the en-dash between CI bounds as
+        # the letter "Y" ("95% CI, 2.15Y9.71" should be "2.15–9.71"), seen in
+        # kidney-transplant PDFs. Repair ONLY when the "Y" sits directly between a
+        # DECIMAL lower bound and a numeric upper bound, so ordinary prose / gene
+        # symbols (which never look like "2.15Y9.71") are untouched.
+        text = re.sub(r'(\d+\.\d+)\s*[Yy]\s*(\d+(?:\.\d+)?)\b', r'\1–\2', text)
 
         # Split "of"/"was" stuck between letters and digits (run-together PDF text)
         # "ratioof4.17" -> "ratio of 4.17", "was98.8" -> "was 98.8"

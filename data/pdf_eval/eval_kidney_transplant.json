@@ -1,0 +1,3220 @@
+{
+  "tolerances": {
+    "pt_abs": 0.02,
+    "pt_rel": 0.02,
+    "ci_abs": 0.03,
+    "ci_rel": 0.03
+  },
+  "papers": [
+    {
+      "pmcid": "PMC5724691",
+      "pmid": "28758341",
+      "specialty": "kidney_transplant",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 9,
+        "chars": 35016,
+        "secs": 0.16
+      },
+      "n_gold": 3,
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 4,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 1.61,
+                "ci_lower": 0.85,
+                "ci_upper": 3.05,
+                "ci_level": 0.95,
+                "source_text": "HR = 1.61; 95% CI 0.85-3.05",
+                "quote_context": "osporine: HR = 1.61; 95% CI 0.85-3.05; P =",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 1.61,
+                "ci_lower": 0.85,
+                "ci_upper": 3.05,
+                "source_text": "HR = 1.61; 95% CI 0.85-3.05"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 1.06,
+                "ci_lower": 0.35,
+                "ci_upper": 3.17,
+                "ci_level": 0.95,
+                "source_text": "HR = 1.06, 95% CI 0.35-3.17",
+                "quote_context": "osporine: HR = 1.06, 95% CI 0.35-3.17, P =",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 1.06,
+                "ci_lower": 0.35,
+                "ci_upper": 3.17,
+                "source_text": "HR = 1.06; 95% CI 0.35-3.17"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 2.0,
+                "ci_lower": 0.75,
+                "ci_upper": 5.35,
+                "ci_level": 0.95,
+                "source_text": "HR = 2.00, 95% CI 0.75-5.35",
+                "quote_context": "osporine: HR = 2.00, 95% CI 0.75-5.35, P =",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 2.0,
+                "ci_lower": 0.75,
+                "ci_upper": 5.35,
+                "source_text": "HR = 2.00; 95% CI 0.75-5.35"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 3,
+            "pt_exact": 3,
+            "pt_tol": 3,
+            "ci_lo_exact": 3,
+            "ci_lo_tol": 3,
+            "ci_hi_exact": 3,
+            "ci_hi_tol": 3,
+            "matched_pairs": 3
+          },
+          "n_extra": 1
+        },
+        "pdf_raw": {
+          "n_extracted": 7,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 1.61,
+                "ci_lower": 0.85,
+                "ci_upper": 3.05,
+                "ci_level": 0.95,
+                "source_text": "HR = 1.61; 95% CI 0.85-3.05",
+                "quote_context": "osporine: HR = 1.61; 95% CI 0.85-3.05; P =",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 1.61,
+                "ci_lower": 0.85,
+                "ci_upper": 3.05,
+                "source_text": "HR = 1.61; 95% CI 0.85-3.05"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 1.06,
+                "ci_lower": 0.35,
+                "ci_upper": 3.17,
+                "ci_level": 0.95,
+                "source_text": "HR = 1.06, 95% CI 0.35-3.17",
+                "quote_context": "osporine: HR = 1.06, 95% CI 0.35-3.17, P =",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 1.06,
+                "ci_lower": 0.35,
+                "ci_upper": 3.17,
+                "source_text": "HR = 1.06; 95% CI 0.35-3.17"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 2.0,
+                "ci_lower": 0.75,
+                "ci_upper": 5.35,
+                "ci_level": 0.95,
+                "source_text": "HR = 2.00, 95% CI 0.75-5.35",
+                "quote_context": "osporine: HR = 2.00, 95% CI 0.75-5.35, P =",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 2.0,
+                "ci_lower": 0.75,
+                "ci_upper": 5.35,
+                "source_text": "HR = 2.00; 95% CI 0.75-5.35"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 3,
+            "pt_exact": 3,
+            "pt_tol": 3,
+            "ci_lo_exact": 3,
+            "ci_lo_tol": 3,
+            "ci_hi_exact": 3,
+            "ci_hi_tol": 3,
+            "matched_pairs": 3
+          },
+          "n_extra": 4
+        },
+        "pdf_pp": {
+          "n_extracted": 7,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 1.61,
+                "ci_lower": 0.85,
+                "ci_upper": 3.05,
+                "ci_level": 0.95,
+                "source_text": "HR = 1.61; 95% CI 0.85-3.05",
+                "quote_context": "osporine: HR = 1.61; 95% CI 0.85-3.05; P =",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 1.61,
+                "ci_lower": 0.85,
+                "ci_upper": 3.05,
+                "source_text": "HR = 1.61; 95% CI 0.85-3.05"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 1.06,
+                "ci_lower": 0.35,
+                "ci_upper": 3.17,
+                "ci_level": 0.95,
+                "source_text": "HR = 1.06, 95% CI 0.35-3.17",
+                "quote_context": "osporine: HR = 1.06, 95% CI 0.35-3.17, P =",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 1.06,
+                "ci_lower": 0.35,
+                "ci_upper": 3.17,
+                "source_text": "HR = 1.06; 95% CI 0.35-3.17"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 2.0,
+                "ci_lower": 0.75,
+                "ci_upper": 5.35,
+                "ci_level": 0.95,
+                "source_text": "HR = 2.00, 95% CI 0.75-5.35",
+                "quote_context": "osporine: HR = 2.00, 95% CI 0.75-5.35, P =",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 2.0,
+                "ci_lower": 0.75,
+                "ci_upper": 5.35,
+                "source_text": "HR = 2.00; 95% CI 0.75-5.35"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 3,
+            "pt_exact": 3,
+            "pt_tol": 3,
+            "ci_lo_exact": 3,
+            "ci_lo_tol": 3,
+            "ci_hi_exact": 3,
+            "ci_hi_tol": 3,
+            "matched_pairs": 3
+          },
+          "n_extra": 4
+        }
+      }
+    },
+    {
+      "pmcid": "PMC12453264",
+      "pmid": "40982417",
+      "specialty": "kidney_transplant",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 11,
+        "chars": 37687,
+        "secs": 0.19
+      },
+      "n_gold": 2,
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 3,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 1.22,
+                "ci_lower": 0.74,
+                "ci_upper": 2.01,
+                "ci_level": 0.95,
+                "source_text": "HR 1.22, 95% CI: 0.74-2.01",
+                "quote_context": "nificant (HR 1.22, 95% CI: 0.74-2.01, p =",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 1.22,
+                "ci_lower": 0.74,
+                "ci_upper": 2.01,
+                "source_text": "HR 1.22; 95% CI: 0.74-2.01"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 1.39,
+                "ci_lower": 0.79,
+                "ci_upper": 2.72,
+                "ci_level": 0.95,
+                "source_text": "HR 1.39, 95% CI: 0.79-2.72",
+                "quote_context": "t effect (HR 1.39, 95% CI: 0.79-2.72, p =",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 1.39,
+                "ci_lower": 0.79,
+                "ci_upper": 2.72,
+                "source_text": "HR 1.39; 95% CI: 0.79-2.72"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 1
+        },
+        "pdf_raw": {
+          "n_extracted": 14,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 1.22,
+                "ci_lower": 0.74,
+                "ci_upper": 2.01,
+                "ci_level": 0.95,
+                "source_text": "HR 1.22, 95% CI: 0.74-2.01",
+                "quote_context": "nificant (HR 1.22, 95% CI: 0.74-2.01, p =",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 1.22,
+                "ci_lower": 0.74,
+                "ci_upper": 2.01,
+                "source_text": "HR 1.22; 95% CI: 0.74-2.01"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 1.39,
+                "ci_lower": 0.79,
+                "ci_upper": 2.72,
+                "ci_level": 0.95,
+                "source_text": "HR 1.39, 95% CI: 0.79-2.72",
+                "quote_context": "t effect (HR 1.39, 95% CI: 0.79-2.72, p =",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 1.39,
+                "ci_lower": 0.79,
+                "ci_upper": 2.72,
+                "source_text": "HR 1.39; 95% CI: 0.79-2.72"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 12
+        },
+        "pdf_pp": {
+          "n_extracted": 14,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 1.22,
+                "ci_lower": 0.74,
+                "ci_upper": 2.01,
+                "ci_level": 0.95,
+                "source_text": "HR 1.22, 95% CI: 0.74-2.01",
+                "quote_context": "nificant (HR 1.22, 95% CI: 0.74-2.01, p =",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 1.22,
+                "ci_lower": 0.74,
+                "ci_upper": 2.01,
+                "source_text": "HR 1.22; 95% CI: 0.74-2.01"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 1.39,
+                "ci_lower": 0.79,
+                "ci_upper": 2.72,
+                "ci_level": 0.95,
+                "source_text": "HR 1.39, 95% CI: 0.79-2.72",
+                "quote_context": "t effect (HR 1.39, 95% CI: 0.79-2.72, p =",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 1.39,
+                "ci_lower": 0.79,
+                "ci_upper": 2.72,
+                "source_text": "HR 1.39; 95% CI: 0.79-2.72"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 12
+        }
+      }
+    },
+    {
+      "pmcid": "PMC6830819",
+      "pmid": "31689320",
+      "specialty": "kidney_transplant",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 18,
+        "chars": 59059,
+        "secs": 0.17
+      },
+      "n_gold": 1,
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 1.14,
+                "ci_lower": 0.53,
+                "ci_upper": 2.4,
+                "ci_level": 0.95,
+                "source_text": "odds ratio 1.14; 95% confidence interval 0.53-2.40",
+                "quote_context": "= 36/58); odds ratio 1.14; 95% confidence interval 0.53-2.40; p =",
+                "harvest_pattern": "odds\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\...."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 1.14,
+                "ci_lower": 0.53,
+                "ci_upper": 2.4,
+                "source_text": "odds ratio 1.14; 95% CI 0.53-2.40"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 1.14,
+                "ci_lower": 0.53,
+                "ci_upper": 2.4,
+                "ci_level": 0.95,
+                "source_text": "odds ratio 1.14; 95% confidence interval 0.53-2.40",
+                "quote_context": "= 36/58); odds ratio 1.14; 95% confidence interval 0.53-2.40; p =",
+                "harvest_pattern": "odds\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\...."
+              },
+              "status": "missed",
+              "matched_extracted": null
+            }
+          ],
+          "field": {
+            "type_exact": 0,
+            "pt_exact": 0,
+            "pt_tol": 0,
+            "ci_lo_exact": 0,
+            "ci_lo_tol": 0,
+            "ci_hi_exact": 0,
+            "ci_hi_tol": 0,
+            "matched_pairs": 0
+          },
+          "n_extra": 1
+        },
+        "pdf_pp": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 1.14,
+                "ci_lower": 0.53,
+                "ci_upper": 2.4,
+                "ci_level": 0.95,
+                "source_text": "odds ratio 1.14; 95% confidence interval 0.53-2.40",
+                "quote_context": "= 36/58); odds ratio 1.14; 95% confidence interval 0.53-2.40; p =",
+                "harvest_pattern": "odds\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\...."
+              },
+              "status": "missed",
+              "matched_extracted": null
+            }
+          ],
+          "field": {
+            "type_exact": 0,
+            "pt_exact": 0,
+            "pt_tol": 0,
+            "ci_lo_exact": 0,
+            "ci_lo_tol": 0,
+            "ci_hi_exact": 0,
+            "ci_hi_tol": 0,
+            "matched_pairs": 0
+          },
+          "n_extra": 1
+        }
+      }
+    },
+    {
+      "pmcid": "PMC6367894",
+      "pmid": "28762106",
+      "specialty": "kidney_transplant",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 8,
+        "chars": 37301,
+        "secs": 0.16
+      },
+      "n_gold": 3,
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 3,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 1.03,
+                "ci_lower": 1.01,
+                "ci_upper": 1.04,
+                "ci_level": 0.95,
+                "source_text": "HR = 1.03 95% CI 1.01, 1.04",
+                "quote_context": "y (BDI-II HR = 1.03 95% CI 1.01, 1.04; PHQ",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 1.03,
+                "ci_lower": 1.01,
+                "ci_upper": 1.04,
+                "source_text": "HR = 1.03 95% CI 1.01, 1.04"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 1.04,
+                "ci_lower": 1.01,
+                "ci_upper": 1.06,
+                "ci_level": 0.95,
+                "source_text": "HR = 1.04 95% CI 1.01, 1.06",
+                "quote_context": "04; PHQ-9 HR = 1.04 95% CI 1.01, 1.06). Wi",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 1.04,
+                "ci_lower": 1.01,
+                "ci_upper": 1.06,
+                "source_text": "HR = 1.04 95% CI 1.01, 1.06"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 1.51,
+                "ci_lower": 1.01,
+                "ci_upper": 2.19,
+                "ci_level": 0.95,
+                "source_text": "HR = 1.51 95% CI 1.01, 2.19",
+                "quote_context": "ortality (HR = 1.51 95% CI 1.01, 2.19) but",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 1.51,
+                "ci_lower": 1.01,
+                "ci_upper": 2.19,
+                "source_text": "HR = 1.51 95% CI 1.01, 2.19"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 3,
+            "pt_exact": 3,
+            "pt_tol": 3,
+            "ci_lo_exact": 3,
+            "ci_lo_tol": 3,
+            "ci_hi_exact": 3,
+            "ci_hi_tol": 3,
+            "matched_pairs": 3
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 5,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 1.03,
+                "ci_lower": 1.01,
+                "ci_upper": 1.04,
+                "ci_level": 0.95,
+                "source_text": "HR = 1.03 95% CI 1.01, 1.04",
+                "quote_context": "y (BDI-II HR = 1.03 95% CI 1.01, 1.04; PHQ",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 1.03,
+                "ci_lower": 1.01,
+                "ci_upper": 1.04,
+                "source_text": "HR = 1.03 95% CI 1.01, 1.04"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 1.04,
+                "ci_lower": 1.01,
+                "ci_upper": 1.06,
+                "ci_level": 0.95,
+                "source_text": "HR = 1.04 95% CI 1.01, 1.06",
+                "quote_context": "04; PHQ-9 HR = 1.04 95% CI 1.01, 1.06). Wi",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 1.04,
+                "ci_lower": 1.01,
+                "ci_upper": 1.06,
+                "source_text": "HR = 1.04 95% CI\n1.01, 1.06"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 1.51,
+                "ci_lower": 1.01,
+                "ci_upper": 2.19,
+                "ci_level": 0.95,
+                "source_text": "HR = 1.51 95% CI 1.01, 2.19",
+                "quote_context": "ortality (HR = 1.51 95% CI 1.01, 2.19) but",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 1.51,
+                "ci_lower": 1.01,
+                "ci_upper": 2.19,
+                "source_text": "HR = 1.51 95% CI 1.01,\n2.19"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 3,
+            "pt_exact": 3,
+            "pt_tol": 3,
+            "ci_lo_exact": 3,
+            "ci_lo_tol": 3,
+            "ci_hi_exact": 3,
+            "ci_hi_tol": 3,
+            "matched_pairs": 3
+          },
+          "n_extra": 2
+        },
+        "pdf_pp": {
+          "n_extracted": 5,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 1.03,
+                "ci_lower": 1.01,
+                "ci_upper": 1.04,
+                "ci_level": 0.95,
+                "source_text": "HR = 1.03 95% CI 1.01, 1.04",
+                "quote_context": "y (BDI-II HR = 1.03 95% CI 1.01, 1.04; PHQ",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 1.03,
+                "ci_lower": 1.01,
+                "ci_upper": 1.04,
+                "source_text": "HR = 1.03 95% CI 1.01, 1.04"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 1.04,
+                "ci_lower": 1.01,
+                "ci_upper": 1.06,
+                "ci_level": 0.95,
+                "source_text": "HR = 1.04 95% CI 1.01, 1.06",
+                "quote_context": "04; PHQ-9 HR = 1.04 95% CI 1.01, 1.06). Wi",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 1.04,
+                "ci_lower": 1.01,
+                "ci_upper": 1.06,
+                "source_text": "HR = 1.04 95% CI 1.01, 1.06"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 1.51,
+                "ci_lower": 1.01,
+                "ci_upper": 2.19,
+                "ci_level": 0.95,
+                "source_text": "HR = 1.51 95% CI 1.01, 2.19",
+                "quote_context": "ortality (HR = 1.51 95% CI 1.01, 2.19) but",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 1.51,
+                "ci_lower": 1.01,
+                "ci_upper": 2.19,
+                "source_text": "HR = 1.51 95% CI 1.01, 2.19"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 3,
+            "pt_exact": 3,
+            "pt_tol": 3,
+            "ci_lo_exact": 3,
+            "ci_lo_tol": 3,
+            "ci_hi_exact": 3,
+            "ci_hi_tol": 3,
+            "matched_pairs": 3
+          },
+          "n_extra": 2
+        }
+      }
+    },
+    {
+      "pmcid": "PMC12816423",
+      "pmid": "41074581",
+      "specialty": "kidney_transplant",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 12,
+        "chars": 49491,
+        "secs": 0.14
+      },
+      "n_gold": 1,
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 1.64,
+                "ci_lower": 1.1,
+                "ci_upper": 2.43,
+                "ci_level": 0.95,
+                "source_text": "HR: 1.64 (95% CI: 1.10-2.43",
+                "quote_context": ".4-45.6); HR: 1.64 (95% CI: 1.10-2.43) (P",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 1.64,
+                "ci_lower": 1.1,
+                "ci_upper": 2.43,
+                "source_text": "HR: 1.64 (95% CI: 1.10-2.43)"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 4,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 1.64,
+                "ci_lower": 1.1,
+                "ci_upper": 2.43,
+                "ci_level": 0.95,
+                "source_text": "HR: 1.64 (95% CI: 1.10-2.43",
+                "quote_context": ".4-45.6); HR: 1.64 (95% CI: 1.10-2.43) (P",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 1.64,
+                "ci_lower": 1.1,
+                "ci_upper": 2.43,
+                "source_text": "HR: 1.64 (95% CI: 1.10-2.43)"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 3
+        },
+        "pdf_pp": {
+          "n_extracted": 4,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 1.64,
+                "ci_lower": 1.1,
+                "ci_upper": 2.43,
+                "ci_level": 0.95,
+                "source_text": "HR: 1.64 (95% CI: 1.10-2.43",
+                "quote_context": ".4-45.6); HR: 1.64 (95% CI: 1.10-2.43) (P",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 1.64,
+                "ci_lower": 1.1,
+                "ci_upper": 2.43,
+                "source_text": "HR: 1.64 (95% CI: 1.10-2.43)"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 3
+        }
+      }
+    },
+    {
+      "pmcid": "PMC12036954",
+      "pmid": "40294124",
+      "specialty": "kidney_transplant",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 7,
+        "chars": 31089,
+        "secs": 0.1
+      },
+      "n_gold": 2,
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 2,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.32,
+                "ci_lower": 0.12,
+                "ci_upper": 0.87,
+                "ci_level": 0.95,
+                "source_text": "OR 0.32, 95% CI 0.12-0.87",
+                "quote_context": "or older (OR 0.32, 95% CI 0.12-0.87, p =",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.32,
+                "ci_lower": 0.12,
+                "ci_upper": 0.87,
+                "source_text": "OR 0.32; 95% CI 0.12-0.87"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.22,
+                "ci_lower": 0.06,
+                "ci_upper": 0.87,
+                "ci_level": 0.95,
+                "source_text": "OR 0.22, 95% CI 0.06-0.87",
+                "quote_context": "dual KTs (OR 0.22, 95% CI 0.06-0.87, p =",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.22,
+                "ci_lower": 0.06,
+                "ci_upper": 0.87,
+                "source_text": "OR 0.22; 95% CI 0.06-0.87"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 5,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.32,
+                "ci_lower": 0.12,
+                "ci_upper": 0.87,
+                "ci_level": 0.95,
+                "source_text": "OR 0.32, 95% CI 0.12-0.87",
+                "quote_context": "or older (OR 0.32, 95% CI 0.12-0.87, p =",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.32,
+                "ci_lower": 0.12,
+                "ci_upper": 0.87,
+                "source_text": "OR 0.32; 95% CI 0.12-0.87"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.22,
+                "ci_lower": 0.06,
+                "ci_upper": 0.87,
+                "ci_level": 0.95,
+                "source_text": "OR 0.22, 95% CI 0.06-0.87",
+                "quote_context": "dual KTs (OR 0.22, 95% CI 0.06-0.87, p =",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.22,
+                "ci_lower": 0.06,
+                "ci_upper": 0.87,
+                "source_text": "OR 0.22; 95% CI 0.06-0.87"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 3
+        },
+        "pdf_pp": {
+          "n_extracted": 5,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.32,
+                "ci_lower": 0.12,
+                "ci_upper": 0.87,
+                "ci_level": 0.95,
+                "source_text": "OR 0.32, 95% CI 0.12-0.87",
+                "quote_context": "or older (OR 0.32, 95% CI 0.12-0.87, p =",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.32,
+                "ci_lower": 0.12,
+                "ci_upper": 0.87,
+                "source_text": "OR 0.32; 95% CI 0.12-0.87"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.22,
+                "ci_lower": 0.06,
+                "ci_upper": 0.87,
+                "ci_level": 0.95,
+                "source_text": "OR 0.22, 95% CI 0.06-0.87",
+                "quote_context": "dual KTs (OR 0.22, 95% CI 0.06-0.87, p =",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.22,
+                "ci_lower": 0.06,
+                "ci_upper": 0.87,
+                "source_text": "OR 0.22; 95% CI 0.06-0.87"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 3
+        }
+      }
+    },
+    {
+      "pmcid": "PMC4558610",
+      "pmid": "26335204",
+      "specialty": "kidney_transplant",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 14,
+        "chars": 55646,
+        "secs": 0.14
+      },
+      "n_gold": 1,
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 3.19,
+                "ci_lower": 1.4,
+                "ci_upper": 7.27,
+                "ci_level": 0.95,
+                "source_text": "hazard ratio of 3.19 (95% confidence interval, 1.40 to 7.27",
+                "quote_context": "nt with a hazard ratio of 3.19 (95% confidence interval, 1.40 to 7.27; P =",
+                "harvest_pattern": "hazard\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 3.19,
+                "ci_lower": 1.4,
+                "ci_upper": 7.27,
+                "source_text": "hazard ratio 3.19 (95% CI, 1.40 to 7.27"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 2,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 3.19,
+                "ci_lower": 1.4,
+                "ci_upper": 7.27,
+                "ci_level": 0.95,
+                "source_text": "hazard ratio of 3.19 (95% confidence interval, 1.40 to 7.27",
+                "quote_context": "nt with a hazard ratio of 3.19 (95% confidence interval, 1.40 to 7.27; P =",
+                "harvest_pattern": "hazard\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 3.19,
+                "ci_lower": 1.4,
+                "ci_upper": 7.27,
+                "source_text": "hazard ratio 3.19 \n(95% CI, 1.40 to 7.27"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 1
+        },
+        "pdf_pp": {
+          "n_extracted": 2,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 3.19,
+                "ci_lower": 1.4,
+                "ci_upper": 7.27,
+                "ci_level": 0.95,
+                "source_text": "hazard ratio of 3.19 (95% confidence interval, 1.40 to 7.27",
+                "quote_context": "nt with a hazard ratio of 3.19 (95% confidence interval, 1.40 to 7.27; P =",
+                "harvest_pattern": "hazard\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 3.19,
+                "ci_lower": 1.4,
+                "ci_upper": 7.27,
+                "source_text": "hazard ratio 3.19 (95% CI, 1.40 to 7.27"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 1
+        }
+      }
+    },
+    {
+      "pmcid": "PMC10946510",
+      "pmid": "36309984",
+      "specialty": "kidney_transplant",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 8,
+        "chars": 33688,
+        "secs": 0.15
+      },
+      "n_gold": 1,
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 1.37,
+                "ci_lower": 1.17,
+                "ci_upper": 1.61,
+                "ci_level": 0.95,
+                "source_text": "HR 1.37, 95% CI 1.17-1.61",
+                "quote_context": "s in MYL (HR 1.37, 95% CI 1.17-1.61, p C",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 1.37,
+                "ci_lower": 1.17,
+                "ci_upper": 1.61,
+                "source_text": "HR 1.37; 95% CI 1.17-1.61"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 5,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 1.37,
+                "ci_lower": 1.17,
+                "ci_upper": 1.61,
+                "ci_level": 0.95,
+                "source_text": "HR 1.37, 95% CI 1.17-1.61",
+                "quote_context": "s in MYL (HR 1.37, 95% CI 1.17-1.61, p C",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 1.37,
+                "ci_lower": 1.17,
+                "ci_upper": 1.61,
+                "source_text": "HR 1.37; 95% CI 1.17-1.61"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 4
+        },
+        "pdf_pp": {
+          "n_extracted": 5,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 1.37,
+                "ci_lower": 1.17,
+                "ci_upper": 1.61,
+                "ci_level": 0.95,
+                "source_text": "HR 1.37, 95% CI 1.17-1.61",
+                "quote_context": "s in MYL (HR 1.37, 95% CI 1.17-1.61, p C",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 1.37,
+                "ci_lower": 1.17,
+                "ci_upper": 1.61,
+                "source_text": "HR 1.37; 95% CI 1.17-1.61"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 4
+        }
+      }
+    },
+    {
+      "pmcid": "PMC4240460",
+      "pmid": "24999963",
+      "specialty": "kidney_transplant",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 7,
+        "chars": 40216,
+        "secs": 0.14
+      },
+      "n_gold": 1,
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 4.56,
+                "ci_lower": 2.15,
+                "ci_upper": 9.71,
+                "ci_level": 0.95,
+                "source_text": "HR, 4.56; 95% CI, 2.15-9.71",
+                "quote_context": "ortality (HR, 4.56; 95% CI, 2.15-9.71; P C",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 4.56,
+                "ci_lower": 2.15,
+                "ci_upper": 9.71,
+                "source_text": "HR, 4.56; 95% CI, 2.15-9.71"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 6,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 4.56,
+                "ci_lower": 2.15,
+                "ci_upper": 9.71,
+                "ci_level": 0.95,
+                "source_text": "HR, 4.56; 95% CI, 2.15-9.71",
+                "quote_context": "ortality (HR, 4.56; 95% CI, 2.15-9.71; P C",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 4.56,
+                "ci_lower": 2.15,
+                "ci_upper": 9.71,
+                "source_text": "HR, 4.56; 95% CI, 2.15\u20139.71"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 5
+        },
+        "pdf_pp": {
+          "n_extracted": 6,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 4.56,
+                "ci_lower": 2.15,
+                "ci_upper": 9.71,
+                "ci_level": 0.95,
+                "source_text": "HR, 4.56; 95% CI, 2.15-9.71",
+                "quote_context": "ortality (HR, 4.56; 95% CI, 2.15-9.71; P C",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 4.56,
+                "ci_lower": 2.15,
+                "ci_upper": 9.71,
+                "source_text": "HR, 4.56; 95% CI, 2.15\u20139.71"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 5
+        }
+      }
+    },
+    {
+      "pmcid": "PMC11141171",
+      "pmid": "38816203",
+      "specialty": "kidney_transplant",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 13,
+        "chars": 56152,
+        "secs": 0.13
+      },
+      "n_gold": 1,
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 5,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 0.8,
+                "ci_lower": 0.66,
+                "ci_upper": 0.98,
+                "ci_level": 0.95,
+                "source_text": "HR=0.80, 95% CI=0.66 to 0.98",
+                "quote_context": "rvention (HR=0.80, 95% CI=0.66 to 0.98) but",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 0.8,
+                "ci_lower": 0.66,
+                "ci_upper": 0.98,
+                "source_text": "HR=0.80; 95% CI: 0.66 to 0.98"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 4
+        },
+        "pdf_raw": {
+          "n_extracted": 12,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 0.8,
+                "ci_lower": 0.66,
+                "ci_upper": 0.98,
+                "ci_level": 0.95,
+                "source_text": "HR=0.80, 95% CI=0.66 to 0.98",
+                "quote_context": "rvention (HR=0.80, 95% CI=0.66 to 0.98) but",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 0.8,
+                "ci_lower": 0.66,
+                "ci_upper": 0.98,
+                "source_text": "HR=0.80; 95% CI: 0.66 to \n0.98"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 11
+        },
+        "pdf_pp": {
+          "n_extracted": 12,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 0.8,
+                "ci_lower": 0.66,
+                "ci_upper": 0.98,
+                "ci_level": 0.95,
+                "source_text": "HR=0.80, 95% CI=0.66 to 0.98",
+                "quote_context": "rvention (HR=0.80, 95% CI=0.66 to 0.98) but",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 0.8,
+                "ci_lower": 0.66,
+                "ci_upper": 0.98,
+                "source_text": "HR=0.80; 95% CI: 0.66 to 0.98"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 11
+        }
+      }
+    },
+    {
+      "pmcid": "PMC11818026",
+      "pmid": "39934669",
+      "specialty": "kidney_transplant",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 11,
+        "chars": 48453,
+        "secs": 0.13
+      },
+      "n_gold": 1,
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 1.02,
+                "ci_lower": 0.79,
+                "ci_upper": 1.32,
+                "ci_level": 0.95,
+                "source_text": "hazard ratio 1.02(95%CI 0.79-1.32",
+                "quote_context": "estimated hazard ratio 1.02(95%CI 0.79-1.32)). C",
+                "harvest_pattern": "hazard\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 1.02,
+                "ci_lower": 0.79,
+                "ci_upper": 1.32,
+                "source_text": "hazard ratio 1.02 (95% CI 0.79-1.32"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 5,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 1.02,
+                "ci_lower": 0.79,
+                "ci_upper": 1.32,
+                "ci_level": 0.95,
+                "source_text": "hazard ratio 1.02(95%CI 0.79-1.32",
+                "quote_context": "estimated hazard ratio 1.02(95%CI 0.79-1.32)). C",
+                "harvest_pattern": "hazard\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 1.02,
+                "ci_lower": 0.79,
+                "ci_upper": 1.32,
+                "source_text": "hazard ratio 1.02 (95% CI 0.79-1.32"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 4
+        },
+        "pdf_pp": {
+          "n_extracted": 5,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 1.02,
+                "ci_lower": 0.79,
+                "ci_upper": 1.32,
+                "ci_level": 0.95,
+                "source_text": "hazard ratio 1.02(95%CI 0.79-1.32",
+                "quote_context": "estimated hazard ratio 1.02(95%CI 0.79-1.32)). C",
+                "harvest_pattern": "hazard\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 1.02,
+                "ci_lower": 0.79,
+                "ci_upper": 1.32,
+                "source_text": "hazard ratio 1.02 (95% CI 0.79-1.32"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 4
+        }
+      }
+    },
+    {
+      "pmcid": "PMC6563104",
+      "pmid": "30614649",
+      "specialty": "kidney_transplant",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 7,
+        "chars": 28746,
+        "secs": 0.11
+      },
+      "n_gold": 1,
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 0.9,
+                "ci_lower": 0.57,
+                "ci_upper": 1.42,
+                "ci_level": 0.95,
+                "source_text": "hazard ratio of functional graft loss was 0.90 (95% confidence interval 0.57-1.42",
+                "quote_context": "941). The hazard ratio of functional graft loss was 0.90 (95% confidence interval 0.57-1.42, P =",
+                "harvest_pattern": "hazard\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 0.9,
+                "ci_lower": 0.57,
+                "ci_upper": 1.42,
+                "source_text": "hazard ratio of functional graft loss was 0.90 (95% CI 0.57-1.42"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 3,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 0.9,
+                "ci_lower": 0.57,
+                "ci_upper": 1.42,
+                "ci_level": 0.95,
+                "source_text": "hazard ratio of functional graft loss was 0.90 (95% confidence interval 0.57-1.42",
+                "quote_context": "941). The hazard ratio of functional graft loss was 0.90 (95% confidence interval 0.57-1.42, P =",
+                "harvest_pattern": "hazard\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 0.9,
+                "ci_lower": 0.57,
+                "ci_upper": 1.42,
+                "source_text": "hazard ratio of functional graft \nloss was 0.90 (95% CI 0.57-1.42"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 2
+        },
+        "pdf_pp": {
+          "n_extracted": 3,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 0.9,
+                "ci_lower": 0.57,
+                "ci_upper": 1.42,
+                "ci_level": 0.95,
+                "source_text": "hazard ratio of functional graft loss was 0.90 (95% confidence interval 0.57-1.42",
+                "quote_context": "941). The hazard ratio of functional graft loss was 0.90 (95% confidence interval 0.57-1.42, P =",
+                "harvest_pattern": "hazard\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 0.9,
+                "ci_lower": 0.57,
+                "ci_upper": 1.42,
+                "source_text": "hazard ratio of functional graft loss was 0.90 (95% CI 0.57-1.42"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 2
+        }
+      }
+    },
+    {
+      "pmcid": "PMC3914777",
+      "pmid": "24505249",
+      "specialty": "kidney_transplant",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 9,
+        "chars": 47399,
+        "secs": 0.26
+      },
+      "n_gold": 3,
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 8,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 1.73,
+                "ci_lower": 1.11,
+                "ci_upper": 2.99,
+                "ci_level": 0.95,
+                "source_text": "hazard ratio (HR) = 1.73, 95% CI: 1.11-2.99",
+                "quote_context": "ortality (hazard ratio (HR) = 1.73, 95% CI: 1.11-2.99), ca",
+                "harvest_pattern": "hazard\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 1.73,
+                "ci_lower": 1.11,
+                "ci_upper": 2.99,
+                "source_text": "hazard ratio = 1.73; 95% CI: 1.11-2.99"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 3.66,
+                "ci_lower": 1.35,
+                "ci_upper": 10.05,
+                "ci_level": 0.95,
+                "source_text": "HR = 3.66, 95% CI: 1.35-10.05",
+                "quote_context": "ar death (HR = 3.66, 95% CI: 1.35-10.05) and",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 3.66,
+                "ci_lower": 1.35,
+                "ci_upper": 10.05,
+                "source_text": "HR = 3.66; 95% CI: 1.35-10.05"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 13.06,
+                "ci_lower": 6.6,
+                "ci_upper": 107.0,
+                "ci_level": 0.95,
+                "source_text": "HR = 13.06; 95% CI: 6.60-107",
+                "quote_context": "en death (HR = 13.06; 95% CI: 6.60-107) was",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 13.06,
+                "ci_lower": 6.6,
+                "ci_upper": 107.0,
+                "source_text": "HR = 13.06; 95% CI: 6.60-107"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 3,
+            "pt_exact": 3,
+            "pt_tol": 3,
+            "ci_lo_exact": 3,
+            "ci_lo_tol": 3,
+            "ci_hi_exact": 3,
+            "ci_hi_tol": 3,
+            "matched_pairs": 3
+          },
+          "n_extra": 5
+        },
+        "pdf_raw": {
+          "n_extracted": 18,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 1.73,
+                "ci_lower": 1.11,
+                "ci_upper": 2.99,
+                "ci_level": 0.95,
+                "source_text": "hazard ratio (HR) = 1.73, 95% CI: 1.11-2.99",
+                "quote_context": "ortality (hazard ratio (HR) = 1.73, 95% CI: 1.11-2.99), ca",
+                "harvest_pattern": "hazard\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 1.73,
+                "ci_lower": 1.11,
+                "ci_upper": 2.99,
+                "source_text": "hazard ratio = 1.73; 95% CI: 1.11-2.99"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 3.66,
+                "ci_lower": 1.35,
+                "ci_upper": 10.05,
+                "ci_level": 0.95,
+                "source_text": "HR = 3.66, 95% CI: 1.35-10.05",
+                "quote_context": "ar death (HR = 3.66, 95% CI: 1.35-10.05) and",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 3.66,
+                "ci_lower": 1.35,
+                "ci_upper": 10.05,
+                "source_text": "HR = 3.66; 95% CI: 1.35-10.05"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 13.06,
+                "ci_lower": 6.6,
+                "ci_upper": 107.0,
+                "ci_level": 0.95,
+                "source_text": "HR = 13.06; 95% CI: 6.60-107",
+                "quote_context": "en death (HR = 13.06; 95% CI: 6.60-107) was",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 13.06,
+                "ci_lower": 6.6,
+                "ci_upper": 107.0,
+                "source_text": "HR = 13.06; 95% CI: 6.60-107"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 3,
+            "pt_exact": 3,
+            "pt_tol": 3,
+            "ci_lo_exact": 3,
+            "ci_lo_tol": 3,
+            "ci_hi_exact": 3,
+            "ci_hi_tol": 3,
+            "matched_pairs": 3
+          },
+          "n_extra": 15
+        },
+        "pdf_pp": {
+          "n_extracted": 18,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 1.73,
+                "ci_lower": 1.11,
+                "ci_upper": 2.99,
+                "ci_level": 0.95,
+                "source_text": "hazard ratio (HR) = 1.73, 95% CI: 1.11-2.99",
+                "quote_context": "ortality (hazard ratio (HR) = 1.73, 95% CI: 1.11-2.99), ca",
+                "harvest_pattern": "hazard\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 1.73,
+                "ci_lower": 1.11,
+                "ci_upper": 2.99,
+                "source_text": "hazard ratio = 1.73; 95% CI: 1.11-2.99"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 3.66,
+                "ci_lower": 1.35,
+                "ci_upper": 10.05,
+                "ci_level": 0.95,
+                "source_text": "HR = 3.66, 95% CI: 1.35-10.05",
+                "quote_context": "ar death (HR = 3.66, 95% CI: 1.35-10.05) and",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 3.66,
+                "ci_lower": 1.35,
+                "ci_upper": 10.05,
+                "source_text": "HR = 3.66; 95% CI: 1.35-10.05"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 13.06,
+                "ci_lower": 6.6,
+                "ci_upper": 107.0,
+                "ci_level": 0.95,
+                "source_text": "HR = 13.06; 95% CI: 6.60-107",
+                "quote_context": "en death (HR = 13.06; 95% CI: 6.60-107) was",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 13.06,
+                "ci_lower": 6.6,
+                "ci_upper": 107.0,
+                "source_text": "HR = 13.06; 95% CI: 6.60-107"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 3,
+            "pt_exact": 3,
+            "pt_tol": 3,
+            "ci_lo_exact": 3,
+            "ci_lo_tol": 3,
+            "ci_hi_exact": 3,
+            "ci_hi_tol": 3,
+            "matched_pairs": 3
+          },
+          "n_extra": 15
+        }
+      }
+    },
+    {
+      "pmcid": "PMC6238264",
+      "pmid": "30442095",
+      "specialty": "kidney_transplant",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 9,
+        "chars": 40943,
+        "secs": 0.15
+      },
+      "n_gold": 1,
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.31,
+                "ci_lower": 0.11,
+                "ci_upper": 0.9,
+                "ci_level": 0.95,
+                "source_text": "odds ratio, 0.31; 95% confidence interval, 0.11-0.90",
+                "quote_context": "adjusted odds ratio, 0.31; 95% confidence interval, 0.11-0.90; P =",
+                "harvest_pattern": "odds\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\...."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.31,
+                "ci_lower": 0.11,
+                "ci_upper": 0.9,
+                "source_text": "odds ratio, 0.31; 95% CI, 0.11-0.90"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 7,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.31,
+                "ci_lower": 0.11,
+                "ci_upper": 0.9,
+                "ci_level": 0.95,
+                "source_text": "odds ratio, 0.31; 95% confidence interval, 0.11-0.90",
+                "quote_context": "adjusted odds ratio, 0.31; 95% confidence interval, 0.11-0.90; P =",
+                "harvest_pattern": "odds\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\...."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.31,
+                "ci_lower": 0.11,
+                "ci_upper": 0.9,
+                "source_text": "odds\nratio, 0.31; 95% CI, 0.11-0.90"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 6
+        },
+        "pdf_pp": {
+          "n_extracted": 7,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.31,
+                "ci_lower": 0.11,
+                "ci_upper": 0.9,
+                "ci_level": 0.95,
+                "source_text": "odds ratio, 0.31; 95% confidence interval, 0.11-0.90",
+                "quote_context": "adjusted odds ratio, 0.31; 95% confidence interval, 0.11-0.90; P =",
+                "harvest_pattern": "odds\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\...."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.31,
+                "ci_lower": 0.11,
+                "ci_upper": 0.9,
+                "source_text": "odds ratio, 0.31; 95% CI, 0.11-0.90"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 6
+        }
+      }
+    },
+    {
+      "pmcid": "PMC3563214",
+      "pmid": "23137180",
+      "specialty": "kidney_transplant",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 10,
+        "chars": 46929,
+        "secs": 0.13
+      },
+      "n_gold": 2,
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 2,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.6,
+                "ci_lower": 0.36,
+                "ci_upper": 0.99,
+                "ci_level": 0.95,
+                "source_text": "OR 0.60; 95% CI 0.36-0.99",
+                "quote_context": "month 6 (OR 0.60; 95% CI 0.36-0.99) and",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.6,
+                "ci_lower": 0.36,
+                "ci_upper": 0.99,
+                "source_text": "(OR 0.60; 95% CI 0.36-0.99)"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.33,
+                "ci_lower": 0.16,
+                "ci_upper": 0.68,
+                "ci_level": 0.95,
+                "source_text": "OR 0.33; 95% CI 0.16-0.68",
+                "quote_context": "month 12 (OR 0.33; 95% CI 0.16-0.68). Vi",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.33,
+                "ci_lower": 0.16,
+                "ci_upper": 0.68,
+                "source_text": "(OR 0.33; 95% CI 0.16-0.68)"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 9,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.6,
+                "ci_lower": 0.36,
+                "ci_upper": 0.99,
+                "ci_level": 0.95,
+                "source_text": "OR 0.60; 95% CI 0.36-0.99",
+                "quote_context": "month 6 (OR 0.60; 95% CI 0.36-0.99) and",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.6,
+                "ci_lower": 0.36,
+                "ci_upper": 0.99,
+                "source_text": "(OR 0.60; 95% CI 0.36-0.99)"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.33,
+                "ci_lower": 0.16,
+                "ci_upper": 0.68,
+                "ci_level": 0.95,
+                "source_text": "OR 0.33; 95% CI 0.16-0.68",
+                "quote_context": "month 12 (OR 0.33; 95% CI 0.16-0.68). Vi",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.33,
+                "ci_lower": 0.16,
+                "ci_upper": 0.68,
+                "source_text": "(OR 0.33; 95% CI\n0.16-0.68)"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 7
+        },
+        "pdf_pp": {
+          "n_extracted": 9,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.6,
+                "ci_lower": 0.36,
+                "ci_upper": 0.99,
+                "ci_level": 0.95,
+                "source_text": "OR 0.60; 95% CI 0.36-0.99",
+                "quote_context": "month 6 (OR 0.60; 95% CI 0.36-0.99) and",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.6,
+                "ci_lower": 0.36,
+                "ci_upper": 0.99,
+                "source_text": "(OR 0.60; 95% CI 0.36-0.99)"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.33,
+                "ci_lower": 0.16,
+                "ci_upper": 0.68,
+                "ci_level": 0.95,
+                "source_text": "OR 0.33; 95% CI 0.16-0.68",
+                "quote_context": "month 12 (OR 0.33; 95% CI 0.16-0.68). Vi",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.33,
+                "ci_lower": 0.16,
+                "ci_upper": 0.68,
+                "source_text": "(OR 0.33; 95% CI 0.16-0.68)"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 7
+        }
+      }
+    },
+    {
+      "pmcid": "PMC10400101",
+      "pmid": "37228005",
+      "specialty": "kidney_transplant",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 14,
+        "chars": 51964,
+        "secs": 0.92
+      },
+      "n_gold": 2,
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 2,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 1.04,
+                "ci_lower": 0.81,
+                "ci_upper": 1.34,
+                "ci_level": 0.95,
+                "source_text": "relative risk (RR), 1.04 [95% confidence interval, 0.81 to 1.34",
+                "quote_context": "rsus 49%; relative risk (RR), 1.04 [95% confidence interval, 0.81 to 1.34]; P",
+                "harvest_pattern": "relative\\s+risk[^.\\n]{0,55}?(?P<pt>\\d+(?..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 1.04,
+                "ci_lower": 0.81,
+                "ci_upper": 1.34,
+                "source_text": "relative risk, 1.04 [95% CI, 0.81 to 1.34"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 1.11,
+                "ci_lower": 0.84,
+                "ci_upper": 1.47,
+                "ci_level": 0.95,
+                "source_text": "RR, 1.11 [95% confidence interval, 0.84 to 1.47",
+                "quote_context": "rsus 49%; RR, 1.11 [95% confidence interval, 0.84 to 1.47]; P",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 1.11,
+                "ci_lower": 0.84,
+                "ci_upper": 1.47,
+                "source_text": "RR, 1.11 [95% CI, 0.84 to 1.47"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 2,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 1.04,
+                "ci_lower": 0.81,
+                "ci_upper": 1.34,
+                "ci_level": 0.95,
+                "source_text": "relative risk (RR), 1.04 [95% confidence interval, 0.81 to 1.34",
+                "quote_context": "rsus 49%; relative risk (RR), 1.04 [95% confidence interval, 0.81 to 1.34]; P",
+                "harvest_pattern": "relative\\s+risk[^.\\n]{0,55}?(?P<pt>\\d+(?..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 1.04,
+                "ci_lower": 0.81,
+                "ci_upper": 1.34,
+                "source_text": "RR, 1.04 [95% CI, 0.81 to 1.34"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 1.11,
+                "ci_lower": 0.84,
+                "ci_upper": 1.47,
+                "ci_level": 0.95,
+                "source_text": "RR, 1.11 [95% confidence interval, 0.84 to 1.47",
+                "quote_context": "rsus 49%; RR, 1.11 [95% confidence interval, 0.84 to 1.47]; P",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 1.11,
+                "ci_lower": 0.84,
+                "ci_upper": 1.47,
+                "source_text": "RR, 1.11 [95% CI, 0.84 to 1.47"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 0
+        },
+        "pdf_pp": {
+          "n_extracted": 2,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 1.04,
+                "ci_lower": 0.81,
+                "ci_upper": 1.34,
+                "ci_level": 0.95,
+                "source_text": "relative risk (RR), 1.04 [95% confidence interval, 0.81 to 1.34",
+                "quote_context": "rsus 49%; relative risk (RR), 1.04 [95% confidence interval, 0.81 to 1.34]; P",
+                "harvest_pattern": "relative\\s+risk[^.\\n]{0,55}?(?P<pt>\\d+(?..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 1.04,
+                "ci_lower": 0.81,
+                "ci_upper": 1.34,
+                "source_text": "RR, 1.04 [95% CI, 0.81 to 1.34"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 1.11,
+                "ci_lower": 0.84,
+                "ci_upper": 1.47,
+                "ci_level": 0.95,
+                "source_text": "RR, 1.11 [95% confidence interval, 0.84 to 1.47",
+                "quote_context": "rsus 49%; RR, 1.11 [95% confidence interval, 0.84 to 1.47]; P",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 1.11,
+                "ci_lower": 0.84,
+                "ci_upper": 1.47,
+                "source_text": "RR, 1.11 [95% CI, 0.84 to 1.47"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 0
+        }
+      }
+    },
+    {
+      "pmcid": "PMC12503078",
+      "pmid": "41055605",
+      "specialty": "kidney_transplant",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 12,
+        "chars": 51798,
+        "secs": 0.16
+      },
+      "n_gold": 2,
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 2,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.97,
+                "ci_lower": 0.96,
+                "ci_upper": 0.99,
+                "ci_level": 0.95,
+                "source_text": "OR 0.97; 95% CI 0.96-0.99",
+                "quote_context": "vel: age (OR 0.97; 95% CI 0.96-0.99; p =",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.97,
+                "ci_lower": 0.96,
+                "ci_upper": 0.99,
+                "source_text": "OR 0.97; 95% CI 0.96-0.99"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 2.03,
+                "ci_lower": 1.38,
+                "ci_upper": 3.0,
+                "ci_level": 0.95,
+                "source_text": "OR 2.03; 95% CI 1.38-3.00",
+                "quote_context": "after KT (OR 2.03; 95% CI 1.38-3.00; p C",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 2.03,
+                "ci_lower": 1.38,
+                "ci_upper": 3.0,
+                "source_text": "OR 2.03; 95% CI 1.38-3.00"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 12,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.97,
+                "ci_lower": 0.96,
+                "ci_upper": 0.99,
+                "ci_level": 0.95,
+                "source_text": "OR 0.97; 95% CI 0.96-0.99",
+                "quote_context": "vel: age (OR 0.97; 95% CI 0.96-0.99; p =",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.97,
+                "ci_lower": 0.96,
+                "ci_upper": 0.99,
+                "source_text": "OR 0.97; 95% CI 0.96-0.99"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 2.03,
+                "ci_lower": 1.38,
+                "ci_upper": 3.0,
+                "ci_level": 0.95,
+                "source_text": "OR 2.03; 95% CI 1.38-3.00",
+                "quote_context": "after KT (OR 2.03; 95% CI 1.38-3.00; p C",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 2.03,
+                "ci_lower": 1.38,
+                "ci_upper": 3.0,
+                "source_text": "OR:\n2.03; 95% CI: 1.38-3.00"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 10
+        },
+        "pdf_pp": {
+          "n_extracted": 12,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.97,
+                "ci_lower": 0.96,
+                "ci_upper": 0.99,
+                "ci_level": 0.95,
+                "source_text": "OR 0.97; 95% CI 0.96-0.99",
+                "quote_context": "vel: age (OR 0.97; 95% CI 0.96-0.99; p =",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.97,
+                "ci_lower": 0.96,
+                "ci_upper": 0.99,
+                "source_text": "OR 0.97; 95% CI 0.96-0.99"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 2.03,
+                "ci_lower": 1.38,
+                "ci_upper": 3.0,
+                "ci_level": 0.95,
+                "source_text": "OR 2.03; 95% CI 1.38-3.00",
+                "quote_context": "after KT (OR 2.03; 95% CI 1.38-3.00; p C",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 2.03,
+                "ci_lower": 1.38,
+                "ci_upper": 3.0,
+                "source_text": "OR: 2.03; 95% CI: 1.38-3.00"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 10
+        }
+      }
+    },
+    {
+      "pmcid": "PMC3572772",
+      "pmid": "23223314",
+      "specialty": "kidney_transplant",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 4,
+        "chars": 19406,
+        "secs": 0.07
+      },
+      "n_gold": 1,
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 2,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "IRR",
+                "point_estimate": 0.49,
+                "ci_lower": 0.15,
+                "ci_upper": 1.63,
+                "ci_level": 0.95,
+                "source_text": "rate ratio 0.49 (95%CI: 0.15-1.63",
+                "quote_context": "SCC/year, rate ratio 0.49 (95%CI: 0.15-1.63), P",
+                "harvest_pattern": "rate\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\...."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "IRR",
+                "point": 0.49,
+                "ci_lower": 0.15,
+                "ci_upper": 1.63,
+                "source_text": "rate ratio 0.49 (95% CI: 0.15-1.63"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 1
+        },
+        "pdf_raw": {
+          "n_extracted": 4,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "IRR",
+                "point_estimate": 0.49,
+                "ci_lower": 0.15,
+                "ci_upper": 1.63,
+                "ci_level": 0.95,
+                "source_text": "rate ratio 0.49 (95%CI: 0.15-1.63",
+                "quote_context": "SCC/year, rate ratio 0.49 (95%CI: 0.15-1.63), P",
+                "harvest_pattern": "rate\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\...."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "IRR",
+                "point": 0.49,
+                "ci_lower": 0.15,
+                "ci_upper": 1.63,
+                "source_text": "rate ratio 0.49 (95% CI: 0.15-1.63"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 3
+        },
+        "pdf_pp": {
+          "n_extracted": 4,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "IRR",
+                "point_estimate": 0.49,
+                "ci_lower": 0.15,
+                "ci_upper": 1.63,
+                "ci_level": 0.95,
+                "source_text": "rate ratio 0.49 (95%CI: 0.15-1.63",
+                "quote_context": "SCC/year, rate ratio 0.49 (95%CI: 0.15-1.63), P",
+                "harvest_pattern": "rate\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\...."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "IRR",
+                "point": 0.49,
+                "ci_lower": 0.15,
+                "ci_upper": 1.63,
+                "source_text": "rate ratio 0.49 (95% CI: 0.15-1.63"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 3
+        }
+      }
+    },
+    {
+      "pmcid": "PMC5838144",
+      "pmid": "28741050",
+      "specialty": "kidney_transplant",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 10,
+        "chars": 33634,
+        "secs": 0.17
+      },
+      "n_gold": 1,
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 0.74,
+                "ci_lower": 0.56,
+                "ci_upper": 0.96,
+                "ci_level": 0.95,
+                "source_text": "hazard ratio 0.74, 95% confidence interval 0.56-0.96",
+                "quote_context": "nistered (hazard ratio 0.74, 95% confidence interval 0.56-0.96). Al",
+                "harvest_pattern": "hazard\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 0.74,
+                "ci_lower": 0.56,
+                "ci_upper": 0.96,
+                "source_text": "hazard ratio 0.74, 95% CI 0.56-0.96"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 4,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 0.74,
+                "ci_lower": 0.56,
+                "ci_upper": 0.96,
+                "ci_level": 0.95,
+                "source_text": "hazard ratio 0.74, 95% confidence interval 0.56-0.96",
+                "quote_context": "nistered (hazard ratio 0.74, 95% confidence interval 0.56-0.96). Al",
+                "harvest_pattern": "hazard\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 0.74,
+                "ci_lower": 0.56,
+                "ci_upper": 0.96,
+                "source_text": "hazard ratio 0.74, 95% CI 0.56-0.96"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 3
+        },
+        "pdf_pp": {
+          "n_extracted": 4,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 0.74,
+                "ci_lower": 0.56,
+                "ci_upper": 0.96,
+                "ci_level": 0.95,
+                "source_text": "hazard ratio 0.74, 95% confidence interval 0.56-0.96",
+                "quote_context": "nistered (hazard ratio 0.74, 95% confidence interval 0.56-0.96). Al",
+                "harvest_pattern": "hazard\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 0.74,
+                "ci_lower": 0.56,
+                "ci_upper": 0.96,
+                "source_text": "hazard ratio 0.74, 95% CI 0.56-0.96"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 3
+        }
+      }
+    },
+    {
+      "pmcid": "PMC5045594",
+      "pmid": "27716149",
+      "specialty": "kidney_transplant",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 8,
+        "chars": 34389,
+        "secs": 0.12
+      },
+      "n_gold": 1,
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 0.74,
+                "ci_lower": 0.56,
+                "ci_upper": 0.97,
+                "ci_level": 0.95,
+                "source_text": "Hazard Ratio, 0.74; 95 % Confidence Interval, 0.56-0.97",
+                "quote_context": "nd point (Hazard Ratio, 0.74; 95 % Confidence Interval, 0.56-0.97). Co",
+                "harvest_pattern": "hazard\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 0.74,
+                "ci_lower": 0.56,
+                "ci_upper": 0.97,
+                "source_text": "Hazard Ratio, 0.74; 95% CI, 0.56-0.97"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 6,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 0.74,
+                "ci_lower": 0.56,
+                "ci_upper": 0.97,
+                "ci_level": 0.95,
+                "source_text": "Hazard Ratio, 0.74; 95 % Confidence Interval, 0.56-0.97",
+                "quote_context": "nd point (Hazard Ratio, 0.74; 95 % Confidence Interval, 0.56-0.97). Co",
+                "harvest_pattern": "hazard\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 0.74,
+                "ci_lower": 0.56,
+                "ci_upper": 0.97,
+                "source_text": "Hazard Ratio, 0.74; 95% CI, 0.56-0.97"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 5
+        },
+        "pdf_pp": {
+          "n_extracted": 6,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 0.74,
+                "ci_lower": 0.56,
+                "ci_upper": 0.97,
+                "ci_level": 0.95,
+                "source_text": "Hazard Ratio, 0.74; 95 % Confidence Interval, 0.56-0.97",
+                "quote_context": "nd point (Hazard Ratio, 0.74; 95 % Confidence Interval, 0.56-0.97). Co",
+                "harvest_pattern": "hazard\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 0.74,
+                "ci_lower": 0.56,
+                "ci_upper": 0.97,
+                "source_text": "Hazard Ratio, 0.74; 95% CI, 0.56-0.97"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 5
+        }
+      }
+    },
+    {
+      "pmcid": "PMC3263870",
+      "pmid": "22210576",
+      "specialty": "kidney_transplant",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 8,
+        "chars": 42667,
+        "secs": 0.21
+      },
+      "n_gold": 1,
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 0.89,
+                "ci_lower": 0.8,
+                "ci_upper": 0.99,
+                "ci_level": 0.95,
+                "source_text": "hazard ratio 0.89 [95% CI 0.80-0.99",
+                "quote_context": "placebo (hazard ratio 0.89 [95% CI 0.80-0.99]; P",
+                "harvest_pattern": "hazard\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 0.89,
+                "ci_lower": 0.8,
+                "ci_upper": 0.99,
+                "source_text": "hazard ratio 0.89 [95% CI 0.80-0.99]"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 0.89,
+                "ci_lower": 0.8,
+                "ci_upper": 0.99,
+                "ci_level": 0.95,
+                "source_text": "hazard ratio 0.89 [95% CI 0.80-0.99",
+                "quote_context": "placebo (hazard ratio 0.89 [95% CI 0.80-0.99]; P",
+                "harvest_pattern": "hazard\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 0.89,
+                "ci_lower": 0.8,
+                "ci_upper": 0.99,
+                "source_text": "hazard ratio 0.89 [95% CI 0.80-0.99]"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        },
+        "pdf_pp": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 0.89,
+                "ci_lower": 0.8,
+                "ci_upper": 0.99,
+                "ci_level": 0.95,
+                "source_text": "hazard ratio 0.89 [95% CI 0.80-0.99",
+                "quote_context": "placebo (hazard ratio 0.89 [95% CI 0.80-0.99]; P",
+                "harvest_pattern": "hazard\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:..."
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 0.89,
+                "ci_lower": 0.8,
+                "ci_upper": 0.99,
+                "source_text": "hazard ratio 0.89 [95% CI 0.80-0.99]"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        }
+      }
+    }
+  ]
+}

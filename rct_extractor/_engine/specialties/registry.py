@@ -194,6 +194,16 @@ from .diabetes import (
     normalize_diabetes_endpoint
 )
 
+from .kidney_transplant import (
+    KIDNEY_TRANSPLANT_ENDPOINTS,
+    REJECTION_PATTERNS as KT_REJECTION_PATTERNS,
+    GRAFT_PATTERNS as KT_GRAFT_PATTERNS,
+    FUNCTION_PATTERNS as KT_FUNCTION_PATTERNS,
+    COMPLICATIONS_PATTERNS as KT_COMPLICATIONS_PATTERNS,
+    detect_kidney_transplant_subspecialty,
+    normalize_kidney_transplant_endpoint
+)
+
 from .respiratory import (
     RESPIRATORY_ENDPOINTS,
     COPD_PATTERNS as RESP_COPD_PATTERNS,
@@ -517,6 +527,18 @@ SPECIALTY_REGISTRY = {
             'complications': DIABETES_COMPLICATIONS_PATTERNS
         }
     },
+    'kidney_transplant': {
+        'subspecialties': ['rejection', 'graft', 'function', 'complications'],
+        'detection_function': detect_kidney_transplant_subspecialty,
+        'normalizer': normalize_kidney_transplant_endpoint,
+        'endpoints': KIDNEY_TRANSPLANT_ENDPOINTS,
+        'patterns': {
+            'rejection': KT_REJECTION_PATTERNS,
+            'graft': KT_GRAFT_PATTERNS,
+            'function': KT_FUNCTION_PATTERNS,
+            'complications': KT_COMPLICATIONS_PATTERNS
+        }
+    },
     'neurology': {
         'subspecialties': ['alzheimers', 'ms', 'parkinsons', 'stroke'],
         'endpoints': {
@@ -808,6 +830,16 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'\w*gliptin', r'dpp[- ]?4', r'metformin', r'sulfonylurea|sulphonylurea',
             r'pioglitazone|rosiglitazone', r'obesity', r'weight\s+loss'
         ],
+        'kidney_transplant': [
+            r'kidney\s+transplant\w*', r'renal\s+transplant\w*', r'renal\s+allograft',
+            r'kidney\s+allograft', r'\ballograft\b', r'graft\s+(?:loss|failure|survival)',
+            r'(?:biopsy[- ]proven\s+)?acute\s+rejection', r'antibody[- ]mediated\s+rejection',
+            r'delayed\s+graft\s+function', r'transplant\s+recipients?',
+            r'tacrolimus|ciclosporin|cyclosporine', r'mycophenolate|belatacept',
+            r'basiliximab|anti[- ]thymocyte\s+globulin|thymoglobulin', r'sirolimus|everolimus',
+            r'living[- ](?:donor|related)\s+(?:kidney|renal)|deceased[- ]donor',
+            r'immunosuppress(?:ion|ive)\s+(?:regimen|therapy)',
+        ],
         'stroke': [
             r'\bstroke\b', r'ischa?emic\s+stroke', r'acute\s+ischa?emic\s+stroke',
             r'ha?emorrhagic\s+stroke', r'\bnihss\b', r'nih\s+stroke\s+scale',
@@ -1002,6 +1034,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'diabetes':
         subspecialty, conf = detect_diabetes_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'kidney_transplant':
+        subspecialty, conf = detect_kidney_transplant_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'respiratory':
         subspecialty, conf = detect_respiratory_subspecialty(text)
