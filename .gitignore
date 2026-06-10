@@ -178,3 +178,11 @@ data/field_portability/cervical_cancer/*.log
 
 # PDF accuracy eval: re-fetchable NCBI XML cache (61MB) - keep gold+results, not cache
 data/pdf_eval/xml_cache/
+
+# Bladder-cancer field bundle
+data/field_portability/bladder_cancer/rct_trial_pdfs/
+data/field_portability/bladder_cancer/*.jsonl
+data/field_portability/bladder_cancer/*.json
+data/field_portability/bladder_cancer/*.log
+data/pdf_eval/gold_bladder_cancer.jsonl
+data/pdf_eval/eval_onc_bladder_cancer.json
