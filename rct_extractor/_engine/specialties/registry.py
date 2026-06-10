@@ -194,6 +194,16 @@ from .diabetes import (
     normalize_diabetes_endpoint
 )
 
+from .pancreatic_cancer import (
+    PANCREATIC_CANCER_ENDPOINTS,
+    SYSTEMIC_PATTERNS as PA_SYSTEMIC_PATTERNS,
+    ADJUVANT_PATTERNS as PA_ADJUVANT_PATTERNS,
+    LOCALLY_ADVANCED_PATTERNS as PA_LOCALLY_ADVANCED_PATTERNS,
+    MORTALITY_PATTERNS as PA_MORTALITY_PATTERNS,
+    detect_pancreatic_cancer_subspecialty,
+    normalize_pancreatic_cancer_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -413,6 +423,18 @@ SPECIALTY_REGISTRY = {
             'screening': CC_SCREENING_PATTERNS,
             'treatment': CC_TREATMENT_PATTERNS,
             'mortality': CC_MORTALITY_PATTERNS
+        }
+    },
+    'pancreatic_cancer': {
+        'subspecialties': ['systemic', 'adjuvant', 'locally_advanced', 'mortality'],
+        'detection_function': detect_pancreatic_cancer_subspecialty,
+        'normalizer': normalize_pancreatic_cancer_endpoint,
+        'endpoints': PANCREATIC_CANCER_ENDPOINTS,
+        'patterns': {
+            'systemic': PA_SYSTEMIC_PATTERNS,
+            'adjuvant': PA_ADJUVANT_PATTERNS,
+            'locally_advanced': PA_LOCALLY_ADVANCED_PATTERNS,
+            'mortality': PA_MORTALITY_PATTERNS
         }
     },
     'infectious_disease': {
@@ -637,6 +659,14 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'high[- ]grade\s+squamous\s+intraepithelial', r'persistent\s+hpv',
             r'quadrivalent|bivalent|nonavalent'
         ],
+        'pancreatic_cancer': [
+            r'pancreatic\s+cancer', r'pancreatic\s+(?:adeno)?carcinoma',
+            r'pancreatic\s+ductal\s+adenocarcinoma|\bpdac\b', r'\blapc\b',
+            r'folfirinox', r'gemcitabine', r'nab[- ]?paclitaxel',
+            r'ca\s?19[-. ]?9', r'pancreaticoduodenectomy|whipple',
+            r'borderline\s+resectable', r'resected\s+pancreatic',
+            r'locally\s+advanced\s+pancreatic', r'nalirifox', r'metastatic\s+pancreatic'
+        ],
         'infectious_disease': [
             r'covid', r'sars[- ]?cov',
             r'viral', r'bacterial', r'antiviral', r'antibiotic', r'infection'
@@ -745,6 +775,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'cervical_cancer':
         subspecialty, conf = detect_cervical_cancer_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'pancreatic_cancer':
+        subspecialty, conf = detect_pancreatic_cancer_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'diabetes':
         subspecialty, conf = detect_diabetes_subspecialty(text)
