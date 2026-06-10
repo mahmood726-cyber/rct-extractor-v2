@@ -194,6 +194,16 @@ from .diabetes import (
     normalize_diabetes_endpoint
 )
 
+from .peripheral_artery_disease import (
+    PAD_ENDPOINTS,
+    LIMB_OUTCOMES_PATTERNS as PAD_LIMB_OUTCOMES_PATTERNS,
+    REVASCULARISATION_PATTERNS as PAD_REVASCULARISATION_PATTERNS,
+    MEDICAL_THERAPY_PATTERNS as PAD_MEDICAL_THERAPY_PATTERNS,
+    FUNCTIONAL_PATTERNS as PAD_FUNCTIONAL_PATTERNS,
+    detect_peripheral_artery_disease_subspecialty,
+    normalize_peripheral_artery_disease_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -436,6 +446,18 @@ SPECIALTY_REGISTRY = {
             'complications': DIABETES_COMPLICATIONS_PATTERNS
         }
     },
+    'peripheral_artery_disease': {
+        'subspecialties': ['limb_outcomes', 'revascularisation', 'medical_therapy', 'functional'],
+        'detection_function': detect_peripheral_artery_disease_subspecialty,
+        'normalizer': normalize_peripheral_artery_disease_endpoint,
+        'endpoints': PAD_ENDPOINTS,
+        'patterns': {
+            'limb_outcomes': PAD_LIMB_OUTCOMES_PATTERNS,
+            'revascularisation': PAD_REVASCULARISATION_PATTERNS,
+            'medical_therapy': PAD_MEDICAL_THERAPY_PATTERNS,
+            'functional': PAD_FUNCTIONAL_PATTERNS
+        }
+    },
     'neurology': {
         'subspecialties': ['alzheimers', 'ms', 'parkinsons', 'stroke'],
         'endpoints': {
@@ -649,6 +671,21 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'\w*gliptin', r'dpp[- ]?4', r'metformin', r'sulfonylurea|sulphonylurea',
             r'pioglitazone|rosiglitazone', r'obesity', r'weight\s+loss'
         ],
+        'peripheral_artery_disease': [
+            r'peripheral\s+arter(?:y|ial)\s+disease', r'\bpad\b', r'\bpaod\b',
+            r'intermittent\s+claudication', r'\bclaudication\b',
+            r'critical\s+limb\s+isch[ae]mia|chronic\s+limb[- ]threatening\s+isch[ae]mia',
+            r'\bclti\b|\bcli\b', r'acute\s+limb\s+isch[ae]mia',
+            r'ankle[- ]brachial\s+(?:index|pressure)', r'\babi\b|\babpi\b',
+            r'major\s+adverse\s+limb\s+events?', r'amputation[- ]free\s+survival',
+            r'limb\s+salvage', r'femoropopliteal|infrainguinal|infrapopliteal',
+            r'(?:maxim(?:al|um)|pain[- ]free|absolute)\s+(?:walking|claudication)\s+'
+            r'(?:distance|time)',
+            r'target[- ](?:lesion|vessel)\s+revascular[is]ation', r'primary\s+patency',
+            r'cilostazol|naftidrofuryl|pentoxifylline',
+            r'drug[- ]coated\s+balloon|drug[- ]eluting\s+stent',
+            r'lower[- ](?:limb|extremity)\s+(?:revascular[is]ation|isch[ae]mia|arter)',
+        ],
         'neurology': [
             r'alzheimer', r'dementia', r'multiple\s+sclerosis', r'\bms\b',
             r'parkinson', r'stroke', r'neurological', r'cognitive', r'relapse'
@@ -748,6 +785,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'diabetes':
         subspecialty, conf = detect_diabetes_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'peripheral_artery_disease':
+        subspecialty, conf = detect_peripheral_artery_disease_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)
