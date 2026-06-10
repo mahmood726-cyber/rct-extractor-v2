@@ -275,6 +275,16 @@ from .ophthalmology import (
     normalize_ophthalmology_endpoint
 )
 
+from .sepsis import (
+    SEPSIS_ENDPOINTS,
+    TREATMENT_PATTERNS as SEP_HEMO_PATTERNS,
+    DRUG_RESISTANT_PATTERNS as SEP_ADJUNCTIVE_PATTERNS,
+    PREVENTION_PATTERNS as SEP_ANTIMICROBIAL_PATTERNS,
+    LATENT_PATTERNS as SEP_ORGAN_PATTERNS,
+    detect_sepsis_subspecialty,
+    normalize_sepsis_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -575,6 +585,18 @@ SPECIALTY_REGISTRY = {
             'dry_eye': OPHTH_DRY_EYE_PATTERNS
         }
     },
+    'sepsis': {
+        'subspecialties': ['hemodynamic', 'adjunctive', 'antimicrobial_source', 'organ_support'],
+        'detection_function': detect_sepsis_subspecialty,
+        'normalizer': normalize_sepsis_endpoint,
+        'endpoints': SEPSIS_ENDPOINTS,
+        'patterns': {
+            'hemodynamic': SEP_HEMO_PATTERNS,
+            'adjunctive': SEP_ADJUNCTIVE_PATTERNS,
+            'antimicrobial_source': SEP_ANTIMICROBIAL_PATTERNS,
+            'organ_support': SEP_ORGAN_PATTERNS
+        }
+    },
     'respiratory': {
         'subspecialties': ['copd', 'asthma', 'ild', 'general_respiratory'],
         'detection_function': detect_respiratory_subspecialty,
@@ -852,6 +874,16 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'\bphq-?9\b', r'\bgad-?7\b', r'\bssri\b|\bsnri\b',
             r'esketamine|zuranolone|brexanolone|vortioxetine|cariprazine|lurasidone|lumateperone|brexpiprazole'
         ],
+        'sepsis': [
+            r'\bsepsis\b|septic\s+shock|septica?emia|sepsis[- ]associated',
+            r'norepinephrine|noradrenaline|vasopressin|angiotensin\s+ii|vasopressor',
+            r'\bsofa\b|sequential\s+organ\s+failure|apache\s+ii',
+            r'hydrocortisone\s+(?:in\s+)?(?:sepsis|septic)|fludrocortisone|metabolic\s+resuscitation',
+            r'vasopressor[- ]free\s+days|shock\s+reversal|organ[- ]support[- ]free',
+            r'procalcitonin[- ]guided|source\s+control|early\s+goal[- ]directed',
+            r'28[- ]day\s+mortality|90[- ]day\s+mortality',
+            r'renal\s+replacement\s+therapy\s+(?:in\s+)?(?:sepsis|septic|aki)|sepsis[- ]associated\s+aki',
+        ],
         'neurology': [
             r'alzheimer', r'dementia', r'multiple\s+sclerosis', r'\bms\b',
             r'parkinson', r'stroke', r'neurological', r'cognitive', r'relapse'
@@ -1026,6 +1058,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'ophthalmology':
         subspecialty, conf = detect_ophthalmology_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'sepsis':
+        subspecialty, conf = detect_sepsis_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)
