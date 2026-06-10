@@ -11,7 +11,7 @@ EXPECTED_17 = {
     "hiv", "malaria", "typhoid", "schistosomiasis", "sickle_cell", "cholera",
     "maternal_neonatal", "tuberculosis", "hepatitis", "meningitis", "pneumonia",
     "diarrhoeal", "malnutrition", "helminths", "hypertension", "cervical_cancer",
-    "diabetes",
+    "diabetes", "thyroid",
 }
 
 
@@ -22,7 +22,7 @@ def test_version_is_exposed():
 def test_list_specialties_has_all_17():
     assert set(rx.list_specialties()) == EXPECTED_17
     assert set(SPECIALTIES) == EXPECTED_17
-    assert len(SPECIALTIES) == 17
+    assert len(SPECIALTIES) == 18
 
 
 def test_public_symbols_present():

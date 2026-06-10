@@ -194,6 +194,16 @@ from .diabetes import (
     normalize_diabetes_endpoint
 )
 
+from .thyroid import (
+    THYROID_ENDPOINTS,
+    HYPOTHYROIDISM_PATTERNS as THY_HYPOTHYROIDISM_PATTERNS,
+    HYPERTHYROIDISM_PATTERNS as THY_HYPERTHYROIDISM_PATTERNS,
+    THYROID_FUNCTION_PATTERNS as THY_THYROID_FUNCTION_PATTERNS,
+    OUTCOMES_PATTERNS as THY_OUTCOMES_PATTERNS,
+    detect_thyroid_subspecialty,
+    normalize_thyroid_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -436,6 +446,18 @@ SPECIALTY_REGISTRY = {
             'complications': DIABETES_COMPLICATIONS_PATTERNS
         }
     },
+    'thyroid': {
+        'subspecialties': ['hypothyroidism', 'hyperthyroidism', 'thyroid_function', 'outcomes'],
+        'detection_function': detect_thyroid_subspecialty,
+        'normalizer': normalize_thyroid_endpoint,
+        'endpoints': THYROID_ENDPOINTS,
+        'patterns': {
+            'hypothyroidism': THY_HYPOTHYROIDISM_PATTERNS,
+            'hyperthyroidism': THY_HYPERTHYROIDISM_PATTERNS,
+            'thyroid_function': THY_THYROID_FUNCTION_PATTERNS,
+            'outcomes': THY_OUTCOMES_PATTERNS
+        }
+    },
     'neurology': {
         'subspecialties': ['alzheimers', 'ms', 'parkinsons', 'stroke'],
         'endpoints': {
@@ -649,6 +671,19 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'\w*gliptin', r'dpp[- ]?4', r'metformin', r'sulfonylurea|sulphonylurea',
             r'pioglitazone|rosiglitazone', r'obesity', r'weight\s+loss'
         ],
+        'thyroid': [
+            r'\bthyroid\b', r'hypothyroid(?:ism)?', r'hyperthyroid(?:ism)?',
+            r'thyrotoxicosis', r'levothyroxine|l[- ]?thyroxine|\blt4\b|liothyronine',
+            r'thyroid[- ]stimulating\s+hormone|\btsh\b',
+            r'free\s+(?:thyroxine|t4|triiodothyronine|t3)|\bft4\b|\bft3\b',
+            r'methimazole|carbimazole|thiamazole|propylthiouracil|\bptu\b|antithyroid',
+            r"graves[’']?\s+disease|graves\s+disease",
+            r'radioactive\s+iodine|radioiodine', r'thyroidectomy',
+            r'thyroiditis', r'euthyroid', r'goit(?:re|er)',
+            r'thyroid\s+peroxidase\s+antibod|\btpoab?\b',
+            r'thyroid\s+(?:function|hormone|eye\s+disease)|orbitopathy|ophthalmopathy',
+            r'subclinical\s+(?:hypo|hyper)?thyroid',
+        ],
         'neurology': [
             r'alzheimer', r'dementia', r'multiple\s+sclerosis', r'\bms\b',
             r'parkinson', r'stroke', r'neurological', r'cognitive', r'relapse'
@@ -748,6 +783,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'diabetes':
         subspecialty, conf = detect_diabetes_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'thyroid':
+        subspecialty, conf = detect_thyroid_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)
