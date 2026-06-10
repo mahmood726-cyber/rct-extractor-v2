@@ -194,6 +194,16 @@ from .diabetes import (
     normalize_diabetes_endpoint
 )
 
+from .pulmonary_hypertension import (
+    PULMONARY_HYPERTENSION_ENDPOINTS,
+    FUNCTIONAL_PATTERNS as PH_FUNCTIONAL_PATTERNS,
+    HEMODYNAMICS_PATTERNS as PH_HEMODYNAMICS_PATTERNS,
+    CLINICAL_WORSENING_PATTERNS as PH_CLINICAL_WORSENING_PATTERNS,
+    BIOMARKER_PATTERNS as PH_BIOMARKER_PATTERNS,
+    detect_pulmonary_hypertension_subspecialty,
+    normalize_pulmonary_hypertension_endpoint
+)
+
 from .respiratory import (
     RESPIRATORY_ENDPOINTS,
     COPD_PATTERNS as RESP_COPD_PATTERNS,
@@ -517,6 +527,18 @@ SPECIALTY_REGISTRY = {
             'complications': DIABETES_COMPLICATIONS_PATTERNS
         }
     },
+    'pulmonary_hypertension': {
+        'subspecialties': ['functional', 'hemodynamics', 'clinical_worsening', 'biomarker'],
+        'detection_function': detect_pulmonary_hypertension_subspecialty,
+        'normalizer': normalize_pulmonary_hypertension_endpoint,
+        'endpoints': PULMONARY_HYPERTENSION_ENDPOINTS,
+        'patterns': {
+            'functional': PH_FUNCTIONAL_PATTERNS,
+            'hemodynamics': PH_HEMODYNAMICS_PATTERNS,
+            'clinical_worsening': PH_CLINICAL_WORSENING_PATTERNS,
+            'biomarker': PH_BIOMARKER_PATTERNS
+        }
+    },
     'neurology': {
         'subspecialties': ['alzheimers', 'ms', 'parkinsons', 'stroke'],
         'endpoints': {
@@ -808,6 +830,17 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'\w*gliptin', r'dpp[- ]?4', r'metformin', r'sulfonylurea|sulphonylurea',
             r'pioglitazone|rosiglitazone', r'obesity', r'weight\s+loss'
         ],
+        'pulmonary_hypertension': [
+            r'pulmonary\s+(?:arterial\s+)?hypertension', r'\bpah\b',
+            r'pulmonary\s+vascular\s+resistance|\bpvr\b',
+            r'mean\s+pulmonary\s+arter(?:ial|y)\s+pressure|\bmpap\b',
+            r'6[- ]min(?:ute)?\s+walk|six[- ]min(?:ute)?\s+walk|\b6mwd\b|\b6mwt\b',
+            r'who\s+functional\s+class', r'right\s+heart\s+catheter',
+            r'bosentan|ambrisentan|macitentan', r'epoprostenol|treprostinil|iloprost|selexipag|beraprost',
+            r'riociguat', r'sotatercept', r'endothelin\s+receptor\s+antagonist',
+            r'sildenafil|tadalafil', r'time\s+to\s+clinical\s+worsening',
+            r'pulmonary\s+arteriopathy|chronic\s+thromboembolic\s+pulmonary',
+        ],
         'stroke': [
             r'\bstroke\b', r'ischa?emic\s+stroke', r'acute\s+ischa?emic\s+stroke',
             r'ha?emorrhagic\s+stroke', r'\bnihss\b', r'nih\s+stroke\s+scale',
@@ -1002,6 +1035,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'diabetes':
         subspecialty, conf = detect_diabetes_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'pulmonary_hypertension':
+        subspecialty, conf = detect_pulmonary_hypertension_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'respiratory':
         subspecialty, conf = detect_respiratory_subspecialty(text)
