@@ -275,6 +275,16 @@ from .ophthalmology import (
     normalize_ophthalmology_endpoint
 )
 
+from .renal_cell_carcinoma import (
+    RENAL_CELL_CARCINOMA_ENDPOINTS,
+    ADVANCED_PATTERNS as RCC_ADVANCED_PATTERNS,
+    ADJUVANT_PATTERNS as RCC_ADJUVANT_PATTERNS,
+    SUBSEQUENT_LINE_PATTERNS as RCC_SUBSEQUENT_LINE_PATTERNS,
+    MORTALITY_PATTERNS as RCC_MORTALITY_PATTERNS,
+    detect_renal_cell_carcinoma_subspecialty,
+    normalize_renal_cell_carcinoma_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -494,6 +504,18 @@ SPECIALTY_REGISTRY = {
             'screening': CC_SCREENING_PATTERNS,
             'treatment': CC_TREATMENT_PATTERNS,
             'mortality': CC_MORTALITY_PATTERNS
+        }
+    },
+    'renal_cell_carcinoma': {
+        'subspecialties': ['advanced', 'adjuvant', 'subsequent_line', 'mortality'],
+        'detection_function': detect_renal_cell_carcinoma_subspecialty,
+        'normalizer': normalize_renal_cell_carcinoma_endpoint,
+        'endpoints': RENAL_CELL_CARCINOMA_ENDPOINTS,
+        'patterns': {
+            'advanced': RCC_ADVANCED_PATTERNS,
+            'adjuvant': RCC_ADJUVANT_PATTERNS,
+            'subsequent_line': RCC_SUBSEQUENT_LINE_PATTERNS,
+            'mortality': RCC_MORTALITY_PATTERNS
         }
     },
     'infectious_disease': {
@@ -796,6 +818,13 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'high[- ]grade\s+squamous\s+intraepithelial', r'persistent\s+hpv',
             r'quadrivalent|bivalent|nonavalent'
         ],
+        'renal_cell_carcinoma': [
+            r'renal\s+cell\s+(?:carcinoma|cancer)|\brcc\b|\bmrcc\b',
+            r'clear[- ]cell\s+renal', r'kidney\s+cancer',
+            r'sunitinib|pazopanib|cabozantinib|axitinib|tivozanib|lenvatinib',
+            r'ipilimumab|nivolumab|pembrolizumab', r'\bimdc\b', r'nephrectomy',
+            r'metastatic\s+renal', r'\bvhl\b|von\s+hippel[- ]lindau', r'belzutifan'
+        ],
         'infectious_disease': [
             r'covid', r'sars[- ]?cov',
             r'viral', r'bacterial', r'antiviral', r'antibiotic', r'infection'
@@ -999,6 +1028,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'cervical_cancer':
         subspecialty, conf = detect_cervical_cancer_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'renal_cell_carcinoma':
+        subspecialty, conf = detect_renal_cell_carcinoma_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'diabetes':
         subspecialty, conf = detect_diabetes_subspecialty(text)
