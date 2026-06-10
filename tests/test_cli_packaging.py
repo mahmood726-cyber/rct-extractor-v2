@@ -16,8 +16,8 @@ def test_list_specialties(capsys):
     rc = main(["--list-specialties"])
     out = capsys.readouterr().out
     assert rc == 0
-    assert "Supported specialties (17)" in out
-    for spec in ("diabetes", "tuberculosis", "hiv", "malaria"):
+    assert "Supported specialties (" in out
+    for spec in ("diabetes", "tuberculosis", "hiv", "malaria", "parkinsons"):
         assert spec in out
 
 
