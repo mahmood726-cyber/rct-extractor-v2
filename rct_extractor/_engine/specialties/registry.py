@@ -245,6 +245,16 @@ from .rheumatology import (
     normalize_rheumatology_endpoint
 )
 
+from .gastroenterology import (
+    GASTROENTEROLOGY_ENDPOINTS,
+    IBD_PATTERNS as GI_IBD_PATTERNS,
+    HPYLORI_PATTERNS as GI_HPYLORI_PATTERNS,
+    GERD_PATTERNS as GI_GERD_PATTERNS,
+    MASH_PATTERNS as GI_MASH_PATTERNS,
+    detect_gastroenterology_subspecialty,
+    normalize_gastroenterology_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -507,6 +517,18 @@ SPECIALTY_REGISTRY = {
             'axspa': RHEUM_AXSPA_PATTERNS,
             'gout': RHEUM_GOUT_PATTERNS,
             'sle': RHEUM_SLE_PATTERNS
+        }
+    },
+    'gastroenterology': {
+        'subspecialties': ['ibd', 'hpylori', 'gerd', 'mash'],
+        'detection_function': detect_gastroenterology_subspecialty,
+        'normalizer': normalize_gastroenterology_endpoint,
+        'endpoints': GASTROENTEROLOGY_ENDPOINTS,
+        'patterns': {
+            'ibd': GI_IBD_PATTERNS,
+            'hpylori': GI_HPYLORI_PATTERNS,
+            'gerd': GI_GERD_PATTERNS,
+            'mash': GI_MASH_PATTERNS
         }
     },
     'respiratory': {
@@ -800,6 +822,20 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'serum\s+urate', r'urate[- ]lowering', r'\bdmard\b|csdmard',
             r'minimal\s+disease\s+activity'
         ],
+        'gastroenterology': [
+            r'ulcerative\s+colitis', r"crohn'?s?\s+disease|crohn\s+disease",
+            r'inflammatory\s+bowel\s+disease|\bibd\b',
+            r'mayo\s+(?:clinic\s+)?score', r'\bcdai\b',
+            r'mucosal\s+healing', r'endoscopic\s+(?:remission|improvement|healing)',
+            r'steroid[- ]free\s+remission|corticosteroid[- ]free\s+remission',
+            r'helicobacter\s+pylori|\bh\.?\s*pylori\b', r'eradication\s+rate',
+            r'erosive\s+(?:o?esophagitis|reflux)',
+            r'gastro[- ]?o?esophageal\s+reflux|\bgerd\b|\bgord\b',
+            r'nonalcoholic\s+steatohepatitis|non[- ]alcoholic\s+steatohepatitis|\bnash\b',
+            r'metabolic\s+dysfunction[- ]associated\s+steatohepatitis|\bmash\b',
+            r'nonalcoholic\s+fatty\s+liver(?:\s+disease)?|non[- ]alcoholic\s+fatty\s+liver|\bnafld\b|\bmafld\b|\bmasld\b',
+            r'mri[- ]?pdff'
+        ],
         'respiratory': [
             r'chronic\s+obstructive\s+pulmonary\s+disease', r'\bcopd\b', r'\baecopd\b',
             r'\basthma\b', r'asthmatic', r'pulmonary\s+fibrosis', r'\bipf\b',
@@ -912,6 +948,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'rheumatology':
         subspecialty, conf = detect_rheumatology_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'gastroenterology':
+        subspecialty, conf = detect_gastroenterology_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)
