@@ -214,6 +214,16 @@ from .stroke import (
     normalize_stroke_endpoint
 )
 
+from .nephrology import (
+    NEPHROLOGY_ENDPOINTS,
+    CKD_PATTERNS as NEPHRO_CKD_PATTERNS,
+    DIALYSIS_PATTERNS as NEPHRO_DIALYSIS_PATTERNS,
+    AKI_PATTERNS as NEPHRO_AKI_PATTERNS,
+    GLOMERULAR_PATTERNS as NEPHRO_GLOMERULAR_PATTERNS,
+    detect_nephrology_subspecialty,
+    normalize_nephrology_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -498,6 +508,18 @@ SPECIALTY_REGISTRY = {
             'secondary_prevention': STROKE_SECONDARY_PREVENTION_PATTERNS,
             'recovery': STROKE_RECOVERY_PATTERNS
         }
+    },
+    'nephrology': {
+        'subspecialties': ['ckd', 'dialysis', 'aki', 'glomerular'],
+        'detection_function': detect_nephrology_subspecialty,
+        'normalizer': normalize_nephrology_endpoint,
+        'endpoints': NEPHROLOGY_ENDPOINTS,
+        'patterns': {
+            'ckd': NEPHRO_CKD_PATTERNS,
+            'dialysis': NEPHRO_DIALYSIS_PATTERNS,
+            'aki': NEPHRO_AKI_PATTERNS,
+            'glomerular': NEPHRO_GLOMERULAR_PATTERNS
+        }
     }
 }
 
@@ -698,6 +720,20 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'fugl[- ]meyer', r'barthel\s+index',
             r'stroke\s+rehabilitation|neurorehabilitation', r'secondary\s+stroke\s+prevention'
         ],
+        'nephrology': [
+            r'chronic\s+kidney\s+disease', r'\bckd\b',
+            r'end[- ]stage\s+(?:kidney|renal)\s+disease', r'\beskd\b', r'\besrd\b',
+            r'\begfr\b', r'estimated\s+glomerular\s+filtration\s+rate',
+            r'\bdialysis\b', r'h?emodialysis', r'peritoneal\s+dialysis',
+            r'albuminuria', r'\buacr\b', r'proteinuria', r'\bupcr\b',
+            r'nephropathy', r'glomerulonephritis', r'iga\s+nephropathy',
+            r'nephrotic', r'nephritis', r'kidney\s+failure', r'\bkdigo\b',
+            r'acute\s+kidney\s+injury|\baki\b', r'renal\s+replacement\s+therapy|\brrt\b',
+            r'doubling\s+of\s+serum\s+creatinine',
+            r'composite\s+(?:kidney|renal)\s+(?:outcome|endpoint)',
+            r'membranous\s+nephropathy', r'lupus\s+nephritis', r'\bfsgs\b',
+            r'kt/v', r'vascular\s+access'
+        ],
         'neurology': [
             r'alzheimer', r'dementia', r'multiple\s+sclerosis', r'\bms\b',
             r'parkinson', r'stroke', r'neurological', r'cognitive', r'relapse'
@@ -809,6 +845,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'stroke':
         subspecialty, conf = detect_stroke_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'nephrology':
+        subspecialty, conf = detect_nephrology_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)
