@@ -194,6 +194,16 @@ from .diabetes import (
     normalize_diabetes_endpoint
 )
 
+from .alzheimers import (
+    ALZHEIMERS_ENDPOINTS,
+    TREATMENT_PATTERNS as AD_SYMPTOMATIC_PATTERNS,
+    DRUG_RESISTANT_PATTERNS as AD_DMT_PATTERNS,
+    PREVENTION_PATTERNS as AD_NEUROPSYCH_PATTERNS,
+    LATENT_PATTERNS as AD_PREVENTION_MCI_PATTERNS,
+    detect_alzheimers_subspecialty,
+    normalize_alzheimers_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -463,6 +473,18 @@ SPECIALTY_REGISTRY = {
             'FVC': {'aliases': ['fvc', 'forced vital capacity']},
             'FVC_DECLINE': {'aliases': ['fvc decline', 'annual fvc decline', 'rate of fvc decline']}
         }
+    },
+    'alzheimers': {
+        'subspecialties': ['symptomatic', 'disease_modifying', 'neuropsychiatric', 'prevention_mci'],
+        'detection_function': detect_alzheimers_subspecialty,
+        'normalizer': normalize_alzheimers_endpoint,
+        'endpoints': ALZHEIMERS_ENDPOINTS,
+        'patterns': {
+            'symptomatic': AD_SYMPTOMATIC_PATTERNS,
+            'disease_modifying': AD_DMT_PATTERNS,
+            'neuropsychiatric': AD_NEUROPSYCH_PATTERNS,
+            'prevention_mci': AD_PREVENTION_MCI_PATTERNS
+        }
     }
 }
 
@@ -476,7 +498,7 @@ SPECIALTY_REGISTRY = {
 # detect_specialty). `infectious_disease` is the one with bare-word keywords;
 # the others are kept here too so a future generic keyword can't silently steal
 # routing from a specific specialty.
-_FALLBACK_SPECIALTIES = {'infectious_disease'}
+_FALLBACK_SPECIALTIES = {'infectious_disease', 'neurology'}
 
 
 def detect_specialty(text: str) -> Tuple[str, str, float]:
@@ -649,6 +671,14 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'\w*gliptin', r'dpp[- ]?4', r'metformin', r'sulfonylurea|sulphonylurea',
             r'pioglitazone|rosiglitazone', r'obesity', r'weight\s+loss'
         ],
+        'alzheimers': [
+            r'alzheimer', r'\bdementia\b', r'adas[- ]?cog', r'cdr[- ]?s[ob]b|cdr\s+sum',
+            r'mild\s+cognitive\s+impairment|\bmci\b',
+            r'donepezil|rivastigmine|galantamine|memantine|cholinesterase',
+            r'lecanemab|aducanumab|donanemab|gantenerumab|solanezumab',
+            r'anti[- ]amyloid|amyloid\s+pet|centiloid|\baria\b',
+            r'\bnpi\b|neuropsychiatric\s+inventory|\bcmai\b|\bmmse\b'
+        ],
         'neurology': [
             r'alzheimer', r'dementia', r'multiple\s+sclerosis', r'\bms\b',
             r'parkinson', r'stroke', r'neurological', r'cognitive', r'relapse'
@@ -748,6 +778,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'diabetes':
         subspecialty, conf = detect_diabetes_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'alzheimers':
+        subspecialty, conf = detect_alzheimers_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)
