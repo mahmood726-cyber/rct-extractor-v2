@@ -15,6 +15,7 @@ EXPECTED_17 = {
     "diabetes", "respiratory", "cardiology", "oncology", "stroke",
     "nephrology", "psychiatry", "rheumatology", "gastroenterology",
     "dermatology", "ophthalmology",
+    "pcos",
 }
 
 

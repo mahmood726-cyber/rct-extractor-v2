@@ -194,6 +194,16 @@ from .diabetes import (
     normalize_diabetes_endpoint
 )
 
+from .pcos import (
+    PCOS_ENDPOINTS,
+    REPRODUCTIVE_PATTERNS as PCOS_REPRODUCTIVE_PATTERNS,
+    METABOLIC_PATTERNS as PCOS_METABOLIC_PATTERNS,
+    ANDROGEN_PATTERNS as PCOS_ANDROGEN_PATTERNS,
+    SAFETY_PATTERNS as PCOS_SAFETY_PATTERNS,
+    detect_pcos_subspecialty,
+    normalize_pcos_endpoint
+)
+
 from .respiratory import (
     RESPIRATORY_ENDPOINTS,
     COPD_PATTERNS as RESP_COPD_PATTERNS,
@@ -517,6 +527,18 @@ SPECIALTY_REGISTRY = {
             'complications': DIABETES_COMPLICATIONS_PATTERNS
         }
     },
+    'pcos': {
+        'subspecialties': ['reproductive', 'metabolic', 'androgen', 'safety'],
+        'detection_function': detect_pcos_subspecialty,
+        'normalizer': normalize_pcos_endpoint,
+        'endpoints': PCOS_ENDPOINTS,
+        'patterns': {
+            'reproductive': PCOS_REPRODUCTIVE_PATTERNS,
+            'metabolic': PCOS_METABOLIC_PATTERNS,
+            'androgen': PCOS_ANDROGEN_PATTERNS,
+            'safety': PCOS_SAFETY_PATTERNS
+        }
+    },
     'neurology': {
         'subspecialties': ['alzheimers', 'ms', 'parkinsons', 'stroke'],
         'endpoints': {
@@ -808,6 +830,14 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'\w*gliptin', r'dpp[- ]?4', r'metformin', r'sulfonylurea|sulphonylurea',
             r'pioglitazone|rosiglitazone', r'obesity', r'weight\s+loss'
         ],
+        'pcos': [
+            r'polycystic\s+ovar(?:y|ian)\s+syndrome', r'\bpcos\b', r'polycystic\s+ovar(?:y|ian|ies)',
+            r'anovulat(?:ion|ory)', r'ovulation\s+induction', r'oligo[- ]?ovulation',
+            r'letrozole', r'clomi(?:phene|fene)', r'hyperandrogenism|hyperandrogen(?:a|ae)mia',
+            r'hirsutism|ferriman[- ]gallwey', r'oligomenorrh(?:o)?ea|amenorrh(?:o)?ea',
+            r'rotterdam\s+criteria', r'free\s+androgen\s+index',
+            r'sex\s+hormone[- ]binding\s+globulin', r'ovarian\s+drilling',
+        ],
         'stroke': [
             r'\bstroke\b', r'ischa?emic\s+stroke', r'acute\s+ischa?emic\s+stroke',
             r'ha?emorrhagic\s+stroke', r'\bnihss\b', r'nih\s+stroke\s+scale',
@@ -1002,6 +1032,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'diabetes':
         subspecialty, conf = detect_diabetes_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'pcos':
+        subspecialty, conf = detect_pcos_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'respiratory':
         subspecialty, conf = detect_respiratory_subspecialty(text)
