@@ -194,6 +194,16 @@ from .diabetes import (
     normalize_diabetes_endpoint
 )
 
+from .obesity import (
+    OBESITY_ENDPOINTS,
+    WEIGHT_LOSS_PATTERNS as OB_WEIGHT_LOSS_PATTERNS,
+    BODY_COMPOSITION_PATTERNS as OB_BODY_COMPOSITION_PATTERNS,
+    CARDIOMETABOLIC_PATTERNS as OB_CARDIOMETABOLIC_PATTERNS,
+    SAFETY_PATTERNS as OB_SAFETY_PATTERNS,
+    detect_obesity_subspecialty,
+    normalize_obesity_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -436,6 +446,18 @@ SPECIALTY_REGISTRY = {
             'complications': DIABETES_COMPLICATIONS_PATTERNS
         }
     },
+    'obesity': {
+        'subspecialties': ['weight_loss', 'body_composition', 'cardiometabolic', 'safety'],
+        'detection_function': detect_obesity_subspecialty,
+        'normalizer': normalize_obesity_endpoint,
+        'endpoints': OBESITY_ENDPOINTS,
+        'patterns': {
+            'weight_loss': OB_WEIGHT_LOSS_PATTERNS,
+            'body_composition': OB_BODY_COMPOSITION_PATTERNS,
+            'cardiometabolic': OB_CARDIOMETABOLIC_PATTERNS,
+            'safety': OB_SAFETY_PATTERNS
+        }
+    },
     'neurology': {
         'subspecialties': ['alzheimers', 'ms', 'parkinsons', 'stroke'],
         'endpoints': {
@@ -649,6 +671,16 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'\w*gliptin', r'dpp[- ]?4', r'metformin', r'sulfonylurea|sulphonylurea',
             r'pioglitazone|rosiglitazone', r'obesity', r'weight\s+loss'
         ],
+        'obesity': [
+            r'\bobesity\b', r'\boverweight\b', r'body\s+weight', r'weight\s+loss',
+            r'weight\s+reduction', r'weight\s+management', r'anti[- ]obesity',
+            r'body\s+mass\s+index|\bbmi\b', r'waist\s+circumference', r'adiposity',
+            r'bariatric|sleeve\s+gastrectomy|gastric\s+bypass',
+            r'(?:>=?|at\s+least\s+)\s*\d+\s*%\s+weight\s+loss',
+            r'percent(?:age)?\s+(?:body\s+)?weight', r'fat\s+mass',
+            r'semaglutide|liraglutide|tirzepatide|retatrutide|cagrilintide',
+            r'orlistat|phentermine|naltrexone[\/ -]?bupropion|setmelanotide|lorcaserin',
+        ],
         'neurology': [
             r'alzheimer', r'dementia', r'multiple\s+sclerosis', r'\bms\b',
             r'parkinson', r'stroke', r'neurological', r'cognitive', r'relapse'
@@ -748,6 +780,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'diabetes':
         subspecialty, conf = detect_diabetes_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'obesity':
+        subspecialty, conf = detect_obesity_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)
