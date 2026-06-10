@@ -265,6 +265,16 @@ from .dermatology import (
     normalize_dermatology_endpoint
 )
 
+from .ophthalmology import (
+    OPHTHALMOLOGY_ENDPOINTS,
+    AMD_PATTERNS as OPHTH_AMD_PATTERNS,
+    DME_PATTERNS as OPHTH_DME_PATTERNS,
+    GLAUCOMA_PATTERNS as OPHTH_GLAUCOMA_PATTERNS,
+    DRY_EYE_PATTERNS as OPHTH_DRY_EYE_PATTERNS,
+    detect_ophthalmology_subspecialty,
+    normalize_ophthalmology_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -551,6 +561,18 @@ SPECIALTY_REGISTRY = {
             'atopic_dermatitis': DERM_ATOPIC_DERMATITIS_PATTERNS,
             'acne': DERM_ACNE_PATTERNS,
             'hidradenitis': DERM_HIDRADENITIS_PATTERNS
+        }
+    },
+    'ophthalmology': {
+        'subspecialties': ['amd', 'dme', 'glaucoma', 'dry_eye'],
+        'detection_function': detect_ophthalmology_subspecialty,
+        'normalizer': normalize_ophthalmology_endpoint,
+        'endpoints': OPHTHALMOLOGY_ENDPOINTS,
+        'patterns': {
+            'amd': OPHTH_AMD_PATTERNS,
+            'dme': OPHTH_DME_PATTERNS,
+            'glaucoma': OPHTH_GLAUCOMA_PATTERNS,
+            'dry_eye': OPHTH_DRY_EYE_PATTERNS
         }
     },
     'respiratory': {
@@ -867,6 +889,22 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'peak\s+pruritus', r'acne\s+vulgaris', r'\bacne\b',
             r'hidradenitis\s+suppurativa', r'\bhiscr\b', r'hi-scr'
         ],
+        'ophthalmology': [
+            r'age[- ]related\s+macular\s+degeneration', r'\bamd\b|\bnamd\b|\bwamd\b',
+            r'neovascular', r'choroidal\s+neovascular\w*|\bcnv\b',
+            r'anti[- ]vegf', r'intravitreal',
+            r'ranibizumab|aflibercept|bevacizumab|brolucizumab|faricimab|pegcetacoplan|avacincaptad',
+            r'best[- ]corrected\s+visual\s+acuity|\bbcva\b', r'visual\s+acuity',
+            r'etdrs\s+letters', r'central\s+(?:retinal|subfield|macular)\s+thickness',
+            r'\boct\b|optical\s+coherence\s+tomography',
+            r'diabetic\s+macular\s+(?:edema|oedema)|\bdme\b|\bdmo\b', r'diabetic\s+retinopathy',
+            r'intraocular\s+pressure|\biop\b', r'glaucoma', r'ocular\s+hypertension',
+            r'visual\s+field', r'open[- ]angle',
+            r'latanoprost|bimatoprost|travoprost|timolol|brinzolamide|dorzolamide|brimonidine|netarsudil',
+            r'dry\s+eye(?:\s+disease)?|\bded\b', r'ocular\s+surface', r'\bosdi\b',
+            r'corneal\s+(?:fluorescein\s+)?staining', r'schirmer', r'\bocular\b', r'\bcorneal?\b',
+            r'cyclosporine|lifitegrast|varenicline\s+nasal'
+        ],
         'respiratory': [
             r'chronic\s+obstructive\s+pulmonary\s+disease', r'\bcopd\b', r'\baecopd\b',
             r'\basthma\b', r'asthmatic', r'pulmonary\s+fibrosis', r'\bipf\b',
@@ -985,6 +1023,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'dermatology':
         subspecialty, conf = detect_dermatology_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'ophthalmology':
+        subspecialty, conf = detect_ophthalmology_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)
