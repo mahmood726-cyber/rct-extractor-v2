@@ -275,6 +275,16 @@ from .ophthalmology import (
     normalize_ophthalmology_endpoint
 )
 
+from .leukaemia import (
+    LEUKAEMIA_ENDPOINTS,
+    AML_PATTERNS as LK_AML_PATTERNS,
+    ALL_PATTERNS as LK_ALL_PATTERNS,
+    CLL_PATTERNS as LK_CLL_PATTERNS,
+    CML_PATTERNS as LK_CML_PATTERNS,
+    detect_leukaemia_subspecialty,
+    normalize_leukaemia_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -494,6 +504,18 @@ SPECIALTY_REGISTRY = {
             'screening': CC_SCREENING_PATTERNS,
             'treatment': CC_TREATMENT_PATTERNS,
             'mortality': CC_MORTALITY_PATTERNS
+        }
+    },
+    'leukaemia': {
+        'subspecialties': ['aml', 'all', 'cll', 'cml'],
+        'detection_function': detect_leukaemia_subspecialty,
+        'normalizer': normalize_leukaemia_endpoint,
+        'endpoints': LEUKAEMIA_ENDPOINTS,
+        'patterns': {
+            'aml': LK_AML_PATTERNS,
+            'all': LK_ALL_PATTERNS,
+            'cll': LK_CLL_PATTERNS,
+            'cml': LK_CML_PATTERNS
         }
     },
     'infectious_disease': {
@@ -796,6 +818,16 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'high[- ]grade\s+squamous\s+intraepithelial', r'persistent\s+hpv',
             r'quadrivalent|bivalent|nonavalent'
         ],
+        'leukaemia': [
+            r'leuk(?:a)?emia', r'acute\s+myeloid|acute\s+lymph(?:o)?blastic',
+            r'chronic\s+lymphocytic|chronic\s+myeloid',
+            r'\baml\b|\ball\b(?=.{0,40}leuk)|\bcll\b|\bcml\b',
+            r'bcr[- ]?abl', r'\bflt3\b|\bnpm1\b',
+            r'imatinib|dasatinib|nilotinib|ponatinib|bosutinib|asciminib',
+            r'ibrutinib|acalabrutinib|venetoclax', r'blinatumomab|inotuzumab',
+            r'complete\s+remission', r'(?:measurable|minimal)\s+residual\s+disease',
+            r'major\s+molecular\s+response', r'cytarabine'
+        ],
         'infectious_disease': [
             r'covid', r'sars[- ]?cov',
             r'viral', r'bacterial', r'antiviral', r'antibiotic', r'infection'
@@ -999,6 +1031,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'cervical_cancer':
         subspecialty, conf = detect_cervical_cancer_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'leukaemia':
+        subspecialty, conf = detect_leukaemia_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'diabetes':
         subspecialty, conf = detect_diabetes_subspecialty(text)
