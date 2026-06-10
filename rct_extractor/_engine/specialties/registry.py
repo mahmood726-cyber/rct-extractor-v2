@@ -275,6 +275,16 @@ from .ophthalmology import (
     normalize_ophthalmology_endpoint
 )
 
+from .osteoarthritis import (
+    OSTEOARTHRITIS_ENDPOINTS,
+    TREATMENT_PATTERNS as OA_PHARM_PATTERNS,
+    DRUG_RESISTANT_PATTERNS as OA_INTRAARTICULAR_PATTERNS,
+    PREVENTION_PATTERNS as OA_STRUCTURAL_PATTERNS,
+    LATENT_PATTERNS as OA_NONPHARM_PATTERNS,
+    detect_osteoarthritis_subspecialty,
+    normalize_osteoarthritis_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -575,6 +585,18 @@ SPECIALTY_REGISTRY = {
             'dry_eye': OPHTH_DRY_EYE_PATTERNS
         }
     },
+    'osteoarthritis': {
+        'subspecialties': ['pharmacologic', 'intraarticular', 'structural', 'nonpharm'],
+        'detection_function': detect_osteoarthritis_subspecialty,
+        'normalizer': normalize_osteoarthritis_endpoint,
+        'endpoints': OSTEOARTHRITIS_ENDPOINTS,
+        'patterns': {
+            'pharmacologic': OA_PHARM_PATTERNS,
+            'intraarticular': OA_INTRAARTICULAR_PATTERNS,
+            'structural': OA_STRUCTURAL_PATTERNS,
+            'nonpharm': OA_NONPHARM_PATTERNS
+        }
+    },
     'respiratory': {
         'subspecialties': ['copd', 'asthma', 'ild', 'general_respiratory'],
         'detection_function': detect_respiratory_subspecialty,
@@ -852,6 +874,16 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'\bphq-?9\b', r'\bgad-?7\b', r'\bssri\b|\bsnri\b',
             r'esketamine|zuranolone|brexanolone|vortioxetine|cariprazine|lurasidone|lumateperone|brexpiprazole'
         ],
+        'osteoarthritis': [
+            r'osteoarthritis|\boa\b|knee\s+oa|hip\s+oa|degenerative\s+joint',
+            r'\bwomac\b|western\s+ontario',
+            r'intra[- ]?articular|hyaluron(?:ic|ate)|viscosupplement',
+            r'omeract[- ]oarsi|oarsi\s+responder|joint[- ]space\s+width|\bjsw\b',
+            r'total\s+(?:knee|hip|joint)\s+(?:replacement|arthroplasty)|\bkoos\b',
+            r'naproxen|celecoxib|diclofenac|duloxetine|tanezumab',
+            r'sprifermin|lorecivivint|cartilage\s+(?:thickness|volume)',
+            r'pain\s+vas|visual\s+analog(?:ue)?\s+scale',
+        ],
         'neurology': [
             r'alzheimer', r'dementia', r'multiple\s+sclerosis', r'\bms\b',
             r'parkinson', r'stroke', r'neurological', r'cognitive', r'relapse'
@@ -1026,6 +1058,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'ophthalmology':
         subspecialty, conf = detect_ophthalmology_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'osteoarthritis':
+        subspecialty, conf = detect_osteoarthritis_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)

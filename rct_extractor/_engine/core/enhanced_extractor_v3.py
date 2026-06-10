@@ -1958,6 +1958,14 @@ class EnhancedExtractor:
         for old, new in self.NORMALIZATIONS.items():
             text = text.replace(old, new)
 
+        # Control-character CI-dash repair: some born-digital PDF text layers
+        # render the en-dash separating two CI bounds as a C0 control character
+        # (e.g. "95% CI 1.1\x033.1" or "0.45\x011.35"). A single control char
+        # (excluding tab/newline) directly between two digits is never legitimate
+        # numeric content, so restore it to an en-dash. Tightly scoped to the
+        # digit-control-digit signature, generalizable across specialties.
+        text = re.sub(r'(\d)[\x00-\x08\x0b-\x1f](\d)', r'\1–\2', text)
+
         # v5.4: Convert comma before CI label to semicolon BEFORE European decimal conversion
         # "HR=0.468,95%CI" -> "HR=0.468; 95%CI" (prevents "8,9" -> "8.9" corruption)
         # PMC12608838: "HR=0.468,95%CI,0.320-0.683"
