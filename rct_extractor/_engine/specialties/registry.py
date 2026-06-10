@@ -275,6 +275,16 @@ from .ophthalmology import (
     normalize_ophthalmology_endpoint
 )
 
+from .lymphoma import (
+    LYMPHOMA_ENDPOINTS,
+    HODGKIN_PATTERNS as LY_HODGKIN_PATTERNS,
+    AGGRESSIVE_PATTERNS as LY_AGGRESSIVE_PATTERNS,
+    INDOLENT_PATTERNS as LY_INDOLENT_PATTERNS,
+    MORTALITY_PATTERNS as LY_MORTALITY_PATTERNS,
+    detect_lymphoma_subspecialty,
+    normalize_lymphoma_endpoint
+)
+
 
 # ============================================================
 # SPECIALTY REGISTRY
@@ -494,6 +504,18 @@ SPECIALTY_REGISTRY = {
             'screening': CC_SCREENING_PATTERNS,
             'treatment': CC_TREATMENT_PATTERNS,
             'mortality': CC_MORTALITY_PATTERNS
+        }
+    },
+    'lymphoma': {
+        'subspecialties': ['hodgkin', 'aggressive', 'indolent', 'mortality'],
+        'detection_function': detect_lymphoma_subspecialty,
+        'normalizer': normalize_lymphoma_endpoint,
+        'endpoints': LYMPHOMA_ENDPOINTS,
+        'patterns': {
+            'hodgkin': LY_HODGKIN_PATTERNS,
+            'aggressive': LY_AGGRESSIVE_PATTERNS,
+            'indolent': LY_INDOLENT_PATTERNS,
+            'mortality': LY_MORTALITY_PATTERNS
         }
     },
     'infectious_disease': {
@@ -796,6 +818,14 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'high[- ]grade\s+squamous\s+intraepithelial', r'persistent\s+hpv',
             r'quadrivalent|bivalent|nonavalent'
         ],
+        'lymphoma': [
+            r'lymphoma', r'hodgkin', r'non[- ]?hodgkin',
+            r'diffuse\s+large\s+b[- ]?cell|\bdlbcl\b', r'follicular\s+lymphoma',
+            r'mantle[- ]cell|marginal[- ]zone', r'\br[- ]?chop\b',
+            r'brentuximab|polatuzumab|\babvd\b|\bbeacopp\b',
+            r'rituximab|obinutuzumab|bendamustine',
+            r'reed[- ]sternberg', r'axicabtagene|tisagenlecleucel|lisocabtagene'
+        ],
         'infectious_disease': [
             r'covid', r'sars[- ]?cov',
             r'viral', r'bacterial', r'antiviral', r'antibiotic', r'infection'
@@ -999,6 +1029,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'cervical_cancer':
         subspecialty, conf = detect_cervical_cancer_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'lymphoma':
+        subspecialty, conf = detect_lymphoma_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'diabetes':
         subspecialty, conf = detect_diabetes_subspecialty(text)
