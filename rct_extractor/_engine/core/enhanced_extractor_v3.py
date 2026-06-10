@@ -115,6 +115,39 @@ class Extraction:
 _CIKW = r'(?:95\s*%?\s*(?:CI|C\.I\.|confidence\s*interval))'   # 95%/95 %/95%CI
 _BND = r'(\d+\.?\d*)\s*(?:to|[-–—‐‑]|,)\s*(\d+\.?\d*)'         # lo (to|dash|,) hi
 
+# v6.5 (PDF-eval, multi-specialty): generalized CI-tail glue. Each piece below is
+# bounded and forbids the clause delimiters (',', ';', '.') that terminate it, so
+# there is NO nested-quantifier backtracking (cf. the reverted whitespace
+# prototype that hung on big PDFs — that one used unbounded glue). The CI keyword
+# (_CIKW) always anchors on the literal "95" right after the separator, so even
+# whitespace-only separation between the point and the CI stays precise.
+#   _PUNIT : optional "per <unit>" / "for every|each <unit>" qualifier sitting
+#            between the point estimate and the CI keyword ("OR 1.13 per day;
+#            95% CI …", "HR 0.65 for every 100 µg…, 95% CI …"). Digits allowed
+#            (the unit may be numeric) — only the clause delimiters are excluded.
+#   _P2CI  : full separator between point and CI keyword — optional per-unit
+#            qualifier, optional "and", optional one of ; , : and an optional
+#            open bracket/paren, with surrounding whitespace. Whitespace-only is
+#            in scope (every sub-token is optional) and safe (anchored by _CIKW).
+#   _CIPRE : optional punctuation / open-bracket after the CI keyword, before lo.
+#   _CITAIL: the whole CI tail appended after the captured point estimate.
+_PUNIT = r'(?:\s+per\b[^,;.\n]{0,30}|\s+for\s+(?:every|each)\b[^,;.\n]{0,30})?'
+_P2CI = rf'{_PUNIT}(?:\s+and\b)?\s*[;,:]?\s*[\(\[]?\s*'
+_CIPRE = r'[:=\s,(\[]*'
+_CITAIL = rf'{_P2CI}{_CIKW}{_CIPRE}{_BND}'
+# Optional descriptive glue between a SPELLED type word and its point estimate,
+# anchored on a connective word (or a bare = : ,) so it cannot silently swallow an
+# adjacent unrelated number: "relative risk for overall adverse events was 1.07",
+# "odds ratio adjusted : 0.82", "odds ratio = 1.9", "odds ratios, 0.62". Excludes
+# '.' ';' and digits -> bounded and sentence-safe.
+_TWGLUE = (r'(?:\s*[=:,]|\s+(?:of|for|was|comparing|adjusted|adjusting|crude|'
+           r'marginal)\b[^.;\d\n]{0,35}?)?\s*')
+# Optional descriptive glue for an ABBREVIATED type token ("OR of 0.67",
+# "OR adjusted = 0.29", "HR-0.48"): an optional connective word plus an optional
+# one of the - = : joiners.
+_ABGLUE = (r'(?:\s+(?:of|was|adjusted|adjusting|crude|marginal)\b[^.;\d\n]{0,30}?)?'
+           r'\s*[-=:,]?\s*')
+
 
 class EnhancedExtractor:
     """
@@ -163,6 +196,16 @@ class EnhancedExtractor:
         '\u201c': '"',   # Left double quotation mark
         '\u201d': '"',   # Right double quotation mark
         '\ufeff': '',    # BOM (zero-width no-break space)
+        # v6.5: Latin ligatures (common in born-digital PDF text layers). Left
+        # un-decomposed, "con\ufb01dence interval" fails the _CIKW keyword and the whole
+        # CI is dropped (e.g. PMC10582356: "95% con\ufb01dence interval 0.76\u20131.24").
+        '\ufb00': 'ff',   # \ufb00
+        '\ufb01': 'fi',   # \ufb01
+        '\ufb02': 'fl',   # \ufb02
+        '\ufb03': 'ffi',  # \ufb03
+        '\ufb04': 'ffl',  # \ufb04
+        '\ufb05': 'st',   # \ufb05 (long s-t)
+        '\ufb06': 'st',   # \ufb06
     }
 
     # ==========================================================================
@@ -534,6 +577,13 @@ class EnhancedExtractor:
         # or "to"/comma bounds. CI keyword mandatory -> precise.
         #   "HR 0.65 [95% CI 0.54 to 0.77]" / "HR=2.4 (95 % CI 1.3, 9.4)"
         rf'(?<![A-Za-z])a?HR\b\s*[=:]?\s*(\d+\.?\d*)\s*[\(\[]\s*{_CIKW}[:\s,]*{_BND}',
+        # v6.5 (PDF-eval): one generalized CI tail covering whitespace-only / colon
+        # / per-unit / "and" separators and an open bracket either side of the CI
+        #   "HR 1.19 95% CI 1.11–1.28" / "HR-0.48, 95% CI 0.27–0.85" /
+        #   "HR 0.65 for every 100 µg…, 95%CI 0.54–0.77" /
+        #   "hazard ratio, 1.87 [95% confidence interval, 1.26–2.79"
+        rf'(?<![A-Za-z])a?HR\b{_ABGLUE}(\d+\.?\d*){_CITAIL}',
+        rf'hazard\s*ratios?{_TWGLUE}(\d+\.?\d*){_CITAIL}',
     ]
 
     # Odds Ratio patterns (25+ variants)
@@ -764,6 +814,14 @@ class EnhancedExtractor:
         rf'(?<![A-Za-z])a?OR\b\s*[=:]?\s*(\d+\.?\d*)\s*[;,]\s*{_CIKW}[:\s,(\[]*{_BND}',
         # v6.4: spelled odds ratio with bracket/paren CI + to/comma/dash bounds
         rf'odds\s*ratio\s+(?:of\s+|was\s+)?(\d+\.?\d*)\s*[\(\[]\s*{_CIKW}[:\s,]*{_BND}',
+        # v6.5 (PDF-eval): generalized CI tail (whitespace-only/colon/per-unit/"of"
+        # /"was"/"adjusted" glue, open bracket either side of the CI):
+        #   "OR of 0.67 (95%CI, 0.41 to 1.09" / "OR adjusted = 0.29; 95% CI: …" /
+        #   "OR: 1.01 per mmol/mol, 95% CI: …" / "odds ratio, 6.55 [95% CI, …" /
+        #   "odds ratio for IDA versus DA 1.15, 95% CI 0.87–1.52" /
+        #   "odds ratios, 0.62; 95% confidence interval, 0.34–1.10"
+        rf'(?<![A-Za-z])a?OR\b{_ABGLUE}(\d+\.?\d*){_CITAIL}',
+        rf'odds\s*ratios?{_TWGLUE}(\d+\.?\d*){_CITAIL}',
     ]
 
     # Risk Ratio / Relative Risk patterns (25+ variants)
@@ -995,6 +1053,14 @@ class EnhancedExtractor:
         rf'(?<![A-Za-z])a?RR\b\s*[=:]?\s*(\d+\.?\d*)\s*[\(\[]\s*{_CIKW}[:\s,]*{_BND}',
         rf'(?<![A-Za-z])a?RR\b\s*[=:]?\s*(\d+\.?\d*)\s*[;,]\s*{_CIKW}[:\s,(\[]*{_BND}',
         rf'(?:relative\s+risk|risk\s*ratio)\s+(?:of\s+|was\s+)?(\d+\.?\d*)\s*[\(\[]\s*{_CIKW}[:\s,]*{_BND}',
+        # v6.5 (PDF-eval): generalized CI tail (whitespace-only/colon/per-unit/
+        # "for … was"/"adjusted" glue, open bracket either side of the CI):
+        #   "RR 1.26 95% CI 1.12–1.42" / "RR 0.54 95% CI 0.40–0.74" /
+        #   "RR: 0.80, (95% CI: 0.67, 0.96" / "risk ratio = 0.93: 95% CI: …" /
+        #   "relative risk for overall adverse events was 1.07 (95% CI: 0.90–1.27" /
+        #   "risk ratio adjusted : 0.82; 95% CI: 0.69–0.98"
+        rf'(?<![A-Za-z])a?RR\b{_ABGLUE}(\d+\.?\d*){_CITAIL}',
+        rf'(?:relative\s+risk|risk\s*ratios?){_TWGLUE}(\d+\.?\d*){_CITAIL}',
     ]
 
     # Incidence Rate Ratio patterns
@@ -1037,6 +1103,12 @@ class EnhancedExtractor:
         # to/comma bounds, for IRR and spelled (incidence) rate ratio. CI mandatory.
         rf'(?<![A-Za-z])a?IRR\b\s*[=:]?\s*(\d+\.?\d*)\s*[\(\[]\s*{_CIKW}[:\s,]*{_BND}',
         rf'(?:incidence\s+)?rate\s*ratio\s+(?:of\s+|was\s+)?(\d+\.?\d*)\s*[\(\[]\s*{_CIKW}[:\s,]*{_BND}',
+        # v6.5 (PDF-eval): generalized CI tail (whitespace-only/colon/per-unit/"and"
+        # glue, open bracket either side of the CI; comma separator for IRR):
+        #   "IRR = 0.32, 95% CI (0.27, 0.37" / "rate ratio 0.90, 95% CI 0.50 to 1.61" /
+        #   "incidence rate ratio] = 4.94, 95% confidence interval 2.45–9.98"
+        rf'(?<![A-Za-z])a?IRR\b{_ABGLUE}(\d+\.?\d*){_CITAIL}',
+        rf'(?:incidence\s+)?rate\s*ratios?{_TWGLUE}(\d+\.?\d*){_CITAIL}',
     ]
 
     # =================================================================
@@ -1930,6 +2002,14 @@ class EnhancedExtractor:
         text = re.sub(r'(\d+%)\s*\n\s*(CI|IC|KI|CL)\b', r'\1 \2', text, flags=re.IGNORECASE)
         # "[95%CI:\n1.66" -> "[95%CI: 1.66"
         text = re.sub(r'(\[\s*(?:95%?\s*)?(?:CI|IC|KI)[:;\s]*)\n\s*(\d)', r'\1 \2', text, flags=re.IGNORECASE)
+        # v6.5: line-numbered manuscripts (preprints / under-review PDFs) interleave
+        # a bare line number on its own line, which can land between the CI keyword
+        # and its lower bound: "95% CI \n215 \n1.71 to 13.81". Splice the keyword
+        # back onto its decimal lower bound, dropping the stray integer line. Tightly
+        # scoped — the interposed token must be a bare 1-4 digit integer ALONE on a
+        # line AND the bound after it must be a DECIMAL, so a genuine (decimal) CI
+        # bound is never removed.
+        text = re.sub(rf'({_CIKW}[:\s,]*)\n\s*\d{{1,4}}\s*\n\s*(\d+\.\d)', r'\1 \2', text, flags=re.IGNORECASE)
 
         # v5.0.1: Rejoin hyphenated words at line breaks (letters only, not digits)
         # "confi-\ndence" -> "confidence", "inter-\nval" -> "interval"
@@ -1943,9 +2023,17 @@ class EnhancedExtractor:
         # "odds ratio (aOR)" (previously only square brackets were handled), which
         # otherwise broke the spelled-out OR/RR/HR/IRR patterns and leaked the
         # effect to the generic MD fallback. Real-PDF abstracts use "(OR)" widely.
-        text = re.sub(r'((?:adjusted\s+)?(?:hazard\s+ratio|odds\s+ratio|risk\s+ratio|rate\s+ratio|incidence\s+rate\s+ratio|relative\s+risk(?:\s+reduction)?|risk\s+(?:difference|reduction)|mean\s+difference))\s*[\[(](?:a?HR|a?OR|a?RR|a?IRR|RD|MD|ARD|ARR|SMD|WMD|GMR)[\])]', r'\1', text, flags=re.IGNORECASE)
+        text = re.sub(r'((?:adjusted\s+)?(?:hazard\s+ratio|odds\s+ratio|risk\s+ratio|rate\s+ratio|incidence\s+rate\s+ratio|relative\s+risk(?:\s+reduction)?|risk\s+(?:difference|reduction)|mean\s+difference))\s*[\[(](?:[ma]?HR|[ma]?OR|[ma]?RR|[ma]?IRR|RRR|RD|MD|ARD|ARR|SMD|WMD|GMR)[\])]', r'\1', text, flags=re.IGNORECASE)
         # Also handle "confidence interval [CI]" -> "confidence interval"
         text = re.sub(r'(confidence\s+interval)\s*\[CI\]', r'\1', text, flags=re.IGNORECASE)
+        # v6.5 (PDF-eval): strip a bracket alias that follows an ABBREVIATED type
+        # token too ("OR [aOR], 0.47" -> "OR , 0.47"; "RR (aRR): …" -> "RR : …"),
+        # not only spelled names. The aliased form otherwise blocks the point.
+        text = re.sub(r'\b([ma]?(?:HR|OR|RR|IRR))\s*[\[(](?:[ma]?(?:HR|OR|RR|IRR)|RRR)[\])]', r'\1', text, flags=re.IGNORECASE)
+        # v6.5 (PDF-eval): drop an ORPHAN close-bracket left immediately after a
+        # type word when its opening "[" was lost in PDF extraction ("aOR]: 0.45",
+        # "incidence rate ratio] = 4.94"). Only a lone trailing ']' is removed.
+        text = re.sub(r'\b((?:[ma]?(?:HR|OR|RR|IRR))|(?:odds|risk|hazard|rate|incidence\s+rate)\s+ratio|relative\s+risk)\s*\]', r'\1 ', text, flags=re.IGNORECASE)
 
         # v5.3: Split run-together statistical terms (broken PDF spacing, e.g. PMC10059741)
         # "oddsratioof4.17" -> "odds ratio of4.17", "hazardratio0.88" -> "hazard ratio 0.88"
@@ -1995,6 +2083,13 @@ class EnhancedExtractor:
         # word "or" / "for" can never be rewritten.
         text = re.sub(r'\b(ratio)\s+5\s+(?=\d+\.\d)', r'\1 = ', text, flags=re.IGNORECASE)
         text = re.sub(r'(?<![A-Za-z])(a?RR|a?OR|a?HR|a?IRR)\s+5\s+(?=\d+\.\d)', r'\1 = ', text)
+        # v6.5 (PDF-eval): a different journal font extracts the "=" glyph as the
+        # vulgar fraction "¼" (U+00BC) — observed across two cervical-cancer review
+        # PDFs ("OR ¼ 1.41 (95% CI, 0.98–2.03)", "RR ¼ 1.93"). Restore it, but ONLY
+        # between a ratio term and a numeric value so a real "¼" (e.g. "¼ cup",
+        # "¼ of patients") is never rewritten. Same case rules as the "5" repair.
+        text = re.sub(r'\b(ratio)\s*[¼½¾]\s*(?=\d)', r'\1 = ', text, flags=re.IGNORECASE)
+        text = re.sub(r'(?<![A-Za-z])(a?RR|a?OR|a?HR|a?IRR)\s*[¼½¾]\s*(?=\d)', r'\1 = ', text)
 
         # Split "of"/"was" stuck between letters and digits (run-together PDF text)
         # "ratioof4.17" -> "ratio of 4.17", "was98.8" -> "was 98.8"
@@ -2498,9 +2593,13 @@ class EnhancedExtractor:
         if not (ci_low <= value <= ci_high):
             return False
 
-        # For ratios, CI lower bound should be positive
+        # For ratios, CI lower bound cannot be negative. A reported lower bound of
+        # exactly 0.00 is accepted: it is the rounded form of a true small positive
+        # bound (e.g. "RR 0.02, 95% CI 0.00 to 0.30" / "HR 0.99, 95% CI 0.00-855"),
+        # which is a real abstract artifact — rejecting it leaked the ratio to the
+        # generic mean-difference fallback (which mis-types it).
         if effect_type in [EffectType.HR, EffectType.OR, EffectType.RR, EffectType.IRR, EffectType.GMR]:
-            if ci_low <= 0:
+            if ci_low < 0:
                 return False
 
         # For differences, CI can span zero (negative to positive)

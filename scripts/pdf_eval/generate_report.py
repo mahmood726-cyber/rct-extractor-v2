@@ -96,13 +96,27 @@ def main():
       f"**{pct(pdf_a['correct'],pdf_a['n_gold'])}** of {pdf_a['n_gold']} gold effects.")
     w(f"- Misses (gold effect not found at all) fell from "
       f"{pct(pdf_b['missed'],pdf_b['n_gold'])} to {pct(pdf_a['missed'],pdf_a['n_gold'])}.")
+    sp_after = agg(ap_, "pdf_raw", by_specialty=True)
+    n_hit = sum(1 for b in sp_after.values() if b["correct"] / max(1, b["n_gold"]) >= 0.95)
+    below = sorted(sp for sp, b in sp_after.items()
+                   if b["correct"] / max(1, b["n_gold"]) < 0.95)
+    w(f"- **{n_hit} of {len(sp_after)} specialties now reach ≥95% correct** on "
+      f"real-PDF pdf_raw. The {len(below)} below — "
+      f"{', '.join(below)} — are bounded by causes that are NOT pattern gaps "
+      "(observational/propensity-score estimates the extractor deliberately "
+      "declines, glyph-corrupted CI separators, and multi-column type/value "
+      "splits); see §5 for the per-paper reason.")
     w("- **The PDF text layer was not the main bottleneck**: born-digital PMC PDFs "
       "parse cleanly (PyMuPDF), so PDF-text accuracy tracks abstract accuracy "
-      "closely. The gains came from closing effect-pattern gaps in the core "
-      "extractor — a 95% CI joined by `to`/comma, a bracketed CI right after the "
-      "point, and a `95 %` space — generalising across OR/RR/HR/IRR and the "
-      "spelled-out forms (§4).")
-    w("- All **1368** existing extractor tests still pass (no regressions).\n")
+      "closely. The v6.5 gains came from one *generalized* CI tail (a single "
+      "bounded glue family covering whitespace-only / colon / per-unit / "
+      "descriptive-phrase separators and a bracket on either side of the CI, "
+      "uniform across OR/RR/HR/IRR and the spelled-out forms), plus Latin-ligature "
+      "and `=`-glyph repairs and a line-number splice (§4).")
+    w("- All **1368** existing extractor tests still pass (no regressions); the new "
+      "patterns are bounded (no catastrophic backtracking — worst-case extract on "
+      "the largest 1.3 MB PDF rose only ~2%), and abstract-surface precision is "
+      "essentially unchanged (+7 extra extractions across 563 abstracts).\n")
 
     w("## 1. Dataset (traceable)\n")
     w(f"- **{n_papers} real PMC Open-Access RCT articles**, **{n_eff} gold effect "
@@ -173,25 +187,47 @@ def main():
     w("All fixes are in `rct_extractor/_engine/core/enhanced_extractor_v3.py` and "
       "therefore benefit every one of the 16 non-malaria specialties that use the "
       "core extractor (malaria already had an augmented path).\n")
-    w("**This pass (v6.4) — multi-specialty real-PDF gold.** Expanding the gold to "
-      "TB, hepatitis, typhoid, pneumonia, hypertension and the rest surfaced "
-      "structural holes in the per-type pattern matrix: a 95% CI whose two bounds "
-      "are joined by the word **`to`** or a **comma**, a CI wrapped in a "
-      "**bracket/paren directly after the point estimate**, and a **`95 %`** space. "
-      "Each was already handled for *some* type/format combinations but not "
-      "uniformly. The fix adds a small, precise family of patterns (CI keyword "
-      "mandatory, so false positives stay rare) covering OR / RR / HR / IRR and the "
-      "spelled-out forms:")
-    w("- `RR 0.50 [95% CI 0.26 to 0.95]`  (square bracket + `to`)")
-    w("- `OR=40.4 (95% CI 21.6 to 75.7)`  (paren + `to`)")
-    w("- `risk ratio of 1.41 (95% CI: 1.15, 1.73)`  (spelled + comma bounds)")
-    w("- `RR 1.00; 95% CI (0.80, 1.26)`  (open paren before the lower bound)")
-    w("- `OR 1.52, 95 % CI 1.03–2.26`  (space in `95 %`)\n")
-    w("**Prior pass (v6.3), already in the baseline above.** The earlier HIV/malaria "
-      "pass added bracket-free Unicode/comma CI separators, parenthetical type-alias "
-      "stripping (`odds ratio (OR)`), mean-difference-masquerading suppression, and "
-      "an `=`→`5` PDF-glyph repair. Those are part of the **before** column here — "
-      "this report's before→after delta isolates only the v6.4 additions.\n")
+    w("**This pass (v6.5) — generalize the CI tail + PDF-glyph robustness.** "
+      "Enumerating all 104 non-correct gold tuples from the v6.4 state, classifying "
+      "each by root cause, and fixing only the *recurring, generalizable* causes "
+      "(never a specific value or PMCID). The before→after delta below isolates "
+      "exactly these v6.5 additions:")
+    w("1. **One generalized CI tail** appended after the point estimate, replacing "
+      "the previously case-by-case separators. It is built from bounded sub-pieces "
+      "(each forbids the `,`/`;`/`.` that terminates it, so there is **no** "
+      "catastrophic backtracking) and the CI keyword always anchors on the literal "
+      "`95`, keeping whitespace-only separation precise. One tail, uniform across "
+      "OR/RR/HR/IRR and the spelled-out names, now covers:")
+    w("   - `RR 1.26 95% CI 1.12–1.42`  (whitespace-only separator)")
+    w("   - `odds ratio = 2.25: 95% CI: 1.78–2.83`  (colon after the point)")
+    w("   - `OR 1.13 per day; 95% CI 1.04–1.22`  (per-unit glue)")
+    w("   - `relative risk for overall adverse events was 1.07 (95% CI: 0.90–1.27`  "
+      "(descriptive glue, anchored on a connective word so it can't swallow a stray number)")
+    w("   - `OR of 0.67 (95%CI, 0.41 to 1.09`,  `HR-0.48, 95% CI 0.27–0.85`,  "
+      "`HR, 3.5 [95% CI, 1.3–9.4`  (of/was/`-`/`,` joiners)")
+    w("   - `IRR = 0.32, 95% CI (0.27, 0.37`  (comma separator + paren-wrapped bounds, for IRR)")
+    w("2. **Ratio CI lower bound of exactly `0.00` accepted** (was rejected as "
+      "`≤0`, which leaked the ratio to the generic mean-difference fallback). "
+      "`RR 0.02, 95% CI 0.00 to 0.30` is the rounded form of a small positive bound.")
+    w("3. **Bracket-alias stripping extended** to abbreviated tokens and orphan "
+      "brackets: `OR [aOR], 0.47` → `OR , 0.47`, `aOR]: 0.45` / "
+      "`incidence rate ratio] = 4.94` (lost `[`), and the `(RRR)`/`[mOR]` aliases.")
+    w("4. **Latin ligatures normalized** (`ﬁ ﬂ ﬀ …`). Un-decomposed, "
+      "`95% conﬁdence interval 0.76–1.24` failed the CI keyword and dropped the "
+      "whole interval — and 48/120 sampled PDFs contain f-ligatures.")
+    w("5. **`=`→`¼` glyph repair**, scoped exactly like the existing `=`→`5` repair "
+      "(only between a ratio term and a number, so a real `¼` is untouched). A "
+      "specific journal font renders `OR = 1.41` as `OR ¼ 1.41` (seen in 2 papers).")
+    w("6. **Line-number splice** for under-review/preprint PDFs that interleave a "
+      "bare line number between the CI keyword and its bound "
+      "(`95% CI \\n215 \\n1.71 to 13.81`). Scoped: the interposed token must be a "
+      "lone 1–4 digit integer and the bound after it a *decimal*, so real CI bounds "
+      "are never deleted.\n")
+    w("**Prior passes (v6.3/v6.4), already in the BEFORE column above.** Bracket-free "
+      "Unicode/comma CI separators, parenthetical type-alias stripping "
+      "(`odds ratio (OR)`), mean-difference-masquerading suppression, an `=`→`5` "
+      "PDF-glyph repair, and the v6.4 bracket/`to`/comma/`95 %`-space family. This "
+      "report's before→after delta isolates only the v6.5 additions.\n")
 
     # remaining failures
     w("## 5. Honest remaining gaps\n")
@@ -204,17 +240,35 @@ def main():
                   f"{g['gold']['effect_type']} {g['gold']['point_estimate']} "
                   f"CI[{g['gold']['ci_lower']},{g['gold']['ci_upper']}] — "
                   f"quote: \"{g['gold']['source_text'][:80]}\"")
-    w("\nResidual causes: stray parentheses inside the CI (`(1.01, 95% CI: (0.98`), "
-      "very long descriptive glue between the type word and the value, and the "
-      "`aRR`=rate-ratio vs risk-ratio type ambiguity. These are low-frequency and "
-      "carry rising false-positive risk; left unfixed deliberately.\n")
-    w("Two further families — a CI separated from the point by **whitespace only** "
-      "(`RR 0.54 95% CI 0.40–0.74`) and an **`of`/`was` glue** (`OR of 0.67 (95% CI "
-      "…)`) — were prototyped (a candidate v6.5) but **reverted**: over a small "
-      "number of very large PDFs the whitespace-anchored variants triggered "
-      "catastrophic regex backtracking (a multi-minute hang), which is a worse "
-      "regression than the ~0.5% they recovered. They are left for a future "
-      "bounded-quantifier rewrite. The shipped extractor has no such hang.\n")
+    w("\n**Why the two specialties still below 95% cannot honestly reach it.** Each "
+      "residual was opened in the real PDF and classified; none is a generalizable "
+      "pattern gap, and every one of these gold *sentences* already parses in "
+      "isolation. Forcing them would mean special-casing PMCIDs (benchmark gaming) "
+      "or degrading the extractor's deliberate filtering of non-RCT estimates.\n")
+    w("- **cervical_cancer (119/126, 94.4%)** — `PMC12155710` (×5) are pooled "
+      "estimates from a meta-analysis of **retrospective cohorts**; the extractor "
+      "suppresses them via the `retrospective cohort` negative-context filter (by "
+      "design — these are not RCT effects). `PMC12640735` is a pooled "
+      "cohort+case-control estimate whose nearby adjusted **HR** is matched "
+      "instead. `PMC12642371` prints the CI in a forest table **without the `95% "
+      "CI` keyword** (`RR = 0.35 (0.18−0.65)`); the extractor requires the keyword "
+      "for precision. (The `=`→`¼` glyph papers `PMC13036839`/`PMC12326121` **were** "
+      "fixed this pass.)")
+    w("- **meningitis (142/156, 91.0%)** — dominated by two GBS/meningitis "
+      "**meta-analyses of observational studies** (`PMC7169657`, `PMC8607336`: "
+      "pooled rate ratios whose point and CI sit in separate GRADE-table cells; "
+      "`PMC7291520`: `observational data` negative-context) and by genuine "
+      "PDF-layer corruption: `PMC8080028` (×3) has its en-dash extracted as the "
+      "control character `\\x01` (`0.45\\x011.35`); `PMC6312212` and `PMC12230414` "
+      "split the type label from its value across a **column break**; `PMC12267014` "
+      "(×2) is a `Propensity score` observational adjustment (suppressed by design); "
+      "`PMC9307099` reports a *different* adjusted HR in the body (`aHR 1.88`) than "
+      "the abstract's `1.87`; `PMC7015757` uses a subgroup notation "
+      "(`RR women:men 0.53`).")
+    w("\nThese are body-table-only / glyph-corrupted / observational-by-design cases "
+      "— an honest 94.4% and 91.0% beat a number manufactured by relaxing the "
+      "non-RCT filter (which would add false positives corpus-wide) or by "
+      "hard-coding these papers.\n")
     w("**Not covered by this evaluation (measure before claiming):**\n")
     # Coverage computed from the actual gold + the canonical specialty registry.
     try:
@@ -260,7 +314,7 @@ def main():
       "      diabetes maternal_neonatal cholera meningitis schistosomiasis sickle_cell \\\n"
       "      helminths cervical_cancer diarrhoeal malnutrition \\\n"
       "    --per-specialty 220 --target 45 --out data/pdf_eval/gold_abstract.jsonl\n"
-      "# 3. score the extractor on the full PDF body (before = git stash the v6.4 patch)\n"
+      "# 3. score the extractor on the full PDF body (before = git stash the v6.5 patch)\n"
       "python scripts/pdf_eval/run_pdf_eval.py --gold data/pdf_eval/gold_abstract.jsonl "
       "--out data/pdf_eval/eval_results_after.json --preprocess\n"
       "python scripts/pdf_eval/generate_report.py\n"
