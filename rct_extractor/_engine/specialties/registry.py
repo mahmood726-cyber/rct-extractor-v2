@@ -1810,8 +1810,12 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'\bb\s*&\s*b\s+score\b|biberoglu[- ]behrman'
         ],
         'menopause_hrt': [
-            r'menopaus(?:e|al)', r'postmenopausal|post[- ]menopausal',
-            r'perimenopausal|peri[- ]menopausal', r'climacteric',
+            # NB: r'menopaus(?:e|al)' already matches the substring in
+            # "postmenopausal"/"perimenopausal", so listing those separately would
+            # double-count one demographic word and let it outrank a specific
+            # specialty (e.g. an oncology breast-cancer trial that merely says
+            # "postmenopausal"). Keep the single base pattern.
+            r'menopaus(?:e|al)', r'climacteric',
             r'hot\s+flush(?:es)?|hot\s+flash(?:es)?', r'vasomotor\s+symptom',
             r'hormone\s+(?:replacement\s+)?therapy', r'\bhrt\b', r'\bmht\b',
             r'vulvovaginal\s+atrophy', r'genitourinary\s+syndrome\s+of\s+menopause',
