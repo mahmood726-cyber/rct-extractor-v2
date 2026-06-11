@@ -284,6 +284,15 @@ from .benign_prostatic_hyperplasia import (
     detect_benign_prostatic_hyperplasia_subspecialty,
     normalize_benign_prostatic_hyperplasia_endpoint
 )
+from .erectile_dysfunction import (
+    ERECTILE_DYSFUNCTION_ENDPOINTS,
+    PHARMACOLOGIC_PATTERNS as ED_PHARMACOLOGIC_PATTERNS,
+    SHOCKWAVE_PATTERNS as ED_SHOCKWAVE_PATTERNS,
+    DEVICE_PATTERNS as ED_DEVICE_PATTERNS,
+    SAFETY_PATTERNS as ED_SAFETY_PATTERNS,
+    detect_erectile_dysfunction_subspecialty,
+    normalize_erectile_dysfunction_endpoint
+)
 
 from .diabetes import (
     DIABETES_ENDPOINTS,
@@ -1173,6 +1182,18 @@ SPECIALTY_REGISTRY = {
             'sexual': BPH_SEXUAL_PATTERNS
         }
     },
+    'erectile_dysfunction': {
+        'subspecialties': ['pharmacologic', 'shockwave', 'device', 'safety'],
+        'detection_function': detect_erectile_dysfunction_subspecialty,
+        'normalizer': normalize_erectile_dysfunction_endpoint,
+        'endpoints': ERECTILE_DYSFUNCTION_ENDPOINTS,
+        'patterns': {
+            'pharmacologic': ED_PHARMACOLOGIC_PATTERNS,
+            'shockwave': ED_SHOCKWAVE_PATTERNS,
+            'device': ED_DEVICE_PATTERNS,
+            'safety': ED_SAFETY_PATTERNS
+        }
+    },
     'infectious_disease': {
         'subspecialties': ['covid', 'hepatitis', 'bacterial'],
         'endpoints': {
@@ -1760,6 +1781,16 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'prostatic\s+urethral\s+lift|urolift|holep|greenlight|rezum',
             r'5[- ]?alpha[- ]?reductase'
         ],
+        'erectile_dysfunction': [
+            r'erectile\s+dysfunction', r'erectile\s+function', r'\bimpotence\b',
+            r'international\s+index\s+of\s+erectile\s+function|\biief\b',
+            r'sildenafil|tadalafil|vardenafil|avanafil|udenafil',
+            r'phosphodiesterase[- ]?5|pde[- ]?5\s+inhibitor',
+            r'sexual\s+encounter\s+profile|\bsep\s?[23]\b',
+            r'erection\s+hardness', r'penile\s+(?:prosthesis|implant)',
+            r'intracavernosal', r'vacuum\s+erection\s+device',
+            r'low[- ]intensity\s+(?:extracorporeal\s+)?shock'
+        ],
         'oesophageal_cancer': [
             r'(?:o?esophageal|esophageal)\s+(?:cancer|carcinoma|squamous|adenocarcinoma)',
             r'\boescc\b|\bescc\b(?=.{0,40}(?:o?esophag|esophag))',
@@ -2330,6 +2361,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'benign_prostatic_hyperplasia':
         subspecialty, conf = detect_benign_prostatic_hyperplasia_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'erectile_dysfunction':
+        subspecialty, conf = detect_erectile_dysfunction_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'oesophageal_cancer':
         subspecialty, conf = detect_oesophageal_cancer_subspecialty(text)

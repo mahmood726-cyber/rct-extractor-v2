@@ -404,3 +404,8 @@ data/field_portability/benign_prostatic_hyperplasia/rct_trial_pdfs/
 data/field_portability/benign_prostatic_hyperplasia/*.jsonl
 data/field_portability/benign_prostatic_hyperplasia/*.json
 data/field_portability/benign_prostatic_hyperplasia/*.log
+# Erectile dysfunction field bundle
+data/field_portability/erectile_dysfunction/rct_trial_pdfs/
+data/field_portability/erectile_dysfunction/*.jsonl
+data/field_portability/erectile_dysfunction/*.json
+data/field_portability/erectile_dysfunction/*.log

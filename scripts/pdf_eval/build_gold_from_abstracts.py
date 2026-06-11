@@ -181,12 +181,16 @@ def _out_of_scope_reason(abstract: str, match_start: int, window: int = 220):
 _NON_RCT_DESIGN = re.compile(
     r"systematic review|"
     r"meta[- ]analys(?:is|es)\s+of\s+(?:observational|prospective|retrospective|cohort|case[- ]control)|"
-    r"observational stud(?:y|ies)|"
-    r"retrospective (?:cohort|stud|analys)|"
+    r"observational (?:stud(?:y|ies)|evidence|analys|data|design)|"
+    r"retrospective (?:cohort|stud|analys|review)|"
     r"prospective cohort stud|"
+    r"(?:active[- ]comparator |new[- ]user )?cohort stud(?:y|ies)|"
     r"case[- ]control stud|"
-    r"cross[- ]sectional stud|"
-    r"registry[- ]based (?:cohort|analys)",
+    r"cross[- ]sectional (?:stud|surv|analys|design)|"
+    r"registry[- ]based (?:cohort|analys|stud)|"
+    r"propensity[- ]score(?:[- ]matched)?|"
+    r"\bnhanes\b|national health and nutrition examination survey|"
+    r"(?:uk biobank|mendelian randomi[sz]ation)",
     re.IGNORECASE,
 )
 _RCT_SELFID = re.compile(

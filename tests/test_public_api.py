@@ -39,6 +39,7 @@ EXPECTED_SPECIALTIES = {
     # women's-health / reproductive cluster
     "uterine_fibroids",
     "benign_prostatic_hyperplasia",
+    "erectile_dysfunction",
 }
 
 
