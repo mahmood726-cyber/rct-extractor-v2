@@ -5,6 +5,16 @@ Specialty Registry - Central registry for all specialty patterns and endpoints.
 from typing import Dict, List, Tuple, Optional, Callable
 import re
 
+from .postoperative_pain import (
+    POSTOPERATIVE_PAIN_ENDPOINTS,
+    REGIONAL_ANALGESIA_PATTERNS as POP_REGIONAL_ANALGESIA_PATTERNS,
+    MULTIMODAL_PATTERNS as POP_MULTIMODAL_PATTERNS,
+    OPIOID_PATTERNS as POP_OPIOID_PATTERNS,
+    CHRONIC_POSTSURGICAL_PATTERNS as POP_CHRONIC_POSTSURGICAL_PATTERNS,
+    detect_postoperative_pain_subspecialty,
+    normalize_postoperative_pain_endpoint
+)
+
 from .cardiology import (
     CARDIOLOGY_ENDPOINTS,
     HEART_FAILURE_PATTERNS,
@@ -388,6 +398,18 @@ SPECIALTY_REGISTRY = {
             'preterm': MNH_PRETERM_PATTERNS
         }
     },
+    'postoperative_pain': {
+        'subspecialties': ['regional_analgesia', 'multimodal', 'opioid', 'chronic_postsurgical'],
+        'detection_function': detect_postoperative_pain_subspecialty,
+        'normalizer': normalize_postoperative_pain_endpoint,
+        'endpoints': POSTOPERATIVE_PAIN_ENDPOINTS,
+        'patterns': {
+            'regional_analgesia': POP_REGIONAL_ANALGESIA_PATTERNS,
+            'multimodal': POP_MULTIMODAL_PATTERNS,
+            'opioid': POP_OPIOID_PATTERNS,
+            'chronic_postsurgical': POP_CHRONIC_POSTSURGICAL_PATTERNS
+        }
+    },
     'tuberculosis': {
         'subspecialties': ['treatment', 'drug_resistant', 'prevention', 'latent'],
         'detection_function': detect_tuberculosis_subspecialty,
@@ -651,6 +673,16 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
 
     # Keywords for each specialty
     specialty_keywords = {
+        'postoperative_pain': [
+            r'postoperative\s+pain', r'post[- ]?operative\s+analgesia',
+            r'acute\s+post[- ]?surgical\s+pain', r'chronic\s+post[- ]?surgical\s+pain',
+            r'(?:morphine|opioid)\s+consumption', r'rescue\s+analgesi\w+',
+            r'patient[- ]controlled\s+analgesia|\bpca\b', r'multimodal\s+analgesia',
+            r'transversus\s+abdominis\s+plane|\btap\s+block\b', r'erector\s+spinae\s+block',
+            r'time\s+to\s+first\s+(?:rescue|analgesi)', r'opioid[- ]sparing',
+            r'pain\s+(?:score|at\s+rest|on\s+movement)\s+(?:after|following)\s+surgery',
+            r'wound\s+infiltration', r'preemptive\s+analgesia|pre[- ]emptive\s+analgesia'
+        ],
         'cardiology': [
             r'heart\s+failure', r'myocardial\s+infarction', r'atrial\s+fibrillation',
             r'coronary', r'cardiovascular', r'cardiac', r'lvef', r'ejection\s+fraction',
@@ -972,6 +1004,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'maternal_neonatal':
         subspecialty, conf = detect_maternal_neonatal_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'postoperative_pain':
+        subspecialty, conf = detect_postoperative_pain_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'tuberculosis':
         subspecialty, conf = detect_tuberculosis_subspecialty(text)

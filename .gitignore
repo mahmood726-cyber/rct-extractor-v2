@@ -69,6 +69,12 @@ sentinel-findings.jsonl
 review-findings.md
 review-findings.jsonl
 
+# Postoperative-pain field bundle — large/transient data (keep README.md; code is under scripts/)
+data/field_portability/postoperative_pain/rct_trial_pdfs/
+data/field_portability/postoperative_pain/*.jsonl
+data/field_portability/postoperative_pain/*.json
+data/field_portability/postoperative_pain/*.log
+
 # HIV field bundle — large/transient data (code is under scripts/)
 data/field_portability/hiv/rct_trial_pdfs/
 data/field_portability/hiv/*.jsonl
