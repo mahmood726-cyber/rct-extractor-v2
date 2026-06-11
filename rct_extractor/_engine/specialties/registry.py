@@ -68,6 +68,15 @@ from .transfusion import (
     detect_transfusion_subspecialty,
     normalize_transfusion_endpoint
 )
+from .allergic_rhinitis import (
+    ALLERGIC_RHINITIS_ENDPOINTS,
+    PHARMACOTHERAPY_PATTERNS as AR_PHARMACOTHERAPY_PATTERNS,
+    IMMUNOTHERAPY_PATTERNS as AR_IMMUNOTHERAPY_PATTERNS,
+    BIOLOGICS_PATTERNS as AR_BIOLOGICS_PATTERNS,
+    ENVIRONMENTAL_PATTERNS as AR_ENVIRONMENTAL_PATTERNS,
+    detect_allergic_rhinitis_subspecialty,
+    normalize_allergic_rhinitis_endpoint
+)
 
 from .cardiology import (
     CARDIOLOGY_ENDPOINTS,
@@ -909,6 +918,18 @@ SPECIALTY_REGISTRY = {
             'processing': TX_PROCESSING_PATTERNS
         }
     },
+    'allergic_rhinitis': {
+        'subspecialties': ['pharmacotherapy', 'immunotherapy', 'biologics', 'environmental'],
+        'detection_function': detect_allergic_rhinitis_subspecialty,
+        'normalizer': normalize_allergic_rhinitis_endpoint,
+        'endpoints': ALLERGIC_RHINITIS_ENDPOINTS,
+        'patterns': {
+            'pharmacotherapy': AR_PHARMACOTHERAPY_PATTERNS,
+            'immunotherapy': AR_IMMUNOTHERAPY_PATTERNS,
+            'biologics': AR_BIOLOGICS_PATTERNS,
+            'environmental': AR_ENVIRONMENTAL_PATTERNS
+        }
+    },
     'tuberculosis': {
         'subspecialties': ['treatment', 'drug_resistant', 'prevention', 'latent'],
         'detection_function': detect_tuberculosis_subspecialty,
@@ -1700,6 +1721,16 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'patient\s+blood\s+management', r'units\s+(?:of\s+(?:blood|red\s+cells)|transfused)',
             r'(?:1\s*:\s*1\s*:\s*1|fixed[- ]ratio)\s+(?:transfusion|resuscitation)?'
         ],
+        'allergic_rhinitis': [
+            r'allergic\s+rhinitis', r'rhinoconjunctivitis', r'hay\s+fever',
+            r'seasonal\s+allergic\s+rhinitis|\bsar\b', r'perennial\s+allergic\s+rhinitis',
+            r'total\s+nasal\s+symptom\s+score|\btnss\b',
+            r'combined\s+symptom(?:[- ]and)?[- ]medication\s+score|\bcsms\b',
+            r'allergen\s+immunotherapy|sublingual\s+immunotherapy|\bslit\b',
+            r'intranasal\s+corticosteroid', r'rhinoconjunctivitis\s+quality\s+of\s+life|\brqlq\b',
+            r'grass\s+pollen|house\s+dust\s+mite\s+allerg|ragweed',
+            r'nasal\s+congestion\s+score', r'azelastine|montelukast\s+for\s+rhinitis'
+        ],
         'cardiology': [
             r'heart\s+failure', r'myocardial\s+infarction', r'atrial\s+fibrillation',
             r'coronary', r'cardiovascular', r'cardiac', r'lvef', r'ejection\s+fraction',
@@ -2426,6 +2457,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'transfusion':
         subspecialty, conf = detect_transfusion_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'allergic_rhinitis':
+        subspecialty, conf = detect_allergic_rhinitis_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'tuberculosis':
         subspecialty, conf = detect_tuberculosis_subspecialty(text)

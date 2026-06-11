@@ -43,6 +43,7 @@ EXPECTED_SPECIALTIES = {
     "urinary_incontinence",
     "itp",
     "transfusion",
+    "allergic_rhinitis",
 }
 
 

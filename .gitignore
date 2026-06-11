@@ -424,3 +424,8 @@ data/field_portability/transfusion/rct_trial_pdfs/
 data/field_portability/transfusion/*.jsonl
 data/field_portability/transfusion/*.json
 data/field_portability/transfusion/*.log
+# Allergic-rhinitis field bundle — large/transient data (keep README.md; code under scripts/)
+data/field_portability/allergic_rhinitis/rct_trial_pdfs/
+data/field_portability/allergic_rhinitis/*.jsonl
+data/field_portability/allergic_rhinitis/*.json
+data/field_portability/allergic_rhinitis/*.log

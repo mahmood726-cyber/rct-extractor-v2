@@ -1,0 +1,4061 @@
+{
+  "tolerances": {
+    "pt_abs": 0.02,
+    "pt_rel": 0.02,
+    "ci_abs": 0.03,
+    "ci_rel": 0.03
+  },
+  "papers": [
+    {
+      "pmcid": "PMC5832110",
+      "pmid": "29636787",
+      "specialty": "allergic_rhinitis",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 6,
+        "chars": 27770,
+        "secs": 0.3
+      },
+      "n_gold": 1,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.41,
+                "ci_lower": 0.26,
+                "ci_upper": 0.65,
+                "ci_level": 0.95,
+                "source_text": "RR: 0.41; 95% CI: 0.26\u20130.65",
+                "quote_context": "reatment (RR: 0.41; 95% CI: 0.26\u20130.65; P =",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.41,
+                "ci_lower": 0.26,
+                "ci_upper": 0.65,
+                "source_text": "RR: 0.41; 95% CI: 0.26-0.65"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 7,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.41,
+                "ci_lower": 0.26,
+                "ci_upper": 0.65,
+                "ci_level": 0.95,
+                "source_text": "RR: 0.41; 95% CI: 0.26\u20130.65",
+                "quote_context": "reatment (RR: 0.41; 95% CI: 0.26\u20130.65; P =",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.41,
+                "ci_lower": 0.26,
+                "ci_upper": 0.65,
+                "source_text": "RR: 0.41; 95% CI: 0.26-0.65"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 6
+        }
+      }
+    },
+    {
+      "pmcid": "PMC6166336",
+      "pmid": "30084286",
+      "specialty": "allergic_rhinitis",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 13,
+        "chars": 32460,
+        "secs": 0.44
+      },
+      "n_gold": 1,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 7,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.3,
+                "ci_lower": 0.18,
+                "ci_upper": 0.49,
+                "ci_level": 0.95,
+                "source_text": "OR 0.30; 95% CI, 0.18\u20130.49",
+                "quote_context": "nce rate (OR 0.30; 95% CI, 0.18\u20130.49), sc",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.3,
+                "ci_lower": 0.18,
+                "ci_upper": 0.49,
+                "source_text": "(OR 0.30; 95% CI, 0.18-0.49"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 6
+        },
+        "pdf_raw": {
+          "n_extracted": 2,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.3,
+                "ci_lower": 0.18,
+                "ci_upper": 0.49,
+                "ci_level": 0.95,
+                "source_text": "OR 0.30; 95% CI, 0.18\u20130.49",
+                "quote_context": "nce rate (OR 0.30; 95% CI, 0.18\u20130.49), sc",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.3,
+                "ci_lower": 0.18,
+                "ci_upper": 0.49,
+                "source_text": "(OR 0.30; 95% CI, 0.18-0.49"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 1
+        }
+      }
+    },
+    {
+      "pmcid": "PMC6824914",
+      "pmid": "31677153",
+      "specialty": "allergic_rhinitis",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 125,
+        "chars": 396065,
+        "secs": 2.01
+      },
+      "n_gold": 2,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 6,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 2.1,
+                "ci_lower": 1.24,
+                "ci_upper": 3.57,
+                "ci_level": 0.95,
+                "source_text": "risk ratio (RR) 2.10, 95% CI 1.24 to 3.57",
+                "quote_context": "er 1000) (risk ratio (RR) 2.10, 95% CI 1.24 to 3.57; 4 s",
+                "harvest_pattern": "risk\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\....",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 2.1,
+                "ci_lower": 1.24,
+                "ci_upper": 3.57,
+                "source_text": "risk ratio 2.10; 95% CI 1.24 to 3.57"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.99,
+                "ci_lower": 0.87,
+                "ci_upper": 1.12,
+                "ci_level": 0.95,
+                "source_text": "RR 0.99, 95% CI 0.87 to 1.12",
+                "quote_context": "placebo (RR 0.99, 95% CI 0.87 to 1.12; 3 s",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.99,
+                "ci_lower": 0.87,
+                "ci_upper": 1.12,
+                "source_text": "RR 0.99; 95% CI 0.87 to 1.12"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 4
+        },
+        "pdf_raw": {
+          "n_extracted": 24,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 2.1,
+                "ci_lower": 1.24,
+                "ci_upper": 3.57,
+                "ci_level": 0.95,
+                "source_text": "risk ratio (RR) 2.10, 95% CI 1.24 to 3.57",
+                "quote_context": "er 1000) (risk ratio (RR) 2.10, 95% CI 1.24 to 3.57; 4 s",
+                "harvest_pattern": "risk\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\....",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 2.1,
+                "ci_lower": 1.24,
+                "ci_upper": 3.57,
+                "source_text": "risk ratio 2.10; 95% CI 1.24 to 3.57"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.99,
+                "ci_lower": 0.87,
+                "ci_upper": 1.12,
+                "ci_level": 0.95,
+                "source_text": "RR 0.99, 95% CI 0.87 to 1.12",
+                "quote_context": "placebo (RR 0.99, 95% CI 0.87 to 1.12; 3 s",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.99,
+                "ci_lower": 0.87,
+                "ci_upper": 1.12,
+                "source_text": "RR 0.99; 95% CI 0.87 to 1.12"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 22
+        }
+      }
+    },
+    {
+      "pmcid": "PMC7195651",
+      "pmid": "32382307",
+      "specialty": "allergic_rhinitis",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 18,
+        "chars": 72733,
+        "secs": 0.5
+      },
+      "n_gold": 4,
+      "n_out_of_scope": 2,
+      "out_of_scope": [
+        {
+          "effect_type": "OR",
+          "point_estimate": 1.31,
+          "reason": "nma"
+        },
+        {
+          "effect_type": "OR",
+          "point_estimate": 1.17,
+          "reason": "nma"
+        }
+      ],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 6,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 1.15,
+                "ci_lower": 1.07,
+                "ci_upper": 1.24,
+                "ci_level": 0.95,
+                "source_text": "OR:1.15, 95% CI 1.07 to 1.24",
+                "quote_context": "puncture (OR:1.15, 95% CI 1.07 to 1.24) com",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 1.15,
+                "ci_lower": 1.07,
+                "ci_upper": 1.24,
+                "source_text": "OR:1.15; 95% CI 1.07 to 1.24"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 1.34,
+                "ci_lower": 1.17,
+                "ci_upper": 1.55,
+                "ci_level": 0.95,
+                "source_text": "OR:1.34, 95% CI 1.17 to 1.55",
+                "quote_context": "ee-month (OR:1.34, 95% CI 1.17 to 1.55), si",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 1.34,
+                "ci_lower": 1.17,
+                "ci_upper": 1.55,
+                "source_text": "OR:1.34; 95% CI 1.17 to 1.55"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 1.31,
+                "ci_lower": 1.1,
+                "ci_upper": 1.57,
+                "ci_level": 0.95,
+                "source_text": "OR: 1.31, 95% CI 1.10 to 1.57",
+                "quote_context": "ix-month (OR: 1.31, 95% CI 1.10 to 1.57), an",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 1.31,
+                "ci_lower": 1.07,
+                "ci_upper": 1.61,
+                "source_text": "OR: 1.31; 95% CI 1.07 to 1.61"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 1.3,
+                "ci_lower": 1.11,
+                "ci_upper": 1.53,
+                "ci_level": 0.95,
+                "source_text": "OR: 1.30, 95%CI 1.11 to 1.53",
+                "quote_context": "ve-month (OR: 1.30, 95%CI 1.11 to 1.53) fol",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 1.3,
+                "ci_lower": 1.11,
+                "ci_upper": 1.53,
+                "source_text": "OR: 1.30; 95% CI 1.11 to 1.53"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 4,
+            "pt_exact": 4,
+            "pt_tol": 4,
+            "ci_lo_exact": 3,
+            "ci_lo_tol": 4,
+            "ci_hi_exact": 3,
+            "ci_hi_tol": 4,
+            "matched_pairs": 4
+          },
+          "n_extra": 2
+        },
+        "pdf_raw": {
+          "n_extracted": 12,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 1.15,
+                "ci_lower": 1.07,
+                "ci_upper": 1.24,
+                "ci_level": 0.95,
+                "source_text": "OR:1.15, 95% CI 1.07 to 1.24",
+                "quote_context": "puncture (OR:1.15, 95% CI 1.07 to 1.24) com",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 1.15,
+                "ci_lower": 1.07,
+                "ci_upper": 1.24,
+                "source_text": "OR:1.15; 95% CI 1.07 to 1.24"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 1.34,
+                "ci_lower": 1.17,
+                "ci_upper": 1.55,
+                "ci_level": 0.95,
+                "source_text": "OR:1.34, 95% CI 1.17 to 1.55",
+                "quote_context": "ee-month (OR:1.34, 95% CI 1.17 to 1.55), si",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 1.34,
+                "ci_lower": 1.17,
+                "ci_upper": 1.55,
+                "source_text": "OR:1.34; 95% CI 1.17 to 1.55"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 1.31,
+                "ci_lower": 1.1,
+                "ci_upper": 1.57,
+                "ci_level": 0.95,
+                "source_text": "OR: 1.31, 95% CI 1.10 to 1.57",
+                "quote_context": "ix-month (OR: 1.31, 95% CI 1.10 to 1.57), an",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 1.31,
+                "ci_lower": 1.07,
+                "ci_upper": 1.61,
+                "source_text": "OR: 1.31; 95% CI 1.07 to 1.61"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 1.3,
+                "ci_lower": 1.11,
+                "ci_upper": 1.53,
+                "ci_level": 0.95,
+                "source_text": "OR: 1.30, 95%CI 1.11 to 1.53",
+                "quote_context": "ve-month (OR: 1.30, 95%CI 1.11 to 1.53) fol",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 1.3,
+                "ci_lower": 1.11,
+                "ci_upper": 1.53,
+                "source_text": "OR: 1.30; 95% CI 1.11 to 1.53"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 4,
+            "pt_exact": 4,
+            "pt_tol": 4,
+            "ci_lo_exact": 3,
+            "ci_lo_tol": 4,
+            "ci_hi_exact": 3,
+            "ci_hi_tol": 4,
+            "matched_pairs": 4
+          },
+          "n_extra": 8
+        }
+      }
+    },
+    {
+      "pmcid": "PMC8094418",
+      "pmid": "32926419",
+      "specialty": "allergic_rhinitis",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 178,
+        "chars": 500459,
+        "secs": 2.91
+      },
+      "n_gold": 1,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 4,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 1.99,
+                "ci_lower": 1.49,
+                "ci_upper": 2.67,
+                "ci_level": 0.95,
+                "source_text": "OR 1.99, 95% CI 1.49 to 2.67",
+                "quote_context": "control (OR 1.99, 95% CI 1.49 to 2.67; hig",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 1.99,
+                "ci_lower": 1.49,
+                "ci_upper": 2.67,
+                "source_text": "OR 1.99; 95% CI 1.49 to 2.67"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 3
+        },
+        "pdf_raw": {
+          "n_extracted": 16,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 1.99,
+                "ci_lower": 1.49,
+                "ci_upper": 2.67,
+                "ci_level": 0.95,
+                "source_text": "OR 1.99, 95% CI 1.49 to 2.67",
+                "quote_context": "control (OR 1.99, 95% CI 1.49 to 2.67; hig",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 1.99,
+                "ci_lower": 1.49,
+                "ci_upper": 2.67,
+                "source_text": "OR 1.99; 95% CI 1.49 to 2.67"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 15
+        }
+      }
+    },
+    {
+      "pmcid": "PMC7691606",
+      "pmid": "33294117",
+      "specialty": "allergic_rhinitis",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 9,
+        "chars": 33873,
+        "secs": 0.32
+      },
+      "n_gold": 1,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.89,
+                "ci_lower": 0.69,
+                "ci_upper": 1.15,
+                "ci_level": 0.95,
+                "source_text": "RR = 0.89, 95% CI = 0.69\u20131.15",
+                "quote_context": "g (pooled RR = 0.89, 95% CI = 0.69\u20131.15, I 2",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.89,
+                "ci_lower": 0.69,
+                "ci_upper": 1.15,
+                "source_text": "RR = 0.89; 95% CI: 0.69-1.15"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 2,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.89,
+                "ci_lower": 0.69,
+                "ci_upper": 1.15,
+                "ci_level": 0.95,
+                "source_text": "RR = 0.89, 95% CI = 0.69\u20131.15",
+                "quote_context": "g (pooled RR = 0.89, 95% CI = 0.69\u20131.15, I 2",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.89,
+                "ci_lower": 0.69,
+                "ci_upper": 1.15,
+                "source_text": "RR = 0.89; 95% CI = 0.69-1.15"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 1
+        }
+      }
+    },
+    {
+      "pmcid": "PMC8224942",
+      "pmid": "34166402",
+      "specialty": "allergic_rhinitis",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 11,
+        "chars": 37020,
+        "secs": 0.24
+      },
+      "n_gold": 3,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 3,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 1.83,
+                "ci_lower": 1.09,
+                "ci_upper": 3.07,
+                "ci_level": 0.95,
+                "source_text": "aOR 1.83, 95% CI 1.09\u20133.07",
+                "quote_context": "thout AR (aOR 1.83, 95% CI 1.09\u20133.07) and",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 1.83,
+                "ci_lower": 1.09,
+                "ci_upper": 3.07,
+                "source_text": "aOR 1.83; 95% CI 1.09-3.07"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 3.02,
+                "ci_lower": 1.12,
+                "ci_upper": 8.13,
+                "ci_level": 0.95,
+                "source_text": "aOR 3.02, 95% CI 1.12\u20138.13",
+                "quote_context": "smokers (aOR 3.02, 95% CI 1.12\u20138.13). In",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 3.02,
+                "ci_lower": 1.12,
+                "ci_upper": 8.13,
+                "source_text": "aOR 3.02; 95% CI 1.12-8.13"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.47,
+                "ci_lower": 0.23,
+                "ci_upper": 0.996,
+                "ci_level": 0.95,
+                "source_text": "aOR 0.47, 95% CI 0.23\u20130.996",
+                "quote_context": "\u20130.84 and aOR 0.47, 95% CI 0.23\u20130.996), in",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.47,
+                "ci_lower": 0.23,
+                "ci_upper": 0.996,
+                "source_text": "aOR 0.47; 95% CI 0.23-0.996"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 3,
+            "pt_exact": 3,
+            "pt_tol": 3,
+            "ci_lo_exact": 3,
+            "ci_lo_tol": 3,
+            "ci_hi_exact": 3,
+            "ci_hi_tol": 3,
+            "matched_pairs": 3
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 18,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 1.83,
+                "ci_lower": 1.09,
+                "ci_upper": 3.07,
+                "ci_level": 0.95,
+                "source_text": "aOR 1.83, 95% CI 1.09\u20133.07",
+                "quote_context": "thout AR (aOR 1.83, 95% CI 1.09\u20133.07) and",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 1.83,
+                "ci_lower": 1.09,
+                "ci_upper": 3.07,
+                "source_text": "aOR 1.83; 95% CI 1.09-3.07"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 3.02,
+                "ci_lower": 1.12,
+                "ci_upper": 8.13,
+                "ci_level": 0.95,
+                "source_text": "aOR 3.02, 95% CI 1.12\u20138.13",
+                "quote_context": "smokers (aOR 3.02, 95% CI 1.12\u20138.13). In",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 3.02,
+                "ci_lower": 1.12,
+                "ci_upper": 8.13,
+                "source_text": "aOR 3.02; 95% CI 1.12-8.13"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.47,
+                "ci_lower": 0.23,
+                "ci_upper": 0.996,
+                "ci_level": 0.95,
+                "source_text": "aOR 0.47, 95% CI 0.23\u20130.996",
+                "quote_context": "\u20130.84 and aOR 0.47, 95% CI 0.23\u20130.996), in",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.47,
+                "ci_lower": 0.23,
+                "ci_upper": 0.996,
+                "source_text": "aOR 0.47; 95% CI 0.23-0.996"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 3,
+            "pt_exact": 3,
+            "pt_tol": 3,
+            "ci_lo_exact": 3,
+            "ci_lo_tol": 3,
+            "ci_hi_exact": 3,
+            "ci_hi_tol": 3,
+            "matched_pairs": 3
+          },
+          "n_extra": 15
+        }
+      }
+    },
+    {
+      "pmcid": "PMC8243504",
+      "pmid": "34187561",
+      "specialty": "allergic_rhinitis",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 12,
+        "chars": 41342,
+        "secs": 0.28
+      },
+      "n_gold": 1,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 5,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.97,
+                "ci_lower": 0.75,
+                "ci_upper": 1.25,
+                "ci_level": 0.95,
+                "source_text": "odds ratio [OR]: 0.97, 95% CI 0.75 to 1.25",
+                "quote_context": "mparable (odds ratio [OR]: 0.97, 95% CI 0.75 to 1.25, p =",
+                "harvest_pattern": "odds\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\....",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.97,
+                "ci_lower": 0.75,
+                "ci_upper": 1.25,
+                "source_text": "odds ratio: 0.97; 95% CI 0.75 to 1.25"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 4
+        },
+        "pdf_raw": {
+          "n_extracted": 9,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.97,
+                "ci_lower": 0.75,
+                "ci_upper": 1.25,
+                "ci_level": 0.95,
+                "source_text": "odds ratio [OR]: 0.97, 95% CI 0.75 to 1.25",
+                "quote_context": "mparable (odds ratio [OR]: 0.97, 95% CI 0.75 to 1.25, p =",
+                "harvest_pattern": "odds\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\....",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.97,
+                "ci_lower": 0.75,
+                "ci_upper": 1.25,
+                "source_text": "odds ratio: 0.97; 95% CI 0.75 to 1.25"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 8
+        }
+      }
+    },
+    {
+      "pmcid": "PMC8420736",
+      "pmid": "34479933",
+      "specialty": "allergic_rhinitis",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 7,
+        "chars": 26437,
+        "secs": 0.15
+      },
+      "n_gold": 4,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 8,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 5.61,
+                "ci_lower": 1.99,
+                "ci_upper": 15.81,
+                "ci_level": 0.95,
+                "source_text": "risk ratio (RR)=5.61; 95% CI 1.99 to 15.81",
+                "quote_context": "surgery (risk ratio (RR)=5.61; 95% CI 1.99 to 15.81). Fu",
+                "harvest_pattern": "risk\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\....",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 5.61,
+                "ci_lower": 1.99,
+                "ci_upper": 15.81,
+                "source_text": "risk ratio=5.61; 95% CI 1.99 to 15.81"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 1.4,
+                "ci_lower": 0.29,
+                "ci_upper": 6.8,
+                "ci_level": 0.95,
+                "source_text": "RR=1.40; 95% CI 0.29 to 6.80",
+                "quote_context": "events ((RR=1.40; 95% CI 0.29 to 6.80), ad",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 1.4,
+                "ci_lower": 0.29,
+                "ci_upper": 6.8,
+                "source_text": "RR=1.40; 95% CI 0.29 to 6.80"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.83,
+                "ci_lower": 0.6,
+                "ci_upper": 1.15,
+                "ci_level": 0.95,
+                "source_text": "RR=0.83; 95% CI 0.60 to 1.15",
+                "quote_context": "e events (RR=0.83; 95% CI 0.60 to 1.15) and",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.83,
+                "ci_lower": 0.6,
+                "ci_upper": 1.15,
+                "source_text": "RR=0.83; 95% CI 0.60 to 1.15"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.52,
+                "ci_lower": 0.17,
+                "ci_upper": 1.61,
+                "ci_level": 0.95,
+                "source_text": "RR=0.52; 95% CI 0.17 to 1.61",
+                "quote_context": "osteroid (RR=0.52; 95% CI 0.17 to 1.61). Co",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.52,
+                "ci_lower": 0.17,
+                "ci_upper": 1.61,
+                "source_text": "RR=0.52; 95% CI 0.17 to 1.61"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 4,
+            "pt_exact": 4,
+            "pt_tol": 4,
+            "ci_lo_exact": 4,
+            "ci_lo_tol": 4,
+            "ci_hi_exact": 4,
+            "ci_hi_tol": 4,
+            "matched_pairs": 4
+          },
+          "n_extra": 4
+        },
+        "pdf_raw": {
+          "n_extracted": 8,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 5.61,
+                "ci_lower": 1.99,
+                "ci_upper": 15.81,
+                "ci_level": 0.95,
+                "source_text": "risk ratio (RR)=5.61; 95% CI 1.99 to 15.81",
+                "quote_context": "surgery (risk ratio (RR)=5.61; 95% CI 1.99 to 15.81). Fu",
+                "harvest_pattern": "risk\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\....",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 5.61,
+                "ci_lower": 1.99,
+                "ci_upper": 15.81,
+                "source_text": "RR=5.61; 95% CI 1.99 to 15.81"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 1.4,
+                "ci_lower": 0.29,
+                "ci_upper": 6.8,
+                "ci_level": 0.95,
+                "source_text": "RR=1.40; 95% CI 0.29 to 6.80",
+                "quote_context": "events ((RR=1.40; 95% CI 0.29 to 6.80), ad",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 1.4,
+                "ci_lower": 0.29,
+                "ci_upper": 6.8,
+                "source_text": "RR=1.40; 95% CI 0.29 to 6.80"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.83,
+                "ci_lower": 0.6,
+                "ci_upper": 1.15,
+                "ci_level": 0.95,
+                "source_text": "RR=0.83; 95% CI 0.60 to 1.15",
+                "quote_context": "e events (RR=0.83; 95% CI 0.60 to 1.15) and",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.83,
+                "ci_lower": 0.6,
+                "ci_upper": 1.15,
+                "source_text": "RR=0.83; 95% CI 0.60 to 1.15"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.52,
+                "ci_lower": 0.17,
+                "ci_upper": 1.61,
+                "ci_level": 0.95,
+                "source_text": "RR=0.52; 95% CI 0.17 to 1.61",
+                "quote_context": "osteroid (RR=0.52; 95% CI 0.17 to 1.61). Co",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.52,
+                "ci_lower": 0.17,
+                "ci_upper": 1.61,
+                "source_text": "RR=0.52; 95% CI 0.17 to 1.61"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 4,
+            "pt_exact": 4,
+            "pt_tol": 4,
+            "ci_lo_exact": 4,
+            "ci_lo_tol": 4,
+            "ci_hi_exact": 4,
+            "ci_hi_tol": 4,
+            "matched_pairs": 4
+          },
+          "n_extra": 4
+        }
+      }
+    },
+    {
+      "pmcid": "PMC8543786",
+      "pmid": "34693993",
+      "specialty": "allergic_rhinitis",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 131,
+        "chars": 439674,
+        "secs": 1.99
+      },
+      "n_gold": 3,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 2,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.85,
+                "ci_lower": 0.62,
+                "ci_upper": 1.17,
+                "ci_level": 0.95,
+                "source_text": "RR 0.85, 95% CI 0.62 to 1.17",
+                "quote_context": "disease (RR 0.85, 95% CI 0.62 to 1.17) or",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.85,
+                "ci_lower": 0.62,
+                "ci_upper": 1.17,
+                "source_text": "RR 0.85; 95% CI 0.62 to 1.17"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 1.04,
+                "ci_lower": 0.59,
+                "ci_upper": 1.82,
+                "ci_level": 0.95,
+                "source_text": "RR 1.04, 95% CI 0.59 to 1.82",
+                "quote_context": "hma only (RR 1.04, 95% CI 0.59 to 1.82; 497",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 1.04,
+                "ci_lower": 0.59,
+                "ci_upper": 1.82,
+                "source_text": "RR 1.04; 95% CI 0.59 to 1.82"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.94,
+                "ci_lower": 0.78,
+                "ci_upper": 1.15,
+                "ci_level": 0.95,
+                "source_text": "RR was 0.94 for all\u2010cause SAEs (95% CI 0.78 to 1.15",
+                "quote_context": "he pooled RR was 0.94 for all\u2010cause SAEs (95% CI 0.78 to 1.15; I 2",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "missed",
+              "matched_extracted": null
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 17,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.85,
+                "ci_lower": 0.62,
+                "ci_upper": 1.17,
+                "ci_level": 0.95,
+                "source_text": "RR 0.85, 95% CI 0.62 to 1.17",
+                "quote_context": "disease (RR 0.85, 95% CI 0.62 to 1.17) or",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.85,
+                "ci_lower": 0.62,
+                "ci_upper": 1.17,
+                "source_text": "RR 0.85; 95% CI 0.62 to 1.17"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 1.04,
+                "ci_lower": 0.59,
+                "ci_upper": 1.82,
+                "ci_level": 0.95,
+                "source_text": "RR 1.04, 95% CI 0.59 to 1.82",
+                "quote_context": "hma only (RR 1.04, 95% CI 0.59 to 1.82; 497",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 1.04,
+                "ci_lower": 0.59,
+                "ci_upper": 1.82,
+                "source_text": "RR 1.04; 95% CI\n0.59 to 1.82"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.94,
+                "ci_lower": 0.78,
+                "ci_upper": 1.15,
+                "ci_level": 0.95,
+                "source_text": "RR was 0.94 for all\u2010cause SAEs (95% CI 0.78 to 1.15",
+                "quote_context": "he pooled RR was 0.94 for all\u2010cause SAEs (95% CI 0.78 to 1.15; I 2",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.94,
+                "ci_lower": 0.77,
+                "ci_upper": 1.16,
+                "source_text": "RR 0.94; 95% CI 0.77 to 1.16"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 3,
+            "pt_exact": 3,
+            "pt_tol": 3,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 3,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 3,
+            "matched_pairs": 3
+          },
+          "n_extra": 14
+        }
+      }
+    },
+    {
+      "pmcid": "PMC8812613",
+      "pmid": "35108226",
+      "specialty": "allergic_rhinitis",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 9,
+        "chars": 36337,
+        "secs": 0.25
+      },
+      "n_gold": 6,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 7,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 1.0,
+                "ci_lower": 0.7,
+                "ci_upper": 1.43,
+                "ci_level": 0.95,
+                "source_text": "RR: 1.00, 95% CI: 0.70\u20131.43",
+                "quote_context": "infants, RR: 1.00, 95% CI: 0.70\u20131.43, P =",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 1.0,
+                "ci_lower": 0.7,
+                "ci_upper": 1.43,
+                "source_text": "RR: 1.00; 95% CI: 0.70-1.43"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.35,
+                "ci_lower": 0.1,
+                "ci_upper": 1.25,
+                "ci_level": 0.95,
+                "source_text": "RR: 0.35, 95% CI: 0.10\u20131.25",
+                "quote_context": "infants, RR: 0.35, 95% CI: 0.10\u20131.25, P =",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.35,
+                "ci_lower": 0.1,
+                "ci_upper": 1.25,
+                "source_text": "RR: 0.35; 95% CI: 0.10-1.25"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.95,
+                "ci_lower": 0.8,
+                "ci_upper": 1.13,
+                "ci_level": 0.95,
+                "source_text": "RR: 0.95, 95% CI: 0.80\u20131.13",
+                "quote_context": "nt women, RR: 0.95, 95% CI: 0.80\u20131.13, P =",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.95,
+                "ci_lower": 0.8,
+                "ci_upper": 1.13,
+                "source_text": "RR: 0.95; 95% CI: 0.80-1.13"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.84,
+                "ci_lower": 0.64,
+                "ci_upper": 1.11,
+                "ci_level": 0.95,
+                "source_text": "RR: 0.84, 95% CI: 0.64\u20131.11",
+                "quote_context": "infants, RR: 0.84, 95% CI: 0.64\u20131.11, P =",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.84,
+                "ci_lower": 0.64,
+                "ci_upper": 1.11,
+                "source_text": "RR: 0.84; 95% CI: 0.64-1.11"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.93,
+                "ci_lower": 0.78,
+                "ci_upper": 1.11,
+                "ci_level": 0.95,
+                "source_text": "RR: 0.93, 95% CI: 0.78\u20131.11",
+                "quote_context": "nt women, RR: 0.93, 95% CI: 0.78\u20131.11, P =",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.93,
+                "ci_lower": 0.78,
+                "ci_upper": 1.11,
+                "source_text": "RR: 0.93; 95% CI: 0.78-1.11"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.97,
+                "ci_lower": 0.85,
+                "ci_upper": 1.11,
+                "ci_level": 0.95,
+                "source_text": "RR: 0.97, 95% CI: 0.85\u20131.11",
+                "quote_context": "nt women, RR: 0.97, 95% CI: 0.85\u20131.11, P =",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.97,
+                "ci_lower": 0.85,
+                "ci_upper": 1.11,
+                "source_text": "RR: 0.97; 95% CI: 0.85-1.11"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 6,
+            "pt_exact": 6,
+            "pt_tol": 6,
+            "ci_lo_exact": 6,
+            "ci_lo_tol": 6,
+            "ci_hi_exact": 6,
+            "ci_hi_tol": 6,
+            "matched_pairs": 6
+          },
+          "n_extra": 1
+        },
+        "pdf_raw": {
+          "n_extracted": 9,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 1.0,
+                "ci_lower": 0.7,
+                "ci_upper": 1.43,
+                "ci_level": 0.95,
+                "source_text": "RR: 1.00, 95% CI: 0.70\u20131.43",
+                "quote_context": "infants, RR: 1.00, 95% CI: 0.70\u20131.43, P =",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 1.0,
+                "ci_lower": 0.7,
+                "ci_upper": 1.43,
+                "source_text": "RR: 1.00; 95% CI: 0.70-1.43"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.35,
+                "ci_lower": 0.1,
+                "ci_upper": 1.25,
+                "ci_level": 0.95,
+                "source_text": "RR: 0.35, 95% CI: 0.10\u20131.25",
+                "quote_context": "infants, RR: 0.35, 95% CI: 0.10\u20131.25, P =",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.35,
+                "ci_lower": 0.1,
+                "ci_upper": 1.25,
+                "source_text": "RR: 0.35; 95% CI: 0.10-1.25"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.95,
+                "ci_lower": 0.8,
+                "ci_upper": 1.13,
+                "ci_level": 0.95,
+                "source_text": "RR: 0.95, 95% CI: 0.80\u20131.13",
+                "quote_context": "nt women, RR: 0.95, 95% CI: 0.80\u20131.13, P =",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.95,
+                "ci_lower": 0.8,
+                "ci_upper": 1.13,
+                "source_text": "RR: 0.95; 95% CI: 0.80-1.13"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.84,
+                "ci_lower": 0.64,
+                "ci_upper": 1.11,
+                "ci_level": 0.95,
+                "source_text": "RR: 0.84, 95% CI: 0.64\u20131.11",
+                "quote_context": "infants, RR: 0.84, 95% CI: 0.64\u20131.11, P =",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.84,
+                "ci_lower": 0.64,
+                "ci_upper": 1.11,
+                "source_text": "RR: 0.84; 95% CI: 0.64-1.11"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.93,
+                "ci_lower": 0.78,
+                "ci_upper": 1.11,
+                "ci_level": 0.95,
+                "source_text": "RR: 0.93, 95% CI: 0.78\u20131.11",
+                "quote_context": "nt women, RR: 0.93, 95% CI: 0.78\u20131.11, P =",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.93,
+                "ci_lower": 0.78,
+                "ci_upper": 1.11,
+                "source_text": "RR: 0.93; 95% CI: 0.78-1.11"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.97,
+                "ci_lower": 0.85,
+                "ci_upper": 1.11,
+                "ci_level": 0.95,
+                "source_text": "RR: 0.97, 95% CI: 0.85\u20131.11",
+                "quote_context": "nt women, RR: 0.97, 95% CI: 0.85\u20131.11, P =",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.97,
+                "ci_lower": 0.85,
+                "ci_upper": 1.11,
+                "source_text": "RR: 0.97; 95% CI: 0.85-1.11"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 6,
+            "pt_exact": 6,
+            "pt_tol": 6,
+            "ci_lo_exact": 6,
+            "ci_lo_tol": 6,
+            "ci_hi_exact": 6,
+            "ci_hi_tol": 6,
+            "matched_pairs": 6
+          },
+          "n_extra": 3
+        }
+      }
+    },
+    {
+      "pmcid": "PMC8965060",
+      "pmid": "35372142",
+      "specialty": "allergic_rhinitis",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 10,
+        "chars": 40000,
+        "secs": 0.29
+      },
+      "n_gold": 2,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 2,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.69,
+                "ci_lower": 0.55,
+                "ci_upper": 0.85,
+                "ci_level": 0.95,
+                "source_text": "RR, 0.69; 95% CI, 0.55\u20130.85",
+                "quote_context": "24 weeks (RR, 0.69; 95% CI, 0.55\u20130.85; GRA",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.69,
+                "ci_lower": 0.55,
+                "ci_upper": 0.85,
+                "source_text": "RR, 0.69; 95% CI, 0.55-0.85"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.62,
+                "ci_lower": 0.4,
+                "ci_upper": 0.94,
+                "ci_level": 0.95,
+                "source_text": "RR, 0.62; 95% CI, 0.40\u20130.94",
+                "quote_context": "52 weeks (RR, 0.62; 95% CI, 0.40\u20130.94; GRA",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.62,
+                "ci_lower": 0.4,
+                "ci_upper": 0.94,
+                "source_text": "RR, 0.62; 95% CI, 0.40-0.94"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 7,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.69,
+                "ci_lower": 0.55,
+                "ci_upper": 0.85,
+                "ci_level": 0.95,
+                "source_text": "RR, 0.69; 95% CI, 0.55\u20130.85",
+                "quote_context": "24 weeks (RR, 0.69; 95% CI, 0.55\u20130.85; GRA",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.69,
+                "ci_lower": 0.55,
+                "ci_upper": 0.85,
+                "source_text": "RR, 0.69; 95% CI, 0.55-0.85"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.62,
+                "ci_lower": 0.4,
+                "ci_upper": 0.94,
+                "ci_level": 0.95,
+                "source_text": "RR, 0.62; 95% CI, 0.40\u20130.94",
+                "quote_context": "52 weeks (RR, 0.62; 95% CI, 0.40\u20130.94; GRA",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.62,
+                "ci_lower": 0.4,
+                "ci_upper": 0.94,
+                "source_text": "RR,\n0.62; 95% CI, 0.40-0.94"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 5
+        }
+      }
+    },
+    {
+      "pmcid": "PMC9021999",
+      "pmid": "35463337",
+      "specialty": "allergic_rhinitis",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 10,
+        "chars": 43155,
+        "secs": 0.25
+      },
+      "n_gold": 3,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 0,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 0.56,
+                "ci_lower": 0.4,
+                "ci_upper": 0.79,
+                "ci_level": 0.95,
+                "source_text": "aHR = 0.56, 95% CI = 0.40\u20130.79",
+                "quote_context": "igh dose (aHR = 0.56, 95% CI = 0.40\u20130.79) or",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "missed",
+              "matched_extracted": null
+            },
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 0.68,
+                "ci_lower": 0.6,
+                "ci_upper": 0.76,
+                "ci_level": 0.95,
+                "source_text": "aHR = 0.68, 95% CI = 0.60\u20130.76",
+                "quote_context": "3 years (aHR = 0.68, 95% CI = 0.60\u20130.76) and",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "missed",
+              "matched_extracted": null
+            },
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 0.33,
+                "ci_lower": 0.26,
+                "ci_upper": 0.42,
+                "ci_level": 0.95,
+                "source_text": "aHR = 0.33, 95% CI = 0.26\u20130.42",
+                "quote_context": "5 years (aHR = 0.33, 95% CI = 0.26\u20130.42). Th",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "missed",
+              "matched_extracted": null
+            }
+          ],
+          "field": {
+            "type_exact": 0,
+            "pt_exact": 0,
+            "pt_tol": 0,
+            "ci_lo_exact": 0,
+            "ci_lo_tol": 0,
+            "ci_hi_exact": 0,
+            "ci_hi_tol": 0,
+            "matched_pairs": 0
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 25,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 0.56,
+                "ci_lower": 0.4,
+                "ci_upper": 0.79,
+                "ci_level": 0.95,
+                "source_text": "aHR = 0.56, 95% CI = 0.40\u20130.79",
+                "quote_context": "igh dose (aHR = 0.56, 95% CI = 0.40\u20130.79) or",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 0.56,
+                "ci_lower": 0.4,
+                "ci_upper": 0.79,
+                "source_text": "aHR = 0.56; 95% CI: 0.40-0.79"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 0.68,
+                "ci_lower": 0.6,
+                "ci_upper": 0.76,
+                "ci_level": 0.95,
+                "source_text": "aHR = 0.68, 95% CI = 0.60\u20130.76",
+                "quote_context": "3 years (aHR = 0.68, 95% CI = 0.60\u20130.76) and",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 0.68,
+                "ci_lower": 0.6,
+                "ci_upper": 0.76,
+                "source_text": "aHR = 0.68; 95% CI: 0.60-0.76"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 0.33,
+                "ci_lower": 0.26,
+                "ci_upper": 0.42,
+                "ci_level": 0.95,
+                "source_text": "aHR = 0.33, 95% CI = 0.26\u20130.42",
+                "quote_context": "5 years (aHR = 0.33, 95% CI = 0.26\u20130.42). Th",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "missed",
+              "matched_extracted": null
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 23
+        }
+      }
+    },
+    {
+      "pmcid": "PMC9443936",
+      "pmid": "36063364",
+      "specialty": "allergic_rhinitis",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 99,
+        "chars": 323019,
+        "secs": 1.46
+      },
+      "n_gold": 2,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 4,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 2.3,
+                "ci_lower": 1.16,
+                "ci_upper": 4.63,
+                "ci_level": 0.95,
+                "source_text": "RR 2.3, 95% CI 1.16 to 4.63",
+                "quote_context": "testing : RR 2.3, 95% CI 1.16 to 4.63; 1 s",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 2.3,
+                "ci_lower": 1.16,
+                "ci_upper": 4.63,
+                "source_text": "RR 2.3; 95% CI 1.16 to 4.63"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 1.0,
+                "ci_lower": 0.89,
+                "ci_upper": 1.11,
+                "ci_level": 0.95,
+                "source_text": "RR 1.00, 95% CI 0.89 to 1.11",
+                "quote_context": "3 months (RR 1.00, 95% CI 0.89 to 1.11; 1 s",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 1.0,
+                "ci_lower": 0.89,
+                "ci_upper": 1.11,
+                "source_text": "RR 1.00; 95% CI 0.89 to 1.11"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 2
+        },
+        "pdf_raw": {
+          "n_extracted": 5,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 2.3,
+                "ci_lower": 1.16,
+                "ci_upper": 4.63,
+                "ci_level": 0.95,
+                "source_text": "RR 2.3, 95% CI 1.16 to 4.63",
+                "quote_context": "testing : RR 2.3, 95% CI 1.16 to 4.63; 1 s",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 2.3,
+                "ci_lower": 1.16,
+                "ci_upper": 4.63,
+                "source_text": "RR 2.3; 95% CI 1.16 to 4.63"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 1.0,
+                "ci_lower": 0.89,
+                "ci_upper": 1.11,
+                "ci_level": 0.95,
+                "source_text": "RR 1.00, 95% CI 0.89 to 1.11",
+                "quote_context": "3 months (RR 1.00, 95% CI 0.89 to 1.11; 1 s",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 1.0,
+                "ci_lower": 0.89,
+                "ci_upper": 1.11,
+                "source_text": "RR 1.00; 95% CI 0.89 to 1.11"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 3
+        }
+      }
+    },
+    {
+      "pmcid": "PMC9571357",
+      "pmid": "36235600",
+      "specialty": "allergic_rhinitis",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 16,
+        "chars": 57711,
+        "secs": 0.32
+      },
+      "n_gold": 1,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 2,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.48,
+                "ci_lower": 0.28,
+                "ci_upper": 0.83,
+                "ci_level": 0.95,
+                "source_text": "RR = 0.48, 95% CI: 0.28 to 0.83",
+                "quote_context": "placebo (RR = 0.48, 95% CI: 0.28 to 0.83, p =",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.48,
+                "ci_lower": 0.28,
+                "ci_upper": 0.83,
+                "source_text": "RR = 0.48; 95% CI: 0.28 to 0.83"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 1
+        },
+        "pdf_raw": {
+          "n_extracted": 17,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.48,
+                "ci_lower": 0.28,
+                "ci_upper": 0.83,
+                "ci_level": 0.95,
+                "source_text": "RR = 0.48, 95% CI: 0.28 to 0.83",
+                "quote_context": "placebo (RR = 0.48, 95% CI: 0.28 to 0.83, p =",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.48,
+                "ci_lower": 0.28,
+                "ci_upper": 0.83,
+                "source_text": "RR = 0.48; 95% CI: 0.28 to 0.83"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 16
+        }
+      }
+    },
+    {
+      "pmcid": "PMC9715979",
+      "pmid": "36466392",
+      "specialty": "allergic_rhinitis",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 8,
+        "chars": 27238,
+        "secs": 0.17
+      },
+      "n_gold": 2,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 3,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 1.7,
+                "ci_lower": 1.2,
+                "ci_upper": 2.41,
+                "ci_level": 0.95,
+                "source_text": "RR = 1.70, 95% confidence interval (1.20, 2.41",
+                "quote_context": "placebo [RR = 1.70, 95% confidence interval (1.20, 2.41), P",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 1.7,
+                "ci_lower": 1.2,
+                "ci_upper": 2.41,
+                "source_text": "RR = 1.70, 95% CI (1.20, 2.41"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 1.4,
+                "ci_lower": 0.49,
+                "ci_upper": 3.98,
+                "ci_level": 0.95,
+                "source_text": "RR = 1.40, 95% CI (0.49, 3.98",
+                "quote_context": "children [RR = 1.40, 95% CI (0.49, 3.98), P",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 1.4,
+                "ci_lower": 0.49,
+                "ci_upper": 3.98,
+                "source_text": "RR = 1.40; 95% CI (0.49, 3.98"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 1
+        },
+        "pdf_raw": {
+          "n_extracted": 4,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 1.7,
+                "ci_lower": 1.2,
+                "ci_upper": 2.41,
+                "ci_level": 0.95,
+                "source_text": "RR = 1.70, 95% confidence interval (1.20, 2.41",
+                "quote_context": "placebo [RR = 1.70, 95% confidence interval (1.20, 2.41), P",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 1.7,
+                "ci_lower": 1.2,
+                "ci_upper": 2.41,
+                "source_text": "RR = 1.70, 95% CI\n(1.20, 2.41"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 1.4,
+                "ci_lower": 0.49,
+                "ci_upper": 3.98,
+                "ci_level": 0.95,
+                "source_text": "RR = 1.40, 95% CI (0.49, 3.98",
+                "quote_context": "children [RR = 1.40, 95% CI (0.49, 3.98), P",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 1.4,
+                "ci_lower": 0.49,
+                "ci_upper": 3.98,
+                "source_text": "RR = 1.40; 95% CI (0.49, 3.98"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 2
+        }
+      }
+    },
+    {
+      "pmcid": "PMC10144224",
+      "pmid": "37109185",
+      "specialty": "allergic_rhinitis",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 19,
+        "chars": 50804,
+        "secs": 0.42
+      },
+      "n_gold": 1,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 2.81,
+                "ci_lower": 0.79,
+                "ci_upper": 9.95,
+                "ci_level": 0.95,
+                "source_text": "RR 2.81, 95% CI 0.79\u20139.95",
+                "quote_context": "est risk (RR 2.81, 95% CI 0.79\u20139.95); (4",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 2.81,
+                "ci_lower": 0.79,
+                "ci_upper": 9.95,
+                "source_text": "(RR 2.81; 95% CI 0.79-9.95)"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 9,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 2.81,
+                "ci_lower": 0.79,
+                "ci_upper": 9.95,
+                "ci_level": 0.95,
+                "source_text": "RR 2.81, 95% CI 0.79\u20139.95",
+                "quote_context": "est risk (RR 2.81, 95% CI 0.79\u20139.95); (4",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 2.81,
+                "ci_lower": 0.79,
+                "ci_upper": 9.95,
+                "source_text": "(RR 2.81; 95% CI 0.79-9.95)"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 8
+        }
+      }
+    },
+    {
+      "pmcid": "PMC10356558",
+      "pmid": "37484661",
+      "specialty": "allergic_rhinitis",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 7,
+        "chars": 31021,
+        "secs": 0.19
+      },
+      "n_gold": 2,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.9592,
+                "ci_lower": 0.8384,
+                "ci_upper": 1.0974,
+                "ci_level": 0.95,
+                "source_text": "OR = 0.9592, 95% CI: 0.8384\u20131.0974",
+                "quote_context": "MR-Egger (OR = 0.9592, 95% CI: 0.8384\u20131.0974, p =",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.9592,
+                "ci_lower": 0.8384,
+                "ci_upper": 1.0974,
+                "source_text": "OR = 0.9592; 95% CI: 0.8384-1.0974"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 1.0341,
+                "ci_lower": 0.9785,
+                "ci_upper": 1.0929,
+                "ci_level": 0.95,
+                "source_text": "OR: =1.0341, 95% CI: 0.9785\u20131.0929",
+                "quote_context": "d median (OR: =1.0341, 95% CI: 0.9785\u20131.0929, p =",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "missed",
+              "matched_extracted": null
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 7,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.9592,
+                "ci_lower": 0.8384,
+                "ci_upper": 1.0974,
+                "ci_level": 0.95,
+                "source_text": "OR = 0.9592, 95% CI: 0.8384\u20131.0974",
+                "quote_context": "MR-Egger (OR = 0.9592, 95% CI: 0.8384\u20131.0974, p =",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.9592,
+                "ci_lower": 0.8384,
+                "ci_upper": 1.0974,
+                "source_text": "OR = 0.9592; 95% CI: 0.8384-1.0974"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 1.0341,
+                "ci_lower": 0.9785,
+                "ci_upper": 1.0929,
+                "ci_level": 0.95,
+                "source_text": "OR: =1.0341, 95% CI: 0.9785\u20131.0929",
+                "quote_context": "d median (OR: =1.0341, 95% CI: 0.9785\u20131.0929, p =",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 1.0342,
+                "ci_lower": 0.9766,
+                "ci_upper": 1.0952,
+                "source_text": "OR = 1.0342; 95% CI: 0.9766-1.0952"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 5
+        }
+      }
+    },
+    {
+      "pmcid": "PMC10658941",
+      "pmid": "38026598",
+      "specialty": "allergic_rhinitis",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 13,
+        "chars": 53783,
+        "secs": 0.31
+      },
+      "n_gold": 2,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 3,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 1.3,
+                "ci_lower": 0.96,
+                "ci_upper": 1.7,
+                "ci_level": 0.95,
+                "source_text": "odds ratio (OR)=1.30; 95% CI=(0.96\u20131.7",
+                "quote_context": "n OL-BAK (odds ratio (OR)=1.30; 95% CI=(0.96\u20131.7); p=",
+                "harvest_pattern": "odds\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\....",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 1.3,
+                "ci_lower": 0.96,
+                "ci_upper": 1.7,
+                "source_text": "odds ratio=1.30; 95% CI: (0.96-1.7"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 2.0,
+                "ci_lower": 1.19,
+                "ci_upper": 3.34,
+                "ci_level": 0.95,
+                "source_text": "OR=2.00; 95% CI=(1.19\u20133.34",
+                "quote_context": "AK group (OR=2.00; 95% CI=(1.19\u20133.34); p=",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 2.0,
+                "ci_lower": 1.19,
+                "ci_upper": 3.34,
+                "source_text": "OR=2.00; 95% CI: (1.19-3.34"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 1
+        },
+        "pdf_raw": {
+          "n_extracted": 17,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 1.3,
+                "ci_lower": 0.96,
+                "ci_upper": 1.7,
+                "ci_level": 0.95,
+                "source_text": "odds ratio (OR)=1.30; 95% CI=(0.96\u20131.7",
+                "quote_context": "n OL-BAK (odds ratio (OR)=1.30; 95% CI=(0.96\u20131.7); p=",
+                "harvest_pattern": "odds\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\....",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 1.3,
+                "ci_lower": 0.96,
+                "ci_upper": 1.7,
+                "source_text": "odds ratio  = 1.30; 95% CI: (0.96-1.7"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 2.0,
+                "ci_lower": 1.19,
+                "ci_upper": 3.34,
+                "ci_level": 0.95,
+                "source_text": "OR=2.00; 95% CI=(1.19\u20133.34",
+                "quote_context": "AK group (OR=2.00; 95% CI=(1.19\u20133.34); p=",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 2.0,
+                "ci_lower": 1.19,
+                "ci_upper": 3.34,
+                "source_text": "OR=2.00; 95% CI: (1.19-3.34"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 15
+        }
+      }
+    },
+    {
+      "pmcid": "PMC11449843",
+      "pmid": "39372205",
+      "specialty": "allergic_rhinitis",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 9,
+        "chars": 39097,
+        "secs": 0.36
+      },
+      "n_gold": 1,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 3,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 1.01,
+                "ci_lower": 0.59,
+                "ci_upper": 1.73,
+                "ci_level": 0.95,
+                "source_text": "OR = 1.01, 95% CI (0.59, 1.73",
+                "quote_context": "o groups [OR = 1.01, 95% CI (0.59, 1.73), p",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 1.01,
+                "ci_lower": 0.59,
+                "ci_upper": 1.73,
+                "source_text": "OR = 1.01; 95% CI (0.59, 1.73"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 2
+        },
+        "pdf_raw": {
+          "n_extracted": 4,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 1.01,
+                "ci_lower": 0.59,
+                "ci_upper": 1.73,
+                "ci_level": 0.95,
+                "source_text": "OR = 1.01, 95% CI (0.59, 1.73",
+                "quote_context": "o groups [OR = 1.01, 95% CI (0.59, 1.73), p",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 1.01,
+                "ci_lower": 0.59,
+                "ci_upper": 1.73,
+                "source_text": "OR = 1.01; 95% CI (0.59, 1.73"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 3
+        }
+      }
+    },
+    {
+      "pmcid": "PMC11484092",
+      "pmid": "39421038",
+      "specialty": "allergic_rhinitis",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 10,
+        "chars": 44741,
+        "secs": 0.46
+      },
+      "n_gold": 1,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.9,
+                "ci_lower": 0.74,
+                "ci_upper": 1.08,
+                "ci_level": 0.95,
+                "source_text": "RR, 0.9; 95% CI, 0.74\u20131.08",
+                "quote_context": "rhinitis (RR, 0.9; 95% CI, 0.74\u20131.08; P =",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.9,
+                "ci_lower": 0.74,
+                "ci_upper": 1.08,
+                "source_text": "RR, 0.9; 95% CI, 0.74-1.08"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 6,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.9,
+                "ci_lower": 0.74,
+                "ci_upper": 1.08,
+                "ci_level": 0.95,
+                "source_text": "RR, 0.9; 95% CI, 0.74\u20131.08",
+                "quote_context": "rhinitis (RR, 0.9; 95% CI, 0.74\u20131.08; P =",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.9,
+                "ci_lower": 0.74,
+                "ci_upper": 1.08,
+                "source_text": "RR, 0.9; 95% CI, 0.74-1.08"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 5
+        }
+      }
+    },
+    {
+      "pmcid": "PMC11576000",
+      "pmid": "39560522",
+      "specialty": "allergic_rhinitis",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 9,
+        "chars": 31763,
+        "secs": 0.18
+      },
+      "n_gold": 2,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 6,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.16,
+                "ci_lower": 0.06,
+                "ci_upper": 0.45,
+                "ci_level": 0.95,
+                "source_text": "risk ratio (RR) = 0.16, 95% CI = (0.06, 0.45",
+                "quote_context": "symptoms [risk ratio (RR) = 0.16, 95% CI = (0.06, 0.45)] as",
+                "harvest_pattern": "risk\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\....",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.16,
+                "ci_lower": 0.06,
+                "ci_upper": 0.45,
+                "source_text": "RR = 0.16; 95% CI: (0.06, 0.45"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 2.27,
+                "ci_lower": 0.37,
+                "ci_upper": 6.73,
+                "ci_level": 0.95,
+                "source_text": "RR = 2.27, 95% CI = (0.37, 6.73",
+                "quote_context": "nectasis [RR = 2.27, 95% CI = (0.37, 6.73)] ve",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 2.27,
+                "ci_lower": 0.37,
+                "ci_upper": 6.73,
+                "source_text": "RR = 2.27; 95% CI: (0.37, 6.73"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 4
+        },
+        "pdf_raw": {
+          "n_extracted": 7,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.16,
+                "ci_lower": 0.06,
+                "ci_upper": 0.45,
+                "ci_level": 0.95,
+                "source_text": "risk ratio (RR) = 0.16, 95% CI = (0.06, 0.45",
+                "quote_context": "symptoms [risk ratio (RR) = 0.16, 95% CI = (0.06, 0.45)] as",
+                "harvest_pattern": "risk\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\....",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.16,
+                "ci_lower": 0.06,
+                "ci_upper": 0.45,
+                "source_text": "RR\u2005=\u20050.16; 95% CI: (0.06, 0.45"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 2.27,
+                "ci_lower": 0.37,
+                "ci_upper": 6.73,
+                "ci_level": 0.95,
+                "source_text": "RR = 2.27, 95% CI = (0.37, 6.73",
+                "quote_context": "nectasis [RR = 2.27, 95% CI = (0.37, 6.73)] ve",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 2.27,
+                "ci_lower": 0.37,
+                "ci_upper": 6.73,
+                "source_text": "RR\u2005=\u20052.27; 95% CI: (0.37, 6.73"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 5
+        }
+      }
+    },
+    {
+      "pmcid": "PMC11666178",
+      "pmid": "39705439",
+      "specialty": "allergic_rhinitis",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 11,
+        "chars": 49107,
+        "secs": 0.2
+      },
+      "n_gold": 1,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 1.21,
+                "ci_lower": 1.15,
+                "ci_upper": 1.26,
+                "ci_level": 0.95,
+                "source_text": "RR = 1.21; 95% CI = 1.15, 1.26",
+                "quote_context": "ive rate (RR = 1.21; 95% CI = 1.15, 1.26) The",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 1.21,
+                "ci_lower": 1.15,
+                "ci_upper": 1.26,
+                "source_text": "RR = 1.21; 95% CI: 1.15, 1.26"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 6,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 1.21,
+                "ci_lower": 1.15,
+                "ci_upper": 1.26,
+                "ci_level": 0.95,
+                "source_text": "RR = 1.21; 95% CI = 1.15, 1.26",
+                "quote_context": "ive rate (RR = 1.21; 95% CI = 1.15, 1.26) The",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 1.21,
+                "ci_lower": 1.15,
+                "ci_upper": 1.26,
+                "source_text": "RR\u2005=\u20051.21; 95% CI: 1.15, 1.26"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 5
+        }
+      }
+    },
+    {
+      "pmcid": "PMC12439858",
+      "pmid": "40964592",
+      "specialty": "allergic_rhinitis",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 8,
+        "chars": 33422,
+        "secs": 0.22
+      },
+      "n_gold": 1,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 2,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.66,
+                "ci_lower": 0.29,
+                "ci_upper": 1.5,
+                "ci_level": 0.95,
+                "source_text": "RR=0.66; 95% CI: 0.29-1.50",
+                "quote_context": "n groups (RR=0.66; 95% CI: 0.29-1.50; P=0",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.66,
+                "ci_lower": 0.29,
+                "ci_upper": 1.5,
+                "source_text": "RR=0.66; 95% CI: 0.29-1.50"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 1
+        },
+        "pdf_raw": {
+          "n_extracted": 2,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.66,
+                "ci_lower": 0.29,
+                "ci_upper": 1.5,
+                "ci_level": 0.95,
+                "source_text": "RR=0.66; 95% CI: 0.29-1.50",
+                "quote_context": "n groups (RR=0.66; 95% CI: 0.29-1.50; P=0",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.66,
+                "ci_lower": 0.29,
+                "ci_upper": 1.5,
+                "source_text": "risk ratio 0.66 (95% CI: 0.29-1.50"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 1
+        }
+      }
+    },
+    {
+      "pmcid": "PMC12537136",
+      "pmid": "41189199",
+      "specialty": "allergic_rhinitis",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 9,
+        "chars": 49546,
+        "secs": 0.25
+      },
+      "n_gold": 5,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 8,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "IRR",
+                "point_estimate": 0.33,
+                "ci_lower": 0.12,
+                "ci_upper": 0.91,
+                "ci_level": 0.95,
+                "source_text": "incidence rate ratio of 0.33 (95% CI: 0.12\u20130.91",
+                "quote_context": "ents with incidence rate ratio of 0.33 (95% CI: 0.12\u20130.91, P =",
+                "harvest_pattern": "incidence\\s+rate\\s+ratio[^.\\n]{0,55}?(?P...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "IRR",
+                "point": 0.33,
+                "ci_lower": 0.12,
+                "ci_upper": 0.91,
+                "source_text": "incidence rate ratio 0.33 (95% CI: 0.12-0.91"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 1.36,
+                "ci_lower": 1.02,
+                "ci_upper": 2.17,
+                "ci_level": 0.95,
+                "source_text": "OR = 1.36, 95% CI: 1.02\u20132.17",
+                "quote_context": "smoking (OR = 1.36, 95% CI: 1.02\u20132.17), me",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 1.36,
+                "ci_lower": 1.02,
+                "ci_upper": 2.17,
+                "source_text": "OR = 1.36; 95% CI: 1.02-2.17"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 1.44,
+                "ci_lower": 1.12,
+                "ci_upper": 2.37,
+                "ci_level": 0.95,
+                "source_text": "OR = 1.44, 95% CI: 1.12\u20132.37",
+                "quote_context": "dherence (OR = 1.44, 95% CI: 1.12\u20132.37), lo",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 1.44,
+                "ci_lower": 1.12,
+                "ci_upper": 2.37,
+                "source_text": "OR = 1.44; 95% CI: 1.12-2.37"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 4.59,
+                "ci_lower": 1.12,
+                "ci_upper": 9.33,
+                "ci_level": 0.95,
+                "source_text": "OR = 4.59, 95% CI: 1.12\u20139.33",
+                "quote_context": "ctioning (OR = 4.59, 95% CI: 1.12\u20139.33), an",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 4.59,
+                "ci_lower": 1.12,
+                "ci_upper": 9.33,
+                "source_text": "OR = 4.59; 95% CI: 1.12-9.33"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 5.13,
+                "ci_lower": 1.54,
+                "ci_upper": 7.8,
+                "ci_level": 0.95,
+                "source_text": "OR = 5.13, 95% CI: 1.54\u20137.80",
+                "quote_context": "ducation (OR = 5.13, 95% CI: 1.54\u20137.80). In",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 5.13,
+                "ci_lower": 1.54,
+                "ci_upper": 7.8,
+                "source_text": "OR = 5.13; 95% CI: 1.54-7.80"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 5,
+            "pt_exact": 5,
+            "pt_tol": 5,
+            "ci_lo_exact": 5,
+            "ci_lo_tol": 5,
+            "ci_hi_exact": 5,
+            "ci_hi_tol": 5,
+            "matched_pairs": 5
+          },
+          "n_extra": 3
+        },
+        "pdf_raw": {
+          "n_extracted": 35,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "IRR",
+                "point_estimate": 0.33,
+                "ci_lower": 0.12,
+                "ci_upper": 0.91,
+                "ci_level": 0.95,
+                "source_text": "incidence rate ratio of 0.33 (95% CI: 0.12\u20130.91",
+                "quote_context": "ents with incidence rate ratio of 0.33 (95% CI: 0.12\u20130.91, P =",
+                "harvest_pattern": "incidence\\s+rate\\s+ratio[^.\\n]{0,55}?(?P...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "IRR",
+                "point": 0.33,
+                "ci_lower": 0.12,
+                "ci_upper": 0.91,
+                "source_text": "incidence rate ratio 0.33 (95% CI: 0.12-0.91"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 1.36,
+                "ci_lower": 1.02,
+                "ci_upper": 2.17,
+                "ci_level": 0.95,
+                "source_text": "OR = 1.36, 95% CI: 1.02\u20132.17",
+                "quote_context": "smoking (OR = 1.36, 95% CI: 1.02\u20132.17), me",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 1.36,
+                "ci_lower": 1.02,
+                "ci_upper": 2.17,
+                "source_text": "OR\u2005=\u20051.36; 95% CI: 1.02-2.17"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 1.44,
+                "ci_lower": 1.12,
+                "ci_upper": 2.37,
+                "ci_level": 0.95,
+                "source_text": "OR = 1.44, 95% CI: 1.12\u20132.37",
+                "quote_context": "dherence (OR = 1.44, 95% CI: 1.12\u20132.37), lo",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 1.44,
+                "ci_lower": 1.12,
+                "ci_upper": 2.37,
+                "source_text": "OR\u2005=\u20051.44; 95% CI: 1.12-2.37"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 4.59,
+                "ci_lower": 1.12,
+                "ci_upper": 9.33,
+                "ci_level": 0.95,
+                "source_text": "OR = 4.59, 95% CI: 1.12\u20139.33",
+                "quote_context": "ctioning (OR = 4.59, 95% CI: 1.12\u20139.33), an",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 4.59,
+                "ci_lower": 1.12,
+                "ci_upper": 9.33,
+                "source_text": "OR\u2005=\u20054.59; 95% CI: 1.12-9.33"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 5.13,
+                "ci_lower": 1.54,
+                "ci_upper": 7.8,
+                "ci_level": 0.95,
+                "source_text": "OR = 5.13, 95% CI: 1.54\u20137.80",
+                "quote_context": "ducation (OR = 5.13, 95% CI: 1.54\u20137.80). In",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 5.13,
+                "ci_lower": 1.54,
+                "ci_upper": 7.8,
+                "source_text": "OR\u2005=\u20055.13; 95% CI: 1.54-7.80"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 5,
+            "pt_exact": 5,
+            "pt_tol": 5,
+            "ci_lo_exact": 5,
+            "ci_lo_tol": 5,
+            "ci_hi_exact": 5,
+            "ci_hi_tol": 5,
+            "matched_pairs": 5
+          },
+          "n_extra": 30
+        }
+      }
+    },
+    {
+      "pmcid": "PMC12695863",
+      "pmid": "41394156",
+      "specialty": "allergic_rhinitis",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 16,
+        "chars": 70905,
+        "secs": 0.63
+      },
+      "n_gold": 3,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 10,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.33,
+                "ci_lower": 0.19,
+                "ci_upper": 0.55,
+                "ci_level": 0.95,
+                "source_text": "OR = 0.33, 95% CI: 0.19\u20130.55",
+                "quote_context": "est risk (OR = 0.33, 95% CI: 0.19\u20130.55 SUCR",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.33,
+                "ci_lower": 0.19,
+                "ci_upper": 0.55,
+                "source_text": "OR = 0.33; 95% CI: 0.19-0.55"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.24,
+                "ci_lower": 0.06,
+                "ci_upper": 0.92,
+                "ci_level": 0.95,
+                "source_text": "OR = 0.24, 95% CI: 0.06\u20130.92",
+                "quote_context": "ing best (OR = 0.24, 95% CI: 0.06\u20130.92; SUC",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.24,
+                "ci_lower": 0.06,
+                "ci_upper": 0.92,
+                "source_text": "OR = 0.24; 95% CI: 0.06-0.92"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 1.25,
+                "ci_lower": 1.06,
+                "ci_upper": 1.49,
+                "ci_level": 0.95,
+                "source_text": "RR = 1.25, 95% CI: 1.06\u20131.49",
+                "quote_context": "rovement (RR = 1.25, 95% CI: 1.06\u20131.49; SUC",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 1.25,
+                "ci_lower": 1.06,
+                "ci_upper": 1.49,
+                "source_text": "RR = 1.25; 95% CI: 1.06-1.49"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 3,
+            "pt_exact": 3,
+            "pt_tol": 3,
+            "ci_lo_exact": 3,
+            "ci_lo_tol": 3,
+            "ci_hi_exact": 3,
+            "ci_hi_tol": 3,
+            "matched_pairs": 3
+          },
+          "n_extra": 7
+        },
+        "pdf_raw": {
+          "n_extracted": 24,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.33,
+                "ci_lower": 0.19,
+                "ci_upper": 0.55,
+                "ci_level": 0.95,
+                "source_text": "OR = 0.33, 95% CI: 0.19\u20130.55",
+                "quote_context": "est risk (OR = 0.33, 95% CI: 0.19\u20130.55 SUCR",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.33,
+                "ci_lower": 0.19,
+                "ci_upper": 0.55,
+                "source_text": "OR = 0.33; 95% CI: 0.19-0.55"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.24,
+                "ci_lower": 0.06,
+                "ci_upper": 0.92,
+                "ci_level": 0.95,
+                "source_text": "OR = 0.24, 95% CI: 0.06\u20130.92",
+                "quote_context": "ing best (OR = 0.24, 95% CI: 0.06\u20130.92; SUC",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.24,
+                "ci_lower": 0.06,
+                "ci_upper": 0.92,
+                "source_text": "OR = 0.24; 95% CI: 0.06-0.92"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 1.25,
+                "ci_lower": 1.06,
+                "ci_upper": 1.49,
+                "ci_level": 0.95,
+                "source_text": "RR = 1.25, 95% CI: 1.06\u20131.49",
+                "quote_context": "rovement (RR = 1.25, 95% CI: 1.06\u20131.49; SUC",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 1.25,
+                "ci_lower": 1.06,
+                "ci_upper": 1.49,
+                "source_text": "RR = 1.25; 95% CI: 1.06-1.49"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 3,
+            "pt_exact": 3,
+            "pt_tol": 3,
+            "ci_lo_exact": 3,
+            "ci_lo_tol": 3,
+            "ci_hi_exact": 3,
+            "ci_hi_tol": 3,
+            "matched_pairs": 3
+          },
+          "n_extra": 21
+        }
+      }
+    },
+    {
+      "pmcid": "PMC12736282",
+      "pmid": "41471366",
+      "specialty": "allergic_rhinitis",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 20,
+        "chars": 67528,
+        "secs": 0.34
+      },
+      "n_gold": 1,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 1.2,
+                "ci_lower": 1.09,
+                "ci_upper": 1.32,
+                "ci_level": 0.95,
+                "source_text": "risk ratio = 1.20, 95% CI 1.09\u20131.32",
+                "quote_context": "medicine (risk ratio = 1.20, 95% CI 1.09\u20131.32) and",
+                "harvest_pattern": "risk\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\....",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 1.2,
+                "ci_lower": 1.09,
+                "ci_upper": 1.32,
+                "source_text": "risk ratio = 1.20; 95% CI 1.09-1.32"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 6,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 1.2,
+                "ci_lower": 1.09,
+                "ci_upper": 1.32,
+                "ci_level": 0.95,
+                "source_text": "risk ratio = 1.20, 95% CI 1.09\u20131.32",
+                "quote_context": "medicine (risk ratio = 1.20, 95% CI 1.09\u20131.32) and",
+                "harvest_pattern": "risk\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\....",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 1.2,
+                "ci_lower": 1.09,
+                "ci_upper": 1.32,
+                "source_text": "RR = 1.20; 95% CI: 1.09-1.32"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 5
+        }
+      }
+    },
+    {
+      "pmcid": "PMC12977586",
+      "pmid": "41652607",
+      "specialty": "allergic_rhinitis",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 17,
+        "chars": 57671,
+        "secs": 0.69
+      },
+      "n_gold": 2,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 2,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.1,
+                "ci_lower": 0.01,
+                "ci_upper": 0.93,
+                "ci_level": 0.95,
+                "source_text": "RR = 0.1, 95% CI: 0.01, 0.93",
+                "quote_context": "b 300 mg (RR = 0.1, 95% CI: 0.01, 0.93) and",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.1,
+                "ci_lower": 0.01,
+                "ci_upper": 0.93,
+                "source_text": "RR = 0.1; 95% CI: 0.01, 0.93"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.03,
+                "ci_lower": 0.0,
+                "ci_upper": 0.77,
+                "ci_level": 0.95,
+                "source_text": "RR = 0.03, 95% CI: 0, 0.77",
+                "quote_context": "b 150 mg (RR = 0.03, 95% CI: 0, 0.77) wer",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.03,
+                "ci_lower": 0.0,
+                "ci_upper": 0.77,
+                "source_text": "RR = 0.03; 95% CI: 0, 0.77"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 9,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.1,
+                "ci_lower": 0.01,
+                "ci_upper": 0.93,
+                "ci_level": 0.95,
+                "source_text": "RR = 0.1, 95% CI: 0.01, 0.93",
+                "quote_context": "b 300 mg (RR = 0.1, 95% CI: 0.01, 0.93) and",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.1,
+                "ci_lower": 0.01,
+                "ci_upper": 0.93,
+                "source_text": "RR = 0.1; 95% CI: 0.01-0.93"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.03,
+                "ci_lower": 0.0,
+                "ci_upper": 0.77,
+                "ci_level": 0.95,
+                "source_text": "RR = 0.03, 95% CI: 0, 0.77",
+                "quote_context": "b 150 mg (RR = 0.03, 95% CI: 0, 0.77) wer",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.03,
+                "ci_lower": 0.0,
+                "ci_upper": 0.77,
+                "source_text": "RR = 0.03; 95% CI: 0-0.77"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 7
+        }
+      }
+    },
+    {
+      "pmcid": "PMC12876254",
+      "pmid": "41658333",
+      "specialty": "allergic_rhinitis",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 17,
+        "chars": 70413,
+        "secs": 0.38
+      },
+      "n_gold": 2,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 2,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 1.53,
+                "ci_lower": 1.08,
+                "ci_upper": 2.18,
+                "ci_level": 0.95,
+                "source_text": "OR = 1.53, 95% CI: 1.08\u20132.18",
+                "quote_context": "er: male (OR = 1.53, 95% CI: 1.08\u20132.18); Sp",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 1.53,
+                "ci_lower": 1.08,
+                "ci_upper": 2.18,
+                "source_text": "OR = 1.53; 95% CI: 1.08-2.18"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 1.09,
+                "ci_lower": 1.02,
+                "ci_upper": 1.16,
+                "ci_level": 0.95,
+                "source_text": "OR = 1.09, 95% CI: 1.02\u20131.16",
+                "quote_context": "gE ratio (OR = 1.09, 95% CI: 1.02\u20131.16), sI",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 1.09,
+                "ci_lower": 1.02,
+                "ci_upper": 1.16,
+                "source_text": "OR = 1.09; 95% CI: 1.02-1.16"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 7,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 1.53,
+                "ci_lower": 1.08,
+                "ci_upper": 2.18,
+                "ci_level": 0.95,
+                "source_text": "OR = 1.53, 95% CI: 1.08\u20132.18",
+                "quote_context": "er: male (OR = 1.53, 95% CI: 1.08\u20132.18); Sp",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 1.53,
+                "ci_lower": 1.08,
+                "ci_upper": 2.18,
+                "source_text": "OR = 1.53; 95% CI: 1.08-2.18"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 1.09,
+                "ci_lower": 1.02,
+                "ci_upper": 1.16,
+                "ci_level": 0.95,
+                "source_text": "OR = 1.09, 95% CI: 1.02\u20131.16",
+                "quote_context": "gE ratio (OR = 1.09, 95% CI: 1.02\u20131.16), sI",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 1.09,
+                "ci_lower": 1.02,
+                "ci_upper": 1.16,
+                "source_text": "OR = 1.09; 95% CI: 1.02-1.16"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 5
+        }
+      }
+    }
+  ]
+}
