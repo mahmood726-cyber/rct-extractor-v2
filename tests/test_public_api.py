@@ -14,6 +14,7 @@ EXPECTED_SPECIALTIES = {
     "maternal_neonatal", "tuberculosis", "hepatitis", "meningitis", "pneumonia",
     "diarrhoeal", "malnutrition", "helminths", "hypertension", "cervical_cancer",
     "endometriosis",
+    "menopause_hrt",
     "diabetes", "respiratory", "cardiology", "oncology", "stroke",
     "nephrology", "psychiatry", "rheumatology", "gastroenterology",
     "dermatology", "ophthalmology",
