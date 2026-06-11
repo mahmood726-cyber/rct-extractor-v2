@@ -16,6 +16,7 @@ EXPECTED_SPECIALTIES = {
     "endometriosis",
     "menopause_hrt",
     "infertility_ivf",
+    "gestational_diabetes",
     "diabetes", "respiratory", "cardiology", "oncology", "stroke",
     "nephrology", "psychiatry", "rheumatology", "gastroenterology",
     "dermatology", "ophthalmology",

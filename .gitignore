@@ -193,6 +193,10 @@ data/field_portability/infertility_ivf/rct_trial_pdfs/
 data/field_portability/infertility_ivf/*.jsonl
 data/field_portability/infertility_ivf/*.json
 data/field_portability/infertility_ivf/*.log
+data/field_portability/gestational_diabetes/rct_trial_pdfs/
+data/field_portability/gestational_diabetes/*.jsonl
+data/field_portability/gestational_diabetes/*.json
+data/field_portability/gestational_diabetes/*.log
 
 # PDF accuracy eval: re-fetchable NCBI XML cache (61MB) - keep gold+results, not cache
 data/pdf_eval/xml_cache/
