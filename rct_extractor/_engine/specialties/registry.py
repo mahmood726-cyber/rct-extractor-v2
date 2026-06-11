@@ -531,6 +531,14 @@ from .cirrhosis import (
     LATENT_PATTERNS as CIRR_PROGRESSION_PATTERNS,
     detect_cirrhosis_subspecialty,
     normalize_cirrhosis_endpoint
+from .osteoarthritis import (
+    OSTEOARTHRITIS_ENDPOINTS,
+    TREATMENT_PATTERNS as OA_PHARM_PATTERNS,
+    DRUG_RESISTANT_PATTERNS as OA_INTRAARTICULAR_PATTERNS,
+    PREVENTION_PATTERNS as OA_STRUCTURAL_PATTERNS,
+    LATENT_PATTERNS as OA_NONPHARM_PATTERNS,
+    detect_osteoarthritis_subspecialty,
+    normalize_osteoarthritis_endpoint
 )
 
 
@@ -1095,6 +1103,16 @@ SPECIALTY_REGISTRY = {
             'decompensation': CIRR_DECOMPENSATION_PATTERNS,
             'encephalopathy': CIRR_ENCEPHALOPATHY_PATTERNS,
             'progression': CIRR_PROGRESSION_PATTERNS
+    'osteoarthritis': {
+        'subspecialties': ['pharmacologic', 'intraarticular', 'structural', 'nonpharm'],
+        'detection_function': detect_osteoarthritis_subspecialty,
+        'normalizer': normalize_osteoarthritis_endpoint,
+        'endpoints': OSTEOARTHRITIS_ENDPOINTS,
+        'patterns': {
+            'pharmacologic': OA_PHARM_PATTERNS,
+            'intraarticular': OA_INTRAARTICULAR_PATTERNS,
+            'structural': OA_STRUCTURAL_PATTERNS,
+            'nonpharm': OA_NONPHARM_PATTERNS
         }
     },
     'respiratory': {
@@ -1695,6 +1713,15 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'acute[- ]on[- ]chronic\s+liver\s+failure|aclf|transplant[- ]free\s+survival',
             r'meld|child[- ]pugh|decompensated|hvpg',
             r'carvedilol|nadolol|paracentesis|tips',
+        'osteoarthritis': [
+            r'osteoarthritis|\boa\b|knee\s+oa|hip\s+oa|degenerative\s+joint',
+            r'\bwomac\b|western\s+ontario',
+            r'intra[- ]?articular|hyaluron(?:ic|ate)|viscosupplement',
+            r'omeract[- ]oarsi|oarsi\s+responder|joint[- ]space\s+width|\bjsw\b',
+            r'total\s+(?:knee|hip|joint)\s+(?:replacement|arthroplasty)|\bkoos\b',
+            r'naproxen|celecoxib|diclofenac|duloxetine|tanezumab',
+            r'sprifermin|lorecivivint|cartilage\s+(?:thickness|volume)',
+            r'pain\s+vas|visual\s+analog(?:ue)?\s+scale',
         ],
         'neurology': [
             r'alzheimer', r'dementia', r'multiple\s+sclerosis', r'\bms\b',
@@ -1945,6 +1972,8 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         subspecialty, conf = detect_schizophrenia_subspecialty(text)
     elif best_specialty == 'cirrhosis':
         subspecialty, conf = detect_cirrhosis_subspecialty(text)
+    elif best_specialty == 'osteoarthritis':
+        subspecialty, conf = detect_osteoarthritis_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)
