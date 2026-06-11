@@ -547,6 +547,14 @@ from .covid19 import (
     LATENT_PATTERNS as COV_SEVERE_PATTERNS,
     detect_covid19_subspecialty,
     normalize_covid19_endpoint
+from .sepsis import (
+    SEPSIS_ENDPOINTS,
+    TREATMENT_PATTERNS as SEP_HEMO_PATTERNS,
+    DRUG_RESISTANT_PATTERNS as SEP_ADJUNCTIVE_PATTERNS,
+    PREVENTION_PATTERNS as SEP_ANTIMICROBIAL_PATTERNS,
+    LATENT_PATTERNS as SEP_ORGAN_PATTERNS,
+    detect_sepsis_subspecialty,
+    normalize_sepsis_endpoint
 )
 
 
@@ -1131,6 +1139,16 @@ SPECIALTY_REGISTRY = {
             'immunomodulator': COV_IMMUNO_PATTERNS,
             'prophylaxis_vaccine': COV_PROPHYLAXIS_PATTERNS,
             'severe_supportive': COV_SEVERE_PATTERNS
+    'sepsis': {
+        'subspecialties': ['hemodynamic', 'adjunctive', 'antimicrobial_source', 'organ_support'],
+        'detection_function': detect_sepsis_subspecialty,
+        'normalizer': normalize_sepsis_endpoint,
+        'endpoints': SEPSIS_ENDPOINTS,
+        'patterns': {
+            'hemodynamic': SEP_HEMO_PATTERNS,
+            'adjunctive': SEP_ADJUNCTIVE_PATTERNS,
+            'antimicrobial_source': SEP_ANTIMICROBIAL_PATTERNS,
+            'organ_support': SEP_ORGAN_PATTERNS
         }
     },
     'respiratory': {
@@ -1749,6 +1767,15 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'vaccine\s+efficacy|symptomatic\s+covid|breakthrough\s+infection',
             r'convalescent\s+plasma|casirivimab|sotrovimab|tixagevimab',
             r'viral\s+clearance|sars[- ]cov[- ]2\s+rna',
+        'sepsis': [
+            r'\bsepsis\b|septic\s+shock|septica?emia|sepsis[- ]associated',
+            r'norepinephrine|noradrenaline|vasopressin|angiotensin\s+ii|vasopressor',
+            r'\bsofa\b|sequential\s+organ\s+failure|apache\s+ii',
+            r'hydrocortisone\s+(?:in\s+)?(?:sepsis|septic)|fludrocortisone|metabolic\s+resuscitation',
+            r'vasopressor[- ]free\s+days|shock\s+reversal|organ[- ]support[- ]free',
+            r'procalcitonin[- ]guided|source\s+control|early\s+goal[- ]directed',
+            r'28[- ]day\s+mortality|90[- ]day\s+mortality',
+            r'renal\s+replacement\s+therapy\s+(?:in\s+)?(?:sepsis|septic|aki)|sepsis[- ]associated\s+aki',
         ],
         'neurology': [
             r'alzheimer', r'dementia', r'multiple\s+sclerosis', r'\bms\b',
@@ -2003,6 +2030,8 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         subspecialty, conf = detect_osteoarthritis_subspecialty(text)
     elif best_specialty == 'covid19':
         subspecialty, conf = detect_covid19_subspecialty(text)
+    elif best_specialty == 'sepsis':
+        subspecialty, conf = detect_sepsis_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)
