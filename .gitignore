@@ -293,5 +293,10 @@ data/field_portability/obesity/rct_trial_pdfs/
 data/field_portability/obesity/*.jsonl
 data/field_portability/obesity/*.json
 data/field_portability/obesity/*.log
+# Thyroid field bundle — large/transient data (keep README.md; code is under scripts/)
+data/field_portability/thyroid/rct_trial_pdfs/
+data/field_portability/thyroid/*.jsonl
+data/field_portability/thyroid/*.json
+data/field_portability/thyroid/*.log
 
 PROGRESS.md
