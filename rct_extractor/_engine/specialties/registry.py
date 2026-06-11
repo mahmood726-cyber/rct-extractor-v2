@@ -307,6 +307,14 @@ from .pancreatic_cancer import (
     MORTALITY_PATTERNS as PA_MORTALITY_PATTERNS,
     detect_pancreatic_cancer_subspecialty,
     normalize_pancreatic_cancer_endpoint
+from .gastric_cancer import (
+    GASTRIC_CANCER_ENDPOINTS,
+    SYSTEMIC_PATTERNS as GC_SYSTEMIC_PATTERNS,
+    PERIOPERATIVE_PATTERNS as GC_PERIOPERATIVE_PATTERNS,
+    SURGICAL_PATTERNS as GC_SURGICAL_PATTERNS,
+    MORTALITY_PATTERNS as GC_MORTALITY_PATTERNS,
+    detect_gastric_cancer_subspecialty,
+    normalize_gastric_cancer_endpoint
 )
 
 
@@ -570,6 +578,16 @@ SPECIALTY_REGISTRY = {
             'adjuvant': PA_ADJUVANT_PATTERNS,
             'locally_advanced': PA_LOCALLY_ADVANCED_PATTERNS,
             'mortality': PA_MORTALITY_PATTERNS
+    'gastric_cancer': {
+        'subspecialties': ['systemic', 'perioperative', 'surgical', 'mortality'],
+        'detection_function': detect_gastric_cancer_subspecialty,
+        'normalizer': normalize_gastric_cancer_endpoint,
+        'endpoints': GASTRIC_CANCER_ENDPOINTS,
+        'patterns': {
+            'systemic': GC_SYSTEMIC_PATTERNS,
+            'perioperative': GC_PERIOPERATIVE_PATTERNS,
+            'surgical': GC_SURGICAL_PATTERNS,
+            'mortality': GC_MORTALITY_PATTERNS
         }
     },
     'infectious_disease': {
@@ -902,6 +920,13 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'ca\s?19[-. ]?9', r'pancreaticoduodenectomy|whipple',
             r'borderline\s+resectable', r'resected\s+pancreatic',
             r'locally\s+advanced\s+pancreatic', r'nalirifox', r'metastatic\s+pancreatic'
+        'gastric_cancer': [
+            r'gastric\s+cancer', r'stomach\s+cancer', r'gastric\s+(?:adeno)?carcinoma',
+            r'gastro[- ]?(?:o)?esophageal\s+junction|\bgej\b', r'gastrectomy',
+            r'\bflot\b', r'd[12]\s+(?:lymphadenectomy|dissection)',
+            r'ramucirumab', r'trastuzumab\s+deruxtecan',
+            r'resectable\s+gastric|metastatic\s+gastric|advanced\s+gastric',
+            r'perioperative\s+chemotherapy', r'her2[- ]?(?:positive|\+)\s+gastric'
         ],
         'infectious_disease': [
             r'covid', r'sars[- ]?cov',
@@ -1115,6 +1140,8 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         subspecialty, conf = detect_ovarian_cancer_subspecialty(text)
     elif best_specialty == 'pancreatic_cancer':
         subspecialty, conf = detect_pancreatic_cancer_subspecialty(text)
+    elif best_specialty == 'gastric_cancer':
+        subspecialty, conf = detect_gastric_cancer_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'diabetes':
         subspecialty, conf = detect_diabetes_subspecialty(text)
