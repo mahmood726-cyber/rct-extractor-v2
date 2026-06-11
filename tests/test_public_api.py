@@ -12,6 +12,7 @@ from rct_extractor.api import SPECIALTIES
 EXPECTED_SPECIALTIES = {
     "ards",
     "perioperative",
+    "chronic_pain",
     "hiv", "malaria", "typhoid", "schistosomiasis", "sickle_cell", "cholera",
     "maternal_neonatal", "tuberculosis", "hepatitis", "meningitis", "pneumonia",
     "diarrhoeal", "malnutrition", "helminths", "hypertension", "cervical_cancer",

@@ -25,6 +25,7 @@ from typing import Any, Dict, List, Optional, Tuple
 SPECIALTIES: Tuple[str, ...] = (
     "ards",
     "perioperative",
+    "chronic_pain",
     "hiv",
     "malaria",
     "typhoid",

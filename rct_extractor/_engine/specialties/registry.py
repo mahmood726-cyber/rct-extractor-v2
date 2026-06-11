@@ -23,6 +23,15 @@ from .perioperative import (
     detect_perioperative_subspecialty,
     normalize_perioperative_endpoint
 )
+from .chronic_pain import (
+    CHRONIC_PAIN_ENDPOINTS,
+    PHARMACOLOGICAL_PATTERNS as CP_PHARMACOLOGICAL_PATTERNS,
+    INTERVENTIONAL_PATTERNS as CP_INTERVENTIONAL_PATTERNS,
+    NEUROPATHIC_PATTERNS as CP_NEUROPATHIC_PATTERNS,
+    BEHAVIOURAL_PATTERNS as CP_BEHAVIOURAL_PATTERNS,
+    detect_chronic_pain_subspecialty,
+    normalize_chronic_pain_endpoint
+)
 
 from .cardiology import (
     CARDIOLOGY_ENDPOINTS,
@@ -768,6 +777,18 @@ SPECIALTY_REGISTRY = {
             'recovery': PERIOP_RECOVERY_PATTERNS
         }
     },
+    'chronic_pain': {
+        'subspecialties': ['pharmacological', 'interventional', 'neuropathic', 'behavioural'],
+        'detection_function': detect_chronic_pain_subspecialty,
+        'normalizer': normalize_chronic_pain_endpoint,
+        'endpoints': CHRONIC_PAIN_ENDPOINTS,
+        'patterns': {
+            'pharmacological': CP_PHARMACOLOGICAL_PATTERNS,
+            'interventional': CP_INTERVENTIONAL_PATTERNS,
+            'neuropathic': CP_NEUROPATHIC_PATTERNS,
+            'behavioural': CP_BEHAVIOURAL_PATTERNS
+        }
+    },
     'tuberculosis': {
         'subspecialties': ['treatment', 'drug_resistant', 'prevention', 'latent'],
         'detection_function': detect_tuberculosis_subspecialty,
@@ -1462,6 +1483,16 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'undergoing\s+(?:elective\s+)?surgery', r'non[- ]cardiac\s+surgery',
             r'myocardial\s+injury\s+after\s+non[- ]cardiac\s+surgery|\bmins\b'
         ],
+        'chronic_pain': [
+            r'chronic\s+pain', r'neuropathic\s+pain', r'painful\s+(?:diabetic\s+)?neuropathy',
+            r'post[- ]?herpetic\s+neuralgia', r'trigeminal\s+neuralgia',
+            r'fibromyalgia', r'pain\s+intensity', r'\bnrs\s+pain\b|pain\s+nrs',
+            r'pregabalin|gabapentin', r'duloxetine', r'spinal\s+cord\s+stimulation',
+            r'radiofrequency\s+(?:ablation|denervation)', r'epidural\s+steroid',
+            r'>=?\s*(?:30|50)%\s+(?:pain\s+)?reduction', r'analgesic\s+(?:efficacy|effect)',
+            r'central\s+sensiti[sz]ation', r'allodynia|hyperalgesia',
+            r'brief\s+pain\s+inventory'
+        ],
         'cardiology': [
             r'heart\s+failure', r'myocardial\s+infarction', r'atrial\s+fibrillation',
             r'coronary', r'cardiovascular', r'cardiac', r'lvef', r'ejection\s+fraction',
@@ -2131,6 +2162,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'perioperative':
         subspecialty, conf = detect_perioperative_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'chronic_pain':
+        subspecialty, conf = detect_chronic_pain_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'tuberculosis':
         subspecialty, conf = detect_tuberculosis_subspecialty(text)
