@@ -2,7 +2,7 @@
 rct_extractor.api -- the clean public extraction API.
 
 One function, ``extract(text, specialty=...)``, runs the full text->effects
-pipeline for any of the 27 disease specialties (auto-detected or forced), plus
+pipeline for any of the 28 disease specialties (auto-detected or forced), plus
 ``extract_batch`` for many abstracts and ``to_metakit_config`` to emit the
 universal meta-starter-kit interchange JSON consumed by RapidMeta / allmeta /
 E156 capsules / Pairwise70.
@@ -23,6 +23,7 @@ from typing import Any, Dict, List, Optional, Tuple
 # (each has a src/specialties/<name>_arm_data.py with extract_arm_level()).
 # Order is the canonical order used in the README and CLI help.
 SPECIALTIES: Tuple[str, ...] = (
+    "ards",
     "hiv",
     "malaria",
     "typhoid",

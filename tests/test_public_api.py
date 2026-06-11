@@ -10,6 +10,7 @@ from rct_extractor.api import SPECIALTIES
 # (full text->arm-level extractors). Kept as an explicit set so an accidental
 # addition or removal of a specialty fails this contract loudly.
 EXPECTED_SPECIALTIES = {
+    "ards",
     "hiv", "malaria", "typhoid", "schistosomiasis", "sickle_cell", "cholera",
     "maternal_neonatal", "tuberculosis", "hepatitis", "meningitis", "pneumonia",
     "diarrhoeal", "malnutrition", "helminths", "hypertension", "cervical_cancer",
