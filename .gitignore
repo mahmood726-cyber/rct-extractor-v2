@@ -242,3 +242,10 @@ data/field_portability/leukaemia/*.json
 data/field_portability/leukaemia/*.log
 data/pdf_eval/gold_leukaemia.jsonl
 data/pdf_eval/eval_onc_leukaemia.json
+# Lymphoma field bundle
+data/field_portability/lymphoma/rct_trial_pdfs/
+data/field_portability/lymphoma/*.jsonl
+data/field_portability/lymphoma/*.json
+data/field_portability/lymphoma/*.log
+data/pdf_eval/gold_lymphoma.jsonl
+data/pdf_eval/eval_onc_lymphoma.json
