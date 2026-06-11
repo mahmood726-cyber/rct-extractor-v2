@@ -27,6 +27,8 @@ EXPECTED_SPECIALTIES = {
     # neuro / psych / GI / rheum cluster (9)
     "parkinsons", "alzheimers", "multiple_sclerosis", "migraine",
     "schizophrenia", "cirrhosis", "osteoarthritis", "covid19", "sepsis",
+    # critical-care / surgery / pain / haematology / allergy (ccs) cluster
+    "transfusion",
 }
 
 
