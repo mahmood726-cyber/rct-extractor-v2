@@ -313,5 +313,10 @@ data/field_portability/pulmonary_hypertension/rct_trial_pdfs/
 data/field_portability/pulmonary_hypertension/*.jsonl
 data/field_portability/pulmonary_hypertension/*.json
 data/field_portability/pulmonary_hypertension/*.log
+# PCOS field bundle — large/transient data (keep README.md; code is under scripts/)
+data/field_portability/pcos/rct_trial_pdfs/
+data/field_portability/pcos/*.jsonl
+data/field_portability/pcos/*.json
+data/field_portability/pcos/*.log
 
 PROGRESS.md

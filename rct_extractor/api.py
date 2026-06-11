@@ -42,6 +42,7 @@ SPECIALTIES: Tuple[str, ...] = (
     "osteoporosis",
     "kidney_transplant",
     "pulmonary_hypertension",
+    "pcos",
     "respiratory",
     "cardiology",
     "oncology",

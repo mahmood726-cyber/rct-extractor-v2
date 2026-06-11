@@ -218,6 +218,14 @@ from .pulmonary_hypertension import (
     BIOMARKER_PATTERNS as PH_BIOMARKER_PATTERNS,
     detect_pulmonary_hypertension_subspecialty,
     normalize_pulmonary_hypertension_endpoint
+from .pcos import (
+    PCOS_ENDPOINTS,
+    REPRODUCTIVE_PATTERNS as PCOS_REPRODUCTIVE_PATTERNS,
+    METABOLIC_PATTERNS as PCOS_METABOLIC_PATTERNS,
+    ANDROGEN_PATTERNS as PCOS_ANDROGEN_PATTERNS,
+    SAFETY_PATTERNS as PCOS_SAFETY_PATTERNS,
+    detect_pcos_subspecialty,
+    normalize_pcos_endpoint
 )
 
 from .respiratory import (
@@ -927,6 +935,16 @@ SPECIALTY_REGISTRY = {
             'hemodynamics': PH_HEMODYNAMICS_PATTERNS,
             'clinical_worsening': PH_CLINICAL_WORSENING_PATTERNS,
             'biomarker': PH_BIOMARKER_PATTERNS
+    'pcos': {
+        'subspecialties': ['reproductive', 'metabolic', 'androgen', 'safety'],
+        'detection_function': detect_pcos_subspecialty,
+        'normalizer': normalize_pcos_endpoint,
+        'endpoints': PCOS_ENDPOINTS,
+        'patterns': {
+            'reproductive': PCOS_REPRODUCTIVE_PATTERNS,
+            'metabolic': PCOS_METABOLIC_PATTERNS,
+            'androgen': PCOS_ANDROGEN_PATTERNS,
+            'safety': PCOS_SAFETY_PATTERNS
         }
     },
     'neurology': {
@@ -1350,6 +1368,13 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'riociguat', r'sotatercept', r'endothelin\s+receptor\s+antagonist',
             r'sildenafil|tadalafil', r'time\s+to\s+clinical\s+worsening',
             r'pulmonary\s+arteriopathy|chronic\s+thromboembolic\s+pulmonary',
+        'pcos': [
+            r'polycystic\s+ovar(?:y|ian)\s+syndrome', r'\bpcos\b', r'polycystic\s+ovar(?:y|ian|ies)',
+            r'anovulat(?:ion|ory)', r'ovulation\s+induction', r'oligo[- ]?ovulation',
+            r'letrozole', r'clomi(?:phene|fene)', r'hyperandrogenism|hyperandrogen(?:a|ae)mia',
+            r'hirsutism|ferriman[- ]gallwey', r'oligomenorrh(?:o)?ea|amenorrh(?:o)?ea',
+            r'rotterdam\s+criteria', r'free\s+androgen\s+index',
+            r'sex\s+hormone[- ]binding\s+globulin', r'ovarian\s+drilling',
         ],
         'stroke': [
             r'\bstroke\b', r'ischa?emic\s+stroke', r'acute\s+ischa?emic\s+stroke',
@@ -1647,6 +1672,8 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         subspecialty, conf = detect_kidney_transplant_subspecialty(text)
     elif best_specialty == 'pulmonary_hypertension':
         subspecialty, conf = detect_pulmonary_hypertension_subspecialty(text)
+    elif best_specialty == 'pcos':
+        subspecialty, conf = detect_pcos_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'respiratory':
         subspecialty, conf = detect_respiratory_subspecialty(text)
