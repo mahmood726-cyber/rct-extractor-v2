@@ -202,6 +202,15 @@ from .menopause_hrt import (
     detect_menopause_hrt_subspecialty,
     normalize_menopause_hrt_endpoint
 )
+from .infertility_ivf import (
+    INFERTILITY_IVF_ENDPOINTS,
+    STIMULATION_PATTERNS as IVF_STIMULATION_PATTERNS,
+    LAB_PATTERNS as IVF_LAB_PATTERNS,
+    TRANSFER_PATTERNS as IVF_TRANSFER_PATTERNS,
+    OVULATION_PATTERNS as IVF_OVULATION_PATTERNS,
+    detect_infertility_ivf_subspecialty,
+    normalize_infertility_ivf_endpoint
+)
 
 from .diabetes import (
     DIABETES_ENDPOINTS,
@@ -983,6 +992,18 @@ SPECIALTY_REGISTRY = {
             'safety': MHT_SAFETY_PATTERNS
         }
     },
+    'infertility_ivf': {
+        'subspecialties': ['stimulation', 'lab', 'transfer', 'ovulation'],
+        'detection_function': detect_infertility_ivf_subspecialty,
+        'normalizer': normalize_infertility_ivf_endpoint,
+        'endpoints': INFERTILITY_IVF_ENDPOINTS,
+        'patterns': {
+            'stimulation': IVF_STIMULATION_PATTERNS,
+            'lab': IVF_LAB_PATTERNS,
+            'transfer': IVF_TRANSFER_PATTERNS,
+            'ovulation': IVF_OVULATION_PATTERNS
+        }
+    },
     'infectious_disease': {
         'subspecialties': ['covid', 'hepatitis', 'bacterial'],
         'endpoints': {
@@ -1617,6 +1638,19 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'fezolinetant|elinzanetant', r'tibolone', r'ospemifene', r'prasterone',
             r'conjugated\s+equine\s+(?:o?estrogen)', r'night\s+sweats?'
         ],
+        'infertility_ivf': [
+            r'in[- ]vitro\s+fertili[sz]ation', r'\bivf\b', r'\bicsi\b',
+            r'intracytoplasmic\s+sperm\s+injection', r'assisted\s+reproducti\w+',
+            r'embryo\s+transfer', r'ovarian\s+stimulation',
+            r'controlled\s+ovarian\s+(?:hyper)?stimulation',
+            r'oocytes?\s+retrieved|oocyte\s+yield', r'ovarian\s+hyperstimulation\s+syndrome',
+            r'\bohss\b', r'clinical\s+pregnancy\s+rate', r'blastocyst',
+            r'gn?rh\s+antagonist|gn?rh\s+agonist', r'follitropin|gonadotro?ph?in',
+            r'frozen[- ](?:thawed\s+)?embryo|\bfet\b', r'intrauterine\s+insemination|\biui\b',
+            r'subfertil(?:e|ity)', r'\binfertilit(?:y|ies)\b', r'ovulation\s+induction',
+            r'anovulat(?:ion|ory)', r'clomi(?:phene|fene)', r'fertili[sz]ation\s+rate',
+            r'(?:clinical|ongoing)\s+pregnancy', r'mature\s+oocyte|mii\s+oocyte'
+        ],
         'infectious_disease': [
             r'covid', r'sars[- ]?cov',
             r'viral', r'bacterial', r'antiviral', r'antibiotic', r'infection'
@@ -2061,6 +2095,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'menopause_hrt':
         subspecialty, conf = detect_menopause_hrt_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'infertility_ivf':
+        subspecialty, conf = detect_infertility_ivf_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'diabetes':
         subspecialty, conf = detect_diabetes_subspecialty(text)

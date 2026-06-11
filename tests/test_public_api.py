@@ -15,6 +15,7 @@ EXPECTED_SPECIALTIES = {
     "diarrhoeal", "malnutrition", "helminths", "hypertension", "cervical_cancer",
     "endometriosis",
     "menopause_hrt",
+    "infertility_ivf",
     "diabetes", "respiratory", "cardiology", "oncology", "stroke",
     "nephrology", "psychiatry", "rheumatology", "gastroenterology",
     "dermatology", "ophthalmology",

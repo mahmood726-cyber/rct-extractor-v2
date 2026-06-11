@@ -189,6 +189,10 @@ data/field_portability/menopause_hrt/rct_trial_pdfs/
 data/field_portability/menopause_hrt/*.jsonl
 data/field_portability/menopause_hrt/*.json
 data/field_portability/menopause_hrt/*.log
+data/field_portability/infertility_ivf/rct_trial_pdfs/
+data/field_portability/infertility_ivf/*.jsonl
+data/field_portability/infertility_ivf/*.json
+data/field_portability/infertility_ivf/*.log
 
 # PDF accuracy eval: re-fetchable NCBI XML cache (61MB) - keep gold+results, not cache
 data/pdf_eval/xml_cache/
