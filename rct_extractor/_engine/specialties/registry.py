@@ -5,6 +5,16 @@ Specialty Registry - Central registry for all specialty patterns and endpoints.
 from typing import Dict, List, Tuple, Optional, Callable
 import re
 
+from .wound_healing import (
+    WOUND_HEALING_ENDPOINTS,
+    BURNS_PATTERNS as WH_BURNS_PATTERNS,
+    CHRONIC_WOUNDS_PATTERNS as WH_CHRONIC_WOUNDS_PATTERNS,
+    SURGICAL_WOUNDS_PATTERNS as WH_SURGICAL_WOUNDS_PATTERNS,
+    ADJUNCTS_PATTERNS as WH_ADJUNCTS_PATTERNS,
+    detect_wound_healing_subspecialty,
+    normalize_wound_healing_endpoint
+)
+
 from .cardiology import (
     CARDIOLOGY_ENDPOINTS,
     HEART_FAILURE_PATTERNS,
@@ -688,6 +698,18 @@ SPECIALTY_REGISTRY = {
             'preterm': MNH_PRETERM_PATTERNS
         }
     },
+    'wound_healing': {
+        'subspecialties': ['burns', 'chronic_wounds', 'surgical_wounds', 'adjuncts'],
+        'detection_function': detect_wound_healing_subspecialty,
+        'normalizer': normalize_wound_healing_endpoint,
+        'endpoints': WOUND_HEALING_ENDPOINTS,
+        'patterns': {
+            'burns': WH_BURNS_PATTERNS,
+            'chronic_wounds': WH_CHRONIC_WOUNDS_PATTERNS,
+            'surgical_wounds': WH_SURGICAL_WOUNDS_PATTERNS,
+            'adjuncts': WH_ADJUNCTS_PATTERNS
+        }
+    },
     'tuberculosis': {
         'subspecialties': ['treatment', 'drug_resistant', 'prevention', 'latent'],
         'detection_function': detect_tuberculosis_subspecialty,
@@ -1311,6 +1333,16 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
 
     # Keywords for each specialty
     specialty_keywords = {
+        'wound_healing': [
+            r'wound\s+healing', r'\bburn\b|burns|burn\s+(?:wound|injury)|thermal\s+injury',
+            r'diabetic\s+foot\s+ulcer|\bdfu\b', r'venous\s+leg\s+ulcer|\bvlu\b',
+            r'pressure\s+(?:ulcer|injury|sore)', r'chronic\s+wound|non[- ]healing\s+(?:wound|ulcer)',
+            r'negative[- ]pressure\s+wound\s+therapy|\bnpwt\b',
+            r'complete\s+(?:wound\s+)?(?:healing|closure)', r'time\s+to\s+(?:wound\s+)?healing',
+            r'wound\s+(?:area\s+reduction|dehiscence)', r'skin\s+graft|split[- ]thickness',
+            r'skin\s+substitute|dermal\s+(?:template|matrix)', r're[- ]?epitheliali[sz]ation',
+            r'leg\s+ulcer\s+healing'
+        ],
         'cardiology': [
             r'heart\s+failure', r'myocardial\s+infarction', r'atrial\s+fibrillation',
             r'coronary', r'cardiovascular', r'cardiac', r'lvef', r'ejection\s+fraction',
@@ -1932,6 +1964,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'maternal_neonatal':
         subspecialty, conf = detect_maternal_neonatal_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'wound_healing':
+        subspecialty, conf = detect_wound_healing_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'tuberculosis':
         subspecialty, conf = detect_tuberculosis_subspecialty(text)

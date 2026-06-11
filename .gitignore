@@ -350,3 +350,9 @@ data/field_portability/cirrhosis/rct_trial_pdfs/
 data/field_portability/cirrhosis/*.jsonl
 data/field_portability/cirrhosis/*.json
 data/field_portability/cirrhosis/*.log
+
+# Wound-healing/burns field bundle — large/transient data (keep README.md; code under scripts/)
+data/field_portability/wound_healing/rct_trial_pdfs/
+data/field_portability/wound_healing/*.jsonl
+data/field_portability/wound_healing/*.json
+data/field_portability/wound_healing/*.log
