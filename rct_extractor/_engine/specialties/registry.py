@@ -184,6 +184,16 @@ from .cervical_cancer import (
     normalize_cervical_cancer_endpoint
 )
 
+from .endometriosis import (
+    ENDOMETRIOSIS_ENDPOINTS,
+    PAIN_PATTERNS as ENDO_PAIN_PATTERNS,
+    MEDICAL_PATTERNS as ENDO_MEDICAL_PATTERNS,
+    SURGICAL_PATTERNS as ENDO_SURGICAL_PATTERNS,
+    FERTILITY_PATTERNS as ENDO_FERTILITY_PATTERNS,
+    detect_endometriosis_subspecialty,
+    normalize_endometriosis_endpoint
+)
+
 from .diabetes import (
     DIABETES_ENDPOINTS,
     GLYCEMIC_PATTERNS as DIABETES_GLYCEMIC_PATTERNS,
@@ -940,6 +950,18 @@ SPECIALTY_REGISTRY = {
             'mortality': RCC_MORTALITY_PATTERNS
         }
     },
+    'endometriosis': {
+        'subspecialties': ['pain', 'medical', 'surgical', 'fertility'],
+        'detection_function': detect_endometriosis_subspecialty,
+        'normalizer': normalize_endometriosis_endpoint,
+        'endpoints': ENDOMETRIOSIS_ENDPOINTS,
+        'patterns': {
+            'pain': ENDO_PAIN_PATTERNS,
+            'medical': ENDO_MEDICAL_PATTERNS,
+            'surgical': ENDO_SURGICAL_PATTERNS,
+            'fertility': ENDO_FERTILITY_PATTERNS
+        }
+    },
     'infectious_disease': {
         'subspecialties': ['covid', 'hepatitis', 'bacterial'],
         'endpoints': {
@@ -1557,6 +1579,14 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'ipilimumab|nivolumab|pembrolizumab', r'\bimdc\b', r'nephrectomy',
             r'metastatic\s+renal', r'\bvhl\b|von\s+hippel[- ]lindau', r'belzutifan'
         ],
+        'endometriosis': [
+            r'endometriosis', r'endometrioma', r'adenomyosis',
+            r'deep\s+infiltrating\s+endometriosis', r'endometriosis[- ]associated\s+pain',
+            r'dienogest', r'elagolix', r'relugolix', r'linzagolix',
+            r'rasrm|rafs|revised\s+american\s+fertility',
+            r'ectopic\s+endometrial', r'peritoneal\s+endometriosis',
+            r'\bb\s*&\s*b\s+score\b|biberoglu[- ]behrman'
+        ],
         'infectious_disease': [
             r'covid', r'sars[- ]?cov',
             r'viral', r'bacterial', r'antiviral', r'antibiotic', r'infection'
@@ -1995,6 +2025,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'renal_cell_carcinoma':
         subspecialty, conf = detect_renal_cell_carcinoma_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'endometriosis':
+        subspecialty, conf = detect_endometriosis_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'diabetes':
         subspecialty, conf = detect_diabetes_subspecialty(text)

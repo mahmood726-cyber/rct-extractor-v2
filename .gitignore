@@ -181,6 +181,10 @@ data/field_portability/prostate_cancer/rct_trial_pdfs/
 data/field_portability/prostate_cancer/*.jsonl
 data/field_portability/prostate_cancer/*.json
 data/field_portability/prostate_cancer/*.log
+data/field_portability/endometriosis/rct_trial_pdfs/
+data/field_portability/endometriosis/*.jsonl
+data/field_portability/endometriosis/*.json
+data/field_portability/endometriosis/*.log
 
 # PDF accuracy eval: re-fetchable NCBI XML cache (61MB) - keep gold+results, not cache
 data/pdf_eval/xml_cache/
