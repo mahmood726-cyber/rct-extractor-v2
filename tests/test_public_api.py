@@ -14,6 +14,7 @@ EXPECTED_SPECIALTIES = {
     "perioperative",
     "chronic_pain",
     "postoperative_pain",
+    "anaemia",
     "hiv", "malaria", "typhoid", "schistosomiasis", "sickle_cell", "cholera",
     "maternal_neonatal", "tuberculosis", "hepatitis", "meningitis", "pneumonia",
     "diarrhoeal", "malnutrition", "helminths", "hypertension", "cervical_cancer",
