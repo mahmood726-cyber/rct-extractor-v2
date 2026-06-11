@@ -72,6 +72,7 @@ SPECIALTIES: Tuple[str, ...] = (
     "obesity",
     "thyroid",
     "parkinsons",
+    "alzheimers",
 )
 
 __all__ = [

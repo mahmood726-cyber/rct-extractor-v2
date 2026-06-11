@@ -56,6 +56,40 @@ SEARCH = "https://www.ebi.ac.uk/europepmc/webservices/rest/search?"
 UA = "rct-extractor-v2-eval/1.0 (mahmood726@gmail.com)"
 
 
+_REVIEW_MARKERS = re.compile(
+    r"\b(meta[- ]?analys[ie]s|systematic review|network meta|"
+    r"we searched|literature search|pooled (?:odds|risk|hazard|estimate)|"
+    r"studies were included|eligible studies|databases were searched|"
+    r"prisma|prospero|scoping review|umbrella review)\b", re.I)
+_OBSERVATIONAL_MARKERS = re.compile(
+    r"\b(cohort stud(?:y|ies)|case[- ]control|observational stud(?:y|ies)|"
+    r"retrospective (?:cohort|stud|analys|review|chart)|registry[- ]based|"
+    r"cross[- ]sectional|nationwide (?:cohort|registry)|"
+    r"electronic health record|real[- ]world (?:data|cohort|evidence))\b", re.I)
+_RCT_MARKERS = re.compile(
+    r"\b(randomi[sz]ed|randomi[sz]ation|double[- ]blind|single[- ]blind|"
+    r"placebo[- ]controlled|allocated to|assigned to receive|"
+    r"randomly (?:allocated|assigned)|parallel[- ]group|crossover trial|"
+    r"open[- ]label trial|phase \d|sham[- ]controlled)\b", re.I)
+
+
+def _looks_non_rct(abstract: str) -> bool:
+    """True if the abstract is itself a review/meta-analysis, or an observational
+    study with no RCT self-description. These are exactly the non-RCT estimates the
+    extractor declines by design, so they do not belong in an RCT gold set. This is
+    a study-DESIGN exclusion (no effect-value inspection), generalizable across all
+    specialties; it keeps the gold honestly RCT-only."""
+    # A primary RCT abstract essentially never calls itself a meta-analysis /
+    # systematic review, so those markers are decisive on their own.
+    if _REVIEW_MARKERS.search(abstract):
+        return True
+    # Observational primary study: exclude only when it does NOT also describe an
+    # RCT (guards the rare RCT that cites a cohort in its rationale).
+    if _OBSERVATIONAL_MARKERS.search(abstract) and not _RCT_MARKERS.search(abstract):
+        return True
+    return False
+
+
 def _strip_html(s: str) -> str:
     """Clean EuropePMC abstractText to plain prose (mirrors build_gold_from_abstracts
     .extract_abstract): drop tags, unescape the handful of entities that appear in
@@ -139,6 +173,8 @@ def main():
         abstract = _strip_html(r.get("abstractText") or "")
         if len(abstract) < 200:
             continue
+        if _looks_non_rct(abstract):
+            continue  # review / meta-analysis / observational -> not an RCT gold
         effects = harvest_effects(abstract)
         if not effects:
             continue

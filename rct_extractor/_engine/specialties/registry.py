@@ -491,6 +491,14 @@ from .parkinsons import (
     LATENT_PATTERNS as PD_NEUROPROTECTION_PATTERNS,
     detect_parkinsons_subspecialty,
     normalize_parkinsons_endpoint
+from .alzheimers import (
+    ALZHEIMERS_ENDPOINTS,
+    TREATMENT_PATTERNS as AD_SYMPTOMATIC_PATTERNS,
+    DRUG_RESISTANT_PATTERNS as AD_DMT_PATTERNS,
+    PREVENTION_PATTERNS as AD_NEUROPSYCH_PATTERNS,
+    LATENT_PATTERNS as AD_PREVENTION_MCI_PATTERNS,
+    detect_alzheimers_subspecialty,
+    normalize_alzheimers_endpoint
 )
 
 
@@ -1104,6 +1112,18 @@ SPECIALTY_REGISTRY = {
             'nonmotor': PD_NONMOTOR_PATTERNS,
             'neuroprotection': PD_NEUROPROTECTION_PATTERNS
         }
+    },
+    'alzheimers': {
+        'subspecialties': ['symptomatic', 'disease_modifying', 'neuropsychiatric', 'prevention_mci'],
+        'detection_function': detect_alzheimers_subspecialty,
+        'normalizer': normalize_alzheimers_endpoint,
+        'endpoints': ALZHEIMERS_ENDPOINTS,
+        'patterns': {
+            'symptomatic': AD_SYMPTOMATIC_PATTERNS,
+            'disease_modifying': AD_DMT_PATTERNS,
+            'neuropsychiatric': AD_NEUROPSYCH_PATTERNS,
+            'prevention_mci': AD_PREVENTION_MCI_PATTERNS
+        }
     }
 }
 
@@ -1552,6 +1572,13 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'deep\s+brain\s+stimulation|\bdbs\b|subthalamic',
             r'levodopa[- ]carbidopa\s+intestinal\s+gel|\blcig\b',
             r'pdq[- ]?39', r'bradykinesia|motor\s+fluctuations'
+        'alzheimers': [
+            r'alzheimer', r'\bdementia\b', r'adas[- ]?cog', r'cdr[- ]?s[ob]b|cdr\s+sum',
+            r'mild\s+cognitive\s+impairment|\bmci\b',
+            r'donepezil|rivastigmine|galantamine|memantine|cholinesterase',
+            r'lecanemab|aducanumab|donanemab|gantenerumab|solanezumab',
+            r'anti[- ]amyloid|amyloid\s+pet|centiloid|\baria\b',
+            r'\bnpi\b|neuropsychiatric\s+inventory|\bcmai\b|\bmmse\b'
         ],
         'neurology': [
             r'alzheimer', r'dementia', r'multiple\s+sclerosis', r'\bms\b',
@@ -1792,6 +1819,8 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         subspecialty, conf = detect_thyroid_subspecialty(text)
     elif best_specialty == 'parkinsons':
         subspecialty, conf = detect_parkinsons_subspecialty(text)
+    elif best_specialty == 'alzheimers':
+        subspecialty, conf = detect_alzheimers_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)
