@@ -249,3 +249,10 @@ data/field_portability/lymphoma/*.json
 data/field_portability/lymphoma/*.log
 data/pdf_eval/gold_lymphoma.jsonl
 data/pdf_eval/eval_onc_lymphoma.json
+# Head-and-neck-cancer field bundle
+data/field_portability/head_neck_cancer/rct_trial_pdfs/
+data/field_portability/head_neck_cancer/*.jsonl
+data/field_portability/head_neck_cancer/*.json
+data/field_portability/head_neck_cancer/*.log
+data/pdf_eval/gold_head_neck_cancer.jsonl
+data/pdf_eval/eval_onc_head_neck_cancer.json
