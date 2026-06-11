@@ -350,3 +350,9 @@ data/field_portability/cirrhosis/rct_trial_pdfs/
 data/field_portability/cirrhosis/*.jsonl
 data/field_portability/cirrhosis/*.json
 data/field_portability/cirrhosis/*.log
+
+# Uterine-fibroids field bundle
+data/field_portability/uterine_fibroids/rct_trial_pdfs/
+data/field_portability/uterine_fibroids/*.jsonl
+data/field_portability/uterine_fibroids/*.json
+data/field_portability/uterine_fibroids/*.log

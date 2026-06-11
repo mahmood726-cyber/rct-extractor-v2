@@ -39,6 +39,7 @@ SPECIALTIES: Tuple[str, ...] = (
     "helminths",
     "hypertension",
     "cervical_cancer",
+    "uterine_fibroids",
     "diabetes",
     "osteoporosis",
     "kidney_transplant",
