@@ -350,3 +350,9 @@ data/field_portability/cirrhosis/rct_trial_pdfs/
 data/field_portability/cirrhosis/*.jsonl
 data/field_portability/cirrhosis/*.json
 data/field_portability/cirrhosis/*.log
+
+# ITP (immune thrombocytopenia) field bundle — large/transient data (keep README.md; code under scripts/)
+data/field_portability/itp/rct_trial_pdfs/
+data/field_portability/itp/*.jsonl
+data/field_portability/itp/*.json
+data/field_portability/itp/*.log
