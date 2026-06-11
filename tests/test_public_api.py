@@ -42,6 +42,7 @@ EXPECTED_SPECIALTIES = {
     "erectile_dysfunction",
     "urinary_incontinence",
     "itp",
+    "transfusion",
 }
 
 

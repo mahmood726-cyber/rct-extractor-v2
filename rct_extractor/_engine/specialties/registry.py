@@ -59,6 +59,15 @@ from .itp import (
     detect_itp_subspecialty,
     normalize_itp_endpoint
 )
+from .transfusion import (
+    TRANSFUSION_ENDPOINTS,
+    THRESHOLD_PATTERNS as TX_THRESHOLD_PATTERNS,
+    PLATELET_PLASMA_PATTERNS as TX_PLATELET_PLASMA_PATTERNS,
+    MASSIVE_PATTERNS as TX_MASSIVE_PATTERNS,
+    PROCESSING_PATTERNS as TX_PROCESSING_PATTERNS,
+    detect_transfusion_subspecialty,
+    normalize_transfusion_endpoint
+)
 
 from .cardiology import (
     CARDIOLOGY_ENDPOINTS,
@@ -888,6 +897,18 @@ SPECIALTY_REGISTRY = {
             'paediatric': ITP_PAEDIATRIC_PATTERNS
         }
     },
+    'transfusion': {
+        'subspecialties': ['threshold', 'platelet_plasma', 'massive', 'processing'],
+        'detection_function': detect_transfusion_subspecialty,
+        'normalizer': normalize_transfusion_endpoint,
+        'endpoints': TRANSFUSION_ENDPOINTS,
+        'patterns': {
+            'threshold': TX_THRESHOLD_PATTERNS,
+            'platelet_plasma': TX_PLATELET_PLASMA_PATTERNS,
+            'massive': TX_MASSIVE_PATTERNS,
+            'processing': TX_PROCESSING_PATTERNS
+        }
+    },
     'tuberculosis': {
         'subspecialties': ['treatment', 'drug_resistant', 'prevention', 'latent'],
         'detection_function': detect_tuberculosis_subspecialty,
@@ -1669,6 +1690,16 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'high[- ]dose\s+dexamethasone', r'anti[- ]d\s+immunoglobulin',
             r'newly\s+diagnosed\s+(?:itp|immune\s+thrombocytopenia)'
         ],
+        'transfusion': [
+            r'restrictive\s+(?:vs\.?\s+liberal\s+)?(?:transfusion|strategy|threshold)',
+            r'liberal\s+(?:transfusion|strategy|threshold)', r'transfusion\s+threshold',
+            r'transfusion\s+strategy', r'red[- ](?:blood[- ])?cell\s+transfusion',
+            r'h(?:ae|e)moglobin\s+(?:trigger|threshold)', r'platelet\s+transfusion',
+            r'fresh\s+frozen\s+plasma|\bffp\b', r'massive\s+transfusion',
+            r'prophylactic\s+platelet', r'whole\s+blood\s+(?:transfusion|resuscitation)',
+            r'patient\s+blood\s+management', r'units\s+(?:of\s+(?:blood|red\s+cells)|transfused)',
+            r'(?:1\s*:\s*1\s*:\s*1|fixed[- ]ratio)\s+(?:transfusion|resuscitation)?'
+        ],
         'cardiology': [
             r'heart\s+failure', r'myocardial\s+infarction', r'atrial\s+fibrillation',
             r'coronary', r'cardiovascular', r'cardiac', r'lvef', r'ejection\s+fraction',
@@ -2392,6 +2423,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'itp':
         subspecialty, conf = detect_itp_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'transfusion':
+        subspecialty, conf = detect_transfusion_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'tuberculosis':
         subspecialty, conf = detect_tuberculosis_subspecialty(text)
