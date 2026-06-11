@@ -49,6 +49,7 @@ SPECIALTIES: Tuple[str, ...] = (
     "infertility_ivf",
     "gestational_diabetes",
     "uterine_fibroids",
+    "benign_prostatic_hyperplasia",
     "diabetes",
     "osteoporosis",
     "kidney_transplant",

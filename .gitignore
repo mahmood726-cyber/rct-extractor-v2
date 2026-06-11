@@ -399,3 +399,8 @@ data/field_portability/uterine_fibroids/rct_trial_pdfs/
 data/field_portability/uterine_fibroids/*.jsonl
 data/field_portability/uterine_fibroids/*.json
 data/field_portability/uterine_fibroids/*.log
+# Benign prostatic hyperplasia field bundle
+data/field_portability/benign_prostatic_hyperplasia/rct_trial_pdfs/
+data/field_portability/benign_prostatic_hyperplasia/*.jsonl
+data/field_portability/benign_prostatic_hyperplasia/*.json
+data/field_portability/benign_prostatic_hyperplasia/*.log

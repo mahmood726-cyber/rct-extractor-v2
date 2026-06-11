@@ -275,6 +275,15 @@ from .uterine_fibroids import (
     detect_uterine_fibroids_subspecialty,
     normalize_uterine_fibroids_endpoint
 )
+from .benign_prostatic_hyperplasia import (
+    BENIGN_PROSTATIC_HYPERPLASIA_ENDPOINTS,
+    SYMPTOMS_PATTERNS as BPH_SYMPTOMS_PATTERNS,
+    FLOW_PATTERNS as BPH_FLOW_PATTERNS,
+    PROGRESSION_PATTERNS as BPH_PROGRESSION_PATTERNS,
+    SEXUAL_PATTERNS as BPH_SEXUAL_PATTERNS,
+    detect_benign_prostatic_hyperplasia_subspecialty,
+    normalize_benign_prostatic_hyperplasia_endpoint
+)
 
 from .diabetes import (
     DIABETES_ENDPOINTS,
@@ -1152,6 +1161,18 @@ SPECIALTY_REGISTRY = {
             'qol': UF_QOL_PATTERNS
         }
     },
+    'benign_prostatic_hyperplasia': {
+        'subspecialties': ['symptoms', 'flow', 'progression', 'sexual'],
+        'detection_function': detect_benign_prostatic_hyperplasia_subspecialty,
+        'normalizer': normalize_benign_prostatic_hyperplasia_endpoint,
+        'endpoints': BENIGN_PROSTATIC_HYPERPLASIA_ENDPOINTS,
+        'patterns': {
+            'symptoms': BPH_SYMPTOMS_PATTERNS,
+            'flow': BPH_FLOW_PATTERNS,
+            'progression': BPH_PROGRESSION_PATTERNS,
+            'sexual': BPH_SEXUAL_PATTERNS
+        }
+    },
     'infectious_disease': {
         'subspecialties': ['covid', 'hepatitis', 'bacterial'],
         'endpoints': {
@@ -1729,6 +1750,16 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'fibroid\s+volume', r'ufs[- ]qol',
             r'(?:mr[- ]?guided\s+)?focused\s+ultrasound|mrgfus'
         ],
+        'benign_prostatic_hyperplasia': [
+            r'benign\s+prostatic\s+(?:hyperplasia|obstruction|enlargement)',
+            r'\bbph\b', r'lower\s+urinary\s+tract\s+symptoms?|\bluts\b',
+            r'international\s+prostate\s+symptom\s+score|\bipss\b',
+            r'tamsulosin|alfuzosin|silodosin|doxazosin|terazosin',
+            r'finasteride|dutasteride', r'transurethral\s+resection|\bturp\b',
+            r'maximum\s+(?:urinary\s+)?flow\s+rate|\bqmax\b',
+            r'prostatic\s+urethral\s+lift|urolift|holep|greenlight|rezum',
+            r'5[- ]?alpha[- ]?reductase'
+        ],
         'oesophageal_cancer': [
             r'(?:o?esophageal|esophageal)\s+(?:cancer|carcinoma|squamous|adenocarcinoma)',
             r'\boescc\b|\bescc\b(?=.{0,40}(?:o?esophag|esophag))',
@@ -2296,6 +2327,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'uterine_fibroids':
         subspecialty, conf = detect_uterine_fibroids_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'benign_prostatic_hyperplasia':
+        subspecialty, conf = detect_benign_prostatic_hyperplasia_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'oesophageal_cancer':
         subspecialty, conf = detect_oesophageal_cancer_subspecialty(text)

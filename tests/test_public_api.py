@@ -38,6 +38,7 @@ EXPECTED_SPECIALTIES = {
     "schizophrenia", "cirrhosis", "osteoarthritis", "covid19", "sepsis",
     # women's-health / reproductive cluster
     "uterine_fibroids",
+    "benign_prostatic_hyperplasia",
 }
 
 
