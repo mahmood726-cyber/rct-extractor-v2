@@ -122,6 +122,12 @@ data/field_portability/maternal_neonatal/*.jsonl
 data/field_portability/maternal_neonatal/*.json
 data/field_portability/maternal_neonatal/*.log
 
+# ARDS / acute respiratory failure field bundle — large/transient data (keep README.md; code is under scripts/)
+data/field_portability/ards/rct_trial_pdfs/
+data/field_portability/ards/*.jsonl
+data/field_portability/ards/*.json
+data/field_portability/ards/*.log
+
 # Tuberculosis field bundle — large/transient data (keep README.md; code is under scripts/)
 data/field_portability/tuberculosis/rct_trial_pdfs/
 data/field_portability/tuberculosis/*.jsonl

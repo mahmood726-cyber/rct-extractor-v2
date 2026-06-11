@@ -5,6 +5,16 @@ Specialty Registry - Central registry for all specialty patterns and endpoints.
 from typing import Dict, List, Tuple, Optional, Callable
 import re
 
+from .ards import (
+    ARDS_ENDPOINTS,
+    VENTILATION_PATTERNS as ARDS_VENTILATION_PATTERNS,
+    PHARMACOTHERAPY_PATTERNS as ARDS_PHARMACOTHERAPY_PATTERNS,
+    RESCUE_PATTERNS as ARDS_RESCUE_PATTERNS,
+    SUPPORTIVE_PATTERNS as ARDS_SUPPORTIVE_PATTERNS,
+    detect_ards_subspecialty,
+    normalize_ards_endpoint
+)
+
 from .cardiology import (
     CARDIOLOGY_ENDPOINTS,
     HEART_FAILURE_PATTERNS,
@@ -388,6 +398,18 @@ SPECIALTY_REGISTRY = {
             'preterm': MNH_PRETERM_PATTERNS
         }
     },
+    'ards': {
+        'subspecialties': ['ventilation', 'pharmacotherapy', 'rescue', 'supportive'],
+        'detection_function': detect_ards_subspecialty,
+        'normalizer': normalize_ards_endpoint,
+        'endpoints': ARDS_ENDPOINTS,
+        'patterns': {
+            'ventilation': ARDS_VENTILATION_PATTERNS,
+            'pharmacotherapy': ARDS_PHARMACOTHERAPY_PATTERNS,
+            'rescue': ARDS_RESCUE_PATTERNS,
+            'supportive': ARDS_SUPPORTIVE_PATTERNS
+        }
+    },
     'tuberculosis': {
         'subspecialties': ['treatment', 'drug_resistant', 'prevention', 'latent'],
         'detection_function': detect_tuberculosis_subspecialty,
@@ -651,6 +673,17 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
 
     # Keywords for each specialty
     specialty_keywords = {
+        'ards': [
+            r'\bards\b', r'acute\s+respiratory\s+distress\s+syndrome',
+            r'acute\s+(?:hypox(?:ae|e)mic\s+)?respiratory\s+failure',
+            r'ventilator[- ]free\s+days', r'lung[- ]protective\s+ventilation',
+            r'low\s+tidal\s+volume', r'prone\s+position(?:ing)?|proning',
+            r'pao2\s*[:/]\s*fio2|p/f\s+ratio', r'berlin\s+definition',
+            r'higher\s+peep|positive\s+end[- ]expiratory\s+pressure',
+            r'veno[- ]venous\s+ecmo|\bvv[- ]?ecmo\b',
+            r'refractory\s+hypox(?:ae|e)mia', r'recruitment\s+man(?:o?eu|eu)vre',
+            r'high[- ]flow\s+nasal\s+(?:oxygen|cannula)|\bhfnc\b|\bhfno\b'
+        ],
         'cardiology': [
             r'heart\s+failure', r'myocardial\s+infarction', r'atrial\s+fibrillation',
             r'coronary', r'cardiovascular', r'cardiac', r'lvef', r'ejection\s+fraction',
@@ -972,6 +1005,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'maternal_neonatal':
         subspecialty, conf = detect_maternal_neonatal_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'ards':
+        subspecialty, conf = detect_ards_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'tuberculosis':
         subspecialty, conf = detect_tuberculosis_subspecialty(text)

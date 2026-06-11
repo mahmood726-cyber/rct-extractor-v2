@@ -9,6 +9,7 @@ from rct_extractor.api import SPECIALTIES
 # Canonical disease specialties that the package promises to support
 # (full text->arm-level extractors).
 EXPECTED_17 = {
+    "ards",
     "hiv", "malaria", "typhoid", "schistosomiasis", "sickle_cell", "cholera",
     "maternal_neonatal", "tuberculosis", "hepatitis", "meningitis", "pneumonia",
     "diarrhoeal", "malnutrition", "helminths", "hypertension", "cervical_cancer",
