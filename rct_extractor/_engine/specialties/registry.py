@@ -523,6 +523,14 @@ from .schizophrenia import (
     LATENT_PATTERNS as SCZ_SAFETY_PATTERNS,
     detect_schizophrenia_subspecialty,
     normalize_schizophrenia_endpoint
+from .cirrhosis import (
+    CIRRHOSIS_ENDPOINTS,
+    TREATMENT_PATTERNS as CIRR_PORTAL_HTN_PATTERNS,
+    DRUG_RESISTANT_PATTERNS as CIRR_DECOMPENSATION_PATTERNS,
+    PREVENTION_PATTERNS as CIRR_ENCEPHALOPATHY_PATTERNS,
+    LATENT_PATTERNS as CIRR_PROGRESSION_PATTERNS,
+    detect_cirrhosis_subspecialty,
+    normalize_cirrhosis_endpoint
 )
 
 
@@ -1075,6 +1083,18 @@ SPECIALTY_REGISTRY = {
             'dme': OPHTH_DME_PATTERNS,
             'glaucoma': OPHTH_GLAUCOMA_PATTERNS,
             'dry_eye': OPHTH_DRY_EYE_PATTERNS
+        }
+    },
+    'cirrhosis': {
+        'subspecialties': ['portal_hypertension', 'decompensation', 'encephalopathy', 'progression'],
+        'detection_function': detect_cirrhosis_subspecialty,
+        'normalizer': normalize_cirrhosis_endpoint,
+        'endpoints': CIRRHOSIS_ENDPOINTS,
+        'patterns': {
+            'portal_hypertension': CIRR_PORTAL_HTN_PATTERNS,
+            'decompensation': CIRR_DECOMPENSATION_PATTERNS,
+            'encephalopathy': CIRR_ENCEPHALOPATHY_PATTERNS,
+            'progression': CIRR_PROGRESSION_PATTERNS
         }
     },
     'respiratory': {
@@ -1666,6 +1686,15 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'negative\\s+symptoms?|treatment[- ]resistant\\s+schizophreni',
             r'psychosis|psychotic\\s+(?:symptoms|disorder|episode)',
             r'xanomeline|karxt|extrapyramidal|akathisia',
+        'cirrhosis': [
+            r'cirrhosis|cirrhotic',
+            r'variceal\s+(?:bleed|haemorrhage|hemorrhage)|o?esophageal\s+varices|portal\s+hypertension',
+            r'hepatic\s+encephalopathy|rifaximin|lactulose',
+            r'hepatorenal\s+syndrome|hrs[- ]?aki?|terlipressin',
+            r'refractory\s+ascites|ascites|spontaneous\s+bacterial\s+peritonitis|sbp',
+            r'acute[- ]on[- ]chronic\s+liver\s+failure|aclf|transplant[- ]free\s+survival',
+            r'meld|child[- ]pugh|decompensated|hvpg',
+            r'carvedilol|nadolol|paracentesis|tips',
         ],
         'neurology': [
             r'alzheimer', r'dementia', r'multiple\s+sclerosis', r'\bms\b',
@@ -1914,6 +1943,8 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         subspecialty, conf = detect_migraine_subspecialty(text)
     elif best_specialty == 'schizophrenia':
         subspecialty, conf = detect_schizophrenia_subspecialty(text)
+    elif best_specialty == 'cirrhosis':
+        subspecialty, conf = detect_cirrhosis_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)
