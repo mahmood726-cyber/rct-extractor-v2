@@ -1,7 +1,7 @@
 """
 rct-extract -- unified command-line interface for the RCT extractor.
 
-Run any of the 27 disease-specialty extractors on an abstract or a corpus of
+Run any of the disease-specialty extractors on an abstract or a corpus of
 abstracts, or let it auto-detect the specialty.
 
 Examples
@@ -94,7 +94,7 @@ def _format_summary(name: str, res: Dict[str, Any]) -> str:
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(
         prog="rct-extract",
-        description="Extract RCT effects/arm-level data from abstracts across 27 disease specialties.",
+        description="Extract RCT effects/arm-level data from abstracts across all supported disease specialties.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__,
     )
@@ -105,7 +105,7 @@ def main(argv=None) -> int:
     parser.add_argument("--version", action="version", version=str(__version__))
 
     parser.add_argument("--list-specialties", action="store_true",
-                        help="print the 17 supported specialties and exit")
+                        help="print the supported specialties and exit")
     parser.add_argument("--detect", action="store_true",
                         help="only detect specialty/subspecialty, do not extract")
 
@@ -132,7 +132,7 @@ def main(argv=None) -> int:
     args = parser.parse_args(argv)
 
     if args.list_specialties:
-        print("Supported specialties (17):")
+        print(f"Supported specialties ({len(SPECIALTIES)}):")
         for s in SPECIALTIES:
             print(f"  - {s}")
         return 0
