@@ -221,3 +221,10 @@ data/field_portability/gastric_cancer/*.json
 data/field_portability/gastric_cancer/*.log
 data/pdf_eval/gold_gastric_cancer.jsonl
 data/pdf_eval/eval_onc_gastric_cancer.json
+# Hepatocellular-carcinoma field bundle
+data/field_portability/hepatocellular_carcinoma/rct_trial_pdfs/
+data/field_portability/hepatocellular_carcinoma/*.jsonl
+data/field_portability/hepatocellular_carcinoma/*.json
+data/field_portability/hepatocellular_carcinoma/*.log
+data/pdf_eval/gold_hepatocellular_carcinoma.jsonl
+data/pdf_eval/eval_onc_hepatocellular_carcinoma.json
