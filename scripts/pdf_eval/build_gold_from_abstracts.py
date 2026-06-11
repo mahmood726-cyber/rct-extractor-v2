@@ -167,12 +167,54 @@ def _out_of_scope_reason(abstract: str, match_start: int, window: int = 220):
     return m.group(0).lower() if m else None
 
 
+# --- Paper-level non-RCT design guard -------------------------------------- #
+# Some OA papers are matched by the loose "randomized[Title/Abstract]" corpus
+# query yet are NOT primary RCTs at all -- systematic reviews / meta-analyses of
+# observational evidence, prospective/retrospective cohorts, case-control or
+# cross-sectional studies. EVERY effect they state is a pooled or adjusted
+# association, never a randomised arm comparison, so the whole paper is out of
+# scope for an RCT extractor. The per-effect 220-char window above only catches
+# effects whose local sentence repeats the design word; this paper-level guard
+# flags the remainder. It is deliberately gated by an RCT self-identification
+# check so a genuine RCT that merely *cites* prior observational evidence is
+# never mis-flagged. Independent of the extractor under test (non-circular).
+_NON_RCT_DESIGN = re.compile(
+    r"systematic review|"
+    r"meta[- ]analys(?:is|es)\s+of\s+(?:observational|prospective|retrospective|cohort|case[- ]control)|"
+    r"observational stud(?:y|ies)|"
+    r"retrospective (?:cohort|stud|analys)|"
+    r"prospective cohort stud|"
+    r"case[- ]control stud|"
+    r"cross[- ]sectional stud|"
+    r"registry[- ]based (?:cohort|analys)",
+    re.IGNORECASE,
+)
+_RCT_SELFID = re.compile(
+    r"randomi[sz]ed[- ](?:controlled[- ])?trial|randomly[- ](?:assigned|allocated)|"
+    r"randomi[sz]ed[- ]to|double[- ]blind|placebo[- ]controlled|"
+    r"we[- ]randomi[sz]ed|allocated[- ]to[- ]receive|"
+    r"\d+[- ]arm[- ](?:trial|study)|open[- ]label[- ](?:randomi[sz]ed|trial)",
+    re.IGNORECASE,
+)
+
+
+def _paper_level_non_rct_reason(abstract: str):
+    """Return a reason string if the abstract self-describes a NON-RCT design
+    (review / observational / cohort / case-control) AND contains no RCT
+    self-identification, else None. Applied to EVERY effect in such a paper."""
+    if _RCT_SELFID.search(abstract):
+        return None
+    m = _NON_RCT_DESIGN.search(abstract)
+    return ("non-rct design: " + m.group(0).lower()) if m else None
+
+
 def harvest_effects(abstract: str):
     """Return list of gold effect dicts found in the abstract. Independent of
     the extractor under test. Each dict carries a verbatim quote. Effects in a
     non-randomised / indirect context are FLAGGED out_of_scope (not dropped)."""
     found = []
     seen = set()
+    paper_oos = _paper_level_non_rct_reason(abstract)
     for pat, label in PATTERNS:
         for m in pat.finditer(abstract):
             pt = float(m.group("pt"))
@@ -198,7 +240,7 @@ def harvest_effects(abstract: str):
             if key in seen:
                 continue
             seen.add(key)
-            oos = _out_of_scope_reason(abstract, m.start())
+            oos = _out_of_scope_reason(abstract, m.start()) or paper_oos
             found.append({
                 "effect_type": label,
                 "point_estimate": pt,
