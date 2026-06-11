@@ -298,5 +298,10 @@ data/field_portability/thyroid/rct_trial_pdfs/
 data/field_portability/thyroid/*.jsonl
 data/field_portability/thyroid/*.json
 data/field_portability/thyroid/*.log
+# Osteoporosis field bundle — large/transient data (keep README.md; code is under scripts/)
+data/field_portability/osteoporosis/rct_trial_pdfs/
+data/field_portability/osteoporosis/*.jsonl
+data/field_portability/osteoporosis/*.json
+data/field_portability/osteoporosis/*.log
 
 PROGRESS.md
