@@ -409,3 +409,8 @@ data/field_portability/erectile_dysfunction/rct_trial_pdfs/
 data/field_portability/erectile_dysfunction/*.jsonl
 data/field_portability/erectile_dysfunction/*.json
 data/field_portability/erectile_dysfunction/*.log
+# Urinary incontinence / OAB field bundle
+data/field_portability/urinary_incontinence/rct_trial_pdfs/
+data/field_portability/urinary_incontinence/*.jsonl
+data/field_portability/urinary_incontinence/*.json
+data/field_portability/urinary_incontinence/*.log
