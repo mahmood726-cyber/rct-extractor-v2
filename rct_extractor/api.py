@@ -26,6 +26,7 @@ SPECIALTIES: Tuple[str, ...] = (
     "ards",
     "perioperative",
     "chronic_pain",
+    "postoperative_pain",
     "hiv",
     "malaria",
     "typhoid",
