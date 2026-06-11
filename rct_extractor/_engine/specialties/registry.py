@@ -14,6 +14,15 @@ from .ards import (
     detect_ards_subspecialty,
     normalize_ards_endpoint
 )
+from .perioperative import (
+    PERIOPERATIVE_ENDPOINTS,
+    ANAESTHETIC_TECHNIQUE_PATTERNS as PERIOP_ANAESTHETIC_TECHNIQUE_PATTERNS,
+    PONV_PATTERNS as PERIOP_PONV_PATTERNS,
+    ORGAN_PROTECTION_PATTERNS as PERIOP_ORGAN_PROTECTION_PATTERNS,
+    RECOVERY_PATTERNS as PERIOP_RECOVERY_PATTERNS,
+    detect_perioperative_subspecialty,
+    normalize_perioperative_endpoint
+)
 
 from .cardiology import (
     CARDIOLOGY_ENDPOINTS,
@@ -747,6 +756,18 @@ SPECIALTY_REGISTRY = {
             'supportive': ARDS_SUPPORTIVE_PATTERNS
         }
     },
+    'perioperative': {
+        'subspecialties': ['anaesthetic_technique', 'ponv', 'organ_protection', 'recovery'],
+        'detection_function': detect_perioperative_subspecialty,
+        'normalizer': normalize_perioperative_endpoint,
+        'endpoints': PERIOPERATIVE_ENDPOINTS,
+        'patterns': {
+            'anaesthetic_technique': PERIOP_ANAESTHETIC_TECHNIQUE_PATTERNS,
+            'ponv': PERIOP_PONV_PATTERNS,
+            'organ_protection': PERIOP_ORGAN_PROTECTION_PATTERNS,
+            'recovery': PERIOP_RECOVERY_PATTERNS
+        }
+    },
     'tuberculosis': {
         'subspecialties': ['treatment', 'drug_resistant', 'prevention', 'latent'],
         'detection_function': detect_tuberculosis_subspecialty,
@@ -1429,6 +1450,18 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'refractory\s+hypox(?:ae|e)mia', r'recruitment\s+man(?:o?eu|eu)vre',
             r'high[- ]flow\s+nasal\s+(?:oxygen|cannula)|\bhfnc\b|\bhfno\b'
         ],
+        'perioperative': [
+            r'perioperative', r'postoperative', r'intraoperative',
+            r'an(?:ae|e)sthesia', r'an(?:ae|e)sthetic', r'an(?:ae|e)sthesiolog',
+            r'postoperative\s+nausea\s+and\s+vomiting|\bponv\b',
+            r'regional\s+an(?:ae|e)sthesia|neuraxial|spinal\s+an(?:ae|e)sthesia',
+            r'general\s+an(?:ae|e)sthesia', r'peripheral\s+nerve\s+block',
+            r'total\s+intravenous\s+an(?:ae|e)sthesia|\btiva\b',
+            r'postoperative\s+delirium', r'postoperative\s+complications?',
+            r'surgical[- ]site\s+infection', r'enhanced\s+recovery\s+after\s+surgery|\beras\b',
+            r'undergoing\s+(?:elective\s+)?surgery', r'non[- ]cardiac\s+surgery',
+            r'myocardial\s+injury\s+after\s+non[- ]cardiac\s+surgery|\bmins\b'
+        ],
         'cardiology': [
             r'heart\s+failure', r'myocardial\s+infarction', r'atrial\s+fibrillation',
             r'coronary', r'cardiovascular', r'cardiac', r'lvef', r'ejection\s+fraction',
@@ -2095,6 +2128,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'ards':
         subspecialty, conf = detect_ards_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'perioperative':
+        subspecialty, conf = detect_perioperative_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'tuberculosis':
         subspecialty, conf = detect_tuberculosis_subspecialty(text)

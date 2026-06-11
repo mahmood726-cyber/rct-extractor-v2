@@ -24,6 +24,7 @@ from typing import Any, Dict, List, Optional, Tuple
 # Order is the canonical order used in the README and CLI help.
 SPECIALTIES: Tuple[str, ...] = (
     "ards",
+    "perioperative",
     "hiv",
     "malaria",
     "typhoid",

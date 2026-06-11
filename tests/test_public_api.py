@@ -11,6 +11,7 @@ from rct_extractor.api import SPECIALTIES
 # addition or removal of a specialty fails this contract loudly.
 EXPECTED_SPECIALTIES = {
     "ards",
+    "perioperative",
     "hiv", "malaria", "typhoid", "schistosomiasis", "sickle_cell", "cholera",
     "maternal_neonatal", "tuberculosis", "hepatitis", "meningitis", "pneumonia",
     "diarrhoeal", "malnutrition", "helminths", "hypertension", "cervical_cancer",
