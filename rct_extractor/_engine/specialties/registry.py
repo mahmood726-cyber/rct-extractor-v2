@@ -283,6 +283,8 @@ from .oesophageal_cancer import (
     MORTALITY_PATTERNS as OE_MORTALITY_PATTERNS,
     detect_oesophageal_cancer_subspecialty,
     normalize_oesophageal_cancer_endpoint
+)
+
 from .prostate_cancer import (
     PROSTATE_CANCER_ENDPOINTS,
     SYSTEMIC_PATTERNS as PC_SYSTEMIC_PATTERNS,
@@ -291,6 +293,8 @@ from .prostate_cancer import (
     MORTALITY_PATTERNS as PC_MORTALITY_PATTERNS,
     detect_prostate_cancer_subspecialty,
     normalize_prostate_cancer_endpoint
+)
+
 from .ovarian_cancer import (
     OVARIAN_CANCER_ENDPOINTS,
     SYSTEMIC_PATTERNS as OC_SYSTEMIC_PATTERNS,
@@ -299,6 +303,8 @@ from .ovarian_cancer import (
     MORTALITY_PATTERNS as OC_MORTALITY_PATTERNS,
     detect_ovarian_cancer_subspecialty,
     normalize_ovarian_cancer_endpoint
+)
+
 from .pancreatic_cancer import (
     PANCREATIC_CANCER_ENDPOINTS,
     SYSTEMIC_PATTERNS as PA_SYSTEMIC_PATTERNS,
@@ -307,6 +313,8 @@ from .pancreatic_cancer import (
     MORTALITY_PATTERNS as PA_MORTALITY_PATTERNS,
     detect_pancreatic_cancer_subspecialty,
     normalize_pancreatic_cancer_endpoint
+)
+
 from .gastric_cancer import (
     GASTRIC_CANCER_ENDPOINTS,
     SYSTEMIC_PATTERNS as GC_SYSTEMIC_PATTERNS,
@@ -315,6 +323,8 @@ from .gastric_cancer import (
     MORTALITY_PATTERNS as GC_MORTALITY_PATTERNS,
     detect_gastric_cancer_subspecialty,
     normalize_gastric_cancer_endpoint
+)
+
 from .hepatocellular_carcinoma import (
     HEPATOCELLULAR_CARCINOMA_ENDPOINTS,
     SYSTEMIC_PATTERNS as HCC_SYSTEMIC_PATTERNS,
@@ -323,6 +333,8 @@ from .hepatocellular_carcinoma import (
     MORTALITY_PATTERNS as HCC_MORTALITY_PATTERNS,
     detect_hepatocellular_carcinoma_subspecialty,
     normalize_hepatocellular_carcinoma_endpoint
+)
+
 from .melanoma import (
     MELANOMA_ENDPOINTS,
     SYSTEMIC_PATTERNS as MEL_SYSTEMIC_PATTERNS,
@@ -331,6 +343,8 @@ from .melanoma import (
     MORTALITY_PATTERNS as MEL_MORTALITY_PATTERNS,
     detect_melanoma_subspecialty,
     normalize_melanoma_endpoint
+)
+
 from .leukaemia import (
     LEUKAEMIA_ENDPOINTS,
     AML_PATTERNS as LK_AML_PATTERNS,
@@ -339,6 +353,8 @@ from .leukaemia import (
     CML_PATTERNS as LK_CML_PATTERNS,
     detect_leukaemia_subspecialty,
     normalize_leukaemia_endpoint
+)
+
 from .lymphoma import (
     LYMPHOMA_ENDPOINTS,
     HODGKIN_PATTERNS as LY_HODGKIN_PATTERNS,
@@ -347,6 +363,8 @@ from .lymphoma import (
     MORTALITY_PATTERNS as LY_MORTALITY_PATTERNS,
     detect_lymphoma_subspecialty,
     normalize_lymphoma_endpoint
+)
+
 from .head_neck_cancer import (
     HEAD_NECK_CANCER_ENDPOINTS,
     DEFINITIVE_PATTERNS as HN_DEFINITIVE_PATTERNS,
@@ -355,6 +373,8 @@ from .head_neck_cancer import (
     MORTALITY_PATTERNS as HN_MORTALITY_PATTERNS,
     detect_head_neck_cancer_subspecialty,
     normalize_head_neck_cancer_endpoint
+)
+
 from .bladder_cancer import (
     BLADDER_CANCER_ENDPOINTS,
     NMIBC_PATTERNS as BL_NMIBC_PATTERNS,
@@ -363,6 +383,8 @@ from .bladder_cancer import (
     MORTALITY_PATTERNS as BL_MORTALITY_PATTERNS,
     detect_bladder_cancer_subspecialty,
     normalize_bladder_cancer_endpoint
+)
+
 from .renal_cell_carcinoma import (
     RENAL_CELL_CARCINOMA_ENDPOINTS,
     ADVANCED_PATTERNS as RCC_ADVANCED_PATTERNS,
@@ -604,6 +626,8 @@ SPECIALTY_REGISTRY = {
             'adjuvant': OE_ADJUVANT_PATTERNS,
             'advanced': OE_ADVANCED_PATTERNS,
             'mortality': OE_MORTALITY_PATTERNS
+        }
+    },
     'prostate_cancer': {
         'subspecialties': ['systemic', 'localized', 'hormonal', 'mortality'],
         'detection_function': detect_prostate_cancer_subspecialty,
@@ -614,6 +638,8 @@ SPECIALTY_REGISTRY = {
             'localized': PC_LOCALIZED_PATTERNS,
             'hormonal': PC_HORMONAL_PATTERNS,
             'mortality': PC_MORTALITY_PATTERNS
+        }
+    },
     'ovarian_cancer': {
         'subspecialties': ['systemic', 'maintenance', 'surgical', 'mortality'],
         'detection_function': detect_ovarian_cancer_subspecialty,
@@ -624,6 +650,8 @@ SPECIALTY_REGISTRY = {
             'maintenance': OC_MAINTENANCE_PATTERNS,
             'surgical': OC_SURGICAL_PATTERNS,
             'mortality': OC_MORTALITY_PATTERNS
+        }
+    },
     'pancreatic_cancer': {
         'subspecialties': ['systemic', 'adjuvant', 'locally_advanced', 'mortality'],
         'detection_function': detect_pancreatic_cancer_subspecialty,
@@ -634,6 +662,8 @@ SPECIALTY_REGISTRY = {
             'adjuvant': PA_ADJUVANT_PATTERNS,
             'locally_advanced': PA_LOCALLY_ADVANCED_PATTERNS,
             'mortality': PA_MORTALITY_PATTERNS
+        }
+    },
     'gastric_cancer': {
         'subspecialties': ['systemic', 'perioperative', 'surgical', 'mortality'],
         'detection_function': detect_gastric_cancer_subspecialty,
@@ -644,6 +674,8 @@ SPECIALTY_REGISTRY = {
             'perioperative': GC_PERIOPERATIVE_PATTERNS,
             'surgical': GC_SURGICAL_PATTERNS,
             'mortality': GC_MORTALITY_PATTERNS
+        }
+    },
     'hepatocellular_carcinoma': {
         'subspecialties': ['systemic', 'locoregional', 'curative', 'mortality'],
         'detection_function': detect_hepatocellular_carcinoma_subspecialty,
@@ -654,6 +686,8 @@ SPECIALTY_REGISTRY = {
             'locoregional': HCC_LOCOREGIONAL_PATTERNS,
             'curative': HCC_CURATIVE_PATTERNS,
             'mortality': HCC_MORTALITY_PATTERNS
+        }
+    },
     'melanoma': {
         'subspecialties': ['systemic', 'adjuvant', 'neoadjuvant', 'mortality'],
         'detection_function': detect_melanoma_subspecialty,
@@ -664,6 +698,8 @@ SPECIALTY_REGISTRY = {
             'adjuvant': MEL_ADJUVANT_PATTERNS,
             'neoadjuvant': MEL_NEOADJUVANT_PATTERNS,
             'mortality': MEL_MORTALITY_PATTERNS
+        }
+    },
     'leukaemia': {
         'subspecialties': ['aml', 'all', 'cll', 'cml'],
         'detection_function': detect_leukaemia_subspecialty,
@@ -674,6 +710,8 @@ SPECIALTY_REGISTRY = {
             'all': LK_ALL_PATTERNS,
             'cll': LK_CLL_PATTERNS,
             'cml': LK_CML_PATTERNS
+        }
+    },
     'lymphoma': {
         'subspecialties': ['hodgkin', 'aggressive', 'indolent', 'mortality'],
         'detection_function': detect_lymphoma_subspecialty,
@@ -684,6 +722,8 @@ SPECIALTY_REGISTRY = {
             'aggressive': LY_AGGRESSIVE_PATTERNS,
             'indolent': LY_INDOLENT_PATTERNS,
             'mortality': LY_MORTALITY_PATTERNS
+        }
+    },
     'head_neck_cancer': {
         'subspecialties': ['definitive', 'recurrent_metastatic', 'nasopharyngeal', 'mortality'],
         'detection_function': detect_head_neck_cancer_subspecialty,
@@ -694,6 +734,8 @@ SPECIALTY_REGISTRY = {
             'recurrent_metastatic': HN_RECURRENT_METASTATIC_PATTERNS,
             'nasopharyngeal': HN_NASOPHARYNGEAL_PATTERNS,
             'mortality': HN_MORTALITY_PATTERNS
+        }
+    },
     'bladder_cancer': {
         'subspecialties': ['nmibc', 'mibc', 'advanced', 'mortality'],
         'detection_function': detect_bladder_cancer_subspecialty,
@@ -704,6 +746,8 @@ SPECIALTY_REGISTRY = {
             'mibc': BL_MIBC_PATTERNS,
             'advanced': BL_ADVANCED_PATTERNS,
             'mortality': BL_MORTALITY_PATTERNS
+        }
+    },
     'renal_cell_carcinoma': {
         'subspecialties': ['advanced', 'adjuvant', 'subsequent_line', 'mortality'],
         'detection_function': detect_renal_cell_carcinoma_subspecialty,
@@ -1023,6 +1067,7 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'neoadjuvant\s+chemoradi', r'carboplatin[- ,/]+paclitaxel',
             r'barrett', r'checkmate[- ]?577',
             r'(?:advanced|metastatic|recurrent)\s+(?:o?esophageal|esophageal)'
+        ],
         'prostate_cancer': [
             r'prostate\s+cancer', r'prostate\s+carcinoma', r'prostatic\s+(?:carcinoma|adenocarcinoma)',
             r'castrat(?:ion|e)[- ]?resistant\s+prostate', r'\bm?crpc\b', r'\bm?hspc\b', r'\bnmcrpc\b',
@@ -1032,6 +1077,7 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'abiraterone|enzalutamide|apalutamide|darolutamide',
             r'leuprolide|goserelin|degarelix|relugolix|triptorelin',
             r'radiographic\s+progression[- ]?free', r'metastasis[- ]?free\s+survival'
+        ],
         'ovarian_cancer': [
             r'ovarian\s+cancer', r'ovarian\s+carcinoma', r'epithelial\s+ovarian',
             r'fallopian\s+tube\s+(?:cancer|carcinoma)', r'primary\s+peritoneal',
@@ -1039,6 +1085,7 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'platinum[- ](?:sensitive|resistant|refractory)',
             r'olaparib|niraparib|rucaparib', r'\bbrca\b|homologous\s+recombination\s+deficien|\bhrd\b',
             r'carboplatin', r'figo\s+stage', r'primary\s+debulking|interval\s+debulking'
+        ],
         'pancreatic_cancer': [
             r'pancreatic\s+cancer', r'pancreatic\s+(?:adeno)?carcinoma',
             r'pancreatic\s+ductal\s+adenocarcinoma|\bpdac\b', r'\blapc\b',
@@ -1046,6 +1093,7 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'ca\s?19[-. ]?9', r'pancreaticoduodenectomy|whipple',
             r'borderline\s+resectable', r'resected\s+pancreatic',
             r'locally\s+advanced\s+pancreatic', r'nalirifox', r'metastatic\s+pancreatic'
+        ],
         'gastric_cancer': [
             r'gastric\s+cancer', r'stomach\s+cancer', r'gastric\s+(?:adeno)?carcinoma',
             r'gastro[- ]?(?:o)?esophageal\s+junction|\bgej\b', r'gastrectomy',
@@ -1053,6 +1101,7 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'ramucirumab', r'trastuzumab\s+deruxtecan',
             r'resectable\s+gastric|metastatic\s+gastric|advanced\s+gastric',
             r'perioperative\s+chemotherapy', r'her2[- ]?(?:positive|\+)\s+gastric'
+        ],
         'hepatocellular_carcinoma': [
             r'hepatocellular\s+carcinoma', r'\bhcc\b', r'liver\s+cancer',
             r'sorafenib|lenvatinib|regorafenib|cabozantinib',
@@ -1062,6 +1111,7 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'alpha[- ]?fetoprotein|\bafp\b', r'radiofrequency\s+ablation|\brfa\b',
             r'unresectable\s+(?:hepatocellular|hcc)|advanced\s+(?:hepatocellular|hcc)',
             r'milan\s+criteria', r'hepatectomy|liver\s+resection'
+        ],
         'melanoma': [
             r'\bmelanoma\b', r'cutaneous\s+melanoma', r'metastatic\s+melanoma',
             r'acral\s+(?:lentiginous\s+)?melanoma|uveal\s+melanoma',
@@ -1069,6 +1119,7 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'ipilimumab|nivolumab|pembrolizumab|relatlimab',
             r'dabrafenib|trametinib|encorafenib|binimetinib|vemurafenib|cobimetinib',
             r'\bbreslow\b', r'sentinel[- ]node', r'resected\s+(?:stage\s+(?:iii|iv)\s+)?melanoma'
+        ],
         'leukaemia': [
             r'leuk(?:a)?emia', r'acute\s+myeloid|acute\s+lymph(?:o)?blastic',
             r'chronic\s+lymphocytic|chronic\s+myeloid',
@@ -1078,6 +1129,7 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'ibrutinib|acalabrutinib|venetoclax', r'blinatumomab|inotuzumab',
             r'complete\s+remission', r'(?:measurable|minimal)\s+residual\s+disease',
             r'major\s+molecular\s+response', r'cytarabine'
+        ],
         'lymphoma': [
             r'lymphoma', r'hodgkin', r'non[- ]?hodgkin',
             r'diffuse\s+large\s+b[- ]?cell|\bdlbcl\b', r'follicular\s+lymphoma',
@@ -1085,6 +1137,7 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'brentuximab|polatuzumab|\babvd\b|\bbeacopp\b',
             r'rituximab|obinutuzumab|bendamustine',
             r'reed[- ]sternberg', r'axicabtagene|tisagenlecleucel|lisocabtagene'
+        ],
         'head_neck_cancer': [
             r'head\s+and\s+neck\s+(?:cancer|squamous|carcinoma)|\bhnscc\b',
             r'nasopharyngeal\s+(?:carcinoma|cancer)|\bnpc\b',
@@ -1092,6 +1145,7 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'chemoradi(?:o|ation)therapy|concurrent\s+chemoradi',
             r'cetuximab', r'\btpf\b', r'locoregional\s+control',
             r'gemcitabine[- ,/]+cisplatin', r'epstein[- ]barr', r'\bextreme\b'
+        ],
         'bladder_cancer': [
             r'bladder\s+cancer', r'urothelial\s+(?:carcinoma|cancer)',
             r'non[- ]?muscle[- ]?invasive\s+bladder|\bnmibc\b',
@@ -1099,6 +1153,7 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'intravesical', r'bacillus\s+calmette[- ]gu[ée]rin|\bbcg\b(?=.{0,40}bladder)',
             r'radical\s+cystectomy', r'enfortumab|avelumab\s+maintenance',
             r'transurethral\s+resection|\bturbt\b', r'metastatic\s+urothelial'
+        ],
         'renal_cell_carcinoma': [
             r'renal\s+cell\s+(?:carcinoma|cancer)|\brcc\b|\bmrcc\b',
             r'clear[- ]cell\s+renal', r'kidney\s+cancer',
@@ -1312,26 +1367,37 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'oesophageal_cancer':
         subspecialty, conf = detect_oesophageal_cancer_subspecialty(text)
+        confidence = max(confidence, conf)
     elif best_specialty == 'prostate_cancer':
         subspecialty, conf = detect_prostate_cancer_subspecialty(text)
+        confidence = max(confidence, conf)
     elif best_specialty == 'ovarian_cancer':
         subspecialty, conf = detect_ovarian_cancer_subspecialty(text)
+        confidence = max(confidence, conf)
     elif best_specialty == 'pancreatic_cancer':
         subspecialty, conf = detect_pancreatic_cancer_subspecialty(text)
+        confidence = max(confidence, conf)
     elif best_specialty == 'gastric_cancer':
         subspecialty, conf = detect_gastric_cancer_subspecialty(text)
+        confidence = max(confidence, conf)
     elif best_specialty == 'hepatocellular_carcinoma':
         subspecialty, conf = detect_hepatocellular_carcinoma_subspecialty(text)
+        confidence = max(confidence, conf)
     elif best_specialty == 'melanoma':
         subspecialty, conf = detect_melanoma_subspecialty(text)
+        confidence = max(confidence, conf)
     elif best_specialty == 'leukaemia':
         subspecialty, conf = detect_leukaemia_subspecialty(text)
+        confidence = max(confidence, conf)
     elif best_specialty == 'lymphoma':
         subspecialty, conf = detect_lymphoma_subspecialty(text)
+        confidence = max(confidence, conf)
     elif best_specialty == 'head_neck_cancer':
         subspecialty, conf = detect_head_neck_cancer_subspecialty(text)
+        confidence = max(confidence, conf)
     elif best_specialty == 'bladder_cancer':
         subspecialty, conf = detect_bladder_cancer_subspecialty(text)
+        confidence = max(confidence, conf)
     elif best_specialty == 'renal_cell_carcinoma':
         subspecialty, conf = detect_renal_cell_carcinoma_subspecialty(text)
         confidence = max(confidence, conf)
