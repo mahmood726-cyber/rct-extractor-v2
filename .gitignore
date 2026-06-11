@@ -235,3 +235,10 @@ data/field_portability/melanoma/*.json
 data/field_portability/melanoma/*.log
 data/pdf_eval/gold_melanoma.jsonl
 data/pdf_eval/eval_onc_melanoma.json
+# Leukaemia field bundle
+data/field_portability/leukaemia/rct_trial_pdfs/
+data/field_portability/leukaemia/*.jsonl
+data/field_portability/leukaemia/*.json
+data/field_portability/leukaemia/*.log
+data/pdf_eval/gold_leukaemia.jsonl
+data/pdf_eval/eval_onc_leukaemia.json
