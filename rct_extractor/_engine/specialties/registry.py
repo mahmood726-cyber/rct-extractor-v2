@@ -210,6 +210,14 @@ from .kidney_transplant import (
     COMPLICATIONS_PATTERNS as KT_COMPLICATIONS_PATTERNS,
     detect_kidney_transplant_subspecialty,
     normalize_kidney_transplant_endpoint
+from .pulmonary_hypertension import (
+    PULMONARY_HYPERTENSION_ENDPOINTS,
+    FUNCTIONAL_PATTERNS as PH_FUNCTIONAL_PATTERNS,
+    HEMODYNAMICS_PATTERNS as PH_HEMODYNAMICS_PATTERNS,
+    CLINICAL_WORSENING_PATTERNS as PH_CLINICAL_WORSENING_PATTERNS,
+    BIOMARKER_PATTERNS as PH_BIOMARKER_PATTERNS,
+    detect_pulmonary_hypertension_subspecialty,
+    normalize_pulmonary_hypertension_endpoint
 )
 
 from .respiratory import (
@@ -909,6 +917,16 @@ SPECIALTY_REGISTRY = {
             'graft': KT_GRAFT_PATTERNS,
             'function': KT_FUNCTION_PATTERNS,
             'complications': KT_COMPLICATIONS_PATTERNS
+    'pulmonary_hypertension': {
+        'subspecialties': ['functional', 'hemodynamics', 'clinical_worsening', 'biomarker'],
+        'detection_function': detect_pulmonary_hypertension_subspecialty,
+        'normalizer': normalize_pulmonary_hypertension_endpoint,
+        'endpoints': PULMONARY_HYPERTENSION_ENDPOINTS,
+        'patterns': {
+            'functional': PH_FUNCTIONAL_PATTERNS,
+            'hemodynamics': PH_HEMODYNAMICS_PATTERNS,
+            'clinical_worsening': PH_CLINICAL_WORSENING_PATTERNS,
+            'biomarker': PH_BIOMARKER_PATTERNS
         }
     },
     'neurology': {
@@ -1322,6 +1340,16 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'basiliximab|anti[- ]thymocyte\s+globulin|thymoglobulin', r'sirolimus|everolimus',
             r'living[- ](?:donor|related)\s+(?:kidney|renal)|deceased[- ]donor',
             r'immunosuppress(?:ion|ive)\s+(?:regimen|therapy)',
+        'pulmonary_hypertension': [
+            r'pulmonary\s+(?:arterial\s+)?hypertension', r'\bpah\b',
+            r'pulmonary\s+vascular\s+resistance|\bpvr\b',
+            r'mean\s+pulmonary\s+arter(?:ial|y)\s+pressure|\bmpap\b',
+            r'6[- ]min(?:ute)?\s+walk|six[- ]min(?:ute)?\s+walk|\b6mwd\b|\b6mwt\b',
+            r'who\s+functional\s+class', r'right\s+heart\s+catheter',
+            r'bosentan|ambrisentan|macitentan', r'epoprostenol|treprostinil|iloprost|selexipag|beraprost',
+            r'riociguat', r'sotatercept', r'endothelin\s+receptor\s+antagonist',
+            r'sildenafil|tadalafil', r'time\s+to\s+clinical\s+worsening',
+            r'pulmonary\s+arteriopathy|chronic\s+thromboembolic\s+pulmonary',
         ],
         'stroke': [
             r'\bstroke\b', r'ischa?emic\s+stroke', r'acute\s+ischa?emic\s+stroke',
@@ -1617,6 +1645,8 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         subspecialty, conf = detect_osteoporosis_subspecialty(text)
     elif best_specialty == 'kidney_transplant':
         subspecialty, conf = detect_kidney_transplant_subspecialty(text)
+    elif best_specialty == 'pulmonary_hypertension':
+        subspecialty, conf = detect_pulmonary_hypertension_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'respiratory':
         subspecialty, conf = detect_respiratory_subspecialty(text)

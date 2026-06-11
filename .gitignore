@@ -308,5 +308,10 @@ data/field_portability/kidney_transplant/rct_trial_pdfs/
 data/field_portability/kidney_transplant/*.jsonl
 data/field_portability/kidney_transplant/*.json
 data/field_portability/kidney_transplant/*.log
+# Pulmonary-hypertension field bundle — large/transient data (keep README.md; code is under scripts/)
+data/field_portability/pulmonary_hypertension/rct_trial_pdfs/
+data/field_portability/pulmonary_hypertension/*.jsonl
+data/field_portability/pulmonary_hypertension/*.json
+data/field_portability/pulmonary_hypertension/*.log
 
 PROGRESS.md
