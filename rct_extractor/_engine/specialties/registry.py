@@ -202,6 +202,8 @@ from .osteoporosis import (
     SAFETY_PATTERNS as OST_SAFETY_PATTERNS,
     detect_osteoporosis_subspecialty,
     normalize_osteoporosis_endpoint
+)
+
 from .kidney_transplant import (
     KIDNEY_TRANSPLANT_ENDPOINTS,
     REJECTION_PATTERNS as KT_REJECTION_PATTERNS,
@@ -210,6 +212,8 @@ from .kidney_transplant import (
     COMPLICATIONS_PATTERNS as KT_COMPLICATIONS_PATTERNS,
     detect_kidney_transplant_subspecialty,
     normalize_kidney_transplant_endpoint
+)
+
 from .pulmonary_hypertension import (
     PULMONARY_HYPERTENSION_ENDPOINTS,
     FUNCTIONAL_PATTERNS as PH_FUNCTIONAL_PATTERNS,
@@ -218,6 +222,8 @@ from .pulmonary_hypertension import (
     BIOMARKER_PATTERNS as PH_BIOMARKER_PATTERNS,
     detect_pulmonary_hypertension_subspecialty,
     normalize_pulmonary_hypertension_endpoint
+)
+
 from .pcos import (
     PCOS_ENDPOINTS,
     REPRODUCTIVE_PATTERNS as PCOS_REPRODUCTIVE_PATTERNS,
@@ -427,6 +433,8 @@ from .renal_cell_carcinoma import (
     MORTALITY_PATTERNS as RCC_MORTALITY_PATTERNS,
     detect_renal_cell_carcinoma_subspecialty,
     normalize_renal_cell_carcinoma_endpoint
+)
+
 from .dyslipidaemia import (
     DYSLIPIDAEMIA_ENDPOINTS,
     LIPID_LOWERING_PATTERNS as DLD_LIPID_LOWERING_PATTERNS,
@@ -435,6 +443,8 @@ from .dyslipidaemia import (
     SAFETY_PATTERNS as DLD_SAFETY_PATTERNS,
     detect_dyslipidaemia_subspecialty,
     normalize_dyslipidaemia_endpoint
+)
+
 from .venous_thromboembolism import (
     VTE_ENDPOINTS,
     TREATMENT_PATTERNS as VTE_TREATMENT_PATTERNS,
@@ -443,6 +453,8 @@ from .venous_thromboembolism import (
     MORTALITY_PATTERNS as VTE_MORTALITY_PATTERNS,
     detect_venous_thromboembolism_subspecialty,
     normalize_venous_thromboembolism_endpoint
+)
+
 from .peripheral_artery_disease import (
     PAD_ENDPOINTS,
     LIMB_OUTCOMES_PATTERNS as PAD_LIMB_OUTCOMES_PATTERNS,
@@ -451,6 +463,8 @@ from .peripheral_artery_disease import (
     FUNCTIONAL_PATTERNS as PAD_FUNCTIONAL_PATTERNS,
     detect_peripheral_artery_disease_subspecialty,
     normalize_peripheral_artery_disease_endpoint
+)
+
 from .obesity import (
     OBESITY_ENDPOINTS,
     WEIGHT_LOSS_PATTERNS as OB_WEIGHT_LOSS_PATTERNS,
@@ -459,6 +473,8 @@ from .obesity import (
     SAFETY_PATTERNS as OB_SAFETY_PATTERNS,
     detect_obesity_subspecialty,
     normalize_obesity_endpoint
+)
+
 from .thyroid import (
     THYROID_ENDPOINTS,
     HYPOTHYROIDISM_PATTERNS as THY_HYPOTHYROIDISM_PATTERNS,
@@ -865,6 +881,8 @@ SPECIALTY_REGISTRY = {
             'ldl_target': DLD_LDL_TARGET_PATTERNS,
             'cv_events': DLD_CV_EVENTS_PATTERNS,
             'safety': DLD_SAFETY_PATTERNS
+        }
+    },
     'venous_thromboembolism': {
         'subspecialties': ['treatment', 'prevention', 'bleeding', 'mortality'],
         'detection_function': detect_venous_thromboembolism_subspecialty,
@@ -875,6 +893,8 @@ SPECIALTY_REGISTRY = {
             'prevention': VTE_PREVENTION_PATTERNS,
             'bleeding': VTE_BLEEDING_PATTERNS,
             'mortality': VTE_MORTALITY_PATTERNS
+        }
+    },
     'peripheral_artery_disease': {
         'subspecialties': ['limb_outcomes', 'revascularisation', 'medical_therapy', 'functional'],
         'detection_function': detect_peripheral_artery_disease_subspecialty,
@@ -885,6 +905,8 @@ SPECIALTY_REGISTRY = {
             'revascularisation': PAD_REVASCULARISATION_PATTERNS,
             'medical_therapy': PAD_MEDICAL_THERAPY_PATTERNS,
             'functional': PAD_FUNCTIONAL_PATTERNS
+        }
+    },
     'obesity': {
         'subspecialties': ['weight_loss', 'body_composition', 'cardiometabolic', 'safety'],
         'detection_function': detect_obesity_subspecialty,
@@ -895,6 +917,8 @@ SPECIALTY_REGISTRY = {
             'body_composition': OB_BODY_COMPOSITION_PATTERNS,
             'cardiometabolic': OB_CARDIOMETABOLIC_PATTERNS,
             'safety': OB_SAFETY_PATTERNS
+        }
+    },
     'thyroid': {
         'subspecialties': ['hypothyroidism', 'hyperthyroidism', 'thyroid_function', 'outcomes'],
         'detection_function': detect_thyroid_subspecialty,
@@ -905,6 +929,8 @@ SPECIALTY_REGISTRY = {
             'hyperthyroidism': THY_HYPERTHYROIDISM_PATTERNS,
             'thyroid_function': THY_THYROID_FUNCTION_PATTERNS,
             'outcomes': THY_OUTCOMES_PATTERNS
+        }
+    },
     'osteoporosis': {
         'subspecialties': ['fracture', 'bmd', 'bone_turnover', 'safety'],
         'detection_function': detect_osteoporosis_subspecialty,
@@ -915,6 +941,8 @@ SPECIALTY_REGISTRY = {
             'bmd': OST_BMD_PATTERNS,
             'bone_turnover': OST_BONE_TURNOVER_PATTERNS,
             'safety': OST_SAFETY_PATTERNS
+        }
+    },
     'kidney_transplant': {
         'subspecialties': ['rejection', 'graft', 'function', 'complications'],
         'detection_function': detect_kidney_transplant_subspecialty,
@@ -925,6 +953,8 @@ SPECIALTY_REGISTRY = {
             'graft': KT_GRAFT_PATTERNS,
             'function': KT_FUNCTION_PATTERNS,
             'complications': KT_COMPLICATIONS_PATTERNS
+        }
+    },
     'pulmonary_hypertension': {
         'subspecialties': ['functional', 'hemodynamics', 'clinical_worsening', 'biomarker'],
         'detection_function': detect_pulmonary_hypertension_subspecialty,
@@ -935,6 +965,8 @@ SPECIALTY_REGISTRY = {
             'hemodynamics': PH_HEMODYNAMICS_PATTERNS,
             'clinical_worsening': PH_CLINICAL_WORSENING_PATTERNS,
             'biomarker': PH_BIOMARKER_PATTERNS
+        }
+    },
     'pcos': {
         'subspecialties': ['reproductive', 'metabolic', 'androgen', 'safety'],
         'detection_function': detect_pcos_subspecialty,
@@ -1349,6 +1381,7 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r't[- ]score', r'\bfrax\b', r'bone[- ]turnover\s+marker',
             r'postmenopausal\s+(?:women\s+)?(?:with\s+)?osteoporosis',
             r'femoral\s+neck|lumbar\s+spine\s+(?:bmd|bone)',
+        ],
         'kidney_transplant': [
             r'kidney\s+transplant\w*', r'renal\s+transplant\w*', r'renal\s+allograft',
             r'kidney\s+allograft', r'\ballograft\b', r'graft\s+(?:loss|failure|survival)',
@@ -1358,6 +1391,7 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'basiliximab|anti[- ]thymocyte\s+globulin|thymoglobulin', r'sirolimus|everolimus',
             r'living[- ](?:donor|related)\s+(?:kidney|renal)|deceased[- ]donor',
             r'immunosuppress(?:ion|ive)\s+(?:regimen|therapy)',
+        ],
         'pulmonary_hypertension': [
             r'pulmonary\s+(?:arterial\s+)?hypertension', r'\bpah\b',
             r'pulmonary\s+vascular\s+resistance|\bpvr\b',
@@ -1368,6 +1402,7 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'riociguat', r'sotatercept', r'endothelin\s+receptor\s+antagonist',
             r'sildenafil|tadalafil', r'time\s+to\s+clinical\s+worsening',
             r'pulmonary\s+arteriopathy|chronic\s+thromboembolic\s+pulmonary',
+        ],
         'pcos': [
             r'polycystic\s+ovar(?:y|ian)\s+syndrome', r'\bpcos\b', r'polycystic\s+ovar(?:y|ian|ies)',
             r'anovulat(?:ion|ory)', r'ovulation\s+induction', r'oligo[- ]?ovulation',
@@ -1419,6 +1454,7 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'\bymrs\b|young\s+mania\s+rating\s+scale',
             r'\bphq-?9\b', r'\bgad-?7\b', r'\bssri\b|\bsnri\b',
             r'esketamine|zuranolone|brexanolone|vortioxetine|cariprazine|lurasidone|lumateperone|brexpiprazole'
+        ],
         'dyslipidaemia': [
             r'dyslipid(?:emia|aemia)', r'hyperlipid(?:emia|aemia)',
             r'hypercholesterol(?:emia|aemia)', r'\bldl[- ]?c?\b',
@@ -1432,17 +1468,24 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'pcsk9|evolocumab|alirocumab|inclisiran', r'bempedoic\s+acid',
             r'fenofibrate|gemfibrozil|\bfibrate\b',
             r'icosapent\s+ethyl', r'colesevelam|cholestyramine',
+        ],
         'venous_thromboembolism': [
+            # VTE-specific anchors only. Generic anticoagulation terms (the oral
+            # DOAC drug names, "anticoagulation", "major bleeding", "DOAC/NOAC",
+            # "vitamin-K antagonist") were deliberately removed from *detection*:
+            # they are shared verbatim with atrial-fibrillation / ACS trials and
+            # caused VTE to steal AF anticoagulation studies (which route to
+            # cardiology). Real VTE reports always carry the thrombosis/embolism
+            # vocabulary below, so detection stays strong; extraction is forced-
+            # specialty in the eval and is unaffected by this trim.
             r'venous\s+thromboembolism', r'\bvte\b', r'thromboprophylaxis',
             r'deep[- ]vein\s+thrombosis', r'\bdvt\b', r'pulmonary\s+embolism',
             r'recurrent\s+(?:venous\s+thromboembolism|vte|thrombosis)',
-            r'thromboembolic', r'anticoagulat(?:ion|ant)',
-            r'apixaban|rivaroxaban|edoxaban|dabigatran|betrixaban',
+            r'thromboembolic',
             r'enoxaparin|dalteparin|tinzaparin|nadroparin|fondaparinux',
             r'low[- ]molecular[- ]weight\s+heparin|unfractionated\s+heparin',
-            r'vitamin[- ]k\s+antagonist', r'post[- ]?thrombotic\s+syndrome',
-            r'major\s+bleeding|clinically\s+relevant\s+non[- ]?major',
-            r'\bdoac\b|\bnoac\b',
+            r'post[- ]?thrombotic\s+syndrome',
+        ],
         'peripheral_artery_disease': [
             r'peripheral\s+arter(?:y|ial)\s+disease', r'\bpad\b', r'\bpaod\b',
             r'intermittent\s+claudication', r'\bclaudication\b',
@@ -1457,6 +1500,7 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'cilostazol|naftidrofuryl|pentoxifylline',
             r'drug[- ]coated\s+balloon|drug[- ]eluting\s+stent',
             r'lower[- ](?:limb|extremity)\s+(?:revascular[is]ation|isch[ae]mia|arter)',
+        ],
         'obesity': [
             r'\bobesity\b', r'\boverweight\b', r'body\s+weight', r'weight\s+loss',
             r'weight\s+reduction', r'weight\s+management', r'anti[- ]obesity',
@@ -1466,6 +1510,7 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'percent(?:age)?\s+(?:body\s+)?weight', r'fat\s+mass',
             r'semaglutide|liraglutide|tirzepatide|retatrutide|cagrilintide',
             r'orlistat|phentermine|naltrexone[\/ -]?bupropion|setmelanotide|lorcaserin',
+        ],
         'thyroid': [
             r'\bthyroid\b', r'hypothyroid(?:ism)?', r'hyperthyroid(?:ism)?',
             r'thyrotoxicosis', r'levothyroxine|l[- ]?thyroxine|\blt4\b|liothyronine',
@@ -1668,10 +1713,13 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'osteoporosis':
         subspecialty, conf = detect_osteoporosis_subspecialty(text)
+        confidence = max(confidence, conf)
     elif best_specialty == 'kidney_transplant':
         subspecialty, conf = detect_kidney_transplant_subspecialty(text)
+        confidence = max(confidence, conf)
     elif best_specialty == 'pulmonary_hypertension':
         subspecialty, conf = detect_pulmonary_hypertension_subspecialty(text)
+        confidence = max(confidence, conf)
     elif best_specialty == 'pcos':
         subspecialty, conf = detect_pcos_subspecialty(text)
         confidence = max(confidence, conf)
@@ -1698,14 +1746,19 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'ophthalmology':
         subspecialty, conf = detect_ophthalmology_subspecialty(text)
+        confidence = max(confidence, conf)
     elif best_specialty == 'dyslipidaemia':
         subspecialty, conf = detect_dyslipidaemia_subspecialty(text)
+        confidence = max(confidence, conf)
     elif best_specialty == 'venous_thromboembolism':
         subspecialty, conf = detect_venous_thromboembolism_subspecialty(text)
+        confidence = max(confidence, conf)
     elif best_specialty == 'peripheral_artery_disease':
         subspecialty, conf = detect_peripheral_artery_disease_subspecialty(text)
+        confidence = max(confidence, conf)
     elif best_specialty == 'obesity':
         subspecialty, conf = detect_obesity_subspecialty(text)
+        confidence = max(confidence, conf)
     elif best_specialty == 'thyroid':
         subspecialty, conf = detect_thyroid_subspecialty(text)
         confidence = max(confidence, conf)
