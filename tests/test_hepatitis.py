@@ -121,9 +121,18 @@ def test_infectious_disease_does_not_steal_from_hepatitis():
     assert spec == "hepatitis"
 
 
-def test_infectious_disease_still_wins_for_generic_covid():
-    # When NO specific specialty matches, the ID fallback is still selected.
+def test_covid_routes_to_covid19_specialty():
+    # COVID-19 is now a dedicated specialty (npg-covid19-field-bundle); a covid
+    # abstract routes there rather than to the generic infectious_disease fallback.
     spec, _, _ = detect_specialty(
         "covid-19 sars-cov-2 antiviral therapy; viral infection; "
         "bacterial superinfection; antibiotic stewardship.")
+    assert spec == "covid19"
+
+
+def test_infectious_disease_still_wins_for_generic_infection():
+    # When NO specific specialty matches, the generic ID fallback is still selected.
+    spec, _, _ = detect_specialty(
+        "broad-spectrum antibiotic therapy for a generic bacterial infection; "
+        "antiviral co-treatment; antimicrobial stewardship.")
     assert spec == "infectious_disease"
