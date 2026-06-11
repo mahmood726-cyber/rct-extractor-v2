@@ -340,3 +340,8 @@ data/field_portability/migraine/rct_trial_pdfs/
 data/field_portability/migraine/*.jsonl
 data/field_portability/migraine/*.json
 data/field_portability/migraine/*.log
+# Schizophrenia field bundle — large/transient data (keep README.md; code is under scripts/)
+data/field_portability/schizophrenia/rct_trial_pdfs/
+data/field_portability/schizophrenia/*.jsonl
+data/field_portability/schizophrenia/*.json
+data/field_portability/schizophrenia/*.log

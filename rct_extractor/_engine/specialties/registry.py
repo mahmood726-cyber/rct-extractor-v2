@@ -515,6 +515,14 @@ from .migraine import (
     LATENT_PATTERNS as MIGRAINE_DEVICE_PATTERNS,
     detect_migraine_subspecialty,
     normalize_migraine_endpoint
+from .schizophrenia import (
+    SCHIZOPHRENIA_ENDPOINTS,
+    TREATMENT_PATTERNS as SCZ_ACUTE_PATTERNS,
+    DRUG_RESISTANT_PATTERNS as SCZ_MAINTENANCE_PATTERNS,
+    PREVENTION_PATTERNS as SCZ_NEGCOG_PATTERNS,
+    LATENT_PATTERNS as SCZ_SAFETY_PATTERNS,
+    detect_schizophrenia_subspecialty,
+    normalize_schizophrenia_endpoint
 )
 
 
@@ -1164,6 +1172,18 @@ SPECIALTY_REGISTRY = {
             'chronic': MIGRAINE_CHRONIC_PATTERNS,
             'device_neuromod': MIGRAINE_DEVICE_PATTERNS
         }
+    },
+    'schizophrenia': {
+        'subspecialties': ['acute', 'maintenance', 'negative_cognitive', 'safety'],
+        'detection_function': detect_schizophrenia_subspecialty,
+        'normalizer': normalize_schizophrenia_endpoint,
+        'endpoints': SCHIZOPHRENIA_ENDPOINTS,
+        'patterns': {
+            'acute': SCZ_ACUTE_PATTERNS,
+            'maintenance': SCZ_MAINTENANCE_PATTERNS,
+            'negative_cognitive': SCZ_NEGCOG_PATTERNS,
+            'safety': SCZ_SAFETY_PATTERNS
+        }
     }
 }
 
@@ -1637,6 +1657,15 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'2[- ]h(?:our|r)?\\s+pain\\s+(?:freedom|relief)|most\\s+bothersome\\s+symptom',
             r'chronic\\s+migraine|episodic\\s+migraine|onabotulinumtoxin',
             r'headache\\s+days|50\\s*%\\s+responder|midas|hit[- ]?6',
+        'schizophrenia': [
+            r'schizophreni|schizoaffective',
+            r'\\bpanss\\b|positive\\s+and\\s+negative\\s+syndrome',
+            r'antipsychotic|risperidone|olanzapine|quetiapine|aripiprazole|paliperidone|lurasidone|cariprazine|brexpiprazole|clozapine|haloperidol',
+            r'\\bcgi[- ]?[si]?\\b|clinical\\s+global\\s+impression',
+            r'long[- ]acting\\s+injectable|\\blai\\b|relapse\\s+prevention',
+            r'negative\\s+symptoms?|treatment[- ]resistant\\s+schizophreni',
+            r'psychosis|psychotic\\s+(?:symptoms|disorder|episode)',
+            r'xanomeline|karxt|extrapyramidal|akathisia',
         ],
         'neurology': [
             r'alzheimer', r'dementia', r'multiple\s+sclerosis', r'\bms\b',
@@ -1883,6 +1912,8 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         subspecialty, conf = detect_multiple_sclerosis_subspecialty(text)
     elif best_specialty == 'migraine':
         subspecialty, conf = detect_migraine_subspecialty(text)
+    elif best_specialty == 'schizophrenia':
+        subspecialty, conf = detect_schizophrenia_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)
