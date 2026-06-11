@@ -63,6 +63,7 @@ SPECIALTIES: Tuple[str, ...] = (
     "renal_cell_carcinoma",
     "dyslipidaemia",
     "venous_thromboembolism",
+    "peripheral_artery_disease",
 )
 
 __all__ = [

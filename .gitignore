@@ -283,5 +283,10 @@ data/field_portability/venous_thromboembolism/rct_trial_pdfs/
 data/field_portability/venous_thromboembolism/*.jsonl
 data/field_portability/venous_thromboembolism/*.json
 data/field_portability/venous_thromboembolism/*.log
+# Peripheral artery disease field bundle — large/transient data (keep README.md; code is under scripts/)
+data/field_portability/peripheral_artery_disease/rct_trial_pdfs/
+data/field_portability/peripheral_artery_disease/*.jsonl
+data/field_portability/peripheral_artery_disease/*.json
+data/field_portability/peripheral_artery_disease/*.log
 
 PROGRESS.md
