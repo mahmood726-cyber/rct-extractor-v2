@@ -499,6 +499,14 @@ from .alzheimers import (
     LATENT_PATTERNS as AD_PREVENTION_MCI_PATTERNS,
     detect_alzheimers_subspecialty,
     normalize_alzheimers_endpoint
+from .multiple_sclerosis import (
+    MULTIPLE_SCLEROSIS_ENDPOINTS,
+    TREATMENT_PATTERNS as MS_RELAPSING_PATTERNS,
+    DRUG_RESISTANT_PATTERNS as MS_PROGRESSIVE_PATTERNS,
+    PREVENTION_PATTERNS as MS_SYMPTOMATIC_PATTERNS,
+    LATENT_PATTERNS as MS_ACUTE_RELAPSE_PATTERNS,
+    detect_multiple_sclerosis_subspecialty,
+    normalize_multiple_sclerosis_endpoint
 )
 
 
@@ -1124,6 +1132,18 @@ SPECIALTY_REGISTRY = {
             'neuropsychiatric': AD_NEUROPSYCH_PATTERNS,
             'prevention_mci': AD_PREVENTION_MCI_PATTERNS
         }
+    },
+    'multiple_sclerosis': {
+        'subspecialties': ['relapsing', 'progressive', 'symptomatic', 'acute_relapse'],
+        'detection_function': detect_multiple_sclerosis_subspecialty,
+        'normalizer': normalize_multiple_sclerosis_endpoint,
+        'endpoints': MULTIPLE_SCLEROSIS_ENDPOINTS,
+        'patterns': {
+            'relapsing': MS_RELAPSING_PATTERNS,
+            'progressive': MS_PROGRESSIVE_PATTERNS,
+            'symptomatic': MS_SYMPTOMATIC_PATTERNS,
+            'acute_relapse': MS_ACUTE_RELAPSE_PATTERNS
+        }
     }
 }
 
@@ -1579,6 +1599,15 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'lecanemab|aducanumab|donanemab|gantenerumab|solanezumab',
             r'anti[- ]amyloid|amyloid\s+pet|centiloid|\baria\b',
             r'\bnpi\b|neuropsychiatric\s+inventory|\bcmai\b|\bmmse\b'
+        'multiple_sclerosis': [
+            r'multiple\\s+sclerosis',
+            r'\\brrms\\b|\\bspms\\b|\\bppms\\b',
+            r'relapsing[- ]remitting',
+            r'annuali[sz]ed\\s+relapse\\s+rate|\\barr\\b',
+            r'\\bedss\\b|expanded\\s+disability',
+            r'gadolinium[- ]enhancing|new\\s+(?:or\\s+(?:newly\\s+)?enlarging\\s+)?t2',
+            r'ocrelizumab|ofatumumab|natalizumab|fingolimod|ozanimod|siponimod|glatiramer|teriflunomide|dimethyl\\s+fumarate|cladribine|interferon\\s+beta',
+            r'\\bneda\\b|confirmed\\s+disability\\s+progression',
         ],
         'neurology': [
             r'alzheimer', r'dementia', r'multiple\s+sclerosis', r'\bms\b',
@@ -1821,6 +1850,8 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         subspecialty, conf = detect_parkinsons_subspecialty(text)
     elif best_specialty == 'alzheimers':
         subspecialty, conf = detect_alzheimers_subspecialty(text)
+    elif best_specialty == 'multiple_sclerosis':
+        subspecialty, conf = detect_multiple_sclerosis_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)

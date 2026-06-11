@@ -62,10 +62,28 @@ _REVIEW_MARKERS = re.compile(
     r"studies were included|eligible studies|databases were searched|"
     r"prisma|prospero|scoping review|umbrella review)\b", re.I)
 _OBSERVATIONAL_MARKERS = re.compile(
-    r"\b(cohort stud(?:y|ies)|case[- ]control|observational stud(?:y|ies)|"
+    r"\b(cohort stud(?:y|ies)|\bcohort\b|case[- ]control|observational(?: stud(?:y|ies))?|"
     r"retrospective (?:cohort|stud|analys|review|chart)|registry[- ]based|"
     r"cross[- ]sectional|nationwide (?:cohort|registry)|"
-    r"electronic health record|real[- ]world (?:data|cohort|evidence))\b", re.I)
+    r"propensity[- ](?:score|match)|comparative effectiveness|"
+    r"target trial emulat|emulated target trial|"
+    r"electronic health record|real[- ]world (?:data|cohort|evidence|study))\b", re.I)
+
+
+def _drop_heart_rate(effects):
+    """Drop 'HR' tuples that are actually a heart-rate measurement (e.g. 'HR
+    nadir 48.9 bpm (95% CI 46.4-51.3)'), not a hazard ratio. Generalizable
+    unit-based guard: the point estimate is immediately followed by bpm / beats."""
+    out = []
+    for e in effects:
+        q = e.get("quote_context", "") + " " + e.get("source_text", "")
+        pt = e.get("point_estimate")
+        if e.get("effect_type") == "HR" and pt is not None:
+            pat = re.escape(("%g" % pt)) + r"\s*(?:bpm|beats(?:/| per )min)"
+            if re.search(pat, q, re.I) or re.search(r"heart\s+rate|\bHR\s+nadir\b", q, re.I):
+                continue
+        out.append(e)
+    return out
 _RCT_MARKERS = re.compile(
     r"\b(randomi[sz]ed|randomi[sz]ation|double[- ]blind|single[- ]blind|"
     r"placebo[- ]controlled|allocated to|assigned to receive|"
@@ -175,7 +193,7 @@ def main():
             continue
         if _looks_non_rct(abstract):
             continue  # review / meta-analysis / observational -> not an RCT gold
-        effects = harvest_effects(abstract)
+        effects = _drop_heart_rate(harvest_effects(abstract))
         if not effects:
             continue
         candidates[pmc] = (pmid, abstract, effects)

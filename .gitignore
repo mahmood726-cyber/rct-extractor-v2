@@ -330,3 +330,8 @@ data/field_portability/alzheimers/rct_trial_pdfs/
 data/field_portability/alzheimers/*.jsonl
 data/field_portability/alzheimers/*.json
 data/field_portability/alzheimers/*.log
+# Multiple sclerosis field bundle — large/transient data (keep README.md; code is under scripts/)
+data/field_portability/multiple_sclerosis/rct_trial_pdfs/
+data/field_portability/multiple_sclerosis/*.jsonl
+data/field_portability/multiple_sclerosis/*.json
+data/field_portability/multiple_sclerosis/*.log
