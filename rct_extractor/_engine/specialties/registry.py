@@ -5,6 +5,16 @@ Specialty Registry - Central registry for all specialty patterns and endpoints.
 from typing import Dict, List, Tuple, Optional, Callable
 import re
 
+from .anaemia import (
+    ANAEMIA_ENDPOINTS,
+    IRON_THERAPY_PATTERNS as ANAEMIA_IRON_THERAPY_PATTERNS,
+    ESA_PATTERNS as ANAEMIA_ESA_PATTERNS,
+    NUTRITIONAL_PATTERNS as ANAEMIA_NUTRITIONAL_PATTERNS,
+    TRANSFUSION_ANAEMIA_PATTERNS as ANAEMIA_TRANSFUSION_PATTERNS,
+    detect_anaemia_subspecialty,
+    normalize_anaemia_endpoint
+)
+
 from .cardiology import (
     CARDIOLOGY_ENDPOINTS,
     HEART_FAILURE_PATTERNS,
@@ -388,6 +398,18 @@ SPECIALTY_REGISTRY = {
             'preterm': MNH_PRETERM_PATTERNS
         }
     },
+    'anaemia': {
+        'subspecialties': ['iron_therapy', 'esa', 'nutritional', 'transfusion_anaemia'],
+        'detection_function': detect_anaemia_subspecialty,
+        'normalizer': normalize_anaemia_endpoint,
+        'endpoints': ANAEMIA_ENDPOINTS,
+        'patterns': {
+            'iron_therapy': ANAEMIA_IRON_THERAPY_PATTERNS,
+            'esa': ANAEMIA_ESA_PATTERNS,
+            'nutritional': ANAEMIA_NUTRITIONAL_PATTERNS,
+            'transfusion_anaemia': ANAEMIA_TRANSFUSION_PATTERNS
+        }
+    },
     'tuberculosis': {
         'subspecialties': ['treatment', 'drug_resistant', 'prevention', 'latent'],
         'detection_function': detect_tuberculosis_subspecialty,
@@ -651,6 +673,16 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
 
     # Keywords for each specialty
     specialty_keywords = {
+        'anaemia': [
+            r'iron[- ]deficiency\s+an(?:ae|e)mia|\bida\b', r'\ban(?:ae|e)mia\b', r'an(?:ae|e)mic',
+            r'intravenous\s+iron|\biv\s+iron\b|oral\s+iron|ferrous\s+(?:sulfate|sulphate|fumarate)',
+            r'ferric\s+carboxymaltose|iron\s+sucrose|ferric\s+derisomaltose|\bfcm\b',
+            r'erythropoiesis[- ]stimulating\s+agent|\besa\b|erythropoietin|epoetin|darbepoetin',
+            r'roxadustat|daprodustat|vadadustat|hif[- ]?ph',
+            r'h(?:ae|e)moglobin\s+(?:response|change|increase|target)', r'serum\s+ferritin|ferritin',
+            r'transferrin\s+saturation|\btsat\b', r'iron[- ]folic\s+acid|iron\s+and\s+folic\s+acid',
+            r'red[- ](?:blood[- ])?cell\s+transfusion|transfusion\s+(?:requirement|avoidance)'
+        ],
         'cardiology': [
             r'heart\s+failure', r'myocardial\s+infarction', r'atrial\s+fibrillation',
             r'coronary', r'cardiovascular', r'cardiac', r'lvef', r'ejection\s+fraction',
@@ -972,6 +1004,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'maternal_neonatal':
         subspecialty, conf = detect_maternal_neonatal_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'anaemia':
+        subspecialty, conf = detect_anaemia_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'tuberculosis':
         subspecialty, conf = detect_tuberculosis_subspecialty(text)
