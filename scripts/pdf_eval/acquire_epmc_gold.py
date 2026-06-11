@@ -56,18 +56,18 @@ SEARCH = "https://www.ebi.ac.uk/europepmc/webservices/rest/search?"
 UA = "rct-extractor-v2-eval/1.0 (mahmood726@gmail.com)"
 
 
-_REVIEW_MARKERS = re.compile(
+_HARD_NONRCT = re.compile(
     r"\b(meta[- ]?analys[ie]s|systematic review|network meta|"
     r"we searched|literature search|pooled (?:odds|risk|hazard|estimate)|"
     r"studies were included|eligible studies|databases were searched|"
-    r"prisma|prospero|scoping review|umbrella review)\b", re.I)
-_OBSERVATIONAL_MARKERS = re.compile(
-    r"\b(cohort stud(?:y|ies)|\bcohort\b|case[- ]control|observational(?: stud(?:y|ies))?|"
-    r"retrospective (?:cohort|stud|analys|review|chart)|registry[- ]based|"
-    r"cross[- ]sectional|nationwide (?:cohort|registry)|"
+    r"prisma|prospero|scoping review|umbrella review|"
+    r"mendelian randomi[sz]ation|two[- ]sample mr\b|genetic instrument|"
+    r"cohort stud(?:y|ies)|case[- ]control|observational stud(?:y|ies)|"
+    r"retrospective (?:cohort|stud|analys|review|chart|real[- ]world)|registry[- ]based|"
+    r"cross[- ]sectional stud|nationwide (?:cohort|registry)|"
     r"propensity[- ](?:score|match)|comparative effectiveness|"
     r"target trial emulat|emulated target trial|"
-    r"electronic health record|real[- ]world (?:data|cohort|evidence|study))\b", re.I)
+    r"electronic health record|real[- ]world (?:evidence|study))\b", re.I)
 
 
 def _drop_heart_rate(effects):
@@ -84,26 +84,17 @@ def _drop_heart_rate(effects):
                 continue
         out.append(e)
     return out
-_RCT_MARKERS = re.compile(
-    r"\b(randomi[sz]ed|randomi[sz]ation|double[- ]blind|single[- ]blind|"
-    r"placebo[- ]controlled|allocated to|assigned to receive|"
-    r"randomly (?:allocated|assigned)|parallel[- ]group|crossover trial|"
-    r"open[- ]label trial|phase \d|sham[- ]controlled)\b", re.I)
-
-
 def _looks_non_rct(abstract: str) -> bool:
-    """True if the abstract is itself a review/meta-analysis, or an observational
-    study with no RCT self-description. These are exactly the non-RCT estimates the
-    extractor declines by design, so they do not belong in an RCT gold set. This is
-    a study-DESIGN exclusion (no effect-value inspection), generalizable across all
-    specialties; it keeps the gold honestly RCT-only."""
-    # A primary RCT abstract essentially never calls itself a meta-analysis /
-    # systematic review, so those markers are decisive on their own.
-    if _REVIEW_MARKERS.search(abstract):
-        return True
-    # Observational primary study: exclude only when it does NOT also describe an
-    # RCT (guards the rare RCT that cites a cohort in its rationale).
-    if _OBSERVATIONAL_MARKERS.search(abstract) and not _RCT_MARKERS.search(abstract):
+    """True if the abstract is NOT a primary RCT (so its stated estimates are not
+    RCT effects and do not belong in an RCT gold set). Two-part, study-DESIGN only
+    (no effect-value inspection), generalizable across specialties:
+    decisive non-RCT design markers (review / meta-analysis / Mendelian
+    randomization / cohort study / case-control / observational study /
+    retrospective / real-world study / propensity score / target-trial emulation).
+    These phrases essentially never appear in a primary RCT abstract, so they are
+    decisive on their own (no RCT-marker escape hatch: a bare 'randomized' mention,
+    e.g. 'Mendelian randomization' or citing prior trials, must not rescue them)."""
+    if _HARD_NONRCT.search(abstract):
         return True
     return False
 

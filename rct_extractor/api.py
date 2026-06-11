@@ -74,6 +74,7 @@ SPECIALTIES: Tuple[str, ...] = (
     "parkinsons",
     "alzheimers",
     "multiple_sclerosis",
+    "migraine",
 )
 
 __all__ = [

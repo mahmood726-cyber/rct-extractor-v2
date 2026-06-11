@@ -507,6 +507,14 @@ from .multiple_sclerosis import (
     LATENT_PATTERNS as MS_ACUTE_RELAPSE_PATTERNS,
     detect_multiple_sclerosis_subspecialty,
     normalize_multiple_sclerosis_endpoint
+from .migraine import (
+    MIGRAINE_ENDPOINTS,
+    TREATMENT_PATTERNS as MIGRAINE_ACUTE_PATTERNS,
+    DRUG_RESISTANT_PATTERNS as MIGRAINE_PREVENTIVE_PATTERNS,
+    PREVENTION_PATTERNS as MIGRAINE_CHRONIC_PATTERNS,
+    LATENT_PATTERNS as MIGRAINE_DEVICE_PATTERNS,
+    detect_migraine_subspecialty,
+    normalize_migraine_endpoint
 )
 
 
@@ -1144,6 +1152,18 @@ SPECIALTY_REGISTRY = {
             'symptomatic': MS_SYMPTOMATIC_PATTERNS,
             'acute_relapse': MS_ACUTE_RELAPSE_PATTERNS
         }
+    },
+    'migraine': {
+        'subspecialties': ['acute', 'preventive', 'chronic', 'device_neuromod'],
+        'detection_function': detect_migraine_subspecialty,
+        'normalizer': normalize_migraine_endpoint,
+        'endpoints': MIGRAINE_ENDPOINTS,
+        'patterns': {
+            'acute': MIGRAINE_ACUTE_PATTERNS,
+            'preventive': MIGRAINE_PREVENTIVE_PATTERNS,
+            'chronic': MIGRAINE_CHRONIC_PATTERNS,
+            'device_neuromod': MIGRAINE_DEVICE_PATTERNS
+        }
     }
 }
 
@@ -1608,6 +1628,15 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'gadolinium[- ]enhancing|new\\s+(?:or\\s+(?:newly\\s+)?enlarging\\s+)?t2',
             r'ocrelizumab|ofatumumab|natalizumab|fingolimod|ozanimod|siponimod|glatiramer|teriflunomide|dimethyl\\s+fumarate|cladribine|interferon\\s+beta',
             r'\\bneda\\b|confirmed\\s+disability\\s+progression',
+        'migraine': [
+            r'migraine',
+            r'\\btriptan|sumatriptan|rizatriptan|eletriptan|zolmitriptan',
+            r'ubrogepant|rimegepant|zavegepant|atogepant|gepant|lasmiditan',
+            r'erenumab|fremanezumab|galcanezumab|eptinezumab|anti[- ]cgrp|calcitonin\\s+gene',
+            r'monthly\\s+migraine\\s+days|\\bmmd\\b|monthly\\s+headache\\s+days|\\bmhd\\b',
+            r'2[- ]h(?:our|r)?\\s+pain\\s+(?:freedom|relief)|most\\s+bothersome\\s+symptom',
+            r'chronic\\s+migraine|episodic\\s+migraine|onabotulinumtoxin',
+            r'headache\\s+days|50\\s*%\\s+responder|midas|hit[- ]?6',
         ],
         'neurology': [
             r'alzheimer', r'dementia', r'multiple\s+sclerosis', r'\bms\b',
@@ -1852,6 +1881,8 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         subspecialty, conf = detect_alzheimers_subspecialty(text)
     elif best_specialty == 'multiple_sclerosis':
         subspecialty, conf = detect_multiple_sclerosis_subspecialty(text)
+    elif best_specialty == 'migraine':
+        subspecialty, conf = detect_migraine_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)

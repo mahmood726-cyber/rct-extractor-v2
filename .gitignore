@@ -335,3 +335,8 @@ data/field_portability/multiple_sclerosis/rct_trial_pdfs/
 data/field_portability/multiple_sclerosis/*.jsonl
 data/field_portability/multiple_sclerosis/*.json
 data/field_portability/multiple_sclerosis/*.log
+# Migraine field bundle — large/transient data (keep README.md; code is under scripts/)
+data/field_portability/migraine/rct_trial_pdfs/
+data/field_portability/migraine/*.jsonl
+data/field_portability/migraine/*.json
+data/field_portability/migraine/*.log
