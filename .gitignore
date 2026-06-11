@@ -429,3 +429,8 @@ data/field_portability/allergic_rhinitis/rct_trial_pdfs/
 data/field_portability/allergic_rhinitis/*.jsonl
 data/field_portability/allergic_rhinitis/*.json
 data/field_portability/allergic_rhinitis/*.log
+# Urticaria/anaphylaxis field bundle — large/transient data (keep README.md; code under scripts/)
+data/field_portability/urticaria/rct_trial_pdfs/
+data/field_portability/urticaria/*.jsonl
+data/field_portability/urticaria/*.json
+data/field_portability/urticaria/*.log

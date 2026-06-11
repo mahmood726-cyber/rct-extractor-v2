@@ -44,6 +44,7 @@ EXPECTED_SPECIALTIES = {
     "itp",
     "transfusion",
     "allergic_rhinitis",
+    "urticaria",
 }
 
 

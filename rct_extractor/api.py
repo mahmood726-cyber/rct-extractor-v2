@@ -29,6 +29,7 @@ SPECIALTIES: Tuple[str, ...] = (
     "itp",
     "transfusion",
     "allergic_rhinitis",
+    "urticaria",
     "hiv",
     "malaria",
     "typhoid",
