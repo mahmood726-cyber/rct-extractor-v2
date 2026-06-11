@@ -417,6 +417,14 @@ from .peripheral_artery_disease import (
     FUNCTIONAL_PATTERNS as PAD_FUNCTIONAL_PATTERNS,
     detect_peripheral_artery_disease_subspecialty,
     normalize_peripheral_artery_disease_endpoint
+from .obesity import (
+    OBESITY_ENDPOINTS,
+    WEIGHT_LOSS_PATTERNS as OB_WEIGHT_LOSS_PATTERNS,
+    BODY_COMPOSITION_PATTERNS as OB_BODY_COMPOSITION_PATTERNS,
+    CARDIOMETABOLIC_PATTERNS as OB_CARDIOMETABOLIC_PATTERNS,
+    SAFETY_PATTERNS as OB_SAFETY_PATTERNS,
+    detect_obesity_subspecialty,
+    normalize_obesity_endpoint
 )
 
 
@@ -835,6 +843,16 @@ SPECIALTY_REGISTRY = {
             'revascularisation': PAD_REVASCULARISATION_PATTERNS,
             'medical_therapy': PAD_MEDICAL_THERAPY_PATTERNS,
             'functional': PAD_FUNCTIONAL_PATTERNS
+    'obesity': {
+        'subspecialties': ['weight_loss', 'body_composition', 'cardiometabolic', 'safety'],
+        'detection_function': detect_obesity_subspecialty,
+        'normalizer': normalize_obesity_endpoint,
+        'endpoints': OBESITY_ENDPOINTS,
+        'patterns': {
+            'weight_loss': OB_WEIGHT_LOSS_PATTERNS,
+            'body_composition': OB_BODY_COMPOSITION_PATTERNS,
+            'cardiometabolic': OB_CARDIOMETABOLIC_PATTERNS,
+            'safety': OB_SAFETY_PATTERNS
         }
     },
     'neurology': {
@@ -1310,6 +1328,15 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'cilostazol|naftidrofuryl|pentoxifylline',
             r'drug[- ]coated\s+balloon|drug[- ]eluting\s+stent',
             r'lower[- ](?:limb|extremity)\s+(?:revascular[is]ation|isch[ae]mia|arter)',
+        'obesity': [
+            r'\bobesity\b', r'\boverweight\b', r'body\s+weight', r'weight\s+loss',
+            r'weight\s+reduction', r'weight\s+management', r'anti[- ]obesity',
+            r'body\s+mass\s+index|\bbmi\b', r'waist\s+circumference', r'adiposity',
+            r'bariatric|sleeve\s+gastrectomy|gastric\s+bypass',
+            r'(?:>=?|at\s+least\s+)\s*\d+\s*%\s+weight\s+loss',
+            r'percent(?:age)?\s+(?:body\s+)?weight', r'fat\s+mass',
+            r'semaglutide|liraglutide|tirzepatide|retatrutide|cagrilintide',
+            r'orlistat|phentermine|naltrexone[\/ -]?bupropion|setmelanotide|lorcaserin',
         ],
         'neurology': [
             r'alzheimer', r'dementia', r'multiple\s+sclerosis', r'\bms\b',
@@ -1527,6 +1554,8 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         subspecialty, conf = detect_venous_thromboembolism_subspecialty(text)
     elif best_specialty == 'peripheral_artery_disease':
         subspecialty, conf = detect_peripheral_artery_disease_subspecialty(text)
+    elif best_specialty == 'obesity':
+        subspecialty, conf = detect_obesity_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)
