@@ -207,3 +207,10 @@ data/field_portability/ovarian_cancer/*.json
 data/field_portability/ovarian_cancer/*.log
 data/pdf_eval/gold_ovarian_cancer.jsonl
 data/pdf_eval/eval_onc_ovarian_cancer.json
+# Pancreatic-cancer field bundle
+data/field_portability/pancreatic_cancer/rct_trial_pdfs/
+data/field_portability/pancreatic_cancer/*.jsonl
+data/field_portability/pancreatic_cancer/*.json
+data/field_portability/pancreatic_cancer/*.log
+data/pdf_eval/gold_pancreatic_cancer.jsonl
+data/pdf_eval/eval_onc_pancreatic_cancer.json
