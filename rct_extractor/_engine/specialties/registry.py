@@ -184,6 +184,16 @@ from .cervical_cancer import (
     normalize_cervical_cancer_endpoint
 )
 
+from .urinary_incontinence import (
+    URINARY_INCONTINENCE_ENDPOINTS,
+    OAB_PATTERNS as UI_OAB_PATTERNS,
+    SUI_PATTERNS as UI_SUI_PATTERNS,
+    PROCEDURAL_PATTERNS as UI_PROCEDURAL_PATTERNS,
+    QOL_PATTERNS as UI_QOL_PATTERNS,
+    detect_urinary_incontinence_subspecialty,
+    normalize_urinary_incontinence_endpoint
+)
+
 from .diabetes import (
     DIABETES_ENDPOINTS,
     GLYCEMIC_PATTERNS as DIABETES_GLYCEMIC_PATTERNS,
@@ -940,6 +950,18 @@ SPECIALTY_REGISTRY = {
             'mortality': RCC_MORTALITY_PATTERNS
         }
     },
+    'urinary_incontinence': {
+        'subspecialties': ['oab', 'sui', 'procedural', 'qol'],
+        'detection_function': detect_urinary_incontinence_subspecialty,
+        'normalizer': normalize_urinary_incontinence_endpoint,
+        'endpoints': URINARY_INCONTINENCE_ENDPOINTS,
+        'patterns': {
+            'oab': UI_OAB_PATTERNS,
+            'sui': UI_SUI_PATTERNS,
+            'procedural': UI_PROCEDURAL_PATTERNS,
+            'qol': UI_QOL_PATTERNS
+        }
+    },
     'infectious_disease': {
         'subspecialties': ['covid', 'hepatitis', 'bacterial'],
         'endpoints': {
@@ -1456,6 +1478,16 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'high[- ]grade\s+squamous\s+intraepithelial', r'persistent\s+hpv',
             r'quadrivalent|bivalent|nonavalent'
         ],
+        'urinary_incontinence': [
+            r'overactive\s+bladder|\boab\b', r'urinary\s+incontinence',
+            r'urgency\s+urinary\s+incontinence|\buui\b', r'urge\s+incontinence',
+            r'stress\s+urinary\s+incontinence', r'urinary\s+urgency',
+            r'mirabegron|vibegron',
+            r'solifenacin|tolterodine|fesoterodine|oxybutynin|darifenacin|trospium',
+            r'antimuscarinic', r'detrusor\s+overactivity',
+            r'midurethral\s+sling|sacral\s+neuromodulation',
+            r'percutaneous\s+tibial\s+nerve|\bptns\b', r'micturition\s+frequency'
+        ],
         'oesophageal_cancer': [
             r'(?:o?esophageal|esophageal)\s+(?:cancer|carcinoma|squamous|adenocarcinoma)',
             r'\boescc\b|\bescc\b(?=.{0,40}(?:o?esophag|esophag))',
@@ -1959,6 +1991,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'cervical_cancer':
         subspecialty, conf = detect_cervical_cancer_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'urinary_incontinence':
+        subspecialty, conf = detect_urinary_incontinence_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'oesophageal_cancer':
         subspecialty, conf = detect_oesophageal_cancer_subspecialty(text)
