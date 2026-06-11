@@ -5,6 +5,16 @@ Specialty Registry - Central registry for all specialty patterns and endpoints.
 from typing import Dict, List, Tuple, Optional, Callable
 import re
 
+from .urticaria import (
+    URTICARIA_ENDPOINTS,
+    ANTIHISTAMINE_PATTERNS as URT_ANTIHISTAMINE_PATTERNS,
+    BIOLOGIC_PATTERNS as URT_BIOLOGIC_PATTERNS,
+    ANAPHYLAXIS_PATTERNS as URT_ANAPHYLAXIS_PATTERNS,
+    OTHER_PATTERNS as URT_OTHER_PATTERNS,
+    detect_urticaria_subspecialty,
+    normalize_urticaria_endpoint
+)
+
 from .cardiology import (
     CARDIOLOGY_ENDPOINTS,
     HEART_FAILURE_PATTERNS,
@@ -688,6 +698,18 @@ SPECIALTY_REGISTRY = {
             'preterm': MNH_PRETERM_PATTERNS
         }
     },
+    'urticaria': {
+        'subspecialties': ['antihistamine', 'biologic', 'anaphylaxis', 'other'],
+        'detection_function': detect_urticaria_subspecialty,
+        'normalizer': normalize_urticaria_endpoint,
+        'endpoints': URTICARIA_ENDPOINTS,
+        'patterns': {
+            'antihistamine': URT_ANTIHISTAMINE_PATTERNS,
+            'biologic': URT_BIOLOGIC_PATTERNS,
+            'anaphylaxis': URT_ANAPHYLAXIS_PATTERNS,
+            'other': URT_OTHER_PATTERNS
+        }
+    },
     'tuberculosis': {
         'subspecialties': ['treatment', 'drug_resistant', 'prevention', 'latent'],
         'detection_function': detect_tuberculosis_subspecialty,
@@ -1311,6 +1333,14 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
 
     # Keywords for each specialty
     specialty_keywords = {
+        'urticaria': [
+            r'chronic\s+spontaneous\s+urticaria|\bcsu\b', r'chronic\s+idiopathic\s+urticaria|\bciu\b',
+            r'chronic\s+urticaria', r'chronic\s+inducible\s+urticaria|\bcindu\b',
+            r'urticaria\s+activity\s+score|\buas7\b', r'urticaria\s+control\s+test|\buct\b',
+            r'\banaphylaxis\b|anaphylactic', r'(?:adrenaline|epinephrine)\s+auto[- ]?injector',
+            r'omalizumab|ligelizumab|remibrutinib', r'itch\s+severity\s+score|\biss7\b',
+            r'angioedema', r'biphasic\s+reaction', r'hives', r'wheal\s+and\s+flare'
+        ],
         'cardiology': [
             r'heart\s+failure', r'myocardial\s+infarction', r'atrial\s+fibrillation',
             r'coronary', r'cardiovascular', r'cardiac', r'lvef', r'ejection\s+fraction',
@@ -1932,6 +1962,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'maternal_neonatal':
         subspecialty, conf = detect_maternal_neonatal_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'urticaria':
+        subspecialty, conf = detect_urticaria_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'tuberculosis':
         subspecialty, conf = detect_tuberculosis_subspecialty(text)
