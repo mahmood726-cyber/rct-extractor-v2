@@ -291,6 +291,14 @@ from .prostate_cancer import (
     MORTALITY_PATTERNS as PC_MORTALITY_PATTERNS,
     detect_prostate_cancer_subspecialty,
     normalize_prostate_cancer_endpoint
+from .ovarian_cancer import (
+    OVARIAN_CANCER_ENDPOINTS,
+    SYSTEMIC_PATTERNS as OC_SYSTEMIC_PATTERNS,
+    MAINTENANCE_PATTERNS as OC_MAINTENANCE_PATTERNS,
+    SURGICAL_PATTERNS as OC_SURGICAL_PATTERNS,
+    MORTALITY_PATTERNS as OC_MORTALITY_PATTERNS,
+    detect_ovarian_cancer_subspecialty,
+    normalize_ovarian_cancer_endpoint
 )
 
 
@@ -534,6 +542,16 @@ SPECIALTY_REGISTRY = {
             'localized': PC_LOCALIZED_PATTERNS,
             'hormonal': PC_HORMONAL_PATTERNS,
             'mortality': PC_MORTALITY_PATTERNS
+    'ovarian_cancer': {
+        'subspecialties': ['systemic', 'maintenance', 'surgical', 'mortality'],
+        'detection_function': detect_ovarian_cancer_subspecialty,
+        'normalizer': normalize_ovarian_cancer_endpoint,
+        'endpoints': OVARIAN_CANCER_ENDPOINTS,
+        'patterns': {
+            'systemic': OC_SYSTEMIC_PATTERNS,
+            'maintenance': OC_MAINTENANCE_PATTERNS,
+            'surgical': OC_SURGICAL_PATTERNS,
+            'mortality': OC_MORTALITY_PATTERNS
         }
     },
     'infectious_disease': {
@@ -852,6 +870,13 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'abiraterone|enzalutamide|apalutamide|darolutamide',
             r'leuprolide|goserelin|degarelix|relugolix|triptorelin',
             r'radiographic\s+progression[- ]?free', r'metastasis[- ]?free\s+survival'
+        'ovarian_cancer': [
+            r'ovarian\s+cancer', r'ovarian\s+carcinoma', r'epithelial\s+ovarian',
+            r'fallopian\s+tube\s+(?:cancer|carcinoma)', r'primary\s+peritoneal',
+            r'ca[- ]?125', r'cytoreduction|cytoreductive', r'debulking',
+            r'platinum[- ](?:sensitive|resistant|refractory)',
+            r'olaparib|niraparib|rucaparib', r'\bbrca\b|homologous\s+recombination\s+deficien|\bhrd\b',
+            r'carboplatin', r'figo\s+stage', r'primary\s+debulking|interval\s+debulking'
         ],
         'infectious_disease': [
             r'covid', r'sars[- ]?cov',
@@ -1061,6 +1086,8 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         subspecialty, conf = detect_oesophageal_cancer_subspecialty(text)
     elif best_specialty == 'prostate_cancer':
         subspecialty, conf = detect_prostate_cancer_subspecialty(text)
+    elif best_specialty == 'ovarian_cancer':
+        subspecialty, conf = detect_ovarian_cancer_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'diabetes':
         subspecialty, conf = detect_diabetes_subspecialty(text)
