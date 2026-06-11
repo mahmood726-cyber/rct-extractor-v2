@@ -184,6 +184,16 @@ from .cervical_cancer import (
     normalize_cervical_cancer_endpoint
 )
 
+from .gestational_diabetes import (
+    GESTATIONAL_DIABETES_ENDPOINTS,
+    GLYCEMIC_PATTERNS as GDM_GLYCEMIC_PATTERNS,
+    MATERNAL_PATTERNS as GDM_MATERNAL_PATTERNS,
+    NEONATAL_PATTERNS as GDM_NEONATAL_PATTERNS,
+    SCREENING_PATTERNS as GDM_SCREENING_PATTERNS,
+    detect_gestational_diabetes_subspecialty,
+    normalize_gestational_diabetes_endpoint
+)
+
 from .diabetes import (
     DIABETES_ENDPOINTS,
     GLYCEMIC_PATTERNS as DIABETES_GLYCEMIC_PATTERNS,
@@ -496,6 +506,18 @@ SPECIALTY_REGISTRY = {
             'mortality': CC_MORTALITY_PATTERNS
         }
     },
+    'gestational_diabetes': {
+        'subspecialties': ['glycemic', 'maternal', 'neonatal', 'screening'],
+        'detection_function': detect_gestational_diabetes_subspecialty,
+        'normalizer': normalize_gestational_diabetes_endpoint,
+        'endpoints': GESTATIONAL_DIABETES_ENDPOINTS,
+        'patterns': {
+            'glycemic': GDM_GLYCEMIC_PATTERNS,
+            'maternal': GDM_MATERNAL_PATTERNS,
+            'neonatal': GDM_NEONATAL_PATTERNS,
+            'screening': GDM_SCREENING_PATTERNS
+        }
+    },
     'infectious_disease': {
         'subspecialties': ['covid', 'hepatitis', 'bacterial'],
         'endpoints': {
@@ -796,6 +818,18 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'high[- ]grade\s+squamous\s+intraepithelial', r'persistent\s+hpv',
             r'quadrivalent|bivalent|nonavalent'
         ],
+        'gestational_diabetes': [
+            r'gestational\s+diabetes(?:\s+mellitus)?', r'\bgdm\b',
+            r'hyperglyca?emia\s+in\s+pregnancy', r'diabetes\s+in\s+pregnancy',
+            r'glucose\s+intolerance\s+in\s+pregnancy', r'macrosomia',
+            r'large[- ]for[- ]gestational[- ]age|\blga\b',
+            r'neonatal\s+hypoglyca?emia',
+            r'oral\s+glucose\s+tolerance\s+test|\bogtt\b', r'\biadpsg\b',
+            r'glyburide|glibenclamide', r'(?:one|two)[- ]step\s+screening',
+            r'shoulder\s+dystocia', r'birth\s*weight', r'gestational\s+weight\s+gain',
+            r'need\s+for\s+insulin|insulin\s+requirement',
+            r'fasting\s+(?:plasma\s+)?glucose', r'postprandial\s+glucose'
+        ],
         'infectious_disease': [
             r'covid', r'sars[- ]?cov',
             r'viral', r'bacterial', r'antiviral', r'antibiotic', r'infection'
@@ -999,6 +1033,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'cervical_cancer':
         subspecialty, conf = detect_cervical_cancer_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'gestational_diabetes':
+        subspecialty, conf = detect_gestational_diabetes_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'diabetes':
         subspecialty, conf = detect_diabetes_subspecialty(text)
