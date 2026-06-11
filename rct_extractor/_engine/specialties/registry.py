@@ -266,6 +266,15 @@ from .gestational_diabetes import (
     detect_gestational_diabetes_subspecialty,
     normalize_gestational_diabetes_endpoint
 )
+from .uterine_fibroids import (
+    UTERINE_FIBROIDS_ENDPOINTS,
+    BLEEDING_PATTERNS as UF_BLEEDING_PATTERNS,
+    VOLUME_PATTERNS as UF_VOLUME_PATTERNS,
+    PROCEDURAL_PATTERNS as UF_PROCEDURAL_PATTERNS,
+    QOL_PATTERNS as UF_QOL_PATTERNS,
+    detect_uterine_fibroids_subspecialty,
+    normalize_uterine_fibroids_endpoint
+)
 
 from .diabetes import (
     DIABETES_ENDPOINTS,
@@ -1131,6 +1140,18 @@ SPECIALTY_REGISTRY = {
             'screening': GDM_SCREENING_PATTERNS
         }
     },
+    'uterine_fibroids': {
+        'subspecialties': ['bleeding', 'volume', 'procedural', 'qol'],
+        'detection_function': detect_uterine_fibroids_subspecialty,
+        'normalizer': normalize_uterine_fibroids_endpoint,
+        'endpoints': UTERINE_FIBROIDS_ENDPOINTS,
+        'patterns': {
+            'bleeding': UF_BLEEDING_PATTERNS,
+            'volume': UF_VOLUME_PATTERNS,
+            'procedural': UF_PROCEDURAL_PATTERNS,
+            'qol': UF_QOL_PATTERNS
+        }
+    },
     'infectious_disease': {
         'subspecialties': ['covid', 'hepatitis', 'bacterial'],
         'endpoints': {
@@ -1700,6 +1721,14 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'high[- ]grade\s+squamous\s+intraepithelial', r'persistent\s+hpv',
             r'quadrivalent|bivalent|nonavalent'
         ],
+        'uterine_fibroids': [
+            r'uterine\s+fibroids?', r'uterine\s+leiomyoma(?:ta)?', r'leiomyoma(?:ta)?',
+            r'\bmyoma(?:ta)?\b', r'\bfibroids?\b', r'heavy\s+menstrual\s+bleeding',
+            r'menstrual\s+blood\s+loss', r'ulipristal', r'relugolix',
+            r'uterine\s+artery\s+emboli[sz]ation|\buae\b', r'myomectomy',
+            r'fibroid\s+volume', r'ufs[- ]qol',
+            r'(?:mr[- ]?guided\s+)?focused\s+ultrasound|mrgfus'
+        ],
         'oesophageal_cancer': [
             r'(?:o?esophageal|esophageal)\s+(?:cancer|carcinoma|squamous|adenocarcinoma)',
             r'\boescc\b|\bescc\b(?=.{0,40}(?:o?esophag|esophag))',
@@ -2264,6 +2293,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'cervical_cancer':
         subspecialty, conf = detect_cervical_cancer_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'uterine_fibroids':
+        subspecialty, conf = detect_uterine_fibroids_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'oesophageal_cancer':
         subspecialty, conf = detect_oesophageal_cancer_subspecialty(text)
