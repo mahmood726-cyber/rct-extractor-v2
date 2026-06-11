@@ -350,3 +350,9 @@ data/field_portability/cirrhosis/rct_trial_pdfs/
 data/field_portability/cirrhosis/*.jsonl
 data/field_portability/cirrhosis/*.json
 data/field_portability/cirrhosis/*.log
+
+# Low-back-pain field bundle — large/transient data (keep README.md; code under scripts/)
+data/field_portability/low_back_pain/rct_trial_pdfs/
+data/field_portability/low_back_pain/*.jsonl
+data/field_portability/low_back_pain/*.json
+data/field_portability/low_back_pain/*.log
