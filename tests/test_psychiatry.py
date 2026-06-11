@@ -89,10 +89,14 @@ def test_detect_specialty_routes_to_psychiatry():
         "antidepressant treatment response and change in MADRS at week 8.")
     assert spec == "psychiatry" and sub == "depression"
 
+    # A pure schizophrenia / PANSS trial now routes to the dedicated, more-specific
+    # 'schizophrenia' specialty (added later) rather than generic psychiatry. The
+    # psychiatry extractor still owns mood, anxiety and bipolar (incl. psychotic
+    # features); see test_detect_specialty_routes_to_schizophrenia for the schizo path.
     spec2, sub2, _ = detect_specialty(
         "Risperidone versus placebo in schizophrenia; change in PANSS total score and "
         "psychotic relapse over 6 months.")
-    assert spec2 == "psychiatry" and sub2 == "psychosis"
+    assert spec2 == "schizophrenia"
 
 
 def test_psychiatry_does_not_break_neighbors():

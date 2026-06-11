@@ -24,6 +24,9 @@ EXPECTED_SPECIALTIES = {
     "dyslipidaemia", "venous_thromboembolism", "peripheral_artery_disease",
     "obesity", "thyroid", "osteoporosis", "kidney_transplant",
     "pulmonary_hypertension", "pcos",
+    # neuro / psych / GI / rheum cluster (9)
+    "parkinsons", "alzheimers", "multiple_sclerosis", "migraine",
+    "schizophrenia", "cirrhosis", "osteoarthritis", "covid19", "sepsis",
 }
 
 

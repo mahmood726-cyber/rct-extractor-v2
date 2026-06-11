@@ -94,11 +94,11 @@ def test_parkinsons_does_not_break_other_specialties():
         "CD4 recovery in adults with HIV")[0] == "hiv"
     assert detect_specialty(
         "sacubitril valsartan in heart failure; cardiovascular death")[0] == "cardiology"
-    # A generic neurology trial with no PD vocabulary still falls back sensibly
-    # (alzheimer/stroke routing is handled by their own future modules).
+    # A stroke trial routes to the dedicated 'stroke' specialty (added to master
+    # after this branch's base) -- the point is that Parkinson's does not steal it.
     spec, _, _ = detect_specialty(
         "thrombectomy for acute ischemic stroke; functional independence")
-    assert spec in {"neurology", "cardiology"}
+    assert spec in {"stroke", "neurology", "cardiology"}
 
 
 # --- arm-level extraction ---

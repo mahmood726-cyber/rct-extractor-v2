@@ -483,6 +483,8 @@ from .thyroid import (
     OUTCOMES_PATTERNS as THY_OUTCOMES_PATTERNS,
     detect_thyroid_subspecialty,
     normalize_thyroid_endpoint
+)
+
 from .parkinsons import (
     PARKINSONS_ENDPOINTS,
     TREATMENT_PATTERNS as PD_MOTOR_PATTERNS,
@@ -491,6 +493,8 @@ from .parkinsons import (
     LATENT_PATTERNS as PD_NEUROPROTECTION_PATTERNS,
     detect_parkinsons_subspecialty,
     normalize_parkinsons_endpoint
+)
+
 from .alzheimers import (
     ALZHEIMERS_ENDPOINTS,
     TREATMENT_PATTERNS as AD_SYMPTOMATIC_PATTERNS,
@@ -499,6 +503,8 @@ from .alzheimers import (
     LATENT_PATTERNS as AD_PREVENTION_MCI_PATTERNS,
     detect_alzheimers_subspecialty,
     normalize_alzheimers_endpoint
+)
+
 from .multiple_sclerosis import (
     MULTIPLE_SCLEROSIS_ENDPOINTS,
     TREATMENT_PATTERNS as MS_RELAPSING_PATTERNS,
@@ -507,6 +513,8 @@ from .multiple_sclerosis import (
     LATENT_PATTERNS as MS_ACUTE_RELAPSE_PATTERNS,
     detect_multiple_sclerosis_subspecialty,
     normalize_multiple_sclerosis_endpoint
+)
+
 from .migraine import (
     MIGRAINE_ENDPOINTS,
     TREATMENT_PATTERNS as MIGRAINE_ACUTE_PATTERNS,
@@ -515,6 +523,8 @@ from .migraine import (
     LATENT_PATTERNS as MIGRAINE_DEVICE_PATTERNS,
     detect_migraine_subspecialty,
     normalize_migraine_endpoint
+)
+
 from .schizophrenia import (
     SCHIZOPHRENIA_ENDPOINTS,
     TREATMENT_PATTERNS as SCZ_ACUTE_PATTERNS,
@@ -523,6 +533,8 @@ from .schizophrenia import (
     LATENT_PATTERNS as SCZ_SAFETY_PATTERNS,
     detect_schizophrenia_subspecialty,
     normalize_schizophrenia_endpoint
+)
+
 from .cirrhosis import (
     CIRRHOSIS_ENDPOINTS,
     TREATMENT_PATTERNS as CIRR_PORTAL_HTN_PATTERNS,
@@ -531,6 +543,8 @@ from .cirrhosis import (
     LATENT_PATTERNS as CIRR_PROGRESSION_PATTERNS,
     detect_cirrhosis_subspecialty,
     normalize_cirrhosis_endpoint
+)
+
 from .osteoarthritis import (
     OSTEOARTHRITIS_ENDPOINTS,
     TREATMENT_PATTERNS as OA_PHARM_PATTERNS,
@@ -539,6 +553,8 @@ from .osteoarthritis import (
     LATENT_PATTERNS as OA_NONPHARM_PATTERNS,
     detect_osteoarthritis_subspecialty,
     normalize_osteoarthritis_endpoint
+)
+
 from .covid19 import (
     COVID19_ENDPOINTS,
     TREATMENT_PATTERNS as COV_ANTIVIRAL_PATTERNS,
@@ -547,6 +563,8 @@ from .covid19 import (
     LATENT_PATTERNS as COV_SEVERE_PATTERNS,
     detect_covid19_subspecialty,
     normalize_covid19_endpoint
+)
+
 from .sepsis import (
     SEPSIS_ENDPOINTS,
     TREATMENT_PATTERNS as SEP_HEMO_PATTERNS,
@@ -1119,6 +1137,8 @@ SPECIALTY_REGISTRY = {
             'decompensation': CIRR_DECOMPENSATION_PATTERNS,
             'encephalopathy': CIRR_ENCEPHALOPATHY_PATTERNS,
             'progression': CIRR_PROGRESSION_PATTERNS
+        }
+    },
     'osteoarthritis': {
         'subspecialties': ['pharmacologic', 'intraarticular', 'structural', 'nonpharm'],
         'detection_function': detect_osteoarthritis_subspecialty,
@@ -1129,6 +1149,8 @@ SPECIALTY_REGISTRY = {
             'intraarticular': OA_INTRAARTICULAR_PATTERNS,
             'structural': OA_STRUCTURAL_PATTERNS,
             'nonpharm': OA_NONPHARM_PATTERNS
+        }
+    },
     'covid19': {
         'subspecialties': ['antiviral', 'immunomodulator', 'prophylaxis_vaccine', 'severe_supportive'],
         'detection_function': detect_covid19_subspecialty,
@@ -1139,6 +1161,8 @@ SPECIALTY_REGISTRY = {
             'immunomodulator': COV_IMMUNO_PATTERNS,
             'prophylaxis_vaccine': COV_PROPHYLAXIS_PATTERNS,
             'severe_supportive': COV_SEVERE_PATTERNS
+        }
+    },
     'sepsis': {
         'subspecialties': ['hemodynamic', 'adjunctive', 'antimicrobial_source', 'organ_support'],
         'detection_function': detect_sepsis_subspecialty,
@@ -1617,14 +1641,16 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'major\s+depressive\s+disorder|\bmdd\b',
             r'\bdepression\b|depressive\s+(?:disorder|episode|symptoms?)',
             r'antidepressant', r'treatment[- ]resistant\s+depression|\btrd\b',
-            r'schizophrenia|schizoaffective',
+            # schizophrenia / schizoaffective + PANSS are now owned by the dedicated
+            # 'schizophrenia' specialty (more specific); psychiatry keeps mood,
+            # anxiety and bipolar. 'psychosis'/'antipsychotic' stay here because they
+            # also arise in mood disorders (e.g. bipolar with psychotic features).
             r'\bpsychosis\b|psychotic\s+(?:disorder|symptoms?|episode|relapse)',
             r'antipsychotic', r'\bbipolar\b', r'\bmania\b|\bmanic\b', r'mood\s+stabili[sz]er',
             r'generali[sz]ed\s+anxiety\s+disorder|anxiety\s+disorder',
             r'\bmadrs\b|montgomery[- ]asberg',
             r'hamilton\s+depression|hamilton\s+rating\s+scale\s+for\s+depression|\bham-?d\b|\bhdrs\b',
             r'hamilton\s+anxiety|\bham-?a\b',
-            r'\bpanss\b|positive\s+and\s+negative\s+syndrome\s+scale',
             r'\bymrs\b|young\s+mania\s+rating\s+scale',
             r'\bphq-?9\b', r'\bgad-?7\b', r'\bssri\b|\bsnri\b',
             r'esketamine|zuranolone|brexanolone|vortioxetine|cariprazine|lurasidone|lumateperone|brexpiprazole'
@@ -1697,6 +1723,7 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'thyroid\s+peroxidase\s+antibod|\btpoab?\b',
             r'thyroid\s+(?:function|hormone|eye\s+disease)|orbitopathy|ophthalmopathy',
             r'subclinical\s+(?:hypo|hyper)?thyroid',
+        ],
         'parkinsons': [
             r'parkinson', r'\bupdrs\b|mds[- ]?updrs', r'levodopa|l[- ]?dopa',
             r'dopamine\s+agonist|dopaminergic',
@@ -1706,6 +1733,7 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'deep\s+brain\s+stimulation|\bdbs\b|subthalamic',
             r'levodopa[- ]carbidopa\s+intestinal\s+gel|\blcig\b',
             r'pdq[- ]?39', r'bradykinesia|motor\s+fluctuations'
+        ],
         'alzheimers': [
             r'alzheimer', r'\bdementia\b', r'adas[- ]?cog', r'cdr[- ]?s[ob]b|cdr\s+sum',
             r'mild\s+cognitive\s+impairment|\bmci\b',
@@ -1713,6 +1741,7 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'lecanemab|aducanumab|donanemab|gantenerumab|solanezumab',
             r'anti[- ]amyloid|amyloid\s+pet|centiloid|\baria\b',
             r'\bnpi\b|neuropsychiatric\s+inventory|\bcmai\b|\bmmse\b'
+        ],
         'multiple_sclerosis': [
             r'multiple\\s+sclerosis',
             r'\\brrms\\b|\\bspms\\b|\\bppms\\b',
@@ -1722,6 +1751,7 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'gadolinium[- ]enhancing|new\\s+(?:or\\s+(?:newly\\s+)?enlarging\\s+)?t2',
             r'ocrelizumab|ofatumumab|natalizumab|fingolimod|ozanimod|siponimod|glatiramer|teriflunomide|dimethyl\\s+fumarate|cladribine|interferon\\s+beta',
             r'\\bneda\\b|confirmed\\s+disability\\s+progression',
+        ],
         'migraine': [
             r'migraine',
             r'\\btriptan|sumatriptan|rizatriptan|eletriptan|zolmitriptan',
@@ -1731,6 +1761,7 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'2[- ]h(?:our|r)?\\s+pain\\s+(?:freedom|relief)|most\\s+bothersome\\s+symptom',
             r'chronic\\s+migraine|episodic\\s+migraine|onabotulinumtoxin',
             r'headache\\s+days|50\\s*%\\s+responder|midas|hit[- ]?6',
+        ],
         'schizophrenia': [
             r'schizophreni|schizoaffective',
             r'\\bpanss\\b|positive\\s+and\\s+negative\\s+syndrome',
@@ -1740,6 +1771,7 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'negative\\s+symptoms?|treatment[- ]resistant\\s+schizophreni',
             r'psychosis|psychotic\\s+(?:symptoms|disorder|episode)',
             r'xanomeline|karxt|extrapyramidal|akathisia',
+        ],
         'cirrhosis': [
             r'cirrhosis|cirrhotic',
             r'variceal\s+(?:bleed|haemorrhage|hemorrhage)|o?esophageal\s+varices|portal\s+hypertension',
@@ -1749,6 +1781,7 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'acute[- ]on[- ]chronic\s+liver\s+failure|aclf|transplant[- ]free\s+survival',
             r'meld|child[- ]pugh|decompensated|hvpg',
             r'carvedilol|nadolol|paracentesis|tips',
+        ],
         'osteoarthritis': [
             r'osteoarthritis|\boa\b|knee\s+oa|hip\s+oa|degenerative\s+joint',
             r'\bwomac\b|western\s+ontario',
@@ -1758,6 +1791,7 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'naproxen|celecoxib|diclofenac|duloxetine|tanezumab',
             r'sprifermin|lorecivivint|cartilage\s+(?:thickness|volume)',
             r'pain\s+vas|visual\s+analog(?:ue)?\s+scale',
+        ],
         'covid19': [
             r'covid|sars[- ]?cov[- ]?2|coronavirus\s+disease|2019[- ]ncov',
             r'nirmatrelvir|paxlovid|molnupiravir|remdesivir|ensitrelvir',
@@ -1767,6 +1801,7 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'vaccine\s+efficacy|symptomatic\s+covid|breakthrough\s+infection',
             r'convalescent\s+plasma|casirivimab|sotrovimab|tixagevimab',
             r'viral\s+clearance|sars[- ]cov[- ]2\s+rna',
+        ],
         'sepsis': [
             r'\bsepsis\b|septic\s+shock|septica?emia|sepsis[- ]associated',
             r'norepinephrine|noradrenaline|vasopressin|angiotensin\s+ii|vasopressor',
@@ -2014,22 +2049,31 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'thyroid':
         subspecialty, conf = detect_thyroid_subspecialty(text)
+        confidence = max(confidence, conf)
     elif best_specialty == 'parkinsons':
         subspecialty, conf = detect_parkinsons_subspecialty(text)
+        confidence = max(confidence, conf)
     elif best_specialty == 'alzheimers':
         subspecialty, conf = detect_alzheimers_subspecialty(text)
+        confidence = max(confidence, conf)
     elif best_specialty == 'multiple_sclerosis':
         subspecialty, conf = detect_multiple_sclerosis_subspecialty(text)
+        confidence = max(confidence, conf)
     elif best_specialty == 'migraine':
         subspecialty, conf = detect_migraine_subspecialty(text)
+        confidence = max(confidence, conf)
     elif best_specialty == 'schizophrenia':
         subspecialty, conf = detect_schizophrenia_subspecialty(text)
+        confidence = max(confidence, conf)
     elif best_specialty == 'cirrhosis':
         subspecialty, conf = detect_cirrhosis_subspecialty(text)
+        confidence = max(confidence, conf)
     elif best_specialty == 'osteoarthritis':
         subspecialty, conf = detect_osteoarthritis_subspecialty(text)
+        confidence = max(confidence, conf)
     elif best_specialty == 'covid19':
         subspecialty, conf = detect_covid19_subspecialty(text)
+        confidence = max(confidence, conf)
     elif best_specialty == 'sepsis':
         subspecialty, conf = detect_sepsis_subspecialty(text)
         confidence = max(confidence, conf)
