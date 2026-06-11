@@ -202,6 +202,14 @@ from .osteoporosis import (
     SAFETY_PATTERNS as OST_SAFETY_PATTERNS,
     detect_osteoporosis_subspecialty,
     normalize_osteoporosis_endpoint
+from .kidney_transplant import (
+    KIDNEY_TRANSPLANT_ENDPOINTS,
+    REJECTION_PATTERNS as KT_REJECTION_PATTERNS,
+    GRAFT_PATTERNS as KT_GRAFT_PATTERNS,
+    FUNCTION_PATTERNS as KT_FUNCTION_PATTERNS,
+    COMPLICATIONS_PATTERNS as KT_COMPLICATIONS_PATTERNS,
+    detect_kidney_transplant_subspecialty,
+    normalize_kidney_transplant_endpoint
 )
 
 from .respiratory import (
@@ -891,6 +899,16 @@ SPECIALTY_REGISTRY = {
             'bmd': OST_BMD_PATTERNS,
             'bone_turnover': OST_BONE_TURNOVER_PATTERNS,
             'safety': OST_SAFETY_PATTERNS
+    'kidney_transplant': {
+        'subspecialties': ['rejection', 'graft', 'function', 'complications'],
+        'detection_function': detect_kidney_transplant_subspecialty,
+        'normalizer': normalize_kidney_transplant_endpoint,
+        'endpoints': KIDNEY_TRANSPLANT_ENDPOINTS,
+        'patterns': {
+            'rejection': KT_REJECTION_PATTERNS,
+            'graft': KT_GRAFT_PATTERNS,
+            'function': KT_FUNCTION_PATTERNS,
+            'complications': KT_COMPLICATIONS_PATTERNS
         }
     },
     'neurology': {
@@ -1295,6 +1313,15 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r't[- ]score', r'\bfrax\b', r'bone[- ]turnover\s+marker',
             r'postmenopausal\s+(?:women\s+)?(?:with\s+)?osteoporosis',
             r'femoral\s+neck|lumbar\s+spine\s+(?:bmd|bone)',
+        'kidney_transplant': [
+            r'kidney\s+transplant\w*', r'renal\s+transplant\w*', r'renal\s+allograft',
+            r'kidney\s+allograft', r'\ballograft\b', r'graft\s+(?:loss|failure|survival)',
+            r'(?:biopsy[- ]proven\s+)?acute\s+rejection', r'antibody[- ]mediated\s+rejection',
+            r'delayed\s+graft\s+function', r'transplant\s+recipients?',
+            r'tacrolimus|ciclosporin|cyclosporine', r'mycophenolate|belatacept',
+            r'basiliximab|anti[- ]thymocyte\s+globulin|thymoglobulin', r'sirolimus|everolimus',
+            r'living[- ](?:donor|related)\s+(?:kidney|renal)|deceased[- ]donor',
+            r'immunosuppress(?:ion|ive)\s+(?:regimen|therapy)',
         ],
         'stroke': [
             r'\bstroke\b', r'ischa?emic\s+stroke', r'acute\s+ischa?emic\s+stroke',
@@ -1588,6 +1615,8 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'osteoporosis':
         subspecialty, conf = detect_osteoporosis_subspecialty(text)
+    elif best_specialty == 'kidney_transplant':
+        subspecialty, conf = detect_kidney_transplant_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'respiratory':
         subspecialty, conf = detect_respiratory_subspecialty(text)

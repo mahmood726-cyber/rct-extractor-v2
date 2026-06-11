@@ -303,5 +303,10 @@ data/field_portability/osteoporosis/rct_trial_pdfs/
 data/field_portability/osteoporosis/*.jsonl
 data/field_portability/osteoporosis/*.json
 data/field_portability/osteoporosis/*.log
+# Kidney-transplant field bundle — large/transient data (keep README.md; code is under scripts/)
+data/field_portability/kidney_transplant/rct_trial_pdfs/
+data/field_portability/kidney_transplant/*.jsonl
+data/field_portability/kidney_transplant/*.json
+data/field_portability/kidney_transplant/*.log
 
 PROGRESS.md
