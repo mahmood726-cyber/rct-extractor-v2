@@ -46,6 +46,7 @@ EXPECTED_SPECIALTIES = {
     "allergic_rhinitis",
     "urticaria",
     "orthopaedic",
+    "low_back_pain",
 }
 
 

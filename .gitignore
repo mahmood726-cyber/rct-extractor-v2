@@ -439,3 +439,8 @@ data/field_portability/orthopaedic/rct_trial_pdfs/
 data/field_portability/orthopaedic/*.jsonl
 data/field_portability/orthopaedic/*.json
 data/field_portability/orthopaedic/*.log
+# Low-back-pain field bundle — large/transient data (keep README.md; code under scripts/)
+data/field_portability/low_back_pain/rct_trial_pdfs/
+data/field_portability/low_back_pain/*.jsonl
+data/field_portability/low_back_pain/*.json
+data/field_portability/low_back_pain/*.log

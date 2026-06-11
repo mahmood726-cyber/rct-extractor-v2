@@ -95,6 +95,15 @@ from .orthopaedic import (
     detect_orthopaedic_subspecialty,
     normalize_orthopaedic_endpoint
 )
+from .low_back_pain import (
+    LOW_BACK_PAIN_ENDPOINTS,
+    PHARMACOLOGICAL_PATTERNS as LBP_PHARMACOLOGICAL_PATTERNS,
+    INTERVENTIONAL_PATTERNS as LBP_INTERVENTIONAL_PATTERNS,
+    PHYSICAL_PATTERNS as LBP_PHYSICAL_PATTERNS,
+    PSYCHOLOGICAL_PATTERNS as LBP_PSYCHOLOGICAL_PATTERNS,
+    detect_low_back_pain_subspecialty,
+    normalize_low_back_pain_endpoint
+)
 
 from .cardiology import (
     CARDIOLOGY_ENDPOINTS,
@@ -972,6 +981,18 @@ SPECIALTY_REGISTRY = {
             'functional': ORTHO_FUNCTIONAL_PATTERNS
         }
     },
+    'low_back_pain': {
+        'subspecialties': ['pharmacological', 'interventional', 'physical', 'psychological'],
+        'detection_function': detect_low_back_pain_subspecialty,
+        'normalizer': normalize_low_back_pain_endpoint,
+        'endpoints': LOW_BACK_PAIN_ENDPOINTS,
+        'patterns': {
+            'pharmacological': LBP_PHARMACOLOGICAL_PATTERNS,
+            'interventional': LBP_INTERVENTIONAL_PATTERNS,
+            'physical': LBP_PHYSICAL_PATTERNS,
+            'psychological': LBP_PSYCHOLOGICAL_PATTERNS
+        }
+    },
     'tuberculosis': {
         'subspecialties': ['treatment', 'drug_resistant', 'prevention', 'latent'],
         'detection_function': detect_tuberculosis_subspecialty,
@@ -1793,6 +1814,14 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'operative\s+(?:vs\.?\s+)?(?:non[- ]?operative|conservative)',
             r'periprosthetic\s+joint\s+infection|\bpji\b'
         ],
+        'low_back_pain': [
+            r'low\s+back\s+pain', r'chronic\s+low\s+back\s+pain', r'acute\s+low\s+back\s+pain',
+            r'\blumbago\b', r'sciatica', r'lumbar\s+radiculopathy',
+            r'oswestry\s+disability(?:\s+index)?|\bodi\b', r'roland[- ]morris|\brmdq\b|\brdq\b',
+            r'(?:lumbar\s+)?disc\s+herniation', r'spinal\s+manipulation\s+for\s+(?:back|low)',
+            r'epidural\s+steroid\s+injection', r'back[- ]specific\s+function',
+            r'non[- ]specific\s+(?:low\s+)?back\s+pain', r'quebec\s+back\s+pain'
+        ],
         'cardiology': [
             r'heart\s+failure', r'myocardial\s+infarction', r'atrial\s+fibrillation',
             r'coronary', r'cardiovascular', r'cardiac', r'lvef', r'ejection\s+fraction',
@@ -2528,6 +2557,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'orthopaedic':
         subspecialty, conf = detect_orthopaedic_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'low_back_pain':
+        subspecialty, conf = detect_low_back_pain_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'tuberculosis':
         subspecialty, conf = detect_tuberculosis_subspecialty(text)
