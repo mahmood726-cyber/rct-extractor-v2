@@ -23,6 +23,7 @@ from typing import Any, Dict, List, Optional, Tuple
 # (each has a src/specialties/<name>_arm_data.py with extract_arm_level()).
 # Order is the canonical order used in the README and CLI help.
 SPECIALTIES: Tuple[str, ...] = (
+    "orthopaedic",
     "hiv",
     "malaria",
     "typhoid",

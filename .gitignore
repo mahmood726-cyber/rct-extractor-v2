@@ -350,3 +350,9 @@ data/field_portability/cirrhosis/rct_trial_pdfs/
 data/field_portability/cirrhosis/*.jsonl
 data/field_portability/cirrhosis/*.json
 data/field_portability/cirrhosis/*.log
+
+# Orthopaedic field bundle — large/transient data (keep README.md; code under scripts/)
+data/field_portability/orthopaedic/rct_trial_pdfs/
+data/field_portability/orthopaedic/*.jsonl
+data/field_portability/orthopaedic/*.json
+data/field_portability/orthopaedic/*.log

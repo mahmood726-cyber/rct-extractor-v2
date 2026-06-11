@@ -5,6 +5,16 @@ Specialty Registry - Central registry for all specialty patterns and endpoints.
 from typing import Dict, List, Tuple, Optional, Callable
 import re
 
+from .orthopaedic import (
+    ORTHOPAEDIC_ENDPOINTS,
+    FRACTURE_FIXATION_PATTERNS as ORTHO_FRACTURE_FIXATION_PATTERNS,
+    ARTHROPLASTY_PATTERNS as ORTHO_ARTHROPLASTY_PATTERNS,
+    HEALING_PATTERNS as ORTHO_HEALING_PATTERNS,
+    FUNCTIONAL_PATTERNS as ORTHO_FUNCTIONAL_PATTERNS,
+    detect_orthopaedic_subspecialty,
+    normalize_orthopaedic_endpoint
+)
+
 from .cardiology import (
     CARDIOLOGY_ENDPOINTS,
     HEART_FAILURE_PATTERNS,
@@ -688,6 +698,18 @@ SPECIALTY_REGISTRY = {
             'preterm': MNH_PRETERM_PATTERNS
         }
     },
+    'orthopaedic': {
+        'subspecialties': ['fracture_fixation', 'arthroplasty', 'healing', 'functional'],
+        'detection_function': detect_orthopaedic_subspecialty,
+        'normalizer': normalize_orthopaedic_endpoint,
+        'endpoints': ORTHOPAEDIC_ENDPOINTS,
+        'patterns': {
+            'fracture_fixation': ORTHO_FRACTURE_FIXATION_PATTERNS,
+            'arthroplasty': ORTHO_ARTHROPLASTY_PATTERNS,
+            'healing': ORTHO_HEALING_PATTERNS,
+            'functional': ORTHO_FUNCTIONAL_PATTERNS
+        }
+    },
     'tuberculosis': {
         'subspecialties': ['treatment', 'drug_resistant', 'prevention', 'latent'],
         'detection_function': detect_tuberculosis_subspecialty,
@@ -1311,6 +1333,18 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
 
     # Keywords for each specialty
     specialty_keywords = {
+        'orthopaedic': [
+            r'(?:internal|external)\s+fixation', r'open\s+reduction|\borif\b',
+            r'intramedullary\s+nail', r'locking\s+plate|plate\s+fixation',
+            r'(?:total\s+)?(?:hip|knee|shoulder)\s+(?:arthroplasty|replacement)|\btha\b|\btka\b|\btkr\b|\bthr\b',
+            r'hemiarthroplasty', r'non[- ]?union|delayed\s+union|time\s+to\s+union',
+            r'(?:distal\s+radius|ankle|tibial?|clavicle|proximal\s+humerus|femoral\s+neck|hip)\s+fracture',
+            r'harris\s+hip\s+score|oxford\s+(?:hip|knee)\s+score|womac|dash\s+score|constant\s+score',
+            r'reoperation|revision\s+(?:surgery|arthroplasty)',
+            r'acl\s+reconstruction|rotator\s+cuff\s+repair',
+            r'operative\s+(?:vs\.?\s+)?(?:non[- ]?operative|conservative)',
+            r'periprosthetic\s+joint\s+infection|\bpji\b'
+        ],
         'cardiology': [
             r'heart\s+failure', r'myocardial\s+infarction', r'atrial\s+fibrillation',
             r'coronary', r'cardiovascular', r'cardiac', r'lvef', r'ejection\s+fraction',
@@ -1932,6 +1966,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'maternal_neonatal':
         subspecialty, conf = detect_maternal_neonatal_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'orthopaedic':
+        subspecialty, conf = detect_orthopaedic_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'tuberculosis':
         subspecialty, conf = detect_tuberculosis_subspecialty(text)
