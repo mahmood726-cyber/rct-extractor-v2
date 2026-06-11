@@ -50,6 +50,15 @@ from .anaemia import (
     detect_anaemia_subspecialty,
     normalize_anaemia_endpoint
 )
+from .itp import (
+    ITP_ENDPOINTS,
+    FIRST_LINE_PATTERNS as ITP_FIRST_LINE_PATTERNS,
+    TPO_RA_PATTERNS as ITP_TPO_RA_PATTERNS,
+    SECOND_LINE_PATTERNS as ITP_SECOND_LINE_PATTERNS,
+    PAEDIATRIC_PATTERNS as ITP_PAEDIATRIC_PATTERNS,
+    detect_itp_subspecialty,
+    normalize_itp_endpoint
+)
 
 from .cardiology import (
     CARDIOLOGY_ENDPOINTS,
@@ -867,6 +876,18 @@ SPECIALTY_REGISTRY = {
             'transfusion_anaemia': ANAEMIA_TRANSFUSION_PATTERNS
         }
     },
+    'itp': {
+        'subspecialties': ['first_line', 'tpo_ra', 'second_line', 'paediatric'],
+        'detection_function': detect_itp_subspecialty,
+        'normalizer': normalize_itp_endpoint,
+        'endpoints': ITP_ENDPOINTS,
+        'patterns': {
+            'first_line': ITP_FIRST_LINE_PATTERNS,
+            'tpo_ra': ITP_TPO_RA_PATTERNS,
+            'second_line': ITP_SECOND_LINE_PATTERNS,
+            'paediatric': ITP_PAEDIATRIC_PATTERNS
+        }
+    },
     'tuberculosis': {
         'subspecialties': ['treatment', 'drug_resistant', 'prevention', 'latent'],
         'detection_function': detect_tuberculosis_subspecialty,
@@ -1639,6 +1660,15 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'transferrin\s+saturation|\btsat\b', r'iron[- ]folic\s+acid|iron\s+and\s+folic\s+acid',
             r'red[- ](?:blood[- ])?cell\s+transfusion|transfusion\s+(?:requirement|avoidance)'
         ],
+        'itp': [
+            r'immune\s+thrombocytopenia|immune\s+thrombocytopenic\s+purpura|\bitp\b',
+            r'thrombocytopenic\s+purpura', r'thrombopoietin\s+receptor\s+agonist|\btpo[- ]?ra\b',
+            r'eltrombopag|romiplostim|avatrombopag|hetrombopag|fostamatinib',
+            r'platelet\s+response', r'platelet\s+count\s+(?:>=|of\s+at\s+least)\s*\d+',
+            r'durable\s+(?:platelet\s+)?response', r'rituximab\s+for\s+(?:itp|immune)',
+            r'high[- ]dose\s+dexamethasone', r'anti[- ]d\s+immunoglobulin',
+            r'newly\s+diagnosed\s+(?:itp|immune\s+thrombocytopenia)'
+        ],
         'cardiology': [
             r'heart\s+failure', r'myocardial\s+infarction', r'atrial\s+fibrillation',
             r'coronary', r'cardiovascular', r'cardiac', r'lvef', r'ejection\s+fraction',
@@ -2359,6 +2389,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'anaemia':
         subspecialty, conf = detect_anaemia_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'itp':
+        subspecialty, conf = detect_itp_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'tuberculosis':
         subspecialty, conf = detect_tuberculosis_subspecialty(text)

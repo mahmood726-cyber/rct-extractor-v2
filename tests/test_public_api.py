@@ -41,6 +41,7 @@ EXPECTED_SPECIALTIES = {
     "benign_prostatic_hyperplasia",
     "erectile_dysfunction",
     "urinary_incontinence",
+    "itp",
 }
 
 
