@@ -18,6 +18,7 @@ from functools import lru_cache
 from typing import Any, Dict, List, Optional, Tuple
 
 # The 27 disease specialties that ship a full text->arm-level extractor
+# The 18 disease specialties that ship a full text->arm-level extractor
 # (each has a src/specialties/<name>_arm_data.py with extract_arm_level()).
 # Order is the canonical order used in the README and CLI help.
 SPECIALTIES: Tuple[str, ...] = (
@@ -60,6 +61,7 @@ SPECIALTIES: Tuple[str, ...] = (
     "head_neck_cancer",
     "bladder_cancer",
     "renal_cell_carcinoma",
+    "dyslipidaemia",
 )
 
 __all__ = [

@@ -393,6 +393,14 @@ from .renal_cell_carcinoma import (
     MORTALITY_PATTERNS as RCC_MORTALITY_PATTERNS,
     detect_renal_cell_carcinoma_subspecialty,
     normalize_renal_cell_carcinoma_endpoint
+from .dyslipidaemia import (
+    DYSLIPIDAEMIA_ENDPOINTS,
+    LIPID_LOWERING_PATTERNS as DLD_LIPID_LOWERING_PATTERNS,
+    LDL_TARGET_PATTERNS as DLD_LDL_TARGET_PATTERNS,
+    CV_EVENTS_PATTERNS as DLD_CV_EVENTS_PATTERNS,
+    SAFETY_PATTERNS as DLD_SAFETY_PATTERNS,
+    detect_dyslipidaemia_subspecialty,
+    normalize_dyslipidaemia_endpoint
 )
 
 
@@ -779,6 +787,18 @@ SPECIALTY_REGISTRY = {
             'cardiorenal': DIABETES_CARDIORENAL_PATTERNS,
             'hypoglycemia': DIABETES_HYPOGLYCEMIA_PATTERNS,
             'complications': DIABETES_COMPLICATIONS_PATTERNS
+        }
+    },
+    'dyslipidaemia': {
+        'subspecialties': ['lipid_lowering', 'ldl_target', 'cv_events', 'safety'],
+        'detection_function': detect_dyslipidaemia_subspecialty,
+        'normalizer': normalize_dyslipidaemia_endpoint,
+        'endpoints': DYSLIPIDAEMIA_ENDPOINTS,
+        'patterns': {
+            'lipid_lowering': DLD_LIPID_LOWERING_PATTERNS,
+            'ldl_target': DLD_LDL_TARGET_PATTERNS,
+            'cv_events': DLD_CV_EVENTS_PATTERNS,
+            'safety': DLD_SAFETY_PATTERNS
         }
     },
     'neurology': {
@@ -1216,6 +1236,19 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'\bymrs\b|young\s+mania\s+rating\s+scale',
             r'\bphq-?9\b', r'\bgad-?7\b', r'\bssri\b|\bsnri\b',
             r'esketamine|zuranolone|brexanolone|vortioxetine|cariprazine|lurasidone|lumateperone|brexpiprazole'
+        'dyslipidaemia': [
+            r'dyslipid(?:emia|aemia)', r'hyperlipid(?:emia|aemia)',
+            r'hypercholesterol(?:emia|aemia)', r'\bldl[- ]?c?\b',
+            r'ldl\s+cholesterol', r'low[- ]density\s+lipoprotein',
+            r'hdl\s+cholesterol|high[- ]density\s+lipoprotein', r'non[- ]hdl',
+            r'triglycerid', r'total\s+cholesterol', r'lipid[- ]lowering',
+            r'cholesterol[- ]lowering', r'lipid\s+profile',
+            r'apolipoprotein\s+b|\bapob\b', r'lipoprotein\s*\(a\)|\blp\(a\)',
+            r'\bstatin\b', r'atorvastatin|rosuvastatin|simvastatin|pravastatin',
+            r'lovastatin|pitavastatin|fluvastatin', r'ezetimibe',
+            r'pcsk9|evolocumab|alirocumab|inclisiran', r'bempedoic\s+acid',
+            r'fenofibrate|gemfibrozil|\bfibrate\b',
+            r'icosapent\s+ethyl', r'colesevelam|cholestyramine',
         ],
         'neurology': [
             r'alzheimer', r'dementia', r'multiple\s+sclerosis', r'\bms\b',
@@ -1427,6 +1460,8 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'ophthalmology':
         subspecialty, conf = detect_ophthalmology_subspecialty(text)
+    elif best_specialty == 'dyslipidaemia':
+        subspecialty, conf = detect_dyslipidaemia_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)
