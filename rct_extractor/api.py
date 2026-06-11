@@ -19,6 +19,7 @@ from typing import Any, Dict, List, Optional, Tuple
 
 # The 27 disease specialties that ship a full text->arm-level extractor
 # The 18 disease specialties that ship a full text->arm-level extractor
+# The disease specialties that ship a full text->arm-level extractor
 # (each has a src/specialties/<name>_arm_data.py with extract_arm_level()).
 # Order is the canonical order used in the README and CLI help.
 SPECIALTIES: Tuple[str, ...] = (
@@ -70,6 +71,7 @@ SPECIALTIES: Tuple[str, ...] = (
     "peripheral_artery_disease",
     "obesity",
     "thyroid",
+    "parkinsons",
 )
 
 __all__ = [

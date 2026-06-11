@@ -320,3 +320,8 @@ data/field_portability/pcos/*.json
 data/field_portability/pcos/*.log
 
 PROGRESS.md
+# Parkinson's disease field bundle — large/transient data (keep README.md; code is under scripts/)
+data/field_portability/parkinsons/rct_trial_pdfs/
+data/field_portability/parkinsons/*.jsonl
+data/field_portability/parkinsons/*.json
+data/field_portability/parkinsons/*.log

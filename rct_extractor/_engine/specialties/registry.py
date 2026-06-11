@@ -483,6 +483,14 @@ from .thyroid import (
     OUTCOMES_PATTERNS as THY_OUTCOMES_PATTERNS,
     detect_thyroid_subspecialty,
     normalize_thyroid_endpoint
+from .parkinsons import (
+    PARKINSONS_ENDPOINTS,
+    TREATMENT_PATTERNS as PD_MOTOR_PATTERNS,
+    DRUG_RESISTANT_PATTERNS as PD_DEVICE_PATTERNS,
+    PREVENTION_PATTERNS as PD_NONMOTOR_PATTERNS,
+    LATENT_PATTERNS as PD_NEUROPROTECTION_PATTERNS,
+    detect_parkinsons_subspecialty,
+    normalize_parkinsons_endpoint
 )
 
 
@@ -1084,6 +1092,18 @@ SPECIALTY_REGISTRY = {
             'bipolar': PSYCH_BIPOLAR_PATTERNS,
             'psychosis': PSYCH_PSYCHOSIS_PATTERNS
         }
+    },
+    'parkinsons': {
+        'subspecialties': ['motor', 'device_advanced', 'nonmotor', 'neuroprotection'],
+        'detection_function': detect_parkinsons_subspecialty,
+        'normalizer': normalize_parkinsons_endpoint,
+        'endpoints': PARKINSONS_ENDPOINTS,
+        'patterns': {
+            'motor': PD_MOTOR_PATTERNS,
+            'device_advanced': PD_DEVICE_PATTERNS,
+            'nonmotor': PD_NONMOTOR_PATTERNS,
+            'neuroprotection': PD_NEUROPROTECTION_PATTERNS
+        }
     }
 }
 
@@ -1097,7 +1117,7 @@ SPECIALTY_REGISTRY = {
 # detect_specialty). `infectious_disease` is the one with bare-word keywords;
 # the others are kept here too so a future generic keyword can't silently steal
 # routing from a specific specialty.
-_FALLBACK_SPECIALTIES = {'infectious_disease'}
+_FALLBACK_SPECIALTIES = {'infectious_disease', 'neurology'}
 
 
 def detect_specialty(text: str) -> Tuple[str, str, float]:
@@ -1523,6 +1543,15 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'thyroid\s+peroxidase\s+antibod|\btpoab?\b',
             r'thyroid\s+(?:function|hormone|eye\s+disease)|orbitopathy|ophthalmopathy',
             r'subclinical\s+(?:hypo|hyper)?thyroid',
+        'parkinsons': [
+            r'parkinson', r'\bupdrs\b|mds[- ]?updrs', r'levodopa|l[- ]?dopa',
+            r'dopamine\s+agonist|dopaminergic',
+            r'pramipexole|ropinirole|rotigotine|rasagiline|selegiline|safinamide',
+            r'entacapone|opicapone|amantadine|istradefylline|pimavanserin',
+            r'dyskinesia', r'\boff[- ]time\b|on\s+time\s+without',
+            r'deep\s+brain\s+stimulation|\bdbs\b|subthalamic',
+            r'levodopa[- ]carbidopa\s+intestinal\s+gel|\blcig\b',
+            r'pdq[- ]?39', r'bradykinesia|motor\s+fluctuations'
         ],
         'neurology': [
             r'alzheimer', r'dementia', r'multiple\s+sclerosis', r'\bms\b',
@@ -1761,6 +1790,8 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'thyroid':
         subspecialty, conf = detect_thyroid_subspecialty(text)
+    elif best_specialty == 'parkinsons':
+        subspecialty, conf = detect_parkinsons_subspecialty(text)
         confidence = max(confidence, conf)
 
     return (best_specialty, subspecialty, confidence)
