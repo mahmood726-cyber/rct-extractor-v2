@@ -2099,6 +2099,13 @@ class EnhancedExtractor:
         # "¼ of patients") is never rewritten. Same case rules as the "5" repair.
         text = re.sub(r'\b(ratio)\s*[¼½¾]\s*(?=\d)', r'\1 = ', text, flags=re.IGNORECASE)
         text = re.sub(r'(?<![A-Za-z])(a?RR|a?OR|a?HR|a?IRR)\s*[¼½¾]\s*(?=\d)', r'\1 = ', text)
+        # v6.7 (PDF-eval, oncology cluster): the SAME "¼"-for-"=" font glyph also
+        # lands AFTER the CI keyword ("95% CI ¼ 1.55 to 2.05", "confidence interval
+        # ¼ 0.68 to 0.90"), which the ratio-term repairs above do not cover -> the
+        # point was recovered but both CI bounds were dropped (point_only). Restore
+        # "=" ONLY between a CI keyword and a digit, so a real "¼" is never rewritten.
+        text = re.sub(r'\b(CI|C\.I\.|confidence\s+interval)\s*[¼½¾]\s*(?=\d)',
+                      r'\1 = ', text, flags=re.IGNORECASE)
 
         # Split "of"/"was" stuck between letters and digits (run-together PDF text)
         # "ratioof4.17" -> "ratio of 4.17", "was98.8" -> "was 98.8"
