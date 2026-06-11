@@ -350,3 +350,9 @@ data/field_portability/cirrhosis/rct_trial_pdfs/
 data/field_portability/cirrhosis/*.jsonl
 data/field_portability/cirrhosis/*.json
 data/field_portability/cirrhosis/*.log
+
+# Erectile dysfunction field bundle
+data/field_portability/erectile_dysfunction/rct_trial_pdfs/
+data/field_portability/erectile_dysfunction/*.jsonl
+data/field_portability/erectile_dysfunction/*.json
+data/field_portability/erectile_dysfunction/*.log
