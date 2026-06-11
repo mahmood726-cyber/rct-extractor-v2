@@ -350,3 +350,9 @@ data/field_portability/cirrhosis/rct_trial_pdfs/
 data/field_portability/cirrhosis/*.jsonl
 data/field_portability/cirrhosis/*.json
 data/field_portability/cirrhosis/*.log
+
+# Benign prostatic hyperplasia field bundle
+data/field_portability/benign_prostatic_hyperplasia/rct_trial_pdfs/
+data/field_portability/benign_prostatic_hyperplasia/*.jsonl
+data/field_portability/benign_prostatic_hyperplasia/*.json
+data/field_portability/benign_prostatic_hyperplasia/*.log
