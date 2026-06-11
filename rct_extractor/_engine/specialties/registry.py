@@ -184,6 +184,16 @@ from .cervical_cancer import (
     normalize_cervical_cancer_endpoint
 )
 
+from .menopause_hrt import (
+    MENOPAUSE_HRT_ENDPOINTS,
+    VASOMOTOR_PATTERNS as MHT_VASOMOTOR_PATTERNS,
+    GENITOURINARY_PATTERNS as MHT_GENITOURINARY_PATTERNS,
+    BONE_PATTERNS as MHT_BONE_PATTERNS,
+    SAFETY_PATTERNS as MHT_SAFETY_PATTERNS,
+    detect_menopause_hrt_subspecialty,
+    normalize_menopause_hrt_endpoint
+)
+
 from .diabetes import (
     DIABETES_ENDPOINTS,
     GLYCEMIC_PATTERNS as DIABETES_GLYCEMIC_PATTERNS,
@@ -496,6 +506,18 @@ SPECIALTY_REGISTRY = {
             'mortality': CC_MORTALITY_PATTERNS
         }
     },
+    'menopause_hrt': {
+        'subspecialties': ['vasomotor', 'genitourinary', 'bone', 'safety'],
+        'detection_function': detect_menopause_hrt_subspecialty,
+        'normalizer': normalize_menopause_hrt_endpoint,
+        'endpoints': MENOPAUSE_HRT_ENDPOINTS,
+        'patterns': {
+            'vasomotor': MHT_VASOMOTOR_PATTERNS,
+            'genitourinary': MHT_GENITOURINARY_PATTERNS,
+            'bone': MHT_BONE_PATTERNS,
+            'safety': MHT_SAFETY_PATTERNS
+        }
+    },
     'infectious_disease': {
         'subspecialties': ['covid', 'hepatitis', 'bacterial'],
         'endpoints': {
@@ -796,6 +818,15 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'high[- ]grade\s+squamous\s+intraepithelial', r'persistent\s+hpv',
             r'quadrivalent|bivalent|nonavalent'
         ],
+        'menopause_hrt': [
+            r'menopaus(?:e|al)', r'postmenopausal|post[- ]menopausal',
+            r'perimenopausal|peri[- ]menopausal', r'climacteric',
+            r'hot\s+flush(?:es)?|hot\s+flash(?:es)?', r'vasomotor\s+symptom',
+            r'hormone\s+(?:replacement\s+)?therapy', r'\bhrt\b', r'\bmht\b',
+            r'vulvovaginal\s+atrophy', r'genitourinary\s+syndrome\s+of\s+menopause',
+            r'fezolinetant|elinzanetant', r'tibolone', r'ospemifene', r'prasterone',
+            r'conjugated\s+equine\s+(?:o?estrogen)', r'night\s+sweats?'
+        ],
         'infectious_disease': [
             r'covid', r'sars[- ]?cov',
             r'viral', r'bacterial', r'antiviral', r'antibiotic', r'infection'
@@ -999,6 +1030,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'cervical_cancer':
         subspecialty, conf = detect_cervical_cancer_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'menopause_hrt':
+        subspecialty, conf = detect_menopause_hrt_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'diabetes':
         subspecialty, conf = detect_diabetes_subspecialty(text)
