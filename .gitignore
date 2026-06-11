@@ -278,4 +278,10 @@ data/field_portability/dyslipidaemia/*.log
 
 # PDF accuracy eval: re-fetchable NCBI XML cache (61MB) - keep gold+results, not cache
 data/pdf_eval/xml_cache/
+# Venous thromboembolism field bundle — large/transient data (keep README.md; code is under scripts/)
+data/field_portability/venous_thromboembolism/rct_trial_pdfs/
+data/field_portability/venous_thromboembolism/*.jsonl
+data/field_portability/venous_thromboembolism/*.json
+data/field_portability/venous_thromboembolism/*.log
+
 PROGRESS.md

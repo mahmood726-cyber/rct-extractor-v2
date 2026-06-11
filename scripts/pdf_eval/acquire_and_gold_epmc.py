@@ -80,10 +80,20 @@ def clean_abstract(html: str) -> str:
     return txt
 
 
-def epmc_search(query: str, max_results: int):
-    """Yield core result dicts from EuropePMC for OA, in-EPMC, has-PDF RCTs."""
-    full_q = (f"({query}) AND (OPEN_ACCESS:Y) AND (IN_EPMC:Y) AND (HAS_PDF:Y) "
-              f"AND (LANG:eng)")
+def epmc_search(query: str, max_results: int, rct_only: bool = True):
+    """Yield core result dicts from EuropePMC for OA, in-EPMC, has-PDF RCTs.
+
+    rct_only (default True) restricts to genuine RCT primary reports and excludes
+    meta-analyses / systematic reviews / narrative reviews. This aligns the gold
+    corpus with the eval's stated scope (real PMC-OA *RCT* articles): without it,
+    broad disease terms pull in many pooled meta-analytic / observational
+    estimates that an RCT extractor declines by design, understating accuracy on
+    out-of-scope inputs."""
+    rct_filter = (' AND (PUB_TYPE:"Randomized Controlled Trial") '
+                  'NOT (PUB_TYPE:"Meta-Analysis" OR PUB_TYPE:"Systematic Review" '
+                  'OR PUB_TYPE:"Review")') if rct_only else ""
+    full_q = (f"({query}){rct_filter} AND (OPEN_ACCESS:Y) AND (IN_EPMC:Y) "
+              f"AND (HAS_PDF:Y) AND (LANG:eng)")
     cursor = "*"
     fetched = 0
     while fetched < max_results:
@@ -113,15 +123,15 @@ def epmc_search(query: str, max_results: int):
 
 
 def acquire_and_build(specialty, query, max_search, max_download, target, out_path,
-                      workers=8):
+                      workers=8, rct_only=True):
     pdf_dir = FP / specialty / "rct_trial_pdfs"
     pdf_dir.mkdir(parents=True, exist_ok=True)
 
-    print(f"=== {specialty}: EuropePMC search (max {max_search}) ===")
+    print(f"=== {specialty}: EuropePMC search (max {max_search}, rct_only={rct_only}) ===")
     candidates = []  # (pmid, pmcid, abstract, effects, n_eff)
     seen_pmc = set()
     n_scanned = 0
-    for r in epmc_search(query, max_search):
+    for r in epmc_search(query, max_search, rct_only=rct_only):
         n_scanned += 1
         pmid = r.get("pmid")
         pmcid = r.get("pmcid")
@@ -202,10 +212,13 @@ def main():
     ap.add_argument("--max-download", type=int, default=45)
     ap.add_argument("--target", type=int, default=40)
     ap.add_argument("--workers", type=int, default=8)
+    ap.add_argument("--all-pub-types", action="store_true",
+                    help="disable the default RCT-only publication-type filter")
     ap.add_argument("--out", required=True)
     args = ap.parse_args()
     acquire_and_build(args.specialty, args.query, args.max_search,
-                      args.max_download, args.target, args.out, args.workers)
+                      args.max_download, args.target, args.out, args.workers,
+                      rct_only=not args.all_pub_types)
 
 
 if __name__ == "__main__":
