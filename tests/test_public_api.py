@@ -47,6 +47,7 @@ EXPECTED_SPECIALTIES = {
     "urticaria",
     "orthopaedic",
     "low_back_pain",
+    "wound_healing",
 }
 
 

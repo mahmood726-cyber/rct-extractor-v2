@@ -32,6 +32,7 @@ SPECIALTIES: Tuple[str, ...] = (
     "urticaria",
     "orthopaedic",
     "low_back_pain",
+    "wound_healing",
     "hiv",
     "malaria",
     "typhoid",
