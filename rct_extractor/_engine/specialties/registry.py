@@ -323,6 +323,14 @@ from .hepatocellular_carcinoma import (
     MORTALITY_PATTERNS as HCC_MORTALITY_PATTERNS,
     detect_hepatocellular_carcinoma_subspecialty,
     normalize_hepatocellular_carcinoma_endpoint
+from .melanoma import (
+    MELANOMA_ENDPOINTS,
+    SYSTEMIC_PATTERNS as MEL_SYSTEMIC_PATTERNS,
+    ADJUVANT_PATTERNS as MEL_ADJUVANT_PATTERNS,
+    NEOADJUVANT_PATTERNS as MEL_NEOADJUVANT_PATTERNS,
+    MORTALITY_PATTERNS as MEL_MORTALITY_PATTERNS,
+    detect_melanoma_subspecialty,
+    normalize_melanoma_endpoint
 )
 
 
@@ -606,6 +614,16 @@ SPECIALTY_REGISTRY = {
             'locoregional': HCC_LOCOREGIONAL_PATTERNS,
             'curative': HCC_CURATIVE_PATTERNS,
             'mortality': HCC_MORTALITY_PATTERNS
+    'melanoma': {
+        'subspecialties': ['systemic', 'adjuvant', 'neoadjuvant', 'mortality'],
+        'detection_function': detect_melanoma_subspecialty,
+        'normalizer': normalize_melanoma_endpoint,
+        'endpoints': MELANOMA_ENDPOINTS,
+        'patterns': {
+            'systemic': MEL_SYSTEMIC_PATTERNS,
+            'adjuvant': MEL_ADJUVANT_PATTERNS,
+            'neoadjuvant': MEL_NEOADJUVANT_PATTERNS,
+            'mortality': MEL_MORTALITY_PATTERNS
         }
     },
     'infectious_disease': {
@@ -954,6 +972,13 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'alpha[- ]?fetoprotein|\bafp\b', r'radiofrequency\s+ablation|\brfa\b',
             r'unresectable\s+(?:hepatocellular|hcc)|advanced\s+(?:hepatocellular|hcc)',
             r'milan\s+criteria', r'hepatectomy|liver\s+resection'
+        'melanoma': [
+            r'\bmelanoma\b', r'cutaneous\s+melanoma', r'metastatic\s+melanoma',
+            r'acral\s+(?:lentiginous\s+)?melanoma|uveal\s+melanoma',
+            r'braf\s+v?600|braf[- ]?(?:mutant|mutation|positive)',
+            r'ipilimumab|nivolumab|pembrolizumab|relatlimab',
+            r'dabrafenib|trametinib|encorafenib|binimetinib|vemurafenib|cobimetinib',
+            r'\bbreslow\b', r'sentinel[- ]node', r'resected\s+(?:stage\s+(?:iii|iv)\s+)?melanoma'
         ],
         'infectious_disease': [
             r'covid', r'sars[- ]?cov',
@@ -1171,6 +1196,8 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         subspecialty, conf = detect_gastric_cancer_subspecialty(text)
     elif best_specialty == 'hepatocellular_carcinoma':
         subspecialty, conf = detect_hepatocellular_carcinoma_subspecialty(text)
+    elif best_specialty == 'melanoma':
+        subspecialty, conf = detect_melanoma_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'diabetes':
         subspecialty, conf = detect_diabetes_subspecialty(text)

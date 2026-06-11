@@ -228,3 +228,10 @@ data/field_portability/hepatocellular_carcinoma/*.json
 data/field_portability/hepatocellular_carcinoma/*.log
 data/pdf_eval/gold_hepatocellular_carcinoma.jsonl
 data/pdf_eval/eval_onc_hepatocellular_carcinoma.json
+# Melanoma field bundle
+data/field_portability/melanoma/rct_trial_pdfs/
+data/field_portability/melanoma/*.jsonl
+data/field_portability/melanoma/*.json
+data/field_portability/melanoma/*.log
+data/pdf_eval/gold_melanoma.jsonl
+data/pdf_eval/eval_onc_melanoma.json
