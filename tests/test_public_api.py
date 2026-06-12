@@ -35,6 +35,7 @@ EXPECTED_SPECIALTIES = {
     "lymphoma", "endometrial_cancer", "head_neck_cancer", "bladder_cancer", "renal_cell_carcinoma",
     "lymphoma", "testicular_cancer", "head_neck_cancer", "bladder_cancer", "renal_cell_carcinoma",
     "lymphoma", "myelodysplastic_syndrome", "head_neck_cancer", "bladder_cancer", "renal_cell_carcinoma",
+    "lymphoma", "influenza", "head_neck_cancer", "bladder_cancer", "renal_cell_carcinoma",
     # cardio-metabolic / renal cluster (9)
     "dyslipidaemia", "venous_thromboembolism", "peripheral_artery_disease",
     "obesity", "thyroid", "osteoporosis", "kidney_transplant",

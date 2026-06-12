@@ -650,6 +650,15 @@ from .myelodysplastic_syndrome import (
     detect_myelodysplastic_syndrome_subspecialty,
     normalize_myelodysplastic_syndrome_endpoint
 )
+from .influenza import (
+    INFLUENZA_ENDPOINTS,
+    TREATMENT_PATTERNS as FLU_TREATMENT_PATTERNS,
+    PREVENTION_PATTERNS as FLU_PREVENTION_PATTERNS,
+    COMPLICATIONS_PATTERNS as FLU_COMPLICATIONS_PATTERNS,
+    MORTALITY_PATTERNS as FLU_MORTALITY_PATTERNS,
+    detect_influenza_subspecialty,
+    normalize_influenza_endpoint
+)
 
 from .head_neck_cancer import (
     HEAD_NECK_CANCER_ENDPOINTS,
@@ -1376,6 +1385,18 @@ SPECIALTY_REGISTRY = {
             'higher_risk': MDS_HIGHER_RISK_PATTERNS,
             'response': MDS_RESPONSE_PATTERNS,
             'mortality': MDS_MORTALITY_PATTERNS
+        }
+    },
+    'influenza': {
+        'subspecialties': ['treatment', 'prevention', 'complications', 'mortality'],
+        'detection_function': detect_influenza_subspecialty,
+        'normalizer': normalize_influenza_endpoint,
+        'endpoints': INFLUENZA_ENDPOINTS,
+        'patterns': {
+            'treatment': FLU_TREATMENT_PATTERNS,
+            'prevention': FLU_PREVENTION_PATTERNS,
+            'complications': FLU_COMPLICATIONS_PATTERNS,
+            'mortality': FLU_MORTALITY_PATTERNS
         }
     },
     'head_neck_cancer': {
@@ -2323,6 +2344,14 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'transfusion[- ]independenc', r'h(?:a)?ematolog(?:ic|ical)\s+improvement',
             r'excess\s+blasts|mds[- ]eb', r'del\s*\(?5q\)?', r'imetelstat|rytelo'
         ],
+        'influenza': [
+            r'\binfluenza\b', r'\bflu\b', r'oseltamivir|tamiflu',
+            r'zanamivir|baloxavir|peramivir|laninamivir', r'neuraminidase\s+inhibitor',
+            r'influenza\s+vaccin|vaccine\s+(?:efficacy|effectiveness)',
+            r'\bh1n1\b|\bh3n2\b|\bh5n1\b|influenza\s+[ab]\b',
+            r'time\s+to\s+(?:alleviation|resolution)\s+of\s+symptoms',
+            r'laboratory[- ]confirmed\s+influenza', r'live[- ]attenuated\s+influenza|\blaiv\b'
+        ],
         'head_neck_cancer': [
             r'head\s+and\s+neck\s+(?:cancer|squamous|carcinoma)|\bhnscc\b',
             r'nasopharyngeal\s+(?:carcinoma|cancer)|\bnpc\b',
@@ -2890,6 +2919,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'myelodysplastic_syndrome':
         subspecialty, conf = detect_myelodysplastic_syndrome_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'influenza':
+        subspecialty, conf = detect_influenza_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'head_neck_cancer':
         subspecialty, conf = detect_head_neck_cancer_subspecialty(text)

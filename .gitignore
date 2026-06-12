@@ -495,3 +495,9 @@ data/field_portability/myelodysplastic_syndrome/*.json
 data/field_portability/myelodysplastic_syndrome/*.log
 data/pdf_eval/gold_myelodysplastic_syndrome.jsonl
 data/pdf_eval/eval_onc_myelodysplastic_syndrome.json
+data/field_portability/influenza/rct_trial_pdfs/
+data/field_portability/influenza/*.jsonl
+data/field_portability/influenza/*.json
+data/field_portability/influenza/*.log
+data/pdf_eval/gold_influenza.jsonl
+data/pdf_eval/eval_onc_influenza.json
