@@ -489,3 +489,9 @@ data/field_portability/testicular_cancer/*.json
 data/field_portability/testicular_cancer/*.log
 data/pdf_eval/gold_testicular_cancer.jsonl
 data/pdf_eval/eval_onc_testicular_cancer.json
+data/field_portability/myelodysplastic_syndrome/rct_trial_pdfs/
+data/field_portability/myelodysplastic_syndrome/*.jsonl
+data/field_portability/myelodysplastic_syndrome/*.json
+data/field_portability/myelodysplastic_syndrome/*.log
+data/pdf_eval/gold_myelodysplastic_syndrome.jsonl
+data/pdf_eval/eval_onc_myelodysplastic_syndrome.json
