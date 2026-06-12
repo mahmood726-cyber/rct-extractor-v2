@@ -449,3 +449,9 @@ data/field_portability/wound_healing/rct_trial_pdfs/
 data/field_portability/wound_healing/*.jsonl
 data/field_portability/wound_healing/*.json
 data/field_portability/wound_healing/*.log
+data/field_portability/thyroid_cancer/rct_trial_pdfs/
+data/field_portability/thyroid_cancer/*.jsonl
+data/field_portability/thyroid_cancer/*.json
+data/field_portability/thyroid_cancer/*.log
+data/pdf_eval/gold_thyroid_cancer.jsonl
+data/pdf_eval/eval_onc_thyroid_cancer.json
