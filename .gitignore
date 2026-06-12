@@ -454,5 +454,14 @@ data/field_portability/multiple_myeloma/rct_trial_pdfs/
 data/field_portability/multiple_myeloma/*.jsonl
 data/field_portability/multiple_myeloma/*.json
 data/field_portability/multiple_myeloma/*.log
+data/field_portability/glioma/rct_trial_pdfs/
+data/field_portability/glioma/*.jsonl
+data/field_portability/glioma/*.json
+data/field_portability/glioma/*.log
+data/pdf_eval/gold_glioma.jsonl
+data/pdf_eval/eval_onc_glioma.json
+# stray data that must never be tracked on any onc2 branch
+data/field_portability/multiple_myeloma/
+data/field_portability/glioma_diag/
 data/pdf_eval/gold_multiple_myeloma.jsonl
 data/pdf_eval/eval_onc_multiple_myeloma.json

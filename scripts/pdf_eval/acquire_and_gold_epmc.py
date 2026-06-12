@@ -123,14 +123,26 @@ def epmc_search(query: str, max_results: int, rct_only: bool = True):
 
 
 def acquire_and_build(specialty, query, max_search, max_download, target, out_path,
-                      workers=8, rct_only=True):
+                      workers=8, rct_only=True, require_term=None):
     pdf_dir = FP / specialty / "rct_trial_pdfs"
     pdf_dir.mkdir(parents=True, exist_ok=True)
 
-    print(f"=== {specialty}: EuropePMC search (max {max_search}, rct_only={rct_only}) ===")
+    # Optional on-disease gate: EuropePMC free-text/MeSH search can return papers
+    # that match the query only in body/references (e.g. an Alzheimer's or
+    # diabetic-nephropathy trial surfacing for a glioma query) with NO disease
+    # term in the abstract. Such papers are not in-scope for the disease and
+    # would understate accuracy as out-of-scope effects. require_term (a regex)
+    # keeps only candidates whose abstract actually concerns the disease. This is
+    # corpus hygiene, NOT gold tampering: it never edits a harvested value, only
+    # which on-disease abstracts are eligible. Default None preserves prior
+    # behaviour for every specialty already built.
+    term_re = re.compile(require_term, re.I) if require_term else None
+    print(f"=== {specialty}: EuropePMC search (max {max_search}, rct_only={rct_only}"
+          f"{', require_term=' + require_term if require_term else ''}) ===")
     candidates = []  # (pmid, pmcid, abstract, effects, n_eff)
     seen_pmc = set()
     n_scanned = 0
+    n_offdisease = 0
     for r in epmc_search(query, max_search, rct_only=rct_only):
         n_scanned += 1
         pmid = r.get("pmid")
@@ -142,6 +154,9 @@ def acquire_and_build(specialty, query, max_search, max_download, target, out_pa
         abstract = clean_abstract(r.get("abstractText", ""))
         if len(abstract) < 200:
             continue
+        if term_re is not None and not term_re.search(abstract):
+            n_offdisease += 1
+            continue
         eff = harvest_effects(abstract)  # independent gold pre-screen
         if not eff:
             continue
@@ -151,7 +166,9 @@ def acquire_and_build(specialty, query, max_search, max_download, target, out_pa
             break
     # richest abstracts first (more gold tuples per download)
     candidates.sort(key=lambda c: -c[4])
-    print(f"  scanned {n_scanned} hits; {len(candidates)} have abstract effect+CI")
+    print(f"  scanned {n_scanned} hits; "
+          f"{n_offdisease} dropped off-disease (no abstract term match); "
+          f"{len(candidates)} have abstract effect+CI")
 
     # Take a working set a bit larger than max_download so failed downloads
     # (HTML-only / no OA package) don't starve the gold target.
@@ -214,11 +231,14 @@ def main():
     ap.add_argument("--workers", type=int, default=8)
     ap.add_argument("--all-pub-types", action="store_true",
                     help="disable the default RCT-only publication-type filter")
+    ap.add_argument("--require-term", default=None,
+                    help="regex the abstract must match to be on-disease (corpus "
+                         "hygiene; drops EuropePMC body/MeSH-only false positives)")
     ap.add_argument("--out", required=True)
     args = ap.parse_args()
     acquire_and_build(args.specialty, args.query, args.max_search,
                       args.max_download, args.target, args.out, args.workers,
-                      rct_only=not args.all_pub_types)
+                      rct_only=not args.all_pub_types, require_term=args.require_term)
 
 
 if __name__ == "__main__":

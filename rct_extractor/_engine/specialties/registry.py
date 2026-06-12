@@ -596,6 +596,15 @@ from .multiple_myeloma import (
     detect_multiple_myeloma_subspecialty,
     normalize_multiple_myeloma_endpoint
 )
+from .glioma import (
+    GLIOMA_ENDPOINTS,
+    GLIOBLASTOMA_PATTERNS as GL_GLIOBLASTOMA_PATTERNS,
+    RECURRENT_PATTERNS as GL_RECURRENT_PATTERNS,
+    LOW_GRADE_PATTERNS as GL_LOW_GRADE_PATTERNS,
+    MORTALITY_PATTERNS as GL_MORTALITY_PATTERNS,
+    detect_glioma_subspecialty,
+    normalize_glioma_endpoint
+)
 
 from .head_neck_cancer import (
     HEAD_NECK_CANCER_ENDPOINTS,
@@ -1250,6 +1259,18 @@ SPECIALTY_REGISTRY = {
             'relapsed_refractory': MM_RELAPSED_REFRACTORY_PATTERNS,
             'response': MM_RESPONSE_PATTERNS,
             'mortality': MM_MORTALITY_PATTERNS
+        }
+    },
+    'glioma': {
+        'subspecialties': ['glioblastoma', 'recurrent', 'low_grade', 'mortality'],
+        'detection_function': detect_glioma_subspecialty,
+        'normalizer': normalize_glioma_endpoint,
+        'endpoints': GLIOMA_ENDPOINTS,
+        'patterns': {
+            'glioblastoma': GL_GLIOBLASTOMA_PATTERNS,
+            'recurrent': GL_RECURRENT_PATTERNS,
+            'low_grade': GL_LOW_GRADE_PATTERNS,
+            'mortality': GL_MORTALITY_PATTERNS
         }
     },
     'head_neck_cancer': {
@@ -2145,6 +2166,14 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'idecabtagene|ciltacabtagene|teclistamab|talquetamab|elranatamab',
             r'autologous\s+stem[- ]cell\s+transplant', r'imwg', r'\bbcma\b'
         ],
+        'glioma': [
+            r'glioblastoma(?:\s+multiforme)?|\bgbm\b', r'\bglioma\b',
+            r'astrocytoma|oligodendroglioma', r'temozolomide|temodar',
+            r'tumou?r[- ]treating\s+fields|\bttfields\b|optune', r'stupp',
+            r'\bmgmt\b', r'\bidh[- ](?:1|2)?[- ]?(?:mutant|wild)', r'vorasidenib',
+            r'carmustine\s+wafer|gliadel', r'procarbazine[, /-]+lomustine|\bpcv\b',
+            r'neuro[- ]oncolog', r'\brano\b'
+        ],
         'head_neck_cancer': [
             r'head\s+and\s+neck\s+(?:cancer|squamous|carcinoma)|\bhnscc\b',
             r'nasopharyngeal\s+(?:carcinoma|cancer)|\bnpc\b',
@@ -2694,6 +2723,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'multiple_myeloma':
         subspecialty, conf = detect_multiple_myeloma_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'glioma':
+        subspecialty, conf = detect_glioma_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'head_neck_cancer':
         subspecialty, conf = detect_head_neck_cancer_subspecialty(text)

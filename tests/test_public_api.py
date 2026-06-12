@@ -29,6 +29,7 @@ EXPECTED_SPECIALTIES = {
     "oesophageal_cancer", "prostate_cancer", "ovarian_cancer", "pancreatic_cancer",
     "gastric_cancer", "hepatocellular_carcinoma", "melanoma", "leukaemia",
     "lymphoma", "multiple_myeloma", "head_neck_cancer", "bladder_cancer", "renal_cell_carcinoma",
+    "lymphoma", "glioma", "head_neck_cancer", "bladder_cancer", "renal_cell_carcinoma",
     # cardio-metabolic / renal cluster (9)
     "dyslipidaemia", "venous_thromboembolism", "peripheral_artery_disease",
     "obesity", "thyroid", "osteoporosis", "kidney_transplant",
