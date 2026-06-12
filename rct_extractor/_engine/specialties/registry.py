@@ -587,6 +587,16 @@ from .lymphoma import (
     normalize_lymphoma_endpoint
 )
 
+from .multiple_myeloma import (
+    MULTIPLE_MYELOMA_ENDPOINTS,
+    NEWLY_DIAGNOSED_PATTERNS as MM_NEWLY_DIAGNOSED_PATTERNS,
+    RELAPSED_REFRACTORY_PATTERNS as MM_RELAPSED_REFRACTORY_PATTERNS,
+    RESPONSE_PATTERNS as MM_RESPONSE_PATTERNS,
+    MORTALITY_PATTERNS as MM_MORTALITY_PATTERNS,
+    detect_multiple_myeloma_subspecialty,
+    normalize_multiple_myeloma_endpoint
+)
+
 from .head_neck_cancer import (
     HEAD_NECK_CANCER_ENDPOINTS,
     DEFINITIVE_PATTERNS as HN_DEFINITIVE_PATTERNS,
@@ -1228,6 +1238,18 @@ SPECIALTY_REGISTRY = {
             'aggressive': LY_AGGRESSIVE_PATTERNS,
             'indolent': LY_INDOLENT_PATTERNS,
             'mortality': LY_MORTALITY_PATTERNS
+        }
+    },
+    'multiple_myeloma': {
+        'subspecialties': ['newly_diagnosed', 'relapsed_refractory', 'response', 'mortality'],
+        'detection_function': detect_multiple_myeloma_subspecialty,
+        'normalizer': normalize_multiple_myeloma_endpoint,
+        'endpoints': MULTIPLE_MYELOMA_ENDPOINTS,
+        'patterns': {
+            'newly_diagnosed': MM_NEWLY_DIAGNOSED_PATTERNS,
+            'relapsed_refractory': MM_RELAPSED_REFRACTORY_PATTERNS,
+            'response': MM_RESPONSE_PATTERNS,
+            'mortality': MM_MORTALITY_PATTERNS
         }
     },
     'head_neck_cancer': {
@@ -2114,6 +2136,15 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'rituximab|obinutuzumab|bendamustine',
             r'reed[- ]sternberg', r'axicabtagene|tisagenlecleucel|lisocabtagene'
         ],
+        'multiple_myeloma': [
+            r'multiple\s+myeloma', r'\bmyeloma\b', r'\bndmm\b|\brrmm\b',
+            r'plasma[- ]cell\s+(?:neoplasm|disorder|dyscrasia)', r'm[- ]protein|paraprotein',
+            r'bortezomib|carfilzomib|ixazomib', r'lenalidomide|pomalidomide|thalidomide',
+            r'daratumumab|isatuximab', r'elotuzumab|belantamab|selinexor',
+            r'\bvrd\b|\bkrd\b|\bd[- ]?vrd\b|\bvmp\b',
+            r'idecabtagene|ciltacabtagene|teclistamab|talquetamab|elranatamab',
+            r'autologous\s+stem[- ]cell\s+transplant', r'imwg', r'\bbcma\b'
+        ],
         'head_neck_cancer': [
             r'head\s+and\s+neck\s+(?:cancer|squamous|carcinoma)|\bhnscc\b',
             r'nasopharyngeal\s+(?:carcinoma|cancer)|\bnpc\b',
@@ -2660,6 +2691,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'lymphoma':
         subspecialty, conf = detect_lymphoma_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'multiple_myeloma':
+        subspecialty, conf = detect_multiple_myeloma_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'head_neck_cancer':
         subspecialty, conf = detect_head_neck_cancer_subspecialty(text)

@@ -449,3 +449,10 @@ data/field_portability/wound_healing/rct_trial_pdfs/
 data/field_portability/wound_healing/*.jsonl
 data/field_portability/wound_healing/*.json
 data/field_portability/wound_healing/*.log
+# onc2 field bundles — large/transient real-PDF eval data (code under scripts/, tests in tests/)
+data/field_portability/multiple_myeloma/rct_trial_pdfs/
+data/field_portability/multiple_myeloma/*.jsonl
+data/field_portability/multiple_myeloma/*.json
+data/field_portability/multiple_myeloma/*.log
+data/pdf_eval/gold_multiple_myeloma.jsonl
+data/pdf_eval/eval_onc_multiple_myeloma.json
