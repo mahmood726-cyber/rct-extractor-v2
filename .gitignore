@@ -449,3 +449,10 @@ data/field_portability/wound_healing/rct_trial_pdfs/
 data/field_portability/wound_healing/*.jsonl
 data/field_portability/wound_healing/*.json
 data/field_portability/wound_healing/*.log
+# Allergic-conjunctivitis (ocular allergy) field bundle — large/transient data
+data/field_portability/allergic_conjunctivitis/rct_trial_pdfs/
+data/field_portability/allergic_conjunctivitis/*.jsonl
+data/field_portability/allergic_conjunctivitis/*.json
+data/field_portability/allergic_conjunctivitis/*.log
+data/pdf_eval/gold_allergic_conjunctivitis.jsonl
+data/pdf_eval/eval_allergic_conjunctivitis.json

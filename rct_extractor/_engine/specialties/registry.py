@@ -497,6 +497,15 @@ from .ophthalmology import (
     normalize_ophthalmology_endpoint
 )
 
+from .allergic_conjunctivitis import (
+    ALLERGIC_CONJUNCTIVITIS_ENDPOINTS,
+    SEASONAL_PERENNIAL_PATTERNS as AC_SEASONAL_PERENNIAL_PATTERNS,
+    VERNAL_ATOPIC_PATTERNS as AC_VERNAL_ATOPIC_PATTERNS,
+    CHALLENGE_MODEL_PATTERNS as AC_CHALLENGE_MODEL_PATTERNS,
+    detect_allergic_conjunctivitis_subspecialty,
+    normalize_allergic_conjunctivitis_endpoint
+)
+
 from .oesophageal_cancer import (
     OESOPHAGEAL_CANCER_ENDPOINTS,
     DEFINITIVE_PATTERNS as OE_DEFINITIVE_PATTERNS,
@@ -1549,6 +1558,17 @@ SPECIALTY_REGISTRY = {
             'dry_eye': OPHTH_DRY_EYE_PATTERNS
         }
     },
+    'allergic_conjunctivitis': {
+        'subspecialties': ['seasonal_perennial', 'vernal_atopic', 'challenge_model'],
+        'detection_function': detect_allergic_conjunctivitis_subspecialty,
+        'normalizer': normalize_allergic_conjunctivitis_endpoint,
+        'endpoints': ALLERGIC_CONJUNCTIVITIS_ENDPOINTS,
+        'patterns': {
+            'seasonal_perennial': AC_SEASONAL_PERENNIAL_PATTERNS,
+            'vernal_atopic': AC_VERNAL_ATOPIC_PATTERNS,
+            'challenge_model': AC_CHALLENGE_MODEL_PATTERNS
+        }
+    },
     'cirrhosis': {
         'subspecialties': ['portal_hypertension', 'decompensation', 'encephalopathy', 'progression'],
         'detection_function': detect_cirrhosis_subspecialty,
@@ -2491,6 +2511,19 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'corneal\s+(?:fluorescein\s+)?staining', r'schirmer', r'\bocular\b', r'\bcorneal?\b',
             r'cyclosporine|lifitegrast|varenicline\s+nasal'
         ],
+        'allergic_conjunctivitis': [
+            r'allergic\s+conjunctivitis', r'ocular\s+allerg(?:y|ic)',
+            r'seasonal\s+allergic\s+conjunctivitis|\bsac\b',
+            r'perennial\s+allergic\s+conjunctivitis|\bpac\b',
+            r'vernal\s+keratoconjunctivitis|\bvkc\b',
+            r'atopic\s+keratoconjunctivitis|\bakc\b',
+            r'conjunctival\s+allergen\s+challenge|\bcac\b',
+            r'ocular\s+itch(?:ing)?', r'conjunctival\s+hypera?emia',
+            r'conjunctival\s+redness|ocular\s+redness', r'shield\s+ulcer',
+            r'olopatadine|ketotifen|bepotastine|alcaftadine|epinastine|emedastine|levocabastine',
+            r'sodium\s+cromoglicate|cromolyn|lodoxamide|nedocromil|pemirolast',
+            r'loteprednol', r'total\s+ocular\s+symptom\s+score'
+        ],
         'respiratory': [
             r'chronic\s+obstructive\s+pulmonary\s+disease', r'\bcopd\b', r'\baecopd\b',
             r'\basthma\b', r'asthmatic', r'pulmonary\s+fibrosis', r'\bipf\b',
@@ -2720,6 +2753,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'ophthalmology':
         subspecialty, conf = detect_ophthalmology_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'allergic_conjunctivitis':
+        subspecialty, conf = detect_allergic_conjunctivitis_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'dyslipidaemia':
         subspecialty, conf = detect_dyslipidaemia_subspecialty(text)
