@@ -477,3 +477,9 @@ data/field_portability/thyroid_cancer/*.json
 data/field_portability/thyroid_cancer/*.log
 data/pdf_eval/gold_thyroid_cancer.jsonl
 data/pdf_eval/eval_onc_thyroid_cancer.json
+data/field_portability/endometrial_cancer/rct_trial_pdfs/
+data/field_portability/endometrial_cancer/*.jsonl
+data/field_portability/endometrial_cancer/*.json
+data/field_portability/endometrial_cancer/*.log
+data/pdf_eval/gold_endometrial_cancer.jsonl
+data/pdf_eval/eval_onc_endometrial_cancer.json

@@ -623,6 +623,15 @@ from .thyroid_cancer import (
     detect_thyroid_cancer_subspecialty,
     normalize_thyroid_cancer_endpoint
 )
+from .endometrial_cancer import (
+    ENDOMETRIAL_CANCER_ENDPOINTS,
+    ADVANCED_PATTERNS as EC_ADVANCED_PATTERNS,
+    ADJUVANT_PATTERNS as EC_ADJUVANT_PATTERNS,
+    IMMUNOTHERAPY_PATTERNS as EC_IMMUNOTHERAPY_PATTERNS,
+    MORTALITY_PATTERNS as EC_MORTALITY_PATTERNS,
+    detect_endometrial_cancer_subspecialty,
+    normalize_endometrial_cancer_endpoint
+)
 
 from .head_neck_cancer import (
     HEAD_NECK_CANCER_ENDPOINTS,
@@ -1313,6 +1322,18 @@ SPECIALTY_REGISTRY = {
             'medullary': TC_MEDULLARY_PATTERNS,
             'anaplastic': TC_ANAPLASTIC_PATTERNS,
             'mortality': TC_MORTALITY_PATTERNS
+        }
+    },
+    'endometrial_cancer': {
+        'subspecialties': ['advanced', 'adjuvant', 'immunotherapy', 'mortality'],
+        'detection_function': detect_endometrial_cancer_subspecialty,
+        'normalizer': normalize_endometrial_cancer_endpoint,
+        'endpoints': ENDOMETRIAL_CANCER_ENDPOINTS,
+        'patterns': {
+            'advanced': EC_ADVANCED_PATTERNS,
+            'adjuvant': EC_ADJUVANT_PATTERNS,
+            'immunotherapy': EC_IMMUNOTHERAPY_PATTERNS,
+            'mortality': EC_MORTALITY_PATTERNS
         }
     },
     'head_neck_cancer': {
@@ -2234,6 +2255,16 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'\bret\b[- ]?(?:mutant|altered|fusion)', r'thyroglobulin',
             r'dabrafenib.{0,20}thyroid'
         ],
+        'endometrial_cancer': [
+            r'endometrial\s+(?:cancer|carcinoma|adenocarcinoma)', r'\bendometrial\b',
+            r'uterine\s+(?:cancer|carcinoma|corpus\s+cancer)', r'\buterine\s+serous\b',
+            r'carcinosarcoma', r'dostarlimab|jemperli',
+            r'mismatch[- ]repair[- ]deficient|\bdmmr\b|\bmmrd\b',
+            r'pembrolizumab[\s,/+-]+(?:plus\s+|and\s+)?lenvatinib|'
+            r'lenvatinib[\s,/+-]+(?:plus\s+|and\s+)?pembrolizumab',
+            r'\bportec\b', r'vaginal\s+brachytherapy',
+            r'(?:advanced|recurrent|metastatic)\s+endometrial'
+        ],
         'head_neck_cancer': [
             r'head\s+and\s+neck\s+(?:cancer|squamous|carcinoma)|\bhnscc\b',
             r'nasopharyngeal\s+(?:carcinoma|cancer)|\bnpc\b',
@@ -2792,6 +2823,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'thyroid_cancer':
         subspecialty, conf = detect_thyroid_cancer_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'endometrial_cancer':
+        subspecialty, conf = detect_endometrial_cancer_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'head_neck_cancer':
         subspecialty, conf = detect_head_neck_cancer_subspecialty(text)

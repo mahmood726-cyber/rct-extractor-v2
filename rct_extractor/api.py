@@ -85,6 +85,7 @@ SPECIALTIES: Tuple[str, ...] = (
     "glioma",
     "sarcoma",
     "thyroid_cancer",
+    "endometrial_cancer",
     "head_neck_cancer",
     "bladder_cancer",
     "renal_cell_carcinoma",
