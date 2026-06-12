@@ -449,3 +449,9 @@ data/field_portability/wound_healing/rct_trial_pdfs/
 data/field_portability/wound_healing/*.jsonl
 data/field_portability/wound_healing/*.json
 data/field_portability/wound_healing/*.log
+data/field_portability/myelodysplastic_syndrome/rct_trial_pdfs/
+data/field_portability/myelodysplastic_syndrome/*.jsonl
+data/field_portability/myelodysplastic_syndrome/*.json
+data/field_portability/myelodysplastic_syndrome/*.log
+data/pdf_eval/gold_myelodysplastic_syndrome.jsonl
+data/pdf_eval/eval_onc_myelodysplastic_syndrome.json

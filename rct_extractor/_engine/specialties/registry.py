@@ -587,6 +587,16 @@ from .lymphoma import (
     normalize_lymphoma_endpoint
 )
 
+from .myelodysplastic_syndrome import (
+    MYELODYSPLASTIC_SYNDROME_ENDPOINTS,
+    LOWER_RISK_PATTERNS as MDS_LOWER_RISK_PATTERNS,
+    HIGHER_RISK_PATTERNS as MDS_HIGHER_RISK_PATTERNS,
+    RESPONSE_PATTERNS as MDS_RESPONSE_PATTERNS,
+    MORTALITY_PATTERNS as MDS_MORTALITY_PATTERNS,
+    detect_myelodysplastic_syndrome_subspecialty,
+    normalize_myelodysplastic_syndrome_endpoint
+)
+
 from .head_neck_cancer import (
     HEAD_NECK_CANCER_ENDPOINTS,
     DEFINITIVE_PATTERNS as HN_DEFINITIVE_PATTERNS,
@@ -1228,6 +1238,18 @@ SPECIALTY_REGISTRY = {
             'aggressive': LY_AGGRESSIVE_PATTERNS,
             'indolent': LY_INDOLENT_PATTERNS,
             'mortality': LY_MORTALITY_PATTERNS
+        }
+    },
+    'myelodysplastic_syndrome': {
+        'subspecialties': ['lower_risk', 'higher_risk', 'response', 'mortality'],
+        'detection_function': detect_myelodysplastic_syndrome_subspecialty,
+        'normalizer': normalize_myelodysplastic_syndrome_endpoint,
+        'endpoints': MYELODYSPLASTIC_SYNDROME_ENDPOINTS,
+        'patterns': {
+            'lower_risk': MDS_LOWER_RISK_PATTERNS,
+            'higher_risk': MDS_HIGHER_RISK_PATTERNS,
+            'response': MDS_RESPONSE_PATTERNS,
+            'mortality': MDS_MORTALITY_PATTERNS
         }
     },
     'head_neck_cancer': {
@@ -2114,6 +2136,13 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'rituximab|obinutuzumab|bendamustine',
             r'reed[- ]sternberg', r'axicabtagene|tisagenlecleucel|lisocabtagene'
         ],
+        'myelodysplastic_syndrome': [
+            r'myelodysplastic\s+syndrome|\bmds\b', r'myelodysplasia',
+            r'low(?:er)?[- ]risk\s+(?:mds|myelodysplastic)|high(?:er)?[- ]risk\s+(?:mds|myelodysplastic)',
+            r'ipss[- ]r?\b', r'luspatercept|reblozyl', r'ring(?:ed)?\s+sideroblast',
+            r'transfusion[- ]independenc', r'h(?:a)?ematolog(?:ic|ical)\s+improvement',
+            r'excess\s+blasts|mds[- ]eb', r'del\s*\(?5q\)?', r'imetelstat|rytelo'
+        ],
         'head_neck_cancer': [
             r'head\s+and\s+neck\s+(?:cancer|squamous|carcinoma)|\bhnscc\b',
             r'nasopharyngeal\s+(?:carcinoma|cancer)|\bnpc\b',
@@ -2660,6 +2689,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'lymphoma':
         subspecialty, conf = detect_lymphoma_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'myelodysplastic_syndrome':
+        subspecialty, conf = detect_myelodysplastic_syndrome_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'head_neck_cancer':
         subspecialty, conf = detect_head_neck_cancer_subspecialty(text)
