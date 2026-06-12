@@ -449,3 +449,10 @@ data/field_portability/wound_healing/rct_trial_pdfs/
 data/field_portability/wound_healing/*.jsonl
 data/field_portability/wound_healing/*.json
 data/field_portability/wound_healing/*.log
+# Cataract / lens-surgery field bundle — large/transient data (code under scripts/)
+data/field_portability/cataract/rct_trial_pdfs/
+data/field_portability/cataract/*.jsonl
+data/field_portability/cataract/*.json
+data/field_portability/cataract/*.log
+data/pdf_eval/gold_cataract.jsonl
+data/pdf_eval/eval_cataract.json
