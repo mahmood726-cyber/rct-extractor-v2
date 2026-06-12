@@ -449,3 +449,9 @@ data/field_portability/wound_healing/rct_trial_pdfs/
 data/field_portability/wound_healing/*.jsonl
 data/field_portability/wound_healing/*.json
 data/field_portability/wound_healing/*.log
+data/field_portability/endometrial_cancer/rct_trial_pdfs/
+data/field_portability/endometrial_cancer/*.jsonl
+data/field_portability/endometrial_cancer/*.json
+data/field_portability/endometrial_cancer/*.log
+data/pdf_eval/gold_endometrial_cancer.jsonl
+data/pdf_eval/eval_onc_endometrial_cancer.json
