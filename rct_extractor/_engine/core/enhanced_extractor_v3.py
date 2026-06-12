@@ -113,7 +113,11 @@ class Extraction:
 # point, and the word "to" or a comma between the two bounds. These tokens are
 # unambiguous parts of a 95% CI, so requiring the CI keyword keeps them precise.
 _CIKW = r'(?:95\s*%?\s*(?:CI|C\.I\.|confidence\s*interval))'   # 95%/95 %/95%CI
-_BND = r'(\d+\.?\d*)\s*(?:to|[-–—‐‑]|,)\s*(\d+\.?\d*)'         # lo (to|dash|,) hi
+# v6.7 (PDF-eval): '=' added to the bound-separator class. Some PDF text layers
+# render the en-dash between the two CI bounds as '=' ("95% CI 0.85 = 1.27").
+# _BND is ALWAYS anchored right after _CIKW (or a CI bracket), so accepting '='
+# here stays precise — it cannot pick up an arbitrary "a = b" elsewhere in prose.
+_BND = r'(\d+\.?\d*)\s*(?:to|[-–—‐‑]|,|=)\s*(\d+\.?\d*)'        # lo (to|dash|,|=) hi
 
 # v6.5 (PDF-eval, multi-specialty): generalized CI-tail glue. Each piece below is
 # bounded and forbids the clause delimiters (',', ';', '.') that terminate it, so
@@ -135,18 +139,41 @@ _PUNIT = r'(?:\s+per\b[^,;.\n]{0,30}|\s+for\s+(?:every|each)\b[^,;.\n]{0,30})?'
 _P2CI = rf'{_PUNIT}(?:\s+and\b)?\s*[;,:]?\s*[\(\[]?\s*'
 _CIPRE = r'[:=\s,(\[]*'
 _CITAIL = rf'{_P2CI}{_CIKW}{_CIPRE}{_BND}'
+# v6.7 (PDF-eval): two shared, bounded sub-tokens reused by the SPELLED and the
+# ABBREVIATED glue below.
+#   _PARENALIAS : an optional parenthetical alias/label sitting between the type
+#                 word and the value -> the colon/joiner before the point used to
+#                 be unreachable: "hazard ratio (CS HR): 1.75 …", "aHR (adjusted):
+#                 0.62 …". Bracket-balanced ([^()] forbids nesting), length-capped,
+#                 single quantifier -> no backtracking. Optional, so the normal
+#                 "OR 0.67 (95% CI …)" is untouched (it never engages because the
+#                 value, not '(', follows the type word).
+#   _FORLABEL   : a clause-bounded label interjection introduced by "for", where
+#                 the label MAY contain a number ("HR for PFS 1.04", "RR for
+#                 90-day mortality was 0.84"). It excludes only the clause
+#                 terminators '.', ';', newline; ':' and ',' stay allowed exactly
+#                 as the old spelled "for" branch did. Permitting digits is safe
+#                 ONLY because every consumer appends the mandatory _CITAIL (a real
+#                 95% CI) right after the captured point, so the regex cannot stop
+#                 on the label's own number — that number is never followed by a CI.
+_PARENALIAS = r'(?:\s*\([^()\n]{1,30}\))?'
+_FORLABEL = r'(?:\s+for\b[^.;\n]{0,45}?)?'
 # Optional descriptive glue between a SPELLED type word and its point estimate,
 # anchored on a connective word (or a bare = : ,) so it cannot silently swallow an
 # adjacent unrelated number: "relative risk for overall adverse events was 1.07",
-# "odds ratio adjusted : 0.82", "odds ratio = 1.9", "odds ratios, 0.62". Excludes
-# '.' ';' and digits -> bounded and sentence-safe.
-_TWGLUE = (r'(?:\s*[=:,]|\s+(?:of|for|was|comparing|adjusted|adjusting|crude|'
-           r'marginal)\b[^.;\d\n]{0,35}?)?\s*')
+# "odds ratio adjusted : 0.82", "odds ratio = 1.9", "odds ratios, 0.62". The
+# descriptor branch excludes '.' ';' and digits; "for"-labels move to _FORLABEL
+# (digit-permitting). Bounded and sentence-safe.
+_TWGLUE = (rf'{_PARENALIAS}'
+           r'(?:\s*[=:,]|\s+(?:of|was|comparing|adjusted|adjusting|crude|'
+           rf'marginal)\b[^.;\d\n]{{0,35}}?)?{_FORLABEL}\s*')
 # Optional descriptive glue for an ABBREVIATED type token ("OR of 0.67",
-# "OR adjusted = 0.29", "HR-0.48"): an optional connective word plus an optional
-# one of the - = : joiners.
-_ABGLUE = (r'(?:\s+(?:of|was|adjusted|adjusting|crude|marginal)\b[^.;\d\n]{0,30}?)?'
-           r'\s*[-=:,]?\s*')
+# "OR adjusted = 0.29", "HR-0.48", "HR for PFS 1.04", "aHR (adjusted): 0.62"):
+# optional parenthetical alias, optional connective word, optional "for"-label,
+# plus an optional one of the - = : , joiners.
+_ABGLUE = (rf'{_PARENALIAS}'
+           r'(?:\s+(?:of|was|adjusted|adjusting|crude|marginal)\b[^.;\d\n]{0,30}?)?'
+           rf'{_FORLABEL}\s*[-=:,]?\s*')
 
 
 class EnhancedExtractor:
