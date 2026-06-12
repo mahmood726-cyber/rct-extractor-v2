@@ -449,3 +449,9 @@ data/field_portability/wound_healing/rct_trial_pdfs/
 data/field_portability/wound_healing/*.jsonl
 data/field_portability/wound_healing/*.json
 data/field_portability/wound_healing/*.log
+data/field_portability/sarcoma/rct_trial_pdfs/
+data/field_portability/sarcoma/*.jsonl
+data/field_portability/sarcoma/*.json
+data/field_portability/sarcoma/*.log
+data/pdf_eval/gold_sarcoma.jsonl
+data/pdf_eval/eval_onc_sarcoma.json
