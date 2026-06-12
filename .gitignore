@@ -449,3 +449,10 @@ data/field_portability/wound_healing/rct_trial_pdfs/
 data/field_portability/wound_healing/*.jsonl
 data/field_portability/wound_healing/*.json
 data/field_portability/wound_healing/*.log
+# Chronic-rhinosinusitis field bundle — large/transient data
+data/field_portability/chronic_rhinosinusitis/rct_trial_pdfs/
+data/field_portability/chronic_rhinosinusitis/*.jsonl
+data/field_portability/chronic_rhinosinusitis/*.json
+data/field_portability/chronic_rhinosinusitis/*.log
+data/pdf_eval/gold_chronic_rhinosinusitis.jsonl
+data/pdf_eval/eval_chronic_rhinosinusitis.json
