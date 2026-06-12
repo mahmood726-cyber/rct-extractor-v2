@@ -543,3 +543,10 @@ data/field_portability/otitis_media/*.json
 data/field_portability/otitis_media/*.log
 data/pdf_eval/gold_otitis_media.jsonl
 data/pdf_eval/eval_otitis_media.json
+# Alcohol-use-disorder field bundle — large/transient data
+data/field_portability/alcohol_use_disorder/rct_trial_pdfs/
+data/field_portability/alcohol_use_disorder/*.jsonl
+data/field_portability/alcohol_use_disorder/*.json
+data/field_portability/alcohol_use_disorder/*.log
+data/pdf_eval/gold_alcohol_use_disorder.jsonl
+data/pdf_eval/eval_alcohol_use_disorder.json
