@@ -483,3 +483,9 @@ data/field_portability/endometrial_cancer/*.json
 data/field_portability/endometrial_cancer/*.log
 data/pdf_eval/gold_endometrial_cancer.jsonl
 data/pdf_eval/eval_onc_endometrial_cancer.json
+data/field_portability/testicular_cancer/rct_trial_pdfs/
+data/field_portability/testicular_cancer/*.jsonl
+data/field_portability/testicular_cancer/*.json
+data/field_portability/testicular_cancer/*.log
+data/pdf_eval/gold_testicular_cancer.jsonl
+data/pdf_eval/eval_onc_testicular_cancer.json

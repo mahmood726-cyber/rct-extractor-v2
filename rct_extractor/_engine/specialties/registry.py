@@ -632,6 +632,15 @@ from .endometrial_cancer import (
     detect_endometrial_cancer_subspecialty,
     normalize_endometrial_cancer_endpoint
 )
+from .testicular_cancer import (
+    TESTICULAR_CANCER_ENDPOINTS,
+    SEMINOMA_PATTERNS as TG_SEMINOMA_PATTERNS,
+    NONSEMINOMA_PATTERNS as TG_NONSEMINOMA_PATTERNS,
+    ADVANCED_PATTERNS as TG_ADVANCED_PATTERNS,
+    MORTALITY_PATTERNS as TG_MORTALITY_PATTERNS,
+    detect_testicular_cancer_subspecialty,
+    normalize_testicular_cancer_endpoint
+)
 
 from .head_neck_cancer import (
     HEAD_NECK_CANCER_ENDPOINTS,
@@ -1334,6 +1343,18 @@ SPECIALTY_REGISTRY = {
             'adjuvant': EC_ADJUVANT_PATTERNS,
             'immunotherapy': EC_IMMUNOTHERAPY_PATTERNS,
             'mortality': EC_MORTALITY_PATTERNS
+        }
+    },
+    'testicular_cancer': {
+        'subspecialties': ['seminoma', 'nonseminoma', 'advanced', 'mortality'],
+        'detection_function': detect_testicular_cancer_subspecialty,
+        'normalizer': normalize_testicular_cancer_endpoint,
+        'endpoints': TESTICULAR_CANCER_ENDPOINTS,
+        'patterns': {
+            'seminoma': TG_SEMINOMA_PATTERNS,
+            'nonseminoma': TG_NONSEMINOMA_PATTERNS,
+            'advanced': TG_ADVANCED_PATTERNS,
+            'mortality': TG_MORTALITY_PATTERNS
         }
     },
     'head_neck_cancer': {
@@ -2265,6 +2286,15 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'\bportec\b', r'vaginal\s+brachytherapy',
             r'(?:advanced|recurrent|metastatic)\s+endometrial'
         ],
+        'testicular_cancer': [
+            r'testicular\s+(?:cancer|carcinoma|germ[- ]cell|tumou?r)',
+            r'germ[- ]cell\s+tumou?r', r'\bseminoma\b|seminomatous',
+            r'non[- ]?seminoma(?:tous)?|\bnsgct\b',
+            r'\bbep\b|bleomycin[, /-]+etoposide[, /-]+cisplatin',
+            r'retroperitoneal\s+lymph[- ]node\s+dissection|\brplnd\b',
+            r'orchidectomy|orchiectomy', r'embryonal\s+carcinoma|choriocarcinoma',
+            r'adjuvant\s+carboplatin'
+        ],
         'head_neck_cancer': [
             r'head\s+and\s+neck\s+(?:cancer|squamous|carcinoma)|\bhnscc\b',
             r'nasopharyngeal\s+(?:carcinoma|cancer)|\bnpc\b',
@@ -2826,6 +2856,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'endometrial_cancer':
         subspecialty, conf = detect_endometrial_cancer_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'testicular_cancer':
+        subspecialty, conf = detect_testicular_cancer_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'head_neck_cancer':
         subspecialty, conf = detect_head_neck_cancer_subspecialty(text)
