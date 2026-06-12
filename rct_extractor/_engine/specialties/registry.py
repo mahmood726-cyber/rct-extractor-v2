@@ -497,6 +497,16 @@ from .ophthalmology import (
     normalize_ophthalmology_endpoint
 )
 
+from .cataract import (
+    CATARACT_ENDPOINTS,
+    SURGERY_PATTERNS as CATARACT_SURGERY_PATTERNS,
+    IOL_PATTERNS as CATARACT_IOL_PATTERNS,
+    PCO_PATTERNS as CATARACT_PCO_PATTERNS,
+    COMPLICATIONS_PATTERNS as CATARACT_COMPLICATIONS_PATTERNS,
+    detect_cataract_subspecialty,
+    normalize_cataract_endpoint
+)
+
 from .oesophageal_cancer import (
     OESOPHAGEAL_CANCER_ENDPOINTS,
     DEFINITIVE_PATTERNS as OE_DEFINITIVE_PATTERNS,
@@ -1718,6 +1728,18 @@ SPECIALTY_REGISTRY = {
             'dry_eye': OPHTH_DRY_EYE_PATTERNS
         }
     },
+    'cataract': {
+        'subspecialties': ['surgery', 'iol', 'pco', 'complications'],
+        'detection_function': detect_cataract_subspecialty,
+        'normalizer': normalize_cataract_endpoint,
+        'endpoints': CATARACT_ENDPOINTS,
+        'patterns': {
+            'surgery': CATARACT_SURGERY_PATTERNS,
+            'iol': CATARACT_IOL_PATTERNS,
+            'pco': CATARACT_PCO_PATTERNS,
+            'complications': CATARACT_COMPLICATIONS_PATTERNS
+        }
+    },
     'cirrhosis': {
         'subspecialties': ['portal_hypertension', 'decompensation', 'encephalopathy', 'progression'],
         'detection_function': detect_cirrhosis_subspecialty,
@@ -2729,6 +2751,19 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'corneal\s+(?:fluorescein\s+)?staining', r'schirmer', r'\bocular\b', r'\bcorneal?\b',
             r'cyclosporine|lifitegrast|varenicline\s+nasal'
         ],
+        'cataract': [
+            r'\bcataract\b', r'cataract\s+surgery', r'phacoemulsification|\bphaco\b',
+            r'femtosecond\s+laser[- ]assisted\s+cataract\s+surgery|\bflacs\b',
+            r'manual\s+small[- ]incision\s+cataract\s+surgery|\bmsics\b',
+            r'intraocular\s+lens(?:es)?|\biol\b', r'\bmonofocal\b', r'\bmultifocal\b',
+            r'\btrifocal\b', r'extended\s+depth\s+of\s+focus|\bedof\b', r'\btoric\b',
+            r'posterior\s+capsul(?:e|ar)\s+opacification|\bpco\b',
+            r'nd:?[- ]?yag\s+capsulotomy|yag\s+capsulotomy|laser\s+capsulotomy',
+            r'spectacle\s+independence', r'surgically[- ]induced\s+astigmatism',
+            r'(?:corneal\s+)?endothelial\s+cell\s+(?:loss|density)',
+            r'cystoid\s+macular\s+o?edema|\bcmo\b', r'endophthalmitis',
+            r'pseudophakic', r'capsulorhexis', r'uncorrected\s+(?:distance|near)\s+visual\s+acuity'
+        ],
         'respiratory': [
             r'chronic\s+obstructive\s+pulmonary\s+disease', r'\bcopd\b', r'\baecopd\b',
             r'\basthma\b', r'asthmatic', r'pulmonary\s+fibrosis', r'\bipf\b',
@@ -2982,6 +3017,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'ophthalmology':
         subspecialty, conf = detect_ophthalmology_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'cataract':
+        subspecialty, conf = detect_cataract_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'dyslipidaemia':
         subspecialty, conf = detect_dyslipidaemia_subspecialty(text)

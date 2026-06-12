@@ -501,3 +501,10 @@ data/field_portability/influenza/*.json
 data/field_portability/influenza/*.log
 data/pdf_eval/gold_influenza.jsonl
 data/pdf_eval/eval_onc_influenza.json
+# Cataract / lens-surgery field bundle — large/transient data (code under scripts/)
+data/field_portability/cataract/rct_trial_pdfs/
+data/field_portability/cataract/*.jsonl
+data/field_portability/cataract/*.json
+data/field_portability/cataract/*.log
+data/pdf_eval/gold_cataract.jsonl
+data/pdf_eval/eval_cataract.json
