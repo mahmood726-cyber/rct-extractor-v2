@@ -497,6 +497,15 @@ from .ophthalmology import (
     normalize_ophthalmology_endpoint
 )
 
+from .insomnia import (
+    INSOMNIA_ENDPOINTS,
+    PHARMACOTHERAPY_PATTERNS as INSOMNIA_PHARMACOTHERAPY_PATTERNS,
+    CBT_I_PATTERNS as INSOMNIA_CBT_I_PATTERNS,
+    OBJECTIVE_PATTERNS as INSOMNIA_OBJECTIVE_PATTERNS,
+    detect_insomnia_subspecialty,
+    normalize_insomnia_endpoint
+)
+
 from .oesophageal_cancer import (
     OESOPHAGEAL_CANCER_ENDPOINTS,
     DEFINITIVE_PATTERNS as OE_DEFINITIVE_PATTERNS,
@@ -1549,6 +1558,17 @@ SPECIALTY_REGISTRY = {
             'dry_eye': OPHTH_DRY_EYE_PATTERNS
         }
     },
+    'insomnia': {
+        'subspecialties': ['pharmacotherapy', 'cbt_i', 'objective'],
+        'detection_function': detect_insomnia_subspecialty,
+        'normalizer': normalize_insomnia_endpoint,
+        'endpoints': INSOMNIA_ENDPOINTS,
+        'patterns': {
+            'pharmacotherapy': INSOMNIA_PHARMACOTHERAPY_PATTERNS,
+            'cbt_i': INSOMNIA_CBT_I_PATTERNS,
+            'objective': INSOMNIA_OBJECTIVE_PATTERNS
+        }
+    },
     'cirrhosis': {
         'subspecialties': ['portal_hypertension', 'decompensation', 'encephalopathy', 'progression'],
         'detection_function': detect_cirrhosis_subspecialty,
@@ -2491,6 +2511,16 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'corneal\s+(?:fluorescein\s+)?staining', r'schirmer', r'\bocular\b', r'\bcorneal?\b',
             r'cyclosporine|lifitegrast|varenicline\s+nasal'
         ],
+        'insomnia': [
+            r'\binsomnia\b', r'insomnia\s+disorder', r'chronic\s+insomnia',
+            r'insomnia\s+severity\s+index|\bisi\b',
+            r'sleep[- ]onset\s+latency', r'wake\s+after\s+sleep\s+onset|\bwaso\b',
+            r'sleep\s+efficiency', r'total\s+sleep\s+time',
+            r'pittsburgh\s+sleep\s+quality\s+index|\bpsqi\b',
+            r'suvorexant|lemborexant|daridorexant|eszopiclone|zolpidem|zopiclone|ramelteon',
+            r'cognitive\s+behaviou?ral\s+therapy\s+for\s+insomnia|\bcbt[- ]?i\b',
+            r'latency\s+to\s+persistent\s+sleep', r'hypnotic',
+        ],
         'respiratory': [
             r'chronic\s+obstructive\s+pulmonary\s+disease', r'\bcopd\b', r'\baecopd\b',
             r'\basthma\b', r'asthmatic', r'pulmonary\s+fibrosis', r'\bipf\b',
@@ -2720,6 +2750,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'ophthalmology':
         subspecialty, conf = detect_ophthalmology_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'insomnia':
+        subspecialty, conf = detect_insomnia_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'dyslipidaemia':
         subspecialty, conf = detect_dyslipidaemia_subspecialty(text)

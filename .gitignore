@@ -449,3 +449,10 @@ data/field_portability/wound_healing/rct_trial_pdfs/
 data/field_portability/wound_healing/*.jsonl
 data/field_portability/wound_healing/*.json
 data/field_portability/wound_healing/*.log
+# Insomnia field bundle — large/transient data
+data/field_portability/insomnia/rct_trial_pdfs/
+data/field_portability/insomnia/*.jsonl
+data/field_portability/insomnia/*.json
+data/field_portability/insomnia/*.log
+data/pdf_eval/gold_insomnia.jsonl
+data/pdf_eval/eval_insomnia.json
