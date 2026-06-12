@@ -536,3 +536,10 @@ data/field_portability/obstructive_sleep_apnea/*.json
 data/field_portability/obstructive_sleep_apnea/*.log
 data/pdf_eval/gold_obstructive_sleep_apnea.jsonl
 data/pdf_eval/eval_obstructive_sleep_apnea.json
+# Otitis-media field bundle — large/transient data
+data/field_portability/otitis_media/rct_trial_pdfs/
+data/field_portability/otitis_media/*.jsonl
+data/field_portability/otitis_media/*.json
+data/field_portability/otitis_media/*.log
+data/pdf_eval/gold_otitis_media.jsonl
+data/pdf_eval/eval_otitis_media.json

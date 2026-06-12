@@ -29,6 +29,7 @@ EXPECTED_SPECIALTIES = {
     "dermatology", "ophthalmology", "allergic_conjunctivitis",
     "dermatology", "ophthalmology", "chronic_rhinosinusitis",
     "dermatology", "ophthalmology", "obstructive_sleep_apnea",
+    "dermatology", "ophthalmology", "otitis_media",
     # oncology cluster (12)
     "oesophageal_cancer", "prostate_cancer", "ovarian_cancer", "pancreatic_cancer",
     "gastric_cancer", "hepatocellular_carcinoma", "melanoma", "leukaemia",

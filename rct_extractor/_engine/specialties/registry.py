@@ -538,6 +538,14 @@ from .obstructive_sleep_apnea import (
     detect_obstructive_sleep_apnea_subspecialty,
     normalize_obstructive_sleep_apnea_endpoint
 )
+from .otitis_media import (
+    OTITIS_MEDIA_ENDPOINTS,
+    AOM_PATTERNS as OM_AOM_PATTERNS,
+    OME_PATTERNS as OM_OME_PATTERNS,
+    PREVENTION_PATTERNS as OM_PREVENTION_PATTERNS,
+    detect_otitis_media_subspecialty,
+    normalize_otitis_media_endpoint
+)
 
 from .oesophageal_cancer import (
     OESOPHAGEAL_CANCER_ENDPOINTS,
@@ -1816,6 +1824,17 @@ SPECIALTY_REGISTRY = {
             'intervention': OSA_INTERVENTION_PATTERNS
         }
     },
+    'otitis_media': {
+        'subspecialties': ['aom', 'ome', 'prevention'],
+        'detection_function': detect_otitis_media_subspecialty,
+        'normalizer': normalize_otitis_media_endpoint,
+        'endpoints': OTITIS_MEDIA_ENDPOINTS,
+        'patterns': {
+            'aom': OM_AOM_PATTERNS,
+            'ome': OM_OME_PATTERNS,
+            'prevention': OM_PREVENTION_PATTERNS
+        }
+    },
     'cirrhosis': {
         'subspecialties': ['portal_hypertension', 'decompensation', 'encephalopathy', 'progression'],
         'detection_function': detect_cirrhosis_subspecialty,
@@ -2880,6 +2899,14 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'mandibular\s+advancement', r'hypoglossal\s+nerve\s+stimulation',
             r'oral\s+appliance', r'nocturnal\s+hypox',
         ],
+        'otitis_media': [
+            r'otitis\s+media', r'acute\s+otitis\s+media|\baom\b',
+            r'otitis\s+media\s+with\s+effusion|\bome\b', r'glue\s+ear',
+            r'middle[- ]ear\s+effusion', r'tympanostomy\s+tube|grommet|ventilation\s+tube',
+            r'myringotomy', r'otorrho?ea|ear\s+discharge', r'tympanic\s+membrane',
+            r'tympanometry', r'otalgia', r'recurrent\s+(?:acute\s+)?otitis\s+media',
+            r'middle[- ]ear', r'tympanocentesis'
+        ],
         'respiratory': [
             r'chronic\s+obstructive\s+pulmonary\s+disease', r'\bcopd\b', r'\baecopd\b',
             r'\basthma\b', r'asthmatic', r'pulmonary\s+fibrosis', r'\bipf\b',
@@ -3148,6 +3175,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'obstructive_sleep_apnea':
         subspecialty, conf = detect_obstructive_sleep_apnea_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'otitis_media':
+        subspecialty, conf = detect_otitis_media_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'dyslipidaemia':
         subspecialty, conf = detect_dyslipidaemia_subspecialty(text)
