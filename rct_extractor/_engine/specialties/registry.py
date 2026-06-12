@@ -605,6 +605,15 @@ from .glioma import (
     detect_glioma_subspecialty,
     normalize_glioma_endpoint
 )
+from .sarcoma import (
+    SARCOMA_ENDPOINTS,
+    ADVANCED_PATTERNS as SA_ADVANCED_PATTERNS,
+    GIST_PATTERNS as SA_GIST_PATTERNS,
+    LOCALIZED_PATTERNS as SA_LOCALIZED_PATTERNS,
+    MORTALITY_PATTERNS as SA_MORTALITY_PATTERNS,
+    detect_sarcoma_subspecialty,
+    normalize_sarcoma_endpoint
+)
 
 from .head_neck_cancer import (
     HEAD_NECK_CANCER_ENDPOINTS,
@@ -1271,6 +1280,18 @@ SPECIALTY_REGISTRY = {
             'recurrent': GL_RECURRENT_PATTERNS,
             'low_grade': GL_LOW_GRADE_PATTERNS,
             'mortality': GL_MORTALITY_PATTERNS
+        }
+    },
+    'sarcoma': {
+        'subspecialties': ['advanced', 'gist', 'localized', 'mortality'],
+        'detection_function': detect_sarcoma_subspecialty,
+        'normalizer': normalize_sarcoma_endpoint,
+        'endpoints': SARCOMA_ENDPOINTS,
+        'patterns': {
+            'advanced': SA_ADVANCED_PATTERNS,
+            'gist': SA_GIST_PATTERNS,
+            'localized': SA_LOCALIZED_PATTERNS,
+            'mortality': SA_MORTALITY_PATTERNS
         }
     },
     'head_neck_cancer': {
@@ -2174,6 +2195,14 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'carmustine\s+wafer|gliadel', r'procarbazine[, /-]+lomustine|\bpcv\b',
             r'neuro[- ]oncolog', r'\brano\b'
         ],
+        'sarcoma': [
+            r'soft[- ]tissue\s+sarcoma', r'\bsarcoma\b',
+            r'gastrointestinal\s+stromal\s+tumou?r|\bgist\b',
+            r'leiomyosarcoma|liposarcoma|synovial\s+sarcoma|angiosarcoma',
+            r'pazopanib|trabectedin|eribulin|olaratumab',
+            r'imatinib|sunitinib|regorafenib|ripretinib|avapritinib',
+            r'doxorubicin[, /-]+ifosfamide', r'undifferentiated\s+pleomorphic'
+        ],
         'head_neck_cancer': [
             r'head\s+and\s+neck\s+(?:cancer|squamous|carcinoma)|\bhnscc\b',
             r'nasopharyngeal\s+(?:carcinoma|cancer)|\bnpc\b',
@@ -2726,6 +2755,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'glioma':
         subspecialty, conf = detect_glioma_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'sarcoma':
+        subspecialty, conf = detect_sarcoma_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'head_neck_cancer':
         subspecialty, conf = detect_head_neck_cancer_subspecialty(text)

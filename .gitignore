@@ -465,3 +465,9 @@ data/field_portability/multiple_myeloma/
 data/field_portability/glioma_diag/
 data/pdf_eval/gold_multiple_myeloma.jsonl
 data/pdf_eval/eval_onc_multiple_myeloma.json
+data/field_portability/sarcoma/rct_trial_pdfs/
+data/field_portability/sarcoma/*.jsonl
+data/field_portability/sarcoma/*.json
+data/field_portability/sarcoma/*.log
+data/pdf_eval/gold_sarcoma.jsonl
+data/pdf_eval/eval_onc_sarcoma.json
