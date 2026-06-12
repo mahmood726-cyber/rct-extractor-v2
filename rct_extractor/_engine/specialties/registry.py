@@ -614,6 +614,15 @@ from .sarcoma import (
     detect_sarcoma_subspecialty,
     normalize_sarcoma_endpoint
 )
+from .thyroid_cancer import (
+    THYROID_CANCER_ENDPOINTS,
+    DIFFERENTIATED_PATTERNS as TC_DIFFERENTIATED_PATTERNS,
+    MEDULLARY_PATTERNS as TC_MEDULLARY_PATTERNS,
+    ANAPLASTIC_PATTERNS as TC_ANAPLASTIC_PATTERNS,
+    MORTALITY_PATTERNS as TC_MORTALITY_PATTERNS,
+    detect_thyroid_cancer_subspecialty,
+    normalize_thyroid_cancer_endpoint
+)
 
 from .head_neck_cancer import (
     HEAD_NECK_CANCER_ENDPOINTS,
@@ -1292,6 +1301,18 @@ SPECIALTY_REGISTRY = {
             'gist': SA_GIST_PATTERNS,
             'localized': SA_LOCALIZED_PATTERNS,
             'mortality': SA_MORTALITY_PATTERNS
+        }
+    },
+    'thyroid_cancer': {
+        'subspecialties': ['differentiated', 'medullary', 'anaplastic', 'mortality'],
+        'detection_function': detect_thyroid_cancer_subspecialty,
+        'normalizer': normalize_thyroid_cancer_endpoint,
+        'endpoints': THYROID_CANCER_ENDPOINTS,
+        'patterns': {
+            'differentiated': TC_DIFFERENTIATED_PATTERNS,
+            'medullary': TC_MEDULLARY_PATTERNS,
+            'anaplastic': TC_ANAPLASTIC_PATTERNS,
+            'mortality': TC_MORTALITY_PATTERNS
         }
     },
     'head_neck_cancer': {
@@ -2203,6 +2224,16 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'imatinib|sunitinib|regorafenib|ripretinib|avapritinib',
             r'doxorubicin[, /-]+ifosfamide', r'undifferentiated\s+pleomorphic'
         ],
+        'thyroid_cancer': [
+            r'thyroid\s+(?:cancer|carcinoma|neoplasm|malignancy)',
+            r'differentiated\s+thyroid|\bdtc\b', r'papillary\s+thyroid|follicular\s+thyroid',
+            r'medullary\s+thyroid\s+(?:cancer|carcinoma)|\bmtc\b',
+            r'anaplastic\s+thyroid\s+(?:cancer|carcinoma)|\batc\b',
+            r'radioiodine[- ]refractory|\brai[- ]refractory',
+            r'lenvatinib|sorafenib|selpercatinib|pralsetinib|vandetanib|cabozantinib',
+            r'\bret\b[- ]?(?:mutant|altered|fusion)', r'thyroglobulin',
+            r'dabrafenib.{0,20}thyroid'
+        ],
         'head_neck_cancer': [
             r'head\s+and\s+neck\s+(?:cancer|squamous|carcinoma)|\bhnscc\b',
             r'nasopharyngeal\s+(?:carcinoma|cancer)|\bnpc\b',
@@ -2758,6 +2789,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'sarcoma':
         subspecialty, conf = detect_sarcoma_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'thyroid_cancer':
+        subspecialty, conf = detect_thyroid_cancer_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'head_neck_cancer':
         subspecialty, conf = detect_head_neck_cancer_subspecialty(text)
