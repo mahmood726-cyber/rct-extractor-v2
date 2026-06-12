@@ -449,3 +449,10 @@ data/field_portability/wound_healing/rct_trial_pdfs/
 data/field_portability/wound_healing/*.jsonl
 data/field_portability/wound_healing/*.json
 data/field_portability/wound_healing/*.log
+# Otitis-media field bundle — large/transient data
+data/field_portability/otitis_media/rct_trial_pdfs/
+data/field_portability/otitis_media/*.jsonl
+data/field_portability/otitis_media/*.json
+data/field_portability/otitis_media/*.log
+data/pdf_eval/gold_otitis_media.jsonl
+data/pdf_eval/eval_otitis_media.json
