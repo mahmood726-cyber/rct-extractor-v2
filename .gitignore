@@ -449,3 +449,9 @@ data/field_portability/wound_healing/rct_trial_pdfs/
 data/field_portability/wound_healing/*.jsonl
 data/field_portability/wound_healing/*.json
 data/field_portability/wound_healing/*.log
+data/field_portability/influenza/rct_trial_pdfs/
+data/field_portability/influenza/*.jsonl
+data/field_portability/influenza/*.json
+data/field_portability/influenza/*.log
+data/pdf_eval/gold_influenza.jsonl
+data/pdf_eval/eval_onc_influenza.json
