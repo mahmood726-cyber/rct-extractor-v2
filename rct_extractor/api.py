@@ -75,6 +75,7 @@ SPECIALTIES: Tuple[str, ...] = (
     "cataract",
     "insomnia",
     "allergic_conjunctivitis",
+    "chronic_rhinosinusitis",
     "oesophageal_cancer",
     "prostate_cancer",
     "ovarian_cancer",

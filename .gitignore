@@ -522,3 +522,10 @@ data/field_portability/allergic_conjunctivitis/*.json
 data/field_portability/allergic_conjunctivitis/*.log
 data/pdf_eval/gold_allergic_conjunctivitis.jsonl
 data/pdf_eval/eval_allergic_conjunctivitis.json
+# Chronic-rhinosinusitis field bundle — large/transient data
+data/field_portability/chronic_rhinosinusitis/rct_trial_pdfs/
+data/field_portability/chronic_rhinosinusitis/*.jsonl
+data/field_portability/chronic_rhinosinusitis/*.json
+data/field_portability/chronic_rhinosinusitis/*.log
+data/pdf_eval/gold_chronic_rhinosinusitis.jsonl
+data/pdf_eval/eval_chronic_rhinosinusitis.json

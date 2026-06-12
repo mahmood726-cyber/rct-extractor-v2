@@ -522,6 +522,14 @@ from .allergic_conjunctivitis import (
     detect_allergic_conjunctivitis_subspecialty,
     normalize_allergic_conjunctivitis_endpoint
 )
+from .chronic_rhinosinusitis import (
+    CHRONIC_RHINOSINUSITIS_ENDPOINTS,
+    CRSWNP_PATTERNS as CRS_CRSWNP_PATTERNS,
+    CRSSNP_PATTERNS as CRS_CRSSNP_PATTERNS,
+    SURGERY_PATTERNS as CRS_SURGERY_PATTERNS,
+    detect_chronic_rhinosinusitis_subspecialty,
+    normalize_chronic_rhinosinusitis_endpoint
+)
 
 from .oesophageal_cancer import (
     OESOPHAGEAL_CANCER_ENDPOINTS,
@@ -1778,6 +1786,17 @@ SPECIALTY_REGISTRY = {
             'challenge_model': AC_CHALLENGE_MODEL_PATTERNS
         }
     },
+    'chronic_rhinosinusitis': {
+        'subspecialties': ['crswnp', 'crssnp', 'surgery'],
+        'detection_function': detect_chronic_rhinosinusitis_subspecialty,
+        'normalizer': normalize_chronic_rhinosinusitis_endpoint,
+        'endpoints': CHRONIC_RHINOSINUSITIS_ENDPOINTS,
+        'patterns': {
+            'crswnp': CRS_CRSWNP_PATTERNS,
+            'crssnp': CRS_CRSSNP_PATTERNS,
+            'surgery': CRS_SURGERY_PATTERNS
+        }
+    },
     'cirrhosis': {
         'subspecialties': ['portal_hypertension', 'decompensation', 'encephalopathy', 'progression'],
         'detection_function': detect_cirrhosis_subspecialty,
@@ -2825,6 +2844,14 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'sodium\s+cromoglicate|cromolyn|lodoxamide|nedocromil|pemirolast',
             r'loteprednol', r'total\s+ocular\s+symptom\s+score'
         ],
+        'chronic_rhinosinusitis': [
+            r'chronic\s+rhinosinusitis', r'\bcrswnp\b', r'\bcrssnp\b', r'\bcrs\b',
+            r'nasal\s+polyp(?:s|osis)?', r'nasal\s+polyp\s+score|\bnps\b',
+            r'sino-?nasal\s+outcome\s+test|snot[- ]?2[02]',
+            r'lund[- ]mackay', r'lund[- ]kennedy',
+            r'functional\s+endoscopic\s+sinus\s+surgery|\bfess\b', r'sinus\s+surgery',
+            r'paranasal\s+sinus', r'loss\s+of\s+smell', r'rescue\s+(?:surgery|systemic)',
+        ],
         'respiratory': [
             r'chronic\s+obstructive\s+pulmonary\s+disease', r'\bcopd\b', r'\baecopd\b',
             r'\basthma\b', r'asthmatic', r'pulmonary\s+fibrosis', r'\bipf\b',
@@ -3087,6 +3114,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'allergic_conjunctivitis':
         subspecialty, conf = detect_allergic_conjunctivitis_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'chronic_rhinosinusitis':
+        subspecialty, conf = detect_chronic_rhinosinusitis_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'dyslipidaemia':
         subspecialty, conf = detect_dyslipidaemia_subspecialty(text)
