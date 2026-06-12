@@ -529,3 +529,10 @@ data/field_portability/chronic_rhinosinusitis/*.json
 data/field_portability/chronic_rhinosinusitis/*.log
 data/pdf_eval/gold_chronic_rhinosinusitis.jsonl
 data/pdf_eval/eval_chronic_rhinosinusitis.json
+# Obstructive-sleep-apnoea field bundle — large/transient data
+data/field_portability/obstructive_sleep_apnea/rct_trial_pdfs/
+data/field_portability/obstructive_sleep_apnea/*.jsonl
+data/field_portability/obstructive_sleep_apnea/*.json
+data/field_portability/obstructive_sleep_apnea/*.log
+data/pdf_eval/gold_obstructive_sleep_apnea.jsonl
+data/pdf_eval/eval_obstructive_sleep_apnea.json

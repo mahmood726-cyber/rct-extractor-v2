@@ -530,6 +530,14 @@ from .chronic_rhinosinusitis import (
     detect_chronic_rhinosinusitis_subspecialty,
     normalize_chronic_rhinosinusitis_endpoint
 )
+from .obstructive_sleep_apnea import (
+    OBSTRUCTIVE_SLEEP_APNEA_ENDPOINTS,
+    CPAP_PATTERNS as OSA_CPAP_PATTERNS,
+    ORAL_APPLIANCE_PATTERNS as OSA_ORAL_APPLIANCE_PATTERNS,
+    INTERVENTION_PATTERNS as OSA_INTERVENTION_PATTERNS,
+    detect_obstructive_sleep_apnea_subspecialty,
+    normalize_obstructive_sleep_apnea_endpoint
+)
 
 from .oesophageal_cancer import (
     OESOPHAGEAL_CANCER_ENDPOINTS,
@@ -1797,6 +1805,17 @@ SPECIALTY_REGISTRY = {
             'surgery': CRS_SURGERY_PATTERNS
         }
     },
+    'obstructive_sleep_apnea': {
+        'subspecialties': ['cpap', 'oral_appliance', 'intervention'],
+        'detection_function': detect_obstructive_sleep_apnea_subspecialty,
+        'normalizer': normalize_obstructive_sleep_apnea_endpoint,
+        'endpoints': OBSTRUCTIVE_SLEEP_APNEA_ENDPOINTS,
+        'patterns': {
+            'cpap': OSA_CPAP_PATTERNS,
+            'oral_appliance': OSA_ORAL_APPLIANCE_PATTERNS,
+            'intervention': OSA_INTERVENTION_PATTERNS
+        }
+    },
     'cirrhosis': {
         'subspecialties': ['portal_hypertension', 'decompensation', 'encephalopathy', 'progression'],
         'detection_function': detect_cirrhosis_subspecialty,
@@ -2852,6 +2871,15 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'functional\s+endoscopic\s+sinus\s+surgery|\bfess\b', r'sinus\s+surgery',
             r'paranasal\s+sinus', r'loss\s+of\s+smell', r'rescue\s+(?:surgery|systemic)',
         ],
+        'obstructive_sleep_apnea': [
+            r'obstructive\s+sleep\s+apno?ea', r'\bosa\b|\bosas\b',
+            r'sleep[- ]disordered\s+breathing', r'apno?ea[- ]hypopno?ea\s+index|\bahi\b',
+            r'continuous\s+positive\s+airway\s+pressure|\bcpap\b',
+            r'epworth\s+sleepiness', r'\bess\b\s+score|epworth',
+            r'polysomnograph', r'oxygen\s+desaturation\s+index|\bodi\b',
+            r'mandibular\s+advancement', r'hypoglossal\s+nerve\s+stimulation',
+            r'oral\s+appliance', r'nocturnal\s+hypox',
+        ],
         'respiratory': [
             r'chronic\s+obstructive\s+pulmonary\s+disease', r'\bcopd\b', r'\baecopd\b',
             r'\basthma\b', r'asthmatic', r'pulmonary\s+fibrosis', r'\bipf\b',
@@ -3117,6 +3145,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'chronic_rhinosinusitis':
         subspecialty, conf = detect_chronic_rhinosinusitis_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'obstructive_sleep_apnea':
+        subspecialty, conf = detect_obstructive_sleep_apnea_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'dyslipidaemia':
         subspecialty, conf = detect_dyslipidaemia_subspecialty(text)
