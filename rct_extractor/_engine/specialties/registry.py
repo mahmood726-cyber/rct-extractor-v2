@@ -497,6 +497,15 @@ from .ophthalmology import (
     normalize_ophthalmology_endpoint
 )
 
+from .alcohol_use_disorder import (
+    ALCOHOL_USE_DISORDER_ENDPOINTS,
+    PHARMACOTHERAPY_PATTERNS as AUD_PHARMACOTHERAPY_PATTERNS,
+    PSYCHOSOCIAL_PATTERNS as AUD_PSYCHOSOCIAL_PATTERNS,
+    WITHDRAWAL_PATTERNS as AUD_WITHDRAWAL_PATTERNS,
+    detect_alcohol_use_disorder_subspecialty,
+    normalize_alcohol_use_disorder_endpoint
+)
+
 from .oesophageal_cancer import (
     OESOPHAGEAL_CANCER_ENDPOINTS,
     DEFINITIVE_PATTERNS as OE_DEFINITIVE_PATTERNS,
@@ -1549,6 +1558,17 @@ SPECIALTY_REGISTRY = {
             'dry_eye': OPHTH_DRY_EYE_PATTERNS
         }
     },
+    'alcohol_use_disorder': {
+        'subspecialties': ['pharmacotherapy', 'psychosocial', 'withdrawal'],
+        'detection_function': detect_alcohol_use_disorder_subspecialty,
+        'normalizer': normalize_alcohol_use_disorder_endpoint,
+        'endpoints': ALCOHOL_USE_DISORDER_ENDPOINTS,
+        'patterns': {
+            'pharmacotherapy': AUD_PHARMACOTHERAPY_PATTERNS,
+            'psychosocial': AUD_PSYCHOSOCIAL_PATTERNS,
+            'withdrawal': AUD_WITHDRAWAL_PATTERNS
+        }
+    },
     'cirrhosis': {
         'subspecialties': ['portal_hypertension', 'decompensation', 'encephalopathy', 'progression'],
         'detection_function': detect_cirrhosis_subspecialty,
@@ -2491,6 +2511,15 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'corneal\s+(?:fluorescein\s+)?staining', r'schirmer', r'\bocular\b', r'\bcorneal?\b',
             r'cyclosporine|lifitegrast|varenicline\s+nasal'
         ],
+        'alcohol_use_disorder': [
+            r'alcohol\s+use\s+disorder|\baud\b', r'alcohol\s+dependence',
+            r'\balcoholism\b', r'heavy\s+drinking', r'heavy[- ]drinking\s+days',
+            r'percent\s+days\s+abstinent', r'drinks?\s+per\s+(?:drinking\s+)?day',
+            r'naltrexone|acamprosate|nalmefene|disulfiram',
+            r'alcohol\s+craving', r'alcohol\s+withdrawal', r'ciwa[- ]?ar|\bciwa\b',
+            r'delirium\s+tremens', r'abstinence\s+from\s+alcohol',
+            r'timeline\s+followback'
+        ],
         'respiratory': [
             r'chronic\s+obstructive\s+pulmonary\s+disease', r'\bcopd\b', r'\baecopd\b',
             r'\basthma\b', r'asthmatic', r'pulmonary\s+fibrosis', r'\bipf\b',
@@ -2720,6 +2749,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'ophthalmology':
         subspecialty, conf = detect_ophthalmology_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'alcohol_use_disorder':
+        subspecialty, conf = detect_alcohol_use_disorder_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'dyslipidaemia':
         subspecialty, conf = detect_dyslipidaemia_subspecialty(text)
