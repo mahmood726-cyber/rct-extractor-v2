@@ -72,6 +72,7 @@ SPECIALTIES: Tuple[str, ...] = (
     "gastroenterology",
     "dermatology",
     "ophthalmology",
+    "obstructive_sleep_apnea",
     "oesophageal_cancer",
     "prostate_cancer",
     "ovarian_cancer",
