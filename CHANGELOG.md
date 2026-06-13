@@ -1,5 +1,33 @@
 # RCT Extractor v2 - Changelog
 
+## (branch: doseresponse-extractor) - Dose-Response extraction mode
+
+### Added
+- **Dose-Response Extractor** (`rct_extractor/_engine/core/doseresponse_extractor.py`)
+  — a new extraction mode, additive to the RCT effect extractor, targeting the
+  data a dose-response meta-analysis pools:
+  - per-unit (trend/slope) effects with dose amount + unit (`per 10 g/day`, `per 1-SD`)
+  - categorical dose-level effects (high category vs reference; middle-reference
+    designs supported, e.g. `compared with Q2, … Q4 (HR …)`)
+  - document-level metadata: dose metric, dose units, number of dose categories
+    (tertile=3/quartile=4/quintile=5/decile=10), reference category, and
+    nonlinearity (J-/U-/inverse/linear shape + P for nonlinearity).
+  - mirrors the engine's architecture: pattern registry, British/American
+    spelling + Unicode-dash/decimal traps, ReDoS-safe bounded regex, plausibility
+    guards. Point estimate is anchored immediately before the CI to avoid the
+    wrong-number-capture trap (e.g. the `1000` in "per 1000 mg increase").
+- **Public API**: `rct_extractor.extract_dose_response(text)` and CLI
+  `rct-extract --dose-response`.
+- **Validation pipeline** (`scripts/doseresponse_eval/`): non-circular real-PDF
+  gold built the same way as the RCT eval — independent abstract harvester with a
+  verbatim-substring anti-fabrication guard, scored on the NCBI JATS full-text
+  body (rendered-PDF endpoints were down at build time). 88 real PMC-OA papers,
+  220 gold dose-response tuples. Measured: **97%** strict-correct on the clean
+  abstract surface (field accuracy 100%), **51%** strict-correct / **67%**
+  located on the non-circular full-text body. See `docs/DOSE_RESPONSE_EXTRACTOR.md`.
+- **Tests**: `tests/test_doseresponse_extractor.py` (32 tests). Full existing
+  suite unchanged.
+
 ## v2.15 (2026-01-28) - Sprint 3: ML-Enhanced Extraction (No LLM)
 
 ### Added

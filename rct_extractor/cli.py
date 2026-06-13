@@ -34,7 +34,7 @@ import sys
 from pathlib import Path
 from typing import Any, Dict, List
 
-from .api import SPECIALTIES, detect_specialty, extract
+from .api import SPECIALTIES, detect_specialty, extract, extract_dose_response
 
 
 def _read_inputs(args) -> List[Dict[str, str]]:
@@ -91,6 +91,31 @@ def _format_summary(name: str, res: Dict[str, Any]) -> str:
     return "\n".join(out)
 
 
+def _format_dr_summary(name: str, dr: Dict[str, Any]) -> str:
+    """Human-readable summary for one dose-response extraction."""
+    out = [f"\n{'=' * 60}", f"{name}  (dose-response)", f"{'=' * 60}"]
+    out.append(f"dose metric : {dr.get('dose_metric')}")
+    units = dr.get("dose_units") or []
+    out.append(f"dose units  : {', '.join(units[:8]) if units else '-'}")
+    out.append(f"categories  : {dr.get('n_dose_categories')}  "
+               f"(reference: {dr.get('reference_category')})")
+    nl = dr.get("nonlinearity_shape") or ("yes" if dr.get("nonlinearity_reported") else "no")
+    out.append(f"nonlinearity: {nl}  (P={dr.get('p_nonlinearity')})")
+    effects = dr.get("effects") or []
+    out.append(f"effects     : {len(effects)} "
+               f"({dr.get('n_per_unit', 0)} per-unit, {dr.get('n_categorical', 0)} categorical)")
+    for e in effects[:12]:
+        et, es = e.get("effect_type", "?"), e.get("point_estimate")
+        lo, hi = e.get("ci_lower"), e.get("ci_upper")
+        ci = f" [{lo}-{hi}]" if lo is not None and hi is not None else ""
+        if e.get("relation_type") == "per_unit":
+            tail = f"per {e.get('dose_amount') or ''} {e.get('dose_unit') or ''}".strip()
+        else:
+            tail = f"{e.get('category_label')} vs {e.get('reference_label')}"
+        out.append(f"  - {e.get('relation_type')}: {et}={es}{ci}  {tail}".rstrip())
+    return "\n".join(out)
+
+
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(
         prog="rct-extract",
@@ -108,6 +133,10 @@ def main(argv=None) -> int:
                         help="print the supported specialties and exit")
     parser.add_argument("--detect", action="store_true",
                         help="only detect specialty/subspecialty, do not extract")
+    parser.add_argument("--dose-response", action="store_true",
+                        help="run the dose-response extractor instead of the RCT "
+                             "effect extractor (per-unit + categorical dose-level "
+                             "estimates, dose units, nonlinearity)")
 
     src_group = parser.add_argument_group("specialty selection")
     src_group.add_argument("-s", "--specialty", default=None,
@@ -151,6 +180,15 @@ def main(argv=None) -> int:
     lines: List[str] = []
     for rec in inputs:
         name, text = rec["name"], rec["text"]
+        if args.dose_response:
+            dr = extract_dose_response(text)
+            if args.json:
+                lines.append(json.dumps({"name": name, **dr}, default=str))
+            else:
+                summary = _format_dr_summary(name, dr)
+                print(summary)
+                lines.append(summary)
+            continue
         if args.detect:
             spec, sub, conf = detect_specialty(text)
             res = {"name": name, "specialty": spec, "subspecialty": sub, "confidence": conf}

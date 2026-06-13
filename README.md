@@ -84,6 +84,18 @@ cfg = rx.to_metakit_config(
      {"name": "ACCORD", "text": "...hazard ratio 0.88 (95% CI 0.73-1.06)..."}],
     title="Intensive BP control", effect_measure="HR",
 )
+
+# NEW: dose-response extraction mode (per-unit slopes + categorical dose levels,
+# dose units, n categories, reference category, nonlinearity). Separate from the
+# RCT effect extractor above. See docs/DOSE_RESPONSE_EXTRACTOR.md.
+dr = rx.extract_dose_response(
+    "Each 10 g/day increase in fibre intake lowered risk (RR 0.90, 95% CI "
+    "0.84-0.97). Highest vs lowest quintile HR 0.74 (0.65-0.85)."
+)
+dr["effects"]            # [{relation_type, effect_type, point_estimate, ci_*,
+                         #   dose_amount, dose_unit, category_label, ...}, ...]
+dr["n_dose_categories"]  # 5 ; dr["nonlinearity_reported"]; dr["dose_metric"]
+# CLI:  rct-extract --dose-response --text "Per 10 g/day, RR 0.90 (95% CI 0.84-0.97)."
 ```
 
 ### Supported specialties (17)
