@@ -395,6 +395,15 @@ from .kidney_transplant import (
     detect_kidney_transplant_subspecialty,
     normalize_kidney_transplant_endpoint
 )
+from .vascular_surgery import (
+    VASCULAR_SURGERY_ENDPOINTS,
+    ANEURYSM_PATTERNS as VS_ANEURYSM_PATTERNS,
+    CAROTID_PATTERNS as VS_CAROTID_PATTERNS,
+    ACCESS_PATTERNS as VS_ACCESS_PATTERNS,
+    VENOUS_PATTERNS as VS_VENOUS_PATTERNS,
+    detect_vascular_surgery_subspecialty,
+    normalize_vascular_surgery_endpoint
+)
 
 from .pulmonary_hypertension import (
     PULMONARY_HYPERTENSION_ENDPOINTS,
@@ -1694,6 +1703,18 @@ SPECIALTY_REGISTRY = {
             'complications': KT_COMPLICATIONS_PATTERNS
         }
     },
+    'vascular_surgery': {
+        'subspecialties': ['aneurysm', 'carotid', 'access', 'venous'],
+        'detection_function': detect_vascular_surgery_subspecialty,
+        'normalizer': normalize_vascular_surgery_endpoint,
+        'endpoints': VASCULAR_SURGERY_ENDPOINTS,
+        'patterns': {
+            'aneurysm': VS_ANEURYSM_PATTERNS,
+            'carotid': VS_CAROTID_PATTERNS,
+            'access': VS_ACCESS_PATTERNS,
+            'venous': VS_VENOUS_PATTERNS
+        }
+    },
     'pulmonary_hypertension': {
         'subspecialties': ['functional', 'hemodynamics', 'clinical_worsening', 'biomarker'],
         'detection_function': detect_pulmonary_hypertension_subspecialty,
@@ -2590,6 +2611,17 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'living[- ](?:donor|related)\s+(?:kidney|renal)|deceased[- ]donor',
             r'immunosuppress(?:ion|ive)\s+(?:regimen|therapy)',
         ],
+        'vascular_surgery': [
+            r'abdominal\s+aortic\s+aneurysm|\baaa\b',
+            r'endovascular\s+aneurysm\s+repair|\bevar\b', r'\bendoleak\b',
+            r'open\s+(?:aneurysm\s+|surgical\s+)?repair', r'aneurysm\s+sac',
+            r'carotid\s+endarterectomy|\bcea\b', r'carotid\s+(?:artery\s+)?stenting|\bcas\b',
+            r'carotid\s+(?:stenosis|revascular[is]ation)',
+            r'arteriovenous\s+fistula|av\s+fistula|av\s+graft',
+            r'(?:h[ae]modialysis|dialysis|vascular)\s+access|fistula\s+(?:maturation|patency)',
+            r'varicose\s+veins?|great\s+saphenous\s+vein|saphenous|venous\s+reflux',
+            r'endovenous\s+(?:laser|thermal|ablation)|foam\s+sclerotherapy',
+        ],
         'pulmonary_hypertension': [
             r'pulmonary\s+(?:arterial\s+)?hypertension', r'\bpah\b',
             r'pulmonary\s+vascular\s+resistance|\bpvr\b',
@@ -3158,6 +3190,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'kidney_transplant':
         subspecialty, conf = detect_kidney_transplant_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'vascular_surgery':
+        subspecialty, conf = detect_vascular_surgery_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'pulmonary_hypertension':
         subspecialty, conf = detect_pulmonary_hypertension_subspecialty(text)
