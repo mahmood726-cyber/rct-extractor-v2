@@ -1,0 +1,281 @@
+{
+  "miss_classification": {
+    "sarcoma": {
+      "artifact_or_pointmatch": 1,
+      "mixed_or_MA": 3
+    },
+    "thyroid_cancer": {
+      "non_rct": 3
+    },
+    "influenza": {
+      "mixed_or_MA": 3,
+      "unclear": 1
+    },
+    "wound_healing": {
+      "artifact_or_pointmatch": 1
+    },
+    "erectile_dysfunction": {
+      "mixed_or_MA": 1,
+      "non_rct": 1
+    }
+  },
+  "scope_audit": [
+    {
+      "specialty": "anaemia",
+      "in_scope": 132,
+      "oos": 50,
+      "as_is_rate": 1.0,
+      "stress_rate": 0.7252747252747253,
+      "oos_on_rct": 0,
+      "leans": true,
+      "oos_reasons": {
+        "non-rct design: systematic review": 25,
+        "non-rct design: cross-sectional stud": 6,
+        "non-rct design: cohort study": 10,
+        "observational analys": 1,
+        "non-rct design: uk biobank": 3,
+        "observational stud": 2,
+        "non-rct design: mendelian randomization": 3
+      }
+    },
+    {
+      "specialty": "ards",
+      "in_scope": 88,
+      "oos": 86,
+      "as_is_rate": 1.0,
+      "stress_rate": 0.5057471264367817,
+      "oos_on_rct": 0,
+      "leans": true,
+      "oos_reasons": {
+        "non-rct design: systematic review": 15,
+        "non-rct design: cohort study": 21,
+        "non-rct design: prospective cohort stud": 6,
+        "non-rct design: retrospective cohort": 24,
+        "non-rct design: retrospective stud": 3,
+        "non-rct design: observational study": 12,
+        "non-rct design: propensity score": 3,
+        "observational stud": 1,
+        "observational data": 1
+      }
+    },
+    {
+      "specialty": "endometrial_cancer",
+      "in_scope": 90,
+      "oos": 114,
+      "as_is_rate": 1.0,
+      "stress_rate": 0.4411764705882353,
+      "oos_on_rct": 0,
+      "leans": true,
+      "oos_reasons": {
+        "non-rct design: cohort studies": 10,
+        "non-rct design: systematic review": 34,
+        "non-rct design: observational studies": 8,
+        "non-rct design: mendelian randomization": 39,
+        "observational stud": 1,
+        "non-rct design: retrospective cohort": 10,
+        "non-rct design: retrospective stud": 4,
+        "non-rct design: observational study": 8
+      }
+    },
+    {
+      "specialty": "endometriosis",
+      "in_scope": 82,
+      "oos": 106,
+      "as_is_rate": 1.0,
+      "stress_rate": 0.43617021276595747,
+      "oos_on_rct": 0,
+      "leans": true,
+      "oos_reasons": {
+        "non-rct design: retrospective cohort": 38,
+        "non-rct design: systematic review": 44,
+        "non-rct design: retrospective stud": 7,
+        "propensity score": 1,
+        "non-rct design: propensity score": 6,
+        "observational stud": 1,
+        "non-rct design: retrospective analys": 6,
+        "non-rct design: mendelian randomisation": 3
+      }
+    },
+    {
+      "specialty": "erectile_dysfunction",
+      "in_scope": 59,
+      "oos": 101,
+      "as_is_rate": 0.9661016949152542,
+      "stress_rate": 0.35625,
+      "oos_on_rct": 0,
+      "leans": true,
+      "oos_reasons": {
+        "non-rct design: cohort study": 10,
+        "non-rct design: observational studies": 21,
+        "non-rct design: systematic review": 28,
+        "non-rct design: meta-analysis of observational": 3,
+        "non-rct design: retrospective analys": 3,
+        "non-rct design: mendelian randomization": 14,
+        "non-rct design: propensity score": 3,
+        "non-rct design: cohort studies": 3,
+        "non-rct design: retrospective cohort": 8,
+        "real-world": 2,
+        "non-rct design: observational evidence": 3,
+        "propensity-score": 2,
+        "observational cohort": 1
+      }
+    },
+    {
+      "specialty": "gestational_diabetes",
+      "in_scope": 73,
+      "oos": 131,
+      "as_is_rate": 1.0,
+      "stress_rate": 0.35784313725490197,
+      "oos_on_rct": 0,
+      "leans": true,
+      "oos_reasons": {
+        "non-rct design: retrospective cohort": 12,
+        "non-rct design: case-control stud": 4,
+        "non-rct design: observational studies": 12,
+        "non-rct design: retrospective analys": 4,
+        "non-rct design: cohort study": 13,
+        "non-rct design: systematic review": 62,
+        "non-rct design: prospective cohort stud": 8,
+        "non-rct design: meta-analysis of cohort": 5,
+        "non-rct design: mendelian randomization": 4,
+        "non-rct design: cohort studies": 7
+      }
+    },
+    {
+      "specialty": "influenza",
+      "in_scope": 114,
+      "oos": 63,
+      "as_is_rate": 0.9649122807017544,
+      "stress_rate": 0.6214689265536724,
+      "oos_on_rct": 0,
+      "leans": true,
+      "oos_reasons": {
+        "non-rct design: observational study": 5,
+        "nma": 4,
+        "non-rct design: cross-sectional surv": 4,
+        "non-rct design: cross-sectional stud": 3,
+        "non-rct design: propensity score": 4,
+        "retrospective cohort": 1,
+        "network meta-analysis": 2,
+        "non-rct design: prospective cohort stud": 6,
+        "non-rct design: propensity score-matched": 4,
+        "non-rct design: cohort study": 3,
+        "non-rct design: systematic review": 17,
+        "non-rct design: mendelian randomization": 10
+      }
+    },
+    {
+      "specialty": "itp",
+      "in_scope": 109,
+      "oos": 67,
+      "as_is_rate": 1.0,
+      "stress_rate": 0.6193181818181818,
+      "oos_on_rct": 0,
+      "leans": true,
+      "oos_reasons": {
+        "propensity-matched": 1,
+        "non-rct design: systematic review": 8,
+        "non-rct design: cohort studies": 8,
+        "non-rct design: retrospective stud": 6,
+        "non-rct design: retrospective cohort": 10,
+        "non-rct design: propensity score": 10,
+        "non-rct design: observational studies": 9,
+        "non-rct design: mendelian randomization": 11,
+        "non-rct design: cohort study": 4
+      }
+    },
+    {
+      "specialty": "multiple_myeloma",
+      "in_scope": 137,
+      "oos": 39,
+      "as_is_rate": 1.0,
+      "stress_rate": 0.7784090909090909,
+      "oos_on_rct": 0,
+      "leans": true,
+      "oos_reasons": {
+        "non-rct design: retrospective cohort": 3,
+        "non-rct design: systematic review": 30,
+        "non-rct design: retrospective analys": 4,
+        "nma": 2
+      }
+    },
+    {
+      "specialty": "sarcoma",
+      "in_scope": 91,
+      "oos": 52,
+      "as_is_rate": 0.9560439560439561,
+      "stress_rate": 0.6083916083916084,
+      "oos_on_rct": 0,
+      "leans": true,
+      "oos_reasons": {
+        "non-rct design: retrospective analys": 4,
+        "non-rct design: propensity score matched": 5,
+        "non-rct design: propensity score": 6,
+        "observational stud": 1,
+        "non-rct design: observational studies": 10,
+        "non-rct design: observational study": 7,
+        "non-rct design: systematic review": 16,
+        "nma": 1,
+        "non-rct design: retrospective stud": 2
+      }
+    },
+    {
+      "specialty": "testicular_cancer",
+      "in_scope": 100,
+      "oos": 64,
+      "as_is_rate": 1.0,
+      "stress_rate": 0.6097560975609756,
+      "oos_on_rct": 0,
+      "leans": true,
+      "oos_reasons": {
+        "non-rct design: case-control stud": 12,
+        "non-rct design: cohort study": 3,
+        "observational stud": 2,
+        "non-rct design: systematic review": 23,
+        "non-rct design: observational studies": 9,
+        "non-rct design: propensity score": 3,
+        "non-rct design: retrospective stud": 4,
+        "non-rct design: meta-analyses of observational": 5,
+        "non-rct design: retrospective cohort": 3
+      }
+    },
+    {
+      "specialty": "thyroid_cancer",
+      "in_scope": 106,
+      "oos": 78,
+      "as_is_rate": 0.9716981132075472,
+      "stress_rate": 0.5597826086956522,
+      "oos_on_rct": 0,
+      "leans": true,
+      "oos_reasons": {
+        "non-rct design: retrospective review": 3,
+        "non-rct design: systematic review": 27,
+        "non-rct design: observational studies": 9,
+        "non-rct design: mendelian randomization": 20,
+        "non-rct design: retrospective cohort": 3,
+        "non-rct design: observational study": 3,
+        "non-rct design: propensity score": 4,
+        "non-rct design: retrospective stud": 6,
+        "non-rct design: cohort study": 3
+      }
+    },
+    {
+      "specialty": "wound_healing",
+      "in_scope": 97,
+      "oos": 50,
+      "as_is_rate": 0.9896907216494846,
+      "stress_rate": 0.6530612244897959,
+      "oos_on_rct": 0,
+      "leans": true,
+      "oos_reasons": {
+        "non-rct design: systematic review": 25,
+        "non-rct design: observational studies": 5,
+        "non-rct design: retrospective stud": 3,
+        "non-rct design: propensity score": 8,
+        "non-rct design: retrospective analys": 3,
+        "non-rct design: cross-sectional analys": 3,
+        "non-rct design: mendelian randomization": 3
+      }
+    }
+  ]
+}

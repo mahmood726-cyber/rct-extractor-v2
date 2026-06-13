@@ -1,0 +1,310 @@
+{
+  "surface": "pdf_raw",
+  "n_hit_95": 25,
+  "n_total": 30,
+  "overall_correct": 3846,
+  "overall_gold": 3967,
+  "overall_rate": 0.9694983614822283,
+  "rows": [
+    {
+      "specialty": "prostate_cancer",
+      "papers": 37,
+      "gold": 147,
+      "correct": 144,
+      "point_only": 1,
+      "missed": 2,
+      "out_of_scope": 1,
+      "pdf_raw_rate": 0.9795918367346939
+    },
+    {
+      "specialty": "ovarian_cancer",
+      "papers": 38,
+      "gold": 113,
+      "correct": 111,
+      "point_only": 0,
+      "missed": 2,
+      "out_of_scope": 4,
+      "pdf_raw_rate": 0.9823008849557522
+    },
+    {
+      "specialty": "pancreatic_cancer",
+      "papers": 36,
+      "gold": 122,
+      "correct": 122,
+      "point_only": 0,
+      "missed": 0,
+      "out_of_scope": 0,
+      "pdf_raw_rate": 1.0
+    },
+    {
+      "specialty": "gastric_cancer",
+      "papers": 38,
+      "gold": 130,
+      "correct": 129,
+      "point_only": 0,
+      "missed": 1,
+      "out_of_scope": 1,
+      "pdf_raw_rate": 0.9923076923076923
+    },
+    {
+      "specialty": "hepatocellular_carcinoma",
+      "papers": 39,
+      "gold": 138,
+      "correct": 132,
+      "point_only": 1,
+      "missed": 5,
+      "out_of_scope": 11,
+      "pdf_raw_rate": 0.9565217391304348
+    },
+    {
+      "specialty": "melanoma",
+      "papers": 38,
+      "gold": 135,
+      "correct": 131,
+      "point_only": 3,
+      "missed": 1,
+      "out_of_scope": 0,
+      "pdf_raw_rate": 0.9703703703703703
+    },
+    {
+      "specialty": "leukaemia",
+      "papers": 39,
+      "gold": 123,
+      "correct": 122,
+      "point_only": 0,
+      "missed": 1,
+      "out_of_scope": 1,
+      "pdf_raw_rate": 0.991869918699187
+    },
+    {
+      "specialty": "lymphoma",
+      "papers": 39,
+      "gold": 160,
+      "correct": 156,
+      "point_only": 0,
+      "missed": 4,
+      "out_of_scope": 0,
+      "pdf_raw_rate": 0.975
+    },
+    {
+      "specialty": "head_neck_cancer",
+      "papers": 37,
+      "gold": 127,
+      "correct": 126,
+      "point_only": 0,
+      "missed": 1,
+      "out_of_scope": 3,
+      "pdf_raw_rate": 0.9921259842519685
+    },
+    {
+      "specialty": "bladder_cancer",
+      "papers": 39,
+      "gold": 121,
+      "correct": 115,
+      "point_only": 1,
+      "missed": 5,
+      "out_of_scope": 3,
+      "pdf_raw_rate": 0.9504132231404959
+    },
+    {
+      "specialty": "renal_cell_carcinoma",
+      "papers": 35,
+      "gold": 114,
+      "correct": 108,
+      "point_only": 2,
+      "missed": 4,
+      "out_of_scope": 3,
+      "pdf_raw_rate": 0.9473684210526315
+    },
+    {
+      "specialty": "oesophageal_cancer",
+      "papers": 38,
+      "gold": 141,
+      "correct": 134,
+      "point_only": 1,
+      "missed": 6,
+      "out_of_scope": 4,
+      "pdf_raw_rate": 0.950354609929078
+    },
+    {
+      "specialty": "dyslipidaemia",
+      "papers": 37,
+      "gold": 126,
+      "correct": 124,
+      "point_only": 0,
+      "missed": 2,
+      "out_of_scope": 0,
+      "pdf_raw_rate": 0.9841269841269841
+    },
+    {
+      "specialty": "venous_thromboembolism",
+      "papers": 37,
+      "gold": 165,
+      "correct": 163,
+      "point_only": 0,
+      "missed": 2,
+      "out_of_scope": 1,
+      "pdf_raw_rate": 0.9878787878787879
+    },
+    {
+      "specialty": "peripheral_artery_disease",
+      "papers": 39,
+      "gold": 138,
+      "correct": 135,
+      "point_only": 3,
+      "missed": 0,
+      "out_of_scope": 4,
+      "pdf_raw_rate": 0.9782608695652174
+    },
+    {
+      "specialty": "obesity",
+      "papers": 39,
+      "gold": 142,
+      "correct": 136,
+      "point_only": 1,
+      "missed": 5,
+      "out_of_scope": 2,
+      "pdf_raw_rate": 0.9577464788732394
+    },
+    {
+      "specialty": "thyroid",
+      "papers": 38,
+      "gold": 142,
+      "correct": 138,
+      "point_only": 0,
+      "missed": 4,
+      "out_of_scope": 3,
+      "pdf_raw_rate": 0.971830985915493
+    },
+    {
+      "specialty": "osteoporosis",
+      "papers": 39,
+      "gold": 124,
+      "correct": 121,
+      "point_only": 0,
+      "missed": 3,
+      "out_of_scope": 6,
+      "pdf_raw_rate": 0.9758064516129032
+    },
+    {
+      "specialty": "kidney_transplant",
+      "papers": 37,
+      "gold": 120,
+      "correct": 113,
+      "point_only": 2,
+      "missed": 5,
+      "out_of_scope": 0,
+      "pdf_raw_rate": 0.9416666666666667
+    },
+    {
+      "specialty": "pulmonary_hypertension",
+      "papers": 36,
+      "gold": 101,
+      "correct": 94,
+      "point_only": 0,
+      "missed": 7,
+      "out_of_scope": 1,
+      "pdf_raw_rate": 0.9306930693069307
+    },
+    {
+      "specialty": "pcos",
+      "papers": 39,
+      "gold": 159,
+      "correct": 156,
+      "point_only": 2,
+      "missed": 1,
+      "out_of_scope": 4,
+      "pdf_raw_rate": 0.9811320754716981
+    },
+    {
+      "specialty": "parkinsons",
+      "papers": 37,
+      "gold": 111,
+      "correct": 106,
+      "point_only": 0,
+      "missed": 5,
+      "out_of_scope": 1,
+      "pdf_raw_rate": 0.954954954954955
+    },
+    {
+      "specialty": "alzheimers",
+      "papers": 36,
+      "gold": 116,
+      "correct": 100,
+      "point_only": 0,
+      "missed": 16,
+      "out_of_scope": 2,
+      "pdf_raw_rate": 0.8620689655172413
+    },
+    {
+      "specialty": "multiple_sclerosis",
+      "papers": 39,
+      "gold": 173,
+      "correct": 171,
+      "point_only": 1,
+      "missed": 1,
+      "out_of_scope": 2,
+      "pdf_raw_rate": 0.9884393063583815
+    },
+    {
+      "specialty": "migraine",
+      "papers": 38,
+      "gold": 138,
+      "correct": 135,
+      "point_only": 2,
+      "missed": 1,
+      "out_of_scope": 3,
+      "pdf_raw_rate": 0.9782608695652174
+    },
+    {
+      "specialty": "schizophrenia",
+      "papers": 35,
+      "gold": 113,
+      "correct": 112,
+      "point_only": 0,
+      "missed": 1,
+      "out_of_scope": 0,
+      "pdf_raw_rate": 0.9911504424778761
+    },
+    {
+      "specialty": "cirrhosis",
+      "papers": 38,
+      "gold": 144,
+      "correct": 134,
+      "point_only": 2,
+      "missed": 8,
+      "out_of_scope": 11,
+      "pdf_raw_rate": 0.9305555555555556
+    },
+    {
+      "specialty": "osteoarthritis",
+      "papers": 39,
+      "gold": 119,
+      "correct": 115,
+      "point_only": 1,
+      "missed": 3,
+      "out_of_scope": 1,
+      "pdf_raw_rate": 0.9663865546218487
+    },
+    {
+      "specialty": "covid19",
+      "papers": 38,
+      "gold": 154,
+      "correct": 152,
+      "point_only": 0,
+      "missed": 2,
+      "out_of_scope": 0,
+      "pdf_raw_rate": 0.987012987012987
+    },
+    {
+      "specialty": "sepsis",
+      "papers": 40,
+      "gold": 111,
+      "correct": 111,
+      "point_only": 0,
+      "missed": 0,
+      "out_of_scope": 10,
+      "pdf_raw_rate": 1.0
+    }
+  ]
+}

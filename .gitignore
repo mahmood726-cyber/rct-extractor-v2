@@ -553,3 +553,11 @@ data/pdf_eval/eval_alcohol_use_disorder.json
 data/gold_fulltext_cache/
 test_pdfs/gold_standard/
 data/gold_epmc_cache/
+
+# rct-extractor reverify: keep per-specialty gold + summaries + scope + manifest;
+# exclude regenerable per-paper eval JSONs, merged-gold concatenations, and logs.
+data/pdf_eval/reverify/eval_*.json
+data/pdf_eval/reverify/gold_all30.jsonl
+data/pdf_eval/reverify/gold_primary9.jsonl
+data/pdf_eval/reverify/gold_spotcheck.jsonl
+data/pdf_eval/reverify/*.log
