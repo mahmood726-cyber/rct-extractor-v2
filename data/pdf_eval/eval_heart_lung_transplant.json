@@ -1,0 +1,454 @@
+{
+  "tolerances": {
+    "pt_abs": 0.02,
+    "pt_rel": 0.02,
+    "ci_abs": 0.03,
+    "ci_rel": 0.03
+  },
+  "papers": [
+    {
+      "pmcid": "PMC11627316",
+      "pmid": "39308371",
+      "specialty": "heart_lung_transplant",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 13,
+        "chars": 70179,
+        "secs": 0.2
+      },
+      "n_gold": 1,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.55,
+                "ci_lower": 0.42,
+                "ci_upper": 0.73,
+                "ci_level": 0.95,
+                "source_text": "relative risk, 0.55 [95% CI, 0.42-0.73",
+                "quote_context": "us 88.6%; relative risk, 0.55 [95% CI, 0.42-0.73]; P",
+                "harvest_pattern": "relative\\s+risk[^.\\n]{0,55}?(?P<pt>\\d+(?...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.55,
+                "ci_lower": 0.42,
+                "ci_upper": 0.73,
+                "source_text": "relative risk, 0.55 [95% CI, 0.42-0.73"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 6,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.55,
+                "ci_lower": 0.42,
+                "ci_upper": 0.73,
+                "ci_level": 0.95,
+                "source_text": "relative risk, 0.55 [95% CI, 0.42-0.73",
+                "quote_context": "us 88.6%; relative risk, 0.55 [95% CI, 0.42-0.73]; P",
+                "harvest_pattern": "relative\\s+risk[^.\\n]{0,55}?(?P<pt>\\d+(?...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.55,
+                "ci_lower": 0.42,
+                "ci_upper": 0.73,
+                "source_text": "relative risk, 0.55 [95% CI, 0.42-0.73"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 5
+        }
+      }
+    },
+    {
+      "pmcid": "PMC9492235",
+      "pmid": "35831932",
+      "specialty": "heart_lung_transplant",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 11,
+        "chars": 40549,
+        "secs": 0.19
+      },
+      "n_gold": 2,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 7.92,
+                "ci_lower": 1.8,
+                "ci_upper": 34.88,
+                "ci_level": 0.95,
+                "source_text": "HR 7.92; 95% CI 1.80-34.88",
+                "quote_context": "antation (HR 7.92; 95% CI 1.80-34.88) was",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "missed",
+              "matched_extracted": null
+            },
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 7.24,
+                "ci_lower": 3.05,
+                "ci_upper": 17.18,
+                "ci_level": 0.95,
+                "source_text": "HR 7.24; 95% CI 3.05-17.18",
+                "quote_context": "Group B (HR 7.24; 95% CI 3.05-17.18). A",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 7.24,
+                "ci_lower": 3.05,
+                "ci_upper": 17.18,
+                "source_text": "HR 7.24; 95% CI 3.05-17.18"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 7.92,
+                "ci_lower": 1.8,
+                "ci_upper": 34.88,
+                "ci_level": 0.95,
+                "source_text": "HR 7.92; 95% CI 1.80-34.88",
+                "quote_context": "antation (HR 7.92; 95% CI 1.80-34.88) was",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "missed",
+              "matched_extracted": null
+            },
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 7.24,
+                "ci_lower": 3.05,
+                "ci_upper": 17.18,
+                "ci_level": 0.95,
+                "source_text": "HR 7.24; 95% CI 3.05-17.18",
+                "quote_context": "Group B (HR 7.24; 95% CI 3.05-17.18). A",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 7.24,
+                "ci_lower": 3.05,
+                "ci_upper": 17.18,
+                "source_text": "HR 7.24; 95% CI 3.05-17.18"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        }
+      }
+    },
+    {
+      "pmcid": "PMC8356445",
+      "pmid": "34376218",
+      "specialty": "heart_lung_transplant",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 11,
+        "chars": 37867,
+        "secs": 0.11
+      },
+      "n_gold": 2,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 2,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.96,
+                "ci_lower": 0.73,
+                "ci_upper": 1.27,
+                "ci_level": 0.95,
+                "source_text": "RR 0.96; 95% CI 0.73-1.27",
+                "quote_context": "BB group (RR 0.96; 95% CI 0.73-1.27; P =",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.96,
+                "ci_lower": 0.73,
+                "ci_upper": 1.27,
+                "source_text": "RR 0.96; 95% CI 0.73-1.27"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.41,
+                "ci_lower": 0.18,
+                "ci_upper": 0.95,
+                "ci_level": 0.95,
+                "source_text": "RR 0.41; 95% CI 0.18-0.95",
+                "quote_context": "BB group (RR 0.41; 95% CI 0.18-0.95; P =",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.41,
+                "ci_lower": 0.18,
+                "ci_upper": 0.95,
+                "source_text": "RR 0.41; 95% CI 0.18-0.95"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 7,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.96,
+                "ci_lower": 0.73,
+                "ci_upper": 1.27,
+                "ci_level": 0.95,
+                "source_text": "RR 0.96; 95% CI 0.73-1.27",
+                "quote_context": "BB group (RR 0.96; 95% CI 0.73-1.27; P =",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.96,
+                "ci_lower": 0.73,
+                "ci_upper": 1.27,
+                "source_text": "RR 0.96; 95% CI 0.73-1.27"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.41,
+                "ci_lower": 0.18,
+                "ci_upper": 0.95,
+                "ci_level": 0.95,
+                "source_text": "RR 0.41; 95% CI 0.18-0.95",
+                "quote_context": "BB group (RR 0.41; 95% CI 0.18-0.95; P =",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.41,
+                "ci_lower": 0.18,
+                "ci_upper": 0.95,
+                "source_text": "RR 0.41; 95% CI 0.18-0.95"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 5
+        }
+      }
+    },
+    {
+      "pmcid": "PMC4121238",
+      "pmid": "25090414",
+      "specialty": "heart_lung_transplant",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 7,
+        "chars": 29518,
+        "secs": 0.11
+      },
+      "n_gold": 1,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 3.5,
+                "ci_lower": 0.4,
+                "ci_upper": 27.6,
+                "ci_level": 0.95,
+                "source_text": "odds ratio 3.5, 95% confidence interval 0.4 to 27.6",
+                "quote_context": "placebo; odds ratio 3.5, 95% confidence interval 0.4 to 27.6, p =",
+                "harvest_pattern": "odds\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\....",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 3.5,
+                "ci_lower": 0.4,
+                "ci_upper": 27.6,
+                "source_text": "odds ratio 3.5, 95% CI 0.4 to 27.6"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 3,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 3.5,
+                "ci_lower": 0.4,
+                "ci_upper": 27.6,
+                "ci_level": 0.95,
+                "source_text": "odds ratio 3.5, 95% confidence interval 0.4 to 27.6",
+                "quote_context": "placebo; odds ratio 3.5, 95% confidence interval 0.4 to 27.6, p =",
+                "harvest_pattern": "odds\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\....",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 3.5,
+                "ci_lower": 0.4,
+                "ci_upper": 27.6,
+                "source_text": "odds ratio 3.5, 95% CI 0.4 to 27.6"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 2
+        }
+      }
+    }
+  ]
+}

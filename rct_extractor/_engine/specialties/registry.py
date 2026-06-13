@@ -395,6 +395,15 @@ from .kidney_transplant import (
     detect_kidney_transplant_subspecialty,
     normalize_kidney_transplant_endpoint
 )
+from .heart_lung_transplant import (
+    HEART_LUNG_TRANSPLANT_ENDPOINTS,
+    REJECTION_PATTERNS as HLT_REJECTION_PATTERNS,
+    GRAFT_PATTERNS as HLT_GRAFT_PATTERNS,
+    FUNCTION_PATTERNS as HLT_FUNCTION_PATTERNS,
+    COMPLICATIONS_PATTERNS as HLT_COMPLICATIONS_PATTERNS,
+    detect_heart_lung_transplant_subspecialty,
+    normalize_heart_lung_transplant_endpoint
+)
 
 from .pulmonary_hypertension import (
     PULMONARY_HYPERTENSION_ENDPOINTS,
@@ -1694,6 +1703,18 @@ SPECIALTY_REGISTRY = {
             'complications': KT_COMPLICATIONS_PATTERNS
         }
     },
+    'heart_lung_transplant': {
+        'subspecialties': ['rejection', 'graft', 'function', 'complications'],
+        'detection_function': detect_heart_lung_transplant_subspecialty,
+        'normalizer': normalize_heart_lung_transplant_endpoint,
+        'endpoints': HEART_LUNG_TRANSPLANT_ENDPOINTS,
+        'patterns': {
+            'rejection': HLT_REJECTION_PATTERNS,
+            'graft': HLT_GRAFT_PATTERNS,
+            'function': HLT_FUNCTION_PATTERNS,
+            'complications': HLT_COMPLICATIONS_PATTERNS
+        }
+    },
     'pulmonary_hypertension': {
         'subspecialties': ['functional', 'hemodynamics', 'clinical_worsening', 'biomarker'],
         'detection_function': detect_pulmonary_hypertension_subspecialty,
@@ -2590,6 +2611,18 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'living[- ](?:donor|related)\s+(?:kidney|renal)|deceased[- ]donor',
             r'immunosuppress(?:ion|ive)\s+(?:regimen|therapy)',
         ],
+        'heart_lung_transplant': [
+            r'heart\s+transplant\w*', r'cardiac\s+transplant\w*', r'lung\s+transplant\w*',
+            r'heart[- ]lung\s+transplant\w*', r'cardiac\s+allograft', r'lung\s+allograft',
+            r'primary\s+graft\s+dysfunction|\bpgd\b',
+            r'cardiac\s+allograft\s+vasculopathy|\bcav\b',
+            r'chronic\s+lung\s+allograft\s+dysfunction|\bclad\b|'
+            r'bronchiolitis\s+obliterans(?:\s+syndrome)?|\bbos\b',
+            r'\bishlt\b|endomyocardial\s+biopsy',
+            r'(?:acute\s+cellular|biopsy[- ]proven\s+acute)\s+rejection',
+            r'tacrolimus|ciclosporin|cyclosporine|everolimus',
+            r'thoracic\s+(?:organ\s+)?transplant\w*|transplant\s+recipients?',
+        ],
         'pulmonary_hypertension': [
             r'pulmonary\s+(?:arterial\s+)?hypertension', r'\bpah\b',
             r'pulmonary\s+vascular\s+resistance|\bpvr\b',
@@ -3158,6 +3191,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'kidney_transplant':
         subspecialty, conf = detect_kidney_transplant_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'heart_lung_transplant':
+        subspecialty, conf = detect_heart_lung_transplant_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'pulmonary_hypertension':
         subspecialty, conf = detect_pulmonary_hypertension_subspecialty(text)
