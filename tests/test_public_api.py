@@ -44,7 +44,7 @@ EXPECTED_SPECIALTIES = {
     "lymphoma", "influenza", "head_neck_cancer", "bladder_cancer", "renal_cell_carcinoma",
     # cardio-metabolic / renal cluster (9)
     "dyslipidaemia", "venous_thromboembolism", "peripheral_artery_disease",
-    "obesity", "thyroid", "osteoporosis", "kidney_transplant",
+    "obesity", "thyroid", "osteoporosis", "kidney_transplant", "liver_transplant",
     "pulmonary_hypertension", "pcos",
     # neuro / psych / GI / rheum cluster (9)
     "parkinsons", "alzheimers", "multiple_sclerosis", "migraine",
