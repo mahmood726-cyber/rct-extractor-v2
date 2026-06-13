@@ -84,6 +84,8 @@ rct-extract = "rct_extractor.cli:main"
 rct-extract-pdf = "rct_extractor._engine.cli.cli:main"
 # Convert abstracts -> allmeta ma-studies-v1 JSON for the browser MA apps.
 rct-extract-allmeta = "rct_extractor.integrations.allmeta:main"
+# Diagnostic-test-accuracy (DTA) extraction mode, invoked alongside the above.
+dta-extract = "dta_extractor.cli:main"
 
 [project.urls]
 Homepage = "https://github.com/mahmood726-cyber/rct-extractor-v2"
@@ -99,11 +101,13 @@ where = ["."]
 # rct_extractor/_engine and the cardiology vocab under rct_extractor/configs, so
 # no generic top-level `src`/`configs` package is published to site-packages
 # (this was the collision risk for external installers).
-include = ["rct_extractor*"]
+include = ["rct_extractor*", "dta_extractor*"]
 
 [tool.setuptools.package-data]
 # Ship the YAML vocab/profile files bundled under the package (rct_extractor/configs).
 "rct_extractor" = ["configs/*.yaml", "configs/*.yml"]
+# Ship the DTA70-derived numerical baseline used by the DTA derivation tests.
+"dta_extractor" = ["validation/gold/*.json"]
 
 [tool.black]
 line-length = 100
