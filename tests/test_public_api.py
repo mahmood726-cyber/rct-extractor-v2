@@ -49,6 +49,8 @@ EXPECTED_SPECIALTIES = {
     # neuro / psych / GI / rheum cluster (9)
     "parkinsons", "alzheimers", "multiple_sclerosis", "migraine",
     "schizophrenia", "cirrhosis", "osteoarthritis", "covid19", "sepsis",
+    # respiratory gap-fill cluster
+    "cystic_fibrosis",
     # women's-health / reproductive cluster
     "uterine_fibroids",
     "benign_prostatic_hyperplasia",

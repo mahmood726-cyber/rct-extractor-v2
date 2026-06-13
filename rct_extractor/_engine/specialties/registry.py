@@ -395,6 +395,15 @@ from .kidney_transplant import (
     detect_kidney_transplant_subspecialty,
     normalize_kidney_transplant_endpoint
 )
+from .cystic_fibrosis import (
+    CYSTIC_FIBROSIS_ENDPOINTS,
+    PULMONARY_PATTERNS as CF_PULMONARY_PATTERNS,
+    NUTRITION_PATTERNS as CF_NUTRITION_PATTERNS,
+    MICROBIOLOGY_PATTERNS as CF_MICROBIOLOGY_PATTERNS,
+    SYSTEMIC_PATTERNS as CF_SYSTEMIC_PATTERNS,
+    detect_cystic_fibrosis_subspecialty,
+    normalize_cystic_fibrosis_endpoint
+)
 
 from .pulmonary_hypertension import (
     PULMONARY_HYPERTENSION_ENDPOINTS,
@@ -1694,6 +1703,18 @@ SPECIALTY_REGISTRY = {
             'complications': KT_COMPLICATIONS_PATTERNS
         }
     },
+    'cystic_fibrosis': {
+        'subspecialties': ['pulmonary', 'nutrition', 'microbiology', 'systemic'],
+        'detection_function': detect_cystic_fibrosis_subspecialty,
+        'normalizer': normalize_cystic_fibrosis_endpoint,
+        'endpoints': CYSTIC_FIBROSIS_ENDPOINTS,
+        'patterns': {
+            'pulmonary': CF_PULMONARY_PATTERNS,
+            'nutrition': CF_NUTRITION_PATTERNS,
+            'microbiology': CF_MICROBIOLOGY_PATTERNS,
+            'systemic': CF_SYSTEMIC_PATTERNS
+        }
+    },
     'pulmonary_hypertension': {
         'subspecialties': ['functional', 'hemodynamics', 'clinical_worsening', 'biomarker'],
         'detection_function': detect_pulmonary_hypertension_subspecialty,
@@ -2590,6 +2611,16 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'living[- ](?:donor|related)\s+(?:kidney|renal)|deceased[- ]donor',
             r'immunosuppress(?:ion|ive)\s+(?:regimen|therapy)',
         ],
+        'cystic_fibrosis': [
+            r'cystic\s+fibrosis', r'\bcftr\b|cftr\s+modulator',
+            r'elexacaftor|tezacaftor|ivacaftor|lumacaftor',
+            r'\bf508del\b|phe508del|p\.phe508del|\bg551d\b',
+            r'sweat\s+chloride', r'percent[- ]predicted\s+fev1|\bppfev1\b',
+            r'pulmonary\s+exacerbation', r'lung\s+clearance\s+index|\blci\b',
+            r'dornase\s+alfa|hypertonic\s+saline|inhaled\s+(?:tobramycin|aztreonam|colistin)',
+            r'cfq[- ]r|cystic\s+fibrosis\s+questionnaire',
+            r'pseudomonas\s+aeruginosa\s+(?:eradication|infection)',
+        ],
         'pulmonary_hypertension': [
             r'pulmonary\s+(?:arterial\s+)?hypertension', r'\bpah\b',
             r'pulmonary\s+vascular\s+resistance|\bpvr\b',
@@ -3158,6 +3189,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'kidney_transplant':
         subspecialty, conf = detect_kidney_transplant_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'cystic_fibrosis':
+        subspecialty, conf = detect_cystic_fibrosis_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'pulmonary_hypertension':
         subspecialty, conf = detect_pulmonary_hypertension_subspecialty(text)

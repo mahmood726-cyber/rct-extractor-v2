@@ -1,0 +1,466 @@
+{
+  "tolerances": {
+    "pt_abs": 0.02,
+    "pt_rel": 0.02,
+    "ci_abs": 0.03,
+    "ci_rel": 0.03
+  },
+  "papers": [
+    {
+      "pmcid": "PMC12332466",
+      "pmid": "40506211",
+      "specialty": "cystic_fibrosis",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 16,
+        "chars": 65562,
+        "secs": 0.36
+      },
+      "n_gold": 1,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 0.91,
+                "ci_lower": 0.6,
+                "ci_upper": 1.38,
+                "ci_level": 0.95,
+                "source_text": "hazard ratio 0.91, 95% CI 0.60-1.38",
+                "quote_context": "l therapy hazard ratio 0.91, 95% CI 0.60-1.38; p=0",
+                "harvest_pattern": "hazard\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 0.91,
+                "ci_lower": 0.6,
+                "ci_upper": 1.38,
+                "source_text": "hazard ratio 0.91; 95% CI 0.60-1.38"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 0.91,
+                "ci_lower": 0.6,
+                "ci_upper": 1.38,
+                "ci_level": 0.95,
+                "source_text": "hazard ratio 0.91, 95% CI 0.60-1.38",
+                "quote_context": "l therapy hazard ratio 0.91, 95% CI 0.60-1.38; p=0",
+                "harvest_pattern": "hazard\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 0.91,
+                "ci_lower": 0.6,
+                "ci_upper": 1.38,
+                "source_text": "hazard ratio 0.91; 95% CI 0.60-1.38"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        }
+      }
+    },
+    {
+      "pmcid": "PMC9330662",
+      "pmid": "35902830",
+      "specialty": "cystic_fibrosis",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 9,
+        "chars": 37517,
+        "secs": 0.14
+      },
+      "n_gold": 2,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 2,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "IRR",
+                "point_estimate": 0.55,
+                "ci_lower": 0.25,
+                "ci_upper": 0.82,
+                "ci_level": 0.95,
+                "source_text": "IRR = 0.55; 95% CI 0.25 to 0.82",
+                "quote_context": "rbations (IRR = 0.55; 95% CI 0.25 to 0.82; P =",
+                "harvest_pattern": "(?<![A-Za-z])IRR\\b[^.\\n]{0,55}?(?P<pt>\\d...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "IRR",
+                "point": 0.55,
+                "ci_lower": 0.25,
+                "ci_upper": 0.82,
+                "source_text": "IRR = 0.55; 95% CI 0.25 to 0.82"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "IRR",
+                "point_estimate": 0.43,
+                "ci_lower": 0.22,
+                "ci_upper": 0.69,
+                "ci_level": 0.95,
+                "source_text": "IRR = 0.43; 95% CI 0.22 to 0.69",
+                "quote_context": "ibiotics (IRR = 0.43; 95% CI 0.22 to 0.69; P =",
+                "harvest_pattern": "(?<![A-Za-z])IRR\\b[^.\\n]{0,55}?(?P<pt>\\d...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "IRR",
+                "point": 0.43,
+                "ci_lower": 0.22,
+                "ci_upper": 0.69,
+                "source_text": "IRR = 0.43; 95% CI 0.22 to 0.69"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 5,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "IRR",
+                "point_estimate": 0.55,
+                "ci_lower": 0.25,
+                "ci_upper": 0.82,
+                "ci_level": 0.95,
+                "source_text": "IRR = 0.55; 95% CI 0.25 to 0.82",
+                "quote_context": "rbations (IRR = 0.55; 95% CI 0.25 to 0.82; P =",
+                "harvest_pattern": "(?<![A-Za-z])IRR\\b[^.\\n]{0,55}?(?P<pt>\\d...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "IRR",
+                "point": 0.55,
+                "ci_lower": 0.25,
+                "ci_upper": 0.82,
+                "source_text": "IRR = 0.55 (0.25 to 0.82)"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "IRR",
+                "point_estimate": 0.43,
+                "ci_lower": 0.22,
+                "ci_upper": 0.69,
+                "ci_level": 0.95,
+                "source_text": "IRR = 0.43; 95% CI 0.22 to 0.69",
+                "quote_context": "ibiotics (IRR = 0.43; 95% CI 0.22 to 0.69; P =",
+                "harvest_pattern": "(?<![A-Za-z])IRR\\b[^.\\n]{0,55}?(?P<pt>\\d...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "IRR",
+                "point": 0.43,
+                "ci_lower": 0.22,
+                "ci_upper": 0.69,
+                "source_text": "IRR = 0.43 (0.22 to 0.69)"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 3
+        }
+      }
+    },
+    {
+      "pmcid": "PMC3931289",
+      "pmid": "24528942",
+      "specialty": "cystic_fibrosis",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 7,
+        "chars": 33493,
+        "secs": 0.16
+      },
+      "n_gold": 1,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 3.455,
+                "ci_lower": 0.337,
+                "ci_upper": 54.294,
+                "ci_level": 0.95,
+                "source_text": "odds ratio = 3.455, 95% CI = (0.337, 54.294",
+                "quote_context": "placebo: odds ratio = 3.455, 95% CI = (0.337, 54.294), Fi",
+                "harvest_pattern": "odds\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\....",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 3.455,
+                "ci_lower": 0.337,
+                "ci_upper": 54.294,
+                "source_text": "odds ratio = 3.455; 95% CI: (0.337, 54.294"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 3.455,
+                "ci_lower": 0.337,
+                "ci_upper": 54.294,
+                "ci_level": 0.95,
+                "source_text": "odds ratio = 3.455, 95% CI = (0.337, 54.294",
+                "quote_context": "placebo: odds ratio = 3.455, 95% CI = (0.337, 54.294), Fi",
+                "harvest_pattern": "odds\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\....",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 3.455,
+                "ci_lower": 0.337,
+                "ci_upper": 54.294,
+                "source_text": "odds ratio = 3.455; 95% CI: (0.337, 54.294"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        }
+      }
+    },
+    {
+      "pmcid": "PMC8987037",
+      "pmid": "35388038",
+      "specialty": "cystic_fibrosis",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 8,
+        "chars": 34669,
+        "secs": 0.12
+      },
+      "n_gold": 2,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 2,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.88,
+                "ci_lower": 0.5,
+                "ci_upper": 1.5,
+                "ci_level": 0.95,
+                "source_text": "OR 0.88; 95% CI 0.5, 1.5",
+                "quote_context": "n period (OR 0.88; 95% CI 0.5, 1.5) or",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.88,
+                "ci_lower": 0.5,
+                "ci_upper": 1.5,
+                "source_text": "OR 0.88; 95% CI 0.5, 1.5"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.91,
+                "ci_lower": 0.5,
+                "ci_upper": 1.6,
+                "ci_level": 0.95,
+                "source_text": "OR 0.91; 95% CI 0.5, 1.6",
+                "quote_context": "n period (OR 0.91; 95% CI 0.5, 1.6). Wh",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.91,
+                "ci_lower": 0.5,
+                "ci_upper": 1.6,
+                "source_text": "OR 0.91; 95% CI 0.5, 1.6"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 2,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.88,
+                "ci_lower": 0.5,
+                "ci_upper": 1.5,
+                "ci_level": 0.95,
+                "source_text": "OR 0.88; 95% CI 0.5, 1.5",
+                "quote_context": "n period (OR 0.88; 95% CI 0.5, 1.5) or",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.88,
+                "ci_lower": 0.5,
+                "ci_upper": 1.5,
+                "source_text": "OR 0.88; 95% CI 0.5, 1.5"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.91,
+                "ci_lower": 0.5,
+                "ci_upper": 1.6,
+                "ci_level": 0.95,
+                "source_text": "OR 0.91; 95% CI 0.5, 1.6",
+                "quote_context": "n period (OR 0.91; 95% CI 0.5, 1.6). Wh",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.91,
+                "ci_lower": 0.5,
+                "ci_upper": 1.6,
+                "source_text": "OR 0.91; 95% CI 0.5, 1.6"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 0
+        }
+      }
+    }
+  ]
+}
