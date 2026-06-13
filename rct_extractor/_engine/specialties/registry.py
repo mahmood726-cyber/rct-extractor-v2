@@ -395,6 +395,15 @@ from .kidney_transplant import (
     detect_kidney_transplant_subspecialty,
     normalize_kidney_transplant_endpoint
 )
+from .neonatology import (
+    NEONATOLOGY_ENDPOINTS,
+    RESPIRATORY_PATTERNS as NEO_RESPIRATORY_PATTERNS,
+    GASTROINTESTINAL_PATTERNS as NEO_GASTROINTESTINAL_PATTERNS,
+    NEUROLOGICAL_PATTERNS as NEO_NEUROLOGICAL_PATTERNS,
+    COMPLICATIONS_PATTERNS as NEO_COMPLICATIONS_PATTERNS,
+    detect_neonatology_subspecialty,
+    normalize_neonatology_endpoint
+)
 
 from .pulmonary_hypertension import (
     PULMONARY_HYPERTENSION_ENDPOINTS,
@@ -1694,6 +1703,18 @@ SPECIALTY_REGISTRY = {
             'complications': KT_COMPLICATIONS_PATTERNS
         }
     },
+    'neonatology': {
+        'subspecialties': ['respiratory', 'gastrointestinal', 'neurological', 'complications'],
+        'detection_function': detect_neonatology_subspecialty,
+        'normalizer': normalize_neonatology_endpoint,
+        'endpoints': NEONATOLOGY_ENDPOINTS,
+        'patterns': {
+            'respiratory': NEO_RESPIRATORY_PATTERNS,
+            'gastrointestinal': NEO_GASTROINTESTINAL_PATTERNS,
+            'neurological': NEO_NEUROLOGICAL_PATTERNS,
+            'complications': NEO_COMPLICATIONS_PATTERNS
+        }
+    },
     'pulmonary_hypertension': {
         'subspecialties': ['functional', 'hemodynamics', 'clinical_worsening', 'biomarker'],
         'detection_function': detect_pulmonary_hypertension_subspecialty,
@@ -2590,6 +2611,19 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'living[- ](?:donor|related)\s+(?:kidney|renal)|deceased[- ]donor',
             r'immunosuppress(?:ion|ive)\s+(?:regimen|therapy)',
         ],
+        'neonatology': [
+            r'preterm\s+infants?|premature\s+infants?|preterm\s+neonates?',
+            r'very\s+low\s+birth\s+weight|\bvlbw\b|extremely\s+(?:low\s+birth\s+weight|preterm)|\belbw\b',
+            r'bronchopulmonary\s+dysplasia|\bbpd\b', r'necroti[sz]ing\s+enterocolitis|\bnec\b',
+            r'intraventricular\s+h[ae]morrhage|\bivh\b',
+            r'retinopathy\s+of\s+prematurity|\brop\b',
+            r'patent\s+ductus\s+arteriosus|\bpda\b',
+            r'respiratory\s+distress\s+syndrome|surfactant|hyaline\s+membrane',
+            r'(?:nasal\s+)?(?:n?cpap|continuous\s+positive\s+airway)|inhaled\s+nitric\s+oxide|\bcaffeine\b',
+            r'neonatal\s+intensive\s+care|\bnicu\b',
+            r'(?:therapeutic\s+)?hypothermia|hypoxic[- ]isch[ae]mic\s+encephalopathy|\bhie\b',
+            r'late[- ]onset\s+sepsis|periventricular\s+leu[ck]omalacia',
+        ],
         'pulmonary_hypertension': [
             r'pulmonary\s+(?:arterial\s+)?hypertension', r'\bpah\b',
             r'pulmonary\s+vascular\s+resistance|\bpvr\b',
@@ -3158,6 +3192,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'kidney_transplant':
         subspecialty, conf = detect_kidney_transplant_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'neonatology':
+        subspecialty, conf = detect_neonatology_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'pulmonary_hypertension':
         subspecialty, conf = detect_pulmonary_hypertension_subspecialty(text)
