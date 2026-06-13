@@ -1,0 +1,100 @@
+{
+  "surface": "pdf_raw",
+  "n_hit_95": 8,
+  "n_total": 9,
+  "overall_correct": 729,
+  "overall_gold": 737,
+  "overall_rate": 0.989145183175034,
+  "rows": [
+    {
+      "specialty": "alcohol_use_disorder",
+      "papers": 41,
+      "gold": 95,
+      "correct": 93,
+      "point_only": 1,
+      "missed": 1,
+      "out_of_scope": 82,
+      "pdf_raw_rate": 0.9789473684210527
+    },
+    {
+      "specialty": "allergic_conjunctivitis",
+      "papers": 41,
+      "gold": 61,
+      "correct": 61,
+      "point_only": 0,
+      "missed": 0,
+      "out_of_scope": 67,
+      "pdf_raw_rate": 1.0
+    },
+    {
+      "specialty": "cataract",
+      "papers": 41,
+      "gold": 58,
+      "correct": 58,
+      "point_only": 0,
+      "missed": 0,
+      "out_of_scope": 76,
+      "pdf_raw_rate": 1.0
+    },
+    {
+      "specialty": "chronic_rhinosinusitis",
+      "papers": 39,
+      "gold": 46,
+      "correct": 46,
+      "point_only": 0,
+      "missed": 0,
+      "out_of_scope": 90,
+      "pdf_raw_rate": 1.0
+    },
+    {
+      "specialty": "glioma",
+      "papers": 40,
+      "gold": 58,
+      "correct": 54,
+      "point_only": 0,
+      "missed": 4,
+      "out_of_scope": 6,
+      "pdf_raw_rate": 0.9310344827586207
+    },
+    {
+      "specialty": "insomnia",
+      "papers": 40,
+      "gold": 65,
+      "correct": 65,
+      "point_only": 0,
+      "missed": 0,
+      "out_of_scope": 38,
+      "pdf_raw_rate": 1.0
+    },
+    {
+      "specialty": "myelodysplastic_syndrome",
+      "papers": 40,
+      "gold": 145,
+      "correct": 144,
+      "point_only": 0,
+      "missed": 1,
+      "out_of_scope": 30,
+      "pdf_raw_rate": 0.993103448275862
+    },
+    {
+      "specialty": "obstructive_sleep_apnea",
+      "papers": 40,
+      "gold": 84,
+      "correct": 84,
+      "point_only": 0,
+      "missed": 0,
+      "out_of_scope": 70,
+      "pdf_raw_rate": 1.0
+    },
+    {
+      "specialty": "otitis_media",
+      "papers": 40,
+      "gold": 125,
+      "correct": 124,
+      "point_only": 0,
+      "missed": 1,
+      "out_of_scope": 72,
+      "pdf_raw_rate": 0.992
+    }
+  ]
+}

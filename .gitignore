@@ -550,3 +550,11 @@ data/field_portability/alcohol_use_disorder/*.json
 data/field_portability/alcohol_use_disorder/*.log
 data/pdf_eval/gold_alcohol_use_disorder.jsonl
 data/pdf_eval/eval_alcohol_use_disorder.json
+
+# rct-extractor reverify: keep per-specialty gold + summaries + scope + manifest;
+# exclude regenerable per-paper eval JSONs, merged-gold concatenations, and logs.
+data/pdf_eval/reverify/eval_*.json
+data/pdf_eval/reverify/gold_all30.jsonl
+data/pdf_eval/reverify/gold_primary9.jsonl
+data/pdf_eval/reverify/gold_spotcheck.jsonl
+data/pdf_eval/reverify/*.log

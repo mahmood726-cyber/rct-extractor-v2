@@ -1,0 +1,199 @@
+{
+  "miss_classification": {
+    "otitis_media": {
+      "unclear": 1
+    },
+    "alcohol_use_disorder": {
+      "mixed_or_MA": 2
+    },
+    "glioma": {
+      "mixed_or_MA": 1,
+      "rct": 1,
+      "unclear": 2
+    },
+    "myelodysplastic_syndrome": {
+      "non_rct": 1
+    }
+  },
+  "scope_audit": [
+    {
+      "specialty": "alcohol_use_disorder",
+      "in_scope": 95,
+      "oos": 82,
+      "as_is_rate": 0.9789473684210527,
+      "stress_rate": 0.5254237288135594,
+      "oos_on_rct": 0,
+      "leans": true,
+      "oos_reasons": {
+        "non-rct design: cohort study": 7,
+        "non-rct design: retrospective cohort": 18,
+        "non-rct design: retrospective stud": 3,
+        "observational stud": 2,
+        "non-rct design: propensity score": 9,
+        "non-rct design: mendelian randomisation": 4,
+        "non-rct design: national health and nutrition examination survey": 8,
+        "non-rct design: mendelian randomization": 10,
+        "observational data": 1,
+        "non-rct design: cross-sectional analys": 3,
+        "non-rct design: case-control stud": 4,
+        "non-rct design: propensity score-matched": 3,
+        "non-rct design: cross-sectional stud": 4,
+        "non-rct design: prospective cohort stud": 3,
+        "non-rct design: systematic review": 3
+      }
+    },
+    {
+      "specialty": "allergic_conjunctivitis",
+      "in_scope": 61,
+      "oos": 67,
+      "as_is_rate": 1.0,
+      "stress_rate": 0.4765625,
+      "oos_on_rct": 0,
+      "leans": true,
+      "oos_reasons": {
+        "non-rct design: systematic review": 16,
+        "non-rct design: cross-sectional surv": 4,
+        "non-rct design: cross-sectional stud": 3,
+        "non-rct design: cohort study": 6,
+        "non-rct design: prospective cohort stud": 2,
+        "non-rct design: observational studies": 14,
+        "non-rct design: mendelian randomization": 12,
+        "non-rct design: retrospective analys": 7,
+        "non-rct design: retrospective cohort": 2,
+        "non-rct design: uk biobank": 1
+      }
+    },
+    {
+      "specialty": "cataract",
+      "in_scope": 58,
+      "oos": 76,
+      "as_is_rate": 1.0,
+      "stress_rate": 0.43283582089552236,
+      "oos_on_rct": 0,
+      "leans": true,
+      "oos_reasons": {
+        "observational cohort": 1,
+        "non-rct design: cross-sectional stud": 7,
+        "non-rct design: systematic review": 16,
+        "non-rct design: observational studies": 4,
+        "non-rct design: cohort study": 3,
+        "non-rct design: retrospective cohort": 26,
+        "non-rct design: nhanes": 3,
+        "non-rct design: case-control stud": 2,
+        "non-rct design: national health and nutrition examination survey": 2,
+        "non-rct design: retrospective stud": 4,
+        "non-rct design: propensity score": 2,
+        "non-rct design: mendelian randomization": 3,
+        "non-rct design: uk biobank": 3
+      }
+    },
+    {
+      "specialty": "chronic_rhinosinusitis",
+      "in_scope": 46,
+      "oos": 90,
+      "as_is_rate": 1.0,
+      "stress_rate": 0.3382352941176471,
+      "oos_on_rct": 0,
+      "leans": true,
+      "oos_reasons": {
+        "non-rct design: cohort study": 27,
+        "non-rct design: mendelian randomization": 32,
+        "non-rct design: systematic review": 5,
+        "non-rct design: retrospective cohort": 7,
+        "non-rct design: observational study": 3,
+        "non-rct design: observational studies": 11,
+        "non-rct design: cross-sectional surv": 5
+      }
+    },
+    {
+      "specialty": "glioma",
+      "in_scope": 58,
+      "oos": 6,
+      "as_is_rate": 0.9310344827586207,
+      "stress_rate": 0.84375,
+      "oos_on_rct": 0,
+      "leans": false,
+      "oos_reasons": {
+        "non-rct design: retrospective stud": 4,
+        "non-rct design: propensity score": 1,
+        "non-rct design: retrospective analys": 1
+      }
+    },
+    {
+      "specialty": "insomnia",
+      "in_scope": 65,
+      "oos": 38,
+      "as_is_rate": 1.0,
+      "stress_rate": 0.6310679611650486,
+      "oos_on_rct": 0,
+      "leans": true,
+      "oos_reasons": {
+        "non-rct design: cross-sectional stud": 6,
+        "non-rct design: cohort studies": 6,
+        "non-rct design: observational studies": 11,
+        "non-rct design: mendelian randomization": 1,
+        "non-rct design: national health and nutrition examination survey": 2,
+        "non-rct design: systematic review": 5,
+        "non-rct design: observational study": 3,
+        "non-rct design: meta-analysis of observational": 1,
+        "non-rct design: propensity score": 3
+      }
+    },
+    {
+      "specialty": "myelodysplastic_syndrome",
+      "in_scope": 145,
+      "oos": 30,
+      "as_is_rate": 0.993103448275862,
+      "stress_rate": 0.8228571428571428,
+      "oos_on_rct": 0,
+      "leans": true,
+      "oos_reasons": {
+        "non-rct design: observational study": 5,
+        "non-rct design: systematic review": 18,
+        "observational stud": 3,
+        "observational data": 1,
+        "observational cohort": 1,
+        "non-rct design: observational studies": 2
+      }
+    },
+    {
+      "specialty": "obstructive_sleep_apnea",
+      "in_scope": 84,
+      "oos": 70,
+      "as_is_rate": 1.0,
+      "stress_rate": 0.5454545454545454,
+      "oos_on_rct": 0,
+      "leans": true,
+      "oos_reasons": {
+        "non-rct design: prospective cohort stud": 8,
+        "non-rct design: mendelian randomization": 23,
+        "non-rct design: cohort studies": 5,
+        "observational stud": 1,
+        "non-rct design: systematic review": 8,
+        "non-rct design: national health and nutrition examination survey": 5,
+        "non-rct design: observational studies": 8,
+        "non-rct design: cohort study": 2,
+        "non-rct design: retrospective stud": 3,
+        "non-rct design: cross-sectional stud": 2,
+        "non-rct design: retrospective cohort": 5
+      }
+    },
+    {
+      "specialty": "otitis_media",
+      "in_scope": 125,
+      "oos": 72,
+      "as_is_rate": 0.992,
+      "stress_rate": 0.6294416243654822,
+      "oos_on_rct": 0,
+      "leans": true,
+      "oos_reasons": {
+        "non-rct design: case-control stud": 7,
+        "non-rct design: retrospective cohort": 11,
+        "non-rct design: systematic review": 23,
+        "non-rct design: mendelian randomization": 20,
+        "non-rct design: observational studies": 7,
+        "non-rct design: prospective cohort stud": 4
+      }
+    }
+  ]
+}

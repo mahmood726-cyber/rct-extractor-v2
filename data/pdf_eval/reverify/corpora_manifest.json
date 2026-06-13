@@ -1,0 +1,5852 @@
+{
+  "prostate_cancer": {
+    "papers": 37,
+    "gold_tuples": 148,
+    "sources": [
+      {
+        "pmid": "37812679",
+        "pmcid": "PMC10911916",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39007913",
+        "pmcid": "PMC11745695",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39287944",
+        "pmcid": "PMC11409154",
+        "n_gold": 7
+      },
+      {
+        "pmid": "39405060",
+        "pmcid": "PMC11581638",
+        "n_gold": 4
+      },
+      {
+        "pmid": "39525979",
+        "pmcid": "PMC11547961",
+        "n_gold": 2
+      },
+      {
+        "pmid": "39737542",
+        "pmcid": "PMC11686335",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39995831",
+        "pmcid": "PMC11849621",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40043230",
+        "pmcid": "PMC12058370",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40099663",
+        "pmcid": "PMC12127112",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40397306",
+        "pmcid": "PMC12106333",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40483592",
+        "pmcid": "PMC12278699",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40650023",
+        "pmcid": "PMC12249740",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40660223",
+        "pmcid": "PMC12261593",
+        "n_gold": 5
+      },
+      {
+        "pmid": "40732303",
+        "pmcid": "PMC12298444",
+        "n_gold": 11
+      },
+      {
+        "pmid": "40823001",
+        "pmcid": "PMC12355985",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40833694",
+        "pmcid": "PMC12368675",
+        "n_gold": 6
+      },
+      {
+        "pmid": "41055783",
+        "pmcid": "PMC12504157",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41062813",
+        "pmcid": "PMC13190232",
+        "n_gold": 10
+      },
+      {
+        "pmid": "41174820",
+        "pmcid": "PMC12577412",
+        "n_gold": 7
+      },
+      {
+        "pmid": "41186950",
+        "pmcid": "PMC12587203",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41186991",
+        "pmcid": "PMC12890519",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41247713",
+        "pmcid": "PMC12681322",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41342879",
+        "pmcid": "PMC13056297",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41439158",
+        "pmcid": "PMC12720369",
+        "n_gold": 8
+      },
+      {
+        "pmid": "41450200",
+        "pmcid": "PMC12741647",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41458591",
+        "pmcid": "PMC12739549",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41561751",
+        "pmcid": "PMC12812686",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41773084",
+        "pmcid": "PMC12950338",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41859077",
+        "pmcid": "PMC12996060",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41893358",
+        "pmcid": "PMC13028550",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41958510",
+        "pmcid": "PMC13059460",
+        "n_gold": 8
+      },
+      {
+        "pmid": "41992842",
+        "pmcid": "PMC13123856",
+        "n_gold": 8
+      },
+      {
+        "pmid": "42074951",
+        "pmcid": "PMC13117442",
+        "n_gold": 3
+      },
+      {
+        "pmid": "42088201",
+        "pmcid": "PMC13136011",
+        "n_gold": 3
+      },
+      {
+        "pmid": "42126466",
+        "pmcid": "PMC13171698",
+        "n_gold": 4
+      },
+      {
+        "pmid": "42133096",
+        "pmcid": "PMC13175999",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42253847",
+        "pmcid": "PMC13241677",
+        "n_gold": 3
+      }
+    ]
+  },
+  "ovarian_cancer": {
+    "papers": 38,
+    "gold_tuples": 117,
+    "sources": [
+      {
+        "pmid": "35996165",
+        "pmcid": "PMC9396859",
+        "n_gold": 4
+      },
+      {
+        "pmid": "37430376",
+        "pmcid": "PMC10331960",
+        "n_gold": 2
+      },
+      {
+        "pmid": "38064172",
+        "pmcid": "PMC10957721",
+        "n_gold": 2
+      },
+      {
+        "pmid": "38468423",
+        "pmcid": "PMC10928245",
+        "n_gold": 3
+      },
+      {
+        "pmid": "38584601",
+        "pmcid": "PMC10995238",
+        "n_gold": 7
+      },
+      {
+        "pmid": "39376601",
+        "pmcid": "PMC11457084",
+        "n_gold": 5
+      },
+      {
+        "pmid": "39904852",
+        "pmcid": "PMC11976761",
+        "n_gold": 2
+      },
+      {
+        "pmid": "39992106",
+        "pmcid": "PMC12175808",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40094478",
+        "pmcid": "PMC11931853",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40171271",
+        "pmcid": "PMC11959189",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40520171",
+        "pmcid": "PMC12162499",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40542754",
+        "pmcid": "PMC12374494",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40676618",
+        "pmcid": "PMC12273317",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40794554",
+        "pmcid": "PMC12548056",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40856042",
+        "pmcid": "PMC12379113",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40943852",
+        "pmcid": "PMC12428847",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40980379",
+        "pmcid": "PMC12444136",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41001611",
+        "pmcid": "PMC12456587",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41154420",
+        "pmcid": "PMC12562901",
+        "n_gold": 6
+      },
+      {
+        "pmid": "41162668",
+        "pmcid": "PMC12705719",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41166516",
+        "pmcid": "PMC12707875",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41188998",
+        "pmcid": "PMC12587621",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41191357",
+        "pmcid": "PMC12590296",
+        "n_gold": 6
+      },
+      {
+        "pmid": "41287969",
+        "pmcid": "PMC12645347",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41293268",
+        "pmcid": "PMC12640866",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41390422",
+        "pmcid": "PMC12821248",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41415552",
+        "pmcid": "PMC12709118",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41595165",
+        "pmcid": "PMC12839418",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41669254",
+        "pmcid": "PMC12883406",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41857418",
+        "pmcid": "PMC13102752",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41908841",
+        "pmcid": "PMC13024411",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41982234",
+        "pmcid": "PMC13070956",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41988534",
+        "pmcid": "PMC13076540",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42038388",
+        "pmcid": "PMC13105982",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42065038",
+        "pmcid": "PMC13126584",
+        "n_gold": 5
+      },
+      {
+        "pmid": "42122129",
+        "pmcid": "PMC13162686",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42127414",
+        "pmcid": "PMC13223590",
+        "n_gold": 4
+      },
+      {
+        "pmid": "42164282",
+        "pmcid": "PMC13186221",
+        "n_gold": 3
+      }
+    ]
+  },
+  "pancreatic_cancer": {
+    "papers": 36,
+    "gold_tuples": 122,
+    "sources": [
+      {
+        "pmid": "38552386",
+        "pmcid": "PMC10998044",
+        "n_gold": 5
+      },
+      {
+        "pmid": "39068306",
+        "pmcid": "PMC11467002",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39967445",
+        "pmcid": "PMC11836430",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40126570",
+        "pmcid": "PMC11932015",
+        "n_gold": 7
+      },
+      {
+        "pmid": "40439878",
+        "pmcid": "PMC12317898",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40697437",
+        "pmcid": "PMC12277514",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40726530",
+        "pmcid": "PMC12303028",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40763412",
+        "pmcid": "PMC12345255",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40772207",
+        "pmcid": "PMC12324980",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40834324",
+        "pmcid": "PMC12379785",
+        "n_gold": 5
+      },
+      {
+        "pmid": "40860833",
+        "pmcid": "PMC12370491",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40950337",
+        "pmcid": "PMC12432913",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40970773",
+        "pmcid": "PMC12616238",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41077611",
+        "pmcid": "PMC12515981",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41088652",
+        "pmcid": "PMC12517875",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41162637",
+        "pmcid": "PMC12932284",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41205353",
+        "pmcid": "PMC12639605",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41272388",
+        "pmcid": "PMC12901085",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41514593",
+        "pmcid": "PMC12784894",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41541743",
+        "pmcid": "PMC12799495",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41639176",
+        "pmcid": "PMC12923764",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41710657",
+        "pmcid": "PMC12909159",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41731762",
+        "pmcid": "PMC12928969",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41817106",
+        "pmcid": "PMC12980701",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41859816",
+        "pmcid": "PMC13247336",
+        "n_gold": 9
+      },
+      {
+        "pmid": "41883870",
+        "pmcid": "PMC13009920",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41883966",
+        "pmcid": "PMC13008683",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41899178",
+        "pmcid": "PMC13026222",
+        "n_gold": 7
+      },
+      {
+        "pmid": "41909437",
+        "pmcid": "PMC13026397",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41939612",
+        "pmcid": "PMC13048725",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41976359",
+        "pmcid": "PMC13072174",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42073371",
+        "pmcid": "PMC13117663",
+        "n_gold": 4
+      },
+      {
+        "pmid": "42108563",
+        "pmcid": "PMC13247335",
+        "n_gold": 5
+      },
+      {
+        "pmid": "42122141",
+        "pmcid": "PMC13163042",
+        "n_gold": 3
+      },
+      {
+        "pmid": "42153094",
+        "pmcid": "PMC13180097",
+        "n_gold": 3
+      },
+      {
+        "pmid": "42210933",
+        "pmcid": "PMC13214980",
+        "n_gold": 2
+      }
+    ]
+  },
+  "gastric_cancer": {
+    "papers": 38,
+    "gold_tuples": 131,
+    "sources": [
+      {
+        "pmid": "38753055",
+        "pmcid": "PMC11098986",
+        "n_gold": 6
+      },
+      {
+        "pmid": "39110075",
+        "pmcid": "PMC11307348",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39512538",
+        "pmcid": "PMC11538983",
+        "n_gold": 2
+      },
+      {
+        "pmid": "39573989",
+        "pmcid": "PMC11583461",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40025394",
+        "pmcid": "PMC11929688",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40032744",
+        "pmcid": "PMC11876278",
+        "n_gold": 5
+      },
+      {
+        "pmid": "40087572",
+        "pmcid": "PMC11908035",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40115020",
+        "pmcid": "PMC11922704",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40125504",
+        "pmcid": "PMC11923980",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40207218",
+        "pmcid": "PMC11979168",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40259215",
+        "pmcid": "PMC12010618",
+        "n_gold": 5
+      },
+      {
+        "pmid": "40386769",
+        "pmcid": "PMC12081356",
+        "n_gold": 5
+      },
+      {
+        "pmid": "40448579",
+        "pmcid": "PMC12288889",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40459591",
+        "pmcid": "PMC12133918",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40865958",
+        "pmcid": "PMC12825751",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41011004",
+        "pmcid": "PMC12471627",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41139860",
+        "pmcid": "PMC12577152",
+        "n_gold": 7
+      },
+      {
+        "pmid": "41140456",
+        "pmcid": "PMC12546971",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41181842",
+        "pmcid": "PMC12572790",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41239488",
+        "pmcid": "PMC12619301",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41298944",
+        "pmcid": "PMC12743099",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41346601",
+        "pmcid": "PMC12672549",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41522741",
+        "pmcid": "PMC12780686",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41530728",
+        "pmcid": "PMC12838411",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41646578",
+        "pmcid": "PMC12872280",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41665540",
+        "pmcid": "PMC13006766",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41730953",
+        "pmcid": "PMC13031519",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41768228",
+        "pmcid": "PMC12935649",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41847694",
+        "pmcid": "PMC12989392",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41899291",
+        "pmcid": "PMC13026895",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41952692",
+        "pmcid": "PMC13053319",
+        "n_gold": 6
+      },
+      {
+        "pmid": "42109272",
+        "pmcid": "PMC13157149",
+        "n_gold": 5
+      },
+      {
+        "pmid": "42156604",
+        "pmcid": "PMC13186787",
+        "n_gold": 3
+      },
+      {
+        "pmid": "42160765",
+        "pmcid": "PMC13189268",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42180907",
+        "pmcid": "PMC13191019",
+        "n_gold": 4
+      },
+      {
+        "pmid": "42205142",
+        "pmcid": "PMC13202017",
+        "n_gold": 3
+      },
+      {
+        "pmid": "42211534",
+        "pmcid": "PMC13215653",
+        "n_gold": 4
+      },
+      {
+        "pmid": "42249207",
+        "pmcid": "PMC13241412",
+        "n_gold": 3
+      }
+    ]
+  },
+  "hepatocellular_carcinoma": {
+    "papers": 39,
+    "gold_tuples": 149,
+    "sources": [
+      {
+        "pmid": "39854748",
+        "pmcid": "PMC11771663",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40489219",
+        "pmcid": "PMC12416889",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40625746",
+        "pmcid": "PMC12230042",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40693032",
+        "pmcid": "PMC12277081",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40950688",
+        "pmcid": "PMC12432782",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41024011",
+        "pmcid": "PMC12481867",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41143169",
+        "pmcid": "PMC12553378",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41169385",
+        "pmcid": "PMC12568680",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41219316",
+        "pmcid": "PMC12606199",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41268044",
+        "pmcid": "PMC12627371",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41281477",
+        "pmcid": "PMC12635674",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41388641",
+        "pmcid": "PMC12701129",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41411278",
+        "pmcid": "PMC12714280",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41480218",
+        "pmcid": "PMC12754341",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41503570",
+        "pmcid": "PMC12771288",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41508341",
+        "pmcid": "PMC13141857",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41536508",
+        "pmcid": "PMC12797090",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41549287",
+        "pmcid": "PMC12903408",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41653198",
+        "pmcid": "PMC12882918",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41706717",
+        "pmcid": "PMC12915927",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41742714",
+        "pmcid": "PMC13062626",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41798943",
+        "pmcid": "PMC12960652",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41820518",
+        "pmcid": "PMC12982519",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41853930",
+        "pmcid": "PMC13000872",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41883966",
+        "pmcid": "PMC13008683",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41890498",
+        "pmcid": "PMC13016411",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41890893",
+        "pmcid": "PMC13013448",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41899191",
+        "pmcid": "PMC13026359",
+        "n_gold": 7
+      },
+      {
+        "pmid": "41929924",
+        "pmcid": "PMC13043178",
+        "n_gold": 7
+      },
+      {
+        "pmid": "41930200",
+        "pmcid": "PMC13038519",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41938734",
+        "pmcid": "PMC13044050",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41968128",
+        "pmcid": "PMC13230868",
+        "n_gold": 6
+      },
+      {
+        "pmid": "42058183",
+        "pmcid": "PMC13123645",
+        "n_gold": 3
+      },
+      {
+        "pmid": "42071878",
+        "pmcid": "PMC13124404",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42100023",
+        "pmcid": "PMC13145327",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42141752",
+        "pmcid": "PMC13179444",
+        "n_gold": 3
+      },
+      {
+        "pmid": "42154843",
+        "pmcid": "PMC13186090",
+        "n_gold": 5
+      },
+      {
+        "pmid": "42174390",
+        "pmcid": "PMC13238536",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42220514",
+        "pmcid": "PMC13215822",
+        "n_gold": 11
+      }
+    ]
+  },
+  "melanoma": {
+    "papers": 38,
+    "gold_tuples": 135,
+    "sources": [
+      {
+        "pmid": "36816935",
+        "pmcid": "PMC9929351",
+        "n_gold": 4
+      },
+      {
+        "pmid": "36831607",
+        "pmcid": "PMC9953812",
+        "n_gold": 2
+      },
+      {
+        "pmid": "37036865",
+        "pmcid": "PMC10243774",
+        "n_gold": 2
+      },
+      {
+        "pmid": "37894391",
+        "pmcid": "PMC10605386",
+        "n_gold": 3
+      },
+      {
+        "pmid": "37971411",
+        "pmcid": "PMC10994263",
+        "n_gold": 3
+      },
+      {
+        "pmid": "38296595",
+        "pmcid": "PMC10831429",
+        "n_gold": 3
+      },
+      {
+        "pmid": "38420778",
+        "pmcid": "PMC12140551",
+        "n_gold": 2
+      },
+      {
+        "pmid": "38730689",
+        "pmcid": "PMC11083498",
+        "n_gold": 4
+      },
+      {
+        "pmid": "38760735",
+        "pmcid": "PMC11102253",
+        "n_gold": 2
+      },
+      {
+        "pmid": "38952546",
+        "pmcid": "PMC11215064",
+        "n_gold": 6
+      },
+      {
+        "pmid": "39333867",
+        "pmcid": "PMC11430109",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39890146",
+        "pmcid": "PMC11795373",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40175445",
+        "pmcid": "PMC11965372",
+        "n_gold": 7
+      },
+      {
+        "pmid": "40419744",
+        "pmcid": "PMC12322104",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40507352",
+        "pmcid": "PMC12153559",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40680435",
+        "pmcid": "PMC12284595",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40799039",
+        "pmcid": "PMC12344395",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41057446",
+        "pmcid": "PMC12504657",
+        "n_gold": 6
+      },
+      {
+        "pmid": "41096124",
+        "pmcid": "PMC12524936",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41150456",
+        "pmcid": "PMC12567567",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41181823",
+        "pmcid": "PMC12572787",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41278272",
+        "pmcid": "PMC12634362",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41344844",
+        "pmcid": "PMC12986781",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41407417",
+        "pmcid": "PMC12716549",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41517320",
+        "pmcid": "PMC12787149",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41521447",
+        "pmcid": "PMC12803000",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41604820",
+        "pmcid": "PMC12865620",
+        "n_gold": 6
+      },
+      {
+        "pmid": "41664820",
+        "pmcid": "PMC12883207",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41693007",
+        "pmcid": "PMC13010309",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41899070",
+        "pmcid": "PMC13026811",
+        "n_gold": 14
+      },
+      {
+        "pmid": "41914622",
+        "pmcid": "PMC13039565",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41947897",
+        "pmcid": "PMC13051642",
+        "n_gold": 4
+      },
+      {
+        "pmid": "42064762",
+        "pmcid": "PMC13124634",
+        "n_gold": 3
+      },
+      {
+        "pmid": "42073627",
+        "pmcid": "PMC13115475",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42101794",
+        "pmcid": "PMC13222263",
+        "n_gold": 3
+      },
+      {
+        "pmid": "42104930",
+        "pmcid": "PMC13198371",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42133101",
+        "pmcid": "PMC13176077",
+        "n_gold": 6
+      },
+      {
+        "pmid": "42182948",
+        "pmcid": "PMC13193800",
+        "n_gold": 3
+      }
+    ]
+  },
+  "leukaemia": {
+    "papers": 39,
+    "gold_tuples": 124,
+    "sources": [
+      {
+        "pmid": "38709714",
+        "pmcid": "PMC11073705",
+        "n_gold": 4
+      },
+      {
+        "pmid": "39394137",
+        "pmcid": "PMC11470735",
+        "n_gold": 6
+      },
+      {
+        "pmid": "39966738",
+        "pmcid": "PMC11834645",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40072824",
+        "pmcid": "PMC12202567",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40079575",
+        "pmcid": "PMC11963549",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40227676",
+        "pmcid": "PMC11988070",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40243620",
+        "pmcid": "PMC11988504",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40298411",
+        "pmcid": "PMC12416444",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40389789",
+        "pmcid": "PMC12089557",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40389815",
+        "pmcid": "PMC12090696",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40632299",
+        "pmcid": "PMC12241227",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40656602",
+        "pmcid": "PMC12246662",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40688964",
+        "pmcid": "PMC12272294",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40711525",
+        "pmcid": "PMC12432036",
+        "n_gold": 6
+      },
+      {
+        "pmid": "40776619",
+        "pmcid": "PMC12409183",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40794554",
+        "pmcid": "PMC12548056",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40820728",
+        "pmcid": "PMC12951136",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40848057",
+        "pmcid": "PMC12374918",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41057446",
+        "pmcid": "PMC12504657",
+        "n_gold": 6
+      },
+      {
+        "pmid": "41170452",
+        "pmcid": "PMC12568404",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41254792",
+        "pmcid": "PMC12625489",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41262042",
+        "pmcid": "PMC13136811",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41401713",
+        "pmcid": "PMC12769392",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41426224",
+        "pmcid": "PMC12717365",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41430154",
+        "pmcid": "PMC12723824",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41432753",
+        "pmcid": "PMC12764698",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41458602",
+        "pmcid": "PMC12738330",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41550532",
+        "pmcid": "PMC12811581",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41571607",
+        "pmcid": "PMC12995541",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41610329",
+        "pmcid": "PMC13207624",
+        "n_gold": 7
+      },
+      {
+        "pmid": "41612480",
+        "pmcid": "PMC12924213",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41642400",
+        "pmcid": "PMC12876453",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41722016",
+        "pmcid": "PMC12992741",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41762374",
+        "pmcid": "PMC13065538",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41767799",
+        "pmcid": "PMC12936679",
+        "n_gold": 3
+      },
+      {
+        "pmid": "42022827",
+        "pmcid": "PMC13096052",
+        "n_gold": 3
+      },
+      {
+        "pmid": "42038235",
+        "pmcid": "PMC13106554",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42072465",
+        "pmcid": "PMC13113139",
+        "n_gold": 4
+      },
+      {
+        "pmid": "42254520",
+        "pmcid": "PMC13236646",
+        "n_gold": 4
+      }
+    ]
+  },
+  "lymphoma": {
+    "papers": 39,
+    "gold_tuples": 160,
+    "sources": [
+      {
+        "pmid": "34496015",
+        "pmcid": "PMC8905698",
+        "n_gold": 5
+      },
+      {
+        "pmid": "34845308",
+        "pmcid": "PMC8630038",
+        "n_gold": 3
+      },
+      {
+        "pmid": "37824143",
+        "pmcid": "PMC10570888",
+        "n_gold": 3
+      },
+      {
+        "pmid": "37958403",
+        "pmcid": "PMC10647241",
+        "n_gold": 5
+      },
+      {
+        "pmid": "38578513",
+        "pmcid": "PMC10997569",
+        "n_gold": 4
+      },
+      {
+        "pmid": "39312382",
+        "pmcid": "PMC11419458",
+        "n_gold": 2
+      },
+      {
+        "pmid": "39427001",
+        "pmcid": "PMC11490500",
+        "n_gold": 11
+      },
+      {
+        "pmid": "39434879",
+        "pmcid": "PMC11491367",
+        "n_gold": 4
+      },
+      {
+        "pmid": "39479329",
+        "pmcid": "PMC11520224",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39540679",
+        "pmcid": "PMC11742548",
+        "n_gold": 4
+      },
+      {
+        "pmid": "39587169",
+        "pmcid": "PMC11589711",
+        "n_gold": 9
+      },
+      {
+        "pmid": "39631145",
+        "pmcid": "PMC11663783",
+        "n_gold": 5
+      },
+      {
+        "pmid": "39885272",
+        "pmcid": "PMC11782580",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40003569",
+        "pmcid": "PMC11856173",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40167854",
+        "pmcid": "PMC11961531",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40317419",
+        "pmcid": "PMC12085368",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40623279",
+        "pmcid": "PMC12352567",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40650713",
+        "pmcid": "PMC12672799",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40725080",
+        "pmcid": "PMC12296125",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40771412",
+        "pmcid": "PMC12326303",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40781827",
+        "pmcid": "PMC12512086",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40829107",
+        "pmcid": "PMC12686796",
+        "n_gold": 8
+      },
+      {
+        "pmid": "40970334",
+        "pmcid": "PMC12447107",
+        "n_gold": 6
+      },
+      {
+        "pmid": "40991874",
+        "pmcid": "PMC12680271",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41057446",
+        "pmcid": "PMC12504657",
+        "n_gold": 6
+      },
+      {
+        "pmid": "41085685",
+        "pmcid": "PMC12672595",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41174549",
+        "pmcid": "PMC12577247",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41430154",
+        "pmcid": "PMC12723824",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41438197",
+        "pmcid": "PMC12721316",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41816336",
+        "pmcid": "PMC12971458",
+        "n_gold": 10
+      },
+      {
+        "pmid": "41995859",
+        "pmcid": "PMC13090265",
+        "n_gold": 4
+      },
+      {
+        "pmid": "42064762",
+        "pmcid": "PMC13124634",
+        "n_gold": 3
+      },
+      {
+        "pmid": "42073622",
+        "pmcid": "PMC13114261",
+        "n_gold": 6
+      },
+      {
+        "pmid": "42074368",
+        "pmcid": "PMC13116831",
+        "n_gold": 4
+      },
+      {
+        "pmid": "42074669",
+        "pmcid": "PMC13116589",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42079742",
+        "pmcid": "PMC13129670",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42122267",
+        "pmcid": "PMC13162783",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42172280",
+        "pmcid": "PMC13196921",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42254520",
+        "pmcid": "PMC13236646",
+        "n_gold": 4
+      }
+    ]
+  },
+  "head_neck_cancer": {
+    "papers": 37,
+    "gold_tuples": 130,
+    "sources": [
+      {
+        "pmid": "38822160",
+        "pmcid": "PMC11143368",
+        "n_gold": 4
+      },
+      {
+        "pmid": "39244563",
+        "pmcid": "PMC11380676",
+        "n_gold": 4
+      },
+      {
+        "pmid": "39398751",
+        "pmcid": "PMC11471217",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39474872",
+        "pmcid": "PMC12316123",
+        "n_gold": 6
+      },
+      {
+        "pmid": "39780859",
+        "pmcid": "PMC11705461",
+        "n_gold": 5
+      },
+      {
+        "pmid": "39809250",
+        "pmcid": "PMC12263134",
+        "n_gold": 2
+      },
+      {
+        "pmid": "39850817",
+        "pmcid": "PMC11755100",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39933936",
+        "pmcid": "PMC11813629",
+        "n_gold": 8
+      },
+      {
+        "pmid": "39934700",
+        "pmcid": "PMC11817134",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40018048",
+        "pmcid": "PMC11865193",
+        "n_gold": 12
+      },
+      {
+        "pmid": "40076805",
+        "pmcid": "PMC11900050",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40300079",
+        "pmcid": "PMC12209814",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40401748",
+        "pmcid": "PMC12485376",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40424564",
+        "pmcid": "PMC12316147",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40671484",
+        "pmcid": "PMC12362939",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40852714",
+        "pmcid": "PMC12367698",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41001899",
+        "pmcid": "PMC12464883",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41078847",
+        "pmcid": "PMC12512899",
+        "n_gold": 6
+      },
+      {
+        "pmid": "41107787",
+        "pmcid": "PMC12535142",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41174820",
+        "pmcid": "PMC12577412",
+        "n_gold": 7
+      },
+      {
+        "pmid": "41194055",
+        "pmcid": "PMC12587548",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41311761",
+        "pmcid": "PMC12648444",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41323137",
+        "pmcid": "PMC12664297",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41420160",
+        "pmcid": "PMC12927213",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41427082",
+        "pmcid": "PMC12716162",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41484398",
+        "pmcid": "PMC12764719",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41669379",
+        "pmcid": "PMC12883717",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41705252",
+        "pmcid": "PMC12907331",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41790036",
+        "pmcid": "PMC13036839",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41883958",
+        "pmcid": "PMC13008723",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41946687",
+        "pmcid": "PMC13056984",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42054755",
+        "pmcid": "PMC13140025",
+        "n_gold": 3
+      },
+      {
+        "pmid": "42072482",
+        "pmcid": "PMC13113669",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42079577",
+        "pmcid": "PMC13128565",
+        "n_gold": 4
+      },
+      {
+        "pmid": "42084172",
+        "pmcid": "PMC13141665",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42101794",
+        "pmcid": "PMC13222263",
+        "n_gold": 3
+      },
+      {
+        "pmid": "42180318",
+        "pmcid": "PMC13196316",
+        "n_gold": 3
+      }
+    ]
+  },
+  "bladder_cancer": {
+    "papers": 39,
+    "gold_tuples": 124,
+    "sources": [
+      {
+        "pmid": "37312019",
+        "pmcid": "PMC10262544",
+        "n_gold": 3
+      },
+      {
+        "pmid": "37543821",
+        "pmcid": "PMC10402986",
+        "n_gold": 2
+      },
+      {
+        "pmid": "37963224",
+        "pmcid": "PMC10871138",
+        "n_gold": 4
+      },
+      {
+        "pmid": "37974430",
+        "pmcid": "PMC10849170",
+        "n_gold": 6
+      },
+      {
+        "pmid": "38600160",
+        "pmcid": "PMC11006935",
+        "n_gold": 3
+      },
+      {
+        "pmid": "38695571",
+        "pmcid": "PMC11524090",
+        "n_gold": 2
+      },
+      {
+        "pmid": "39093420",
+        "pmcid": "PMC11297067",
+        "n_gold": 4
+      },
+      {
+        "pmid": "39324506",
+        "pmcid": "PMC11745995",
+        "n_gold": 4
+      },
+      {
+        "pmid": "39340825",
+        "pmcid": "PMC11546637",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39393026",
+        "pmcid": "PMC11687940",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39631746",
+        "pmcid": "PMC11975155",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39917361",
+        "pmcid": "PMC11798953",
+        "n_gold": 9
+      },
+      {
+        "pmid": "40146341",
+        "pmcid": "PMC11950035",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40177654",
+        "pmcid": "PMC11964182",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40256659",
+        "pmcid": "PMC12008543",
+        "n_gold": 6
+      },
+      {
+        "pmid": "40287344",
+        "pmcid": "PMC12907750",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40355842",
+        "pmcid": "PMC12067709",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40631547",
+        "pmcid": "PMC12586794",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40756224",
+        "pmcid": "PMC12312837",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40926780",
+        "pmcid": "PMC12415345",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41056445",
+        "pmcid": "PMC12605803",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41097791",
+        "pmcid": "PMC12523673",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41114376",
+        "pmcid": "PMC12532007",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41132345",
+        "pmcid": "PMC12541490",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41154349",
+        "pmcid": "PMC12562405",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41376810",
+        "pmcid": "PMC12689218",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41439161",
+        "pmcid": "PMC12721287",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41445362",
+        "pmcid": "PMC12951098",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41681972",
+        "pmcid": "PMC12896385",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41716567",
+        "pmcid": "PMC12914108",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41744892",
+        "pmcid": "PMC12939331",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41775443",
+        "pmcid": "PMC12956772",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41899592",
+        "pmcid": "PMC13024882",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41953009",
+        "pmcid": "PMC13053482",
+        "n_gold": 3
+      },
+      {
+        "pmid": "42022227",
+        "pmcid": "PMC13098361",
+        "n_gold": 3
+      },
+      {
+        "pmid": "42123709",
+        "pmcid": "PMC13164211",
+        "n_gold": 4
+      },
+      {
+        "pmid": "42152373",
+        "pmcid": "PMC13183079",
+        "n_gold": 4
+      },
+      {
+        "pmid": "42164465",
+        "pmcid": "PMC13184816",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42195245",
+        "pmcid": "PMC13208399",
+        "n_gold": 2
+      }
+    ]
+  },
+  "renal_cell_carcinoma": {
+    "papers": 35,
+    "gold_tuples": 117,
+    "sources": [
+      {
+        "pmid": "35327380",
+        "pmcid": "PMC8945232",
+        "n_gold": 5
+      },
+      {
+        "pmid": "35576003",
+        "pmcid": "PMC9112069",
+        "n_gold": 3
+      },
+      {
+        "pmid": "36974696",
+        "pmcid": "PMC10389335",
+        "n_gold": 3
+      },
+      {
+        "pmid": "37404816",
+        "pmcid": "PMC10315618",
+        "n_gold": 3
+      },
+      {
+        "pmid": "38390328",
+        "pmcid": "PMC10881808",
+        "n_gold": 3
+      },
+      {
+        "pmid": "38519766",
+        "pmcid": "PMC10959890",
+        "n_gold": 3
+      },
+      {
+        "pmid": "38531662",
+        "pmcid": "PMC10966813",
+        "n_gold": 3
+      },
+      {
+        "pmid": "38811687",
+        "pmcid": "PMC11137057",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39249914",
+        "pmcid": "PMC11390261",
+        "n_gold": 5
+      },
+      {
+        "pmid": "39912344",
+        "pmcid": "PMC11799859",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40056294",
+        "pmcid": "PMC11890493",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40302852",
+        "pmcid": "PMC12037790",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40450699",
+        "pmcid": "PMC12272318",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40535814",
+        "pmcid": "PMC12170992",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40663535",
+        "pmcid": "PMC12262855",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40750932",
+        "pmcid": "PMC12532709",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41112722",
+        "pmcid": "PMC12530745",
+        "n_gold": 7
+      },
+      {
+        "pmid": "41142037",
+        "pmcid": "PMC12550166",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41230146",
+        "pmcid": "PMC12603838",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41339655",
+        "pmcid": "PMC12695934",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41341717",
+        "pmcid": "PMC12670937",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41452751",
+        "pmcid": "PMC12822839",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41536571",
+        "pmcid": "PMC12795982",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41536951",
+        "pmcid": "PMC12795699",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41578463",
+        "pmcid": "PMC12851647",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41632305",
+        "pmcid": "PMC12868551",
+        "n_gold": 6
+      },
+      {
+        "pmid": "41654611",
+        "pmcid": "PMC12948971",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41788982",
+        "pmcid": "PMC12956696",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41821864",
+        "pmcid": "PMC12975561",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41836421",
+        "pmcid": "PMC12982060",
+        "n_gold": 6
+      },
+      {
+        "pmid": "41939914",
+        "pmcid": "PMC13044012",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41977094",
+        "pmcid": "PMC13073402",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41990272",
+        "pmcid": "PMC13150819",
+        "n_gold": 4
+      },
+      {
+        "pmid": "42031430",
+        "pmcid": "PMC13110708",
+        "n_gold": 3
+      },
+      {
+        "pmid": "42220789",
+        "pmcid": "PMC13222081",
+        "n_gold": 2
+      }
+    ]
+  },
+  "oesophageal_cancer": {
+    "papers": 38,
+    "gold_tuples": 145,
+    "sources": [
+      {
+        "pmid": "38241577",
+        "pmcid": "PMC10798774",
+        "n_gold": 9
+      },
+      {
+        "pmid": "38267901",
+        "pmcid": "PMC10809487",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39511550",
+        "pmcid": "PMC11545895",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39558325",
+        "pmcid": "PMC11572322",
+        "n_gold": 4
+      },
+      {
+        "pmid": "39584557",
+        "pmcid": "PMC12311283",
+        "n_gold": 2
+      },
+      {
+        "pmid": "39659783",
+        "pmcid": "PMC11628381",
+        "n_gold": 4
+      },
+      {
+        "pmid": "39780158",
+        "pmcid": "PMC11708085",
+        "n_gold": 5
+      },
+      {
+        "pmid": "39916953",
+        "pmcid": "PMC11798917",
+        "n_gold": 8
+      },
+      {
+        "pmid": "40146234",
+        "pmcid": "PMC12165515",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40207226",
+        "pmcid": "PMC11979238",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40670933",
+        "pmcid": "PMC12269192",
+        "n_gold": 6
+      },
+      {
+        "pmid": "40791599",
+        "pmcid": "PMC12336177",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40793951",
+        "pmcid": "PMC12626459",
+        "n_gold": 5
+      },
+      {
+        "pmid": "40944434",
+        "pmcid": "PMC12432406",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40990502",
+        "pmcid": "PMC12825888",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41003868",
+        "pmcid": "PMC12474832",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41060549",
+        "pmcid": "PMC12508355",
+        "n_gold": 6
+      },
+      {
+        "pmid": "41068682",
+        "pmcid": "PMC12512821",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41212384",
+        "pmcid": "PMC12832574",
+        "n_gold": 8
+      },
+      {
+        "pmid": "41361339",
+        "pmcid": "PMC12685968",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41490111",
+        "pmcid": "PMC12771256",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41522072",
+        "pmcid": "PMC12780606",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41522741",
+        "pmcid": "PMC12780686",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41526165",
+        "pmcid": "PMC12815036",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41551148",
+        "pmcid": "PMC12807980",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41620737",
+        "pmcid": "PMC12947408",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41658574",
+        "pmcid": "PMC12873576",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41768228",
+        "pmcid": "PMC12935649",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41788456",
+        "pmcid": "PMC12958973",
+        "n_gold": 8
+      },
+      {
+        "pmid": "41836421",
+        "pmcid": "PMC12982060",
+        "n_gold": 6
+      },
+      {
+        "pmid": "41890746",
+        "pmcid": "PMC13013532",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41939449",
+        "pmcid": "PMC13046546",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41987784",
+        "pmcid": "PMC13076103",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42052131",
+        "pmcid": "PMC13111891",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42079982",
+        "pmcid": "PMC13131194",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42136665",
+        "pmcid": "PMC13167931",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42206035",
+        "pmcid": "PMC13201479",
+        "n_gold": 6
+      },
+      {
+        "pmid": "42245309",
+        "pmcid": "PMC13229976",
+        "n_gold": 3
+      }
+    ]
+  },
+  "dyslipidaemia": {
+    "papers": 37,
+    "gold_tuples": 126,
+    "sources": [
+      {
+        "pmid": "37937036",
+        "pmcid": "PMC10626223",
+        "n_gold": 2
+      },
+      {
+        "pmid": "37967998",
+        "pmcid": "PMC10660972",
+        "n_gold": 7
+      },
+      {
+        "pmid": "38241002",
+        "pmcid": "PMC10806009",
+        "n_gold": 2
+      },
+      {
+        "pmid": "38517999",
+        "pmcid": "PMC10956955",
+        "n_gold": 2
+      },
+      {
+        "pmid": "38760735",
+        "pmcid": "PMC11102253",
+        "n_gold": 2
+      },
+      {
+        "pmid": "38903813",
+        "pmcid": "PMC11187329",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39126262",
+        "pmcid": "PMC11318487",
+        "n_gold": 6
+      },
+      {
+        "pmid": "39705479",
+        "pmcid": "PMC11666180",
+        "n_gold": 8
+      },
+      {
+        "pmid": "39857168",
+        "pmcid": "PMC11764983",
+        "n_gold": 5
+      },
+      {
+        "pmid": "40468852",
+        "pmcid": "PMC12620686",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40630126",
+        "pmcid": "PMC12234305",
+        "n_gold": 6
+      },
+      {
+        "pmid": "40765506",
+        "pmcid": "PMC12447825",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40779566",
+        "pmcid": "PMC12334025",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40794911",
+        "pmcid": "PMC12341882",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40797068",
+        "pmcid": "PMC12343787",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40849610",
+        "pmcid": "PMC12374482",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40879042",
+        "pmcid": "PMC12553466",
+        "n_gold": 5
+      },
+      {
+        "pmid": "40898542",
+        "pmcid": "PMC12401366",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40927812",
+        "pmcid": "PMC12415263",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40934270",
+        "pmcid": "PMC12425328",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41069345",
+        "pmcid": "PMC12505688",
+        "n_gold": 7
+      },
+      {
+        "pmid": "41107765",
+        "pmcid": "PMC12532393",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41199849",
+        "pmcid": "PMC12585945",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41235335",
+        "pmcid": "PMC12605067",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41320800",
+        "pmcid": "PMC12671431",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41328992",
+        "pmcid": "PMC12697695",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41379822",
+        "pmcid": "PMC12698018",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41465952",
+        "pmcid": "PMC12746950",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41618764",
+        "pmcid": "PMC12861347",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41624559",
+        "pmcid": "PMC12853117",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41665248",
+        "pmcid": "PMC13156356",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41857831",
+        "pmcid": "PMC13007105",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41884637",
+        "pmcid": "PMC13008627",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41908162",
+        "pmcid": "PMC13025197",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42154843",
+        "pmcid": "PMC13186090",
+        "n_gold": 5
+      },
+      {
+        "pmid": "42188698",
+        "pmcid": "PMC13210162",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42211147",
+        "pmcid": "PMC13213237",
+        "n_gold": 3
+      }
+    ]
+  },
+  "venous_thromboembolism": {
+    "papers": 37,
+    "gold_tuples": 166,
+    "sources": [
+      {
+        "pmid": "39224751",
+        "pmcid": "PMC11366972",
+        "n_gold": 5
+      },
+      {
+        "pmid": "39439659",
+        "pmcid": "PMC11494850",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39941428",
+        "pmcid": "PMC11818754",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39962569",
+        "pmcid": "PMC11834543",
+        "n_gold": 7
+      },
+      {
+        "pmid": "39973831",
+        "pmcid": "PMC11913339",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40314346",
+        "pmcid": "PMC12184242",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40360645",
+        "pmcid": "PMC12075506",
+        "n_gold": 6
+      },
+      {
+        "pmid": "40364793",
+        "pmcid": "PMC12812180",
+        "n_gold": 5
+      },
+      {
+        "pmid": "40442800",
+        "pmcid": "PMC12121286",
+        "n_gold": 5
+      },
+      {
+        "pmid": "40489873",
+        "pmcid": "PMC12150934",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40621383",
+        "pmcid": "PMC12226186",
+        "n_gold": 5
+      },
+      {
+        "pmid": "40665327",
+        "pmcid": "PMC12265229",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40779190",
+        "pmcid": "PMC12740955",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40848530",
+        "pmcid": "PMC12397929",
+        "n_gold": 9
+      },
+      {
+        "pmid": "40855333",
+        "pmcid": "PMC12376747",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40890596",
+        "pmcid": "PMC12400710",
+        "n_gold": 5
+      },
+      {
+        "pmid": "40918033",
+        "pmcid": "PMC12410526",
+        "n_gold": 5
+      },
+      {
+        "pmid": "40922325",
+        "pmcid": "PMC12419365",
+        "n_gold": 10
+      },
+      {
+        "pmid": "40944051",
+        "pmcid": "PMC12429572",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41065855",
+        "pmcid": "PMC12511134",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41188854",
+        "pmcid": "PMC12584491",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41262181",
+        "pmcid": "PMC12624218",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41293602",
+        "pmcid": "PMC12643575",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41333492",
+        "pmcid": "PMC12666489",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41378043",
+        "pmcid": "PMC12686207",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41495646",
+        "pmcid": "PMC12870277",
+        "n_gold": 9
+      },
+      {
+        "pmid": "41514472",
+        "pmcid": "PMC12882130",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41559250",
+        "pmcid": "PMC13144224",
+        "n_gold": 6
+      },
+      {
+        "pmid": "41704469",
+        "pmcid": "PMC12908938",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41737388",
+        "pmcid": "PMC12926655",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41766870",
+        "pmcid": "PMC12945996",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41810336",
+        "pmcid": "PMC12969728",
+        "n_gold": 4
+      },
+      {
+        "pmid": "42022827",
+        "pmcid": "PMC13096052",
+        "n_gold": 3
+      },
+      {
+        "pmid": "42175455",
+        "pmcid": "PMC13201063",
+        "n_gold": 5
+      },
+      {
+        "pmid": "42182892",
+        "pmcid": "PMC13197706",
+        "n_gold": 4
+      },
+      {
+        "pmid": "42183132",
+        "pmcid": "PMC13198125",
+        "n_gold": 3
+      },
+      {
+        "pmid": "42244874",
+        "pmcid": "PMC13230223",
+        "n_gold": 4
+      }
+    ]
+  },
+  "peripheral_artery_disease": {
+    "papers": 39,
+    "gold_tuples": 142,
+    "sources": [
+      {
+        "pmid": "32981918",
+        "pmcid": "PMC8265925",
+        "n_gold": 3
+      },
+      {
+        "pmid": "35317345",
+        "pmcid": "PMC8916894",
+        "n_gold": 2
+      },
+      {
+        "pmid": "35352884",
+        "pmcid": "PMC8965427",
+        "n_gold": 3
+      },
+      {
+        "pmid": "36070428",
+        "pmcid": "PMC10838477",
+        "n_gold": 8
+      },
+      {
+        "pmid": "36896876",
+        "pmcid": "PMC11552201",
+        "n_gold": 3
+      },
+      {
+        "pmid": "37198240",
+        "pmcid": "PMC10192354",
+        "n_gold": 6
+      },
+      {
+        "pmid": "37720942",
+        "pmcid": "PMC10720840",
+        "n_gold": 6
+      },
+      {
+        "pmid": "38240202",
+        "pmcid": "PMC11056117",
+        "n_gold": 3
+      },
+      {
+        "pmid": "38398337",
+        "pmcid": "PMC10889479",
+        "n_gold": 2
+      },
+      {
+        "pmid": "39132327",
+        "pmcid": "PMC11309771",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39132565",
+        "pmcid": "PMC11308017",
+        "n_gold": 2
+      },
+      {
+        "pmid": "39235670",
+        "pmcid": "PMC11512840",
+        "n_gold": 6
+      },
+      {
+        "pmid": "39359837",
+        "pmcid": "PMC11444540",
+        "n_gold": 2
+      },
+      {
+        "pmid": "39362661",
+        "pmcid": "PMC11449692",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39387438",
+        "pmcid": "PMC11804153",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39399517",
+        "pmcid": "PMC11470443",
+        "n_gold": 2
+      },
+      {
+        "pmid": "39639978",
+        "pmcid": "PMC11617568",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39872046",
+        "pmcid": "PMC11770050",
+        "n_gold": 5
+      },
+      {
+        "pmid": "40046746",
+        "pmcid": "PMC11880014",
+        "n_gold": 5
+      },
+      {
+        "pmid": "40128026",
+        "pmcid": "PMC11936668",
+        "n_gold": 9
+      },
+      {
+        "pmid": "40343145",
+        "pmcid": "PMC12059390",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40369497",
+        "pmcid": "PMC12080184",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40401600",
+        "pmcid": "PMC12229200",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40630255",
+        "pmcid": "PMC12230467",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40934172",
+        "pmcid": "PMC12425201",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41001125",
+        "pmcid": "PMC12457443",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41181657",
+        "pmcid": "PMC12576610",
+        "n_gold": 6
+      },
+      {
+        "pmid": "41276786",
+        "pmcid": "PMC12640773",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41388746",
+        "pmcid": "PMC12704138",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41422088",
+        "pmcid": "PMC12836981",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41463108",
+        "pmcid": "PMC12730210",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41675896",
+        "pmcid": "PMC12889486",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41867241",
+        "pmcid": "PMC13003461",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41868765",
+        "pmcid": "PMC13005398",
+        "n_gold": 6
+      },
+      {
+        "pmid": "41908812",
+        "pmcid": "PMC13017936",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41931342",
+        "pmcid": "PMC13052945",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41981998",
+        "pmcid": "PMC13084838",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42011217",
+        "pmcid": "PMC13091776",
+        "n_gold": 10
+      },
+      {
+        "pmid": "42211775",
+        "pmcid": "PMC13215472",
+        "n_gold": 2
+      }
+    ]
+  },
+  "obesity": {
+    "papers": 39,
+    "gold_tuples": 144,
+    "sources": [
+      {
+        "pmid": "38976257",
+        "pmcid": "PMC11231910",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39319264",
+        "pmcid": "PMC11419803",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39345822",
+        "pmcid": "PMC11437580",
+        "n_gold": 4
+      },
+      {
+        "pmid": "39420937",
+        "pmcid": "PMC11460968",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40189856",
+        "pmcid": "PMC12542916",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40314346",
+        "pmcid": "PMC12184242",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40458885",
+        "pmcid": "PMC12258229",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40605133",
+        "pmcid": "PMC12637135",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40857107",
+        "pmcid": "PMC12513478",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40874398",
+        "pmcid": "PMC12515787",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40890879",
+        "pmcid": "PMC12403603",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40980971",
+        "pmcid": "PMC12452214",
+        "n_gold": 5
+      },
+      {
+        "pmid": "40982219",
+        "pmcid": "PMC13037467",
+        "n_gold": 7
+      },
+      {
+        "pmid": "40988099",
+        "pmcid": "PMC12457091",
+        "n_gold": 6
+      },
+      {
+        "pmid": "41078121",
+        "pmcid": "PMC12719829",
+        "n_gold": 6
+      },
+      {
+        "pmid": "41112222",
+        "pmcid": "PMC12533278",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41133230",
+        "pmcid": "PMC12540095",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41141191",
+        "pmcid": "PMC12549411",
+        "n_gold": 6
+      },
+      {
+        "pmid": "41334580",
+        "pmcid": "PMC12673429",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41366934",
+        "pmcid": "PMC12688971",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41378487",
+        "pmcid": "PMC12826936",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41416383",
+        "pmcid": "PMC13206337",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41451292",
+        "pmcid": "PMC12727544",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41551027",
+        "pmcid": "PMC12811479",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41711744",
+        "pmcid": "PMC13108322",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41743116",
+        "pmcid": "PMC12929497",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41761267",
+        "pmcid": "PMC13049956",
+        "n_gold": 7
+      },
+      {
+        "pmid": "41784916",
+        "pmcid": "PMC13076819",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41852577",
+        "pmcid": "PMC12995393",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41883191",
+        "pmcid": "PMC13064920",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41928037",
+        "pmcid": "PMC13190271",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41943648",
+        "pmcid": "PMC13058711",
+        "n_gold": 3
+      },
+      {
+        "pmid": "42080136",
+        "pmcid": "PMC13133957",
+        "n_gold": 3
+      },
+      {
+        "pmid": "42092242",
+        "pmcid": "PMC13243945",
+        "n_gold": 5
+      },
+      {
+        "pmid": "42179170",
+        "pmcid": "PMC13202607",
+        "n_gold": 3
+      },
+      {
+        "pmid": "42211533",
+        "pmcid": "PMC13215652",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42222172",
+        "pmcid": "PMC13219383",
+        "n_gold": 3
+      },
+      {
+        "pmid": "42238556",
+        "pmcid": "PMC13229256",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42247589",
+        "pmcid": "PMC13240991",
+        "n_gold": 4
+      }
+    ]
+  },
+  "thyroid": {
+    "papers": 38,
+    "gold_tuples": 145,
+    "sources": [
+      {
+        "pmid": "38259461",
+        "pmcid": "PMC10800945",
+        "n_gold": 3
+      },
+      {
+        "pmid": "38405140",
+        "pmcid": "PMC10884276",
+        "n_gold": 7
+      },
+      {
+        "pmid": "38518006",
+        "pmcid": "PMC10957026",
+        "n_gold": 5
+      },
+      {
+        "pmid": "38756658",
+        "pmcid": "PMC11096456",
+        "n_gold": 10
+      },
+      {
+        "pmid": "38919472",
+        "pmcid": "PMC11196410",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39183422",
+        "pmcid": "PMC11346895",
+        "n_gold": 5
+      },
+      {
+        "pmid": "39524191",
+        "pmcid": "PMC11544310",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39742251",
+        "pmcid": "PMC11683704",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39901040",
+        "pmcid": "PMC11791035",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40198900",
+        "pmcid": "PMC11999383",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40258719",
+        "pmcid": "PMC12014076",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40444246",
+        "pmcid": "PMC12119315",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40708901",
+        "pmcid": "PMC12287073",
+        "n_gold": 8
+      },
+      {
+        "pmid": "40760587",
+        "pmcid": "PMC12323941",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41086534",
+        "pmcid": "PMC12549523",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41103642",
+        "pmcid": "PMC12520926",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41107787",
+        "pmcid": "PMC12535142",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41142540",
+        "pmcid": "PMC12552556",
+        "n_gold": 6
+      },
+      {
+        "pmid": "41268166",
+        "pmcid": "PMC12626830",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41272529",
+        "pmcid": "PMC12639917",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41305796",
+        "pmcid": "PMC12643638",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41341943",
+        "pmcid": "PMC12671679",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41375823",
+        "pmcid": "PMC12693014",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41377941",
+        "pmcid": "PMC12685602",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41430975",
+        "pmcid": "PMC12727279",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41488723",
+        "pmcid": "PMC12758056",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41503315",
+        "pmcid": "PMC12770787",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41523888",
+        "pmcid": "PMC12780965",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41551148",
+        "pmcid": "PMC12807980",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41578488",
+        "pmcid": "PMC12851700",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41583512",
+        "pmcid": "PMC12825143",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41630971",
+        "pmcid": "PMC12861491",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41666130",
+        "pmcid": "PMC12890085",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41822503",
+        "pmcid": "PMC12975740",
+        "n_gold": 3
+      },
+      {
+        "pmid": "42095176",
+        "pmcid": "PMC13138911",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42152415",
+        "pmcid": "PMC13183049",
+        "n_gold": 10
+      },
+      {
+        "pmid": "42205860",
+        "pmcid": "PMC13202540",
+        "n_gold": 4
+      },
+      {
+        "pmid": "42255448",
+        "pmcid": "PMC13233379",
+        "n_gold": 2
+      }
+    ]
+  },
+  "osteoporosis": {
+    "papers": 39,
+    "gold_tuples": 130,
+    "sources": [
+      {
+        "pmid": "35662708",
+        "pmcid": "PMC9160388",
+        "n_gold": 6
+      },
+      {
+        "pmid": "35784611",
+        "pmcid": "PMC9243369",
+        "n_gold": 2
+      },
+      {
+        "pmid": "36404990",
+        "pmcid": "PMC9667050",
+        "n_gold": 4
+      },
+      {
+        "pmid": "36852077",
+        "pmcid": "PMC9958453",
+        "n_gold": 9
+      },
+      {
+        "pmid": "36856881",
+        "pmcid": "PMC9976654",
+        "n_gold": 8
+      },
+      {
+        "pmid": "37255065",
+        "pmcid": "PMC10214983",
+        "n_gold": 3
+      },
+      {
+        "pmid": "37701145",
+        "pmcid": "PMC10494501",
+        "n_gold": 7
+      },
+      {
+        "pmid": "39115687",
+        "pmcid": "PMC11499321",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39206178",
+        "pmcid": "PMC11349545",
+        "n_gold": 4
+      },
+      {
+        "pmid": "39381071",
+        "pmcid": "PMC11459530",
+        "n_gold": 2
+      },
+      {
+        "pmid": "39443347",
+        "pmcid": "PMC11499353",
+        "n_gold": 4
+      },
+      {
+        "pmid": "39555108",
+        "pmcid": "PMC11569490",
+        "n_gold": 2
+      },
+      {
+        "pmid": "39808195",
+        "pmcid": "PMC11882684",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39920627",
+        "pmcid": "PMC11806568",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39920732",
+        "pmcid": "PMC11803957",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40047881",
+        "pmcid": "PMC12122650",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40537109",
+        "pmcid": "PMC12183356",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40547916",
+        "pmcid": "PMC12178898",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40599806",
+        "pmcid": "PMC12208862",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40691770",
+        "pmcid": "PMC12279470",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40831958",
+        "pmcid": "PMC12358264",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40993438",
+        "pmcid": "PMC12628403",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41089842",
+        "pmcid": "PMC12515915",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41095799",
+        "pmcid": "PMC12525478",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41112124",
+        "pmcid": "PMC12531840",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41141264",
+        "pmcid": "PMC12548551",
+        "n_gold": 7
+      },
+      {
+        "pmid": "41195583",
+        "pmcid": "PMC12918357",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41313969",
+        "pmcid": "PMC12702335",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41353478",
+        "pmcid": "PMC13083457",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41399582",
+        "pmcid": "PMC12702465",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41431409",
+        "pmcid": "PMC12748278",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41484973",
+        "pmcid": "PMC12870266",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41594253",
+        "pmcid": "PMC12839550",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41666296",
+        "pmcid": "PMC12890595",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41767384",
+        "pmcid": "PMC12935631",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41861221",
+        "pmcid": "PMC13008229",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41884572",
+        "pmcid": "PMC13008849",
+        "n_gold": 3
+      },
+      {
+        "pmid": "42075559",
+        "pmcid": "PMC13117170",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42186571",
+        "pmcid": "PMC13198853",
+        "n_gold": 2
+      }
+    ]
+  },
+  "kidney_transplant": {
+    "papers": 37,
+    "gold_tuples": 120,
+    "sources": [
+      {
+        "pmid": "36835848",
+        "pmcid": "PMC9962721",
+        "n_gold": 2
+      },
+      {
+        "pmid": "38248374",
+        "pmcid": "PMC10813962",
+        "n_gold": 5
+      },
+      {
+        "pmid": "38672095",
+        "pmcid": "PMC11048506",
+        "n_gold": 4
+      },
+      {
+        "pmid": "39261803",
+        "pmcid": "PMC11389595",
+        "n_gold": 5
+      },
+      {
+        "pmid": "39510821",
+        "pmcid": "PMC11959438",
+        "n_gold": 4
+      },
+      {
+        "pmid": "39806752",
+        "pmcid": "PMC11634108",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40217733",
+        "pmcid": "PMC11989273",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40234207",
+        "pmcid": "PMC12477473",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40274763",
+        "pmcid": "PMC12783010",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40303501",
+        "pmcid": "PMC12035839",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40450652",
+        "pmcid": "PMC12127261",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40576095",
+        "pmcid": "PMC12207771",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40590196",
+        "pmcid": "PMC12217102",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40615956",
+        "pmcid": "PMC12231676",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40770304",
+        "pmcid": "PMC12330037",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41158299",
+        "pmcid": "PMC12554720",
+        "n_gold": 6
+      },
+      {
+        "pmid": "41246800",
+        "pmcid": "PMC12887219",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41278523",
+        "pmcid": "PMC12638704",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41546605",
+        "pmcid": "PMC13067330",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41550721",
+        "pmcid": "PMC12804163",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41554511",
+        "pmcid": "PMC12818323",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41561830",
+        "pmcid": "PMC12814960",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41584266",
+        "pmcid": "PMC12830145",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41607816",
+        "pmcid": "PMC12836231",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41682190",
+        "pmcid": "PMC12896626",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41694388",
+        "pmcid": "PMC12894007",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41732711",
+        "pmcid": "PMC12925014",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41904134",
+        "pmcid": "PMC13194877",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41908610",
+        "pmcid": "PMC13019562",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41929991",
+        "pmcid": "PMC13042339",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41949047",
+        "pmcid": "PMC13059068",
+        "n_gold": 6
+      },
+      {
+        "pmid": "41969627",
+        "pmcid": "PMC13069486",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42017027",
+        "pmcid": "PMC13092978",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42075508",
+        "pmcid": "PMC13118092",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42110834",
+        "pmcid": "PMC13155496",
+        "n_gold": 3
+      },
+      {
+        "pmid": "42111898",
+        "pmcid": "PMC13156933",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42212277",
+        "pmcid": "PMC13212455",
+        "n_gold": 3
+      }
+    ]
+  },
+  "pulmonary_hypertension": {
+    "papers": 36,
+    "gold_tuples": 102,
+    "sources": [
+      {
+        "pmid": "29176655",
+        "pmcid": "PMC5701205",
+        "n_gold": 2
+      },
+      {
+        "pmid": "30124134",
+        "pmcid": "PMC6124186",
+        "n_gold": 6
+      },
+      {
+        "pmid": "30970653",
+        "pmcid": "PMC6517977",
+        "n_gold": 2
+      },
+      {
+        "pmid": "33240480",
+        "pmcid": "PMC7675886",
+        "n_gold": 4
+      },
+      {
+        "pmid": "34806261",
+        "pmcid": "PMC9298818",
+        "n_gold": 2
+      },
+      {
+        "pmid": "35222031",
+        "pmcid": "PMC8864222",
+        "n_gold": 4
+      },
+      {
+        "pmid": "35917059",
+        "pmcid": "PMC9402487",
+        "n_gold": 2
+      },
+      {
+        "pmid": "36687361",
+        "pmcid": "PMC9841313",
+        "n_gold": 2
+      },
+      {
+        "pmid": "36751241",
+        "pmcid": "PMC9897597",
+        "n_gold": 2
+      },
+      {
+        "pmid": "36892094",
+        "pmcid": "PMC10111549",
+        "n_gold": 4
+      },
+      {
+        "pmid": "37740617",
+        "pmcid": "PMC10961888",
+        "n_gold": 4
+      },
+      {
+        "pmid": "37804160",
+        "pmcid": "PMC10730465",
+        "n_gold": 2
+      },
+      {
+        "pmid": "38777751",
+        "pmcid": "PMC11323371",
+        "n_gold": 2
+      },
+      {
+        "pmid": "39175633",
+        "pmcid": "PMC11338760",
+        "n_gold": 2
+      },
+      {
+        "pmid": "39473890",
+        "pmcid": "PMC11518716",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39741914",
+        "pmcid": "PMC11685323",
+        "n_gold": 2
+      },
+      {
+        "pmid": "39999520",
+        "pmcid": "PMC11908551",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40144855",
+        "pmcid": "PMC11935431",
+        "n_gold": 5
+      },
+      {
+        "pmid": "40213798",
+        "pmcid": "PMC11981674",
+        "n_gold": 5
+      },
+      {
+        "pmid": "40356849",
+        "pmcid": "PMC12067402",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40370622",
+        "pmcid": "PMC12074678",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40672982",
+        "pmcid": "PMC12263512",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40693411",
+        "pmcid": "PMC12991919",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40809899",
+        "pmcid": "PMC12343494",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40877918",
+        "pmcid": "PMC12395824",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41158465",
+        "pmcid": "PMC12554579",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41181650",
+        "pmcid": "PMC12576559",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41451092",
+        "pmcid": "PMC12727604",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41541565",
+        "pmcid": "PMC12803018",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41559250",
+        "pmcid": "PMC13144224",
+        "n_gold": 6
+      },
+      {
+        "pmid": "41568020",
+        "pmcid": "PMC12818237",
+        "n_gold": 6
+      },
+      {
+        "pmid": "41704595",
+        "pmcid": "PMC12907429",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41776024",
+        "pmcid": "PMC12912378",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41865356",
+        "pmcid": "PMC13212738",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42181642",
+        "pmcid": "PMC13191741",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42225354",
+        "pmcid": "PMC13239530",
+        "n_gold": 3
+      }
+    ]
+  },
+  "pcos": {
+    "papers": 39,
+    "gold_tuples": 163,
+    "sources": [
+      {
+        "pmid": "36046783",
+        "pmcid": "PMC9423737",
+        "n_gold": 3
+      },
+      {
+        "pmid": "37891650",
+        "pmcid": "PMC10605334",
+        "n_gold": 5
+      },
+      {
+        "pmid": "38894745",
+        "pmcid": "PMC11183275",
+        "n_gold": 4
+      },
+      {
+        "pmid": "39379990",
+        "pmcid": "PMC11460122",
+        "n_gold": 5
+      },
+      {
+        "pmid": "39415184",
+        "pmcid": "PMC11481315",
+        "n_gold": 7
+      },
+      {
+        "pmid": "39691364",
+        "pmcid": "PMC11649973",
+        "n_gold": 4
+      },
+      {
+        "pmid": "39702393",
+        "pmcid": "PMC11657860",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39866289",
+        "pmcid": "PMC11764755",
+        "n_gold": 5
+      },
+      {
+        "pmid": "39875902",
+        "pmcid": "PMC11773973",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40162007",
+        "pmcid": "PMC11952798",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40190407",
+        "pmcid": "PMC11968372",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40227526",
+        "pmcid": "PMC12209044",
+        "n_gold": 8
+      },
+      {
+        "pmid": "40406474",
+        "pmcid": "PMC12097446",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40538799",
+        "pmcid": "PMC12176574",
+        "n_gold": 9
+      },
+      {
+        "pmid": "40612432",
+        "pmcid": "PMC12221892",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40785326",
+        "pmcid": "PMC12501709",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40827116",
+        "pmcid": "PMC12583311",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40951420",
+        "pmcid": "PMC12422914",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41048427",
+        "pmcid": "PMC12488453",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41097829",
+        "pmcid": "PMC12542796",
+        "n_gold": 6
+      },
+      {
+        "pmid": "41127513",
+        "pmcid": "PMC12537369",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41140676",
+        "pmcid": "PMC12549646",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41184954",
+        "pmcid": "PMC12581609",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41239764",
+        "pmcid": "PMC12856715",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41261668",
+        "pmcid": "PMC12582763",
+        "n_gold": 7
+      },
+      {
+        "pmid": "41286761",
+        "pmcid": "PMC12764091",
+        "n_gold": 8
+      },
+      {
+        "pmid": "41370423",
+        "pmcid": "PMC12694983",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41496930",
+        "pmcid": "PMC12768050",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41694568",
+        "pmcid": "PMC12893984",
+        "n_gold": 7
+      },
+      {
+        "pmid": "41822763",
+        "pmcid": "PMC12975644",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41822865",
+        "pmcid": "PMC12977038",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41859715",
+        "pmcid": "PMC12998478",
+        "n_gold": 3
+      },
+      {
+        "pmid": "42022860",
+        "pmcid": "PMC13096030",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42022909",
+        "pmcid": "PMC13095622",
+        "n_gold": 3
+      },
+      {
+        "pmid": "42037655",
+        "pmcid": "PMC13103487",
+        "n_gold": 4
+      },
+      {
+        "pmid": "42100203",
+        "pmcid": "PMC13143684",
+        "n_gold": 3
+      },
+      {
+        "pmid": "42152330",
+        "pmcid": "PMC13183120",
+        "n_gold": 3
+      },
+      {
+        "pmid": "42158318",
+        "pmcid": "PMC13183167",
+        "n_gold": 3
+      },
+      {
+        "pmid": "42164282",
+        "pmcid": "PMC13186221",
+        "n_gold": 3
+      }
+    ]
+  },
+  "parkinsons": {
+    "papers": 37,
+    "gold_tuples": 112,
+    "sources": [
+      {
+        "pmid": "33680260",
+        "pmcid": "PMC7904322",
+        "n_gold": 2
+      },
+      {
+        "pmid": "33981478",
+        "pmcid": "PMC8086717",
+        "n_gold": 2
+      },
+      {
+        "pmid": "35126283",
+        "pmcid": "PMC8813739",
+        "n_gold": 2
+      },
+      {
+        "pmid": "36132085",
+        "pmcid": "PMC9484885",
+        "n_gold": 4
+      },
+      {
+        "pmid": "38026512",
+        "pmcid": "PMC10654832",
+        "n_gold": 2
+      },
+      {
+        "pmid": "38461353",
+        "pmcid": "PMC10924343",
+        "n_gold": 2
+      },
+      {
+        "pmid": "39198455",
+        "pmcid": "PMC11358304",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39564706",
+        "pmcid": "PMC12371683",
+        "n_gold": 1
+      },
+      {
+        "pmid": "39805118",
+        "pmcid": "PMC11913241",
+        "n_gold": 4
+      },
+      {
+        "pmid": "39833937",
+        "pmcid": "PMC11744853",
+        "n_gold": 2
+      },
+      {
+        "pmid": "39923073",
+        "pmcid": "PMC11806572",
+        "n_gold": 2
+      },
+      {
+        "pmid": "39992049",
+        "pmcid": "PMC11848732",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40025536",
+        "pmcid": "PMC11871728",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40035126",
+        "pmcid": "PMC11876857",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40149723",
+        "pmcid": "PMC11940266",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40421036",
+        "pmcid": "PMC12105580",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40546873",
+        "pmcid": "PMC12177669",
+        "n_gold": 8
+      },
+      {
+        "pmid": "40592894",
+        "pmcid": "PMC12219744",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40635349",
+        "pmcid": "PMC12241703",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40640367",
+        "pmcid": "PMC12246123",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40792523",
+        "pmcid": "PMC12340713",
+        "n_gold": 5
+      },
+      {
+        "pmid": "40825977",
+        "pmcid": "PMC12361504",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40859549",
+        "pmcid": "PMC12384956",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40994822",
+        "pmcid": "PMC12455039",
+        "n_gold": 5
+      },
+      {
+        "pmid": "40998812",
+        "pmcid": "PMC12462436",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41054108",
+        "pmcid": "PMC12499788",
+        "n_gold": 1
+      },
+      {
+        "pmid": "41234238",
+        "pmcid": "PMC12605505",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41310592",
+        "pmcid": "PMC12777353",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41424236",
+        "pmcid": "PMC12890729",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41542740",
+        "pmcid": "PMC13011785",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41603886",
+        "pmcid": "PMC12850050",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41631108",
+        "pmcid": "PMC12861370",
+        "n_gold": 1
+      },
+      {
+        "pmid": "41692758",
+        "pmcid": "PMC13011334",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41776136",
+        "pmcid": "PMC13095927",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41777041",
+        "pmcid": "PMC12957778",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41994910",
+        "pmcid": "PMC13243990",
+        "n_gold": 3
+      },
+      {
+        "pmid": "42152389",
+        "pmcid": "PMC13183146",
+        "n_gold": 5
+      }
+    ]
+  },
+  "alzheimers": {
+    "papers": 36,
+    "gold_tuples": 118,
+    "sources": [
+      {
+        "pmid": "37682140",
+        "pmcid": "PMC10489245",
+        "n_gold": 4
+      },
+      {
+        "pmid": "38715252",
+        "pmcid": "PMC11294028",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39445596",
+        "pmcid": "PMC11667504",
+        "n_gold": 2
+      },
+      {
+        "pmid": "39797935",
+        "pmcid": "PMC12181514",
+        "n_gold": 2
+      },
+      {
+        "pmid": "39854068",
+        "pmcid": "PMC12171792",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40056496",
+        "pmcid": "PMC12067485",
+        "n_gold": 12
+      },
+      {
+        "pmid": "40155153",
+        "pmcid": "PMC12184023",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40183864",
+        "pmcid": "PMC12397011",
+        "n_gold": 5
+      },
+      {
+        "pmid": "40584841",
+        "pmcid": "PMC12205533",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40842647",
+        "pmcid": "PMC12364806",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40866263",
+        "pmcid": "PMC13106788",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40958121",
+        "pmcid": "PMC12439406",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41103642",
+        "pmcid": "PMC12520926",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41129721",
+        "pmcid": "PMC12647386",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41234238",
+        "pmcid": "PMC12605505",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41292493",
+        "pmcid": "PMC12648118",
+        "n_gold": 1
+      },
+      {
+        "pmid": "41346785",
+        "pmcid": "PMC12673806",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41381091",
+        "pmcid": "PMC12699019",
+        "n_gold": 6
+      },
+      {
+        "pmid": "41424236",
+        "pmcid": "PMC12890729",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41527474",
+        "pmcid": "PMC12796845",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41550131",
+        "pmcid": "PMC12811430",
+        "n_gold": 8
+      },
+      {
+        "pmid": "41564288",
+        "pmcid": "PMC12822864",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41686713",
+        "pmcid": "PMC12904291",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41777041",
+        "pmcid": "PMC12957778",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41930365",
+        "pmcid": "PMC13039103",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41950182",
+        "pmcid": "PMC13061222",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41953111",
+        "pmcid": "PMC13053239",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41995488",
+        "pmcid": "PMC13095321",
+        "n_gold": 4
+      },
+      {
+        "pmid": "42051256",
+        "pmcid": "PMC13111442",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42058483",
+        "pmcid": "PMC13120895",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42128444",
+        "pmcid": "PMC13178146",
+        "n_gold": 4
+      },
+      {
+        "pmid": "42152315",
+        "pmcid": "PMC13183148",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42181353",
+        "pmcid": "PMC13198224",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42213639",
+        "pmcid": "PMC13239466",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42221673",
+        "pmcid": "PMC13216053",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42254613",
+        "pmcid": "PMC13233350",
+        "n_gold": 6
+      }
+    ]
+  },
+  "multiple_sclerosis": {
+    "papers": 39,
+    "gold_tuples": 175,
+    "sources": [
+      {
+        "pmid": "33763062",
+        "pmcid": "PMC7982402",
+        "n_gold": 7
+      },
+      {
+        "pmid": "34950154",
+        "pmcid": "PMC8688957",
+        "n_gold": 5
+      },
+      {
+        "pmid": "36163349",
+        "pmcid": "PMC9512913",
+        "n_gold": 2
+      },
+      {
+        "pmid": "36226084",
+        "pmcid": "PMC9548566",
+        "n_gold": 3
+      },
+      {
+        "pmid": "36376097",
+        "pmcid": "PMC9749933",
+        "n_gold": 2
+      },
+      {
+        "pmid": "36692895",
+        "pmcid": "PMC10946605",
+        "n_gold": 2
+      },
+      {
+        "pmid": "36827877",
+        "pmcid": "PMC9894758",
+        "n_gold": 3
+      },
+      {
+        "pmid": "38174776",
+        "pmcid": "PMC10765473",
+        "n_gold": 21
+      },
+      {
+        "pmid": "38573365",
+        "pmcid": "PMC11233381",
+        "n_gold": 3
+      },
+      {
+        "pmid": "38619037",
+        "pmcid": "PMC11134969",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39254048",
+        "pmcid": "PMC11384553",
+        "n_gold": 10
+      },
+      {
+        "pmid": "39314756",
+        "pmcid": "PMC11417464",
+        "n_gold": 11
+      },
+      {
+        "pmid": "39643429",
+        "pmcid": "PMC12171517",
+        "n_gold": 2
+      },
+      {
+        "pmid": "39651635",
+        "pmcid": "PMC11626701",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39883906",
+        "pmcid": "PMC11781784",
+        "n_gold": 2
+      },
+      {
+        "pmid": "39895213",
+        "pmcid": "PMC11788534",
+        "n_gold": 2
+      },
+      {
+        "pmid": "39917858",
+        "pmcid": "PMC11806468",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40050008",
+        "pmcid": "PMC12505080",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40444654",
+        "pmcid": "PMC12123450",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40495426",
+        "pmcid": "PMC12152264",
+        "n_gold": 10
+      },
+      {
+        "pmid": "40583592",
+        "pmcid": "PMC12207093",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40772555",
+        "pmcid": "PMC12577672",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40773722",
+        "pmcid": "PMC12334343",
+        "n_gold": 6
+      },
+      {
+        "pmid": "40869615",
+        "pmcid": "PMC12386633",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41154271",
+        "pmcid": "PMC12562692",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41182765",
+        "pmcid": "PMC12584038",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41194516",
+        "pmcid": "PMC12589805",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41310387",
+        "pmcid": "PMC12748641",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41420376",
+        "pmcid": "PMC12756529",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41428985",
+        "pmcid": "PMC12746731",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41465919",
+        "pmcid": "PMC12747028",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41586489",
+        "pmcid": "PMC12894510",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41588873",
+        "pmcid": "PMC13168603",
+        "n_gold": 11
+      },
+      {
+        "pmid": "41603419",
+        "pmcid": "PMC12848903",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41920324",
+        "pmcid": "PMC13043616",
+        "n_gold": 4
+      },
+      {
+        "pmid": "42116395",
+        "pmcid": "PMC13166860",
+        "n_gold": 3
+      },
+      {
+        "pmid": "42152389",
+        "pmcid": "PMC13183146",
+        "n_gold": 5
+      },
+      {
+        "pmid": "42208083",
+        "pmcid": "PMC13240669",
+        "n_gold": 9
+      },
+      {
+        "pmid": "42213639",
+        "pmcid": "PMC13239466",
+        "n_gold": 2
+      }
+    ]
+  },
+  "migraine": {
+    "papers": 38,
+    "gold_tuples": 141,
+    "sources": [
+      {
+        "pmid": "33391147",
+        "pmcid": "PMC7773012",
+        "n_gold": 3
+      },
+      {
+        "pmid": "35386963",
+        "pmcid": "PMC8974722",
+        "n_gold": 2
+      },
+      {
+        "pmid": "35962348",
+        "pmcid": "PMC9372973",
+        "n_gold": 8
+      },
+      {
+        "pmid": "37644420",
+        "pmcid": "PMC10466691",
+        "n_gold": 3
+      },
+      {
+        "pmid": "37684346",
+        "pmcid": "PMC10491682",
+        "n_gold": 2
+      },
+      {
+        "pmid": "37723470",
+        "pmcid": "PMC10506288",
+        "n_gold": 7
+      },
+      {
+        "pmid": "37754544",
+        "pmcid": "PMC11235668",
+        "n_gold": 3
+      },
+      {
+        "pmid": "37993795",
+        "pmcid": "PMC10666410",
+        "n_gold": 2
+      },
+      {
+        "pmid": "38033769",
+        "pmcid": "PMC10682819",
+        "n_gold": 2
+      },
+      {
+        "pmid": "38690367",
+        "pmcid": "PMC11058981",
+        "n_gold": 6
+      },
+      {
+        "pmid": "38834559",
+        "pmcid": "PMC11150557",
+        "n_gold": 5
+      },
+      {
+        "pmid": "39030528",
+        "pmcid": "PMC11264921",
+        "n_gold": 7
+      },
+      {
+        "pmid": "39079456",
+        "pmcid": "PMC11338938",
+        "n_gold": 2
+      },
+      {
+        "pmid": "39197113",
+        "pmcid": "PMC11379431",
+        "n_gold": 2
+      },
+      {
+        "pmid": "39333866",
+        "pmcid": "PMC11438040",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39388181",
+        "pmcid": "PMC11581497",
+        "n_gold": 7
+      },
+      {
+        "pmid": "39939850",
+        "pmcid": "PMC11817237",
+        "n_gold": 2
+      },
+      {
+        "pmid": "39992539",
+        "pmcid": "PMC11914705",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40337101",
+        "pmcid": "PMC12056526",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40355614",
+        "pmcid": "PMC12283353",
+        "n_gold": 6
+      },
+      {
+        "pmid": "40388178",
+        "pmcid": "PMC12090066",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40395547",
+        "pmcid": "PMC12088940",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40628864",
+        "pmcid": "PMC12238354",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40629613",
+        "pmcid": "PMC12237327",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40721729",
+        "pmcid": "PMC12306023",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40777959",
+        "pmcid": "PMC12327118",
+        "n_gold": 9
+      },
+      {
+        "pmid": "40926822",
+        "pmcid": "PMC12416058",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40941475",
+        "pmcid": "PMC12428593",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41174686",
+        "pmcid": "PMC12577047",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41219695",
+        "pmcid": "PMC12606937",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41235617",
+        "pmcid": "PMC12849531",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41325283",
+        "pmcid": "PMC12668480",
+        "n_gold": 6
+      },
+      {
+        "pmid": "41355896",
+        "pmcid": "PMC12678156",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41446449",
+        "pmcid": "PMC12723427",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41465923",
+        "pmcid": "PMC12746948",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41565167",
+        "pmcid": "PMC13131027",
+        "n_gold": 6
+      },
+      {
+        "pmid": "42147831",
+        "pmcid": "PMC13175806",
+        "n_gold": 4
+      },
+      {
+        "pmid": "42152069",
+        "pmcid": "PMC13202936",
+        "n_gold": 2
+      }
+    ]
+  },
+  "schizophrenia": {
+    "papers": 35,
+    "gold_tuples": 113,
+    "sources": [
+      {
+        "pmid": "36420692",
+        "pmcid": "PMC9685497",
+        "n_gold": 5
+      },
+      {
+        "pmid": "38238580",
+        "pmcid": "PMC10805984",
+        "n_gold": 4
+      },
+      {
+        "pmid": "38687213",
+        "pmcid": "PMC11548924",
+        "n_gold": 3
+      },
+      {
+        "pmid": "38712709",
+        "pmcid": "PMC11075124",
+        "n_gold": 3
+      },
+      {
+        "pmid": "38884998",
+        "pmcid": "PMC11184458",
+        "n_gold": 2
+      },
+      {
+        "pmid": "39291442",
+        "pmcid": "PMC11669471",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39847591",
+        "pmcid": "PMC11778676",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39878158",
+        "pmcid": "PMC11776059",
+        "n_gold": 9
+      },
+      {
+        "pmid": "39982759",
+        "pmcid": "PMC12809860",
+        "n_gold": 1
+      },
+      {
+        "pmid": "40132853",
+        "pmcid": "PMC11934411",
+        "n_gold": 8
+      },
+      {
+        "pmid": "40175961",
+        "pmcid": "PMC11967139",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40561150",
+        "pmcid": "PMC12194150",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40562419",
+        "pmcid": "PMC12197409",
+        "n_gold": 7
+      },
+      {
+        "pmid": "40795331",
+        "pmcid": "PMC12421877",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40810362",
+        "pmcid": "PMC12451550",
+        "n_gold": 5
+      },
+      {
+        "pmid": "40831006",
+        "pmcid": "PMC13051213",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40874256",
+        "pmcid": "PMC13040581",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41032294",
+        "pmcid": "PMC12489793",
+        "n_gold": 1
+      },
+      {
+        "pmid": "41184790",
+        "pmcid": "PMC12581406",
+        "n_gold": 1
+      },
+      {
+        "pmid": "41202024",
+        "pmcid": "PMC12594330",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41214606",
+        "pmcid": "PMC12604183",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41258021",
+        "pmcid": "PMC12669661",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41551921",
+        "pmcid": "PMC12809487",
+        "n_gold": 1
+      },
+      {
+        "pmid": "41578523",
+        "pmcid": "PMC12851701",
+        "n_gold": 7
+      },
+      {
+        "pmid": "41662051",
+        "pmcid": "PMC12798482",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41911338",
+        "pmcid": "PMC13035033",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41963307",
+        "pmcid": "PMC13183974",
+        "n_gold": 6
+      },
+      {
+        "pmid": "41981605",
+        "pmcid": "PMC13202954",
+        "n_gold": 3
+      },
+      {
+        "pmid": "42036735",
+        "pmcid": "PMC13122169",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42051257",
+        "pmcid": "PMC13111808",
+        "n_gold": 1
+      },
+      {
+        "pmid": "42088081",
+        "pmcid": "PMC13137009",
+        "n_gold": 1
+      },
+      {
+        "pmid": "42138038",
+        "pmcid": "PMC13200142",
+        "n_gold": 3
+      },
+      {
+        "pmid": "42179170",
+        "pmcid": "PMC13202607",
+        "n_gold": 3
+      },
+      {
+        "pmid": "42187879",
+        "pmcid": "PMC13206110",
+        "n_gold": 5
+      },
+      {
+        "pmid": "42238556",
+        "pmcid": "PMC13229256",
+        "n_gold": 2
+      }
+    ]
+  },
+  "cirrhosis": {
+    "papers": 38,
+    "gold_tuples": 155,
+    "sources": [
+      {
+        "pmid": "37069601",
+        "pmcid": "PMC10111768",
+        "n_gold": 5
+      },
+      {
+        "pmid": "37709823",
+        "pmcid": "PMC10502141",
+        "n_gold": 5
+      },
+      {
+        "pmid": "38395452",
+        "pmcid": "PMC10895241",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39151488",
+        "pmcid": "PMC11332775",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39469976",
+        "pmcid": "PMC11891376",
+        "n_gold": 5
+      },
+      {
+        "pmid": "39589821",
+        "pmcid": "PMC11658019",
+        "n_gold": 2
+      },
+      {
+        "pmid": "39605302",
+        "pmcid": "PMC11887417",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39740197",
+        "pmcid": "PMC12090826",
+        "n_gold": 6
+      },
+      {
+        "pmid": "39834816",
+        "pmcid": "PMC11743941",
+        "n_gold": 7
+      },
+      {
+        "pmid": "40052723",
+        "pmcid": "PMC11886985",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40060703",
+        "pmcid": "PMC11890005",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40131017",
+        "pmcid": "PMC11936601",
+        "n_gold": 5
+      },
+      {
+        "pmid": "40149098",
+        "pmcid": "PMC11939653",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40298453",
+        "pmcid": "PMC12039759",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40378134",
+        "pmcid": "PMC12083811",
+        "n_gold": 7
+      },
+      {
+        "pmid": "40606931",
+        "pmcid": "PMC12210167",
+        "n_gold": 6
+      },
+      {
+        "pmid": "40755561",
+        "pmcid": "PMC12314439",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40948345",
+        "pmcid": "PMC12638274",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41362712",
+        "pmcid": "PMC12682120",
+        "n_gold": 6
+      },
+      {
+        "pmid": "41368107",
+        "pmcid": "PMC12683348",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41381601",
+        "pmcid": "PMC12819376",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41518144",
+        "pmcid": "PMC12934547",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41526898",
+        "pmcid": "PMC12888456",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41537124",
+        "pmcid": "PMC12796001",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41551643",
+        "pmcid": "PMC12810981",
+        "n_gold": 8
+      },
+      {
+        "pmid": "41589201",
+        "pmcid": "PMC12831988",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41598353",
+        "pmcid": "PMC12842476",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41604551",
+        "pmcid": "PMC12935183",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41676839",
+        "pmcid": "PMC12889016",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41742714",
+        "pmcid": "PMC13062626",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41756622",
+        "pmcid": "PMC12932184",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41774736",
+        "pmcid": "PMC12956121",
+        "n_gold": 8
+      },
+      {
+        "pmid": "41846485",
+        "pmcid": "PMC12994423",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41861676",
+        "pmcid": "PMC13019541",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41890498",
+        "pmcid": "PMC13016411",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41929924",
+        "pmcid": "PMC13043178",
+        "n_gold": 7
+      },
+      {
+        "pmid": "41965603",
+        "pmcid": "PMC13214368",
+        "n_gold": 5
+      },
+      {
+        "pmid": "42154843",
+        "pmcid": "PMC13186090",
+        "n_gold": 5
+      }
+    ]
+  },
+  "osteoarthritis": {
+    "papers": 39,
+    "gold_tuples": 120,
+    "sources": [
+      {
+        "pmid": "37689698",
+        "pmcid": "PMC10492359",
+        "n_gold": 6
+      },
+      {
+        "pmid": "37770969",
+        "pmcid": "PMC10540335",
+        "n_gold": 7
+      },
+      {
+        "pmid": "37875874",
+        "pmcid": "PMC10594886",
+        "n_gold": 2
+      },
+      {
+        "pmid": "38249972",
+        "pmcid": "PMC10799559",
+        "n_gold": 4
+      },
+      {
+        "pmid": "38312845",
+        "pmcid": "PMC10838505",
+        "n_gold": 2
+      },
+      {
+        "pmid": "38361326",
+        "pmcid": "PMC10869882",
+        "n_gold": 6
+      },
+      {
+        "pmid": "38477639",
+        "pmcid": "PMC10936230",
+        "n_gold": 2
+      },
+      {
+        "pmid": "38635272",
+        "pmcid": "PMC12503430",
+        "n_gold": 4
+      },
+      {
+        "pmid": "39050185",
+        "pmcid": "PMC11264161",
+        "n_gold": 5
+      },
+      {
+        "pmid": "39050250",
+        "pmcid": "PMC11266086",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39153411",
+        "pmcid": "PMC11378937",
+        "n_gold": 3
+      },
+      {
+        "pmid": "39296542",
+        "pmcid": "PMC11408317",
+        "n_gold": 2
+      },
+      {
+        "pmid": "39691171",
+        "pmcid": "PMC11650599",
+        "n_gold": 4
+      },
+      {
+        "pmid": "39754240",
+        "pmcid": "PMC11699812",
+        "n_gold": 4
+      },
+      {
+        "pmid": "39830136",
+        "pmcid": "PMC11741093",
+        "n_gold": 4
+      },
+      {
+        "pmid": "39967932",
+        "pmcid": "PMC11831344",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40041811",
+        "pmcid": "PMC11875737",
+        "n_gold": 4
+      },
+      {
+        "pmid": "40101074",
+        "pmcid": "PMC11922419",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40192902",
+        "pmcid": "PMC11976339",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40584103",
+        "pmcid": "PMC12202467",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40660521",
+        "pmcid": "PMC12263018",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40951711",
+        "pmcid": "PMC12427084",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41005996",
+        "pmcid": "PMC12479139",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41156020",
+        "pmcid": "PMC12565209",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41288021",
+        "pmcid": "PMC12756660",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41403295",
+        "pmcid": "PMC12716035",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41545314",
+        "pmcid": "PMC12815097",
+        "n_gold": 1
+      },
+      {
+        "pmid": "41588802",
+        "pmcid": "PMC12916877",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41656757",
+        "pmcid": "PMC12886737",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41659727",
+        "pmcid": "PMC12872483",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41971059",
+        "pmcid": "PMC13066308",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42088799",
+        "pmcid": "PMC13138861",
+        "n_gold": 1
+      },
+      {
+        "pmid": "42097689",
+        "pmcid": "PMC13157726",
+        "n_gold": 1
+      },
+      {
+        "pmid": "42117038",
+        "pmcid": "PMC13157637",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42128530",
+        "pmcid": "PMC13182472",
+        "n_gold": 3
+      },
+      {
+        "pmid": "42175455",
+        "pmcid": "PMC13201063",
+        "n_gold": 5
+      },
+      {
+        "pmid": "42182892",
+        "pmcid": "PMC13197706",
+        "n_gold": 4
+      },
+      {
+        "pmid": "42226274",
+        "pmcid": "PMC13227744",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42227249",
+        "pmcid": "PMC13238973",
+        "n_gold": 2
+      }
+    ]
+  },
+  "covid19": {
+    "papers": 38,
+    "gold_tuples": 154,
+    "sources": [
+      {
+        "pmid": "39238554",
+        "pmcid": "PMC11372431",
+        "n_gold": 13
+      },
+      {
+        "pmid": "40457282",
+        "pmcid": "PMC12128546",
+        "n_gold": 5
+      },
+      {
+        "pmid": "40547754",
+        "pmcid": "PMC12178481",
+        "n_gold": 6
+      },
+      {
+        "pmid": "40552814",
+        "pmcid": "PMC12327002",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40709071",
+        "pmcid": "PMC12287540",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40760590",
+        "pmcid": "PMC12323952",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40872842",
+        "pmcid": "PMC12390715",
+        "n_gold": 8
+      },
+      {
+        "pmid": "41029298",
+        "pmcid": "PMC12486572",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41057045",
+        "pmcid": "PMC12541261",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41103058",
+        "pmcid": "PMC12531351",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41125284",
+        "pmcid": "PMC12548583",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41166242",
+        "pmcid": "PMC12574930",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41202024",
+        "pmcid": "PMC12594330",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41254702",
+        "pmcid": "PMC12625252",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41315372",
+        "pmcid": "PMC12663452",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41337152",
+        "pmcid": "PMC12674521",
+        "n_gold": 7
+      },
+      {
+        "pmid": "41424145",
+        "pmcid": "PMC12724176",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41441037",
+        "pmcid": "PMC12734589",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41461919",
+        "pmcid": "PMC12848143",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41517591",
+        "pmcid": "PMC12787065",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41538482",
+        "pmcid": "PMC12981318",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41562601",
+        "pmcid": "PMC12950626",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41579287",
+        "pmcid": "PMC12975842",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41583170",
+        "pmcid": "PMC12828434",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41601566",
+        "pmcid": "PMC12834015",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41670545",
+        "pmcid": "PMC13023099",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41779712",
+        "pmcid": "PMC12959685",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41805689",
+        "pmcid": "PMC12975005",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41805707",
+        "pmcid": "PMC12974802",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41845376",
+        "pmcid": "PMC13069708",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41891406",
+        "pmcid": "PMC13101009",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41900987",
+        "pmcid": "PMC13027493",
+        "n_gold": 6
+      },
+      {
+        "pmid": "41918076",
+        "pmcid": "PMC13214460",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41993579",
+        "pmcid": "PMC13079291",
+        "n_gold": 3
+      },
+      {
+        "pmid": "42074919",
+        "pmcid": "PMC13116666",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42078593",
+        "pmcid": "PMC13132339",
+        "n_gold": 5
+      },
+      {
+        "pmid": "42141891",
+        "pmcid": "PMC13090756",
+        "n_gold": 4
+      },
+      {
+        "pmid": "42216355",
+        "pmcid": "PMC13225590",
+        "n_gold": 5
+      }
+    ]
+  },
+  "sepsis": {
+    "papers": 40,
+    "gold_tuples": 121,
+    "sources": [
+      {
+        "pmid": "39891147",
+        "pmcid": "PMC11783956",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40329359",
+        "pmcid": "PMC12057179",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40329392",
+        "pmcid": "PMC12057087",
+        "n_gold": 5
+      },
+      {
+        "pmid": "40597594",
+        "pmcid": "PMC12211793",
+        "n_gold": 5
+      },
+      {
+        "pmid": "40739606",
+        "pmcid": "PMC12312543",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40821221",
+        "pmcid": "PMC12352523",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40844800",
+        "pmcid": "PMC12377302",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40924910",
+        "pmcid": "PMC12422772",
+        "n_gold": 3
+      },
+      {
+        "pmid": "40944015",
+        "pmcid": "PMC12429649",
+        "n_gold": 2
+      },
+      {
+        "pmid": "40953281",
+        "pmcid": "PMC12440473",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41010954",
+        "pmcid": "PMC12471783",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41013406",
+        "pmcid": "PMC12465841",
+        "n_gold": 5
+      },
+      {
+        "pmid": "41059558",
+        "pmcid": "PMC12993260",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41140695",
+        "pmcid": "PMC12546090",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41210535",
+        "pmcid": "PMC12592957",
+        "n_gold": 4
+      },
+      {
+        "pmid": "41299283",
+        "pmcid": "PMC12771878",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41363997",
+        "pmcid": "PMC12955956",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41375849",
+        "pmcid": "PMC12693273",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41412628",
+        "pmcid": "PMC12718594",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41510425",
+        "pmcid": "PMC12776652",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41510515",
+        "pmcid": "PMC12778877",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41523745",
+        "pmcid": "PMC12782002",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41568715",
+        "pmcid": "PMC12833118",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41668728",
+        "pmcid": "PMC12883643",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41678431",
+        "pmcid": "PMC13038285",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41756379",
+        "pmcid": "PMC12932585",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41846301",
+        "pmcid": "PMC13003857",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41883561",
+        "pmcid": "PMC13012147",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41897577",
+        "pmcid": "PMC13025449",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41918075",
+        "pmcid": "PMC13159333",
+        "n_gold": 8
+      },
+      {
+        "pmid": "41925893",
+        "pmcid": "PMC13167902",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41938902",
+        "pmcid": "PMC13045545",
+        "n_gold": 2
+      },
+      {
+        "pmid": "41953594",
+        "pmcid": "PMC13053473",
+        "n_gold": 3
+      },
+      {
+        "pmid": "41976983",
+        "pmcid": "PMC13074012",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42035916",
+        "pmcid": "PMC13202563",
+        "n_gold": 5
+      },
+      {
+        "pmid": "42073385",
+        "pmcid": "PMC13117160",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42181642",
+        "pmcid": "PMC13191741",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42183751",
+        "pmcid": "PMC13201038",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42205984",
+        "pmcid": "PMC13201489",
+        "n_gold": 2
+      },
+      {
+        "pmid": "42256408",
+        "pmcid": "PMC13236955",
+        "n_gold": 2
+      }
+    ]
+  }
+}
