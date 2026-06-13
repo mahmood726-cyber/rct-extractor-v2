@@ -1,0 +1,1263 @@
+{
+  "tolerances": {
+    "pt_abs": 0.02,
+    "pt_rel": 0.02,
+    "ci_abs": 0.03,
+    "ci_rel": 0.03
+  },
+  "papers": [
+    {
+      "pmcid": "PMC11412571",
+      "pmid": "38085977",
+      "specialty": "plastic_reconstructive_surgery",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 14,
+        "chars": 57817,
+        "secs": 0.15
+      },
+      "n_gold": 1,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 1.93,
+                "ci_lower": 1.01,
+                "ci_upper": 3.67,
+                "ci_level": 0.95,
+                "source_text": "odds ratio, 1.93 [95% CI, 1.01 to 3.67",
+                "quote_context": "d higher (odds ratio, 1.93 [95% CI, 1.01 to 3.67]; P",
+                "harvest_pattern": "odds\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\....",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 1.93,
+                "ci_lower": 1.01,
+                "ci_upper": 3.67,
+                "source_text": "odds ratio, 1.93 [95% CI, 1.01 to 3.67"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 1.93,
+                "ci_lower": 1.01,
+                "ci_upper": 3.67,
+                "ci_level": 0.95,
+                "source_text": "odds ratio, 1.93 [95% CI, 1.01 to 3.67",
+                "quote_context": "d higher (odds ratio, 1.93 [95% CI, 1.01 to 3.67]; P",
+                "harvest_pattern": "odds\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\....",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 1.93,
+                "ci_lower": 1.01,
+                "ci_upper": 3.67,
+                "source_text": "OR, \n1.93 [95% CI, 1.01-3.67]"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        }
+      }
+    },
+    {
+      "pmcid": "PMC12705774",
+      "pmid": "41107508",
+      "specialty": "plastic_reconstructive_surgery",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 11,
+        "chars": 47169,
+        "secs": 0.1
+      },
+      "n_gold": 1,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 1.42,
+                "ci_lower": 1.11,
+                "ci_upper": 1.82,
+                "ci_level": 0.95,
+                "source_text": "HR = 1.42, 95% CI 1.11-1.82",
+                "quote_context": ".99 days, HR = 1.42, 95% CI 1.11-1.82, P =",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 1.42,
+                "ci_lower": 1.11,
+                "ci_upper": 1.82,
+                "source_text": "HR = 1.42; 95% CI 1.11-1.82"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 3,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 1.42,
+                "ci_lower": 1.11,
+                "ci_upper": 1.82,
+                "ci_level": 0.95,
+                "source_text": "HR = 1.42, 95% CI 1.11-1.82",
+                "quote_context": ".99 days, HR = 1.42, 95% CI 1.11-1.82, P =",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 1.42,
+                "ci_lower": 1.11,
+                "ci_upper": 1.82,
+                "source_text": "HR = 1.42; 95% CI 1.11-1.82"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 2
+        }
+      }
+    },
+    {
+      "pmcid": "PMC11449516",
+      "pmid": "39045920",
+      "specialty": "plastic_reconstructive_surgery",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 8,
+        "chars": 30924,
+        "secs": 0.05
+      },
+      "n_gold": 1,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.046,
+                "ci_lower": 0.007,
+                "ci_upper": 0.323,
+                "ci_level": 0.95,
+                "source_text": "RR = 0.046; 95% CI: 0.007-0.323",
+                "quote_context": "chymosis (RR = 0.046; 95% CI: 0.007-0.323). On",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.046,
+                "ci_lower": 0.007,
+                "ci_upper": 0.323,
+                "source_text": "RR = 0.046; 95% CI: 0.007-0.323"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.046,
+                "ci_lower": 0.007,
+                "ci_upper": 0.323,
+                "ci_level": 0.95,
+                "source_text": "RR = 0.046; 95% CI: 0.007-0.323",
+                "quote_context": "chymosis (RR = 0.046; 95% CI: 0.007-0.323). On",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.046,
+                "ci_lower": 0.007,
+                "ci_upper": 0.323,
+                "source_text": "relative risk of 0.046 (95% CI 0.007-0.323"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        }
+      }
+    },
+    {
+      "pmcid": "PMC10036439",
+      "pmid": "36786946",
+      "specialty": "plastic_reconstructive_surgery",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 15,
+        "chars": 52198,
+        "secs": 0.1
+      },
+      "n_gold": 3,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 3,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 0.72,
+                "ci_lower": 0.12,
+                "ci_upper": 4.28,
+                "ci_level": 0.95,
+                "source_text": "HR = 0.72; 95% CI 0.12-4.28",
+                "quote_context": "ol group (HR = 0.72; 95% CI 0.12-4.28; p =",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 0.72,
+                "ci_lower": 0.12,
+                "ci_upper": 4.28,
+                "source_text": "HR = 0.72; 95% CI 0.12-4.28"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 1.37,
+                "ci_lower": 0.59,
+                "ci_upper": 3.19,
+                "ci_level": 0.95,
+                "source_text": "HR = 1.37 95% CI 0.59-3.19",
+                "quote_context": "ol group (HR = 1.37 95% CI 0.59-3.19; p =",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 1.37,
+                "ci_lower": 0.59,
+                "ci_upper": 3.19,
+                "source_text": "HR = 1.37 95% CI 0.59-3.19"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 1.002,
+                "ci_lower": 0.57,
+                "ci_upper": 1.75,
+                "ci_level": 0.95,
+                "source_text": "RR = 1.002; 95% CI 0.57-1.75",
+                "quote_context": "ol group (RR = 1.002; 95% CI 0.57-1.75; p =",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 1.002,
+                "ci_lower": 0.57,
+                "ci_upper": 1.75,
+                "source_text": "RR = 1.002; 95% CI 0.57-1.75"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 3,
+            "pt_exact": 3,
+            "pt_tol": 3,
+            "ci_lo_exact": 3,
+            "ci_lo_tol": 3,
+            "ci_hi_exact": 3,
+            "ci_hi_tol": 3,
+            "matched_pairs": 3
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 5,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 0.72,
+                "ci_lower": 0.12,
+                "ci_upper": 4.28,
+                "ci_level": 0.95,
+                "source_text": "HR = 0.72; 95% CI 0.12-4.28",
+                "quote_context": "ol group (HR = 0.72; 95% CI 0.12-4.28; p =",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 0.72,
+                "ci_lower": 0.12,
+                "ci_upper": 4.28,
+                "source_text": "HR = 0.72; 95% CI 0.12-4.28"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 1.37,
+                "ci_lower": 0.59,
+                "ci_upper": 3.19,
+                "ci_level": 0.95,
+                "source_text": "HR = 1.37 95% CI 0.59-3.19",
+                "quote_context": "ol group (HR = 1.37 95% CI 0.59-3.19; p =",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 1.37,
+                "ci_lower": 0.59,
+                "ci_upper": 3.19,
+                "source_text": "HR = 1.37 95% CI 0.59-3.19"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 1.002,
+                "ci_lower": 0.57,
+                "ci_upper": 1.75,
+                "ci_level": 0.95,
+                "source_text": "RR = 1.002; 95% CI 0.57-1.75",
+                "quote_context": "ol group (RR = 1.002; 95% CI 0.57-1.75; p =",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 1.002,
+                "ci_lower": 0.57,
+                "ci_upper": 1.75,
+                "source_text": "RR = 1.002; 95% CI 0.57-1.75"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 3,
+            "pt_exact": 3,
+            "pt_tol": 3,
+            "ci_lo_exact": 3,
+            "ci_lo_tol": 3,
+            "ci_hi_exact": 3,
+            "ci_hi_tol": 3,
+            "matched_pairs": 3
+          },
+          "n_extra": 2
+        }
+      }
+    },
+    {
+      "pmcid": "PMC13112022",
+      "pmid": "41954954",
+      "specialty": "plastic_reconstructive_surgery",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 9,
+        "chars": 39427,
+        "secs": 0.09
+      },
+      "n_gold": 0,
+      "n_out_of_scope": 2,
+      "out_of_scope": [
+        {
+          "effect_type": "HR",
+          "point_estimate": 2.27,
+          "reason": "propensity score"
+        },
+        {
+          "effect_type": "HR",
+          "point_estimate": 1.02,
+          "reason": "propensity score"
+        }
+      ],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 0,
+          "per_gold": [],
+          "field": {
+            "type_exact": 0,
+            "pt_exact": 0,
+            "pt_tol": 0,
+            "ci_lo_exact": 0,
+            "ci_lo_tol": 0,
+            "ci_hi_exact": 0,
+            "ci_hi_tol": 0,
+            "matched_pairs": 0
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 4,
+          "per_gold": [],
+          "field": {
+            "type_exact": 0,
+            "pt_exact": 0,
+            "pt_tol": 0,
+            "ci_lo_exact": 0,
+            "ci_lo_tol": 0,
+            "ci_hi_exact": 0,
+            "ci_hi_tol": 0,
+            "matched_pairs": 0
+          },
+          "n_extra": 4
+        }
+      }
+    },
+    {
+      "pmcid": "PMC9810346",
+      "pmid": "35099283",
+      "specialty": "plastic_reconstructive_surgery",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 11,
+        "chars": 43043,
+        "secs": 0.1
+      },
+      "n_gold": 1,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.41,
+                "ci_lower": 0.13,
+                "ci_upper": 0.81,
+                "ci_level": 0.95,
+                "source_text": "relative risk = 0.41; 95% CI, 0.13-0.81",
+                "quote_context": ", n = 23; relative risk = 0.41; 95% CI, 0.13-0.81; abs",
+                "harvest_pattern": "relative\\s+risk[^.\\n]{0,55}?(?P<pt>\\d+(?...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.41,
+                "ci_lower": 0.13,
+                "ci_upper": 0.81,
+                "source_text": "relative risk = 0.41; 95% CI, 0.13-0.81"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 3,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.41,
+                "ci_lower": 0.13,
+                "ci_upper": 0.81,
+                "ci_level": 0.95,
+                "source_text": "relative risk = 0.41; 95% CI, 0.13-0.81",
+                "quote_context": ", n = 23; relative risk = 0.41; 95% CI, 0.13-0.81; abs",
+                "harvest_pattern": "relative\\s+risk[^.\\n]{0,55}?(?P<pt>\\d+(?...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.41,
+                "ci_lower": 0.13,
+                "ci_upper": 0.81,
+                "source_text": "relative risk = 0.41; 95% CI, 0.13-0.81"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 2
+        }
+      }
+    },
+    {
+      "pmcid": "PMC11184173",
+      "pmid": "38885989",
+      "specialty": "plastic_reconstructive_surgery",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 10,
+        "chars": 59977,
+        "secs": 0.1
+      },
+      "n_gold": 0,
+      "n_out_of_scope": 1,
+      "out_of_scope": [
+        {
+          "effect_type": "OR",
+          "point_estimate": 1.682,
+          "reason": "cost-effectiveness"
+        }
+      ],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 1,
+          "per_gold": [],
+          "field": {
+            "type_exact": 0,
+            "pt_exact": 0,
+            "pt_tol": 0,
+            "ci_lo_exact": 0,
+            "ci_lo_tol": 0,
+            "ci_hi_exact": 0,
+            "ci_hi_tol": 0,
+            "matched_pairs": 0
+          },
+          "n_extra": 1
+        },
+        "pdf_raw": {
+          "n_extracted": 2,
+          "per_gold": [],
+          "field": {
+            "type_exact": 0,
+            "pt_exact": 0,
+            "pt_tol": 0,
+            "ci_lo_exact": 0,
+            "ci_lo_tol": 0,
+            "ci_hi_exact": 0,
+            "ci_hi_tol": 0,
+            "matched_pairs": 0
+          },
+          "n_extra": 2
+        }
+      }
+    },
+    {
+      "pmcid": "PMC6972637",
+      "pmid": "31509319",
+      "specialty": "plastic_reconstructive_surgery",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 6,
+        "chars": 28005,
+        "secs": 0.07
+      },
+      "n_gold": 1,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 2.37,
+                "ci_lower": 1.75,
+                "ci_upper": 3.22,
+                "ci_level": 0.95,
+                "source_text": "hazard ratio 2.37; 95% confidence interval: (1.75-3.22",
+                "quote_context": "y faster (hazard ratio 2.37; 95% confidence interval: (1.75-3.22; p =",
+                "harvest_pattern": "hazard\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 2.37,
+                "ci_lower": 1.75,
+                "ci_upper": 3.22,
+                "source_text": "hazard ratio 2.37; 95% CI: (1.75-3.22"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 2,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 2.37,
+                "ci_lower": 1.75,
+                "ci_upper": 3.22,
+                "ci_level": 0.95,
+                "source_text": "hazard ratio 2.37; 95% confidence interval: (1.75-3.22",
+                "quote_context": "y faster (hazard ratio 2.37; 95% confidence interval: (1.75-3.22; p =",
+                "harvest_pattern": "hazard\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 2.37,
+                "ci_lower": 1.75,
+                "ci_upper": 3.21,
+                "source_text": "hazard ratio 2.37 (95% CI: 1.75-3.21"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 0,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 1
+        }
+      }
+    },
+    {
+      "pmcid": "PMC7873313",
+      "pmid": "33140515",
+      "specialty": "plastic_reconstructive_surgery",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 11,
+        "chars": 28529,
+        "secs": 0.08
+      },
+      "n_gold": 1,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 2,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 5.813,
+                "ci_lower": 0.647,
+                "ci_upper": 52.208,
+                "ci_level": 0.95,
+                "source_text": "HR, 5.813; 95% CI, 0.647-52.208",
+                "quote_context": "nd 84.4% (HR, 5.813; 95% CI, 0.647-52.208; p =",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 5.813,
+                "ci_lower": 0.647,
+                "ci_upper": 52.208,
+                "source_text": "HR, 5.813; 95% CI, 0.647-52.208"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 1
+        },
+        "pdf_raw": {
+          "n_extracted": 3,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 5.813,
+                "ci_lower": 0.647,
+                "ci_upper": 52.208,
+                "ci_level": 0.95,
+                "source_text": "HR, 5.813; 95% CI, 0.647-52.208",
+                "quote_context": "nd 84.4% (HR, 5.813; 95% CI, 0.647-52.208; p =",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 5.813,
+                "ci_lower": 0.647,
+                "ci_upper": 52.208,
+                "source_text": "HR,\n5.813; 95% CI, 0.647-52.208"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 2
+        }
+      }
+    },
+    {
+      "pmcid": "PMC12846739",
+      "pmid": "40832681",
+      "specialty": "plastic_reconstructive_surgery",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 11,
+        "chars": 44720,
+        "secs": 0.08
+      },
+      "n_gold": 1,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 4.0,
+                "ci_lower": 1.1,
+                "ci_upper": 14.4,
+                "ci_level": 0.95,
+                "source_text": "OR: 4.0, 95% CI: 1.1-14.4",
+                "quote_context": "balloon (OR: 4.0, 95% CI: 1.1-14.4) wer",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 4.0,
+                "ci_lower": 1.1,
+                "ci_upper": 14.4,
+                "source_text": "OR: 4.0; 95% CI: 1.1-14.4"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 2,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 4.0,
+                "ci_lower": 1.1,
+                "ci_upper": 14.4,
+                "ci_level": 0.95,
+                "source_text": "OR: 4.0, 95% CI: 1.1-14.4",
+                "quote_context": "balloon (OR: 4.0, 95% CI: 1.1-14.4) wer",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 4.0,
+                "ci_lower": 1.1,
+                "ci_upper": 14.4,
+                "source_text": "OR: 4.0; 95% CI:  1.1-14.4"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 1
+        }
+      }
+    },
+    {
+      "pmcid": "PMC6825781",
+      "pmid": "30912414",
+      "specialty": "plastic_reconstructive_surgery",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 6,
+        "chars": 27777,
+        "secs": 0.06
+      },
+      "n_gold": 2,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 2,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 0.411,
+                "ci_lower": 0.201,
+                "ci_upper": 0.84,
+                "ci_level": 0.95,
+                "source_text": "HR=0.411, 95%CI: 0.201-0.840",
+                "quote_context": "p=0.048; HR=0.411, 95%CI: 0.201-0.840). Di",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 0.411,
+                "ci_lower": 0.201,
+                "ci_upper": 0.84,
+                "source_text": "HR=0.411; 95% CI: 0.201-0.840"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 0.439,
+                "ci_lower": 0.222,
+                "ci_upper": 0.869,
+                "ci_level": 0.95,
+                "source_text": "HR= 0.439, 95%CI: 0.222-0.869",
+                "quote_context": "p=0.044, HR= 0.439, 95%CI: 0.222-0.869). Co",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 0.439,
+                "ci_lower": 0.222,
+                "ci_upper": 0.869,
+                "source_text": "HR= 0.439; 95% CI: 0.222-0.869"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 7,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 0.411,
+                "ci_lower": 0.201,
+                "ci_upper": 0.84,
+                "ci_level": 0.95,
+                "source_text": "HR=0.411, 95%CI: 0.201-0.840",
+                "quote_context": "p=0.048; HR=0.411, 95%CI: 0.201-0.840). Di",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 0.411,
+                "ci_lower": 0.201,
+                "ci_upper": 0.84,
+                "source_text": "HR=0.411; 95% CI:  0.201-0.840"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "HR",
+                "point_estimate": 0.439,
+                "ci_lower": 0.222,
+                "ci_upper": 0.869,
+                "ci_level": 0.95,
+                "source_text": "HR= 0.439, 95%CI: 0.222-0.869",
+                "quote_context": "p=0.044, HR= 0.439, 95%CI: 0.222-0.869). Co",
+                "harvest_pattern": "(?<![A-Za-z])a?HR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "HR",
+                "point": 0.439,
+                "ci_lower": 0.222,
+                "ci_upper": 0.869,
+                "source_text": "HR= 0.439; 95% CI: 0.222-0.869"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 5
+        }
+      }
+    },
+    {
+      "pmcid": "PMC10521581",
+      "pmid": "37749511",
+      "specialty": "plastic_reconstructive_surgery",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 7,
+        "chars": 31734,
+        "secs": 0.09
+      },
+      "n_gold": 1,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.26,
+                "ci_lower": 0.09,
+                "ci_upper": 0.71,
+                "ci_level": 0.95,
+                "source_text": "odds ratio 0.26, 95% confidence interval 0.09-0.71",
+                "quote_context": "ficantly (odds ratio 0.26, 95% confidence interval 0.09-0.71, P =",
+                "harvest_pattern": "odds\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\....",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.26,
+                "ci_lower": 0.09,
+                "ci_upper": 0.71,
+                "source_text": "odds ratio 0.26, 95% CI 0.09-0.71"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.26,
+                "ci_lower": 0.09,
+                "ci_upper": 0.71,
+                "ci_level": 0.95,
+                "source_text": "odds ratio 0.26, 95% confidence interval 0.09-0.71",
+                "quote_context": "ficantly (odds ratio 0.26, 95% confidence interval 0.09-0.71, P =",
+                "harvest_pattern": "odds\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\....",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.26,
+                "ci_lower": 0.09,
+                "ci_upper": 0.71,
+                "source_text": "odds ratio 0.26, 95% CI 0.09-0.71"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        }
+      }
+    },
+    {
+      "pmcid": "PMC5683062",
+      "pmid": "28952139",
+      "specialty": "plastic_reconstructive_surgery",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 6,
+        "chars": 22899,
+        "secs": 0.11
+      },
+      "n_gold": 1,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 2.8,
+                "ci_lower": 1.2,
+                "ci_upper": 6.8,
+                "ci_level": 0.95,
+                "source_text": "relative risk, 2.8; 95% CI, 1.2 to 6.8",
+                "quote_context": "ectively; relative risk, 2.8; 95% CI, 1.2 to 6.8). Co",
+                "harvest_pattern": "relative\\s+risk[^.\\n]{0,55}?(?P<pt>\\d+(?...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 2.8,
+                "ci_lower": 1.2,
+                "ci_upper": 6.8,
+                "source_text": "relative risk, 2.8; 95% CI, 1.2 to 6.8"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 2.8,
+                "ci_lower": 1.2,
+                "ci_upper": 6.8,
+                "ci_level": 0.95,
+                "source_text": "relative risk, 2.8; 95% CI, 1.2 to 6.8",
+                "quote_context": "ectively; relative risk, 2.8; 95% CI, 1.2 to 6.8). Co",
+                "harvest_pattern": "relative\\s+risk[^.\\n]{0,55}?(?P<pt>\\d+(?...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 2.8,
+                "ci_lower": 1.2,
+                "ci_upper": 6.8,
+                "source_text": "relative risk, 2.8; 95% CI, 1.2 to 6.8"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        }
+      }
+    }
+  ]
+}
