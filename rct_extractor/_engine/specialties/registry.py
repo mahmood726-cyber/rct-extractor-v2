@@ -395,6 +395,15 @@ from .kidney_transplant import (
     detect_kidney_transplant_subspecialty,
     normalize_kidney_transplant_endpoint
 )
+from .palliative_care import (
+    PALLIATIVE_CARE_ENDPOINTS,
+    SYMPTOMS_PATTERNS as PC_SYMPTOMS_PATTERNS,
+    QUALITY_OF_LIFE_PATTERNS as PC_QUALITY_OF_LIFE_PATTERNS,
+    CARE_UTILISATION_PATTERNS as PC_CARE_UTILISATION_PATTERNS,
+    SURVIVAL_PATTERNS as PC_SURVIVAL_PATTERNS,
+    detect_palliative_care_subspecialty,
+    normalize_palliative_care_endpoint
+)
 
 from .pulmonary_hypertension import (
     PULMONARY_HYPERTENSION_ENDPOINTS,
@@ -1694,6 +1703,18 @@ SPECIALTY_REGISTRY = {
             'complications': KT_COMPLICATIONS_PATTERNS
         }
     },
+    'palliative_care': {
+        'subspecialties': ['symptoms', 'quality_of_life', 'care_utilisation', 'survival'],
+        'detection_function': detect_palliative_care_subspecialty,
+        'normalizer': normalize_palliative_care_endpoint,
+        'endpoints': PALLIATIVE_CARE_ENDPOINTS,
+        'patterns': {
+            'symptoms': PC_SYMPTOMS_PATTERNS,
+            'quality_of_life': PC_QUALITY_OF_LIFE_PATTERNS,
+            'care_utilisation': PC_CARE_UTILISATION_PATTERNS,
+            'survival': PC_SURVIVAL_PATTERNS
+        }
+    },
     'pulmonary_hypertension': {
         'subspecialties': ['functional', 'hemodynamics', 'clinical_worsening', 'biomarker'],
         'detection_function': detect_pulmonary_hypertension_subspecialty,
@@ -2590,6 +2611,15 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'living[- ](?:donor|related)\s+(?:kidney|renal)|deceased[- ]donor',
             r'immunosuppress(?:ion|ive)\s+(?:regimen|therapy)',
         ],
+        'palliative_care': [
+            r'palliative\s+care', r'end[- ]of[- ]life\s+care|end[- ]of[- ]life',
+            r'hospice(?:\s+care)?', r'terminally\s+ill|terminal\s+(?:care|illness)',
+            r'life[- ]limiting\s+illness', r'advance\s+care\s+planning|advance\s+directive',
+            r'place\s+of\s+death|death\s+at\s+home|home\s+death',
+            r'aggressive\s+end[- ]of[- ]life\s+care|chemotherapy\s+near\s+(?:the\s+)?end\s+of\s+life',
+            r'symptom\s+burden|edmonton\s+symptom\s+assessment',
+            r'supportive\s+care\s+in\s+advanced|last\s+(?:days|weeks)\s+of\s+life',
+        ],
         'pulmonary_hypertension': [
             r'pulmonary\s+(?:arterial\s+)?hypertension', r'\bpah\b',
             r'pulmonary\s+vascular\s+resistance|\bpvr\b',
@@ -3158,6 +3188,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'kidney_transplant':
         subspecialty, conf = detect_kidney_transplant_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'palliative_care':
+        subspecialty, conf = detect_palliative_care_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'pulmonary_hypertension':
         subspecialty, conf = detect_pulmonary_hypertension_subspecialty(text)
