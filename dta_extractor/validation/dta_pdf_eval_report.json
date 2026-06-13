@@ -1,0 +1,655 @@
+{
+  "n_papers_scored": 22,
+  "total_gold": 69,
+  "recovered": 64,
+  "recall": 0.9275,
+  "per_measure": {
+    "sensitivity": {
+      "recovered": 34,
+      "total": 35,
+      "recall": 0.9714
+    },
+    "specificity": {
+      "recovered": 30,
+      "total": 34,
+      "recall": 0.8824
+    }
+  },
+  "papers": [
+    {
+      "pmid": "?",
+      "pmcid": "PMC10115161",
+      "n_gold": 2,
+      "hits": [
+        {
+          "measure": "sensitivity",
+          "gold": 0.9,
+          "recovered": true
+        },
+        {
+          "measure": "specificity",
+          "gold": 0.75,
+          "recovered": true
+        }
+      ],
+      "entities": {
+        "index_test": null,
+        "reference_standard": "adults",
+        "target_condition": "significant differences when they truly existed"
+      },
+      "n_2x2_in_body": 0
+    },
+    {
+      "pmid": "?",
+      "pmcid": "PMC10365592",
+      "n_gold": 3,
+      "hits": [
+        {
+          "measure": "sensitivity",
+          "gold": 0.917,
+          "recovered": true
+        },
+        {
+          "measure": "sensitivity",
+          "gold": 0.997,
+          "recovered": true
+        },
+        {
+          "measure": "specificity",
+          "gold": 0.999,
+          "recovered": true
+        }
+      ],
+      "entities": {
+        "index_test": null,
+        "reference_standard": null,
+        "target_condition": "HIV infection earlier"
+      },
+      "n_2x2_in_body": 0
+    },
+    {
+      "pmid": "?",
+      "pmcid": "PMC10474693",
+      "n_gold": 2,
+      "hits": [
+        {
+          "measure": "sensitivity",
+          "gold": 0.941,
+          "recovered": true
+        },
+        {
+          "measure": "specificity",
+          "gold": 0.998,
+          "recovered": true
+        }
+      ],
+      "entities": {
+        "index_test": "some POC HIV",
+        "reference_standard": "laboratory-based HIV tests will be offered",
+        "target_condition": "acute human immunodeficiency virus HIV"
+      },
+      "n_2x2_in_body": 0
+    },
+    {
+      "pmid": "?",
+      "pmcid": "PMC10519166",
+      "n_gold": 9,
+      "hits": [
+        {
+          "measure": "sensitivity",
+          "gold": 0.82,
+          "recovered": true
+        },
+        {
+          "measure": "sensitivity",
+          "gold": 0.76,
+          "recovered": true
+        },
+        {
+          "measure": "sensitivity",
+          "gold": 0.73,
+          "recovered": true
+        },
+        {
+          "measure": "sensitivity",
+          "gold": 1.0,
+          "recovered": true
+        },
+        {
+          "measure": "sensitivity",
+          "gold": 0.53,
+          "recovered": true
+        },
+        {
+          "measure": "specificity",
+          "gold": 0.81,
+          "recovered": true
+        },
+        {
+          "measure": "specificity",
+          "gold": 0.95,
+          "recovered": true
+        },
+        {
+          "measure": "specificity",
+          "gold": 0.87,
+          "recovered": false
+        },
+        {
+          "measure": "specificity",
+          "gold": 0.77,
+          "recovered": true
+        }
+      ],
+      "entities": {
+        "index_test": "screening tests",
+        "reference_standard": "usual care because",
+        "target_condition": "adenomas"
+      },
+      "n_2x2_in_body": 0
+    },
+    {
+      "pmid": "?",
+      "pmcid": "PMC10758868",
+      "n_gold": 2,
+      "hits": [
+        {
+          "measure": "sensitivity",
+          "gold": 0.9605,
+          "recovered": true
+        },
+        {
+          "measure": "specificity",
+          "gold": 0.9158,
+          "recovered": true
+        }
+      ],
+      "entities": {
+        "index_test": null,
+        "reference_standard": "unvaccinated students. This analysis found",
+        "target_condition": "individual genes amongst their capsule"
+      },
+      "n_2x2_in_body": 0
+    },
+    {
+      "pmid": "?",
+      "pmcid": "PMC11324119",
+      "n_gold": 2,
+      "hits": [
+        {
+          "measure": "sensitivity",
+          "gold": 1.0,
+          "recovered": true
+        },
+        {
+          "measure": "specificity",
+          "gold": 0.9861,
+          "recovered": true
+        }
+      ],
+      "entities": {
+        "index_test": "blood-based",
+        "reference_standard": "testing",
+        "target_condition": "HIV infections"
+      },
+      "n_2x2_in_body": 0
+    },
+    {
+      "pmid": "?",
+      "pmcid": "PMC11988263",
+      "n_gold": 3,
+      "hits": [
+        {
+          "measure": "sensitivity",
+          "gold": 0.86,
+          "recovered": true
+        },
+        {
+          "measure": "specificity",
+          "gold": 0.72,
+          "recovered": true
+        },
+        {
+          "measure": "specificity",
+          "gold": 0.68,
+          "recovered": true
+        }
+      ],
+      "entities": {
+        "index_test": null,
+        "reference_standard": null,
+        "target_condition": "domains within Pfs230"
+      },
+      "n_2x2_in_body": 0
+    },
+    {
+      "pmid": "?",
+      "pmcid": "PMC12583947",
+      "n_gold": 2,
+      "hits": [
+        {
+          "measure": "sensitivity",
+          "gold": 1.0,
+          "recovered": true
+        },
+        {
+          "measure": "specificity",
+          "gold": 1.0,
+          "recovered": true
+        }
+      ],
+      "entities": {
+        "index_test": null,
+        "reference_standard": null,
+        "target_condition": "any quantifiable drug concentration"
+      },
+      "n_2x2_in_body": 0
+    },
+    {
+      "pmid": "?",
+      "pmcid": "PMC12713157",
+      "n_gold": 2,
+      "hits": [
+        {
+          "measure": "sensitivity",
+          "gold": 0.909,
+          "recovered": true
+        },
+        {
+          "measure": "specificity",
+          "gold": 0.956,
+          "recovered": true
+        }
+      ],
+      "entities": {
+        "index_test": "n",
+        "reference_standard": "smear microscopy",
+        "target_condition": "TB"
+      },
+      "n_2x2_in_body": 0
+    },
+    {
+      "pmid": "?",
+      "pmcid": "PMC12838604",
+      "n_gold": 2,
+      "hits": [
+        {
+          "measure": "sensitivity",
+          "gold": 0.72,
+          "recovered": true
+        },
+        {
+          "measure": "specificity",
+          "gold": 0.72,
+          "recovered": true
+        }
+      ],
+      "entities": {
+        "index_test": null,
+        "reference_standard": "surgery alone",
+        "target_condition": "titles"
+      },
+      "n_2x2_in_body": 0
+    },
+    {
+      "pmid": "?",
+      "pmcid": "PMC12890085",
+      "n_gold": 3,
+      "hits": [
+        {
+          "measure": "sensitivity",
+          "gold": 1.0,
+          "recovered": true
+        },
+        {
+          "measure": "specificity",
+          "gold": 0.62,
+          "recovered": true
+        },
+        {
+          "measure": "specificity",
+          "gold": 0.59,
+          "recovered": true
+        }
+      ],
+      "entities": {
+        "index_test": "monitoring strategy",
+        "reference_standard": "66/528",
+        "target_condition": "partici"
+      },
+      "n_2x2_in_body": 0
+    },
+    {
+      "pmid": "?",
+      "pmcid": "PMC12897000",
+      "n_gold": 2,
+      "hits": [
+        {
+          "measure": "sensitivity",
+          "gold": 0.87,
+          "recovered": true
+        },
+        {
+          "measure": "specificity",
+          "gold": 0.588,
+          "recovered": true
+        }
+      ],
+      "entities": {
+        "index_test": null,
+        "reference_standard": "Pearson",
+        "target_condition": "principal variables"
+      },
+      "n_2x2_in_body": 0
+    },
+    {
+      "pmid": "?",
+      "pmcid": "PMC12951098",
+      "n_gold": 2,
+      "hits": [
+        {
+          "measure": "sensitivity",
+          "gold": 0.807,
+          "recovered": true
+        },
+        {
+          "measure": "specificity",
+          "gold": 0.962,
+          "recovered": true
+        }
+      ],
+      "entities": {
+        "index_test": "utLIFE",
+        "reference_standard": "only 10 9.0",
+        "target_condition": "urothelial"
+      },
+      "n_2x2_in_body": 0
+    },
+    {
+      "pmid": "?",
+      "pmcid": "PMC13018918",
+      "n_gold": 6,
+      "hits": [
+        {
+          "measure": "sensitivity",
+          "gold": 0.72,
+          "recovered": true
+        },
+        {
+          "measure": "sensitivity",
+          "gold": 0.79,
+          "recovered": true
+        },
+        {
+          "measure": "sensitivity",
+          "gold": 0.7,
+          "recovered": true
+        },
+        {
+          "measure": "specificity",
+          "gold": 0.9,
+          "recovered": true
+        },
+        {
+          "measure": "specificity",
+          "gold": 0.8,
+          "recovered": true
+        },
+        {
+          "measure": "specificity",
+          "gold": 0.85,
+          "recovered": true
+        }
+      ],
+      "entities": {
+        "index_test": null,
+        "reference_standard": "general population.1",
+        "target_condition": "CD"
+      },
+      "n_2x2_in_body": 0
+    },
+    {
+      "pmid": "?",
+      "pmcid": "PMC3733798",
+      "n_gold": 2,
+      "hits": [
+        {
+          "measure": "sensitivity",
+          "gold": 0.996,
+          "recovered": true
+        },
+        {
+          "measure": "specificity",
+          "gold": 1.0,
+          "recovered": true
+        }
+      ],
+      "entities": {
+        "index_test": null,
+        "reference_standard": "infants",
+        "target_condition": "intestinal"
+      },
+      "n_2x2_in_body": 0
+    },
+    {
+      "pmid": "?",
+      "pmcid": "PMC4276103",
+      "n_gold": 2,
+      "hits": [
+        {
+          "measure": "sensitivity",
+          "gold": 0.95,
+          "recovered": true
+        },
+        {
+          "measure": "specificity",
+          "gold": 0.78,
+          "recovered": true
+        }
+      ],
+      "entities": {
+        "index_test": "ZPP",
+        "reference_standard": "Unigold",
+        "target_condition": "iron deficiency"
+      },
+      "n_2x2_in_body": 0
+    },
+    {
+      "pmid": "?",
+      "pmcid": "PMC4511673",
+      "n_gold": 3,
+      "hits": [
+        {
+          "measure": "sensitivity",
+          "gold": 0.917,
+          "recovered": false
+        },
+        {
+          "measure": "sensitivity",
+          "gold": 0.968,
+          "recovered": true
+        },
+        {
+          "measure": "specificity",
+          "gold": 0.631,
+          "recovered": true
+        }
+      ],
+      "entities": {
+        "index_test": "RDT interpretation",
+        "reference_standard": "observed values",
+        "target_condition": "non-malarial fevers"
+      },
+      "n_2x2_in_body": 0
+    },
+    {
+      "pmid": "?",
+      "pmcid": "PMC5125992",
+      "n_gold": 4,
+      "hits": [
+        {
+          "measure": "sensitivity",
+          "gold": 0.9,
+          "recovered": true
+        },
+        {
+          "measure": "sensitivity",
+          "gold": 0.931,
+          "recovered": true
+        },
+        {
+          "measure": "specificity",
+          "gold": 0.966,
+          "recovered": true
+        },
+        {
+          "measure": "specificity",
+          "gold": 0.989,
+          "recovered": true
+        }
+      ],
+      "entities": {
+        "index_test": null,
+        "reference_standard": "microscopy",
+        "target_condition": "Plasmodium falciparum malaria among children"
+      },
+      "n_2x2_in_body": 0
+    },
+    {
+      "pmid": "?",
+      "pmcid": "PMC5637604",
+      "n_gold": 2,
+      "hits": [
+        {
+          "measure": "sensitivity",
+          "gold": 0.815,
+          "recovered": true
+        },
+        {
+          "measure": "specificity",
+          "gold": 0.921,
+          "recovered": true
+        }
+      ],
+      "entities": {
+        "index_test": "RDTs",
+        "reference_standard": "microscopy. After",
+        "target_condition": "RDTs. Furthermore"
+      },
+      "n_2x2_in_body": 0
+    },
+    {
+      "pmid": "?",
+      "pmcid": "PMC5823030",
+      "n_gold": 2,
+      "hits": [
+        {
+          "measure": "sensitivity",
+          "gold": 0.987,
+          "recovered": true
+        },
+        {
+          "measure": "specificity",
+          "gold": 0.925,
+          "recovered": true
+        }
+      ],
+      "entities": {
+        "index_test": "community health volunteers involved",
+        "reference_standard": null,
+        "target_condition": "factors related"
+      },
+      "n_2x2_in_body": 0
+    },
+    {
+      "pmid": "?",
+      "pmcid": "PMC6712604",
+      "n_gold": 8,
+      "hits": [
+        {
+          "measure": "sensitivity",
+          "gold": 0.44,
+          "recovered": true
+        },
+        {
+          "measure": "sensitivity",
+          "gold": 0.51,
+          "recovered": true
+        },
+        {
+          "measure": "sensitivity",
+          "gold": 0.36,
+          "recovered": true
+        },
+        {
+          "measure": "sensitivity",
+          "gold": 0.384,
+          "recovered": true
+        },
+        {
+          "measure": "sensitivity",
+          "gold": 0.179,
+          "recovered": true
+        },
+        {
+          "measure": "specificity",
+          "gold": 0.384,
+          "recovered": false
+        },
+        {
+          "measure": "specificity",
+          "gold": 0.885,
+          "recovered": true
+        },
+        {
+          "measure": "specificity",
+          "gold": 0.93,
+          "recovered": true
+        }
+      ],
+      "entities": {
+        "index_test": "HS-RDT",
+        "reference_standard": "cluster-randomized trials",
+        "target_condition": "low-density infections"
+      },
+      "n_2x2_in_body": 0
+    },
+    {
+      "pmid": "?",
+      "pmcid": "PMC7378181",
+      "n_gold": 4,
+      "hits": [
+        {
+          "measure": "sensitivity",
+          "gold": 0.612,
+          "recovered": true
+        },
+        {
+          "measure": "specificity",
+          "gold": 0.958,
+          "recovered": false
+        },
+        {
+          "measure": "specificity",
+          "gold": 0.75,
+          "recovered": false
+        },
+        {
+          "measure": "specificity",
+          "gold": 0.551,
+          "recovered": true
+        }
+      ],
+      "entities": {
+        "index_test": "90",
+        "reference_standard": "exhaustive",
+        "target_condition": "sepsis"
+      },
+      "n_2x2_in_body": 0
+    }
+  ],
+  "mode": "offline",
+  "query": "on-disk PMC-OA corpora (offline)",
+  "tolerance_abs": 0.02,
+  "basis": "Gold = sensitivity/specificity values stated verbatim in the article ABSTRACT (independent regex, anti-fabrication substring guard). Extractor scored on the FULL PDF BODY (real PMC-OA PDFs). Recall = gold values recovered by the full-body extractor within abs tol."
+}
