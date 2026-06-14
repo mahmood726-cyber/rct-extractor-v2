@@ -72,6 +72,7 @@ EXPECTED_SPECIALTIES = {
     "bariatric_surgery",
     "geriatrics_frailty",
     "plastic_reconstructive_surgery",
+    "rehabilitation_physiotherapy",
 }
 
 
