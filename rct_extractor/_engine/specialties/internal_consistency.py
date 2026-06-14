@@ -180,6 +180,11 @@ def check_consistency(effect: Dict, mid_tol: float = 0.22,
             if abs(math.log(pe) - math.log(recomputed)) > table_log_tol:
                 flags.append("effect_table_mismatch")
 
+    # (A percentage-scale check for RRR/efficacy was considered for the "4S" class
+    # but is redundant: a point on a different scale from its CI is already caught
+    # by point_outside_ci, and the 4S case itself is a correct extraction read
+    # against a proportion-encoded gold value — not an extraction error.)
+
     # Score: hard flags zero it out (and get dropped); soft flags reduce it and
     # surface needs_review. gross_sig_inconsistency is SOFT, not hard: a CI that
     # includes the null while p<0.05 (or vice versa) is usually discordant

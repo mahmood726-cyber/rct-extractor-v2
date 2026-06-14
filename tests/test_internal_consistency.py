@@ -158,6 +158,21 @@ def test_counts_absent_raise_no_count_flags():
                    ("events_exceed_n", "arm_n_nonpositive", "events_negative", "effect_table_mismatch"))
 
 
+# --- percentage-scale (RRR / efficacy): a consistent % extraction is NOT flagged
+# (the "4S" case is a correct extraction vs a proportion-encoded gold value) ----
+
+def test_pct_consistent_percent_scale_passes():
+    # the 4S case: RRR 30% with CI 21-38% — internally consistent, NO flag
+    c = check_consistency({"type": "RRR", "effect_size": 30.0, "ci_lower": 21.0, "ci_upper": 38.0})
+    assert c["consistent"] and not c["flags"]
+
+
+def test_pct_proportion_scale_mismatch_caught_by_containment():
+    # a proportion point against a %-scale CI is already a point-outside-CI error
+    c = check_consistency({"type": "RRR", "effect_size": 0.30, "ci_lower": 21.0, "ci_upper": 38.0})
+    assert "point_outside_ci" in c["flags"] and not c["consistent"]
+
+
 # --- gold-set false-positive audit ------------------------------------------
 
 _NAME_TO_ABBR = {
