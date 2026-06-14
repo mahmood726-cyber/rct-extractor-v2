@@ -11,6 +11,9 @@ from rct_extractor._engine.specialties.source_grounding import (
     check_grounding,
     annotate_grounding,
     order_effects,
+    denominator_consistency,
+    terminal_digit_uniform,
+    annotate_trial_level,
 )
 
 RABEAM = ("RA-BEAM: Baricitinib showed superior ACR20 response vs placebo at week 12 "
@@ -111,3 +114,47 @@ def test_order_effects_stable_and_lossless():
     effects = [{"type": "HR", "effect_size": 0.84}, {"type": "MD", "effect_size": -4.0}]
     out = order_effects(effects, GOOD)            # only one value locatable
     assert len(out) == 2 and {e["effect_size"] for e in out} == {0.84, -4.0}
+
+
+# --- cross-outcome denominator consistency ----------------------------------
+
+def test_denominator_consistent_arms_not_flagged():
+    effects = [
+        {"type": "HR", "n_tx": 500, "n_ctrl": 505},
+        {"type": "HR", "n_tx": 500, "n_ctrl": 505},
+    ]
+    annotate_trial_level(effects)
+    assert not any(e.get("needs_review") for e in effects)
+
+
+def test_denominator_drift_flagged():
+    # one outcome reports a different treatment-arm N (misread/evaluable-subset)
+    effects = [
+        {"type": "HR", "n_tx": 500, "n_ctrl": 505},
+        {"type": "HR", "n_tx": 500, "n_ctrl": 505},
+        {"type": "OR", "n_tx": 312, "n_ctrl": 505},   # 312 != modal 500
+    ]
+    annotate_trial_level(effects)
+    bad = [e for e in effects if e.get("needs_review")]
+    assert bad and bad[0]["n_tx"] == 312
+
+
+def test_denominator_needs_two_values():
+    effects = [{"type": "HR", "n_tx": 500, "n_ctrl": 505}]
+    assert denominator_consistency(effects) == []
+
+
+# --- terminal-digit advisory ------------------------------------------------
+
+def test_terminal_digit_uniform_passes_on_varied_counts():
+    vals = list(range(30, 90))   # 60 values, all terminal digits present ~evenly
+    assert terminal_digit_uniform(vals) is True
+
+
+def test_terminal_digit_anomaly_on_all_zeros():
+    vals = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100] * 4   # all end in 0
+    assert terminal_digit_uniform(vals) is False
+
+
+def test_terminal_digit_too_few_skips():
+    assert terminal_digit_uniform([10, 20, 30]) is None

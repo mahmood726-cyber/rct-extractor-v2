@@ -25,7 +25,9 @@ they do not drop or rewrite it.
 """
 from __future__ import annotations
 
+import math
 import re
+from collections import Counter
 from typing import Dict, List, Optional
 
 _NUM = r"(\d+(?:\.\d+)?)"
@@ -152,6 +154,102 @@ def order_effects(effects, text):
         return (idx + boost, idx)
 
     return sorted(effects, key=key)
+
+
+def denominator_consistency(effects) -> List[str]:
+    """Flag arm sample sizes that DISAGREE across outcomes of the same trial.
+
+    In one RCT the randomised arm Ns are fixed, so every outcome that reports an
+    arm N should reuse the same denominators (ITT) -- a different N on one
+    outcome is usually a misread (e.g. an evaluable-subset N grabbed as the arm
+    N, or a digit error). We treat the MODAL N per arm as truth and flag the
+    minority values. Tolerance allows small mITT/per-protocol trims.
+
+    Source idea: cross-outcome denominator-reuse gap noted in the repo survey
+    (no existing implementation); generalises DossierGap's field-conflict ledger
+    to within-trial arm Ns. Soft / advisory -- returns the list of flagged
+    indices' codes via the effect dicts (mutation done by the caller).
+    Returns the modal (n_tx, n_ctrl) for reference, or empty list if <2 effects
+    carry arm Ns.
+    """
+    nt_vals = [e.get("n_tx") for e in effects if isinstance(e.get("n_tx"), (int, float)) and e.get("n_tx", 0) > 0]
+    nc_vals = [e.get("n_ctrl") for e in effects if isinstance(e.get("n_ctrl"), (int, float)) and e.get("n_ctrl", 0) > 0]
+    flagged = []
+    for arm, vals in (("n_tx", nt_vals), ("n_ctrl", nc_vals)):
+        if len(vals) < 2:
+            continue
+        modal = Counter(round(v) for v in vals).most_common(1)[0][0]
+        if modal <= 0:
+            continue
+        for e in effects:
+            v = e.get(arm)
+            if isinstance(v, (int, float)) and v > 0:
+                # >5% deviation from the trial's modal arm N -> denominator drift
+                if abs(v - modal) > 0.05 * modal and abs(v - modal) > 1:
+                    if "denominator_inconsistency" not in e.setdefault(
+                            "_xtrial_flags", []):
+                        e["_xtrial_flags"].append("denominator_inconsistency")
+                    flagged.append("denominator_inconsistency")
+    return flagged
+
+
+def terminal_digit_uniform(values, min_n: int = 30, alpha: float = 0.001) -> Optional[bool]:
+    """Chi-square uniformity test on the LAST digit of a set of integer counts.
+
+    Genuine event/sample counts have ~uniform terminal digits; a strong
+    non-uniformity (e.g. an excess of 0s and 5s) is a digit-preference /
+    rounding / fabrication tell. ADVISORY ONLY -- a real signal needs many
+    counts and is never grounds to drop an extraction.
+
+    Source: Terminal Digit Analysis, ported (chi2, df=9) from asa.html tdaCheck
+    and AlBurhan forensics. Returns True (uniform/ok), False (anomalous at a
+    very strict alpha to avoid FPs), or None (too few values).
+    """
+    digits = [int(abs(round(v))) % 10 for v in values
+              if isinstance(v, (int, float)) and v == v]
+    n = len(digits)
+    if n < min_n:
+        return None
+    counts = Counter(digits)
+    expected = n / 10.0
+    chi2 = sum((counts.get(d, 0) - expected) ** 2 / expected for d in range(10))
+    # df=9 chi2 critical at alpha=0.001 is ~27.88; use a strict cutoff so the
+    # advisory only fires on blatant non-uniformity (keeps FP rate near zero).
+    crit = 27.877 if alpha <= 0.001 else 21.666   # 0.001 / 0.01 critical values
+    return chi2 <= crit
+
+
+def annotate_trial_level(effects):
+    """Attach cross-outcome (trial-level) data-quality flags to each effect.
+
+    Runs:
+      * denominator_consistency -- arm Ns must match across outcomes (soft);
+      * terminal_digit_uniform  -- advisory anomaly over all extracted counts.
+
+    Both are soft/advisory and merged into needs_review + the consistency flag
+    list, mirroring annotate_grounding. Never drops or edits values.
+    """
+    denominator_consistency(effects)
+    # Pool every integer count for the terminal-digit advisory.
+    pooled = []
+    for e in effects:
+        for k in ("events_tx", "events_ctrl", "n_tx", "n_ctrl", "n_total"):
+            v = e.get(k)
+            if isinstance(v, (int, float)) and v == v and v >= 0:
+                pooled.append(v)
+    td = terminal_digit_uniform(pooled)
+    for e in effects:
+        xf = e.pop("_xtrial_flags", [])
+        if td is False:
+            xf = xf + ["terminal_digit_anomaly"]
+        if xf:
+            e["needs_review"] = True
+            c = e.get("consistency")
+            if isinstance(c, dict):
+                c["flags"] = list(c.get("flags") or []) + xf
+            g = e.setdefault("grounding", {"flags": []})
+            g["flags"] = list(g.get("flags") or []) + xf
+    return effects
 
 
 def annotate_grounding(effects, text):
