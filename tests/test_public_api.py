@@ -63,6 +63,7 @@ EXPECTED_SPECIALTIES = {
     "orthopaedic",
     "low_back_pain",
     "wound_healing",
+    "heart_lung_transplant",
 }
 
 
