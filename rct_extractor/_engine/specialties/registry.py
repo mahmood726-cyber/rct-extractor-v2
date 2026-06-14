@@ -431,6 +431,15 @@ from .neonatology import (
     detect_neonatology_subspecialty,
     normalize_neonatology_endpoint
 )
+from .emergency_resuscitation import (
+    EMERGENCY_RESUSCITATION_ENDPOINTS,
+    CARDIAC_ARREST_PATTERNS as ER_CARDIAC_ARREST_PATTERNS,
+    TRAUMA_PATTERNS as ER_TRAUMA_PATTERNS,
+    AIRWAY_PATTERNS as ER_AIRWAY_PATTERNS,
+    ACUTE_CARE_PATTERNS as ER_ACUTE_CARE_PATTERNS,
+    detect_emergency_resuscitation_subspecialty,
+    normalize_emergency_resuscitation_endpoint
+)
 
 from .pulmonary_hypertension import (
     PULMONARY_HYPERTENSION_ENDPOINTS,
@@ -1778,6 +1787,18 @@ SPECIALTY_REGISTRY = {
             'complications': NEO_COMPLICATIONS_PATTERNS
         }
     },
+    'emergency_resuscitation': {
+        'subspecialties': ['cardiac_arrest', 'trauma', 'airway', 'acute_care'],
+        'detection_function': detect_emergency_resuscitation_subspecialty,
+        'normalizer': normalize_emergency_resuscitation_endpoint,
+        'endpoints': EMERGENCY_RESUSCITATION_ENDPOINTS,
+        'patterns': {
+            'cardiac_arrest': ER_CARDIAC_ARREST_PATTERNS,
+            'trauma': ER_TRAUMA_PATTERNS,
+            'airway': ER_AIRWAY_PATTERNS,
+            'acute_care': ER_ACUTE_CARE_PATTERNS
+        }
+    },
     'pulmonary_hypertension': {
         'subspecialties': ['functional', 'hemodynamics', 'clinical_worsening', 'biomarker'],
         'detection_function': detect_pulmonary_hypertension_subspecialty,
@@ -2720,6 +2741,18 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'(?:therapeutic\s+)?hypothermia|hypoxic[- ]isch[ae]mic\s+encephalopathy|\bhie\b',
             r'late[- ]onset\s+sepsis|periventricular\s+leu[ck]omalacia',
         ],
+        'emergency_resuscitation': [
+            r'cardiac\s+arrest', r'out[- ]of[- ]hospital\s+cardiac\s+arrest|\bohca\b',
+            r'in[- ]hospital\s+cardiac\s+arrest|\bihca\b',
+            r'cardiopulmonary\s+resuscitation|\bcpr\b',
+            r'return\s+of\s+spontaneous\s+circulation|\brosc\b',
+            r'(?:favou?rable|good)\s+neurolog(?:ical|ic)\s+outcome|cerebral\s+performance\s+category',
+            r'survival\s+to\s+(?:hospital\s+)?(?:admission|discharge)',
+            r'major\s+trauma|traumatic\s+(?:injury|h[ae]morrhage)|tranexamic\s+acid|\btxa\b',
+            r'first[- ](?:pass|attempt)\s+(?:intubation\s+)?success|rapid\s+sequence\s+intubation',
+            r'targeted\s+temperature\s+management|defibrillation|shockable\s+rhythm',
+            r'emergency\s+department|prehospital|advanced\s+life\s+support',
+        ],
         'pulmonary_hypertension': [
             r'pulmonary\s+(?:arterial\s+)?hypertension', r'\bpah\b',
             r'pulmonary\s+vascular\s+resistance|\bpvr\b',
@@ -3300,6 +3333,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'neonatology':
         subspecialty, conf = detect_neonatology_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'emergency_resuscitation':
+        subspecialty, conf = detect_emergency_resuscitation_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'pulmonary_hypertension':
         subspecialty, conf = detect_pulmonary_hypertension_subspecialty(text)

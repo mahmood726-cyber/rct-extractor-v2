@@ -65,6 +65,7 @@ EXPECTED_SPECIALTIES = {
     "wound_healing",
     "heart_lung_transplant",
     "neonatology",
+    "emergency_resuscitation",
 }
 
 
