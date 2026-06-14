@@ -106,3 +106,40 @@ def test_dta_lr_mismatch_flags_inconsistent_lr():
     # a transcribed PLR that doesn't match Se/Sp is caught
     bad = {"type": "DTA", "sensitivity": 0.342, "specificity": 0.923, "plr": 9.9}
     assert "dta_lr_mismatch" in check_consistency(bad)["flags"]
+
+
+# DTA (CI-anchored) -- Zheng et al., PLoS One 2023;18:e0279726.
+# PMID 36812225, DOI 10.1371/journal.pone.0279726. miRNAs for sepsis. Decimal
+# Se/Sp with "(95% [confidence interval] CI, lo to hi)" -- the comma + "to" form.
+ZHENG = ("The overall performance of total miRNAs detection was: pooled "
+         "sensitivity, 0.76 (95% confidence interval [CI], 0.75 to 0.77); pooled "
+         "specificity, 0.77 (95%CI, 0.75 to 0.78); and area under the summary "
+         "receiver operating characteristic curves value (SROC), 0.86.")
+
+
+def test_zheng_decimal_ci_to_format_extracted():
+    ds = extract_diagnostic_accuracy(ZHENG)
+    by = {d.measure_type.value: (d.point_estimate, d.ci_lower, d.ci_upper) for d in ds}
+    assert by.get("Sensitivity") == (0.76, 0.75, 0.77)
+    assert by.get("Specificity") == (0.77, 0.75, 0.78)
+
+
+# Dose-response -- Greenwood et al., Br J Nutr 2014;112:725-34.
+# PMID 24932880, DOI 10.1017/S0007114514001329. Sugar-sweetened soft drinks and
+# type 2 diabetes: a PER-INCREMENT trend "RR 1.20/330 ml per d (95% CI 1.12, 1.29)".
+GREENWOOD = ("The summary RR for sugar-sweetened and artificially sweetened soft "
+             "drinks were 1.20/330 ml per d (95% CI 1.12, 1.29, P<0.001) and "
+             "1.13/330 ml per d (95% CI 1.02, 1.25, P=0.02), respectively.")
+
+
+def test_greenwood_per_increment_dose_response_extracted():
+    from rct_extractor._engine.core.doseresponse_extractor import DoseResponseExtractor
+    res = DoseResponseExtractor().extract(GREENWOOD)
+    effs = getattr(res, "effects", res) or []
+    # the sugar-sweetened per-330 ml/day RR 1.20 (95% CI 1.12-1.29) must be caught
+    hit = [e for e in effs if abs(e.point_estimate - 1.20) < 1e-6]
+    assert hit, f"missed RR 1.20/330 ml per d; got {[e.point_estimate for e in effs]}"
+    e = hit[0]
+    assert e.relation_type.value == "per_unit"
+    assert e.dose_amount == 330.0 and e.dose_unit == "ml"
+    assert abs(e.ci_lower - 1.12) < 1e-6 and abs(e.ci_upper - 1.29) < 1e-6

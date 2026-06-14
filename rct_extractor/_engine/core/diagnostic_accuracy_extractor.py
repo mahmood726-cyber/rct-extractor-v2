@@ -72,6 +72,10 @@ class DiagnosticAccuracyExtractor:
     # SENSITIVITY PATTERNS
     # ==========================================================================
     SENSITIVITY_PATTERNS = [
+        # Robust decimal/percent + "(95% CI, lo to hi)" with comma after the name
+        # and a "to" OR dash separator -- e.g. "pooled sensitivity, 0.76 (95% CI,
+        # 0.75 to 0.77)" (Zheng 2023), which the dash-only patterns below miss.
+        r'[Ss]ensitivity[\s,:]+(\d+\.?\d*)%?\s*[\(\[]\s*(?:95%?\s*)?(?:confidence\s+interval\s*)?\[?\s*CI\s*\]?[\s,:]*(\d+\.?\d*)%?\s*(?:to|[-–—])\s*(\d+\.?\d*)%?\s*[\)\]]',
         # Standard formats
         r'[Ss]ensitivity\s*(?:was|of|:)?\s*(\d+\.?\d*)%?\s*\(\s*(?:95%?\s*)?CI[:\s]*(\d+\.?\d*)%?\s*[-–—]\s*(\d+\.?\d*)%?\s*\)',
         r'[Ss]ensitivity\s*(?:was|of|:)?\s*(\d+\.?\d*)%?\s*\[\s*(?:95%?\s*)?CI[:\s]*(\d+\.?\d*)%?\s*[-–—]\s*(\d+\.?\d*)%?\s*\]',
@@ -99,6 +103,9 @@ class DiagnosticAccuracyExtractor:
     # SPECIFICITY PATTERNS
     # ==========================================================================
     SPECIFICITY_PATTERNS = [
+        # Robust decimal/percent + "(95% CI, lo to hi)" with comma after the name
+        # and a "to" OR dash separator (Zheng 2023 "specificity, 0.77 (95%CI, 0.75 to 0.78)").
+        r'[Ss]pecificity[\s,:]+(\d+\.?\d*)%?\s*[\(\[]\s*(?:95%?\s*)?(?:confidence\s+interval\s*)?\[?\s*CI\s*\]?[\s,:]*(\d+\.?\d*)%?\s*(?:to|[-–—])\s*(\d+\.?\d*)%?\s*[\)\]]',
         # Standard formats
         r'[Ss]pecificity\s*(?:was|of|:)?\s*(\d+\.?\d*)%?\s*\(\s*(?:95%?\s*)?CI[:\s]*(\d+\.?\d*)%?\s*[-–—]\s*(\d+\.?\d*)%?\s*\)',
         r'[Ss]pecificity\s*(?:was|of|:)?\s*(\d+\.?\d*)%?\s*\[\s*(?:95%?\s*)?CI[:\s]*(\d+\.?\d*)%?\s*[-–—]\s*(\d+\.?\d*)%?\s*\]',

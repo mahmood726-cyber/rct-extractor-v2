@@ -62,10 +62,20 @@ that the value is internally consistent. Anchors:
 - **Continuous** — STEP 1 (Wilding 2021, *NEJM*; PMID 33567185): reproduces the
   −12.4-pp body-weight treatment difference (95% CI −13.4 to −11.5) exactly, zero
   false flags; also drove the ARD→MD fix below.
-- **DTA** — Elli 2022 (*Diagn Microbiol Infect Dis*; PMID 35216863): the combined
-  "sensitivity and specificity … were 34.2% and 92.3%" no-CI form (which abstracts
-  use constantly) was previously unextracted; now parsed, and the reported PLR 4.4 /
-  NLR 0.71 are checked against Se/Sp (PLR=Se/(1−Sp)=4.44, NLR=(1−Se)/Sp=0.713).
+- **DTA (no-CI)** — Elli 2022 (*Diagn Microbiol Infect Dis*; PMID 35216863): the
+  combined "sensitivity and specificity … were 34.2% and 92.3%" no-CI form (which
+  abstracts use constantly) was previously unextracted; now parsed, and the reported
+  PLR 4.4 / NLR 0.71 are checked against Se/Sp (PLR=Se/(1−Sp)=4.44, NLR=(1−Se)/Sp=0.713).
+- **DTA (decimal CI)** — Zheng 2023 (*PLoS One*; PMID 36812225): the decimal form
+  "sensitivity, 0.76 (95% confidence interval [CI], 0.75 to 0.77)" — comma after the
+  name, spelled-out CI, "to" separator — matched no pattern; now extracted (Se 0.76
+  [0.75, 0.77], Sp 0.77 [0.75, 0.78]).
+- **Dose-response** — Greenwood 2014 (*Br J Nutr*; PMID 24932880): the per-increment
+  trend "RR 1.20/330 ml per d (95% CI 1.12, 1.29)" put the dose BETWEEN the estimate
+  and its CI, defeating the contiguous effect pattern; a dose-unit-anchored per-unit
+  pattern (kept trap-safe by the pt∈CI plausibility gate) now extracts RR 1.20 per
+  330 ml. (MA-summary prose like "16% reduction for 4 cups/day" stays out of scope —
+  the engine targets primary-study per-increment / categorical data.)
 - **NMA** — the warfarin-anchored DOAC atrial-fibrillation network (ARISTOTLE,
   ROCKET-AF, RE-LY, ENGAGE-AF; no DOAC-vs-DOAC RCT) is correctly classified a STAR:
   connected but no closed loop, so consistency cannot be tested.

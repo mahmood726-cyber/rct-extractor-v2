@@ -322,6 +322,23 @@ class DoseResponseExtractor:
             body = (type_re + r"[^.\n]{0,55}?(?P<pt>" + _NUM + r")"
                     + r"[^.\n]{0,10}?" + _CI)
             self._effect_patterns.append((re.compile(body, flags), label))
+            # Per-unit notation puts the increment BETWEEN the point estimate and
+            # its CI -- "RR 1.20 per 330 ml/day (95% CI 1.12-1.29)" / "1.20/330 ml
+            # per d (95% CI ...)" (Greenwood 2014). The contiguous pattern above
+            # caps the pt->CI gap at 10 chars to avoid the wrong-number trap, so
+            # add a second pattern that allows a DOSE UNIT in the gap. This stays
+            # trap-safe because _plausible() rejects any pt not bracketed by the CI
+            # (so binding pt to the dose amount "330" is impossible).
+            # The unit chunk is wrapped in (?i:...) so it matches lowercase "ml"
+            # even when `label` is a case-sensitive abbreviation type (flags=0).
+            # Wide type->pt glue (a single "RR" can govern a long exposure phrase,
+            # e.g. "RR for sugar-sweetened and artificially sweetened soft drinks
+            # were 1.20/330 ml ..."); safe because the pt must be immediately
+            # followed by a dose unit and then a CI that brackets it (_plausible).
+            body_pu = (type_re + r"[^.\n]{0,75}?(?P<pt>" + _NUM + r")\s*"
+                       + r"(?i:(?:per\s+|/\s*)?(?P<pu_amt>" + _NUM + r")?\s*(?P<pu_unit>"
+                       + _DOSE_UNIT + r"))\b[^.\n]{0,14}?" + _CI)
+            self._effect_patterns.append((re.compile(body_pu, flags), label))
 
     # ----------------------------------------------------------------------
     # helpers
@@ -393,6 +410,13 @@ class DoseResponseExtractor:
                 if not self._plausible(pt, lo, hi):
                     continue
 
+                # The per-unit body pattern captures the dose unit BETWEEN the
+                # estimate and its CI (e.g. "1.20/330 ml per d (95% CI ...)"), so
+                # the match itself proves a per-unit relation -- no window search
+                # needed (and "per d" alone wouldn't satisfy the increment regex).
+                gd = m.groupdict()
+                pu_unit = gd.get("pu_unit")
+
                 win = text[max(0, m.start() - WIN): m.end() + WIN]
                 inc_m = self._increment_re.search(win)
                 high_m = self._HIGH_CAT.search(win)
@@ -408,7 +432,7 @@ class DoseResponseExtractor:
                 # dose-response datum and is skipped (this engine emits only
                 # dose-response effects, never every ratio in the paper).
                 cat_label = ref_label = None
-                if inc_m is not None:
+                if pu_unit or inc_m is not None:
                     relation = DoseRelationType.PER_UNIT
                 elif high_m is not None and low_m is not None:
                     relation = DoseRelationType.CATEGORICAL
@@ -434,10 +458,16 @@ class DoseResponseExtractor:
                     char_start=m.start(), char_end=m.end(),
                 )
                 if relation is DoseRelationType.PER_UNIT:
-                    amt, unit = self._unit_from_increment(inc_m.group(0))
+                    if inc_m is not None:
+                        amt, unit = self._unit_from_increment(inc_m.group(0))
+                        ext.increment_text = re.sub(r"\s+", " ", inc_m.group(0)).strip()
+                    else:                      # dose captured inside the estimate->CI span
+                        amt = self._f(pu_unit and gd.get("pu_amt"))
+                        unit = re.sub(r"\s+", "", pu_unit).lower()
+                        ext.increment_text = "per " + (
+                            (gd.get("pu_amt") + " ") if gd.get("pu_amt") else "") + unit
                     ext.dose_amount = amt
                     ext.dose_unit = unit
-                    ext.increment_text = re.sub(r"\s+", " ", inc_m.group(0)).strip()
                 else:
                     ext.category_label = (re.sub(r"\s+", " ", cat_label).strip()
                                           if cat_label else None)
