@@ -71,6 +71,7 @@ EXPECTED_SPECIALTIES = {
     "interstitial_lung_disease",
     "bariatric_surgery",
     "geriatrics_frailty",
+    "plastic_reconstructive_surgery",
 }
 
 

@@ -485,6 +485,15 @@ from .geriatrics_frailty import (
     detect_geriatrics_frailty_subspecialty,
     normalize_geriatrics_frailty_endpoint
 )
+from .plastic_reconstructive_surgery import (
+    PLASTIC_RECONSTRUCTIVE_SURGERY_ENDPOINTS,
+    FLAP_PATTERNS as PR_FLAP_PATTERNS,
+    BREAST_PATTERNS as PR_BREAST_PATTERNS,
+    COMPLICATIONS_PATTERNS as PR_COMPLICATIONS_PATTERNS,
+    SCAR_PATTERNS as PR_SCAR_PATTERNS,
+    detect_plastic_reconstructive_surgery_subspecialty,
+    normalize_plastic_reconstructive_surgery_endpoint
+)
 
 from .pulmonary_hypertension import (
     PULMONARY_HYPERTENSION_ENDPOINTS,
@@ -1904,6 +1913,18 @@ SPECIALTY_REGISTRY = {
             'outcomes': GF_OUTCOMES_PATTERNS
         }
     },
+    'plastic_reconstructive_surgery': {
+        'subspecialties': ['flap', 'breast', 'complications', 'scar'],
+        'detection_function': detect_plastic_reconstructive_surgery_subspecialty,
+        'normalizer': normalize_plastic_reconstructive_surgery_endpoint,
+        'endpoints': PLASTIC_RECONSTRUCTIVE_SURGERY_ENDPOINTS,
+        'patterns': {
+            'flap': PR_FLAP_PATTERNS,
+            'breast': PR_BREAST_PATTERNS,
+            'complications': PR_COMPLICATIONS_PATTERNS,
+            'scar': PR_SCAR_PATTERNS
+        }
+    },
     'pulmonary_hypertension': {
         'subspecialties': ['functional', 'hemodynamics', 'clinical_worsening', 'biomarker'],
         'detection_function': detect_pulmonary_hypertension_subspecialty,
@@ -2913,6 +2934,15 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'short\s+physical\s+performance\s+battery|\bsppb\b|gait\s+speed|grip\s+strength',
             r'activities\s+of\s+daily\s+living|\biadl\b',
         ],
+        'plastic_reconstructive_surgery': [
+            r'(?:plastic|reconstructive)\s+surger', r'(?:free|pedicled|perforator)\s+flap',
+            r'flap\s+(?:failure|loss|necrosis|survival)',
+            r'deep\s+inferior\s+epigastric\s+perforator|\bdiep\b\s+flap?|\btram\b\s+flap?',
+            r'breast\s+reconstruction', r'capsular\s+contracture',
+            r'implant[- ]based\s+reconstruction|autologous\s+reconstruction',
+            r'acellular\s+dermal\s+matrix', r'hypertrophic\s+scar|keloid',
+            r'microsurg(?:ery|ical)', r'mastectomy\s+(?:and\s+)?reconstruction',
+        ],
         'pulmonary_hypertension': [
             r'pulmonary\s+(?:arterial\s+)?hypertension', r'\bpah\b',
             r'pulmonary\s+vascular\s+resistance|\bpvr\b',
@@ -3511,6 +3541,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'geriatrics_frailty':
         subspecialty, conf = detect_geriatrics_frailty_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'plastic_reconstructive_surgery':
+        subspecialty, conf = detect_plastic_reconstructive_surgery_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'pulmonary_hypertension':
         subspecialty, conf = detect_pulmonary_hypertension_subspecialty(text)
