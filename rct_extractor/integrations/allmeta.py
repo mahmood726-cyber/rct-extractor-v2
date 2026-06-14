@@ -32,6 +32,7 @@ from typing import Any, Dict, List, Optional
 
 from ..api import extract
 from ._common import effect_to_est_se, pick_effect, twobytwo_to_est_se
+from .._engine.specialties.source_grounding import check_pool_measures
 
 
 def to_ma_studies(
@@ -56,12 +57,22 @@ def to_ma_studies(
         A validated ``ma-studies-v1`` dict ready to hand to an allmeta app.
     """
     studies: List[Dict[str, Any]] = []
+    # Track the summary measures available across the trial set so we can warn
+    # when the bus's single-family filter silently dropped a different family
+    # (e.g. measure="OR" but four trials only reported an HR -> excluded).
+    available_effects: List[Dict[str, Any]] = []
+    excluded_measure_mismatch = 0
     for i, r in enumerate(records):
         text = r.get("text", "")
         label = r.get("label") or r.get("name") or r.get("study") or f"Study {i + 1}"
         if not text:
             continue
         res = extract(text, specialty=specialty)
+
+        # Record the effect this trial would contribute (for homogeneity diagnostics).
+        chosen = pick_effect(res.get("effects", []), endpoint=endpoint, measure=measure)
+        if chosen is not None and chosen.get("type"):
+            available_effects.append({"type": chosen["type"]})
 
         est_se = None
         # Prefer raw 2x2 for ratio measures (counts -> exact log-effect + SE).
@@ -79,6 +90,8 @@ def to_ma_studies(
             e = pick_effect(res.get("effects", []), endpoint=endpoint, measure=measure)
             if e is not None and str(e.get("type", "")).upper() == measure.upper():
                 est_se = effect_to_est_se(e)
+            elif e is not None:
+                excluded_measure_mismatch += 1
         if est_se is None:
             continue
 
@@ -94,11 +107,30 @@ def to_ma_studies(
             "year": float(year) if isinstance(year, (int, float)) else None,
         })
 
-    return {
+    payload: Dict[str, Any] = {
         "_schema": "ma-studies-v1",
         "_savedAt": saved_at or datetime.now(timezone.utc).isoformat(),
         "studies": studies,
     }
+    # Surface measure-mixing diagnostics so the silent single-family filter is
+    # never invisible: if the trial set offered >1 incompatible family, say so.
+    homog_flags = check_pool_measures(available_effects)
+    types_seen = sorted({str(e["type"]).upper() for e in available_effects})
+    if homog_flags or excluded_measure_mismatch:
+        payload["_diagnostics"] = {
+            "measure": measure.upper(),
+            "effect_types_available": types_seen,
+            "measure_homogeneity": homog_flags,
+            "excluded_measure_mismatch": excluded_measure_mismatch,
+            "note": (
+                "Pooled on a single summary measure ({m}); {n} trial(s) reporting a "
+                "different family were excluded. Mixing summary measures is invalid "
+                "(Cochrane Handbook Sec.10.4).".format(m=measure.upper(), n=excluded_measure_mismatch)
+                if excluded_measure_mismatch else
+                "Trial set spans >1 summary-measure family; only {m} was pooled.".format(m=measure.upper())
+            ),
+        }
+    return payload
 
 
 def _load_records(path: str) -> List[Dict[str, Any]]:

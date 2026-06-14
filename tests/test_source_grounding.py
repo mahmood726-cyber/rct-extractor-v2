@@ -14,6 +14,7 @@ from rct_extractor._engine.specialties.source_grounding import (
     denominator_consistency,
     terminal_digit_uniform,
     annotate_trial_level,
+    check_pool_measures,
 )
 
 RABEAM = ("RA-BEAM: Baricitinib showed superior ACR20 response vs placebo at week 12 "
@@ -158,3 +159,53 @@ def test_terminal_digit_anomaly_on_all_zeros():
 
 def test_terminal_digit_too_few_skips():
     assert terminal_digit_uniform([10, 20, 30]) is None
+
+
+# --- pool summary-measure homogeneity (Cochrane §10.4) ----------------------
+
+def test_pool_continuous_with_binary_is_hard_flag():
+    # the cardinal error: a mean difference pooled with an odds ratio
+    effects = [{"type": "MD"}, {"type": "OR"}, {"type": "MD"}]
+    assert check_pool_measures(effects) == ["mixed_continuous_and_binary"]
+
+
+def test_pool_continuous_with_hazard_is_hard_flag():
+    effects = [{"type": "SMD"}, {"type": "HR"}]
+    assert check_pool_measures(effects) == ["mixed_continuous_and_binary"]
+
+
+def test_pool_two_ratio_families_is_soft_flag():
+    # HR (time-to-event) pooled with OR (binary) -> different scales, soft
+    effects = [{"type": "HR"}, {"type": "OR"}]
+    assert check_pool_measures(effects) == ["mixed_summary_measure"]
+
+
+def test_pool_or_and_rr_subtype_flag():
+    effects = [{"type": "OR"}, {"type": "RR"}, {"type": "OR"}]
+    assert check_pool_measures(effects) == ["mixed_effect_subtype"]
+
+
+def test_pool_md_and_smd_subtype_flag():
+    # raw mean difference and standardized mean difference are different scales
+    effects = [{"type": "MD"}, {"type": "SMD"}]
+    assert check_pool_measures(effects) == ["mixed_effect_subtype"]
+
+
+def test_pool_homogeneous_or_is_clean():
+    effects = [{"type": "OR"}, {"type": "OR"}, {"type": "OR"}]
+    assert check_pool_measures(effects) == []
+
+
+def test_pool_homogeneous_hr_is_clean():
+    assert check_pool_measures([{"type": "HR"}, {"type": "HR"}]) == []
+
+
+def test_pool_ignores_unknown_and_empty_types():
+    # unknown/blank types are not classifiable -> no false homogeneity error
+    assert check_pool_measures([{"type": "OR"}, {"type": ""}, {"type": "FOO"}]) == []
+
+
+def test_pool_aliases_normalize():
+    # full-word aliases map to the same family as their abbreviations
+    assert check_pool_measures([{"type": "oddsRatio"}, {"type": "RR"}]) == ["mixed_effect_subtype"]
+    assert check_pool_measures([{"type": "hazardRatio"}, {"type": "MD"}]) == ["mixed_continuous_and_binary"]

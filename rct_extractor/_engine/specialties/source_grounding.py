@@ -252,6 +252,58 @@ def annotate_trial_level(effects):
     return effects
 
 
+# Summary-measure families. A meta-analysis must pool ONE summary measure
+# (Cochrane Handbook §10.4); mixing them is invalid. The cardinal error is
+# pooling a CONTINUOUS measure (mean difference) with any binary/ratio effect.
+_MEASURE_FAMILY = {
+    "OR": "binary_ratio", "RR": "binary_ratio", "RISKRATIO": "binary_ratio",
+    "ODDSRATIO": "binary_ratio",
+    "HR": "time_to_event", "HAZARDRATIO": "time_to_event",
+    "IRR": "rate_ratio", "RATERATIO": "rate_ratio",
+    "MD": "continuous", "WMD": "continuous", "SMD": "continuous",
+    "MEANDIFFERENCE": "continuous", "STANDARDIZEDMEANDIFFERENCE": "continuous",
+    "RD": "risk_difference", "ARD": "risk_difference", "RISKDIFFERENCE": "risk_difference",
+    "RRR": "percentage", "EFFICACYPCT": "percentage",
+    "GMR": "ratio_other",
+}
+
+
+def check_pool_measures(effects) -> List[str]:
+    """Validate that a candidate POOL (effects from DIFFERENT studies for the
+    SAME outcome) uses ONE summary measure. Returns flags:
+
+      mixed_continuous_and_binary : a continuous measure (MD/SMD) pooled with any
+                                    other family -> ALWAYS invalid (Cochrane
+                                    §10.4); a mean difference cannot be combined
+                                    with an odds/risk/hazard ratio.
+      mixed_summary_measure       : >=2 distinct effect families pooled (e.g. HR
+                                    with OR) -> different scales, needs review.
+      mixed_effect_subtype        : different types within one family (e.g. OR
+                                    with RR, or MD with SMD) -> different scales.
+
+    This checks effects intended to be POOLED TOGETHER. A single trial that
+    reports MD for one outcome and OR for another is NOT this error (see
+    multiple_effect_types in check_grounding) -- those are different outcomes,
+    not one pool.
+    """
+    by_family: Dict[str, set] = {}
+    for e in effects:
+        t = re.sub(r"[^A-Z]", "", str(e.get("type", "")).upper())
+        fam = _MEASURE_FAMILY.get(t)
+        if fam:
+            by_family.setdefault(fam, set()).add(t)
+    families = set(by_family)
+    if "continuous" in families and len(families) > 1:
+        return ["mixed_continuous_and_binary"]
+    if len(families) > 1:
+        return ["mixed_summary_measure"]
+    if len(families) == 1:
+        only = next(iter(families))
+        if len(by_family[only]) > 1:
+            return ["mixed_effect_subtype"]
+    return []
+
+
 def annotate_grounding(effects, text):
     """Attach grounding flags to each effect (under 'grounding') and merge them
     into the existing consistency flag list + needs_review. Never edits values.

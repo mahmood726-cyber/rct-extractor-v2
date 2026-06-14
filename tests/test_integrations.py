@@ -87,6 +87,27 @@ def test_to_ma_studies_uses_2x2_for_or():
     assert all(s["se"] > 0 for s in payload["studies"])
 
 
+def test_to_ma_studies_homogeneous_pool_has_no_diagnostics():
+    recs = [{"label": "T1", "text": HR_ABSTRACT}, {"label": "T2", "text": HR_ABSTRACT}]
+    payload = allmeta.to_ma_studies(recs, measure="HR")
+    assert "_diagnostics" not in payload          # clean single-family pool
+
+
+def test_to_ma_studies_flags_silently_dropped_other_family():
+    # T2 reports only an OR; requesting HR must pool T1 and DISCLOSE the drop
+    recs = [
+        {"label": "T1", "text": HR_ABSTRACT},
+        {"label": "T2", "text": "The primary endpoint odds ratio was 1.30 (95% CI 1.05-1.61)."},
+    ]
+    payload = allmeta.to_ma_studies(recs, measure="HR")
+    assert len(payload["studies"]) == 1           # only the HR trial pooled
+    diag = payload["_diagnostics"]
+    assert diag["measure"] == "HR"
+    assert diag["excluded_measure_mismatch"] == 1
+    assert "OR" in diag["effect_types_available"] and "HR" in diag["effect_types_available"]
+    assert diag["measure_homogeneity"]            # non-empty: families differ
+
+
 def test_to_ma_studies_validates_against_js_contract():
     # mirror the validation rules in shared/ma-studies-v1.js
     recs = [{"label": "T1", "text": HR_ABSTRACT}, {"label": "T2", "text": HR_ABSTRACT}]
