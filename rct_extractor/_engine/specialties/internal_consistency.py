@@ -140,6 +140,54 @@ def grimmer_consistent(sd: float, n: int, mean: float, items: int = 1,
     return not reachable
 
 
+def _decimals(x) -> int:
+    """Number of decimal places in a reported value (for granularity checks)."""
+    s = repr(float(x))
+    return len(s.split(".")[1].rstrip("0")) if "." in s and s.split(".")[1].rstrip("0") else 0
+
+
+def _as_proportion(x):
+    """Normalise a sensitivity/specificity/PPV to a 0-1 proportion. Values >1.5
+    are read as percentages (a proportion cannot exceed 1)."""
+    if x is None:
+        return None
+    return x / 100.0 if x > 1.5 else float(x)
+
+
+def _pooled_sd(s1, n1, s2, n2):
+    """Pooled SD for two arms (the denominator of a standardised mean diff)."""
+    if None in (s1, n1, s2, n2) or n1 < 2 or n2 < 2 or s1 < 0 or s2 < 0:
+        return None
+    return math.sqrt(((n1 - 1) * s1 * s1 + (n2 - 1) * s2 * s2) / (n1 + n2 - 2))
+
+
+def prop_count_consistent(prop: float, n: int) -> Optional[bool]:
+    """GRIM-for-proportions: does SOME integer cell count c in [0, n] reproduce
+    the reported proportion at its stated decimal precision? A diagnostic Se/Sp
+    of 0.92 with n=37 diseased implies 34.04 true-positives -> 34/37=0.919 -> 0.92
+    rounds back, so it is reachable. Returns False when no integer count rounds to
+    the reported value (the N and the proportion are mutually impossible).
+    Returns None when precision is too coarse to constrain (n >= 10^decimals)."""
+    if prop is None or n is None or n < 1 or prop < 0 or prop > 1:
+        return None
+    d = _decimals(prop)
+    if d == 0 or n >= 10 ** d:        # too coarse: every count passes
+        return None
+    base = prop * n
+    for c in range(max(0, int(base) - 1), min(n, int(base) + 2) + 1):
+        if round(c / n, d) == round(prop, d):
+            return True
+    return False
+
+
+def dta_ppv(sens: float, spec: float, prev: float) -> Optional[float]:
+    """Bayes PPV from sensitivity, specificity and prevalence."""
+    if None in (sens, spec, prev):
+        return None
+    denom = sens * prev + (1 - spec) * (1 - prev)
+    return sens * prev / denom if denom > 0 else None
+
+
 def check_consistency(effect: Dict, mid_tol: float = 0.22,
                       gross_mid_tol: float = 0.6,
                       table_log_tol: float = 0.30) -> Dict:
@@ -168,63 +216,66 @@ def check_consistency(effect: Dict, mid_tol: float = 0.22,
            "flags": [], "derived_p": None, "ci_excludes_null": None,
            "repair": None}
 
-    if pe is None or lo is None or hi is None:
-        return res
-    res["checkable"] = True
-
-    # Repair 1: CI bounds reported in reverse order.
-    if lo > hi:
-        lo, hi = hi, lo
-        res["repair"] = "swapped_ci_bounds"
-
     flags = []
     is_ratio = etype in RATIO_TYPES
     is_pct = etype in PCT_TYPES
     null = 1.0 if is_ratio else 0.0
 
-    # Containment: point must lie within its CI.
-    if not (lo - _EPS <= pe <= hi + _EPS):
-        flags.append("point_outside_ci")
+    # The point-vs-CI / significance checks need a full (point, CI) triple. The
+    # structural checks below (counts, arm-Ns, GRIM, continuous recompute, DTA
+    # 2x2) do NOT -- a diagnostic Se/Sp or an SMD-with-arm-stats has no ratio CI,
+    # yet is still checkable. So gate only the CI block on `has_ci`.
+    has_ci = pe is not None and lo is not None and hi is not None
+    if has_ci:
+        res["checkable"] = True
+        # Repair 1: CI bounds reported in reverse order.
+        if lo > hi:
+            lo, hi = hi, lo
+            res["repair"] = "swapped_ci_bounds"
 
-    z = None
-    mid_err = None
-    if is_ratio:
-        if lo <= 0 or hi <= 0 or pe <= 0:
-            flags.append("nonpositive_ratio")
+        # Containment: point must lie within its CI.
+        if not (lo - _EPS <= pe <= hi + _EPS):
+            flags.append("point_outside_ci")
+
+        z = None
+        mid_err = None
+        if is_ratio:
+            if lo <= 0 or hi <= 0 or pe <= 0:
+                flags.append("nonpositive_ratio")
+            else:
+                log_mid = (math.log(lo) + math.log(hi)) / 2.0
+                mid_err = abs(math.log(pe) - log_mid)        # log scale
+                se = (math.log(hi) - math.log(lo)) / (2.0 * Z95)
+                if se > 0:
+                    z = math.log(pe) / se
         else:
-            log_mid = (math.log(lo) + math.log(hi)) / 2.0
-            mid_err = abs(math.log(pe) - log_mid)        # log scale
-            se = (math.log(hi) - math.log(lo)) / (2.0 * Z95)
+            # difference / percentage: linear scale
+            mid = (lo + hi) / 2.0
+            denom = abs(mid) if abs(mid) > _EPS else 1.0
+            mid_err = abs(pe - mid) / denom
+            se = (hi - lo) / (2.0 * Z95)
             if se > 0:
-                z = math.log(pe) / se
-    else:
-        # difference / percentage: linear scale
-        mid = (lo + hi) / 2.0
-        denom = abs(mid) if abs(mid) > _EPS else 1.0
-        mid_err = abs(pe - mid) / denom
-        se = (hi - lo) / (2.0 * Z95)
-        if se > 0:
-            z = (pe - null) / se
+                z = (pe - null) / se
 
-    if mid_err is not None:
-        if mid_err > gross_mid_tol:
-            flags.append("point_grossly_off_centre")   # almost certainly a misread digit
-        elif mid_err > mid_tol:
-            flags.append("point_off_ci_centre")
+        if mid_err is not None:
+            if mid_err > gross_mid_tol:
+                flags.append("point_grossly_off_centre")   # almost certainly a misread digit
+            elif mid_err > mid_tol:
+                flags.append("point_off_ci_centre")
 
-    ci_excludes_null = (null < lo - _EPS) or (null > hi + _EPS)
-    res["ci_excludes_null"] = ci_excludes_null
+        ci_excludes_null = (null < lo - _EPS) or (null > hi + _EPS)
+        res["ci_excludes_null"] = ci_excludes_null
 
-    derived_p = two_sided_p_from_z(z) if z is not None else None
-    res["derived_p"] = derived_p
+        derived_p = two_sided_p_from_z(z) if z is not None else None
+        res["derived_p"] = derived_p
 
-    # statcheck-style significance agreement with a reported p-value. We check
-    # only the significance VERDICT (does the CI exclude the null vs is p<0.05),
-    # not p magnitude -- abstracts report p as ceilings ("p<0.001"), so exact
-    # magnitudes are unreliable and would false-flag good extractions.
-    if p is not None and derived_p is not None:
-        if (p < 0.05) != ci_excludes_null:
-            flags.append("gross_sig_inconsistency")
+        # statcheck-style significance agreement with a reported p-value. We check
+        # only the significance VERDICT (does the CI exclude the null vs is p<0.05),
+        # not p magnitude -- abstracts report p as ceilings ("p<0.001"), so exact
+        # magnitudes are unreliable and would false-flag good extractions.
+        if p is not None and derived_p is not None:
+            if (p < 0.05) != ci_excludes_null:
+                flags.append("gross_sig_inconsistency")
 
     # Count-level checks (when the 2x2 cell counts are present). These catch the
     # negated-count trap -- an extracted arm N that is actually a "Not
@@ -321,6 +372,77 @@ def check_consistency(effect: Dict, mid_tol: float = 0.22,
                         sd_v, int(n_v), mean_v, int(items)) is False:
                     flags.append("grimmer_inconsistent")  # soft: review
 
+    # --- Continuous: recompute the reported effect from arm summary stats -----
+    # The two dominant continuous-outcome errors in published meta-analyses
+    # (Gotzsche 2007 JAMA found them in 37%; Maassen 2020 in ~16% that flipped
+    # significance) are SD<->SE confusion and SMD/MD miscomputation. When the arm
+    # means/SDs/Ns AND the reported effect are present we can recompute and check.
+    etype = str(effect.get("type", "")).upper().replace(" ", "")
+    eff = effect.get("effect_size")
+    mt, mc = effect.get("mean_tx"), effect.get("mean_ctrl")
+    st, sc = effect.get("sd_tx"), effect.get("sd_ctrl")
+    nt, nc = effect.get("n_tx"), effect.get("n_ctrl")
+    if eff is not None and mt is not None and mc is not None:
+        if etype in ("MD", "WMD", "MEANDIFFERENCE"):
+            md = mt - mc
+            # accept either reporting orientation (tx-ctrl or ctrl-tx)
+            if min(abs(eff - md), abs(eff + md)) > 0.05 * max(1.0, abs(md)):
+                flags.append("md_recompute_mismatch")     # soft: review
+        elif etype in ("SMD", "STANDARDIZEDMEANDIFFERENCE", "HEDGESG", "COHENSD"):
+            psd = _pooled_sd(st, nt, sc, nc)
+            if psd and psd > 0:
+                smd = (mt - mc) / psd
+                if abs(abs(eff) - abs(smd)) > 0.15:        # SMD scale ~0-2
+                    flags.append("smd_recompute_mismatch")  # soft: review
+
+    # SD-vs-SE confusion via the effect CI: SE(MD) from the CI must agree with
+    # SE pooled from the arm dispersions. If the "SDs" are really SEs, the arm SE
+    # collapses by ~1/sqrt(n) and the ratio blows out -> the deadliest silent
+    # continuous error becomes visible.
+    if etype in ("MD", "WMD", "MEANDIFFERENCE") and None not in (st, sc, nt, nc):
+        lo, hi = effect.get("ci_lower"), effect.get("ci_upper")
+        if lo is not None and hi is not None and nt >= 1 and nc >= 1 and hi != lo:
+            se_ci = abs(hi - lo) / (2 * 1.959964)
+            se_arm = math.sqrt(st * st / nt + sc * sc / nc)
+            if se_ci > 0 and se_arm > 0:
+                ratio = se_arm / se_ci
+                if ratio < 0.4 or ratio > 2.5:
+                    flags.append("dispersion_se_sd_mismatch")  # soft: review
+
+    # --- Diagnostic-test-accuracy 2x2 coherence ------------------------------
+    # Reconstruct the 2x2 from Se/Sp + group Ns and require integer cells
+    # (GRIM-for-diagnostics), then check Se/Sp/PPV obey Bayes at the reported
+    # prevalence. Absent from the efficacy gold set, so the FP-audit stays 0.
+    sens = _as_proportion(effect.get("sensitivity"))
+    spec = _as_proportion(effect.get("specificity"))
+    nd, nh = effect.get("n_diseased"), effect.get("n_nondiseased")
+    if sens is not None and nd and prop_count_consistent(sens, int(nd)) is False:
+        flags.append("dta_cells_noninteger")              # soft: review
+    if spec is not None and nh and prop_count_consistent(spec, int(nh)) is False:
+        flags.append("dta_cells_noninteger")
+    tp, fp = effect.get("tp"), effect.get("fp")
+    fn, tn = effect.get("fn"), effect.get("tn")
+    if None not in (tp, fn) and (tp + fn) > 0 and sens is not None:
+        if abs(sens - tp / (tp + fn)) > 0.03:
+            flags.append("dta_2x2_mismatch")              # soft: review
+    if None not in (tn, fp) and (tn + fp) > 0 and spec is not None:
+        if abs(spec - tn / (tn + fp)) > 0.03:
+            flags.append("dta_2x2_mismatch")
+    ppv = _as_proportion(effect.get("ppv"))
+    prev = _as_proportion(effect.get("prevalence"))
+    if None not in (sens, spec, prev, ppv):
+        ppv_imp = dta_ppv(sens, spec, prev)
+        if ppv_imp is not None and abs(ppv - ppv_imp) > 0.05:
+            flags.append("dta_bayes_mismatch")            # soft: review
+
+    # A structural-only extraction (counts/means/DTA cells, no ratio CI) was
+    # still checked -- mark it checkable so a clean one reads "verified", not
+    # "unknown", and downstream needs_review logic sees the flags.
+    if not res["checkable"]:
+        res["checkable"] = any(effect.get(k) is not None for k in (
+            "events_tx", "events_ctrl", "mean_tx", "mean_ctrl",
+            "sensitivity", "specificity", "tp", "tn", "ppv"))
+
     # Score: hard flags zero it out (and get dropped); soft flags reduce it and
     # surface needs_review. gross_sig_inconsistency is SOFT, not hard: a CI that
     # includes the null while p<0.05 (or vice versa) is usually discordant
@@ -332,7 +454,13 @@ def check_consistency(effect: Dict, mid_tol: float = 0.22,
     penalty = {"point_grossly_off_centre": 0.7, "point_off_ci_centre": 0.4,
                "gross_sig_inconsistency": 0.4, "effect_table_mismatch": 0.4,
                "arm_n_sum_mismatch": 0.4, "pct_count_incoherent": 0.4,
-               "grim_inconsistent": 0.4, "grimmer_inconsistent": 0.3}
+               "grim_inconsistent": 0.4, "grimmer_inconsistent": 0.3,
+               "md_recompute_mismatch": 0.4, "smd_recompute_mismatch": 0.4,
+               "dispersion_se_sd_mismatch": 0.3, "dta_cells_noninteger": 0.3,
+               "dta_2x2_mismatch": 0.4, "dta_bayes_mismatch": 0.4}
+    # de-duplicate (a flag can be raised by either arm) while preserving order
+    seen_f = set()
+    flags = [f for f in flags if not (f in seen_f or seen_f.add(f))]
     score = 1.0
     if any(f in hard for f in flags):
         score = 0.0

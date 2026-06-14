@@ -12,6 +12,7 @@ import pytest
 from rct_extractor._engine.specialties.internal_consistency import (
     two_sided_p_from_z, z_from_p, check_consistency, annotate,
     grim_consistent, grimmer_consistent,
+    prop_count_consistent, dta_ppv, _pooled_sd,
 )
 
 _GOOD_RR = {"type": "RR", "effect_size": 0.8, "ci_lower": 0.6, "ci_upper": 1.0}
@@ -255,6 +256,96 @@ def test_grim_clean_mean_not_flagged():
     e = dict(_GOOD_RR, mean_tx=2.50, n_tx=40, sd_tx=1.00, scale_items=1)
     c = check_consistency(e)
     assert "grim_inconsistent" not in c["flags"]
+
+
+# --- continuous: MD/SMD recompute + SD/SE confusion -------------------------
+
+def test_md_recompute_matches_arm_means_passes():
+    e = {"type": "MD", "effect_size": -2.0, "mean_tx": 8.0, "mean_ctrl": 10.0,
+         "ci_lower": -3.0, "ci_upper": -1.0}
+    assert "md_recompute_mismatch" not in check_consistency(e)["flags"]
+
+
+def test_md_recompute_accepts_reversed_orientation():
+    # reported +2.0 while arms give tx-ctrl = -2.0 -> orientation, not an error
+    e = {"type": "MD", "effect_size": 2.0, "mean_tx": 8.0, "mean_ctrl": 10.0}
+    assert "md_recompute_mismatch" not in check_consistency(e)["flags"]
+
+
+def test_md_recompute_mismatch_flagged():
+    e = {"type": "MD", "effect_size": -2.0, "mean_tx": 8.0, "mean_ctrl": 14.0}  # true MD -6
+    c = check_consistency(e)
+    assert "md_recompute_mismatch" in c["flags"] and c["consistent"]  # soft
+
+
+def test_smd_recompute_matches_pooled_sd_passes():
+    # MD=-2, pooled SD~2 -> SMD~-1.0
+    e = {"type": "SMD", "effect_size": -1.0, "mean_tx": 8.0, "mean_ctrl": 10.0,
+         "sd_tx": 2.0, "sd_ctrl": 2.0, "n_tx": 50, "n_ctrl": 50}
+    assert "smd_recompute_mismatch" not in check_consistency(e)["flags"]
+
+
+def test_smd_recompute_mismatch_flagged():
+    e = {"type": "SMD", "effect_size": -0.2, "mean_tx": 8.0, "mean_ctrl": 10.0,
+         "sd_tx": 2.0, "sd_ctrl": 2.0, "n_tx": 50, "n_ctrl": 50}   # true ~ -1.0
+    assert "smd_recompute_mismatch" in check_consistency(e)["flags"]
+
+
+def test_dispersion_sd_se_confusion_flagged():
+    # arms report SE (0.3) mislabeled as SD; the effect CI implies SD~2.1
+    # se_arm = sqrt(.09/50+.09/50)=0.06 vs se_ci=(1)/3.92=0.255 -> ratio 0.24 -> flag
+    e = {"type": "MD", "effect_size": -2.0, "ci_lower": -2.5, "ci_upper": -1.5,
+         "sd_tx": 0.3, "sd_ctrl": 0.3, "n_tx": 50, "n_ctrl": 50}
+    assert "dispersion_se_sd_mismatch" in check_consistency(e)["flags"]
+
+
+def test_dispersion_real_sd_consistent_with_ci_passes():
+    # genuine SDs (2.0) -> se_arm=0.4 vs se_ci=0.255 -> ratio 1.57, within band
+    e = {"type": "MD", "effect_size": -2.0, "ci_lower": -2.5, "ci_upper": -1.5,
+         "sd_tx": 2.0, "sd_ctrl": 2.0, "n_tx": 50, "n_ctrl": 50}
+    assert "dispersion_se_sd_mismatch" not in check_consistency(e)["flags"]
+
+
+# --- DTA: 2x2 reconstruction + Bayes ----------------------------------------
+
+def test_prop_count_consistent_reachable_and_not():
+    assert prop_count_consistent(0.92, 50) is True          # 46/50 exactly
+    assert prop_count_consistent(0.92, 37) is True          # 34/37=0.919->0.92
+    assert prop_count_consistent(0.999, 3) is False         # no integer/3 = 0.999
+
+
+def test_dta_cells_noninteger_flagged():
+    # Se=0.50 with n_diseased=3 -> 1.5 TP, no integer reproduces 0.50 at 2dp? 1/3=.33,2/3=.67
+    e = {"type": "DTA", "sensitivity": 0.50, "n_diseased": 3, "specificity": 0.90, "n_nondiseased": 100}
+    assert "dta_cells_noninteger" in check_consistency(e)["flags"]
+
+
+def test_dta_clean_cells_pass():
+    e = {"type": "DTA", "sensitivity": 0.92, "n_diseased": 50,
+         "specificity": 0.95, "n_nondiseased": 100}
+    assert "dta_cells_noninteger" not in check_consistency(e)["flags"]
+
+
+def test_dta_2x2_mismatch_against_reported_sens():
+    e = {"type": "DTA", "sensitivity": 0.80, "tp": 46, "fn": 4}   # 46/50 = 0.92 != 0.80
+    assert "dta_2x2_mismatch" in check_consistency(e)["flags"]
+
+
+def test_dta_bayes_ppv_consistency():
+    # Se .9 Sp .9 prev .1 -> PPV = .09/(.09+.09) = 0.5
+    assert abs(dta_ppv(0.9, 0.9, 0.1) - 0.5) < 1e-9
+    bad = {"type": "DTA", "sensitivity": 0.9, "specificity": 0.9,
+           "prevalence": 0.1, "ppv": 0.95}                       # true 0.5
+    assert "dta_bayes_mismatch" in check_consistency(bad)["flags"]
+    good = dict(bad, ppv=0.5)
+    assert "dta_bayes_mismatch" not in check_consistency(good)["flags"]
+
+
+def test_dta_percentage_inputs_normalized():
+    # Se/Sp given as percentages must normalise to proportions, not false-flag
+    e = {"type": "DTA", "sensitivity": 92.0, "n_diseased": 50,
+         "specificity": 95.0, "n_nondiseased": 100}
+    assert "dta_cells_noninteger" not in check_consistency(e)["flags"]
 
 
 # --- gold-set false-positive audit ------------------------------------------
