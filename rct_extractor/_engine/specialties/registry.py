@@ -404,6 +404,15 @@ from .cystic_fibrosis import (
     detect_cystic_fibrosis_subspecialty,
     normalize_cystic_fibrosis_endpoint
 )
+from .liver_transplant import (
+    LIVER_TRANSPLANT_ENDPOINTS,
+    REJECTION_PATTERNS as LT_REJECTION_PATTERNS,
+    GRAFT_PATTERNS as LT_GRAFT_PATTERNS,
+    FUNCTION_PATTERNS as LT_FUNCTION_PATTERNS,
+    COMPLICATIONS_PATTERNS as LT_COMPLICATIONS_PATTERNS,
+    detect_liver_transplant_subspecialty,
+    normalize_liver_transplant_endpoint
+)
 
 from .pulmonary_hypertension import (
     PULMONARY_HYPERTENSION_ENDPOINTS,
@@ -1715,6 +1724,18 @@ SPECIALTY_REGISTRY = {
             'systemic': CF_SYSTEMIC_PATTERNS
         }
     },
+    'liver_transplant': {
+        'subspecialties': ['rejection', 'graft', 'function', 'complications'],
+        'detection_function': detect_liver_transplant_subspecialty,
+        'normalizer': normalize_liver_transplant_endpoint,
+        'endpoints': LIVER_TRANSPLANT_ENDPOINTS,
+        'patterns': {
+            'rejection': LT_REJECTION_PATTERNS,
+            'graft': LT_GRAFT_PATTERNS,
+            'function': LT_FUNCTION_PATTERNS,
+            'complications': LT_COMPLICATIONS_PATTERNS
+        }
+    },
     'pulmonary_hypertension': {
         'subspecialties': ['functional', 'hemodynamics', 'clinical_worsening', 'biomarker'],
         'detection_function': detect_pulmonary_hypertension_subspecialty,
@@ -2621,6 +2642,17 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'cfq[- ]r|cystic\s+fibrosis\s+questionnaire',
             r'pseudomonas\s+aeruginosa\s+(?:eradication|infection)',
         ],
+        'liver_transplant': [
+            r'liver\s+transplant\w*', r'hepatic\s+(?:allograft|transplant)',
+            r'liver\s+allograft', r'orthotopic\s+liver\s+transplant\w*|\bolt\b',
+            r'living[- ]donor\s+liver\s+transplant\w*|\bldlt\b|\bddlt\b',
+            r'hepatic[- ]artery\s+thrombosis', r'biliary\s+(?:stricture|complication|leak)',
+            r'\bmeld\b|model\s+for\s+end[- ]stage\s+liver\s+disease',
+            r'(?:biopsy[- ]proven\s+)?acute\s+rejection', r'graft\s+(?:loss|failure|survival)',
+            r'tacrolimus|ciclosporin|cyclosporine|everolimus|mycophenolate',
+            r'hepatocellular\s+carcinoma\s+recurrence|hcc\s+recurrence',
+            r'transplant\s+recipients?', r'milan\s+criteria',
+        ],
         'pulmonary_hypertension': [
             r'pulmonary\s+(?:arterial\s+)?hypertension', r'\bpah\b',
             r'pulmonary\s+vascular\s+resistance|\bpvr\b',
@@ -3192,6 +3224,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'cystic_fibrosis':
         subspecialty, conf = detect_cystic_fibrosis_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'liver_transplant':
+        subspecialty, conf = detect_liver_transplant_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'pulmonary_hypertension':
         subspecialty, conf = detect_pulmonary_hypertension_subspecialty(text)
