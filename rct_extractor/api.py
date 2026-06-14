@@ -63,6 +63,7 @@ SPECIALTIES: Tuple[str, ...] = (
     "cystic_fibrosis",
     "liver_transplant",
     "heart_lung_transplant",
+    "neonatology",
     "pulmonary_hypertension",
     "pcos",
     "respiratory",
