@@ -108,6 +108,29 @@ def test_to_ma_studies_flags_silently_dropped_other_family():
     assert diag["measure_homogeneity"]            # non-empty: families differ
 
 
+def test_to_ma_studies_flags_outcome_mixing():
+    # one trial's HR is for all-cause mortality, the other's for stroke -> pooling
+    # them is the deadly outcome-mixing error; the bus must disclose it
+    recs = [
+        {"label": "T1", "text": "All-cause mortality was reduced (HR 0.80, 95% CI 0.70-0.91)."},
+        {"label": "T2", "text": "Stroke was reduced (HR 0.75, 95% CI 0.60-0.94)."},
+    ]
+    payload = allmeta.to_ma_studies(recs, measure="HR")
+    assert len(payload["studies"]) == 2
+    diag = payload["_diagnostics"]
+    assert "mixed_outcome" in diag["outcome_homogeneity"]
+    assert set(diag["outcomes_pooled"]) == {"all-cause mortality", "stroke"}
+
+
+def test_to_ma_studies_same_outcome_no_outcome_flag():
+    recs = [
+        {"label": "T1", "text": "All-cause mortality was reduced (HR 0.80, 95% CI 0.70-0.91)."},
+        {"label": "T2", "text": "All-cause mortality was reduced (HR 0.75, 95% CI 0.60-0.94)."},
+    ]
+    payload = allmeta.to_ma_studies(recs, measure="HR")
+    assert "_diagnostics" not in payload          # one outcome, one measure -> clean
+
+
 def test_to_ma_studies_validates_against_js_contract():
     # mirror the validation rules in shared/ma-studies-v1.js
     recs = [{"label": "T1", "text": HR_ABSTRACT}, {"label": "T2", "text": HR_ABSTRACT}]

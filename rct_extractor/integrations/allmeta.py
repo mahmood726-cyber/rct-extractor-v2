@@ -33,6 +33,7 @@ from typing import Any, Dict, List, Optional
 from ..api import extract
 from ._common import effect_to_est_se, pick_effect, twobytwo_to_est_se
 from .._engine.specialties.source_grounding import check_pool_measures
+from .._engine.specialties.outcome_grouping import outcome_signature, check_pool_outcomes
 
 
 def to_ma_studies(
@@ -61,6 +62,7 @@ def to_ma_studies(
     # when the bus's single-family filter silently dropped a different family
     # (e.g. measure="OR" but four trials only reported an HR -> excluded).
     available_effects: List[Dict[str, Any]] = []
+    pooled_sigs: List[Dict[str, Any]] = []   # outcome signatures of pooled studies
     excluded_measure_mismatch = 0
     for i, r in enumerate(records):
         text = r.get("text", "")
@@ -73,6 +75,12 @@ def to_ma_studies(
         chosen = pick_effect(res.get("effects", []), endpoint=endpoint, measure=measure)
         if chosen is not None and chosen.get("type"):
             available_effects.append({"type": chosen["type"]})
+        # Bind the chosen effect to its outcome+timepoint so we can detect the
+        # deadly outcome-mixing error across the assembled pool.
+        chosen_sig = None
+        if chosen is not None:
+            chosen_sig = {"outcome_signature": outcome_signature(
+                text, char_start=chosen.get("char_start"))}
 
         est_se = None
         # Prefer raw 2x2 for ratio measures (counts -> exact log-effect + SE).
@@ -106,6 +114,8 @@ def to_ma_studies(
             "group": str(r["group"]) if r.get("group") else None,
             "year": float(year) if isinstance(year, (int, float)) else None,
         })
+        if chosen_sig:
+            pooled_sigs.append(chosen_sig)
 
     payload: Dict[str, Any] = {
         "_schema": "ma-studies-v1",
@@ -116,20 +126,36 @@ def to_ma_studies(
     # never invisible: if the trial set offered >1 incompatible family, say so.
     homog_flags = check_pool_measures(available_effects)
     types_seen = sorted({str(e["type"]).upper() for e in available_effects})
-    if homog_flags or excluded_measure_mismatch:
-        payload["_diagnostics"] = {
+    # Outcome-mixing guard (the deadly error): do the POOLED studies actually
+    # measure the same outcome at the same follow-up time?
+    outcome_flags = check_pool_outcomes(pooled_sigs)
+    outcomes_seen = sorted({s["outcome_signature"]["outcome"] for s in pooled_sigs
+                            if s["outcome_signature"].get("outcome")})
+    if homog_flags or excluded_measure_mismatch or outcome_flags:
+        diag: Dict[str, Any] = {
             "measure": measure.upper(),
             "effect_types_available": types_seen,
             "measure_homogeneity": homog_flags,
             "excluded_measure_mismatch": excluded_measure_mismatch,
-            "note": (
+        }
+        if homog_flags or excluded_measure_mismatch:
+            diag["note"] = (
                 "Pooled on a single summary measure ({m}); {n} trial(s) reporting a "
                 "different family were excluded. Mixing summary measures is invalid "
                 "(Cochrane Handbook Sec.10.4).".format(m=measure.upper(), n=excluded_measure_mismatch)
                 if excluded_measure_mismatch else
                 "Trial set spans >1 summary-measure family; only {m} was pooled.".format(m=measure.upper())
-            ),
-        }
+            )
+        if outcome_flags:
+            diag["outcome_homogeneity"] = outcome_flags
+            diag["outcomes_pooled"] = outcomes_seen
+            diag["outcome_note"] = (
+                "POOL MIXES OUTCOMES ({o}) -- a pooled estimate across different "
+                "outcomes/time points answers no clinical question. Verify every "
+                "trial contributes the SAME outcome before pooling.".format(
+                    o=", ".join(outcomes_seen) or "different constructs")
+            )
+        payload["_diagnostics"] = diag
     return payload
 
 
