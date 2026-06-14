@@ -51,8 +51,27 @@ def z_from_p(p: float) -> Optional[float]:
     return -0.862 + math.sqrt(inner)
 
 
+def _recompute_ratio(etype: str, et, nt, ec, nc) -> Optional[float]:
+    """Recompute OR or RR from a 2x2 table (0.5 correction on any zero cell).
+
+    Only OR and RR are directly determined by the 2x2 table, so only those are
+    cross-checked; HR/IRR depend on person-time / censoring and a risk-ratio
+    proxy would false-flag them, so they are skipped.
+    """
+    a, b, c, d = et, nt - et, ec, nc - ec
+    if min(a, b, c, d) == 0:
+        a, b, c, d = a + 0.5, b + 0.5, c + 0.5, d + 0.5
+    if etype == "OR":
+        return (a * d) / (b * c) if (b * c) else None
+    if etype == "RR":
+        rt, rc = a / (a + b), c / (c + d)
+        return (rt / rc) if rc else None
+    return None
+
+
 def check_consistency(effect: Dict, mid_tol: float = 0.22,
-                      gross_mid_tol: float = 0.6) -> Dict:
+                      gross_mid_tol: float = 0.6,
+                      table_log_tol: float = 0.30) -> Dict:
     """Score an extracted effect dict for internal consistency.
 
     Args:
@@ -136,14 +155,40 @@ def check_consistency(effect: Dict, mid_tol: float = 0.22,
         if (p < 0.05) != ci_excludes_null:
             flags.append("gross_sig_inconsistency")
 
+    # Count-level checks (when the 2x2 cell counts are present). These catch the
+    # negated-count trap -- an extracted arm N that is actually a "Not
+    # randomised"/"discontinued" count, so events > N -- and effect estimates
+    # that disagree with the table they summarise. Keys: events_tx / n_tx /
+    # events_ctrl / n_ctrl. Absent on effect-only extractions, so they never
+    # fire on the abstract-level gold set.
+    et_, nt_, ec_, nc_ = (effect.get("events_tx"), effect.get("n_tx"),
+                          effect.get("events_ctrl"), effect.get("n_ctrl"))
+    for ev, n in ((et_, nt_), (ec_, nc_)):
+        if ev is not None and n is not None:
+            if n <= 0:
+                flags.append("arm_n_nonpositive")
+            elif ev < 0:
+                flags.append("events_negative")
+            elif ev > n:
+                flags.append("events_exceed_n")
+    bad_counts = {"arm_n_nonpositive", "events_negative", "events_exceed_n"}
+    if (is_ratio and pe and pe > 0 and None not in (et_, nt_, ec_, nc_)
+            and nt_ and nc_ and nt_ > 0 and nc_ > 0
+            and not (bad_counts & set(flags))):
+        recomputed = _recompute_ratio(etype, et_, nt_, ec_, nc_)
+        if recomputed and recomputed > 0:
+            if abs(math.log(pe) - math.log(recomputed)) > table_log_tol:
+                flags.append("effect_table_mismatch")
+
     # Score: hard flags zero it out (and get dropped); soft flags reduce it and
     # surface needs_review. gross_sig_inconsistency is SOFT, not hard: a CI that
     # includes the null while p<0.05 (or vice versa) is usually discordant
     # REPORTING (different model/rounding), not a misread digit -- flag it for
     # review, don't discard a correct extraction. (P0-6)
-    hard = {"point_outside_ci", "nonpositive_ratio"}
+    hard = {"point_outside_ci", "nonpositive_ratio",
+            "events_exceed_n", "arm_n_nonpositive", "events_negative"}
     penalty = {"point_grossly_off_centre": 0.7, "point_off_ci_centre": 0.4,
-               "gross_sig_inconsistency": 0.4}
+               "gross_sig_inconsistency": 0.4, "effect_table_mismatch": 0.4}
     score = 1.0
     if any(f in hard for f in flags):
         score = 0.0

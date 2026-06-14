@@ -5,6 +5,7 @@ Anchors the Altman-Bland CI<->p formulas and confirms the checks catch the
 extraction-error classes they target (misread digit, point outside CI, reversed
 CI bounds, significance flip) without flagging correct extractions.
 """
+import json
 import math
 import pytest
 
@@ -110,3 +111,82 @@ def test_p0_6_sig_discordance_not_dropped():
     assert "gross_sig_inconsistency" in c["flags"] and c["score"] > 0.0
     kept = annotate([{"type": "OR", "effect_size": 0.9, "ci_lower": 0.8, "ci_upper": 1.02, "p_value": 0.04}], drop_hard=True)
     assert len(kept) == 1 and kept[0]["needs_review"]
+
+
+# --- count-level checks (2x2 cell counts) -----------------------------------
+
+def test_events_exceed_n_is_hard_negated_count_trap():
+    # The negated-count trap: an extracted N that is actually a "Not randomised"
+    # count, so events (1807) exceed the arm N (500). Hard failure -> dropped.
+    c = check_consistency({"type": "RR", "effect_size": 0.8, "ci_lower": 0.6, "ci_upper": 1.0,
+                           "events_tx": 1807, "n_tx": 500, "events_ctrl": 40, "n_ctrl": 505})
+    assert "events_exceed_n" in c["flags"]
+    assert c["score"] == 0.0 and not c["consistent"]
+
+
+def test_arm_n_nonpositive_and_negative_events_hard():
+    c1 = check_consistency({"type": "OR", "effect_size": 1.2, "ci_lower": 0.9, "ci_upper": 1.6,
+                            "events_tx": 10, "n_tx": 0, "events_ctrl": 8, "n_ctrl": 100})
+    assert "arm_n_nonpositive" in c1["flags"] and c1["score"] == 0.0
+    c2 = check_consistency({"type": "OR", "effect_size": 1.2, "ci_lower": 0.9, "ci_upper": 1.6,
+                            "events_tx": -3, "n_tx": 100, "events_ctrl": 8, "n_ctrl": 100})
+    assert "events_negative" in c2["flags"] and c2["score"] == 0.0
+
+
+def test_effect_table_mismatch_is_soft_and_consistent_table_passes():
+    # RR from counts = (10/100)/(50/100) = 0.2; reported 0.8 disagrees (soft flag).
+    c = check_consistency({"type": "RR", "effect_size": 0.8, "ci_lower": 0.5, "ci_upper": 1.2,
+                           "events_tx": 10, "n_tx": 100, "events_ctrl": 50, "n_ctrl": 100})
+    assert "effect_table_mismatch" in c["flags"] and 0.0 < c["score"] < 1.0   # soft, not dropped
+    # reported 0.2 matches the table -> no mismatch
+    c2 = check_consistency({"type": "RR", "effect_size": 0.2, "ci_lower": 0.11, "ci_upper": 0.37,
+                            "events_tx": 10, "n_tx": 100, "events_ctrl": 50, "n_ctrl": 100})
+    assert "effect_table_mismatch" not in c2["flags"]
+
+
+def test_hr_table_not_recomputed():
+    # HR depends on person-time/censoring; a risk-ratio proxy would false-flag it,
+    # so HR/IRR are NOT cross-checked against the 2x2.
+    c = check_consistency({"type": "HR", "effect_size": 0.80, "ci_lower": 0.70, "ci_upper": 0.92,
+                           "events_tx": 10, "n_tx": 100, "events_ctrl": 50, "n_ctrl": 100})
+    assert "effect_table_mismatch" not in c["flags"]
+
+
+def test_counts_absent_raise_no_count_flags():
+    c = check_consistency({"type": "RR", "effect_size": 0.45, "ci_lower": 0.36, "ci_upper": 0.56})
+    assert not any(f in c["flags"] for f in
+                   ("events_exceed_n", "arm_n_nonpositive", "events_negative", "effect_table_mismatch"))
+
+
+# --- gold-set false-positive audit ------------------------------------------
+
+_NAME_TO_ABBR = {
+    "RISK RATIO": "RR", "RELATIVE RISK": "RR", "HAZARD RATIO": "HR",
+    "ODDS RATIO": "OR", "INCIDENCE RATE RATIO": "IRR", "RATE RATIO": "IRR",
+    "MEAN DIFFERENCE": "MD", "STANDARDIZED MEAN DIFFERENCE": "SMD",
+    "RISK DIFFERENCE": "RD",
+}
+
+
+def test_gold_set_zero_false_positives():
+    """Every gold extraction is correct, so check_consistency must raise NO
+    flags on it (the FP-audit that licenses trusting the flags downstream)."""
+    from pathlib import Path
+    gold = Path(__file__).resolve().parent.parent / "data" / "validation_dataset.jsonl"
+    n, bad = 0, []
+    for line in gold.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        r = json.loads(line)
+        g = r.get("gold_standard") or {}
+        pt, lo, hi = g.get("point_estimate"), g.get("ci_lower"), g.get("ci_upper")
+        if pt is None or lo is None or hi is None:
+            continue
+        etype = _NAME_TO_ABBR.get(str(r.get("effect_type", "")).upper(), r.get("effect_type"))
+        n += 1
+        c = check_consistency({"type": etype, "effect_size": pt, "ci_lower": lo, "ci_upper": hi})
+        if c["flags"]:
+            bad.append((r.get("trial_name"), etype, pt, lo, hi, c["flags"]))
+    assert n >= 150, f"expected the full gold set, only checked {n}"
+    assert not bad, f"{len(bad)} false positive(s) on the gold set: {bad[:5]}"
