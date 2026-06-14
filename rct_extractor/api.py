@@ -248,8 +248,12 @@ def extract(
                 # Source-grounding + multi-candidate disambiguation: catches the
                 # internally-consistent-but-wrong errors (wrong estimand / wrong
                 # comparison) that the numeric screen cannot. Flag-only.
-                from rct_extractor._engine.specialties.source_grounding import annotate_grounding
+                from rct_extractor._engine.specialties.source_grounding import annotate_grounding, order_effects
                 effs = annotate_grounding(effs, text)
+                # Put the primary-outcome effect first so effects[0] is the target
+                # estimand (the INPULSIS class: a secondary HR was returned before
+                # the primary mean difference).
+                effs = order_effects(effs, text)
             out["effects"] = effs
 
     if with_arm_level and spec in SPECIALTIES:

@@ -112,6 +112,48 @@ def check_grounding(effect: Dict, text: str) -> List[str]:
     return flags
 
 
+def _first_index(value, text, rel_tol=0.02, abs_tol=0.01):
+    """Earliest character index where |value| appears in the text, or -1."""
+    if value is None or not text:
+        return -1
+    av = abs(value)
+    for m in re.finditer(r"\d+(?:\.\d+)?", text):
+        if abs(abs(float(m.group(0))) - av) <= max(abs_tol, rel_tol * av):
+            return m.start()
+    return -1
+
+
+def order_effects(effects, text):
+    """Order extracted effects so the PRIMARY-outcome effect comes first.
+
+    The consistency audit found effects[0] was sometimes a SECONDARY outcome
+    (INPULSIS returned a secondary HR before the primary mean difference), so a
+    consumer taking the first effect got the wrong estimand. Text-grounded,
+    stable heuristic — reorders only, never drops or edits:
+      * earlier mention in the abstract ranks first (abstracts lead with the
+        primary outcome);
+      * an explicit "primary outcome/endpoint" just before the value promotes it;
+        "secondary"/"exploratory"/"post hoc" just before it demotes it.
+    """
+    if not text or len(effects) < 2:
+        return effects
+    low = text.lower()
+
+    def key(e):
+        idx = _first_index(e.get("effect_size"), text)
+        if idx < 0:
+            return (10 ** 9, 0)            # un-locatable values sink to the end
+        before = low[max(0, idx - 80):idx]
+        boost = 0
+        if re.search(r"primary\s+(?:outcome|end\s?point|efficacy)", before):
+            boost -= 1_000_000             # explicit primary → first
+        if re.search(r"\b(?:secondary|exploratory|post[\s-]?hoc)\b", low[max(0, idx - 50):idx]):
+            boost += 500_000               # explicitly secondary → later
+        return (idx + boost, idx)
+
+    return sorted(effects, key=key)
+
+
 def annotate_grounding(effects, text):
     """Attach grounding flags to each effect (under 'grounding') and merge them
     into the existing consistency flag list + needs_review. Never edits values.

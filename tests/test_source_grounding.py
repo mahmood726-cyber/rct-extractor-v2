@@ -10,6 +10,7 @@ from rct_extractor._engine.specialties.source_grounding import (
     count_type_mentions,
     check_grounding,
     annotate_grounding,
+    order_effects,
 )
 
 RABEAM = ("RA-BEAM: Baricitinib showed superior ACR20 response vs placebo at week 12 "
@@ -83,3 +84,30 @@ def test_clean_single_extraction_no_grounding_flags():
     out = annotate_grounding(effects, GOOD)
     assert out[0]["grounding"]["flags"] == []
     assert not out[0].get("needs_review")
+
+
+# --- effect ordering (primary outcome first) -------------------------------
+
+INPULSIS = ("INPULSIS: Nintedanib reduced annual FVC decline in IPF "
+            "(-113.6 vs -223.5 ml/year; difference 109.9 ml/year; 95% CI 75.9-144.0). "
+            "Time to first acute exacerbation: HR 0.64 (0.39-1.05).")
+
+
+def test_order_effects_puts_primary_outcome_first_by_position():
+    # extractor returned the secondary HR first; the primary MD is mentioned earlier
+    effects = [{"type": "HR", "effect_size": 0.64}, {"type": "MD", "effect_size": 109.9}]
+    out = order_effects(effects, INPULSIS)
+    assert out[0]["type"] == "MD" and out[0]["effect_size"] == 109.9
+
+
+def test_order_effects_explicit_primary_label_promoted():
+    txt = "Secondary endpoint: OR 1.4 (1.0-1.9). Primary outcome: OR 2.0 (1.5-2.7)."
+    effects = [{"type": "OR", "effect_size": 1.4}, {"type": "OR", "effect_size": 2.0}]
+    out = order_effects(effects, txt)
+    assert out[0]["effect_size"] == 2.0          # primary promoted despite later position
+
+
+def test_order_effects_stable_and_lossless():
+    effects = [{"type": "HR", "effect_size": 0.84}, {"type": "MD", "effect_size": -4.0}]
+    out = order_effects(effects, GOOD)            # only one value locatable
+    assert len(out) == 2 and {e["effect_size"] for e in out} == {0.84, -4.0}
