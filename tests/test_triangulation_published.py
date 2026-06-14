@@ -44,13 +44,31 @@ def test_step1_extraction_is_internally_consistent():
     assert (hit.get("consistency") or {}).get("flags") in ([], None)
 
 
-@pytest.mark.xfail(reason="ARD-vs-MD disambiguation: a continuous %-change "
-                          "mean difference ('percentage points') is currently "
-                          "typed ARD. Fix needs cross-type dedup; see "
-                          "docs/META_ERROR_PATTERNS.md.", strict=False)
 def test_step1_percentage_point_difference_typed_as_md():
-    # KNOWN LIMITATION pinned as a regression target: the body-weight %-change
-    # between-group difference is a MEAN DIFFERENCE, not a binary risk difference.
+    # The body-weight %-change between-group difference is a MEAN DIFFERENCE, not
+    # a binary risk difference -- context-gated ARD->MD reclassification handles
+    # the "percentage points" ambiguity (a true risk difference stays ARD).
     effs = _effects(STEP1)
     hit = [e for e in effs if abs((e.get("effect_size") or 0) + 12.4) < 1e-6][0]
     assert str(hit.get("type")).upper() in ("MD", "WMD", "MEANDIFFERENCE")
+    assert len(effs) == 1, "must not double-extract (ARD twin)"
+
+
+# --- ARD vs MD disambiguation (context-gated, FP-safe) ----------------------
+
+@pytest.mark.parametrize("text,expected", [
+    ("The mean change in systolic blood pressure was a treatment difference of "
+     "-5.0 percentage points (95% CI -7.0 to -3.0).", "MD"),
+    ("Change in HbA1c from baseline: treatment difference of -1.2 percentage "
+     "points (95% CI -1.5 to -0.9).", "MD"),
+    # true risk differences must STAY ARD
+    ("The absolute risk difference for death was a treatment difference of -4.2 "
+     "percentage points (95% CI, -6.8 to -1.6).", "ARD"),
+    ("The rate of myocardial infarction differed by a treatment difference of "
+     "2.1 percentage points (95% CI 0.5 to 3.7).", "ARD"),
+])
+def test_ard_vs_md_disambiguation(text, expected):
+    effs = _effects(text)
+    assert effs, f"no effect extracted from: {text!r}"
+    assert effs[0]["type"] == expected
+    assert len(effs) == 1, "single effect only (no cross-type twin)"

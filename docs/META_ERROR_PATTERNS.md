@@ -65,14 +65,17 @@ a published meta-analysis may use a different trial set / data source / model an
 carries its own human error. When our number disagrees with a *published pool*,
 that is an investigate-both-sides signal, never an automatic correction.
 
-## Known limitations (pinned regression targets)
+## Resolved via triangulation
 
 - **ARD vs MD for "percentage points"** — a continuous %-change mean difference
-  ("treatment difference of −12.4 percentage points" for body-weight % change) is
-  currently typed `ARD` (a binary risk difference). The value/CI are correct; only
-  the family label is. A safe fix needs ARD↔MD disambiguation plus cross-type
-  de-duplication (naively widening the MD pattern double-extracts the span). Pinned
-  as an `xfail` in the triangulation test.
+  ("treatment difference of −12.4 percentage points" for body-weight % change) was
+  typed `ARD` (a binary risk difference). Fixed by a context-gated reclassification
+  pass (`_reclassify_ard_as_md_when_continuous`): an `ARD` whose local context
+  carries a continuous mean-change cue (mean change / change from baseline /
+  change in body weight·BP·HbA1c·score·level …) **and** no binary cue (risk
+  difference / absolute risk / rate of / incidence / proportion / NNT) is relabelled
+  `MD`. It relabels in place (no new extraction → no twin). A true risk difference
+  stays `ARD`. Pinned by `test_ard_vs_md_disambiguation`.
 
 ## Design rule that keeps this honest
 

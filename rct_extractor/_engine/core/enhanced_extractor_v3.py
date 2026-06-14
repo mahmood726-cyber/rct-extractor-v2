@@ -2328,7 +2328,40 @@ class EnhancedExtractor:
         # ratio whose label sat just outside the matched span (e.g. "IRR: 1.36,
         # 95% CI 0.21 to 8.85" produced both IRR and a spurious MD).
         results = self._suppress_ratio_mistyped_as_difference(results)
+        results = self._reclassify_ard_as_md_when_continuous(results, text)
 
+        return results
+
+    # A continuous-outcome between-group difference reported in "percentage
+    # points" (a % CHANGE outcome, e.g. STEP-1 body weight) is a MEAN DIFFERENCE,
+    # not a binary risk difference -- but "difference of X percentage points" is
+    # lexically identical to a true ARD, so the type is decided by CONTEXT.
+    _CONTINUOUS_DIFF_CUES = re.compile(
+        r"mean\s+change|change\s+from\s+baseline|least[-\s]?squares?\s+mean|"
+        r"\bls\s*mean|mean\s+difference|mean\s+(?:body\s+weight|weight|reduction)|"
+        r"change\s+in\s+(?:body\s+weight|weight|bmi|h(?:b)?a1c|hba1c|"
+        r"blood\s+pressure|systolic|diastolic|egfr|ldl|hdl|cholesterol|"
+        r"[\w\s]{0,25}?\bscore\b|[\w\s]{0,25}?\blevel\b)",
+        re.IGNORECASE)
+    # If ANY of these binary/event cues are nearby, keep it an ARD (risk diff).
+    _ARD_BINARY_CUES = re.compile(
+        r"risk\s+difference|absolute\s+risk|\brate\s+of\b|incidence|"
+        r"proportion\s+of|%\s+of\s+(?:patients|participants|subjects|women|men)|"
+        r"event\s+rate|\bNNT\b|number\s+needed\s+to\s+treat",
+        re.IGNORECASE)
+
+    @classmethod
+    def _reclassify_ard_as_md_when_continuous(cls, results: List["Extraction"], text: str) -> List["Extraction"]:
+        """Relabel an ARD extraction as MD when its local context clearly
+        describes a CONTINUOUS mean-change outcome (and no binary/event cue).
+        Relabels in place -- no new extraction, so no duplicate is created."""
+        for e in results:
+            if e.effect_type != EffectType.ARD:
+                continue
+            start = max(0, e.char_start - 240)
+            ctx = text[start:e.char_end + 20]
+            if cls._CONTINUOUS_DIFF_CUES.search(ctx) and not cls._ARD_BINARY_CUES.search(ctx):
+                e.effect_type = EffectType.MD
         return results
 
     @staticmethod
