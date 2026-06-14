@@ -1,0 +1,598 @@
+{
+  "tolerances": {
+    "pt_abs": 0.02,
+    "pt_rel": 0.02,
+    "ci_abs": 0.03,
+    "ci_rel": 0.03
+  },
+  "papers": [
+    {
+      "pmcid": "PMC9178212",
+      "pmid": "34795034",
+      "specialty": "bronchiectasis",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 11,
+        "chars": 38692,
+        "secs": 0.12
+      },
+      "n_gold": 1,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 2,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "IRR",
+                "point_estimate": 0.96,
+                "ci_lower": 0.72,
+                "ci_upper": 1.27,
+                "ci_level": 0.95,
+                "source_text": "rate ratio 0.96, 95% CI 0.72-1.27",
+                "quote_context": "placebo (rate ratio 0.96, 95% CI 0.72-1.27; p=0",
+                "harvest_pattern": "rate\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\....",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "IRR",
+                "point": 0.96,
+                "ci_lower": 0.72,
+                "ci_upper": 1.27,
+                "source_text": "rate ratio 0.96; 95% CI 0.72-1.27"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 1
+        },
+        "pdf_raw": {
+          "n_extracted": 3,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "IRR",
+                "point_estimate": 0.96,
+                "ci_lower": 0.72,
+                "ci_upper": 1.27,
+                "ci_level": 0.95,
+                "source_text": "rate ratio 0.96, 95% CI 0.72-1.27",
+                "quote_context": "placebo (rate ratio 0.96, 95% CI 0.72-1.27; p=0",
+                "harvest_pattern": "rate\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\....",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "IRR",
+                "point": 0.96,
+                "ci_lower": 0.72,
+                "ci_upper": 1.27,
+                "source_text": "rate ratio\n0.96; 95% CI 0.72-1.27"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 2
+        }
+      }
+    },
+    {
+      "pmcid": "PMC6711567",
+      "pmid": "31692553",
+      "specialty": "bronchiectasis",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 10,
+        "chars": 40888,
+        "secs": 0.14
+      },
+      "n_gold": 4,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 4,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 4.18,
+                "ci_lower": 1.2,
+                "ci_upper": 14.59,
+                "ci_level": 0.95,
+                "source_text": "OR 4.18, 95% CI 1.20-14.59",
+                "quote_context": "iectasis (OR 4.18, 95% CI 1.20-14.59; P =",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 4.18,
+                "ci_lower": 1.2,
+                "ci_upper": 14.59,
+                "source_text": "OR 4.18; 95% CI 1.20-14.59"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 17.55,
+                "ci_lower": 2.82,
+                "ci_upper": 109.18,
+                "ci_level": 0.95,
+                "source_text": "OR 17.55, 95% CI 2.82-109.18",
+                "quote_context": "CAT) \u226520 (OR 17.55, 95% CI 2.82-109.18; P =",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 17.55,
+                "ci_lower": 2.82,
+                "ci_upper": 109.18,
+                "source_text": "OR 17.55; 95% CI 2.82-109.18"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 15.09,
+                "ci_lower": 1.36,
+                "ci_upper": 168.02,
+                "ci_level": 0.95,
+                "source_text": "OR 15.09, 95% CI 1.36-168.02",
+                "quote_context": "s sputum (OR 15.09, 95% CI 1.36-168.02; P =",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 15.09,
+                "ci_lower": 1.36,
+                "ci_upper": 168.02,
+                "source_text": "OR 15.09; 95% CI 1.36-168.02"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 38.43,
+                "ci_lower": 5.39,
+                "ci_upper": 274.21,
+                "ci_level": 0.95,
+                "source_text": "OR 38.43, 95% CI 5.39-274.21",
+                "quote_context": "urulence (OR 38.43, 95% CI 5.39-274.21; P =",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 38.43,
+                "ci_lower": 5.39,
+                "ci_upper": 274.21,
+                "source_text": "OR 38.43; 95% CI 5.39-274.21"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 4,
+            "pt_exact": 4,
+            "pt_tol": 4,
+            "ci_lo_exact": 4,
+            "ci_lo_tol": 4,
+            "ci_hi_exact": 4,
+            "ci_hi_tol": 4,
+            "matched_pairs": 4
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 5,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 4.18,
+                "ci_lower": 1.2,
+                "ci_upper": 14.59,
+                "ci_level": 0.95,
+                "source_text": "OR 4.18, 95% CI 1.20-14.59",
+                "quote_context": "iectasis (OR 4.18, 95% CI 1.20-14.59; P =",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 4.18,
+                "ci_lower": 1.2,
+                "ci_upper": 14.59,
+                "source_text": "OR 4.18; 95% CI 1.20-14.59"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 17.55,
+                "ci_lower": 2.82,
+                "ci_upper": 109.18,
+                "ci_level": 0.95,
+                "source_text": "OR 17.55, 95% CI 2.82-109.18",
+                "quote_context": "CAT) \u226520 (OR 17.55, 95% CI 2.82-109.18; P =",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 17.55,
+                "ci_lower": 2.82,
+                "ci_upper": 109.18,
+                "source_text": "OR 17.55; 95% CI 2.82-109.18"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 15.09,
+                "ci_lower": 1.36,
+                "ci_upper": 168.02,
+                "ci_level": 0.95,
+                "source_text": "OR 15.09, 95% CI 1.36-168.02",
+                "quote_context": "s sputum (OR 15.09, 95% CI 1.36-168.02; P =",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 15.09,
+                "ci_lower": 1.36,
+                "ci_upper": 168.02,
+                "source_text": "OR 15.09; 95% CI 1.36-168.02"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 38.43,
+                "ci_lower": 5.39,
+                "ci_upper": 274.21,
+                "ci_level": 0.95,
+                "source_text": "OR 38.43, 95% CI 5.39-274.21",
+                "quote_context": "urulence (OR 38.43, 95% CI 5.39-274.21; P =",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 38.43,
+                "ci_lower": 5.39,
+                "ci_upper": 274.21,
+                "source_text": "OR 38.43; 95% CI 5.39-274.21"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 4,
+            "pt_exact": 4,
+            "pt_tol": 4,
+            "ci_lo_exact": 4,
+            "ci_lo_tol": 4,
+            "ci_hi_exact": 4,
+            "ci_hi_tol": 4,
+            "matched_pairs": 4
+          },
+          "n_extra": 1
+        }
+      }
+    },
+    {
+      "pmcid": "PMC7231446",
+      "pmid": "32094154",
+      "specialty": "bronchiectasis",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 8,
+        "chars": 45738,
+        "secs": 0.13
+      },
+      "n_gold": 3,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 3,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.93,
+                "ci_lower": 0.69,
+                "ci_upper": 1.25,
+                "ci_level": 0.95,
+                "source_text": "relative risk (RR) 0.93, 95% CI 0.69 to 1.25",
+                "quote_context": "controls, relative risk (RR) 0.93, 95% CI 0.69 to 1.25), ab",
+                "harvest_pattern": "relative\\s+risk[^.\\n]{0,55}?(?P<pt>\\d+(?...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.93,
+                "ci_lower": 0.69,
+                "ci_upper": 1.25,
+                "source_text": "relative risk 0.93; 95% CI 0.69 to 1.25"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.92,
+                "ci_lower": 0.61,
+                "ci_upper": 1.38,
+                "ci_level": 0.95,
+                "source_text": "RR 0.92, 95% CI 0.61 to 1.38",
+                "quote_context": "controls, RR 0.92, 95% CI 0.61 to 1.38) or",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.92,
+                "ci_lower": 0.61,
+                "ci_upper": 1.38,
+                "source_text": "RR 0.92; 95% CI 0.61 to 1.38"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.85,
+                "ci_lower": 0.63,
+                "ci_upper": 1.17,
+                "ci_level": 0.95,
+                "source_text": "RR 0.85, 95% CI 0.63 to 1.17",
+                "quote_context": "control, RR 0.85, 95% CI 0.63 to 1.17). Tw",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.85,
+                "ci_lower": 0.63,
+                "ci_upper": 1.17,
+                "source_text": "RR 0.85; 95% CI 0.63 to 1.17"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 3,
+            "pt_exact": 3,
+            "pt_tol": 3,
+            "ci_lo_exact": 3,
+            "ci_lo_tol": 3,
+            "ci_hi_exact": 3,
+            "ci_hi_tol": 3,
+            "matched_pairs": 3
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 6,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.93,
+                "ci_lower": 0.69,
+                "ci_upper": 1.25,
+                "ci_level": 0.95,
+                "source_text": "relative risk (RR) 0.93, 95% CI 0.69 to 1.25",
+                "quote_context": "controls, relative risk (RR) 0.93, 95% CI 0.69 to 1.25), ab",
+                "harvest_pattern": "relative\\s+risk[^.\\n]{0,55}?(?P<pt>\\d+(?...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.93,
+                "ci_lower": 0.69,
+                "ci_upper": 1.25,
+                "source_text": "relative risk \n0.93; 95% CI 0.69 to 1.25"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.92,
+                "ci_lower": 0.61,
+                "ci_upper": 1.38,
+                "ci_level": 0.95,
+                "source_text": "RR 0.92, 95% CI 0.61 to 1.38",
+                "quote_context": "controls, RR 0.92, 95% CI 0.61 to 1.38) or",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.92,
+                "ci_lower": 0.61,
+                "ci_upper": 1.38,
+                "source_text": "RR 0.92; 95% CI 0.61 to 1.38"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.85,
+                "ci_lower": 0.63,
+                "ci_upper": 1.17,
+                "ci_level": 0.95,
+                "source_text": "RR 0.85, 95% CI 0.63 to 1.17",
+                "quote_context": "control, RR 0.85, 95% CI 0.63 to 1.17). Tw",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.85,
+                "ci_lower": 0.63,
+                "ci_upper": 1.17,
+                "source_text": "RR 0.85; 95% CI 0.63 to \n1.17"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 3,
+            "pt_exact": 3,
+            "pt_tol": 3,
+            "ci_lo_exact": 3,
+            "ci_lo_tol": 3,
+            "ci_hi_exact": 3,
+            "ci_hi_tol": 3,
+            "matched_pairs": 3
+          },
+          "n_extra": 3
+        }
+      }
+    },
+    {
+      "pmcid": "PMC6458826",
+      "pmid": "30975143",
+      "specialty": "bronchiectasis",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 10,
+        "chars": 43814,
+        "secs": 0.11
+      },
+      "n_gold": 1,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.41,
+                "ci_lower": 0.17,
+                "ci_upper": 0.66,
+                "ci_level": 0.95,
+                "source_text": "risk ratio, 0.41; 95% CI, 0.17-0.66",
+                "quote_context": "ent-year; risk ratio, 0.41; 95% CI, 0.17-0.66; P =",
+                "harvest_pattern": "risk\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\....",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.41,
+                "ci_lower": 0.17,
+                "ci_upper": 0.66,
+                "source_text": "risk ratio, 0.41; 95% CI, 0.17-0.66"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.41,
+                "ci_lower": 0.17,
+                "ci_upper": 0.66,
+                "ci_level": 0.95,
+                "source_text": "risk ratio, 0.41; 95% CI, 0.17-0.66",
+                "quote_context": "ent-year; risk ratio, 0.41; 95% CI, 0.17-0.66; P =",
+                "harvest_pattern": "risk\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\....",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.41,
+                "ci_lower": 0.17,
+                "ci_upper": 0.66,
+                "source_text": "risk ratio, 0.41; 95% CI, 0.17-0.66"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        }
+      }
+    }
+  ]
+}

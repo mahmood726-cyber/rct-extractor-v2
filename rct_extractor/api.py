@@ -66,6 +66,7 @@ SPECIALTIES: Tuple[str, ...] = (
     "neonatology",
     "emergency_resuscitation",
     "vascular_surgery",
+    "bronchiectasis",
     "pulmonary_hypertension",
     "pcos",
     "respiratory",

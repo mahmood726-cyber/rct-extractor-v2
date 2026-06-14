@@ -449,6 +449,15 @@ from .vascular_surgery import (
     detect_vascular_surgery_subspecialty,
     normalize_vascular_surgery_endpoint
 )
+from .bronchiectasis import (
+    BRONCHIECTASIS_ENDPOINTS,
+    EXACERBATION_PATTERNS as BR_EXACERBATION_PATTERNS,
+    MICROBIOLOGY_PATTERNS as BR_MICROBIOLOGY_PATTERNS,
+    FUNCTION_PATTERNS as BR_FUNCTION_PATTERNS,
+    SYMPTOMS_PATTERNS as BR_SYMPTOMS_PATTERNS,
+    detect_bronchiectasis_subspecialty,
+    normalize_bronchiectasis_endpoint
+)
 
 from .pulmonary_hypertension import (
     PULMONARY_HYPERTENSION_ENDPOINTS,
@@ -1820,6 +1829,18 @@ SPECIALTY_REGISTRY = {
             'venous': VS_VENOUS_PATTERNS
         }
     },
+    'bronchiectasis': {
+        'subspecialties': ['exacerbation', 'microbiology', 'function', 'symptoms'],
+        'detection_function': detect_bronchiectasis_subspecialty,
+        'normalizer': normalize_bronchiectasis_endpoint,
+        'endpoints': BRONCHIECTASIS_ENDPOINTS,
+        'patterns': {
+            'exacerbation': BR_EXACERBATION_PATTERNS,
+            'microbiology': BR_MICROBIOLOGY_PATTERNS,
+            'function': BR_FUNCTION_PATTERNS,
+            'symptoms': BR_SYMPTOMS_PATTERNS
+        }
+    },
     'pulmonary_hypertension': {
         'subspecialties': ['functional', 'hemodynamics', 'clinical_worsening', 'biomarker'],
         'detection_function': detect_pulmonary_hypertension_subspecialty,
@@ -2785,6 +2806,17 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'varicose\s+veins?|great\s+saphenous\s+vein|saphenous|venous\s+reflux',
             r'endovenous\s+(?:laser|thermal|ablation)|foam\s+sclerotherapy',
         ],
+        'bronchiectasis': [
+            r'bronchiectasis', r'non[- ](?:cf|cystic[- ]fibrosis)\s+bronchiectasis',
+            r'bronchiectasis\s+severity\s+index|\bbsi\b|\bfaced\b',
+            r'(?:annual\s+)?exacerbation\s+(?:rate|frequency)',
+            r'time\s+to\s+(?:first\s+)?(?:pulmonary\s+)?exacerbation',
+            r'pseudomonas\s+aeruginosa', r'qol[- ]b|quality\s+of\s+life\s+bronchiectasis',
+            r'brensocatib|dpp[- ]?1\s+inhibitor|neutrophil\s+elastase',
+            r'(?:inhaled|nebulised|nebulized)\s+(?:tobramycin|colistin|gentamicin|ciprofloxacin|aztreonam)',
+            r'macrolide\s+(?:maintenance|therapy)|long[- ]term\s+azithromycin',
+            r'leicester\s+cough\s+questionnaire|24[- ]hour\s+sputum',
+        ],
         'pulmonary_hypertension': [
             r'pulmonary\s+(?:arterial\s+)?hypertension', r'\bpah\b',
             r'pulmonary\s+vascular\s+resistance|\bpvr\b',
@@ -3371,6 +3403,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'vascular_surgery':
         subspecialty, conf = detect_vascular_surgery_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'bronchiectasis':
+        subspecialty, conf = detect_bronchiectasis_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'pulmonary_hypertension':
         subspecialty, conf = detect_pulmonary_hypertension_subspecialty(text)
