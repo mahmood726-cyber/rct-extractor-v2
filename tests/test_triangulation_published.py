@@ -11,6 +11,10 @@ therefore check against each trial's self-reported value, not a pooled one.
 import pytest
 
 from rct_extractor.api import extract
+from rct_extractor._engine.core.diagnostic_accuracy_extractor import extract_diagnostic_accuracy
+from rct_extractor._engine.specialties.internal_consistency import (
+    check_consistency, dta_plr, dta_nlr,
+)
 
 
 # STEP 1 -- Wilding et al., N Engl J Med 2021;384:989-1002.
@@ -72,3 +76,33 @@ def test_ard_vs_md_disambiguation(text, expected):
     assert effs, f"no effect extracted from: {text!r}"
     assert effs[0]["type"] == expected
     assert len(effs) == 1, "single effect only (no cross-type twin)"
+
+
+# DTA -- Elli et al., Diagn Microbiol Infect Dis 2022;102:115635.
+# PMID 35216863, DOI 10.1016/j.diagmicrobio.2022.115635. LumiraDx rapid antigen
+# test vs RT-PCR. Se/Sp/PLR/NLR are mutually checkable WITHOUT 2x2 counts.
+ELLI = ("The sensitivity and specificity of RAD were 34.2% and 92.3%. "
+        "Positive and negative likelihood ratios were 4.4 and 0.71.")
+
+
+def test_elli_combined_sens_spec_extracted():
+    # combined no-CI 'sensitivity and specificity were X% and Y%' must parse
+    ds = extract_diagnostic_accuracy(ELLI)
+    by = {d.measure_type.value: d.point_estimate for d in ds}
+    assert abs(by.get("Sensitivity", 0) - 34.2) < 1e-6
+    assert abs(by.get("Specificity", 0) - 92.3) < 1e-6
+
+
+def test_elli_likelihood_ratios_are_coherent():
+    # the trial's own reported LRs must match Se/Sp: PLR=Se/(1-Sp), NLR=(1-Se)/Sp
+    se, sp = 0.342, 0.923
+    assert abs(dta_plr(se, sp) - 4.44) < 0.05      # published 4.4
+    assert abs(dta_nlr(se, sp) - 0.713) < 0.01     # published 0.71
+    good = {"type": "DTA", "sensitivity": se, "specificity": sp, "plr": 4.4, "nlr": 0.71}
+    assert "dta_lr_mismatch" not in check_consistency(good)["flags"]
+
+
+def test_dta_lr_mismatch_flags_inconsistent_lr():
+    # a transcribed PLR that doesn't match Se/Sp is caught
+    bad = {"type": "DTA", "sensitivity": 0.342, "specificity": 0.923, "plr": 9.9}
+    assert "dta_lr_mismatch" in check_consistency(bad)["flags"]

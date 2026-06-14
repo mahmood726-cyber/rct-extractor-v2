@@ -392,6 +392,37 @@ class DiagnosticAccuracyExtractor:
         extraction.warnings = warnings
         return extraction
 
+    # Combined, no-CI forms that abstracts use constantly but the per-measure
+    # CI-anchored patterns miss: "sensitivity and specificity ... were 34.2% and
+    # 92.3%" (Elli 2022) / "sensitivity of X% and specificity of Y%". The phrasing
+    # is specific enough to keep false positives near zero.
+    COMBINED_SENS_SPEC_PATTERNS = [
+        re.compile(r'sensitivit(?:y|ies)\s+and\s+specificit(?:y|ies)\s+'
+                   r'(?:of\s+[\w\s\-/()]{1,40}?\s+)?(?:was|were|are|is)\s+'
+                   r'(\d{1,3}\.?\d*)\s*%?\s+and\s+(\d{1,3}\.?\d*)\s*%?', re.IGNORECASE),
+        re.compile(r'sensitivity\s+of\s+(\d{1,3}\.?\d*)\s*%?\s+and\s+(?:a\s+)?'
+                   r'specificity\s+of\s+(\d{1,3}\.?\d*)\s*%?', re.IGNORECASE),
+    ]
+
+    def _extract_combined_sens_spec(self, text: str) -> List[DiagnosticExtraction]:
+        """Handle combined 'sensitivity and specificity were X% and Y%' (no CI)."""
+        out = []
+        for rx in self.COMBINED_SENS_SPEC_PATTERNS:
+            for m in rx.finditer(text):
+                if self._is_negative_context(text, m.start()):
+                    continue
+                try:
+                    se, sp = float(m.group(1)), float(m.group(2))
+                except (ValueError, IndexError):
+                    continue
+                for mt, val in ((DiagnosticMeasureType.SENSITIVITY, se),
+                                (DiagnosticMeasureType.SPECIFICITY, sp)):
+                    ext = DiagnosticExtraction(
+                        measure_type=mt, point_estimate=val, source_text=m.group(),
+                        char_start=m.start(), char_end=m.end())
+                    out.append(self._verify_extraction(ext))
+        return out
+
     def extract(self, text: str) -> List[DiagnosticExtraction]:
         """
         Extract all diagnostic accuracy measures from text.
@@ -434,6 +465,13 @@ class DiagnosticAccuracyExtractor:
 
                     except (ValueError, IndexError):
                         continue
+
+        # Combined no-CI forms (only add a measure not already found at higher
+        # fidelity, i.e. with a CI, elsewhere in the text).
+        have = {ext.measure_type for ext in extractions if ext.ci_lower is not None}
+        for ext in self._extract_combined_sens_spec(text):
+            if ext.measure_type not in have:
+                extractions.append(ext)
 
         # Remove duplicates (same measure at same position)
         seen = set()

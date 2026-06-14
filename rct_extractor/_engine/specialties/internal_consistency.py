@@ -188,6 +188,21 @@ def dta_ppv(sens: float, spec: float, prev: float) -> Optional[float]:
     return sens * prev / denom if denom > 0 else None
 
 
+def dta_plr(sens: float, spec: float) -> Optional[float]:
+    """Positive likelihood ratio = Se / (1 - Sp). Needs no counts -> usable on
+    abstract-level Se/Sp, the common diagnostic-accuracy reporting form."""
+    if None in (sens, spec) or spec >= 1:
+        return None
+    return sens / (1 - spec)
+
+
+def dta_nlr(sens: float, spec: float) -> Optional[float]:
+    """Negative likelihood ratio = (1 - Se) / Sp."""
+    if None in (sens, spec) or spec <= 0:
+        return None
+    return (1 - sens) / spec
+
+
 def check_consistency(effect: Dict, mid_tol: float = 0.22,
                       gross_mid_tol: float = 0.6,
                       table_log_tol: float = 0.30) -> Dict:
@@ -434,6 +449,18 @@ def check_consistency(effect: Dict, mid_tol: float = 0.22,
         ppv_imp = dta_ppv(sens, spec, prev)
         if ppv_imp is not None and abs(ppv - ppv_imp) > 0.05:
             flags.append("dta_bayes_mismatch")            # soft: review
+    # Likelihood-ratio coherence (no counts needed -> abstract-applicable):
+    # PLR must equal Se/(1-Sp), NLR must equal (1-Se)/Sp.
+    plr = effect.get("plr", effect.get("lr_pos"))
+    nlr = effect.get("nlr", effect.get("lr_neg"))
+    if plr is not None and None not in (sens, spec):
+        exp = dta_plr(sens, spec)
+        if exp and abs(plr - exp) / max(exp, 1e-9) > 0.10:
+            flags.append("dta_lr_mismatch")               # soft: review
+    if nlr is not None and None not in (sens, spec):
+        exp = dta_nlr(sens, spec)
+        if exp and abs(nlr - exp) / max(exp, 1e-9) > 0.10:
+            flags.append("dta_lr_mismatch")
 
     # A structural-only extraction (counts/means/DTA cells, no ratio CI) was
     # still checked -- mark it checkable so a clean one reads "verified", not
@@ -457,7 +484,8 @@ def check_consistency(effect: Dict, mid_tol: float = 0.22,
                "grim_inconsistent": 0.4, "grimmer_inconsistent": 0.3,
                "md_recompute_mismatch": 0.4, "smd_recompute_mismatch": 0.4,
                "dispersion_se_sd_mismatch": 0.3, "dta_cells_noninteger": 0.3,
-               "dta_2x2_mismatch": 0.4, "dta_bayes_mismatch": 0.4}
+               "dta_2x2_mismatch": 0.4, "dta_bayes_mismatch": 0.4,
+               "dta_lr_mismatch": 0.4}
     # de-duplicate (a flag can be raised by either arm) while preserving order
     seen_f = set()
     flags = [f for f in flags if not (f in seen_f or seen_f.add(f))]
