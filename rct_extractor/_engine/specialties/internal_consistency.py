@@ -69,6 +69,77 @@ def _recompute_ratio(etype: str, et, nt, ec, nc) -> Optional[float]:
     return None
 
 
+def grim_consistent(mean: float, n: int, items: int = 1,
+                    decimals: Optional[int] = None) -> Optional[bool]:
+    """GRIM test (Brown & Heathers 2017): a reported MEAN of integer-valued
+    items must equal (integer sum)/(n*items). Returns False if no integer sum
+    can round to the reported mean at its stated decimal precision.
+
+    Interval form (Brown/Heathers): the half-unit rounding window around the
+    reported mean must contain a multiple of 1/(n*items). Ported from the
+    R-validated asa.html grimCheck (C:\\Projects\\asa\\asa.html). Returns None
+    when the test does not apply (n<1, n*items too large to constrain a mean at
+    `decimals` places => every mean passes, so no signal).
+    """
+    if mean is None or n is None or n < 1 or items < 1:
+        return None
+    eff_n = n * items
+    if decimals is None:
+        s = repr(float(mean))
+        decimals = len(s.split(".")[1]) if "." in s else 0
+    scale = 10 ** decimals
+    # If eff_n >= scale, every target mean is reachable -> no constraint, skip.
+    if eff_n >= scale:
+        return None
+    half = 0.5 / scale
+    lo_sum = (mean - half) * eff_n
+    hi_sum = (mean + half) * eff_n
+    return math.ceil(lo_sum - 1e-9) <= math.floor(hi_sum + 1e-9)
+
+
+def grimmer_consistent(sd: float, n: int, mean: float, items: int = 1,
+                       decimals: Optional[int] = None) -> Optional[bool]:
+    """GRIMMER test (Anaya 2016): given n+mean, the reported SD implies a
+    sum-of-squares (SD^2*(n-1) + n*mean^2) that must be a non-negative integer
+    for integer-item data. Returns False when no integer SS is reachable within
+    the rounding window of both mean and SD. Ported from asa.html grimmerCheck.
+
+    Returns None when inapplicable (n<2, sd<0, or precision too coarse to
+    constrain -> every SD passes).
+    """
+    if sd is None or n is None or mean is None or n < 2 or sd < 0 or items < 1:
+        return None
+    if decimals is None:
+        ss = repr(float(sd))
+        decimals = len(ss.split(".")[1]) if "." in ss else 0
+    eff_n = n * items
+    scale = 10 ** decimals
+    if eff_n >= scale:
+        return None
+    # Precondition: GRIMMER is only meaningful when the MEAN is GRIM-consistent.
+    # If the mean already fails GRIM that error dominates; don't double-flag.
+    if grim_consistent(mean, n, items, decimals) is False:
+        return None
+    half = 0.5 / scale
+    # The integer sum is fixed by the (GRIM-passing) mean: sum = round(mean*eff_n).
+    # Then SS_int = SD^2*(n-1) + sum^2/(n*items^2)... work on the integer SS that
+    # the SD implies and test whether ANY integer SS lands in the SD's rounding
+    # window. Scan the SD window; flag only when NO integer SS is reachable.
+    lo_sd, hi_sd = max(0.0, sd - half), sd + half
+    steps = 400
+    reachable = False
+    for i in range(steps + 1):
+        test_sd = lo_sd + (hi_sd - lo_sd) * i / steps
+        ss = test_sd * test_sd * (n - 1) + n * mean * mean
+        scaled = ss * items * items
+        if scaled < -1e-6:
+            continue
+        if abs(scaled - round(scaled)) < 0.008:
+            reachable = True
+            break
+    return not reachable
+
+
 def check_consistency(effect: Dict, mid_tol: float = 0.22,
                       gross_mid_tol: float = 0.6,
                       table_log_tol: float = 0.30) -> Dict:
@@ -185,15 +256,83 @@ def check_consistency(effect: Dict, mid_tol: float = 0.22,
     # by point_outside_ci, and the 4S case itself is a correct extraction read
     # against a proportion-encoded gold value — not an extraction error.)
 
+    # --- arm-N-sums-to-total -------------------------------------------------
+    # When randomised arm Ns AND a reported trial total are both extracted, the
+    # arms must reconcile to the total (allow a small tolerance for screen-fail /
+    # mITT trims). A gross mismatch usually means one of the three numbers is a
+    # misread or a wrong field (e.g. an enrolled-vs-randomised confusion).
+    # Source idea: dataextractor/qc.js ConsistencyValidator (arm-N reconciliation).
+    nt2, nc2, total = (effect.get("n_tx"), effect.get("n_ctrl"),
+                       effect.get("n_total"))
+    if (nt2 is not None and nc2 is not None and total is not None
+            and nt2 > 0 and nc2 > 0 and total > 0):
+        arm_sum = nt2 + nc2
+        # arms can be a subset of total (multi-arm trial) but must never exceed
+        # it by more than rounding; and a 2-arm total should be close to the sum.
+        if arm_sum > total * 1.02 + 1:
+            flags.append("arm_n_exceeds_total")          # hard: impossible
+        elif abs(arm_sum - total) > 0.20 * total:
+            flags.append("arm_n_sum_mismatch")           # soft: review
+
+    # --- percentage <-> count coherence -------------------------------------
+    # A reported event percentage must match events/N within rounding. Catches a
+    # mis-paired %/count (e.g. a % copied from a different row). Keys:
+    # pct_tx/pct_ctrl are event rates in PERCENT for each arm.
+    # Source idea: gap noted across repos (qc.js does %-range only); standard
+    # %<->count coherence.
+    for ev, n_, pct in ((et_, nt_, effect.get("pct_tx")),
+                        (ec_, nc_, effect.get("pct_ctrl"))):
+        if ev is not None and n_ and n_ > 0 and pct is not None and 0 <= pct <= 100:
+            if 0 <= ev <= n_:
+                implied = 100.0 * ev / n_
+                # tolerance: half a percentage point or 1 count's worth, plus 2%
+                # relative slack for ITT-vs-evaluable denominator differences.
+                tol = max(0.5, 100.0 / n_) + 0.02 * implied
+                if abs(implied - pct) > tol:
+                    flags.append("pct_count_incoherent")  # soft: review
+
+    # --- proportion / percentage range --------------------------------------
+    # A field declared as a percentage must lie in [0,100]; a proportion in
+    # [0,1]. A value outside its declared range is a unit/parse error.
+    # Source idea: dataextractor/qc.js NumericValidator FIELD_RANGES.
+    for key, hi_bound in (("pct_tx", 100.0), ("pct_ctrl", 100.0)):
+        v = effect.get(key)
+        if v is not None and (v < 0 or v > hi_bound):
+            flags.append("proportion_out_of_range")       # hard: impossible
+            break
+
+    # --- GRIM / GRIMMER (mean & SD granularity) ------------------------------
+    # When a continuous-outcome mean (+ optional SD) and the arm N are present,
+    # the mean must be reconstructible from an integer sum (GRIM) and the SD must
+    # imply an integer sum-of-squares (GRIMMER). Only meaningful for
+    # integer-item scales; gated by `scale_items` being supplied (default 1 for
+    # raw integer counts/scores). Source: Brown & Heathers 2017 (GRIM),
+    # Anaya 2016 (GRIMMER); ported from R-validated asa.html.
+    items = effect.get("scale_items")
+    if items:                       # only run when the caller marks an integer scale
+        for mean_v, sd_v, n_v in (
+            (effect.get("mean_tx"), effect.get("sd_tx"), effect.get("n_tx")),
+            (effect.get("mean_ctrl"), effect.get("sd_ctrl"), effect.get("n_ctrl")),
+        ):
+            if mean_v is not None and n_v and n_v >= 1:
+                if grim_consistent(mean_v, int(n_v), int(items)) is False:
+                    flags.append("grim_inconsistent")     # soft: review
+                if sd_v is not None and grimmer_consistent(
+                        sd_v, int(n_v), mean_v, int(items)) is False:
+                    flags.append("grimmer_inconsistent")  # soft: review
+
     # Score: hard flags zero it out (and get dropped); soft flags reduce it and
     # surface needs_review. gross_sig_inconsistency is SOFT, not hard: a CI that
     # includes the null while p<0.05 (or vice versa) is usually discordant
     # REPORTING (different model/rounding), not a misread digit -- flag it for
     # review, don't discard a correct extraction. (P0-6)
     hard = {"point_outside_ci", "nonpositive_ratio",
-            "events_exceed_n", "arm_n_nonpositive", "events_negative"}
+            "events_exceed_n", "arm_n_nonpositive", "events_negative",
+            "arm_n_exceeds_total", "proportion_out_of_range"}
     penalty = {"point_grossly_off_centre": 0.7, "point_off_ci_centre": 0.4,
-               "gross_sig_inconsistency": 0.4, "effect_table_mismatch": 0.4}
+               "gross_sig_inconsistency": 0.4, "effect_table_mismatch": 0.4,
+               "arm_n_sum_mismatch": 0.4, "pct_count_incoherent": 0.4,
+               "grim_inconsistent": 0.4, "grimmer_inconsistent": 0.3}
     score = 1.0
     if any(f in hard for f in flags):
         score = 0.0

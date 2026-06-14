@@ -11,7 +11,10 @@ import pytest
 
 from rct_extractor._engine.specialties.internal_consistency import (
     two_sided_p_from_z, z_from_p, check_consistency, annotate,
+    grim_consistent, grimmer_consistent,
 )
+
+_GOOD_RR = {"type": "RR", "effect_size": 0.8, "ci_lower": 0.6, "ci_upper": 1.0}
 
 
 # --- Altman-Bland formula anchors ---
@@ -171,6 +174,87 @@ def test_pct_proportion_scale_mismatch_caught_by_containment():
     # a proportion point against a %-scale CI is already a point-outside-CI error
     c = check_consistency({"type": "RRR", "effect_size": 0.30, "ci_lower": 21.0, "ci_upper": 38.0})
     assert "point_outside_ci" in c["flags"] and not c["consistent"]
+
+
+# --- arm-N-sums-to-total ----------------------------------------------------
+
+def test_arm_n_sum_matches_total_passes():
+    e = dict(_GOOD_RR, n_tx=500, n_ctrl=505, n_total=1005)
+    c = check_consistency(e)
+    assert not any(f.startswith("arm_n") for f in c["flags"])
+
+
+def test_arm_n_exceeds_total_is_hard():
+    # arms (500+505=1005) cannot exceed a reported total of 600 -> impossible
+    e = dict(_GOOD_RR, n_tx=500, n_ctrl=505, n_total=600)
+    c = check_consistency(e)
+    assert "arm_n_exceeds_total" in c["flags"] and c["score"] == 0.0
+
+
+def test_arm_n_sum_mismatch_is_soft():
+    # arms sum to 1005 but total reported 2000 (within total, but far off) -> soft
+    e = dict(_GOOD_RR, n_tx=500, n_ctrl=505, n_total=2000)
+    c = check_consistency(e)
+    assert "arm_n_sum_mismatch" in c["flags"] and 0.0 < c["score"] < 1.0
+
+
+# --- percentage <-> count coherence -----------------------------------------
+
+def test_pct_count_coherent_passes():
+    # 40/500 = 8.0% matches reported 8.0
+    e = dict(_GOOD_RR, events_tx=40, n_tx=500, pct_tx=8.0)
+    c = check_consistency(e)
+    assert "pct_count_incoherent" not in c["flags"]
+
+
+def test_pct_count_incoherent_flagged():
+    # 40/500 = 8.0% but reported 25.0% -> a mis-paired percentage
+    e = dict(_GOOD_RR, events_tx=40, n_tx=500, pct_tx=25.0)
+    c = check_consistency(e)
+    assert "pct_count_incoherent" in c["flags"] and 0.0 < c["score"] < 1.0
+
+
+# --- proportion / percentage range ------------------------------------------
+
+def test_proportion_out_of_range_is_hard():
+    e = dict(_GOOD_RR, pct_tx=140.0)        # >100% is impossible
+    c = check_consistency(e)
+    assert "proportion_out_of_range" in c["flags"] and c["score"] == 0.0
+
+
+def test_proportion_in_range_passes():
+    e = dict(_GOOD_RR, pct_tx=42.0, pct_ctrl=58.0)
+    c = check_consistency(e)
+    assert "proportion_out_of_range" not in c["flags"]
+
+
+# --- GRIM / GRIMMER ---------------------------------------------------------
+
+def test_grim_unit_known_cases():
+    assert grim_consistent(5.19, 28, 1, 2) is False   # Brown-Heathers impossible
+    assert grim_consistent(5.18, 28, 1, 2) is True
+    assert grim_consistent(5.19, 1000) is None         # no constraint -> skip
+
+
+def test_grimmer_unit_known_cases():
+    assert grimmer_consistent(2.47, 18, 3.44, 1, 2) is False
+    assert grimmer_consistent(0.99, 7, 2.00, 1, 2) is True
+
+
+def test_grim_inconsistent_flagged_only_when_scale_marked():
+    # without scale_items the GRIM check does not run (continuous data unknown)
+    e = dict(_GOOD_RR, mean_tx=5.19, n_tx=28)
+    assert "grim_inconsistent" not in check_consistency(e)["flags"]
+    # with an integer scale marked, the impossible mean is flagged (soft)
+    e2 = dict(_GOOD_RR, mean_tx=5.19, n_tx=28, scale_items=1)
+    c = check_consistency(e2)
+    assert "grim_inconsistent" in c["flags"] and 0.0 < c["score"] < 1.0
+
+
+def test_grim_clean_mean_not_flagged():
+    e = dict(_GOOD_RR, mean_tx=2.50, n_tx=40, sd_tx=1.00, scale_items=1)
+    c = check_consistency(e)
+    assert "grim_inconsistent" not in c["flags"]
 
 
 # --- gold-set false-positive audit ------------------------------------------
