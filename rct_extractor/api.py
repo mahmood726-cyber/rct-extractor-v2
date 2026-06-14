@@ -245,6 +245,11 @@ def extract(
                 # flag + safe-repair, keep everything (drop_hard=False) so the
                 # caller decides on hard-flagged effects — never silently drop.
                 effs = annotate(effs, drop_hard=False)
+                # Source-grounding + multi-candidate disambiguation: catches the
+                # internally-consistent-but-wrong errors (wrong estimand / wrong
+                # comparison) that the numeric screen cannot. Flag-only.
+                from rct_extractor._engine.specialties.source_grounding import annotate_grounding
+                effs = annotate_grounding(effs, text)
             out["effects"] = effs
 
     if with_arm_level and spec in SPECIALTIES:
