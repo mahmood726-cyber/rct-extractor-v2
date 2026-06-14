@@ -70,6 +70,7 @@ EXPECTED_SPECIALTIES = {
     "bronchiectasis",
     "interstitial_lung_disease",
     "bariatric_surgery",
+    "geriatrics_frailty",
 }
 
 

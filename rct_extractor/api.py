@@ -69,6 +69,7 @@ SPECIALTIES: Tuple[str, ...] = (
     "bronchiectasis",
     "interstitial_lung_disease",
     "bariatric_surgery",
+    "geriatrics_frailty",
     "pulmonary_hypertension",
     "pcos",
     "respiratory",
