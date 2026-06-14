@@ -51,6 +51,29 @@ splits a candidate set into the *largest* sub-pools that share
 biggest valid group and reports the remainder rather than either (a) fragmenting
 needlessly or (b) combining across an outcome/measure/time boundary.
 
+## Triangulation against real publications
+
+`tests/test_triangulation_published.py` checks the extractor against verbatim
+PubMed abstracts, asserting we reproduce each trial's **own** published estimate
+(oracle-free — the trial states its number, so no pooling-method ambiguity) and
+that the value is internally consistent. STEP 1 (Wilding 2021, *NEJM*; PMID
+33567185) anchors the continuous case: we reproduce the −12.4-pp body-weight
+treatment difference (95% CI −13.4 to −11.5) exactly, with zero false flags.
+
+This validates against the **trial**, not a pooled meta-analytic value — because
+a published meta-analysis may use a different trial set / data source / model and
+carries its own human error. When our number disagrees with a *published pool*,
+that is an investigate-both-sides signal, never an automatic correction.
+
+## Known limitations (pinned regression targets)
+
+- **ARD vs MD for "percentage points"** — a continuous %-change mean difference
+  ("treatment difference of −12.4 percentage points" for body-weight % change) is
+  currently typed `ARD` (a binary risk difference). The value/CI are correct; only
+  the family label is. A safe fix needs ARD↔MD disambiguation plus cross-type
+  de-duplication (naively widening the MD pattern double-extracts the span). Pinned
+  as an `xfail` in the triangulation test.
+
 ## Design rule that keeps this honest
 
 Every guard above is held to **zero false positives on the 156-record gold set**
