@@ -458,6 +458,15 @@ from .bronchiectasis import (
     detect_bronchiectasis_subspecialty,
     normalize_bronchiectasis_endpoint
 )
+from .interstitial_lung_disease import (
+    INTERSTITIAL_LUNG_DISEASE_ENDPOINTS,
+    FUNCTION_PATTERNS as ILD_FUNCTION_PATTERNS,
+    PROGRESSION_PATTERNS as ILD_PROGRESSION_PATTERNS,
+    MORTALITY_PATTERNS as ILD_MORTALITY_PATTERNS,
+    ACUTE_EVENTS_PATTERNS as ILD_ACUTE_EVENTS_PATTERNS,
+    detect_interstitial_lung_disease_subspecialty,
+    normalize_interstitial_lung_disease_endpoint
+)
 
 from .pulmonary_hypertension import (
     PULMONARY_HYPERTENSION_ENDPOINTS,
@@ -1841,6 +1850,18 @@ SPECIALTY_REGISTRY = {
             'symptoms': BR_SYMPTOMS_PATTERNS
         }
     },
+    'interstitial_lung_disease': {
+        'subspecialties': ['function', 'progression', 'mortality', 'acute_events'],
+        'detection_function': detect_interstitial_lung_disease_subspecialty,
+        'normalizer': normalize_interstitial_lung_disease_endpoint,
+        'endpoints': INTERSTITIAL_LUNG_DISEASE_ENDPOINTS,
+        'patterns': {
+            'function': ILD_FUNCTION_PATTERNS,
+            'progression': ILD_PROGRESSION_PATTERNS,
+            'mortality': ILD_MORTALITY_PATTERNS,
+            'acute_events': ILD_ACUTE_EVENTS_PATTERNS
+        }
+    },
     'pulmonary_hypertension': {
         'subspecialties': ['functional', 'hemodynamics', 'clinical_worsening', 'biomarker'],
         'detection_function': detect_pulmonary_hypertension_subspecialty,
@@ -2817,6 +2838,17 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'macrolide\s+(?:maintenance|therapy)|long[- ]term\s+azithromycin',
             r'leicester\s+cough\s+questionnaire|24[- ]hour\s+sputum',
         ],
+        'interstitial_lung_disease': [
+            r'idiopathic\s+pulmonary\s+fibrosis|\bipf\b',
+            r'interstitial\s+lung\s+disease|\bild\b',
+            r'progressive\s+(?:fibrosing|pulmonary\s+fibrosis)|progressive[- ]fibrosing\s+ild',
+            r'pulmonary\s+fibrosis', r'usual\s+interstitial\s+pneumonia|\buip\b|honeycombing',
+            r'nintedanib|pirfenidone|antifibrotic',
+            r'forced\s+vital\s+capacity|\bfvc\b\s+(?:decline|change)',
+            r'acute\s+exacerbation\s+of\s+(?:idiopathic\s+pulmonary\s+fibrosis|ipf)',
+            r'(?:connective[- ]tissue[- ]disease|systemic\s+sclerosis|scleroderma)[- ](?:associated\s+|related\s+)?ild',
+            r'diffusing\s+capacity|\bdlco\b',
+        ],
         'pulmonary_hypertension': [
             r'pulmonary\s+(?:arterial\s+)?hypertension', r'\bpah\b',
             r'pulmonary\s+vascular\s+resistance|\bpvr\b',
@@ -3406,6 +3438,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'bronchiectasis':
         subspecialty, conf = detect_bronchiectasis_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'interstitial_lung_disease':
+        subspecialty, conf = detect_interstitial_lung_disease_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'pulmonary_hypertension':
         subspecialty, conf = detect_pulmonary_hypertension_subspecialty(text)

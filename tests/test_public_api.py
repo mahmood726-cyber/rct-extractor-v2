@@ -68,6 +68,7 @@ EXPECTED_SPECIALTIES = {
     "emergency_resuscitation",
     "vascular_surgery",
     "bronchiectasis",
+    "interstitial_lung_disease",
 }
 
 
