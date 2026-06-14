@@ -53,12 +53,22 @@ needlessly or (b) combining across an outcome/measure/time boundary.
 
 ## Triangulation against real publications
 
-`tests/test_triangulation_published.py` checks the extractor against verbatim
-PubMed abstracts, asserting we reproduce each trial's **own** published estimate
+`tests/test_triangulation_published.py` (extractor) and the NMA case in the kit's
+`test_advanced_engines.py` check against verbatim PubMed abstracts / real network
+topologies, asserting we reproduce each trial's **own** published estimate
 (oracle-free — the trial states its number, so no pooling-method ambiguity) and
-that the value is internally consistent. STEP 1 (Wilding 2021, *NEJM*; PMID
-33567185) anchors the continuous case: we reproduce the −12.4-pp body-weight
-treatment difference (95% CI −13.4 to −11.5) exactly, with zero false flags.
+that the value is internally consistent. Anchors:
+
+- **Continuous** — STEP 1 (Wilding 2021, *NEJM*; PMID 33567185): reproduces the
+  −12.4-pp body-weight treatment difference (95% CI −13.4 to −11.5) exactly, zero
+  false flags; also drove the ARD→MD fix below.
+- **DTA** — Elli 2022 (*Diagn Microbiol Infect Dis*; PMID 35216863): the combined
+  "sensitivity and specificity … were 34.2% and 92.3%" no-CI form (which abstracts
+  use constantly) was previously unextracted; now parsed, and the reported PLR 4.4 /
+  NLR 0.71 are checked against Se/Sp (PLR=Se/(1−Sp)=4.44, NLR=(1−Se)/Sp=0.713).
+- **NMA** — the warfarin-anchored DOAC atrial-fibrillation network (ARISTOTLE,
+  ROCKET-AF, RE-LY, ENGAGE-AF; no DOAC-vs-DOAC RCT) is correctly classified a STAR:
+  connected but no closed loop, so consistency cannot be tested.
 
 This validates against the **trial**, not a pooled meta-analytic value — because
 a published meta-analysis may use a different trial set / data source / model and
