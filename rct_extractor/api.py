@@ -192,8 +192,12 @@ def extract(
             auto-detect via the registry.
         with_effects: Include precomputed effect estimates (HR/OR/RR/MD + CI).
         with_arm_level: Include arm-level extraction (poolable 2x2 + continuous).
-        consistency: For malaria, screen augmented effects for internal
-            consistency (no effect on other specialties).
+        consistency: Screen extracted effects for internal consistency across
+            ALL specialties — flags implausible (point estimate, CI, p, 2x2)
+            combinations and applies the safe repairs (reversed-CI swap),
+            attaching a ``consistency`` dict + ``needs_review`` to each effect.
+            Never silently drops; hard failures are kept but flagged. For
+            malaria the same screen also gates the augmented-effects pass.
 
     Returns:
         ``{specialty, subspecialty, confidence, effects, arm_level}`` where
@@ -235,7 +239,13 @@ def extract(
         else:
             from rct_extractor._engine.core.enhanced_extractor_v3 import to_dict
 
-            out["effects"] = [to_dict(x) for x in extractor.extract(text)]
+            effs = [to_dict(x) for x in extractor.extract(text)]
+            if consistency:
+                from rct_extractor._engine.specialties.internal_consistency import annotate
+                # flag + safe-repair, keep everything (drop_hard=False) so the
+                # caller decides on hard-flagged effects — never silently drop.
+                effs = annotate(effs, drop_hard=False)
+            out["effects"] = effs
 
     if with_arm_level and spec in SPECIALTIES:
         out["arm_level"] = _arm_module(spec).extract_arm_level(text)

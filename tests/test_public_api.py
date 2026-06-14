@@ -131,6 +131,19 @@ def test_extract_flags_toggle_off():
     assert res["arm_level"] is None
 
 
+def test_consistency_screen_applies_to_all_specialties():
+    """The internal-consistency screen now runs on every specialty's effects
+    (previously malaria-only): each effect carries a `consistency` dict +
+    `needs_review`, and `consistency=False` opts out."""
+    text = "The primary endpoint had a hazard ratio of 0.62 (95% CI 0.45-0.85)."
+    on = rx.extract(text, specialty="hypertension")["effects"]
+    assert on, "expected at least one effect"
+    assert all("consistency" in e and "needs_review" in e for e in on)
+    assert all(e["consistency"]["score"] == 1.0 for e in on)   # clean extraction
+    off = rx.extract(text, specialty="hypertension", consistency=False)["effects"]
+    assert off and not any("consistency" in e for e in off)
+
+
 def test_extract_batch_echoes_metadata():
     recs = [
         {"name": "T1", "nct": "NCT1", "text": "hazard ratio 0.80 (95% CI 0.70-0.92)"},
