@@ -467,6 +467,15 @@ from .interstitial_lung_disease import (
     detect_interstitial_lung_disease_subspecialty,
     normalize_interstitial_lung_disease_endpoint
 )
+from .bariatric_surgery import (
+    BARIATRIC_SURGERY_ENDPOINTS,
+    WEIGHT_PATTERNS as BS_WEIGHT_PATTERNS,
+    METABOLIC_PATTERNS as BS_METABOLIC_PATTERNS,
+    COMPLICATIONS_PATTERNS as BS_COMPLICATIONS_PATTERNS,
+    NUTRITIONAL_PATTERNS as BS_NUTRITIONAL_PATTERNS,
+    detect_bariatric_surgery_subspecialty,
+    normalize_bariatric_surgery_endpoint
+)
 
 from .pulmonary_hypertension import (
     PULMONARY_HYPERTENSION_ENDPOINTS,
@@ -1862,6 +1871,18 @@ SPECIALTY_REGISTRY = {
             'acute_events': ILD_ACUTE_EVENTS_PATTERNS
         }
     },
+    'bariatric_surgery': {
+        'subspecialties': ['weight', 'metabolic', 'complications', 'nutritional'],
+        'detection_function': detect_bariatric_surgery_subspecialty,
+        'normalizer': normalize_bariatric_surgery_endpoint,
+        'endpoints': BARIATRIC_SURGERY_ENDPOINTS,
+        'patterns': {
+            'weight': BS_WEIGHT_PATTERNS,
+            'metabolic': BS_METABOLIC_PATTERNS,
+            'complications': BS_COMPLICATIONS_PATTERNS,
+            'nutritional': BS_NUTRITIONAL_PATTERNS
+        }
+    },
     'pulmonary_hypertension': {
         'subspecialties': ['functional', 'hemodynamics', 'clinical_worsening', 'biomarker'],
         'detection_function': detect_pulmonary_hypertension_subspecialty,
@@ -2849,6 +2870,17 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'(?:connective[- ]tissue[- ]disease|systemic\s+sclerosis|scleroderma)[- ](?:associated\s+|related\s+)?ild',
             r'diffusing\s+capacity|\bdlco\b',
         ],
+        'bariatric_surgery': [
+            r'bariatric\s+surgery|metabolic\s+surgery', r'weight[- ]loss\s+surgery',
+            r'roux[- ]en[- ]y\s+gastric\s+bypass|\brygb\b|gastric\s+bypass',
+            r'sleeve\s+gastrectomy|\blsg\b|\bvsg\b',
+            r'one[- ]anastomosis\s+gastric\s+bypass|\boagb\b|mini[- ]gastric\s+bypass',
+            r'adjustable\s+gastric\s+band(?:ing)?|\blagb\b',
+            r'biliopancreatic\s+diversion|duodenal\s+switch',
+            r'(?:percent(?:age)?\s+)?(?:total|excess)\s+(?:body\s+)?weight\s+loss|%?\s*ewl|%?\s*twl',
+            r'diabetes\s+remission|remission\s+of\s+(?:type\s+2\s+)?diabetes',
+            r'intragastric\s+balloon',
+        ],
         'pulmonary_hypertension': [
             r'pulmonary\s+(?:arterial\s+)?hypertension', r'\bpah\b',
             r'pulmonary\s+vascular\s+resistance|\bpvr\b',
@@ -3441,6 +3473,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'interstitial_lung_disease':
         subspecialty, conf = detect_interstitial_lung_disease_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'bariatric_surgery':
+        subspecialty, conf = detect_bariatric_surgery_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'pulmonary_hypertension':
         subspecialty, conf = detect_pulmonary_hypertension_subspecialty(text)

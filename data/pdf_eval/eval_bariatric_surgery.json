@@ -1,0 +1,1688 @@
+{
+  "tolerances": {
+    "pt_abs": 0.02,
+    "pt_rel": 0.02,
+    "ci_abs": 0.03,
+    "ci_rel": 0.03
+  },
+  "papers": [
+    {
+      "pmcid": "PMC8933359",
+      "pmid": "35143012",
+      "specialty": "bariatric_surgery",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 9,
+        "chars": 40295,
+        "secs": 0.1
+      },
+      "n_gold": 7,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 7,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 2.07,
+                "ci_lower": 1.03,
+                "ci_upper": 4.17,
+                "ci_level": 0.95,
+                "source_text": "OR 2.07; 95% CI 1.03 to 4.17",
+                "quote_context": "syndrome (OR 2.07; 95% CI 1.03 to 4.17) and",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 2.07,
+                "ci_lower": 1.03,
+                "ci_upper": 4.17,
+                "source_text": "OR 2.07; 95% CI 1.03 to 4.17"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 3.15,
+                "ci_lower": 1.87,
+                "ci_upper": 5.33,
+                "ci_level": 0.95,
+                "source_text": "OR 3.15; 95% CI 1.87 to 5.33",
+                "quote_context": "surgery (OR 3.15; 95% CI 1.87 to 5.33). Ad",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 3.15,
+                "ci_lower": 1.87,
+                "ci_upper": 5.33,
+                "source_text": "OR 3.15; 95% CI 1.87 to 5.33"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.95,
+                "ci_lower": 0.93,
+                "ci_upper": 0.97,
+                "ci_level": 0.95,
+                "source_text": "OR 0.95; 95% CI 0.93 to 0.97",
+                "quote_context": "nced age (OR 0.95; 95% CI 0.93 to 0.97) was",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.95,
+                "ci_lower": 0.93,
+                "ci_upper": 0.97,
+                "source_text": "OR 0.95; 95% CI 0.93 to 0.97"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.64,
+                "ci_lower": 0.39,
+                "ci_upper": 1.03,
+                "ci_level": 0.95,
+                "source_text": "OR 0.64; 95% CI 0.39 to 1.03",
+                "quote_context": "ificance (OR 0.64; 95% CI 0.39 to 1.03). No",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.64,
+                "ci_lower": 0.39,
+                "ci_upper": 1.03,
+                "source_text": "OR 0.64; 95% CI 0.39 to 1.03"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.98,
+                "ci_lower": 0.96,
+                "ci_upper": 1.0,
+                "ci_level": 0.95,
+                "source_text": "OR 0.98; 95% CI 0.96 to 1.00",
+                "quote_context": "nced age (OR 0.98; 95% CI 0.96 to 1.00), st",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.98,
+                "ci_lower": 0.96,
+                "ci_upper": 1.0,
+                "source_text": "OR 0.98; 95% CI 0.96 to 1.00"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.42,
+                "ci_lower": 0.2,
+                "ci_upper": 0.9,
+                "ci_level": 0.95,
+                "source_text": "OR 0.42; 95% CI 0.20 to 0.90",
+                "quote_context": "atin use (OR 0.42; 95% CI 0.20 to 0.90), an",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.42,
+                "ci_lower": 0.2,
+                "ci_upper": 0.9,
+                "source_text": "OR 0.42; 95% CI 0.20 to 0.90"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.47,
+                "ci_lower": 0.3,
+                "ci_upper": 0.73,
+                "ci_level": 0.95,
+                "source_text": "OR 0.47; 95% CI 0.30 to 0.73",
+                "quote_context": "phylaxis (OR 0.47; 95% CI 0.30 to 0.73) all",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.47,
+                "ci_lower": 0.3,
+                "ci_upper": 0.73,
+                "source_text": "OR 0.47; 95% CI 0.30 to 0.73"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 7,
+            "pt_exact": 7,
+            "pt_tol": 7,
+            "ci_lo_exact": 7,
+            "ci_lo_tol": 7,
+            "ci_hi_exact": 7,
+            "ci_hi_tol": 7,
+            "matched_pairs": 7
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 16,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 2.07,
+                "ci_lower": 1.03,
+                "ci_upper": 4.17,
+                "ci_level": 0.95,
+                "source_text": "OR 2.07; 95% CI 1.03 to 4.17",
+                "quote_context": "syndrome (OR 2.07; 95% CI 1.03 to 4.17) and",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 2.07,
+                "ci_lower": 1.03,
+                "ci_upper": 4.17,
+                "source_text": "OR 2.07; 95% CI 1.03 to 4.17"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 3.15,
+                "ci_lower": 1.87,
+                "ci_upper": 5.33,
+                "ci_level": 0.95,
+                "source_text": "OR 3.15; 95% CI 1.87 to 5.33",
+                "quote_context": "surgery (OR 3.15; 95% CI 1.87 to 5.33). Ad",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 3.15,
+                "ci_lower": 1.87,
+                "ci_upper": 5.33,
+                "source_text": "OR 3.15; 95% CI \n1.87 to 5.33"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.95,
+                "ci_lower": 0.93,
+                "ci_upper": 0.97,
+                "ci_level": 0.95,
+                "source_text": "OR 0.95; 95% CI 0.93 to 0.97",
+                "quote_context": "nced age (OR 0.95; 95% CI 0.93 to 0.97) was",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.95,
+                "ci_lower": 0.93,
+                "ci_upper": 0.97,
+                "source_text": "OR 0.95; 95% CI 0.93 to 0.97"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.64,
+                "ci_lower": 0.39,
+                "ci_upper": 1.03,
+                "ci_level": 0.95,
+                "source_text": "OR 0.64; 95% CI 0.39 to 1.03",
+                "quote_context": "ificance (OR 0.64; 95% CI 0.39 to 1.03). No",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.64,
+                "ci_lower": 0.39,
+                "ci_upper": 1.03,
+                "source_text": "OR 0.64; 95% CI 0.39 to 1.03"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.98,
+                "ci_lower": 0.96,
+                "ci_upper": 1.0,
+                "ci_level": 0.95,
+                "source_text": "OR 0.98; 95% CI 0.96 to 1.00",
+                "quote_context": "nced age (OR 0.98; 95% CI 0.96 to 1.00), st",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.98,
+                "ci_lower": 0.96,
+                "ci_upper": 1.0,
+                "source_text": "OR 0.98; 95% CI 0.96 to 1.00"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.42,
+                "ci_lower": 0.2,
+                "ci_upper": 0.9,
+                "ci_level": 0.95,
+                "source_text": "OR 0.42; 95% CI 0.20 to 0.90",
+                "quote_context": "atin use (OR 0.42; 95% CI 0.20 to 0.90), an",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.42,
+                "ci_lower": 0.2,
+                "ci_upper": 0.9,
+                "source_text": "OR 0.42; 95% CI 0.20 to 0.90"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.47,
+                "ci_lower": 0.3,
+                "ci_upper": 0.73,
+                "ci_level": 0.95,
+                "source_text": "OR 0.47; 95% CI 0.30 to 0.73",
+                "quote_context": "phylaxis (OR 0.47; 95% CI 0.30 to 0.73) all",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.47,
+                "ci_lower": 0.3,
+                "ci_upper": 0.73,
+                "source_text": "OR 0.47; 95% CI 0.30 \nto 0.73"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 7,
+            "pt_exact": 7,
+            "pt_tol": 7,
+            "ci_lo_exact": 7,
+            "ci_lo_tol": 7,
+            "ci_hi_exact": 7,
+            "ci_hi_tol": 7,
+            "matched_pairs": 7
+          },
+          "n_extra": 9
+        }
+      }
+    },
+    {
+      "pmcid": "PMC11262657",
+      "pmid": "38976676",
+      "specialty": "bariatric_surgery",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 23,
+        "chars": 80780,
+        "secs": 0.21
+      },
+      "n_gold": 2,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 3,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.97,
+                "ci_lower": 0.91,
+                "ci_upper": 1.02,
+                "ci_level": 0.95,
+                "source_text": "risk ratio (aRR) of 0.97 (95% confidence interval 0.91 to 1.02",
+                "quote_context": "adjusted risk ratio (aRR) of 0.97 (95% confidence interval 0.91 to 1.02, p =",
+                "harvest_pattern": "risk\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\....",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.97,
+                "ci_lower": 0.91,
+                "ci_upper": 1.02,
+                "source_text": "risk ratio 0.97 (95% CI 0.91 to 1.02"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.87,
+                "ci_lower": 0.75,
+                "ci_upper": 1.01,
+                "ci_level": 0.95,
+                "source_text": "aRR 0.87 (95% CI 0.75 to 1.01",
+                "quote_context": "e switch, aRR 0.87 (95% CI 0.75 to 1.01, p =",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.87,
+                "ci_lower": 0.75,
+                "ci_upper": 1.01,
+                "source_text": "aRR 0.87 (95% CI 0.75 to 1.01"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 1
+        },
+        "pdf_raw": {
+          "n_extracted": 9,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.97,
+                "ci_lower": 0.91,
+                "ci_upper": 1.02,
+                "ci_level": 0.95,
+                "source_text": "risk ratio (aRR) of 0.97 (95% confidence interval 0.91 to 1.02",
+                "quote_context": "adjusted risk ratio (aRR) of 0.97 (95% confidence interval 0.91 to 1.02, p =",
+                "harvest_pattern": "risk\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\....",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.97,
+                "ci_lower": 0.91,
+                "ci_upper": 1.02,
+                "source_text": "risk ratio 0.97 (95% CI 0.91 to\n1.02"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.87,
+                "ci_lower": 0.75,
+                "ci_upper": 1.01,
+                "ci_level": 0.95,
+                "source_text": "aRR 0.87 (95% CI 0.75 to 1.01",
+                "quote_context": "e switch, aRR 0.87 (95% CI 0.75 to 1.01, p =",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.87,
+                "ci_lower": 0.75,
+                "ci_upper": 1.01,
+                "source_text": "aRR 0.87 (95% CI 0.75 to 1.01"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 7
+        }
+      }
+    },
+    {
+      "pmcid": "PMC9946229",
+      "pmid": "36812167",
+      "specialty": "bariatric_surgery",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 13,
+        "chars": 42599,
+        "secs": 0.09
+      },
+      "n_gold": 1,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 2.9,
+                "ci_lower": 0.6,
+                "ci_upper": 14.23,
+                "ci_level": 0.95,
+                "source_text": "RR 2.9; 95% CI, 0.60-14.23",
+                "quote_context": "0) in SC (RR 2.9; 95% CI, 0.60-14.23, p =",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 2.9,
+                "ci_lower": 0.6,
+                "ci_upper": 14.23,
+                "source_text": "RR 2.9; 95% CI, 0.60-14.23"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 3,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 2.9,
+                "ci_lower": 0.6,
+                "ci_upper": 14.23,
+                "ci_level": 0.95,
+                "source_text": "RR 2.9; 95% CI, 0.60-14.23",
+                "quote_context": "0) in SC (RR 2.9; 95% CI, 0.60-14.23, p =",
+                "harvest_pattern": "(?<![A-Za-z])a?RR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 2.9,
+                "ci_lower": 0.6,
+                "ci_upper": 14.23,
+                "source_text": "RR comparing Textbook Outcome measures between\nRM and SC was 2.9 (95% CI, 0.60-14.23"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 2
+        }
+      }
+    },
+    {
+      "pmcid": "PMC12368232",
+      "pmid": "40835653",
+      "specialty": "bariatric_surgery",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 9,
+        "chars": 43004,
+        "secs": 0.13
+      },
+      "n_gold": 2,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 3,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.4,
+                "ci_lower": 0.2,
+                "ci_upper": 0.8,
+                "ci_level": 0.95,
+                "source_text": "OR 0.40; 95% CI, 0.20-0.80",
+                "quote_context": ". 27.68%; OR 0.40; 95% CI, 0.20-0.80; P =",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.4,
+                "ci_lower": 0.2,
+                "ci_upper": 0.8,
+                "source_text": "OR 0.40; 95% CI, 0.20-0.80"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.24,
+                "ci_lower": 0.09,
+                "ci_upper": 0.68,
+                "ci_level": 0.95,
+                "source_text": "OR 0.24; 95% CI, 0.09-0.68",
+                "quote_context": ". 16.07%; OR 0.24; 95% CI, 0.09-0.68; P =",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.24,
+                "ci_lower": 0.09,
+                "ci_upper": 0.68,
+                "source_text": "OR 0.24; 95% CI, 0.09-0.68"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 1
+        },
+        "pdf_raw": {
+          "n_extracted": 5,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.4,
+                "ci_lower": 0.2,
+                "ci_upper": 0.8,
+                "ci_level": 0.95,
+                "source_text": "OR 0.40; 95% CI, 0.20-0.80",
+                "quote_context": ". 27.68%; OR 0.40; 95% CI, 0.20-0.80; P =",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.4,
+                "ci_lower": 0.2,
+                "ci_upper": 0.8,
+                "source_text": "(OR, 0.40; 95% CI, 0.20-0.80"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.24,
+                "ci_lower": 0.09,
+                "ci_upper": 0.68,
+                "ci_level": 0.95,
+                "source_text": "OR 0.24; 95% CI, 0.09-0.68",
+                "quote_context": ". 16.07%; OR 0.24; 95% CI, 0.09-0.68; P =",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.24,
+                "ci_lower": 0.09,
+                "ci_upper": 0.68,
+                "source_text": "OR 0.24; 95% CI, 0.09-0.68"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 3
+        }
+      }
+    },
+    {
+      "pmcid": "PMC10224662",
+      "pmid": "37243915",
+      "specialty": "bariatric_surgery",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 8,
+        "chars": 31970,
+        "secs": 0.07
+      },
+      "n_gold": 1,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 4.64,
+                "ci_lower": 1.39,
+                "ci_upper": 15.52,
+                "ci_level": 0.95,
+                "source_text": "OR 4.64, 95% CI 1.39, 15.52",
+                "quote_context": "(adjusted OR 4.64, 95% CI 1.39, 15.52, p =",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 4.64,
+                "ci_lower": 1.39,
+                "ci_upper": 15.52,
+                "source_text": "OR 4.64; 95% CI 1.39, 15.52"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 4.64,
+                "ci_lower": 1.39,
+                "ci_upper": 15.52,
+                "ci_level": 0.95,
+                "source_text": "OR 4.64, 95% CI 1.39, 15.52",
+                "quote_context": "(adjusted OR 4.64, 95% CI 1.39, 15.52, p =",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 4.64,
+                "ci_lower": 1.39,
+                "ci_upper": 15.52,
+                "source_text": "OR 4.64; 95% CI 1.39, 15.52"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        }
+      }
+    },
+    {
+      "pmcid": "PMC13222162",
+      "pmid": "41951955",
+      "specialty": "bariatric_surgery",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 11,
+        "chars": 41542,
+        "secs": 0.18
+      },
+      "n_gold": 1,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 2.07,
+                "ci_lower": 0.7,
+                "ci_upper": 6.0,
+                "ci_level": 0.95,
+                "source_text": "OR 2.07, 95% CI 0.70, 6",
+                "quote_context": "adjusted OR 2.07, 95% CI 0.70, 6,10,",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 2.07,
+                "ci_lower": 0.7,
+                "ci_upper": 6.1,
+                "source_text": "OR 2.07; 95% CI 0.70, 6.10"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 0,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 2,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 2.07,
+                "ci_lower": 0.7,
+                "ci_upper": 6.0,
+                "ci_level": 0.95,
+                "source_text": "OR 2.07, 95% CI 0.70, 6",
+                "quote_context": "adjusted OR 2.07, 95% CI 0.70, 6,10,",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 2.07,
+                "ci_lower": 0.7,
+                "ci_upper": 6.1,
+                "source_text": "OR 2.07; 95% CI 0.70, 6.10"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 0,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 1
+        }
+      }
+    },
+    {
+      "pmcid": "PMC10184386",
+      "pmid": "37189069",
+      "specialty": "bariatric_surgery",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 11,
+        "chars": 52033,
+        "secs": 0.21
+      },
+      "n_gold": 1,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 0,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.03,
+                "ci_lower": 0.01,
+                "ci_upper": 0.09,
+                "ci_level": 0.95,
+                "source_text": "OR 0.03, 95% CI 0.01-0.09",
+                "quote_context": "adex use (OR 0.03, 95% CI 0.01-0.09, P C",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "missed",
+              "matched_extracted": null
+            }
+          ],
+          "field": {
+            "type_exact": 0,
+            "pt_exact": 0,
+            "pt_tol": 0,
+            "ci_lo_exact": 0,
+            "ci_lo_tol": 0,
+            "ci_hi_exact": 0,
+            "ci_hi_tol": 0,
+            "matched_pairs": 0
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 15,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.03,
+                "ci_lower": 0.01,
+                "ci_upper": 0.09,
+                "ci_level": 0.95,
+                "source_text": "OR 0.03, 95% CI 0.01-0.09",
+                "quote_context": "adex use (OR 0.03, 95% CI 0.01-0.09, P C",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.03,
+                "ci_lower": 0.01,
+                "ci_upper": 0.09,
+                "source_text": "OR 0.03; 95% CI 0.01-0.09"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 14
+        }
+      }
+    },
+    {
+      "pmcid": "PMC13139664",
+      "pmid": "41808368",
+      "specialty": "bariatric_surgery",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 9,
+        "chars": 39407,
+        "secs": 0.08
+      },
+      "n_gold": 1,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.944,
+                "ci_lower": 0.9,
+                "ci_upper": 0.99,
+                "ci_level": 0.95,
+                "source_text": "OR 0.944, 95% CI 0.900-0.990",
+                "quote_context": "s of OvR (OR 0.944, 95% CI 0.900-0.990). Hi",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.944,
+                "ci_lower": 0.9,
+                "ci_upper": 0.99,
+                "source_text": "(OR 0.944; 95% CI 0.900-0.990)"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 14,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.944,
+                "ci_lower": 0.9,
+                "ci_upper": 0.99,
+                "ci_level": 0.95,
+                "source_text": "OR 0.944, 95% CI 0.900-0.990",
+                "quote_context": "s of OvR (OR 0.944, 95% CI 0.900-0.990). Hi",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.944,
+                "ci_lower": 0.9,
+                "ci_upper": 0.99,
+                "source_text": "(OR 0.944; 95% CI 0.900-0.990)"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 13
+        }
+      }
+    },
+    {
+      "pmcid": "PMC5865494",
+      "pmid": "29133606",
+      "specialty": "bariatric_surgery",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 11,
+        "chars": 52522,
+        "secs": 0.13
+      },
+      "n_gold": 1,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 2,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "IRR",
+                "point_estimate": 6.6,
+                "ci_lower": 3.1,
+                "ci_upper": 14.0,
+                "ci_level": 0.95,
+                "source_text": "rate ratio of 6.6 (95% confidence interval, 3.1-14.0",
+                "quote_context": "up with a rate ratio of 6.6 (95% confidence interval, 3.1-14.0; P P",
+                "harvest_pattern": "rate\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\....",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "IRR",
+                "point": 6.6,
+                "ci_lower": 3.1,
+                "ci_upper": 14.0,
+                "source_text": "rate ratio 6.6 (95% CI, 3.1-14.0"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 1
+        },
+        "pdf_raw": {
+          "n_extracted": 6,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "IRR",
+                "point_estimate": 6.6,
+                "ci_lower": 3.1,
+                "ci_upper": 14.0,
+                "ci_level": 0.95,
+                "source_text": "rate ratio of 6.6 (95% confidence interval, 3.1-14.0",
+                "quote_context": "up with a rate ratio of 6.6 (95% confidence interval, 3.1-14.0; P P",
+                "harvest_pattern": "rate\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\....",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "IRR",
+                "point": 6.6,
+                "ci_lower": 3.1,
+                "ci_upper": 14.0,
+                "source_text": "rate ratio 6.6 (95% CI, 3.1-14.0"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 5
+        }
+      }
+    },
+    {
+      "pmcid": "PMC9276555",
+      "pmid": "35508748",
+      "specialty": "bariatric_surgery",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 8,
+        "chars": 32604,
+        "secs": 0.07
+      },
+      "n_gold": 2,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 2,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.28,
+                "ci_lower": 0.11,
+                "ci_upper": 0.69,
+                "ci_level": 0.95,
+                "source_text": "odds ratio [aOR] 0.28, 95% CI 0.11-0.69",
+                "quote_context": "(adjusted odds ratio [aOR] 0.28, 95% CI 0.11-0.69, p =",
+                "harvest_pattern": "odds\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\....",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.28,
+                "ci_lower": 0.11,
+                "ci_upper": 0.69,
+                "source_text": "odds ratio 0.28; 95% CI 0.11-0.69"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.25,
+                "ci_lower": 0.09,
+                "ci_upper": 0.62,
+                "ci_level": 0.95,
+                "source_text": "aOR 0.25, 95% CI 0.09-0.62",
+                "quote_context": "0.007 and aOR 0.25, 95% CI 0.09-0.62, p =",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.25,
+                "ci_lower": 0.09,
+                "ci_upper": 0.62,
+                "source_text": "aOR 0.25; 95% CI 0.09-0.62"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 2,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.28,
+                "ci_lower": 0.11,
+                "ci_upper": 0.69,
+                "ci_level": 0.95,
+                "source_text": "odds ratio [aOR] 0.28, 95% CI 0.11-0.69",
+                "quote_context": "(adjusted odds ratio [aOR] 0.28, 95% CI 0.11-0.69, p =",
+                "harvest_pattern": "odds\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\....",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.28,
+                "ci_lower": 0.11,
+                "ci_upper": 0.69,
+                "source_text": "odds \nratio 0.28; 95% CI 0.11-0.69"
+              }
+            },
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.25,
+                "ci_lower": 0.09,
+                "ci_upper": 0.62,
+                "ci_level": 0.95,
+                "source_text": "aOR 0.25, 95% CI 0.09-0.62",
+                "quote_context": "0.007 and aOR 0.25, 95% CI 0.09-0.62, p =",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.25,
+                "ci_lower": 0.09,
+                "ci_upper": 0.62,
+                "source_text": "aOR 0.25; 95% CI 0.09-0.62"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 2,
+            "pt_exact": 2,
+            "pt_tol": 2,
+            "ci_lo_exact": 2,
+            "ci_lo_tol": 2,
+            "ci_hi_exact": 2,
+            "ci_hi_tol": 2,
+            "matched_pairs": 2
+          },
+          "n_extra": 0
+        }
+      }
+    },
+    {
+      "pmcid": "PMC11170773",
+      "pmid": "38872117",
+      "specialty": "bariatric_surgery",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 8,
+        "chars": 36734,
+        "secs": 0.11
+      },
+      "n_gold": 1,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.237,
+                "ci_lower": 0.086,
+                "ci_upper": 0.656,
+                "ci_level": 0.95,
+                "source_text": "odds ratio = 0.237; 95% CI = 0.086, 0.656",
+                "quote_context": "ed group (odds ratio = 0.237; 95% CI = 0.086, 0.656; P =",
+                "harvest_pattern": "odds\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\....",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.237,
+                "ci_lower": 0.086,
+                "ci_upper": 0.656,
+                "source_text": "odds ratio = 0.237; 95% CI: 0.086, 0.656"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 2,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 0.237,
+                "ci_lower": 0.086,
+                "ci_upper": 0.656,
+                "ci_level": 0.95,
+                "source_text": "odds ratio = 0.237; 95% CI = 0.086, 0.656",
+                "quote_context": "ed group (odds ratio = 0.237; 95% CI = 0.086, 0.656; P =",
+                "harvest_pattern": "odds\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\....",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 0.237,
+                "ci_lower": 0.086,
+                "ci_upper": 0.656,
+                "source_text": "odds ratio = 0.237; 95% CI: 0.086, 0.656"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 1
+        }
+      }
+    },
+    {
+      "pmcid": "PMC8820769",
+      "pmid": "34647708",
+      "specialty": "bariatric_surgery",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 8,
+        "chars": 42566,
+        "secs": 0.16
+      },
+      "n_gold": 1,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 2,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 8.3,
+                "ci_lower": 1.8,
+                "ci_upper": 39.0,
+                "ci_level": 0.95,
+                "source_text": "OR 8.3, 95% CI: 1.8-39",
+                "quote_context": "2 months (OR 8.3, 95% CI: 1.8-39; P =",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 8.3,
+                "ci_lower": 1.8,
+                "ci_upper": 39.0,
+                "source_text": "OR 8.3; 95% CI: 1.8-39"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 1
+        },
+        "pdf_raw": {
+          "n_extracted": 6,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 8.3,
+                "ci_lower": 1.8,
+                "ci_upper": 39.0,
+                "ci_level": 0.95,
+                "source_text": "OR 8.3, 95% CI: 1.8-39",
+                "quote_context": "2 months (OR 8.3, 95% CI: 1.8-39; P =",
+                "harvest_pattern": "(?<![A-Za-z])a?OR\\b[^.\\n]{0,55}?(?P<pt>\\...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 8.3,
+                "ci_lower": 1.8,
+                "ci_upper": 39.0,
+                "source_text": "OR 8.3; 95% CI: 1.8-39"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 5
+        }
+      }
+    },
+    {
+      "pmcid": "PMC9274222",
+      "pmid": "35554515",
+      "specialty": "bariatric_surgery",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 9,
+        "chars": 47893,
+        "secs": 0.21
+      },
+      "n_gold": 1,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 4.5,
+                "ci_lower": 1.6,
+                "ci_upper": 15.5,
+                "ci_level": 0.95,
+                "source_text": "odds ratios 4.5 [95% CI 1.6, 15.5",
+                "quote_context": "(adjusted odds ratios 4.5 [95% CI 1.6, 15.5; P =",
+                "harvest_pattern": "odds\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\....",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 4.5,
+                "ci_lower": 1.6,
+                "ci_upper": 15.5,
+                "source_text": "odds ratios 4.5 [95% CI 1.6, 15.5"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 2,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "OR",
+                "point_estimate": 4.5,
+                "ci_lower": 1.6,
+                "ci_upper": 15.5,
+                "ci_level": 0.95,
+                "source_text": "odds ratios 4.5 [95% CI 1.6, 15.5",
+                "quote_context": "(adjusted odds ratios 4.5 [95% CI 1.6, 15.5; P =",
+                "harvest_pattern": "odds\\s+ratio[^.\\n]{0,55}?(?P<pt>\\d+(?:\\....",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "OR",
+                "point": 4.5,
+                "ci_lower": 1.6,
+                "ci_upper": 15.5,
+                "source_text": "OR 4.5; 95% CI 1.6, 15.5"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 1
+        }
+      }
+    },
+    {
+      "pmcid": "PMC10338617",
+      "pmid": "37095234",
+      "specialty": "bariatric_surgery",
+      "pdf_meta": {
+        "method": "pymupdf",
+        "num_pages": 9,
+        "chars": 38892,
+        "secs": 0.08
+      },
+      "n_gold": 1,
+      "n_out_of_scope": 0,
+      "out_of_scope": [],
+      "surfaces": {
+        "abstract": {
+          "n_extracted": 1,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.59,
+                "ci_lower": 0.4,
+                "ci_upper": 0.85,
+                "ci_level": 0.95,
+                "source_text": "relative risk 0.59; 95% confidence interval 0.40-0.85",
+                "quote_context": "ol group (relative risk 0.59; 95% confidence interval 0.40-0.85). Ti",
+                "harvest_pattern": "relative\\s+risk[^.\\n]{0,55}?(?P<pt>\\d+(?...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.59,
+                "ci_lower": 0.4,
+                "ci_upper": 0.85,
+                "source_text": "relative risk 0.59; 95% CI 0.40-0.85"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 0
+        },
+        "pdf_raw": {
+          "n_extracted": 5,
+          "per_gold": [
+            {
+              "gold": {
+                "effect_type": "RR",
+                "point_estimate": 0.59,
+                "ci_lower": 0.4,
+                "ci_upper": 0.85,
+                "ci_level": 0.95,
+                "source_text": "relative risk 0.59; 95% confidence interval 0.40-0.85",
+                "quote_context": "ol group (relative risk 0.59; 95% confidence interval 0.40-0.85). Ti",
+                "harvest_pattern": "relative\\s+risk[^.\\n]{0,55}?(?P<pt>\\d+(?...",
+                "out_of_scope": false,
+                "out_of_scope_reason": null
+              },
+              "status": "correct",
+              "matched_extracted": {
+                "type": "RR",
+                "point": 0.59,
+                "ci_lower": 0.4,
+                "ci_upper": 0.85,
+                "source_text": "relative risk 0.59; 95% CI 0.40-0.85"
+              }
+            }
+          ],
+          "field": {
+            "type_exact": 1,
+            "pt_exact": 1,
+            "pt_tol": 1,
+            "ci_lo_exact": 1,
+            "ci_lo_tol": 1,
+            "ci_hi_exact": 1,
+            "ci_hi_tol": 1,
+            "matched_pairs": 1
+          },
+          "n_extra": 4
+        }
+      }
+    }
+  ]
+}

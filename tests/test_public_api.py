@@ -69,6 +69,7 @@ EXPECTED_SPECIALTIES = {
     "vascular_surgery",
     "bronchiectasis",
     "interstitial_lung_disease",
+    "bariatric_surgery",
 }
 
 
