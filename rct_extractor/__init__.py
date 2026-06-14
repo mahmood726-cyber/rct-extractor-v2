@@ -27,6 +27,7 @@ from .api import (
     detect_specialty,
     extract,
     extract_batch,
+    extract_dose_response,
     list_specialties,
     to_metakit_config,
 )
@@ -37,6 +38,7 @@ __all__ = [
     "detect_specialty",
     "extract",
     "extract_batch",
+    "extract_dose_response",
     "list_specialties",
     "to_metakit_config",
 ]

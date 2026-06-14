@@ -134,8 +134,44 @@ __all__ = [
     "detect_specialty",
     "extract",
     "extract_batch",
+    "extract_dose_response",
     "to_metakit_config",
 ]
+
+
+def extract_dose_response(text: str) -> Dict[str, Any]:
+    """Extract dose-response relationships from a block of text.
+
+    This is a SEPARATE extraction mode from :func:`extract` (which targets RCT
+    arm-comparison effects). It is built for the data a dose-response
+    meta-analysis pools: per-unit (trend/slope) estimates, categorical
+    dose-level estimates (dose category vs reference), the exposure/dose metric
+    and units, the number of dose categories, the reference category, and any
+    reported nonlinearity (P for nonlinearity / J-/U-shape / spline).
+
+    Args:
+        text: Abstract or full-text body of a dose-response / cohort study.
+
+    Returns:
+        A dict (see ``DoseResponseResult.to_dict``)::
+
+            {
+              "effects": [ {relation_type, effect_type, point_estimate,
+                            ci_lower, ci_upper, dose_amount, dose_unit,
+                            increment_text, category_label, reference_label,
+                            ...}, ... ],
+              "n_per_unit": int, "n_categorical": int,
+              "dose_metric": str|None, "dose_units": [str, ...],
+              "n_dose_categories": int|None, "reference_category": str|None,
+              "nonlinearity_reported": bool, "nonlinearity_shape": str|None,
+              "p_nonlinearity": float|None,
+            }
+    """
+    from rct_extractor._engine.core.doseresponse_extractor import (
+        DoseResponseExtractor,
+    )
+
+    return DoseResponseExtractor().extract(text).to_dict()
 
 
 def list_specialties() -> List[str]:
