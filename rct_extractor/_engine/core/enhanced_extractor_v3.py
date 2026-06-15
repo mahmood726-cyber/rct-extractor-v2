@@ -1172,11 +1172,14 @@ class EnhancedExtractor:
 
     # Standardized Mean Difference (check BEFORE MD)
     SMD_PATTERNS = [
-        # Robust SMD: optional "=/:" after the label, optional paren/bracket, optional
-        # "95% CI", and a "to" OR dash separator. Covers "SMD=-0.50, 95% CI: -0.97 to
-        # -0.03" (Yan 2015, no parens) and "SMD = -0.90 [95%CI -0.29 to -1.51]"
-        # (Schuch 2016, bracket + "to"; CI may be reversed -> repaired downstream).
-        r'\bSMD\b\s*[=:]?\s*(-?\d+\.?\d*)\s*[,;]?\s*[\(\[]?\s*(?:95\s*%?\s*)?(?:CI|confidence\s+interval)\s*[:,]?\s*(-?\d+\.?\d*)\s*(?:to|[-–—])\s*(-?\d+\.?\d*)\s*[\)\]]?',
+        # Robust SMD / Hedges g / Cohen's d, two complementary forms:
+        #  P1 (CI keyword, parens optional): "SMD=-0.50, 95% CI: -0.97 to -0.03"
+        #     (Yan 2015), "Hedges g = 0.42, 95% CI 0.21 to 0.63".
+        #  P2 (bracket required, CI optional): "Cohen d = 0.80 [0.55 to 1.05]",
+        #     "SMD = -0.90 [95%CI -0.29 to -1.51]" (Schuch 2016; reversed CI is
+        #     repaired at extraction). Optional "was/were/of/is" filler + "=/:".
+        r"(?:standardized\s+mean\s+difference|\bSMD\b|Hedges'?\s*g|Cohen'?s?\s*d)\s*(?:was|were|of|is)?\s*[=:]?\s*(-?\d+\.?\d*)\s*[,;]?\s*[\(\[]?\s*(?:95\s*%?\s*)?(?:CI|confidence\s+interval)\s*[:,]?\s*(-?\d+\.?\d*)\s*(?:to|[-–—])\s*(-?\d+\.?\d*)\s*[\)\]]?",
+        r"(?:standardized\s+mean\s+difference|\bSMD\b|Hedges'?\s*g|Cohen'?s?\s*d)\s*(?:was|were|of|is)?\s*[=:]?\s*(-?\d+\.?\d*)\s*[,;]?\s*[\(\[]\s*(?:95\s*%?\s*(?:CI|confidence\s+interval)\s*[:,]?\s*)?(-?\d+\.?\d*)\s*(?:to|[-–—])\s*(-?\d+\.?\d*)\s*[\)\]]",
         r'standardized\s+mean\s+difference[,;:\s=]+(-?\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(-?\d+\.?\d*)\s*(?:to|[-–—])\s*(-?\d+\.?\d*)',
         r'\bSMD\b[,;:\s=]+(-?\d+\.?\d*)\s*[\(\[]\s*(?:95%?\s*)?(?:CI)?[,:\s]*(-?\d+\.?\d*)\s*[-–—,]\s*(-?\d+\.?\d*)\s*[\)\]]',
         r'\bSMD\b\s+(-?\d+\.?\d*)\s*\(\s*(-?\d+\.?\d*)\s*[-–—]\s*(-?\d+\.?\d*)\s*\)',
@@ -1305,6 +1308,12 @@ class EnhancedExtractor:
 
     # Mean Difference patterns
     MD_PATTERNS = [
+        # Robust MD / WMD: optional "was/were/of/is" + "=/:" + an optional UNIT
+        # between the value and its CI, with a "to" OR dash separator. Covers
+        # "MD = -4.10 (95% CI -6.20 to -2.00)" and "weighted mean difference was
+        # -8.4 mmHg (95% CI -10.2 to -6.6)". ("standardized mean difference" is
+        # NOT in the alternation -> SMD stays SMD; any MD twin is dropped later.)
+        r'(?:weighted\s+mean\s+difference|\bWMD\b|\bMD\b)\s*(?:was|were|of|is)?\s*[=:]?\s*(-?\d+\.?\d*)\s*(?:mmHg|kg/m\^?2|kg|mm|mL|dL|L|cm|points?|%|mg/?dL|units?|kcal(?:/day)?)?\s*[,;]?\s*[\(\[]?\s*(?:95\s*%?\s*)?(?:CI|confidence\s+interval)\s*[:,]?\s*(-?\d+\.?\d*)\s*(?:to|[-–—])\s*(-?\d+\.?\d*)\s*[\)\]]?',
         r'(?:mean\s+)?difference[,;:\s=:]+(-?\d+\.?\d*)\s*(?:kg|%|points?)?\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(-?\d+\.?\d*)\s*(?:to|[-–—])\s*(-?\d+\.?\d*)',
         r'\bMD\b[,;:\s=]+(-?\d+\.?\d*)\s*[\(\[]\s*(?:95%?\s*)?(?:CI)?[,:\s]*(-?\d+\.?\d*)\s*[-–—,]\s*(-?\d+\.?\d*)\s*[\)\]]',
         r'\bMD\b[:\s]+(-?\d+\.?\d*)\s*%?\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(-?\d+\.?\d*)\s*(?:to|[-–—])\s*(-?\d+\.?\d*)',

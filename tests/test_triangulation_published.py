@@ -207,3 +207,20 @@ def test_schuch_reversed_ci_repaired_at_extraction():
     assert abs(e["ci_lower"] + 1.51) < 1e-6 and abs(e["ci_upper"] + 0.29) < 1e-6
     assert "CI_REVERSED_REPAIRED" in (e.get("warnings") or [])
     assert (e.get("consistency") or {}).get("flags") in ([], None)
+
+
+# Continuous format coverage (regression battery for the robust MD/SMD patterns).
+@pytest.mark.parametrize("text,etype,pt,lo,hi", [
+    ("The weighted mean difference was -8.4 mmHg (95% CI -10.2 to -6.6).", "MD", -8.4, -10.2, -6.6),
+    ("The effect was moderate (Hedges g = 0.42, 95% CI 0.21 to 0.63).", "SMD", 0.42, 0.21, 0.63),
+    ("A large effect was found (Cohen d = 0.80 [0.55 to 1.05]).", "SMD", 0.80, 0.55, 1.05),
+    ("MD = -4.10 (95% CI -6.20 to -2.00).", "MD", -4.10, -6.20, -2.00),
+    # reversed CI in source must be repaired, not dropped
+    ("The pooled Hedges g was 0.55 (95% CI 0.90 to 0.20).", "SMD", 0.55, 0.20, 0.90),
+])
+def test_continuous_format_battery(text, etype, pt, lo, hi):
+    effs = [e for e in _effects(text) if e["type"] == etype]
+    assert len(effs) == 1, f"{text!r} -> {[(e['type'], e['effect_size']) for e in _effects(text)]}"
+    e = effs[0]
+    assert abs(e["effect_size"] - pt) < 1e-6
+    assert abs(e["ci_lower"] - lo) < 1e-6 and abs(e["ci_upper"] - hi) < 1e-6
