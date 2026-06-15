@@ -59,9 +59,16 @@ topologies, asserting we reproduce each trial's **own** published estimate
 (oracle-free — the trial states its number, so no pooling-method ambiguity) and
 that the value is internally consistent. Anchors:
 
-- **Continuous** — STEP 1 (Wilding 2021, *NEJM*; PMID 33567185): reproduces the
+- **Continuous (MD)** — STEP 1 (Wilding 2021, *NEJM*; PMID 33567185): reproduces the
   −12.4-pp body-weight treatment difference (95% CI −13.4 to −11.5) exactly, zero
   false flags; also drove the ARD→MD fix below.
+- **Continuous (SMD)** — Yan 2015 (PMID 25812710) "SMD=-0.50, 95% CI: -0.97 to -0.03"
+  and Schuch 2016 (*Braz J Psychiatry*; PMID 27611903) "SMD = -0.90 [95%CI -0.29 to
+  -1.51]". Fixed: (a) no-paren / bracket "SMD … to …" forms now extract a single
+  clean SMD (was: missing CI + a duplicate generic-MD twin — now suppressed via
+  `_suppress_md_twin_of_smd`); (b) the **reversed CI** Schuch prints (more-negative
+  bound second) is repaired at extraction (`CI_REVERSED_REPAIRED`) instead of being
+  dropped as CI-inconsistent.
 - **DTA (no-CI)** — Elli 2022 (*Diagn Microbiol Infect Dis*; PMID 35216863): the
   combined "sensitivity and specificity … were 34.2% and 92.3%" no-CI form (which
   abstracts use constantly) was previously unextracted; now parsed, and the reported

@@ -172,3 +172,38 @@ def test_ma_summary_requires_risk_reduction_cue():
     from rct_extractor._engine.core.doseresponse_extractor import DoseResponseExtractor
     txt = "In a survey, 4 cups/day for adults (16%, 95% CI: 13, 18) reported poor sleep."
     assert DoseResponseExtractor().extract(txt).effects == []
+
+
+# Continuous SMD -- Yan et al., J Sports Med Phys Fitness 2015;56:811-6 (PMID
+# 25812710) and Schuch et al., Braz J Psychiatry 2016;38:247-54 (PMID 27611903,
+# DOI 10.1590/1516-4446-2016-1915). Exercise for depression, pooled SMD.
+YAN = ("Our pooled result showed a significant alleviative depression after "
+       "exercise (SMD=-0.50, 95% CI: -0.97 to -0.03, P=0.04) with significant "
+       "heterogeneity (P=0.003, I2=67%).")
+SCHUCH = ("Exercise had a large and significant effect on depression "
+          "(SMD = -0.90 [95%CI -0.29 to -1.51]), with a fail-safe number of 71 studies.")
+
+
+def test_yan_smd_no_paren_to_format_single_clean_effect():
+    effs = _effects(YAN)
+    smd = [e for e in effs if e["type"] == "SMD"]
+    assert len(smd) == 1, f"expected one SMD, got {[(e['type'], e['effect_size']) for e in effs]}"
+    e = smd[0]
+    assert abs(e["effect_size"] + 0.50) < 1e-6
+    assert abs(e["ci_lower"] + 0.97) < 1e-6 and abs(e["ci_upper"] + 0.03) < 1e-6
+    # no generic-MD twin of the SMD survives
+    assert not [e for e in effs if e["type"] in ("MD", "WMD")
+                and abs((e.get("effect_size") or 0) + 0.50) < 1e-6]
+
+
+def test_schuch_reversed_ci_repaired_at_extraction():
+    # the source prints the CI reversed ("-0.29 to -1.51"); we must repair it to
+    # (-1.51, -0.29) rather than drop the effect as CI-inconsistent
+    effs = _effects(SCHUCH)
+    smd = [e for e in effs if e["type"] == "SMD"]
+    assert len(smd) == 1
+    e = smd[0]
+    assert abs(e["effect_size"] + 0.90) < 1e-6
+    assert abs(e["ci_lower"] + 1.51) < 1e-6 and abs(e["ci_upper"] + 0.29) < 1e-6
+    assert "CI_REVERSED_REPAIRED" in (e.get("warnings") or [])
+    assert (e.get("consistency") or {}).get("flags") in ([], None)

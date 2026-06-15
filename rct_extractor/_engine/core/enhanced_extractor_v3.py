@@ -1172,6 +1172,11 @@ class EnhancedExtractor:
 
     # Standardized Mean Difference (check BEFORE MD)
     SMD_PATTERNS = [
+        # Robust SMD: optional "=/:" after the label, optional paren/bracket, optional
+        # "95% CI", and a "to" OR dash separator. Covers "SMD=-0.50, 95% CI: -0.97 to
+        # -0.03" (Yan 2015, no parens) and "SMD = -0.90 [95%CI -0.29 to -1.51]"
+        # (Schuch 2016, bracket + "to"; CI may be reversed -> repaired downstream).
+        r'\bSMD\b\s*[=:]?\s*(-?\d+\.?\d*)\s*[,;]?\s*[\(\[]?\s*(?:95\s*%?\s*)?(?:CI|confidence\s+interval)\s*[:,]?\s*(-?\d+\.?\d*)\s*(?:to|[-–—])\s*(-?\d+\.?\d*)\s*[\)\]]?',
         r'standardized\s+mean\s+difference[,;:\s=]+(-?\d+\.?\d*)\s*\(\s*(?:95%?\s*)?(?:CI)?[,:\s]*(-?\d+\.?\d*)\s*(?:to|[-–—])\s*(-?\d+\.?\d*)',
         r'\bSMD\b[,;:\s=]+(-?\d+\.?\d*)\s*[\(\[]\s*(?:95%?\s*)?(?:CI)?[,:\s]*(-?\d+\.?\d*)\s*[-–—,]\s*(-?\d+\.?\d*)\s*[\)\]]',
         r'\bSMD\b\s+(-?\d+\.?\d*)\s*\(\s*(-?\d+\.?\d*)\s*[-–—]\s*(-?\d+\.?\d*)\s*\)',
@@ -2328,9 +2333,28 @@ class EnhancedExtractor:
         # ratio whose label sat just outside the matched span (e.g. "IRR: 1.36,
         # 95% CI 0.21 to 8.85" produced both IRR and a spurious MD).
         results = self._suppress_ratio_mistyped_as_difference(results)
+        results = self._suppress_md_twin_of_smd(results)
         results = self._reclassify_ard_as_md_when_continuous(results, text)
 
         return results
+
+    @staticmethod
+    def _suppress_md_twin_of_smd(results: List["Extraction"]) -> List["Extraction"]:
+        """Drop a generic MD/WMD extraction that duplicates an SMD with the SAME
+        point + CI. "SMD=-0.50, 95% CI -0.97 to -0.03" can match both a generic
+        difference pattern (typed MD) and the SMD pattern; the explicit "SMD"
+        label makes SMD the correct, more-specific type."""
+        def ci_key(e):
+            if e.ci is None:
+                return None
+            return (round(e.point_estimate, 3), round(e.ci.lower, 3), round(e.ci.upper, 3))
+        smd_keys = {ci_key(e) for e in results if e.effect_type == EffectType.SMD}
+        smd_keys.discard(None)
+        if not smd_keys:
+            return results
+        drop = {EffectType.MD, EffectType.WMD}
+        return [e for e in results
+                if not (e.effect_type in drop and ci_key(e) in smd_keys)]
 
     # A continuous-outcome between-group difference reported in "percentage
     # points" (a % CHANGE outcome, e.g. STEP-1 body weight) is a MEAN DIFFERENCE,
@@ -2518,12 +2542,20 @@ class EnhancedExtractor:
     ) -> Extraction:
         """Create extraction with confidence scoring and automation tier"""
 
+        warnings = []
+        # Repair a CI reported in REVERSE order before any containment check, so a
+        # correct-but-reversed published CI is fixed rather than dropped as
+        # inconsistent. Real example: Schuch 2016 "SMD = -0.90 [95%CI -0.29 to
+        # -1.51]" (the more-negative bound printed second).
+        if ci_low is not None and ci_high is not None and ci_low > ci_high:
+            ci_low, ci_high = ci_high, ci_low
+            warnings.append("CI_REVERSED_REPAIRED")
+
         # Create CI
         ci = ConfidenceInterval(lower=ci_low, upper=ci_high)
 
         # Check plausibility
         is_plausible = self._check_plausibility(effect_type, value, ci_low, ci_high)
-        warnings = []
 
         if not is_plausible:
             warnings.append("IMPLAUSIBLE_VALUE")
