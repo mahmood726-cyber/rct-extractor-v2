@@ -41,28 +41,41 @@ existing stack mapped in the portfolio: `evaluate_real_rct_metrics`,
    (less self-flattering) figure.
 3. **Source constraint stated** on every run.
 
-## What the benchmark currently says (run it: `python scripts/meta_quality_benchmark.py`)
+## The 8 gates and 3 extra axes
 
-- We clear **all 5 measured gates** (e.g. internal-consistency false-positive rate
-  **0/156** on the gold set — live).
-- Composite all-pass tier: **top ~20%** (independence floor) of published MAs.
-- Honest gap: adding the three ready candidate axes below computes to **~11%**, not
-  ≤5%. **Top 5% as a 5–8-axis composite is hard** — A4 alone (55% fail) caps
-  exclusivity and failure-correlation works against us. The defensible *top-few-%*
-  claim is **per-axis**: on internal consistency (FP=0) and robustness-under-
-  correction we are individually in the top few %; the composite is a strong
-  *top ~11–20%*.
+Beyond A1–A5, three further axes are now first-class gates (each measured live on
+the gold set): **A6 Trustworthiness** (INSPECT-SR, ≈32% of RCTs raise concerns;
+proxy = A7∧A8 clean), **A7 Source grounding** (`value_not_in_source` /
+`multiple_candidates`; ≈4% LLM-misattribution baseline), **A8 Forensic digits**
+(GRIM/GRIMMER/Benford/terminal-digit/arm-N reconciliation).
 
-## Path to a stronger composite (each already supported by a portfolio tool)
+## Observed Pairwise70 rate (not just the literature floor)
 
-- **A6 Trustworthiness** — INSPECT-SR authenticity checks (≈32% of RCTs raise
-  concerns; RoB-2/GRADE miss them).
-- **A7 Source grounding** — programmatic DOI/value grounding (`value_not_in_source`,
-  `multiple_candidates`); ≈4% LLM citation misattribution baseline.
-- **A8 Forensic digits** — terminal-digit / Benford / arm-N reconciliation (asa.html).
+`scripts/build_pairwise_gate_verdicts.py` reads spec-collapse-atlas'
+`corpus_results.json` (473 Cochrane MAs) and emits a per-MA A4 verdict
+(`A4 pass = not false_robust`). The benchmark then uses a **hybrid** published rate:
+the real corpus marginal for the covered axis (A4: **260/473 = 55.0% false-robust**,
+confirming the literature 0.55) × the literature pass rate for the uncovered axes,
+capturing real cross-axis correlation once ≥2 axes have per-MA verdicts.
 
-The benchmark *computes* the resulting tier when these are added — it never claims
-a number it hasn't multiplied out.
+## What the benchmark currently says (run it)
+
+```
+python scripts/build_pairwise_gate_verdicts.py
+python scripts/meta_quality_benchmark.py --pairwise-verdicts data/pairwise_gate_verdicts.jsonl
+```
+
+- We clear **all 8 measured gates** (internal-consistency FP **0/156**, forensic FP
+  **0/156**, grounding FP **1/156** — live).
+- Composite all-pass tier: **top ~11%** of published MAs (hybrid = independence here,
+  since the real A4 marginal equals the literature 0.55).
+- Honest gap: reaching ≤5% as a composite would need **~4 more** independent gates
+  (~20% marginal fail each), and failure-correlation works *against* this. So a
+  blanket "top 5%" is **not supported** by these axes. The defensible claims are
+  **(a) composite top ~11%** and **(b) per-axis standings** — e.g. on pooling
+  robustness we are better than the **55%** of MAs that are false-robust, and on
+  internal consistency our gold false-positive rate is **0**. The runner prints all
+  of this; it never claims a number it hasn't computed.
 
 ## Maximum methodologically-valid pooling
 

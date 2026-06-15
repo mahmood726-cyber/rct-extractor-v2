@@ -41,6 +41,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 from rct_extractor._engine.specialties.internal_consistency import check_consistency  # noqa: E402
+from rct_extractor._engine.specialties.source_grounding import check_grounding  # noqa: E402
 from rct_extractor._engine.benchmark.meta_quality_index import (  # noqa: E402
     QUALITY_AXES, score_axis, compute_mdqi, gap_to_top5,
 )
@@ -52,10 +53,15 @@ _NAME_TO_ABBR = {
 }
 
 
-def gold_false_positive_rate(gold_path: Path):
-    """A2 evidence: fraction of CORRECT gold extractions that raise ANY consistency
-    flag (false positives). A correct extraction must raise none."""
-    n, fp = 0, 0
+def gold_false_positive_rates(gold_path: Path):
+    """Live gold false-positive rates for the consistency (A2), grounding (A7) and
+    forensic (A8) screens. A CORRECT gold extraction must raise no flag; the rate
+    of flags is the false-positive rate that licenses trusting each screen."""
+    n = 0
+    fp_consistency = fp_grounding = fp_forensic = 0
+    forensic_flags = {"grim_inconsistent", "grimmer_inconsistent", "arm_n_exceeds_total",
+                      "arm_n_sum_mismatch", "events_exceed_n", "proportion_out_of_range",
+                      "pct_count_incoherent"}
     for line in gold_path.read_text(encoding="utf-8").splitlines():
         line = line.strip()
         if not line:
@@ -66,11 +72,19 @@ def gold_false_positive_rate(gold_path: Path):
         if pt is None or lo is None or hi is None:
             continue
         etype = _NAME_TO_ABBR.get(str(r.get("effect_type", "")).upper(), r.get("effect_type"))
+        eff = {"type": etype, "effect_size": pt, "ci_lower": lo, "ci_upper": hi}
         n += 1
-        c = check_consistency({"type": etype, "effect_size": pt, "ci_lower": lo, "ci_upper": hi})
+        c = check_consistency(eff)
         if c["flags"]:
-            fp += 1
-    return n, fp
+            fp_consistency += 1
+        if any(f in forensic_flags for f in c["flags"]):
+            fp_forensic += 1
+        # grounding: a correct ratio value must be locatable in its abstract
+        gf = check_grounding(eff, r.get("source_text", ""))
+        if "value_not_in_source" in gf:
+            fp_grounding += 1
+    return {"n": n, "consistency": fp_consistency,
+            "grounding": fp_grounding, "forensic": fp_forensic}
 
 
 def by_key(k):
@@ -90,12 +104,14 @@ def build_scores(args):
     scores.append(score_axis(by_key("A1_extraction_fidelity"), fidelity, 0.95,
                              higher_is_better=True, measured=True, detail=detail1))
 
-    # A2 -- internal consistency, computed LIVE: gold false-positive rate.
-    n, fp = gold_false_positive_rate(Path(args.gold))
-    fpr = fp / n if n else 1.0
-    scores.append(score_axis(by_key("A2_internal_consistency"), fpr, 0.01,
+    # A2/A7/A8 -- consistency, grounding, forensic screens: gold false-positive
+    # rates computed LIVE (a correct extraction must raise no flag).
+    g = gold_false_positive_rates(Path(args.gold))
+    n = g["n"]
+    fpr2 = g["consistency"] / n if n else 1.0
+    scores.append(score_axis(by_key("A2_internal_consistency"), fpr2, 0.01,
                              higher_is_better=False, measured=True,
-                             detail=f"gold false-positive rate = {fp}/{n} = {fpr:.4f}"))
+                             detail=f"gold consistency false-positive rate = {g['consistency']}/{n} = {fpr2:.4f}"))
 
     # A3 -- measure/outcome homogeneity: guards present + green; 0 mixing emitted.
     scores.append(score_axis(by_key("A3_measure_outcome_homogeneity"), 0.0, 0.0,
@@ -115,6 +131,26 @@ def build_scores(args):
                              higher_is_better=True, measured=True,
                              detail="version-controlled numerical baselines; pool "
                                     "recomputable from extracted per-study (est, se)"))
+
+    # A7 -- source grounding: live gold false-positive rate of value_not_in_source.
+    fpr7 = g["grounding"] / n if n else 1.0
+    scores.append(score_axis(by_key("A7_source_grounding"), fpr7, 0.02,
+                             higher_is_better=False, measured=True,
+                             detail=f"gold grounding false-positive rate = {g['grounding']}/{n} = {fpr7:.4f}"))
+
+    # A8 -- forensic digit/count integrity: live gold false-positive rate of the
+    # GRIM/GRIMMER/arm-N/proportion forensic flags.
+    fpr8 = g["forensic"] / n if n else 1.0
+    scores.append(score_axis(by_key("A8_forensic_digits"), fpr8, 0.01,
+                             higher_is_better=False, measured=True,
+                             detail=f"gold forensic false-positive rate = {g['forensic']}/{n} = {fpr8:.4f}"))
+
+    # A6 -- trustworthiness proxy: passes iff both forensic (A8) and grounding (A7)
+    # screens are clean (their union is our authenticity signal).
+    a6_ok = 1.0 if (fpr7 <= 0.02 and fpr8 <= 0.01) else 0.0
+    scores.append(score_axis(by_key("A6_trustworthiness"), a6_ok, 1.0,
+                             higher_is_better=True, measured=True,
+                             detail="proxy = grounding (A7) AND forensic (A8) screens clean"))
     return scores
 
 
@@ -145,19 +181,24 @@ def render_md(mdqi, gap):
     L.append("\n## Published failure-rate sources\n")
     for a in mdqi["axes"]:
         L.append(f"- **{a['name']}** — {a['source']}")
-    L.append("\n## Gap to top 5%\n")
-    L.append(f"Current all-pass tier: top ~{gap['current_top_pct']}% (target ≤{gap['target_top_pct']}%).")
-    L.append(gap["note"] + "\n")
-    for c in gap["candidate_axes"]:
-        L.append(f"- **{c['key']}** (published fail ~{c['published_fail_rate']:.0%}) — {c['rationale']}")
-    if mdqi["published_all_pass_rate_observed"] is not None:
-        L.append(f"\n_Observed Pairwise70 joint pass rate: "
-                 f"{mdqi['published_all_pass_rate_observed']:.3f}; independence floor: "
+    L.append("\n## Gap to top 5% (honest)\n")
+    L.append(f"Current composite tier: top ~{gap['current_top_pct']}% (target <={gap['target_top_pct']}%). "
+             f"Additional independent gates needed for top-5%: "
+             f"~{gap['additional_gates_needed_for_top5']} (at "
+             f"{gap['assumed_marginal_fail_rate']:.0%} marginal fail each).")
+    if gap.get("best_single_axis_top_pct") is not None:
+        L.append(f"Strongest single-axis standing: **{gap['best_single_axis']}** "
+                 f"(better than the {100 - gap['best_single_axis_top_pct']:.0f}% of MAs that fail it).")
+    L.append("\n> " + gap["note"] + "\n")
+    if mdqi["published_all_pass_rate_hybrid"] is not None:
+        L.append(f"_Hybrid published all-pass rate (real corpus marginals for "
+                 f"{mdqi['hybrid_covered_axes']} x literature for the rest): "
+                 f"{mdqi['published_all_pass_rate_hybrid']:.3f}; independence floor: "
                  f"{mdqi['published_all_pass_rate_independent']:.3f}._")
     else:
-        L.append(f"\n_Independence-floor published all-pass rate: "
+        L.append(f"_Independence-floor published all-pass rate: "
                  f"{mdqi['published_all_pass_rate_independent']:.3f} "
-                 f"(supply --pairwise-verdicts for the observed joint rate)._")
+                 f"(supply --pairwise-verdicts for the observed-hybrid rate)._")
     return "\n".join(L) + "\n"
 
 

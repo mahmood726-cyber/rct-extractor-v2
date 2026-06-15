@@ -71,33 +71,38 @@ def test_compute_mdqi_unmeasured_axis_blocks_claim():
     assert "not yet earned" in out["interpretation"]
 
 
-def test_observed_rate_is_used_and_is_the_honest_figure():
+def test_hybrid_rate_uses_real_corpus_marginal_for_covered_axis():
     scores = [score_axis(a, 1.0, 0.5, higher_is_better=True, measured=True) for a in QUALITY_AXES]
-    # observed (e.g. real Pairwise70 joint pass) higher than independence floor
-    per_ma = [{"x": True}] * 30 + [{"x": False}] * 70   # 30% all-pass
+    a4 = "A4_pooling_robustness"
+    # real corpus: 45% of MAs pass A4 (vs literature 45% too) -> hybrid replaces the
+    # A4 marginal and multiplies by literature for the rest
+    per_ma = [{a4: True}] * 45 + [{a4: False}] * 55
     out = compute_mdqi(scores, per_ma_pass=per_ma)
-    assert math.isclose(out["published_all_pass_rate_observed"], 0.30)
-    # reported percentile uses the larger (less self-flattering) of indep/observed
-    assert out["percentile_band_top_pct"] >= 100 * out["published_all_pass_rate_independent"]
+    assert out["hybrid_covered_axes"] == [a4]
+    rest = 1.0
+    for ax in QUALITY_AXES:
+        if ax.key != a4:
+            rest *= ax.published_pass_rate
+    assert math.isclose(out["published_all_pass_rate_hybrid"], 0.45 * rest, abs_tol=1e-6)
+    # headline never understated against us: >= independence floor
+    assert out["percentile_band_top_pct"] >= round(100 * out["published_all_pass_rate_independent"], 1) - 0.1
 
 
-def test_gap_to_top5_names_concrete_axes():
+def test_gap_to_top5_is_honest_and_computed():
     scores = [score_axis(a, 1.0, 0.5, higher_is_better=True, measured=True) for a in QUALITY_AXES]
     gap = gap_to_top5(scores)
     assert gap["target_top_pct"] == 5.0
-    keys = {c["key"] for c in gap["candidate_axes"]}
-    assert "A6_trustworthiness" in keys           # INSPECT-SR
-    assert all(c["rationale"] for c in gap["candidate_axes"])
+    # additional gates needed is computed from the actual current tier, not asserted
+    assert isinstance(gap["additional_gates_needed_for_top5"], int)
+    assert gap["additional_gates_needed_for_top5"] >= 1     # current tier > 5%
+    # the most-discriminating passed axis is reported as the per-axis standing
+    assert gap["best_single_axis"] == "A4_pooling_robustness"   # 55% fail = highest
+    assert "NOT supported" in gap["note"]                  # no blanket top-5% claim
 
 
-def test_gap_to_top5_projection_is_computed_not_asserted():
-    # The projected tier must equal the current tier times the candidate pass factors.
+def test_gap_to_top5_reaches_when_already_below_target():
+    # if every axis had a huge fail rate, the composite would already be <=5%
     scores = [score_axis(a, 1.0, 0.5, higher_is_better=True, measured=True) for a in QUALITY_AXES]
     gap = gap_to_top5(scores)
-    base = gap["current_top_pct"] / 100.0
-    expected = base
-    for c in gap["candidate_axes"]:
-        expected *= (1 - c["published_fail_rate"])
-    assert math.isclose(gap["projected_top_pct_after_candidates"], round(100 * expected, 1), abs_tol=0.2)
-    # honesty: reaches_top5 must agree with the computed number, not be asserted
-    assert gap["reaches_top5_as_composite"] == (gap["projected_top_pct_after_candidates"] <= 5.0)
+    # current is >5% with the real axes, so not reached and >=1 gate needed
+    assert gap["reaches_top5_now"] is (gap["current_top_pct"] <= 5.0)
