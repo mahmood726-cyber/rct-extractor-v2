@@ -74,8 +74,12 @@ that the value is internally consistent. Anchors:
   trend "RR 1.20/330 ml per d (95% CI 1.12, 1.29)" put the dose BETWEEN the estimate
   and its CI, defeating the contiguous effect pattern; a dose-unit-anchored per-unit
   pattern (kept trap-safe by the pt∈CI plausibility gate) now extracts RR 1.20 per
-  330 ml. (MA-summary prose like "16% reduction for 4 cups/day" stays out of scope —
-  the engine targets primary-study per-increment / categorical data.)
+  330 ml.
+- **Dose-response (MA-summary prose)** — Crippa 2014 (*Am J Epidemiol*; PMID 25156996):
+  categorical risk reductions "for 4 cups/day … (16%, 95% CI: 13, 18)" are converted
+  to an RR on the ratio scale (RR=1−pct/100=0.84, CI bounds flipped → 0.82–0.87), tied
+  to the dose category. Requires a "risk reduction" cue scoped to the sentence (sign +
+  low FP); both the 4-cup and 3-cup data points extract.
 - **NMA** — the warfarin-anchored DOAC atrial-fibrillation network (ARISTOTLE,
   ROCKET-AF, RE-LY, ENGAGE-AF; no DOAC-vs-DOAC RCT) is correctly classified a STAR:
   connected but no closed loop, so consistency cannot be tested.

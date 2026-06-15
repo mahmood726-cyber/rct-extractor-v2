@@ -143,3 +143,32 @@ def test_greenwood_per_increment_dose_response_extracted():
     assert e.relation_type.value == "per_unit"
     assert e.dose_amount == 330.0 and e.dose_unit == "ml"
     assert abs(e.ci_lower - 1.12) < 1e-6 and abs(e.ci_upper - 1.29) < 1e-6
+
+
+# Dose-response (MA-summary prose) -- Crippa et al., Am J Epidemiol 2014;180:763-75.
+# PMID 25156996, DOI 10.1093/aje/kwu194. Coffee and mortality: categorical risk
+# reductions "for 4 cups/day ... (16%, 95% CI: 13, 18)" -> RR on the ratio scale.
+CRIPPA = ("The largest risk reductions were observed for 4 cups/day for all-cause "
+          "mortality (16%, 95% confidence interval: 13, 18) and 3 cups/day for CVD "
+          "mortality (21%, 95% confidence interval: 16, 26).")
+
+
+def test_crippa_ma_summary_risk_reduction_extracted():
+    from rct_extractor._engine.core.doseresponse_extractor import DoseResponseExtractor
+    effs = DoseResponseExtractor().extract(CRIPPA).effects
+    by = {e.category_label: e for e in effs}
+    # 16% reduction at 4 cups/day -> RR 0.84 (95% CI 0.82-0.87, bounds flipped)
+    e4 = by.get("4 cups/day")
+    assert e4 and abs(e4.point_estimate - 0.84) < 1e-6
+    assert abs(e4.ci_lower - 0.82) < 1e-6 and abs(e4.ci_upper - 0.87) < 1e-6
+    assert e4.effect_type.value == "RR" and e4.relation_type.value == "categorical"
+    # 21% reduction at 3 cups/day -> RR 0.79 (0.74-0.84)
+    e3 = by.get("3 cups/day")
+    assert e3 and abs(e3.point_estimate - 0.79) < 1e-6
+
+
+def test_ma_summary_requires_risk_reduction_cue():
+    # identical numeric shape WITHOUT a risk-reduction cue must NOT extract
+    from rct_extractor._engine.core.doseresponse_extractor import DoseResponseExtractor
+    txt = "In a survey, 4 cups/day for adults (16%, 95% CI: 13, 18) reported poor sleep."
+    assert DoseResponseExtractor().extract(txt).effects == []

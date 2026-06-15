@@ -340,6 +340,54 @@ class DoseResponseExtractor:
                        + _DOSE_UNIT + r"))\b[^.\n]{0,14}?" + _CI)
             self._effect_patterns.append((re.compile(body_pu, flags), label))
 
+        # MA-summary "risk reduction" prose: "<N> <unit> for <outcome> (<pct>%,
+        # 95% CI <lo>, <hi>)" (Crippa 2014: "4 cups/day for all-cause mortality
+        # (16%, 95% CI: 13, 18)"). The percentage is a relative-risk REDUCTION at
+        # that dose category; convert to an RR on the ratio scale (RR=1-pct/100,
+        # CI bounds flip). Requires a "risk reduction" cue nearby (sign + low FP).
+        self._ma_reduction = re.compile(
+            r"(?P<amt>" + _NUM + r")\s*(?P<unit>" + _DOSE_UNIT + r")\s+for\s+"
+            r"[\w\s/–-]{1,45}?[\(\[]\s*(?P<pct>" + _NUM + r")\s*%\s*,?\s*"
+            r"(?:95\s*%?\s*)?(?:confidence\s+interval|CI|C\.I\.)\s*[:,]?\s*"
+            r"(?P<lo>" + _NUM + r")\s*(?:to|[-–—]|,)\s*(?P<hi>" + _NUM + r")\s*[\)\]]",
+            re.IGNORECASE)
+
+    def _extract_ma_summary_reductions(self, text, seen, result):
+        """Categorical dose-response reported as a relative-risk reduction %."""
+        for m in self._ma_reduction.finditer(text):
+            # The "risk reduction" cue governs the whole sentence ("The largest
+            # risk reductions were observed for X and Y"), so scan from the
+            # sentence start (bounded) -- not just a fixed window before the match.
+            sent_start = max(text.rfind(". ", 0, m.start()),
+                             text.rfind("\n", 0, m.start())) + 1
+            ctx = text[max(sent_start, m.start() - 200): m.start()]
+            if not re.search(r"risk\s+reduction|reduction\s+in\s+risk|"
+                             r"lower\s+risk|reduced\s+risk", ctx, re.IGNORECASE):
+                continue
+            if self._is_negative_context(text, m.start()):
+                continue
+            pct, lo, hi = self._f(m.group("pct")), self._f(m.group("lo")), self._f(m.group("hi"))
+            if None in (pct, lo, hi) or not (0 < pct < 100 and 0 <= lo <= hi < 100):
+                continue
+            rr = round(1 - pct / 100.0, 4)
+            ci_lo, ci_hi = round(1 - hi / 100.0, 4), round(1 - lo / 100.0, 4)  # bounds flip
+            key = (round(rr, 3), round(ci_lo, 3), round(ci_hi, 3))
+            if key in seen:
+                continue
+            seen.add(key)
+            unit = re.sub(r"\s+", "", m.group("unit")).lower()
+            ext = DoseResponseExtraction(
+                relation_type=DoseRelationType.CATEGORICAL,
+                effect_type=DoseEffectType.RR,
+                point_estimate=rr, ci_lower=ci_lo, ci_upper=ci_hi,
+                dose_amount=self._f(m.group("amt")), dose_unit=unit,
+                category_label=re.sub(r"\s+", " ", m.group("amt") + " " + unit).strip(),
+                source_text=m.group(0)[:240],
+                char_start=m.start(), char_end=m.end(),
+            )
+            self._verify(ext)
+            result.effects.append(ext)
+
     # ----------------------------------------------------------------------
     # helpers
     # ----------------------------------------------------------------------
@@ -475,6 +523,9 @@ class DoseResponseExtractor:
                                            if ref_label else None)
                 self._verify(ext)
                 result.effects.append(ext)
+
+        # MA-summary "risk reduction" prose (e.g. "4 cups/day ... (16%, 95% CI 13, 18)")
+        self._extract_ma_summary_reductions(text, seen, result)
 
         # --- Document-level metadata ---
         self._populate_metadata(text, result)
