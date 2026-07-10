@@ -244,6 +244,34 @@ def _shared_extractor():
     return EnhancedExtractor()
 
 
+@lru_cache(maxsize=1)
+def _shared_diagnostic_extractor():
+    """A single cached DiagnosticAccuracyExtractor instance (reused across calls)."""
+    from rct_extractor._engine.core.diagnostic_accuracy_extractor import (
+        DiagnosticAccuracyExtractor,
+    )
+
+    return DiagnosticAccuracyExtractor()
+
+
+def _diagnostic_to_dict(d: Any) -> Dict[str, Any]:
+    """Serialize a DiagnosticExtraction to a plain effect-style dict."""
+    return {
+        "type": d.measure_type.value,           # Sensitivity / Specificity / AUC / ...
+        "measure": d.measure_type.value,
+        "point_estimate": d.point_estimate,
+        "ci_lower": d.ci_lower,
+        "ci_upper": d.ci_upper,
+        "ci_level": d.ci_level,
+        "normalized_value": d.normalized_value,
+        "is_percentage": d.is_percentage,
+        "source_text": d.source_text,
+        "char_start": d.char_start,
+        "char_end": d.char_end,
+        "warnings": list(d.warnings),
+    }
+
+
 def _subspecialty_for(specialty: str, text: str) -> Tuple[Optional[str], Optional[float]]:
     """Run a forced specialty's own subspecialty detector, if it has one."""
     from rct_extractor._engine.specialties.registry import SPECIALTY_REGISTRY
@@ -271,6 +299,7 @@ def extract(
     *,
     with_effects: bool = True,
     with_arm_level: bool = True,
+    with_diagnostic: bool = True,
     consistency: bool = True,
 ) -> Dict[str, Any]:
     """Extract structured trial data from a single abstract / block of text.
@@ -281,6 +310,11 @@ def extract(
             auto-detect via the registry.
         with_effects: Include precomputed effect estimates (HR/OR/RR/MD + CI).
         with_arm_level: Include arm-level extraction (poolable 2x2 + continuous).
+        with_diagnostic: Include diagnostic-accuracy measures (sensitivity,
+            specificity, PPV/NPV, LR+/LR-, DOR, AUC, accuracy, Youden) for
+            diagnostic-test / prediction-model studies, which report no poolable
+            HR/OR/RR/MD. Populated under ``diagnostic`` (empty list when none), so
+            a DTA study is no longer a silent empty extraction.
         consistency: Screen extracted effects for internal consistency across
             ALL specialties — flags implausible (point estimate, CI, p, 2x2)
             combinations and applies the safe repairs (reversed-CI swap),
@@ -289,9 +323,12 @@ def extract(
             malaria the same screen also gates the augmented-effects pass.
 
     Returns:
-        ``{specialty, subspecialty, confidence, effects, arm_level}`` where
-        ``effects`` is a list of effect dicts (``type``, ``effect_size``,
-        ``ci_lower``, ``ci_upper``, ``endpoint``, ...) and ``arm_level`` is the
+        ``{specialty, subspecialty, confidence, effects, arm_level, diagnostic}``
+        where ``effects`` is a list of effect dicts (``type``, ``effect_size``,
+        ``ci_lower``, ``ci_upper``, ``endpoint``, ...), ``diagnostic`` is a list of
+        diagnostic-accuracy measure dicts (``type``/``measure``, ``point_estimate``,
+        ``ci_lower``, ``ci_upper``, ``normalized_value``, ...) present when
+        ``with_diagnostic`` is set, and ``arm_level`` is the
         ``extract_arm_level`` dict (``poolable_2x2``, ``tables_2x2``,
         ``continuous``) or ``None`` when the detected specialty has no arm-level
         extractor.
@@ -360,6 +397,14 @@ def extract(
 
     if with_arm_level and spec in SPECIALTIES:
         out["arm_level"] = _arm_module(spec).extract_arm_level(text)
+
+    if with_diagnostic:
+        # Diagnostic-accuracy / prediction studies report Se/Sp/AUC etc., not a
+        # comparative HR/OR/RR/MD. Surfacing them here means such a study is handled
+        # instead of returning an empty `effects` list (a silent no-extraction).
+        out["diagnostic"] = [
+            _diagnostic_to_dict(x) for x in _shared_diagnostic_extractor().extract(text)
+        ]
 
     return out
 
