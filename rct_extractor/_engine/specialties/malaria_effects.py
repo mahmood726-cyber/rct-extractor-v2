@@ -303,6 +303,12 @@ def extract_malaria_effects(extractor, text, consistency=True, drop_inconsistent
     _add_log_rr(merged)                                           # log-scale pooling field
     if consistency:
         merged = annotate(merged, drop_hard=drop_inconsistent)
+        # S5: parity with the non-malaria path -- promote the primary-outcome effect
+        # to effects[0] so api.extract's is_primary flag is meaningful for malaria.
+        # order_effects only reorders (stable, never drops/edits), and runs on the
+        # normalized frame while char offsets are still in that frame (pre-remap).
+        from rct_extractor._engine.specialties.source_grounding import order_effects
+        merged = order_effects(merged, norm)
     # translate char offsets from the normalized frame back to the ORIGINAL text
     if omap is not None:
         for e in merged:
