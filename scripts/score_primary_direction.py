@@ -43,22 +43,34 @@ def _extractor_kind(effect_type: Optional[str]) -> Optional[str]:
     return None
 
 
-def _cochrane_kind(cochrane_effect: Optional[float], outcome_type: str) -> Optional[str]:
-    """ratio vs difference for the Cochrane value. A non-positive value CANNOT be a
-    ratio (ratios are always > 0), so it is a difference regardless of the (sometimes
-    wrong) outcome-type label; otherwise trust the label."""
+def _cochrane_kind(cochrane_effect: Optional[float], outcome_type: str,
+                   raw: Optional[Dict[str, Any]] = None) -> Optional[str]:
+    """ratio vs difference for the Cochrane value. Prefer the authoritative signal
+    from cochrane_raw (means => diff, cases => ratio); else a non-positive value
+    CANNOT be a ratio (so it is a difference); else fall back to the outcome-type
+    label."""
     if cochrane_effect is None:
         return None
+    rk = _kind_from_raw(raw or {})
+    if rk:
+        return rk
     if cochrane_effect <= 0:
         return "diff"
     return "diff" if outcome_type == "continuous" else "ratio"
 
 
-def _load_outcome_types(gold_path: Optional[Path]) -> Dict[str, str]:
-    """study_id -> 'binary' | 'continuous', from the gold jsonl (best effort)."""
-    types: Dict[str, str] = {}
+def _load_gold_meta(gold_path: Optional[Path]) -> Dict[str, Dict[str, Any]]:
+    """study_id -> {'outcome_type': 'binary'|'continuous', 'raw': cochrane_raw dict}.
+
+    The gold record's `cochrane_raw` is the authoritative signal for the measure
+    KIND -- non-zero means/SDs => a continuous difference, non-zero event counts =>
+    a binary ratio -- and is far more reliable than the `cochrane_outcome_type`
+    label (several records are continuous outcomes mislabelled 'binary', e.g.
+    Keene_2022 / Santos_2020) or the value-sign heuristic.
+    """
+    meta: Dict[str, Dict[str, Any]] = {}
     if not gold_path or not gold_path.exists():
-        return types
+        return meta
     for line in gold_path.read_text(encoding="utf-8").splitlines():
         line = line.strip()
         if not line:
@@ -71,12 +83,25 @@ def _load_outcome_types(gold_path: Optional[Path]) -> Dict[str, str]:
         if not sid:
             continue
         ot = str(rec.get("cochrane_outcome_type") or "").lower()
-        if ot in ("binary", "continuous"):
-            types[sid] = ot
-        else:
+        if ot not in ("binary", "continuous"):
             exp = str(rec.get("expected_effect_type") or "").upper()
-            types[sid] = "continuous" if exp in ("MD", "SMD", "WMD") else "binary"
-    return types
+            ot = "continuous" if exp in ("MD", "SMD", "WMD") else "binary"
+        meta[sid] = {"outcome_type": ot, "raw": rec.get("cochrane_raw") or {}}
+    return meta
+
+
+def _kind_from_raw(raw: Dict[str, Any]) -> Optional[str]:
+    """Authoritative measure KIND from the per-study Cochrane 2x2 / summary stats:
+    means or SDs present => 'diff' (continuous); event counts present => 'ratio'."""
+    if not raw:
+        return None
+    def _nz(*keys: str) -> bool:
+        return any(float(raw.get(k) or 0) != 0 for k in keys)
+    if _nz("exp_mean", "ctrl_mean", "exp_sd", "ctrl_sd"):
+        return "diff"
+    if _nz("exp_cases", "ctrl_cases"):
+        return "ratio"
+    return None
 
 
 # Ratios within +-5% of 1 (|log| < log(1.05)) are treated as directionally NULL for
@@ -117,16 +142,23 @@ def _value_matches(ext: float, coch: float, is_diff: bool,
     return abs(math.log(ext) - math.log(coch)) <= ratio_log_tol
 
 
-def score_record(rec: Dict[str, Any], outcome_types: Dict[str, str]) -> Dict[str, Any]:
-    """Score one study. Returns per-study verdict fields."""
+def score_record(rec: Dict[str, Any], gold_meta: Dict[str, Any]) -> Dict[str, Any]:
+    """Score one study. Returns per-study verdict fields. `gold_meta[sid]` may be a
+    plain outcome-type string (legacy) or a {'outcome_type', 'raw'} dict."""
     sid = rec.get("study_id")
-    outcome_type = outcome_types.get(sid, "binary")
+    m = gold_meta.get(sid)
+    if isinstance(m, dict):
+        outcome_type = m.get("outcome_type", "binary")
+        raw = m.get("raw") or {}
+    else:
+        outcome_type = m or "binary"
+        raw = {}
     coch = rec.get("cochrane_effect")
     best = rec.get("best_match") or {}
     ext_val = best.get("effect_size")
     ext_type = best.get("type")
 
-    coch_kind = _cochrane_kind(coch, outcome_type)
+    coch_kind = _cochrane_kind(coch, outcome_type, raw)
     ext_kind = _extractor_kind(ext_type) if ext_val is not None else None
     coch_dir = _scoring_direction(coch, coch_kind)
     ext_dir = _scoring_direction(ext_val, ext_kind) if ext_val is not None else None
@@ -192,7 +224,9 @@ def summarize(scored: List[Dict[str, Any]]) -> Dict[str, Any]:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--results", type=Path, default=Path("gold_data/baseline_results.json"))
-    parser.add_argument("--gold", type=Path, default=Path("gold_data/gold_v2.jsonl"))
+    # Default to the gold file the reference VALUES came from (run_gold_baseline.py
+    # uses gold_50.jsonl), so outcome-kind metadata and cochrane_effect share a source.
+    parser.add_argument("--gold", type=Path, default=Path("gold_data/gold_50.jsonl"))
     parser.add_argument("--output", type=Path, default=None)
     args = parser.parse_args()
 
@@ -205,13 +239,23 @@ def main() -> int:
 
     gold_path = args.gold if args.gold and args.gold.exists() else None
     if gold_path is None:
-        for cand in (Path("data/frozen_eval_v1/frozen_gold.jsonl"), Path("gold_data/gold_50.jsonl")):
+        for cand in (Path("gold_data/gold_50.jsonl"), Path("data/frozen_eval_v1/frozen_gold.jsonl"),
+                     Path("gold_data/gold_v2.jsonl")):
             if cand.exists():
                 gold_path = cand
                 break
-    outcome_types = _load_outcome_types(gold_path)
+    gold_meta = _load_gold_meta(gold_path)
 
-    scored = [score_record(r, outcome_types) for r in results]
+    # HONESTY: baseline_results.json is produced by run_gold_baseline.py, whose
+    # best_match is the extraction CLOSEST to the Cochrane value (an oracle that
+    # already knows the answer) and is NOT the extractor's own primary pick
+    # (effects[0]/is_primary from api.extract). When the results carry no is_primary
+    # field, the numbers below are an ORACLE CEILING on value/direction, not a
+    # measurement of the primary-selection logic. Results generated through
+    # api.extract (which stamp is_primary) measure the real selection.
+    oracle_selected = not any("is_primary" in (r.get("best_match") or {}) for r in results)
+
+    scored = [score_record(r, gold_meta) for r in results]
     summary = summarize(scored)
 
     def pct(x: Optional[float]) -> str:
@@ -220,6 +264,11 @@ def main() -> int:
     print("=" * 66)
     print("PRIMARY-OUTCOME + DIRECTION SCORECARD")
     print(f"  results: {args.results}   gold: {gold_path or '(none)'}")
+    if oracle_selected:
+        print("  !! ORACLE-SELECTED best_match (closest-to-Cochrane): these are a")
+        print("  !! CEILING on value/direction, NOT the extractor's own primary pick.")
+        print("  !! Regenerate results via api.extract (stamps is_primary) to measure")
+        print("  !! selection fidelity.")
     print("=" * 66)
     print(f"Studies scored:            {summary['n_studies']}")
     print(f"Top-1 value match:         {summary['selection']['value_match']}"
@@ -242,7 +291,8 @@ def main() -> int:
     if args.output:
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(
-            json.dumps({"summary": summary, "per_study": scored}, indent=2), encoding="utf-8"
+            json.dumps({"oracle_selected": oracle_selected, "summary": summary,
+                        "per_study": scored}, indent=2), encoding="utf-8"
         )
         print(f"Wrote {args.output}")
 
