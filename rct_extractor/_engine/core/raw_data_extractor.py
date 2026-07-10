@@ -407,8 +407,15 @@ _EVENTS_PCT_PATTERN = re.compile(
 )
 
 # events (percent) allowing missing percent symbol (common in PDF tables)
+# T1.2 (integrity): the leading (?<![\d./]) stops the event group from capturing
+# the DENOMINATOR of an "n/N (pct%)" cell. On "12/100 (12.0%)" the bare \d+ used
+# to grab "100" (the N, sitting right before the paren) and read it as the event
+# count, fabricating a bogus ~8x-inflated 2x2 (100/833) that flowed into pooled
+# effects with a spuriously narrow CI. The lookbehind rejects a number preceded
+# by a digit, '.', or '/', so slash-fraction cells fall through to Strategy 3
+# (_EVENTS_N_PCT_PATTERN), which parses them correctly as 12/100.
 _EVENTS_PARENS_ANY_PCT = re.compile(
-    r'(\d+)\s*\(\s*(\d+\.?\d*)\s*%?\s*\)',
+    r'(?<![\d./])(\d+)\s*\(\s*(\d+\.?\d*)\s*%?\s*\)',
 )
 
 # "X of Y patients" or "X out of Y"
@@ -438,6 +445,34 @@ _PCT_VS_PCT_PATTERN = re.compile(
 # percentage tokens for table-like percentage rows
 _PCT_TOKEN_PATTERN = re.compile(r'(\d{1,3}(?:\.\d+)?)\s*%')
 
+# T1.5 (integrity): the core fallback binary extractor assigns the first-mentioned
+# arm to arm1, and to_raw_data_dict maps arm1 -> intervention. When the CONTROL arm
+# is named first ("placebo 18/57 vs drug 15/56"), that silently INVERTS the computed
+# OR/RR (turning benefit into harm) — the worst error a meta-analysis feed can make.
+# The label-aware specialty *_arm_data modules already avoid this; this guard covers
+# the generic fallback path used by the 15 unvalidated specialties.
+_CONTROL_MARKER = re.compile(
+    r'\b(placebo|control|usual\s+care|standard(?:\s+of)?\s+care|standard\s+therapy|'
+    r'comparator|conventional|sham|no\s+treatment|routine\s+care)\b',
+    re.IGNORECASE,
+)
+_ARM_SPLIT = re.compile(
+    r'\b(?:vs\.?|versus|compared\s+(?:to|with)|and)\b',
+    re.IGNORECASE,
+)
+
+
+def _first_arm_is_control(source_text: str) -> bool:
+    """True when the FIRST-mentioned arm is unambiguously the control/comparator and
+    the second is not, so the caller should swap arm1/arm2 to keep arm1 = intervention.
+    Conservative by design: returns False (no swap, preserve legacy positional order)
+    whenever there is no delimiter, or both/neither side carries a control marker."""
+    parts = _ARM_SPLIT.split(source_text, maxsplit=1)
+    if len(parts) != 2:
+        return False
+    left, right = parts
+    return bool(_CONTROL_MARKER.search(left)) and not bool(_CONTROL_MARKER.search(right))
+
 
 def extract_binary_two_group(text: str) -> List[RawDataExtraction]:
     """
@@ -461,15 +496,26 @@ def extract_binary_two_group(text: str) -> List[RawDataExtraction]:
         confidence: float,
         pct1: Optional[float] = None,
         pct2: Optional[float] = None,
+        orientation_text: Optional[str] = None,
     ) -> None:
+        # T1.5: keep arm1 = intervention when the control arm was named first. Arm
+        # labels usually sit just OUTSIDE the numeric match span, so orientation is
+        # judged on a bounded surrounding window (orientation_text) when supplied.
+        if _first_arm_is_control(orientation_text if orientation_text is not None else source_text):
+            e1, n1, pct1, e2, n2, pct2 = e2, n2, pct2, e1, n1, pct1
         if n1 <= 0 or n2 <= 0:
             return
         if e1 < 0 or e2 < 0 or e1 > n1 or e2 > n2:
             return
-        key = (e1, n1, e2, n2)
-        if key in seen_pairs:
+        # Canonical (orientation-insensitive) dedup. A later, lower-confidence
+        # strategy that re-matches the same two arms — in either order — must not
+        # emit a second, differently-oriented 2x2. Strategies run high->low
+        # confidence (0.8 -> 0.6), so the first (best) strategy's orientation, set
+        # by the T1.5 control-marker swap above, is the one that is kept.
+        canon = tuple(sorted(((e1, n1), (e2, n2))))
+        if canon in seen_pairs:
             return
-        seen_pairs.add(key)
+        seen_pairs.add(canon)
         results.append(
             RawDataExtraction(
                 arm1=ArmData(events=e1, n=n1, percentage=pct1),
@@ -489,7 +535,8 @@ def extract_binary_two_group(text: str) -> List[RawDataExtraction]:
     )
     for m in vs_binary.finditer(text):
         e1, n1, e2, n2 = int(m.group(1)), int(m.group(2)), int(m.group(3)), int(m.group(4))
-        _append_binary(e1, n1, e2, n2, source_text=m.group(0), confidence=0.8)
+        window = text[max(0, m.start() - 40):min(len(text), m.end() + 40)]
+        _append_binary(e1, n1, e2, n2, source_text=m.group(0), confidence=0.8, orientation_text=window)
 
     # Strategy 2: "X patients (Y%) in group A and Z patients (W%) in group B"
     group_pct = re.compile(
@@ -508,7 +555,8 @@ def extract_binary_two_group(text: str) -> List[RawDataExtraction]:
         if pct1 is not None and pct2 is not None:
             n1 = round(e1 / (pct1 / 100.0))
             n2 = round(e2 / (pct2 / 100.0))
-            _append_binary(e1, n1, e2, n2, source_text=m.group(0), confidence=0.7, pct1=pct1, pct2=pct2)
+            window = text[max(0, m.start() - 40):min(len(text), m.end() + 40)]
+            _append_binary(e1, n1, e2, n2, source_text=m.group(0), confidence=0.7, pct1=pct1, pct2=pct2, orientation_text=window)
 
     # Strategy 3: Table rows with two events/N values (with percentage)
     for line in text.split('\n'):

@@ -50,6 +50,7 @@ class EffectType(Enum):
     SMD = "SMD"     # Standardized Mean Difference
     WMD = "WMD"     # Weighted Mean Difference
     GMR = "GMR"     # Geometric Mean Ratio
+    RMST = "RMST"   # Restricted Mean Survival Time difference (a time difference, not a ratio)
 
 
 class AutomationTier(Enum):
@@ -1809,6 +1810,24 @@ class EnhancedExtractor:
         r'\bNNH\b[,;:\s=]+(\d+\.?\d*)\s*[\(\[]\s*(?:95%?\s*)?(?:CI)?[,:\s]*(\d+\.?\d*)\s*[-–—,]\s*(\d+\.?\d*)',
     ]
 
+    # RMST-difference patterns (T1.6). A between-arm difference in Restricted Mean
+    # Survival Time is a TIME difference (months/years), NOT a hazard ratio — it can
+    # be negative and its CI can cross 0, so it must be its own effect type and must
+    # never be pooled as an HR. Anchored on the RMST / "restricted mean survival
+    # time" keyword and bounded ([^.\n]{0,40}) so the phrase-to-number gap cannot run
+    # away (ReDoS-safe). Group order: (value, ci_lower, ci_upper).
+    RMST_PATTERNS = [
+        r'(?:restricted\s+mean\s+survival\s+time|\bRMST\b)[^.\n]{0,40}?'
+        r'(?:difference|diff|Δ|of|=|:|,)[^.\n]{0,30}?(-?\d+\.?\d*)\s*'
+        r'(?:months?|years?|weeks?|days?)?\s*'
+        r'[\(\[]\s*(?:95\s*%?\s*)?(?:CI|confidence\s+interval)?[,:\s]*'
+        r'(-?\d+\.?\d*)\s*(?:to|[-–—])\s*(-?\d+\.?\d*)',
+        r'(?:restricted\s+mean\s+survival\s+time|\bRMST\b)\s+(?:difference|diff)\s+'
+        r'(?:of\s+)?(-?\d+\.?\d*)\s*(?:months?|years?|weeks?|days?)?\s*'
+        r'[\(\[]\s*(?:95\s*%?\s*)?(?:CI)?[,:\s]*'
+        r'(-?\d+\.?\d*)\s*(?:to|[-–—,])\s*(-?\d+\.?\d*)',
+    ]
+
     # ==========================================================================
     # VALUE-ONLY PATTERNS (for CTG validation without CI)
     # These patterns capture effect estimates without confidence intervals
@@ -1917,6 +1936,7 @@ class EnhancedExtractor:
         EffectType.NNT: (1.0, 10000),
         EffectType.NNH: (1.0, 10000),
         EffectType.GMR: (0.01, 100.0),   # Geometric Mean Ratio (like RR)
+        EffectType.RMST: (-120.0, 120.0),  # months/years time difference; may be negative
     }
 
     def __init__(self):
@@ -1932,6 +1952,7 @@ class EnhancedExtractor:
             EffectType.MD: self.MD_PATTERNS,
             EffectType.RRR: self.RRR_PATTERNS,
             EffectType.NNT: self.NNT_PATTERNS,
+            EffectType.RMST: self.RMST_PATTERNS,  # keyword-anchored; distinct time-diff type
         }
 
         # Value-only patterns (for CTG validation - effects without CI)
@@ -2343,9 +2364,29 @@ class EnhancedExtractor:
         # 95% CI 0.21 to 8.85" produced both IRR and a spurious MD).
         results = self._suppress_ratio_mistyped_as_difference(results)
         results = self._suppress_md_twin_of_smd(results)
+        results = self._suppress_md_twin_of_rmst(results)
         results = self._reclassify_ard_as_md_when_continuous(results, text)
 
         return results
+
+    @staticmethod
+    def _suppress_md_twin_of_rmst(results: List["Extraction"]) -> List["Extraction"]:
+        """Drop a generic MD/WMD extraction that duplicates an RMST with the SAME
+        point + CI. An "RMST difference 4.5 (95% CI 1.2-7.8)" sentence also matches
+        the generic mean-difference pattern; the explicit RMST label makes RMST the
+        correct, more-specific type. This keeps an RMST time-difference from also
+        surfacing as a plain mean difference (and being pooled as one)."""
+        def ci_key(e):
+            if e.ci is None:
+                return None
+            return (round(e.point_estimate, 3), round(e.ci.lower, 3), round(e.ci.upper, 3))
+        rmst_keys = {ci_key(e) for e in results if e.effect_type == EffectType.RMST}
+        rmst_keys.discard(None)
+        if not rmst_keys:
+            return results
+        drop = {EffectType.MD, EffectType.WMD}
+        return [e for e in results
+                if not (e.effect_type in drop and ci_key(e) in rmst_keys)]
 
     @staticmethod
     def _suppress_md_twin_of_smd(results: List["Extraction"]) -> List["Extraction"]:
