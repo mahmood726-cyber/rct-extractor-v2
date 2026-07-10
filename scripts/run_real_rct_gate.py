@@ -120,6 +120,25 @@ def main() -> int:
     )
     args = parser.parse_args()
 
+    # The gold-standard PDF corpus (test_pdfs/gold_standard) is gitignored — it is
+    # large and licensing-restricted, so it is only present in local or self-hosted
+    # runs, never in a hosted-CI checkout or a fresh clone. Without it the freeze ->
+    # upgrade -> gate pipeline cannot evaluate PDF extraction at all (every study
+    # would degrade to "pdf_missing", spuriously tripping the regression gate). Skip
+    # cleanly with an explicit notice rather than hard-failing on every such run.
+    # Code-level regression protection for the extractor is provided by the unit-test
+    # suite (test.yml); this gate adds value only where the corpus is available.
+    pdf_dir_abs = args.pdf_dir if args.pdf_dir.is_absolute() else PROJECT_ROOT / args.pdf_dir
+    if not pdf_dir_abs.exists():
+        print(
+            f"::notice title=Real-RCT gate skipped::PDF corpus '{args.pdf_dir}' not present "
+            "(gitignored; local/self-hosted only). Gate not evaluated here - this is expected "
+            "and is NOT a pass of the PDF gate. Extractor regressions are covered by the unit "
+            "test suite.",
+            flush=True,
+        )
+        return 0
+
     frozen_gold = args.frozen_dir / "frozen_gold.jsonl"
     split_manifest = args.frozen_dir / "split_manifest.json"
 
