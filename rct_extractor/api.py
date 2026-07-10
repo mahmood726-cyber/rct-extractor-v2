@@ -136,7 +136,47 @@ __all__ = [
     "extract_batch",
     "extract_dose_response",
     "to_metakit_config",
+    "effect_direction",
 ]
+
+# Effect types whose null value is 1 (ratios) vs 0 (differences). Direction is the
+# side of the null the POINT ESTIMATE falls on — a geometric fact, independent of
+# whether the outcome is desirable. It is NOT "favors treatment": that also needs the
+# outcome's polarity (is the event good or bad?), which the extractor does not know.
+_RATIO_TYPES = frozenset({"HR", "OR", "RR", "IRR", "GMR"})
+_DIFF_TYPES = frozenset({"MD", "SMD", "WMD", "ARD", "ARR", "RMST"})
+
+
+def effect_direction(effect_type: Optional[str], value: Optional[float]) -> Optional[str]:
+    """Direction of an effect's point estimate relative to its null.
+
+    Returns ``"increase"`` (intervention arm higher / more of the outcome),
+    ``"decrease"`` (intervention arm lower / less), ``"null"`` (at the null), or
+    ``None`` when direction is undefined for this type (e.g. NNT/NNH/RRR) or the
+    value is missing. For ratio measures (HR/OR/RR/IRR/GMR) the null is 1; for
+    differences (MD/SMD/WMD/ARD/ARR/RMST) the null is 0. Deterministic — the value
+    alone decides it — so it can never disagree with the number it describes.
+
+    This is the sign that decides which way an estimate pushes a pooled result, so
+    an inverted arm orientation (see the T1.5 control-first fix) shows up here as a
+    flipped direction.
+    """
+    if value is None or effect_type is None:
+        return None
+    et = str(effect_type).upper()
+    if et in _RATIO_TYPES:
+        if value > 1.0:
+            return "increase"
+        if value < 1.0:
+            return "decrease"
+        return "null"
+    if et in _DIFF_TYPES:
+        if value > 0.0:
+            return "increase"
+        if value < 0.0:
+            return "decrease"
+        return "null"
+    return None
 
 
 def extract_dose_response(text: str) -> Dict[str, Any]:
@@ -304,6 +344,19 @@ def extract(
                 # the primary mean difference).
                 effs = order_effects(effs, text)
             out["effects"] = effs
+
+    # Emit the two fields that decide whether a pooled estimate is correct but were
+    # previously never produced (audit gap 35):
+    #   * direction  -- side of the null the point estimate falls on (deterministic).
+    #   * is_primary -- the extractor's OWN primary-outcome pick. effects[0] is the
+    #     target estimand after order_effects() promoted the primary outcome to the
+    #     front (standard path) / the top-ranked effect otherwise. Surfacing it as an
+    #     explicit flag lets it be scored against a gold primary-outcome label.
+    for i, eff in enumerate(out["effects"]):
+        if not isinstance(eff, dict):
+            continue
+        eff["direction"] = effect_direction(eff.get("type"), eff.get("effect_size"))
+        eff["is_primary"] = (i == 0)
 
     if with_arm_level and spec in SPECIALTIES:
         out["arm_level"] = _arm_module(spec).extract_arm_level(text)
