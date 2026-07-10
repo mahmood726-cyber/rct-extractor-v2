@@ -33,12 +33,36 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import rct_extractor as rx  # noqa: E402
+
+
+# A study that yields no comparative effect is not necessarily a recall MISS. On
+# real full-text corpora, many "no extraction" studies are diagnostic-accuracy /
+# prediction-model papers (AUC / C-statistic / sensitivity+specificity) that report
+# no poolable HR/OR/RR/MD by design. Labelling this lets recall be measured honestly
+# (genuine misses vs appropriate no-effect) instead of conflating the two.
+_DIAGNOSTIC_CUES = re.compile(
+    r"\bAUC\b|\bAUROC\b|area under the (?:receiver[-\s]operating[-\s]characteristic\s+|ROC\s+)?curve"
+    r"|c[-\s]statistic|c[-\s]index|concordance\s+(?:statistic|index)"
+    r"|sensitivity[^.\n]{0,60}specificity|specificity[^.\n]{0,60}sensitivity",
+    re.IGNORECASE,
+)
+
+
+def no_effect_reason(text: str) -> str:
+    """Why a study produced no comparative effect. Conservative: only the
+    diagnostic-accuracy case is positively identified; everything else is left
+    generic (could be a genuine recall miss, a table-only effect, or a non-RCT).
+    """
+    if _DIAGNOSTIC_CUES.search(text or ""):
+        return "diagnostic_accuracy"     # AUC / Se-Sp: no poolable comparative effect
+    return "no_comparative_effect_found"
 
 
 def _primary_pick(effects: List[Dict[str, Any]]) -> Optional[Dict[str, Any]]:
@@ -60,7 +84,7 @@ def result_for_record(rec: Dict[str, Any], default_specialty: str = "auto") -> D
     out = rx.extract(text, specialty=specialty)
     effects = out.get("effects") or []
     pick = _primary_pick(effects)
-    return {
+    result = {
         "study_id": rec.get("study_id"),
         "status": "extracted" if pick else "no_extractions",
         "n_extractions": len(effects),
@@ -71,6 +95,11 @@ def result_for_record(rec: Dict[str, Any], default_specialty: str = "auto") -> D
         "all_effects": effects,
         "cochrane_effect": rec.get("cochrane_effect"),
     }
+    if not pick:
+        # Distinguish an appropriate no-effect (diagnostic/prediction study) from a
+        # potential genuine recall miss, so coverage is not over-counted as failure.
+        result["no_effect_reason"] = no_effect_reason(text)
+    return result
 
 
 def generate_results(corpus: List[Dict[str, Any]], default_specialty: str = "auto") -> List[Dict[str, Any]]:
@@ -107,9 +136,18 @@ def main() -> int:
 
     results = generate_results(corpus, default_specialty=args.specialty)
     n_extracted = sum(1 for r in results if r["best_match"])
+    reasons: Dict[str, int] = {}
+    for r in results:
+        if not r["best_match"]:
+            reasons[r.get("no_effect_reason", "?")] = reasons.get(r.get("no_effect_reason", "?"), 0) + 1
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(results, indent=2), encoding="utf-8")
     print(f"Ran api.extract on {len(results)} studies; {n_extracted} produced a primary pick.")
+    if reasons:
+        print("No-pick breakdown (appropriate vs potential recall miss):")
+        for reason, n in sorted(reasons.items(), key=lambda kv: -kv[1]):
+            tag = " (appropriate: no poolable effect)" if reason == "diagnostic_accuracy" else ""
+            print(f"  {reason:28} {n}{tag}")
     print(f"Wrote {args.output}  (best_match = extractor's own is_primary effect).")
     print("Score it:  python scripts/score_primary_direction.py "
           f"--results {args.output} --gold <gold-with-cochrane_raw>")

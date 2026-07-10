@@ -51,6 +51,16 @@ class TestGenerator:
     def test_no_extraction_record(self):
         r = gen.generate_results(CORPUS)[1]
         assert r["best_match"] == {} and r["status"] == "no_extractions"
+        # a no-pick record carries a reason so recall isn't over-counted as failure
+        assert r["no_effect_reason"] == "no_comparative_effect_found"
+
+    def test_diagnostic_study_labelled_appropriate(self):
+        # an AUC / diagnostic-accuracy study has no poolable comparative effect;
+        # its no-extraction is APPROPRIATE, not a recall miss.
+        assert gen.no_effect_reason(
+            "The model discriminated well, AUC 0.83 (95% CI 0.79-0.87); "
+            "sensitivity 0.81 and specificity 0.76.") == "diagnostic_accuracy"
+        assert gen.no_effect_reason("A narrative with no numbers.") == "no_comparative_effect_found"
 
     def test_scorer_sees_real_selection_not_oracle(self):
         # A result carrying is_primary makes the scorer report oracle_selected=False.
