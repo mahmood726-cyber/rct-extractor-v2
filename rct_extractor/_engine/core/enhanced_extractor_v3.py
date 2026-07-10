@@ -1840,14 +1840,18 @@ class EnhancedExtractor:
         r'[Cc]alculated\s+MD[:\s]+(-?\d+\.?\d*)',
         r'\bMD\b\s+(-?\d+\.?\d*)\s*(?:kg|mmHg|mg/?dL|%|L|mL|days?|points?|mm)?\s*$',
         r'\bMD\b\s*[=:]\s*(-?\d+\.?\d*)',
-        r'[Mm]ean\s+[Dd]ifference\s+(-?\d+\.?\d*)',
+        # NOTE: the trailing (?!\s*%\s*(?:CIs?|confidence)) guard stops these bare
+        # "<label> <number>" patterns from capturing the CONFIDENCE-LEVEL as the value
+        # in a table header like "Mean difference (95% CIs)" -> a spurious MD 95. A
+        # real mean difference is never immediately followed by "% CI"/"% confidence".
+        r'[Mm]ean\s+[Dd]ifference\s+(-?\d+\.?\d*)(?![\d.])(?!\s*%\s*(?:CIs?|confidence))',
         r'\bdifference\s+(-?\d+\.?\d*)\s*(?:kg|mmHg|mg/?dL|%|L|mL|days?|points?|mm)?\s*$',
-        r'[Mm]ean\s+[Dd]ifference\s*[=:]\s*(-?\d+\.?\d*)',
-        r'\bWMD\b\s+(-?\d+\.?\d*)',
-        r'\bWMD\b\s*[=:]\s*(-?\d+\.?\d*)',
-        r'[Ww]eighted\s+[Mm]ean\s+[Dd]ifference\s+(-?\d+\.?\d*)',
-        r'\bLS\s+mean\s+difference\s+(-?\d+\.?\d*)',
-        r'[Bb]etween-?group\s+difference\s+(-?\d+\.?\d*)',
+        r'[Mm]ean\s+[Dd]ifference\s*[=:]\s*(-?\d+\.?\d*)(?![\d.])(?!\s*%\s*(?:CIs?|confidence))',
+        r'\bWMD\b\s+(-?\d+\.?\d*)(?![\d.])(?!\s*%\s*(?:CIs?|confidence))',
+        r'\bWMD\b\s*[=:]\s*(-?\d+\.?\d*)(?![\d.])(?!\s*%\s*(?:CIs?|confidence))',
+        r'[Ww]eighted\s+[Mm]ean\s+[Dd]ifference\s+(-?\d+\.?\d*)(?![\d.])(?!\s*%\s*(?:CIs?|confidence))',
+        r'\bLS\s+mean\s+difference\s+(-?\d+\.?\d*)(?![\d.])(?!\s*%\s*(?:CIs?|confidence))',
+        r'[Bb]etween-?group\s+difference\s+(-?\d+\.?\d*)(?![\d.])(?!\s*%\s*(?:CIs?|confidence))',
         # v6.2: beta/β coefficient value-only
         r'(?:\u03b2|beta)\s*[=:]?\s*(-?\d+\.?\d*)',
         r'\bB\s*=\s*(-?\d+\.?\d*)',
