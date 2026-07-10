@@ -185,6 +185,17 @@ def extract_continuous_two_group(text: str) -> List[RawDataExtraction]:
         if abs(mean1) > 10000 or abs(mean2) > 10000:
             return False
 
+        # S6 (mirror of the binary T1.5 guard): arm1 -> intervention_mean and
+        # effect_calculator.compute_md/smd compute (arm1 - arm2), so a control-arm-
+        # first phrasing ("Placebo 58.5 (18.6) vs Drug 45.3 (19.9)") silently inverts
+        # the MD/SMD sign. Swap only when a control marker is unambiguously on the
+        # first-mentioned arm and absent on the second (same conservative predicate).
+        orient = text[max(0, line_pos - 40):line_pos + len(source_text) + 40]
+        if _first_arm_is_control(orient):
+            mean1, sd1, mean2, sd2 = mean2, sd2, mean1, sd1
+            if explicit_n is not None:
+                explicit_n = (explicit_n[1], explicit_n[0])
+
         sd_ratio = max(sd1, sd2) / max(min(sd1, sd2), 1e-9)
         if sd_ratio >= 20:
             return False
