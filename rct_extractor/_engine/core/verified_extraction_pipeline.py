@@ -343,7 +343,19 @@ class VerifiedExtractionPipeline:
 
         # Determine usability (fail-closed)
         # Key: Require Pattern agreement for usable status to maintain low FPR
-        if self.require_verification:
+        #
+        # T1.3 (integrity): a mathematically VIOLATED verification is NEVER usable,
+        # regardless of pattern agreement or consensus. A point estimate outside its
+        # own confidence interval is impossible and must not reach a meta-analysis.
+        # Previously a VIOLATED extraction with pattern agreement fell through to the
+        # `pattern_agreed and has_consensus` -> PARTIAL branch, and PARTIAL is usable.
+        verification_violated = bool(
+            verification is not None
+            and verification.overall_level == VerificationLevel.VIOLATED
+        )
+        if verification_violated:
+            is_usable = False
+        elif self.require_verification:
             if self.require_pattern_agreement:
                 is_usable = pattern_agreed and status in [PipelineStatus.VERIFIED, PipelineStatus.CONSENSUS_ONLY, PipelineStatus.PARTIAL]
             else:

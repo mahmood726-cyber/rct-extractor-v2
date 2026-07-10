@@ -321,7 +321,17 @@ class TableEffectExtractor:
 
                     # If CI not in same cell, try CI column
                     if ci_lower is None and ci_cols:
-                        ci_col = ci_cols[0]
+                        # T1.4 (integrity): pick the CI column belonging to THIS effect
+                        # column, not always ci_cols[0]. In adjusted+unadjusted tables
+                        # (HR | CI | HR_adj | CI_adj) every effect used to pull the first
+                        # CI, grafting the unadjusted CI onto the adjusted HR (and vice
+                        # versa) -> wrong interval / significance flip. Prefer the nearest
+                        # CI column to the RIGHT of the effect column, else the nearest by
+                        # absolute distance. Single-CI tables are unchanged (one candidate).
+                        ci_cols_right = [c for c in ci_cols if c.index > effect_col.index]
+                        ci_col = (min(ci_cols_right, key=lambda c: c.index)
+                                  if ci_cols_right
+                                  else min(ci_cols, key=lambda c: abs(c.index - effect_col.index)))
                         ci_cell = table.get_cell(row_idx, ci_col.index)
                         if ci_cell:
                             ci_extracted = self._extract_ci_from_cell(ci_cell.text)
