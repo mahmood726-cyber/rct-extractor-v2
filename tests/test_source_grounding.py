@@ -117,6 +117,28 @@ def test_order_effects_stable_and_lossless():
     assert len(out) == 2 and {e["effect_size"] for e in out} == {0.84, -4.0}
 
 
+def test_order_effects_uses_char_start_over_value_coincidence():
+    # 0.64 also appears early as an unrelated number ('p was 0.64'); the HR 0.64
+    # effect actually sits later. Anchored by char_start, the earlier-positioned
+    # OR 2.0 sorts first. (Old magnitude-scan would place HR first on the stray 0.64
+    # and sink OR 2.0 as un-locatable.)
+    text = "baseline p was 0.64 in the cohort. " + ("x" * 20) + " HR 0.64 (0.4-0.9), primary outcome."
+    a = {"type": "HR", "effect_size": 0.64, "char_start": text.index("HR 0.64")}
+    b = {"type": "OR", "effect_size": 2.0, "char_start": 5}
+    out = order_effects([a, b], text)
+    assert out[0]["effect_size"] == 2.0
+
+
+def test_order_effects_difference_with_char_start_not_sunk():
+    # A computed/rounded MD (not verbatim in text) keeps its real earlier position
+    # via char_start instead of sinking to the end behind a verbatim later ratio.
+    text = "Primary: mean difference in FVC decline. Later, RR 0.80 (0.6-1.0) secondary."
+    md = {"type": "MD", "effect_size": -7.37, "char_start": 0}          # not verbatim
+    rr = {"type": "RR", "effect_size": 0.80, "char_start": text.index("RR 0.80")}
+    out = order_effects([md, rr], text)
+    assert out[0]["type"] == "MD"
+
+
 # --- cross-outcome denominator consistency ----------------------------------
 
 def test_denominator_consistent_arms_not_flagged():

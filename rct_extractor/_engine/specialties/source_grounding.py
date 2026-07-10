@@ -142,7 +142,18 @@ def order_effects(effects, text):
     low = text.lower()
 
     def key(e):
-        idx = _first_index(e.get("effect_size"), text)
+        # Prefer the effect's OWN anchored position (char_start, emitted by the
+        # extractor) over scanning for the first place its value MAGNITUDE happens
+        # to appear. The magnitude scan collides with unrelated early numbers
+        # (doses, years, baseline means, CI bounds) and returns -1 for computed /
+        # rounded MD/SMD/ARD whose value is not verbatim in the text -- which then
+        # sinks a genuine continuous PRIMARY below any verbatim ratio. Fall back to
+        # the magnitude scan only when char_start is absent (e.g. synthetic effects).
+        cs = e.get("char_start")
+        if isinstance(cs, int) and not isinstance(cs, bool) and cs >= 0:
+            idx = cs
+        else:
+            idx = _first_index(e.get("effect_size"), text)
         if idx < 0:
             return (10 ** 9, 0)            # un-locatable values sink to the end
         before = low[max(0, idx - 80):idx]
