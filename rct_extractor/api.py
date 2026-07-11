@@ -300,6 +300,7 @@ def extract(
     with_effects: bool = True,
     with_arm_level: bool = True,
     with_diagnostic: bool = True,
+    tables_xml: Optional[str] = None,
     consistency: bool = True,
 ) -> Dict[str, Any]:
     """Extract structured trial data from a single abstract / block of text.
@@ -381,6 +382,18 @@ def extract(
                 # the primary mean difference).
                 effs = order_effects(effs, text)
             out["effects"] = effs
+
+    # Merge continuous mean differences recovered from result-table STRUCTURE, when
+    # the caller supplies the JATS/HTML source. These recover primaries reported ONLY
+    # in a results table (arm-level mean(SD)) -- the largest real-corpus recall gap --
+    # which the prose extractor cannot see. Appended AFTER the prose effects so the
+    # prose primary pick (effects[0]) is preserved by default; each is tagged
+    # source='jats_table' and needs_review.
+    if tables_xml:
+        from rct_extractor._engine.core.jats_table_extractor import (
+            extract_continuous_effects_from_xml,
+        )
+        out["effects"] = list(out["effects"]) + extract_continuous_effects_from_xml(tables_xml)
 
     # Emit the two fields that decide whether a pooled estimate is correct but were
     # previously never produced (audit gap 35):
