@@ -272,6 +272,69 @@ def _diagnostic_to_dict(d: Any) -> Dict[str, Any]:
     }
 
 
+# M1 kind-aware primary selection --------------------------------------------
+import re as _re
+
+# Cues that the study's PRIMARY outcome is a CONTINUOUS measure (a mean difference),
+# and cues that it is a BINARY/time-to-event measure (a ratio). Scored only in the
+# neighbourhood of a "primary outcome/endpoint" mention so a secondary outcome's
+# wording does not decide the primary's kind.
+_CONT_CUE = _re.compile(
+    r"mean\s+(?:change|difference|reduction)|change\s+from\s+baseline|least[-\s]?squares?\s+mean"
+    r"|\bLS\s*mean|change\s+in\s+(?:score|the\s+\w+\s+score|[\w\s]{0,20}?score|[\w\s]{0,20}?level"
+    r"|weight|bmi|hba1c|blood\s+pressure|egfr|pain)|\bscore\b|\bscale\b|questionnaire",
+    _re.IGNORECASE)
+_RATIO_CUE = _re.compile(
+    r"hazard\s+ratio|odds\s+ratio|risk\s+ratio|relative\s+risk|incidence|\bmortalit|\bdeath\b"
+    r"|proportion\s+of|event\s+rate|number\s+needed|\bcure\b|\bresponse\s+rate|survival",
+    _re.IGNORECASE)
+_PRIMARY_RE = _re.compile(r"primary\s+(?:outcome|end\s?point|efficacy)", _re.IGNORECASE)
+
+
+def _infer_primary_kind(text: str) -> Optional[str]:
+    """Return 'diff' (continuous primary), 'ratio' (binary/TTE primary), or None.
+
+    Looks only in a +-200-char window around each 'primary outcome/endpoint' mention
+    and tallies continuous vs ratio cues; needs a clear majority to commit."""
+    if not text:
+        return None
+    low = text.lower()
+    cont = ratio = 0
+    for m in _PRIMARY_RE.finditer(low):
+        w = low[max(0, m.start() - 60):m.end() + 200]
+        cont += len(_CONT_CUE.findall(w))
+        ratio += len(_RATIO_CUE.findall(w))
+    if cont >= 2 and cont > ratio * 2:
+        return "diff"
+    if ratio >= 2 and ratio > cont * 2:
+        return "ratio"
+    return None
+
+
+def _kind_of(effect_type: Optional[str]) -> Optional[str]:
+    et = str(effect_type or "").upper()
+    if et in _RATIO_TYPES:
+        return "ratio"
+    if et in _DIFF_TYPES:
+        return "diff"
+    return None
+
+
+def _best_diff_effect(effects: List[Dict[str, Any]], text: str):
+    """Pick the best difference-type effect to promote to primary. Prefer one whose
+    endpoint/source names a primary-outcome cue; else one with per-arm N (a complete
+    table row); else the first difference-type effect."""
+    diffs = [e for e in effects if isinstance(e, dict) and _kind_of(e.get("type")) == "diff"]
+    if not diffs:
+        return None
+    named = [e for e in diffs
+             if _PRIMARY_RE.search((e.get("endpoint") or "") + " " + (e.get("source_text") or ""))]
+    if named:
+        return named[0]
+    with_n = [e for e in diffs if e.get("arm1_n") and e.get("arm2_n")]
+    return (with_n or diffs)[0]
+
+
 def _subspecialty_for(specialty: str, text: str) -> Tuple[Optional[str], Optional[float]]:
     """Run a forced specialty's own subspecialty detector, if it has one."""
     from rct_extractor._engine.specialties.registry import SPECIALTY_REGISTRY
@@ -394,6 +457,19 @@ def extract(
             extract_continuous_effects_from_xml,
         )
         out["effects"] = list(out["effects"]) + extract_continuous_effects_from_xml(tables_xml)
+
+    # M1: kind-aware primary selection. When the paper's PRIMARY outcome is clearly a
+    # continuous measure but the top-ranked effect is a ratio (the prose ranker cannot
+    # promote a table-derived MD -- it has no text position), promote the best
+    # difference-type effect to the front. Conservative: only fires on a confident
+    # continuous inference AND a ratio currently at [0]; leaves ratio-primary and
+    # ambiguous studies untouched.
+    if with_effects and out["effects"] and _kind_of(out["effects"][0].get("type")) == "ratio":
+        if _infer_primary_kind(text) == "diff":
+            best = _best_diff_effect(out["effects"], text)
+            if best is not None and best is not out["effects"][0]:
+                out["effects"].remove(best)
+                out["effects"].insert(0, best)
 
     # Emit the two fields that decide whether a pooled estimate is correct but were
     # previously never produced (audit gap 35):
