@@ -42,3 +42,26 @@ class TestMdCiLevelGuard:
     ])
     def test_legit_md_still_extracted(self, ex, text, val):
         assert any(abs(v - val) < 1e-6 for v in _mds(ex, text))
+
+
+class TestBareRegressionCoefNotMd:
+    """A bare regression coefficient (beta/B = X) with NO CI is not a poolable mean
+    difference. Extracting it as a value-only MD made it win effects[0] over the real
+    primary and register as a sign-flip on the real eval (raised direction accuracy
+    31.2% -> 41.7% when removed). Coefficients reported WITH a CI still extract."""
+
+    @pytest.mark.parametrize("text", [
+        "The coefficient b = 0.29 for the model.",
+        "beta = 6 in the adjusted regression",
+        "beta=0.20 (standardized)",
+        "B = -3.61 in the model",
+    ])
+    def test_bare_coef_not_extracted_as_md(self, ex, text):
+        assert _mds(ex, text) == []
+
+    @pytest.mark.parametrize("text,val", [
+        ("beta = 0.5 (95% CI 0.2 to 0.8)", 0.5),
+        ("beta = 1.2, 95% CI 0.4 to 2.0", 1.2),
+    ])
+    def test_coef_with_ci_still_extracted(self, ex, text, val):
+        assert any(abs(v - val) < 1e-6 for v in _mds(ex, text))

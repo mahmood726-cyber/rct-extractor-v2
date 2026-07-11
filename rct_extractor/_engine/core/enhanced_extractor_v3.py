@@ -1852,9 +1852,6 @@ class EnhancedExtractor:
         r'[Ww]eighted\s+[Mm]ean\s+[Dd]ifference\s+(-?\d+\.?\d*)(?![\d.])(?!\s*%\s*(?:CIs?|confidence))',
         r'\bLS\s+mean\s+difference\s+(-?\d+\.?\d*)(?![\d.])(?!\s*%\s*(?:CIs?|confidence))',
         r'[Bb]etween-?group\s+difference\s+(-?\d+\.?\d*)(?![\d.])(?!\s*%\s*(?:CIs?|confidence))',
-        # v6.2: beta/β coefficient value-only
-        r'(?:\u03b2|beta)\s*[=:]?\s*(-?\d+\.?\d*)',
-        r'\bB\s*=\s*(-?\d+\.?\d*)',
     ]
 
     # Risk Ratio value-only patterns
