@@ -1,0 +1,16 @@
+{
+  "created": "2026-06-19",
+  "seed": 20260619,
+  "dev_frac": 0.7,
+  "corpus": "data\\field_portability\\malaria\\malaria_matched.jsonl",
+  "corpus_sha256": "956e318300cedce45ef4ad1e56a4c616f956fa55dca1a408ec3d36506eff0658",
+  "corpus_lines": 4030,
+  "universe_size": 768,
+  "n_dev": 537,
+  "n_test": 231,
+  "gold_effects_dev": 1487,
+  "gold_effects_test": 571,
+  "metric": "effect recall vs reviewer_data; precision guard vs same reference",
+  "match_tol": "close(): 5% relative on point + each CI bound",
+  "precision_slack": 0.02
+}

@@ -1,0 +1,11 @@
+{
+  "anchor_date": "2026-06-19",
+  "extractor": "core (enhanced_extractor_v3) + malaria_effects augmenter, hand-tuned current HEAD",
+  "split_manifest": "pilot/splits/manifest.json",
+  "seed": 20260619,
+  "dev":  {"n_abstracts": 537, "gold_effects": 1487, "recovered": 1430, "recall": 0.9617, "extracted": 1713, "extracted_matching": 1453, "precision": 0.8482},
+  "test": {"n_abstracts": 231, "gold_effects": 571,  "recovered": 553,  "recall": 0.9685, "extracted": 665,  "extracted_matching": 557,  "precision": 0.8376},
+  "acceptance_rule_dev": "candidate ACCEPTED iff recall_dev > 0.9617 AND precision_dev >= 0.8482 - 0.02 (>= 0.8282)",
+  "final_gate_test": "winning candidate WINS iff recall_test > 0.9685 AND precision_test >= 0.8376 - 0.02 (>= 0.8176); read E_test ONCE",
+  "headroom_note": "only ~3.2% recall headroom on dev; small-headroom task, honest null is a likely and acceptable outcome"
+}
