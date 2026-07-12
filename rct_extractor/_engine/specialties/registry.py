@@ -1010,7 +1010,115 @@ from .sepsis import (
 # SPECIALTY REGISTRY
 # ============================================================
 
+
+# --- ported NTD specialties (2026-07-12 consolidation) ---
+from .epilepsy import (
+    EPILEPSY_ENDPOINTS,
+    EFFICACY_PATTERNS as EPI_EFFICACY_PATTERNS,
+    TOLERABILITY_PATTERNS as EPI_TOLERABILITY_PATTERNS,
+    STATUS_EPILEPTICUS_PATTERNS as EPI_STATUS_EPILEPTICUS_PATTERNS,
+    TREATMENT_GAP_PATTERNS as EPI_TREATMENT_GAP_PATTERNS,
+    detect_epilepsy_subspecialty,
+    normalize_epilepsy_endpoint
+)
+from .leishmaniasis import (
+    LEISHMANIASIS_ENDPOINTS,
+    VISCERAL_PATTERNS as LEISH_VISCERAL_PATTERNS,
+    CUTANEOUS_PATTERNS as LEISH_CUTANEOUS_PATTERNS,
+    COMBINATION_PATTERNS as LEISH_COMBINATION_PATTERNS,
+    SAFETY_PATTERNS as LEISH_SAFETY_PATTERNS,
+    detect_leishmaniasis_subspecialty,
+    normalize_leishmaniasis_endpoint
+)
+from .lymphatic_filariasis import (
+    LYMPHATIC_FILARIASIS_ENDPOINTS,
+    MDA_PATTERNS as LF_MDA_PATTERNS,
+    TRANSMISSION_PATTERNS as LF_TRANSMISSION_PATTERNS,
+    MORBIDITY_PATTERNS as LF_MORBIDITY_PATTERNS,
+    SAFETY_PATTERNS as LF_SAFETY_PATTERNS,
+    detect_lymphatic_filariasis_subspecialty,
+    normalize_lymphatic_filariasis_endpoint
+)
+from .onchocerciasis import (
+    ONCHOCERCIASIS_ENDPOINTS,
+    TREATMENT_PATTERNS as ONCHO_TREATMENT_PATTERNS,
+    MDA_PATTERNS as ONCHO_MDA_PATTERNS,
+    MORBIDITY_PATTERNS as ONCHO_MORBIDITY_PATTERNS,
+    SAFETY_PATTERNS as ONCHO_SAFETY_PATTERNS,
+    detect_onchocerciasis_subspecialty,
+    normalize_onchocerciasis_endpoint
+)
+from .trachoma import (
+    TRACHOMA_ENDPOINTS,
+    MDA_PATTERNS as TRACH_MDA_PATTERNS,
+    SURGERY_PATTERNS as TRACH_SURGERY_PATTERNS,
+    TRANSMISSION_PATTERNS as TRACH_TRANSMISSION_PATTERNS,
+    MORTALITY_SAFETY_PATTERNS as TRACH_MORTALITY_SAFETY_PATTERNS,
+    detect_trachoma_subspecialty,
+    normalize_trachoma_endpoint
+)
+
 SPECIALTY_REGISTRY = {
+    'epilepsy': {
+        'subspecialties': ['efficacy', 'tolerability', 'status_epilepticus', 'treatment_gap'],
+        'detection_function': detect_epilepsy_subspecialty,
+        'normalizer': normalize_epilepsy_endpoint,
+        'endpoints': EPILEPSY_ENDPOINTS,
+        'patterns': {
+            'efficacy': EPI_EFFICACY_PATTERNS,
+            'tolerability': EPI_TOLERABILITY_PATTERNS,
+            'status_epilepticus': EPI_STATUS_EPILEPTICUS_PATTERNS,
+            'treatment_gap': EPI_TREATMENT_GAP_PATTERNS
+        }
+    },
+    'leishmaniasis': {
+        'subspecialties': ['visceral', 'cutaneous', 'combination', 'safety'],
+        'detection_function': detect_leishmaniasis_subspecialty,
+        'normalizer': normalize_leishmaniasis_endpoint,
+        'endpoints': LEISHMANIASIS_ENDPOINTS,
+        'patterns': {
+            'visceral': LEISH_VISCERAL_PATTERNS,
+            'cutaneous': LEISH_CUTANEOUS_PATTERNS,
+            'combination': LEISH_COMBINATION_PATTERNS,
+            'safety': LEISH_SAFETY_PATTERNS
+        }
+    },
+    'lymphatic_filariasis': {
+        'subspecialties': ['mda', 'transmission', 'morbidity', 'safety'],
+        'detection_function': detect_lymphatic_filariasis_subspecialty,
+        'normalizer': normalize_lymphatic_filariasis_endpoint,
+        'endpoints': LYMPHATIC_FILARIASIS_ENDPOINTS,
+        'patterns': {
+            'mda': LF_MDA_PATTERNS,
+            'transmission': LF_TRANSMISSION_PATTERNS,
+            'morbidity': LF_MORBIDITY_PATTERNS,
+            'safety': LF_SAFETY_PATTERNS
+        }
+    },
+    'onchocerciasis': {
+        'subspecialties': ['treatment', 'mda', 'morbidity', 'safety'],
+        'detection_function': detect_onchocerciasis_subspecialty,
+        'normalizer': normalize_onchocerciasis_endpoint,
+        'endpoints': ONCHOCERCIASIS_ENDPOINTS,
+        'patterns': {
+            'treatment': ONCHO_TREATMENT_PATTERNS,
+            'mda': ONCHO_MDA_PATTERNS,
+            'morbidity': ONCHO_MORBIDITY_PATTERNS,
+            'safety': ONCHO_SAFETY_PATTERNS
+        }
+    },
+    'trachoma': {
+        'subspecialties': ['mda', 'surgery', 'transmission', 'mortality_safety'],
+        'detection_function': detect_trachoma_subspecialty,
+        'normalizer': normalize_trachoma_endpoint,
+        'endpoints': TRACHOMA_ENDPOINTS,
+        'patterns': {
+            'mda': TRACH_MDA_PATTERNS,
+            'surgery': TRACH_SURGERY_PATTERNS,
+            'transmission': TRACH_TRANSMISSION_PATTERNS,
+            'mortality_safety': TRACH_MORTALITY_SAFETY_PATTERNS
+        }
+    },
     'cardiology': {
         'subspecialties': ['heart_failure', 'acs', 'af', 'valve'],
         'detection_function': detect_cardiology_subspecialty,
@@ -2469,6 +2577,21 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'cercaria(?:e)?', r'miracidia', r'oxamniquine', r'sh28gst|bilhvax',
             r'periportal\s+fibrosis'
         ],
+        'epilepsy': [
+            r'epilep', r'\bseizure', r'anti[- ]?epileptic', r'\baed\b', r'status\s+epilepticus', r'levetiracetam', r'lamotrigine', r'valproat', r'carbamazepine', r'lacosamide'
+        ],
+        'leishmaniasis': [
+            r'leishmania', r'kala[- ]?azar', r'visceral\s+leishman', r'cutaneous\s+leishman', r'miltefosine', r'amphotericin', r'sodium\s+stibogluconate', r'paromomycin', r'sand\s?fly'
+        ],
+        'lymphatic_filariasis': [
+            r'lymphatic\s+filaria', r'\bfilaria', r'elephantiasis', r'\bwuchereria', r'\bbrugia', r'microfilar', r'diethylcarbamazine', r'\bdec\b', r'ivermectin.*albendazole', r'lymphoedema|lymphedema'
+        ],
+        'onchocerciasis': [
+            r'onchocerc', r'river\s+blindness', r'\bonchocerca\s+volvulus', r'microfilar', r'ivermectin', r'\bmoxidectin', r'nodulectom', r'black\s?fly', r'skin\s+snip'
+        ],
+        'trachoma': [
+            r'trachoma', r'chlamydia\s+trachomatis', r'trichiasis', r'\btt\b\s+surger', r'azithromycin.*trachoma', r'\bsafe\s+strateg', r'tarsal\s+rotation', r'follicular\s+trachoma'
+        ],
         'sickle_cell': [
             r'sickle\s+cell', r'\bscd\b', r'sickle\s+cell\s+(?:disease|ana?emia)',
             r'\bhbss\b', r'\bhbsc\b', r'ha?emoglobin\s+s\b', r'\bsickle\b',
@@ -3408,6 +3531,21 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'schistosomiasis':
         subspecialty, conf = detect_schistosomiasis_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'epilepsy':
+        subspecialty, conf = detect_epilepsy_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'leishmaniasis':
+        subspecialty, conf = detect_leishmaniasis_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'lymphatic_filariasis':
+        subspecialty, conf = detect_lymphatic_filariasis_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'onchocerciasis':
+        subspecialty, conf = detect_onchocerciasis_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'trachoma':
+        subspecialty, conf = detect_trachoma_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'sickle_cell':
         subspecialty, conf = detect_sickle_cell_subspecialty(text)
