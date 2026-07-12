@@ -6,7 +6,10 @@ tests pin the exact bug class the deterministic extractors hit: choosing a plaus
 but WRONG row (secondary outcome / off-ITT population / single-dose sub-analysis)
 when a trial reports many effect estimates.
 """
-from select_primary_effect import select_primary_effect, score_candidate, first_row
+try:
+    from select_primary_effect import select_primary_effect, score_candidate, first_row
+except ImportError:
+    from .select_primary_effect import select_primary_effect, score_candidate, first_row
 
 def C(otype, title, pop, pt, v, lo, hi, gd="", ed=""):
     return {"outcome_type": otype, "title": title, "population": pop, "param_type": pt,
