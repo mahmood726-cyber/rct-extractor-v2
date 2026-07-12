@@ -1,0 +1,9 @@
+{
+ "table_consistency": 0.985052754982415,
+ "n_2x2": 769,
+ "fulltext_lift": 5.98067188219052,
+ "papers_with_effect": 0.4757621189405297,
+ "effect_precision": 0.9393939393939394,
+ "effect_precision_after_family_fix": 1.0,
+ "n_adjudicated": 33
+}
