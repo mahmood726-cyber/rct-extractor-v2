@@ -1,0 +1,50 @@
+{
+ "partA": {
+  "B0a flat-first": {
+   "clean_ok": 8,
+   "clean_n": 8,
+   "amb_ok": 10,
+   "amb_n": 10
+  },
+  "B0b most-extreme": {
+   "clean_ok": 2,
+   "clean_n": 8,
+   "amb_ok": 0,
+   "amb_n": 10
+  },
+  "B1 first-primary": {
+   "clean_ok": 8,
+   "clean_n": 8,
+   "amb_ok": 10,
+   "amb_n": 10
+  },
+  "S selector": {
+   "clean_ok": 8,
+   "clean_n": 8,
+   "amb_ok": 10,
+   "amb_n": 10
+  }
+ },
+ "partB": {
+  "T": {
+   "clean_flag": 95,
+   "clean_n": 2090,
+   "swapSec_flag": 1948,
+   "swapSec_n": 1948,
+   "swapPrim_flag": 0,
+   "swapPrim_n": 907,
+   "scale_flag": 95,
+   "scale_n": 2090
+  },
+  "A": {
+   "clean_flag": 35,
+   "clean_n": 2090,
+   "swapSec_flag": 37,
+   "swapSec_n": 1948,
+   "swapPrim_flag": 23,
+   "swapPrim_n": 907,
+   "scale_flag": 765,
+   "scale_n": 2090
+  }
+ }
+}
