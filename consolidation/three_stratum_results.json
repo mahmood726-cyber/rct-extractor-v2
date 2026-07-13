@@ -1,7 +1,19 @@
 {
+ "contamination_guard": {
+  "real_pmids": 2001,
+  "total": 2001,
+  "dta70": false
+ },
  "registry": {
   "coverage_frac": 0.009995002498750625,
   "corroborated": "18/109"
+ },
+ "abstract": {
+  "availability": 1.0,
+  "carries_effect_frac": 0.2698650674662669,
+  "abstract_fulltext_agreement": 0.9489185457892315,
+  "abstract_registry_overlap_studies": 8,
+  "discipline": "counts-only, never prose conclusions"
  },
  "jats_xml": {
   "effect_precision": 0.9393939393939394,

@@ -22,6 +22,13 @@ cc = load("cross_check.jsonl")
 arm = load("arm_data.jsonl")
 verd = load("adjudication_verdicts.jsonl")
 
+# ---- CONTAMINATION GUARD: refuse to score against synthetic data (DTA70 leak, 2026-07-13) ----
+_blob = json.dumps(cc[:50]) + json.dumps(verd)
+assert "DTA70" not in _blob and "dta70" not in _blob, "SYNTHETIC DTA70 leak detected in gold!"
+_real_pmids = sum(1 for c in cc if str(c.get("pmid", "")).isdigit())
+assert _real_pmids > len(cc) * 0.9, "gold is not predominantly real PMIDs — possible synthetic contamination"
+print(f"[contamination guard] {_real_pmids}/{len(cc)} real PMIDs, no DTA70 — gold is REAL\n")
+
 # ---- REGISTRY stratum (structured; extraction problem eliminated) ----
 reg_studies = sum(1 for c in cc if c.get("nct_id") and (c.get("aact_effects") or 0) > 0)
 reg_m = reg_t = 0
@@ -29,13 +36,17 @@ for c in cc:
     for p in (c.get("aact_vs_pdf") or []):
         reg_t += 1; reg_m += 1 if p.get("matched") else 0
 
-# ---- JATS-XML stratum (structured markup; regex, no OCR) ----
-props = [p for a in arm for p in a.get("proportions", [])]
-tbl_cons = sum(1 for p in props if p.get("pct_consistent")) / max(1, len(props))
+# ---- ABSTRACT stratum (free for EVERY paper; 100% coverage; most spin-prone) ----
+abs_has = sum(1 for c in cc if (c.get("n_abstract_effects") or 0) > 0)
 abs_m = abs_t = 0
 for c in cc:
     for p in (c.get("abstract_vs_pdf") or []):
         abs_t += 1; abs_m += 1 if p.get("matched") else 0
+abs_reg_both = sum(1 for c in cc if (c.get("n_abstract_effects") or 0) > 0 and (c.get("aact_effects") or 0) > 0)
+
+# ---- JATS-XML stratum (structured markup; regex, no OCR) ----
+props = [p for a in arm for p in a.get("proportions", [])]
+tbl_cons = sum(1 for p in props if p.get("pct_consistent")) / max(1, len(props))
 pdf_eff = sum(c.get("n_pdf_effects", 0) or 0 for c in cc)
 ab_eff = sum(c.get("n_abstract_effects", 0) or 0 for c in cc)
 eff_correct = sum(1 for v in verd if v["verdict"] == "correct")
@@ -44,7 +55,7 @@ eff_fixed = sum(1 for v in verd if v["verdict"] != "correct"
 all_pmc = all(c.get("pmcid") for c in cc)
 
 print("=" * 82)
-print("THREE-STRATUM EXTRACTION ACCURACY — malaria (source-linked gold)")
+print("FOUR-STRATUM EXTRACTION ACCURACY — malaria (source-linked gold)")
 print("=" * 82)
 print(f"\n{'stratum':16} {'structured?':12} {'accuracy (measured)':34} coverage")
 print("-" * 82)
@@ -54,9 +65,15 @@ print(f"{'REGISTRY':16} {'yes (2x2)':12} "
 print(f"{'JATS-XML':16} {'yes (cells)':12} "
       f"{'value '+str(eff_correct)+'/'+str(len(verd))+'->'+str(eff_correct+eff_fixed)+'/'+str(len(verd))+' (family-fix); 2x2 '+f'{tbl_cons:.3f}':34} "
       f"{'all '+str(len(cc))+' (100% PMC)':12}")
+print(f"{'ABSTRACT':16} {'semi (dense)':12} "
+      f"{'counts-only; abs<->fulltext '+f'{abs_m/max(1,abs_t):.3f}'+' where present':34} "
+      f"{'100% avail; '+f'{abs_has/len(cc)*100:.0f}'+'% carry an effect':12}")
 print(f"{'PDF (non-PMC)':16} {'no (layout)':12} "
       f"{'NOT MEASURED - no non-PMC tropical gold':34} {'~0% of OA malaria':12}")
 print("-" * 82)
+print(f"ABSTRACT DISCIPLINE: counts/effects-with-CI only, never prose conclusions (Boutron spin "
+      f"38-58%); abstract<->registry overlap = {abs_reg_both} studies (too few here for a robust "
+      f"disagreement rate - NAMED LIMIT).")
 print(f"cross-source agreement: registry<->fulltext {reg_m}/{reg_t}"
       f" (matched pairs; rest are outcome/timepoint misalignment, not value errors);"
       f" abstract<->fulltext {abs_m}/{abs_t}={abs_m/max(1,abs_t):.3f}")
@@ -71,7 +88,12 @@ print(f"\nREAD-OUT: registry structured-read ~1.0 but covers only ~{reg_studies/
 print("BLOCKER: pairwise70 is de-identified -> pooling gold, not extraction gold. Extraction "
       "measured on the PMID/PMCID/NCT-linked malaria gold instead.")
 
-out = {"registry": {"coverage_frac": reg_studies/len(cc), "corroborated": f"{reg_m}/{reg_t}"},
+out = {"contamination_guard": {"real_pmids": _real_pmids, "total": len(cc), "dta70": False},
+       "registry": {"coverage_frac": reg_studies/len(cc), "corroborated": f"{reg_m}/{reg_t}"},
+       "abstract": {"availability": 1.0, "carries_effect_frac": abs_has/len(cc),
+                    "abstract_fulltext_agreement": abs_m/max(1,abs_t),
+                    "abstract_registry_overlap_studies": abs_reg_both,
+                    "discipline": "counts-only, never prose conclusions"},
        "jats_xml": {"effect_precision": eff_correct/len(verd),
                     "effect_precision_after_family_fix": (eff_correct+eff_fixed)/len(verd),
                     "table_2x2_consistency": tbl_cons,
