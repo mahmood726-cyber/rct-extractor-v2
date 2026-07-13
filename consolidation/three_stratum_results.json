@@ -1,0 +1,19 @@
+{
+ "registry": {
+  "coverage_frac": 0.009995002498750625,
+  "corroborated": "18/109"
+ },
+ "jats_xml": {
+  "effect_precision": 0.9393939393939394,
+  "effect_precision_after_family_fix": 1.0,
+  "table_2x2_consistency": 0.985052754982415,
+  "abstract_fulltext_agreement": 0.9489185457892315,
+  "fulltext_lift": 5.98067188219052,
+  "all_pmc": true
+ },
+ "pdf": {
+  "measured": false,
+  "reason": "no non-PMC tropical gold; OCR not runnable"
+ },
+ "pairwise70_blocker": "de-identified (review_id,study_idx,yi,vi) - pooling gold not extraction gold"
+}
