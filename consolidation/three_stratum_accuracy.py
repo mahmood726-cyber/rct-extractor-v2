@@ -1,9 +1,10 @@
 """
-The three-stratum extraction-accuracy table — registry vs JATS-XML vs PDF.
+The four-stratum extraction-accuracy table — registry vs JATS-XML vs ABSTRACT vs PDF.
 
 The blended 0.67 hid that the loss is NOT uniform across source types. Structured sources
-(registry, JATS-XML) eliminate most of the extraction problem; the PDF stratum is the hard
-case. Measured on the source-linked malaria gold in data/field_portability/malaria/ (PMID/
+(registry, JATS-XML) eliminate most of the extraction problem; the ABSTRACT is free for every
+paper (100% coverage) but spin-prone (counts only); the PDF stratum is the hard case. Measured
+on the source-linked malaria gold in data/field_portability/malaria/ (PMID/
 PMCID/NCT-linked), because the Cochrane pairwise70 gold is DE-IDENTIFIED (review_id,
 study_idx, yi, vi — no PMID/PMCID/NCT/title) and therefore CANNOT be an extraction gold
 (there is no source to extract from). pairwise70 is used as the POOLING/recovery gold instead
