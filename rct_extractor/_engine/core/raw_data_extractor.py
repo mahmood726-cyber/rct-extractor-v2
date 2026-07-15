@@ -96,6 +96,40 @@ _GROUP_N_PATTERN = re.compile(
     r'([\w\s-]{2,40}?)\s*\(\s*[nN]\s*(?:[=:\u00bc]\s*)?(\d{1,4})\s*\)',
 )
 
+_CONTINUOUS_TABLE_NOISE = re.compile(
+    r'\b(?:doi|correspondence|received|accepted|published|journal|license|creative\s+commons|'
+    r'attribution|noncommercial|author(?:s)?|affiliation(?:s)?|department|university|hospital|'
+    r'confidential|protocol|\bMD\b|\bPhD\b|\bMSc\b)\b|'
+    r'page\s+\d+\s+of\s+\d+|(?:^|[^A-Za-z])hospital',
+    re.IGNORECASE,
+)
+
+_CONTINUOUS_SOURCE_NOISE = re.compile(
+    r'(?:%|no\.\s*\(\s*%\s*\)|\bn\s*\(\s*%\s*\)|\bHU\b|hounsfield|'
+    r'\b(?:odds|hazard|risk)\s+ratio\b|\b(?:OR|HR|RR)\b|'
+    r'\[\d{1,3}\]|\d{1,3},\d{3}|\b\d{1,2}q\d{1,2}(?:\.\d+)?\b|'
+    r'(?:\d+\.){2,}\d+)',
+    re.IGNORECASE,
+)
+
+_CONTINUOUS_CONTEXT_EXCLUDE = re.compile(
+    r'\b(?:baseline\s+characteristics?|demographics?|patient\s+characteristics?|'
+    r'training\s+set|test\s+set|receiver\s+operating\s+characteristic|'
+    r'plaque\s+(?:features?|characteristics?|volumes?)|coronary\s+computed\s+tomography|'
+    r'author\s+manuscript|references?|conference|proceedings|bayesian\s+classifiers?|'
+    r'machine\s+learning|ML\s+models?|models?\s+\d)\b',
+    re.IGNORECASE,
+)
+
+_PDF_LAYOUT_CONTEXT_NOISE = re.compile(
+    r'\b(?:confidential|protocol)\b|page\s+\d+\s+of\s+\d+',
+    re.IGNORECASE,
+)
+
+_AUTHOR_SUPERSCRIPT_NAME = re.compile(
+    r"\b[A-Z][A-Za-z'-]+(?:\s+[A-Z]\.)?(?:\s+[A-Z][A-Za-z'-]+)+\d{1,2}\b"
+)
+
 
 def _normalize_extraction_text(text: str) -> str:
     """Normalize common PDF/OCR artifacts before regex extraction."""
@@ -156,6 +190,79 @@ def _extract_context_sample_sizes(context: str) -> List[int]:
     return unique
 
 
+def _plausible_continuous_table_row(stripped: str, num_tokens: List[float]) -> bool:
+    """True for compact table rows; false for long prose/front matter.
+
+    Reading-order normalization can collapse a whole title/author/abstract block into one line.
+    The structured continuous fallback scans six-number windows, so it must not run on those
+    prose chunks.
+    """
+    if len(num_tokens) < 4:
+        return False
+    if len(stripped) > 260:
+        return False
+    if _CONTINUOUS_TABLE_NOISE.search(stripped):
+        return False
+    if _looks_like_author_superscript_list(stripped):
+        return False
+    return True
+
+
+def _looks_like_author_superscript_list(stripped: str) -> bool:
+    """Detect collapsed PDF author lines such as "Jane Doe1, John Roe2"."""
+    if "," not in stripped:
+        return False
+    return len(_AUTHOR_SUPERSCRIPT_NAME.findall(stripped)) >= 2
+
+
+def _valid_continuous_context(source_text: str, context: str) -> bool:
+    """Reject non-outcome numeric contexts that mimic mean/SD rows."""
+    if _CONTINUOUS_SOURCE_NOISE.search(source_text):
+        return False
+    if _looks_like_author_superscript_list(source_text):
+        return False
+    if _PDF_LAYOUT_CONTEXT_NOISE.search(context):
+        return False
+    if _CONTINUOUS_CONTEXT_EXCLUDE.search(context):
+        return False
+    return True
+
+
+def _valid_binary_context(source_text: str, context: str) -> bool:
+    """Reject binary raw-data matches from baseline/front-matter/prognostic-model prose."""
+    if _CONTINUOUS_TABLE_NOISE.search(source_text):
+        return False
+    if _PDF_LAYOUT_CONTEXT_NOISE.search(context):
+        return False
+    if _CONTINUOUS_CONTEXT_EXCLUDE.search(context):
+        return False
+    return True
+
+
+def _looks_like_events_pct_cells(
+    mean1: float,
+    sd1: float,
+    n1: Optional[int],
+    mean2: float,
+    sd2: float,
+    n2: Optional[int],
+) -> bool:
+    """Detect event-count (percent) cells misread as mean(SD)."""
+    if n1 is None or n2 is None:
+        return False
+    if n1 <= 0 or n2 <= 0:
+        return False
+    if not (0 <= sd1 <= 100 and 0 <= sd2 <= 100):
+        return False
+    if not (0 <= mean1 <= n1 and 0 <= mean2 <= n2):
+        return False
+    if not (abs(mean1 - round(mean1)) < 1e-6 and abs(mean2 - round(mean2)) < 1e-6):
+        return False
+    pct1 = 100.0 * mean1 / n1
+    pct2 = 100.0 * mean2 / n2
+    return abs(pct1 - sd1) <= 1.5 and abs(pct2 - sd2) <= 1.5
+
+
 def extract_continuous_two_group(text: str) -> List[RawDataExtraction]:
     """
     Extract two-group continuous data: mean(SD) pairs with sample sizes.
@@ -191,7 +298,8 @@ def extract_continuous_two_group(text: str) -> List[RawDataExtraction]:
         # the MD/SMD sign. Swap only when a control marker is unambiguously on the
         # first-mentioned arm and absent on the second (same conservative predicate).
         orient = text[max(0, line_pos - 40):line_pos + len(source_text) + 40]
-        if _first_arm_is_control(orient):
+        swapped_for_control_first = _first_arm_is_control(orient)
+        if swapped_for_control_first:
             mean1, sd1, mean2, sd2 = mean2, sd2, mean1, sd1
             if explicit_n is not None:
                 explicit_n = (explicit_n[1], explicit_n[0])
@@ -201,6 +309,8 @@ def extract_continuous_two_group(text: str) -> List[RawDataExtraction]:
             return False
 
         context = text[max(0, line_pos - 600):line_pos + len(source_text) + 250]
+        if not _valid_continuous_context(source_text, context):
+            return False
         n_matches = _extract_context_sample_sizes(context)
         arm1 = ArmData(mean=mean1, sd=sd1)
         arm2 = ArmData(mean=mean2, sd=sd2)
@@ -212,11 +322,18 @@ def extract_continuous_two_group(text: str) -> List[RawDataExtraction]:
             arm2.n = int(n2)
             confidence = with_n_conf
         elif len(n_matches) >= 2:
-            arm1.n = int(n_matches[0])
-            arm2.n = int(n_matches[1])
+            if swapped_for_control_first:
+                arm1.n = int(n_matches[1])
+                arm2.n = int(n_matches[0])
+            else:
+                arm1.n = int(n_matches[0])
+                arm2.n = int(n_matches[1])
             confidence = with_n_conf
         else:
             confidence = without_n_conf
+
+        if _looks_like_events_pct_cells(mean1, sd1, arm1.n, mean2, sd2, arm2.n):
+            return False
 
         key = (
             round(mean1, 4),
@@ -311,7 +428,8 @@ def extract_continuous_two_group(text: str) -> List[RawDataExtraction]:
         token_texts = re.findall(r'-?\d+\.?\d*', stripped)
         num_tokens = [float(x) for x in token_texts]
         structured_hit = False
-        if len(num_tokens) >= 6:
+        plausible_table_row = _plausible_continuous_table_row(stripped, num_tokens)
+        if plausible_table_row and len(num_tokens) >= 6:
             for i in range(0, len(num_tokens) - 5):
                 t = num_tokens[i:i + 6]
                 s = token_texts[i:i + 6]
@@ -371,7 +489,7 @@ def extract_continuous_two_group(text: str) -> List[RawDataExtraction]:
         # Strategy 4: split-column rows with 4-6 numeric tokens.
         # Example: "ANB 5.65 1.28 5.25 0.99"
         # Skip this fallback when an inline-N structured parse already succeeded.
-        if not structured_hit and 4 <= len(num_tokens) <= 6:
+        if plausible_table_row and not structured_hit and 4 <= len(num_tokens) <= 6:
             for i in range(0, len(num_tokens) - 3):
                 mean1, sd1, mean2, sd2 = num_tokens[i:i + 4]
 
@@ -471,18 +589,36 @@ _ARM_SPLIT = re.compile(
     r'\b(?:vs\.?|versus|compared\s+(?:to|with)|and)\b',
     re.IGNORECASE,
 )
+_INTERVENTION_MARKER = re.compile(
+    r'\b(active|experimental|intervention|interventional|treatment|treated|drug|vaccine|surgery)\b',
+    re.IGNORECASE,
+)
 
 
 def _first_arm_is_control(source_text: str) -> bool:
     """True when the FIRST-mentioned arm is unambiguously the control/comparator and
     the second is not, so the caller should swap arm1/arm2 to keep arm1 = intervention.
     Conservative by design: returns False (no swap, preserve legacy positional order)
-    whenever there is no delimiter, or both/neither side carries a control marker."""
+    whenever both/neither side carries a control marker."""
     parts = _ARM_SPLIT.split(source_text, maxsplit=1)
     if len(parts) != 2:
-        return False
+        return _header_first_arm_is_control(source_text)
     left, right = parts
     return bool(_CONTROL_MARKER.search(left)) and not bool(_CONTROL_MARKER.search(right))
+
+
+def _header_first_arm_is_control(source_text: str) -> bool:
+    """Detect table headers such as ``Control Treatment`` above raw values."""
+    for line in re.split(r'[\r\n;]+', source_text):
+        stripped = line.strip()
+        if not stripped:
+            continue
+        control = _CONTROL_MARKER.search(stripped)
+        intervention = _INTERVENTION_MARKER.search(stripped)
+        if not control or not intervention:
+            continue
+        return control.start() < intervention.start()
+    return False
 
 
 def extract_binary_two_group(text: str) -> List[RawDataExtraction]:
@@ -512,7 +648,10 @@ def extract_binary_two_group(text: str) -> List[RawDataExtraction]:
         # T1.5: keep arm1 = intervention when the control arm was named first. Arm
         # labels usually sit just OUTSIDE the numeric match span, so orientation is
         # judged on a bounded surrounding window (orientation_text) when supplied.
-        if _first_arm_is_control(orientation_text if orientation_text is not None else source_text):
+        context_for_screen = orientation_text if orientation_text is not None else source_text
+        if not _valid_binary_context(source_text, context_for_screen):
+            return
+        if _first_arm_is_control(context_for_screen):
             e1, n1, pct1, e2, n2, pct2 = e2, n2, pct2, e1, n1, pct1
         if n1 <= 0 or n2 <= 0:
             return
@@ -546,7 +685,7 @@ def extract_binary_two_group(text: str) -> List[RawDataExtraction]:
     )
     for m in vs_binary.finditer(text):
         e1, n1, e2, n2 = int(m.group(1)), int(m.group(2)), int(m.group(3)), int(m.group(4))
-        window = text[max(0, m.start() - 40):min(len(text), m.end() + 40)]
+        window = text[max(0, m.start() - 180):min(len(text), m.end() + 120)]
         _append_binary(e1, n1, e2, n2, source_text=m.group(0), confidence=0.8, orientation_text=window)
 
     # Strategy 2: "X patients (Y%) in group A and Z patients (W%) in group B"
@@ -566,16 +705,20 @@ def extract_binary_two_group(text: str) -> List[RawDataExtraction]:
         if pct1 is not None and pct2 is not None:
             n1 = round(e1 / (pct1 / 100.0))
             n2 = round(e2 / (pct2 / 100.0))
-            window = text[max(0, m.start() - 40):min(len(text), m.end() + 40)]
+            window = text[max(0, m.start() - 180):min(len(text), m.end() + 120)]
             _append_binary(e1, n1, e2, n2, source_text=m.group(0), confidence=0.7, pct1=pct1, pct2=pct2, orientation_text=window)
 
     # Strategy 3: Table rows with two events/N values (with percentage)
     for line in text.split('\n'):
+        line_pos = text.find(line)
+        if line_pos < 0:
+            line_pos = 0
+        context = text[max(0, line_pos - 250):line_pos + len(line) + 250]
         ms = list(_EVENTS_N_PCT_PATTERN.finditer(line))
         if len(ms) == 2:
             e1, n1 = int(ms[0].group(1)), int(ms[0].group(2))
             e2, n2 = int(ms[1].group(1)), int(ms[1].group(2))
-            _append_binary(e1, n1, e2, n2, source_text=line.strip(), confidence=0.6)
+            _append_binary(e1, n1, e2, n2, source_text=line.strip(), confidence=0.6, orientation_text=context)
 
     # Strategy 4: Two table-style events(percent) values where '%' may be omitted.
     for line in text.split('\n'):
@@ -636,10 +779,11 @@ def extract_binary_two_group(text: str) -> List[RawDataExtraction]:
                             confidence=0.42,
                             pct1=pct1,
                             pct2=pct2,
+                            orientation_text=context,
                         )
                 continue
 
-            _append_binary(e1, n1, e2, n2, source_text=stripped, confidence=0.45, pct1=pct1, pct2=pct2)
+            _append_binary(e1, n1, e2, n2, source_text=stripped, confidence=0.45, pct1=pct1, pct2=pct2, orientation_text=context)
 
     # Strategy 5: Two (X/N) patterns within proximity (up to 200 chars apart)
     # Common format: "treatment (92/155) ... placebo (87/164)"
@@ -659,7 +803,7 @@ def extract_binary_two_group(text: str) -> List[RawDataExtraction]:
             if e2 > n2 or n2 < 5:
                 continue
             src = text[m1.start():m2.end()]
-            _append_binary(e1, n1, e2, n2, source_text=src, confidence=0.5)
+            _append_binary(e1, n1, e2, n2, source_text=src, confidence=0.5, orientation_text=src)
 
     # Strategy 6: "X/N vs Y/N" bare format (no parens, no percentage)
     vs_bare = re.compile(
@@ -671,7 +815,8 @@ def extract_binary_two_group(text: str) -> List[RawDataExtraction]:
     for m in vs_bare.finditer(text):
         e1, n1, e2, n2 = int(m.group(1)), int(m.group(2)), int(m.group(3)), int(m.group(4))
         if e1 <= n1 and e2 <= n2 and n1 >= 5 and n2 >= 5:
-            _append_binary(e1, n1, e2, n2, source_text=m.group(0), confidence=0.7)
+            window = text[max(0, m.start() - 180):min(len(text), m.end() + 120)]
+            _append_binary(e1, n1, e2, n2, source_text=m.group(0), confidence=0.7, orientation_text=window)
 
     # Strategy 7: Two "X of Y patients/subjects" mentions in proximity.
     of_n_matches = list(_EVENTS_OF_N_PATTERN.finditer(text))
@@ -689,7 +834,7 @@ def extract_binary_two_group(text: str) -> List[RawDataExtraction]:
             if n2 < 5 or e2 > n2:
                 continue
             source = text[m1.start():m2.end()]
-            _append_binary(e1, n1, e2, n2, source_text=source, confidence=0.65)
+            _append_binary(e1, n1, e2, n2, source_text=source, confidence=0.65, orientation_text=source)
 
     # Strategy 8: Proportion rows (0.xx) with nearby group sample sizes.
     # Example: "PSA within 2 weeks 0.27 0.29 0.28 0.28 0.30 0.29"
@@ -756,6 +901,7 @@ def extract_binary_two_group(text: str) -> List[RawDataExtraction]:
                 confidence=0.28,
                 pct1=p1 * 100.0,
                 pct2=p2 * 100.0,
+                orientation_text=context,
             )
 
     # Strategy 9: Percentage-vs-percentage with nearby sample sizes.
@@ -814,6 +960,7 @@ def extract_binary_two_group(text: str) -> List[RawDataExtraction]:
             confidence=0.4,
             pct1=pct1,
             pct2=pct2,
+            orientation_text=context,
         )
 
     # Strategy 10: Table-like rows with two explicit percentages and nearby group N.
@@ -858,6 +1005,7 @@ def extract_binary_two_group(text: str) -> List[RawDataExtraction]:
             confidence=0.34,
             pct1=pct1,
             pct2=pct2,
+            orientation_text=context,
         )
 
     return results

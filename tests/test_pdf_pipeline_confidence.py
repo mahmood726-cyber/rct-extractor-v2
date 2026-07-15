@@ -127,6 +127,60 @@ def test_partial_raw_data_fallback_recovers_md_without_sample_sizes() -> None:
     assert any(e.se_method == "computed_partial" for e in computed)
 
 
+def test_partial_raw_data_fallback_rejects_model_prose(monkeypatch) -> None:
+    pipeline = PDFExtractionPipeline(
+        extract_diagnostics=False,
+        extract_tables=False,
+        run_rct_classification=False,
+        score_primary_outcomes=False,
+        include_page_audit=False,
+    )
+
+    raw_ext = SimpleNamespace(
+        data_type="continuous",
+        arm1=SimpleNamespace(mean=6.0, sd=1.0),
+        arm2=SimpleNamespace(mean=8.0, sd=1.0),
+        source_text="sponding ML models, ML models 1, 2, and 3 6.0 1.0 8.0 1.0",
+        confidence=0.25,
+        to_raw_data_dict=lambda: None,
+    )
+    monkeypatch.setattr(
+        "rct_extractor._engine.core.pdf_extraction_pipeline.extract_raw_data",
+        lambda _text: [raw_ext],
+    )
+
+    computed = pipeline._extract_computed_effects("ignored")
+
+    assert computed == []
+
+
+def test_partial_raw_data_fallback_rejects_integer_prose(monkeypatch) -> None:
+    pipeline = PDFExtractionPipeline(
+        extract_diagnostics=False,
+        extract_tables=False,
+        run_rct_classification=False,
+        score_primary_outcomes=False,
+        include_page_audit=False,
+    )
+
+    raw_ext = SimpleNamespace(
+        data_type="continuous",
+        arm1=SimpleNamespace(mean=3.0, sd=5.0),
+        arm2=SimpleNamespace(mean=6.0, sd=2.0),
+        source_text="interpretation,3 5 6 and low power of the tests.2",
+        confidence=0.25,
+        to_raw_data_dict=lambda: None,
+    )
+    monkeypatch.setattr(
+        "rct_extractor._engine.core.pdf_extraction_pipeline.extract_raw_data",
+        lambda _text: [raw_ext],
+    )
+
+    computed = pipeline._extract_computed_effects("ignored")
+
+    assert computed == []
+
+
 def test_computed_family_expansion_binary_includes_or_rr_ard() -> None:
     pipeline = PDFExtractionPipeline(
         extract_diagnostics=False,
@@ -160,3 +214,36 @@ def test_computed_family_expansion_continuous_includes_md_smd() -> None:
 
     assert EffectType.MD in types
     assert EffectType.SMD in types
+
+
+def test_lax_fallback_does_not_treat_lowercase_or_as_odds_ratio() -> None:
+    pipeline = PDFExtractionPipeline(
+        extract_diagnostics=False,
+        extract_tables=False,
+        run_rct_classification=False,
+        score_primary_outcomes=False,
+        include_page_audit=False,
+    )
+
+    text = (
+        "ML model 3 showed higher AUC than ASCVD risk score, Duke CAD score, "
+        "or ML model 1 or 2 (95% CI 0.735 to 0.926)."
+    )
+
+    assert pipeline._extract_lax_effects(text) == []
+
+
+def test_lax_fallback_keeps_spelled_out_odds_ratio() -> None:
+    pipeline = PDFExtractionPipeline(
+        extract_diagnostics=False,
+        extract_tables=False,
+        run_rct_classification=False,
+        score_primary_outcomes=False,
+        include_page_audit=False,
+    )
+
+    computed = pipeline._extract_lax_effects("The odds ratio was 2.0 (95% CI 1.1 to 3.5).")
+
+    assert computed
+    assert computed[0].effect_type == EffectType.OR
+    assert abs(computed[0].point_estimate - 2.0) < 1e-6

@@ -181,3 +181,172 @@ def test_extracts_binary_from_table_percentage_row_with_group_ns() -> None:
         or (r.arm1.events, r.arm1.n, r.arm2.events, r.arm2.n) == (22, 118, 15, 120)
         for r in binary
     )
+
+
+def test_control_first_percentage_table_header_swaps_binary_orientation() -> None:
+    text = (
+        "Control Treatment\n"
+        "(N=118) (N=120)\n"
+        "Adverse events 18.6% 12.5%"
+    )
+    results = extract_raw_data(text)
+    binary = [r for r in results if r.data_type == "binary"]
+    assert binary
+    assert any(
+        (r.arm1.events, r.arm1.n, r.arm2.events, r.arm2.n) == (15, 120, 22, 118)
+        for r in binary
+    )
+
+
+def test_control_first_mean_sd_table_header_swaps_continuous_orientation() -> None:
+    text = (
+        "Control Treatment\n"
+        "(N=20) (N=22)\n"
+        "Pain score 58.5 (18.6) 45.3 (19.9)"
+    )
+    results = extract_raw_data(text)
+    continuous = [r for r in results if r.data_type == "continuous"]
+    assert continuous
+    assert any(
+        (r.arm1.n, r.arm2.n) == (22, 20)
+        and abs((r.arm1.mean or 0.0) - 45.3) < 1e-6
+        and abs((r.arm2.mean or 0.0) - 58.5) < 1e-6
+        for r in continuous
+    )
+
+
+def test_long_front_matter_is_not_treated_as_continuous_table_row() -> None:
+    text = (
+        "Donghee Han, MD; Kranthi K. Kolli, PhD; Subhi J. Al'Aref, MD; "
+        "Lohendran Baskaran, MD; Alexander R. van Rosendael, MD; Heidi Gransar, MSc; "
+        "Background--Rapid coronary plaque progression was studied in 1083 patients. "
+        "Correspondence to: Hyuk-Jae Chang, MD, PhD, Yonsei University Health System, "
+        "50 Yonsei-ro, Seoul 03722, South Korea. Received July 18, 2019; accepted "
+        "December 20, 2019. DOI: 10.1161/JAHA.119.013958."
+    )
+
+    results = extract_raw_data(text)
+    continuous = [r for r in results if r.data_type == "continuous" and r.to_raw_data_dict()]
+
+    assert continuous == []
+
+
+def test_author_superscripts_are_not_treated_as_continuous_table_rows() -> None:
+    text = (
+        "Erica Maffei22, Hugo Marques23, Ivana Dacic24, Luca Rossi25 "
+        "3711.88 2.0 5.0 7.0"
+    )
+
+    results = extract_raw_data(text)
+    continuous = [r for r in results if r.data_type == "continuous" and r.to_raw_data_dict()]
+
+    assert continuous == []
+
+
+def test_citation_count_prose_is_not_treated_as_continuous_table_row() -> None:
+    text = (
+        "listed diagnosis and from 787,750 to 2,283,673 for any AF diagnosis "
+        "[20]. Other studies"
+    )
+
+    results = extract_raw_data(text)
+    continuous = [r for r in results if r.data_type == "continuous" and r.to_raw_data_dict()]
+
+    assert continuous == []
+
+
+def test_gene_locus_citation_chain_is_not_treated_as_continuous_table_row() -> None:
+    text = (
+        "4q25, 1q21 and 16q22.14.15.28 Interestingly, these loci not only "
+        "represent risk factors for the"
+    )
+
+    results = extract_raw_data(text)
+    continuous = [r for r in results if r.data_type == "continuous" and r.to_raw_data_dict()]
+
+    assert continuous == []
+
+
+def test_baseline_characteristics_are_not_computed_as_continuous_effects() -> None:
+    text = (
+        "Table 1. Baseline Characteristics Control group Treatment group "
+        "Age, mean (SD), years 60.0 (9.4) 60.0 (8.5) 0.977 "
+        "Male sex, no. (%) 443 (58) 181 (56) 0.705"
+    )
+
+    results = extract_raw_data(text)
+    continuous = [r for r in results if r.data_type == "continuous" and r.to_raw_data_dict()]
+
+    assert continuous == []
+
+
+def test_percentage_count_rows_are_not_computed_as_continuous_effects() -> None:
+    text = "Procedure success was observed in 87.5% (35/40) and 81.7% (152/186) in Wave I and Wave II."
+
+    results = extract_raw_data(text)
+    continuous = [r for r in results if r.data_type == "continuous" and r.to_raw_data_dict()]
+
+    assert continuous == []
+
+
+def test_event_percentage_cells_are_not_computed_as_mean_sd() -> None:
+    text = (
+        "Wave I Wave II\n"
+        "(N=40) (N=186)\n"
+        "General anesthesia 34 (85.0) 132 (71.0)\n"
+        "Conscious sedation 6 (15.0) 54 (29.0)"
+    )
+
+    results = extract_raw_data(text)
+    continuous = [r for r in results if r.data_type == "continuous" and r.to_raw_data_dict()]
+
+    assert continuous == []
+
+
+def test_baseline_characteristics_are_not_computed_as_binary_effects() -> None:
+    text = (
+        "Author Manuscript Table 1. Baseline Characteristics Control group (N=16) "
+        "Exercise group (N=30) Male sex 9 (56) 15 (50) Hypertension 11 (69) 21 (70)"
+    )
+
+    results = extract_raw_data(text)
+    binary = [r for r in results if r.data_type == "binary" and r.to_raw_data_dict()]
+
+    assert binary == []
+
+
+def test_front_matter_affiliations_are_not_computed_as_binary_effects() -> None:
+    text = (
+        "Michinari Hieda, MD, PhD1.2.3, Satyam Sarma, MD1.2, "
+        "Christopher Hearon Jr., PhD1.2, University Hospital 30 patients were screened."
+    )
+
+    results = extract_raw_data(text)
+    binary = [r for r in results if r.data_type == "binary" and r.to_raw_data_dict()]
+
+    assert binary == []
+
+
+def test_reference_list_numeric_citations_are_not_binary_effects() -> None:
+    text = (
+        "References. George H. John, Pat Langley: Estimating Continuous Distributions "
+        "in Bayesian Classifiers. In: Eleventh Conference on Uncertainty in Artificial "
+        "Intelligence, 24/1200 and 13/433."
+    )
+
+    results = extract_raw_data(text)
+    binary = [r for r in results if r.data_type == "binary" and r.to_raw_data_dict()]
+
+    assert binary == []
+
+
+def test_protocol_footer_numeric_pairs_are_not_binary_effects() -> None:
+    text = (
+        "CABANA Confidential 22 November, 2013 Page 61 of 78 Catheter Ablation "
+        "Versus Antiarrhythmic Drug Therapy protocol 9/61 and 22/78"
+    )
+
+    results = extract_raw_data(text)
+    binary = [r for r in results if r.data_type == "binary" and r.to_raw_data_dict()]
+
+    assert binary == []

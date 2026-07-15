@@ -44,8 +44,7 @@ def main():
                 "doi": ids.get("doi"), "title": m.get("title"), "journal": m.get("journal"),
                 "year": m.get("year"), "abstract": m.get("abstract"), "has_pdf": bool(ids.get("pmcid"))}
     with OUT_FILE.open("w", encoding="utf-8") as f:
-        for r in records.values(): f.write(json.dumps(r, ensure_ascii=False) + "
-")
+        for r in records.values(): f.write(json.dumps(r, ensure_ascii=False) + "\n")
     print(f"WROTE {len(records)} records -> {OUT_FILE}")
 if __name__ == "__main__":
     main()

@@ -86,6 +86,67 @@ except ImportError:
 logger = logging.getLogger(__name__)
 
 
+_PARTIAL_CONTINUOUS_NOISE = re.compile(
+    r"\b(?:doi|correspond(?:ence|ing)?|received|accepted|published|authors?|"
+    r"affiliations?|department|university|hospital|references?|conference|"
+    r"proceedings|bayesian|classifier|machine\s+learning|ML\s+models?|models?\s+\d|"
+    r"author\s+manuscript|license|creative\s+commons|copyright|"
+    r"MD|PhD|MSc|MPH|FACC)\b",
+    re.IGNORECASE,
+)
+_PARTIAL_CONTINUOUS_OUTCOME_HINT = re.compile(
+    r"\b(?:mean|sd|standard\s+deviation|standard\s+error|sem|score|scale|"
+    r"change|endpoint|outcome|improved?|worse|pain|function)\b|\+/-",
+    re.IGNORECASE,
+)
+_PARTIAL_CONTINUOUS_COMPARISON_HINT = re.compile(
+    r"\b(?:vs\.?|versus|compared|group|arm|control|placebo|treatment|"
+    r"intervention|standard\s+care|usual\s+care|routine\s+care)\b",
+    re.IGNORECASE,
+)
+_PARTIAL_AUTHOR_SUPERSCRIPT_NAME = re.compile(
+    r"\b[A-Z][A-Za-z'-]+(?:\s+[A-Z]\.)?(?:\s+[A-Z][A-Za-z'-]+)+\d{1,2}\b"
+)
+
+
+def _looks_like_partial_author_list(source_text: str) -> bool:
+    if "," not in source_text:
+        return False
+    return len(_PARTIAL_AUTHOR_SUPERSCRIPT_NAME.findall(source_text)) >= 2
+
+
+def _allow_partial_continuous_effect(raw_ext) -> bool:
+    """Keep point-only MD fallback for outcome text, not PDF prose/front matter."""
+    source_text = re.sub(r"\s+", " ", getattr(raw_ext, "source_text", "") or "").strip()
+    if not source_text:
+        return False
+    if _PARTIAL_CONTINUOUS_NOISE.search(source_text):
+        return False
+    if _looks_like_partial_author_list(source_text):
+        return False
+
+    numeric_tokens = re.findall(r"-?\d+(?:\.\d+)?", source_text)
+    if len(numeric_tokens) < 4 or len(numeric_tokens) > 8:
+        return False
+
+    has_outcome_hint = bool(_PARTIAL_CONTINUOUS_OUTCOME_HINT.search(source_text))
+    has_comparison_hint = bool(_PARTIAL_CONTINUOUS_COMPARISON_HINT.search(source_text))
+    if has_outcome_hint and has_comparison_hint:
+        return True
+
+    # Compact numeric table rows are still useful, but only when they look like
+    # one row rather than sentence-like prose.
+    if len(source_text) <= 120 and 4 <= len(numeric_tokens) <= 6:
+        decimal_count = sum(1 for token in numeric_tokens if "." in token)
+        punctuation_count = len(re.findall(r"[.;:]", source_text))
+        alpha_count = len(re.findall(r"[A-Za-z]", source_text))
+        prose_marker = re.search(r"\b(?:and|of|the|from|for|with|between|interpretation|tests?|power)\b", source_text, re.IGNORECASE)
+        if decimal_count >= 2 and punctuation_count <= 1 and alpha_count <= 50 and not prose_marker:
+            return True
+
+    return False
+
+
 @dataclass
 class PDFExtractionResult:
     """Complete extraction result from a PDF file"""
@@ -573,7 +634,11 @@ class PDFExtractionPipeline:
                 if raw_ext.data_type == "continuous":
                     mean1 = getattr(raw_ext.arm1, "mean", None)
                     mean2 = getattr(raw_ext.arm2, "mean", None)
-                    if mean1 is not None and mean2 is not None:
+                    if (
+                        mean1 is not None
+                        and mean2 is not None
+                        and _allow_partial_continuous_effect(raw_ext)
+                    ):
                         try:
                             md_value = float(mean1) - float(mean2)
                         except (TypeError, ValueError):
@@ -668,7 +733,9 @@ class PDFExtractionPipeline:
             re.IGNORECASE,
         )
         noise_pattern = re.compile(
-            r'\b(?:doi|pmid|isbn|nct\d{8}|vol\.?\s*\d{1,3}|;\s*\d+\(\d+\):\d+)\b',
+            r'\b(?:doi|pmid|isbn|nct\d{8}|vol\.?\s*\d{1,3}|;\s*\d+\(\d+\):\d+|'
+            r'auc|machine\s+learning|ML\s+models?|models?\s+\d|risk\s+score|'
+            r'CAD\s+score|classifier|prediction\s+model)\b',
             re.IGNORECASE,
         )
 
@@ -676,7 +743,7 @@ class PDFExtractionPipeline:
         seen = set()
 
         for effect_name, pattern, bounds in label_patterns:
-            for match in re.finditer(pattern, text, re.IGNORECASE):
+            for match in re.finditer(pattern, text):
                 try:
                     value = float(match.group(1))
                 except (TypeError, ValueError):
