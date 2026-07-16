@@ -487,6 +487,31 @@ def extract(
     if with_arm_level and spec in SPECIALTIES:
         out["arm_level"] = _arm_module(spec).extract_arm_level(text)
 
+    # Merge BINARY 2x2 cells recovered from result-table STRUCTURE. Without this the
+    # `tables_xml` route reached the continuous reader ONLY, so a canonical malaria/TB
+    # primary reported as "147/150 (98.0%)" vs "131/148 (88.5%)" in a results table
+    # returned ZERO effects -- the prose binary readers exist but do not fire on
+    # flattened table rows. Runs AFTER the arm_level assignment above so it cannot be
+    # overwritten, and independently of `spec`: a table's 2x2 is readable from its own
+    # structure whether or not the specialty ships a prose arm extractor.
+    #
+    # Extraction only -- these are arm-level proportions with provenance, NOT paired
+    # 2x2s and NOT a primary-outcome pick. Each cell has passed a printed-percentage
+    # checksum against a header-declared N, so a wrong denominator fails closed rather
+    # than emitting a confident wrong cell.
+    if with_arm_level and tables_xml:
+        from rct_extractor._engine.core.binary_table_extractor import (
+            extract_arm_proportions_from_xml,
+        )
+        tbl_props = extract_arm_proportions_from_xml(tables_xml)
+        if tbl_props:
+            if not isinstance(out.get("arm_level"), dict):
+                out["arm_level"] = {"proportions": [], "tables_2x2": [],
+                                    "poolable_2x2": [], "continuous": []}
+            out["arm_level"]["proportions"] = (
+                list(out["arm_level"].get("proportions") or []) + tbl_props
+            )
+
     if with_diagnostic:
         # Diagnostic-accuracy / prediction studies report Se/Sp/AUC etc., not a
         # comparative HR/OR/RR/MD. Surfacing them here means such a study is handled
