@@ -487,30 +487,37 @@ def extract(
     if with_arm_level and spec in SPECIALTIES:
         out["arm_level"] = _arm_module(spec).extract_arm_level(text)
 
-    # Merge BINARY 2x2 cells recovered from result-table STRUCTURE. Without this the
-    # `tables_xml` route reached the continuous reader ONLY, so a canonical malaria/TB
-    # primary reported as "147/150 (98.0%)" vs "131/148 (88.5%)" in a results table
-    # returned ZERO effects -- the prose binary readers exist but do not fire on
-    # flattened table rows. Runs AFTER the arm_level assignment above so it cannot be
-    # overwritten, and independently of `spec`: a table's 2x2 is readable from its own
-    # structure whether or not the specialty ships a prose arm extractor.
+    # BINARY 2x2 table cells: reader available, DELIBERATELY NOT WIRED.
     #
-    # Extraction only -- these are arm-level proportions with provenance, NOT paired
-    # 2x2s and NOT a primary-outcome pick. Each cell has passed a printed-percentage
-    # checksum against a header-declared N, so a wrong denominator fails closed rather
-    # than emitting a confident wrong cell.
-    if with_arm_level and tables_xml:
-        from rct_extractor._engine.core.binary_table_extractor import (
-            extract_arm_proportions_from_xml,
-        )
-        tbl_props = extract_arm_proportions_from_xml(tables_xml)
-        if tbl_props:
-            if not isinstance(out.get("arm_level"), dict):
-                out["arm_level"] = {"proportions": [], "tables_2x2": [],
-                                    "poolable_2x2": [], "continuous": []}
-            out["arm_level"]["proportions"] = (
-                list(out["arm_level"].get("proportions") or []) + tbl_props
-            )
+    # rct_extractor._engine.core.binary_table_extractor.extract_2x2 recovers all four
+    # cells from a canonical malaria results table that this route returns 0 for, and
+    # it looks compelling on a single table. It is NOT wired here, and the reason is
+    # measured, not stylistic:
+    #
+    #   Hand-classified, every cell individually, n=425 across 20 real JATS tables
+    #   (oa-reachability/HEADTOHEAD.md, gate_precision.jsonl):
+    #     fabrication rate   200/425 = 47.1% [42.4, 51.8]
+    #                        nested headers 70.9% | flat headers 29.7%
+    #     confidence field   {"high": 425} -- ALL 425, including all 200 fabrications
+    #
+    # The failures are not arithmetic: every emitted cell passes its printed-percentage
+    # checksum. They are SEMANTIC -- the reader answers "which column?" correctly but
+    # cannot answer "IS this column a trial arm?". It has emitted pregnancy ordinals
+    # ("First (n=837) / Second / Third") and baseline-characteristics columns as arms.
+    # A wrong arm inverts the effect direction, which is worse than no extraction.
+    #
+    # Because the confidence field has NO gradient, there is no reject option and no
+    # coverage at which this can be operated safely -- you cannot filter what you
+    # cannot rank. Wiring it would let a 47% fabrication rate into every consumer,
+    # to buy +3 net rung-7 rescues (measured 2026-07-16).
+    #
+    # TO WIRE THIS, one of these must first be true, and be measured:
+    #   (a) an admission test that decides whether a column is a trial arm and whether
+    #       a table is an outcome table -- the semantic judgment now missing; or
+    #   (b) a real confidence gradient, validated against hand-verified gold, that
+    #       supports a reject option with a measured risk-coverage curve.
+    # Until then this stays unwired ON PURPOSE. It is not an oversight; see
+    # tests/test_binary_table_extractor.py::test_binary_reader_is_not_wired_into_production.
 
     if with_diagnostic:
         # Diagnostic-accuracy / prediction studies report Se/Sp/AUC etc., not a

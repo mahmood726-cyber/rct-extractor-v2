@@ -28,7 +28,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from rct_extractor._engine.core.binary_table_extractor import extract_2x2
+from rct_extractor._engine.core.binary_table_extractor import extract_2x2, _pct_ok
 
 
 def _wrap(rows_xml: str, caption: str = "Table 2 Adverse events") -> str:
@@ -177,17 +177,28 @@ def test_D3_multirow_nested_header_arm_assignment():
     assert by_arm["Part 2 / TTP399 (n = 40)"] == 40
 
 
-# --- ADDED ON PORT: the WIRING gate -----------------------------------------
-# Every test above exercises extract_2x2 directly. That is exactly how this reader
-# came to be fully working, fully tested, and NOT CALLED BY ANYTHING: its tests
-# passed in a scratch directory while production routed table XML to a reader that
-# could not read binary at all. A test that drives only the function it fixes cannot
-# see that. These drive rct_extractor.api.extract -- the production entrypoint.
+# --- ADDED ON PORT: the NON-WIRING gate --------------------------------------
+# This reader is NOT wired into rct_extractor.api.extract, and that is a DECISION
+# with evidence behind it, not an oversight. Hand-classified, every cell, n=425
+# across 20 real JATS tables (oa-reachability/HEADTOHEAD.md, gate_precision.jsonl):
+#
+#     fabrication rate  200/425 = 47.1% [42.4, 51.8]   nested 70.9% | flat 29.7%
+#     confidence field  {"high": 425}  -- including all 200 fabrications
+#
+# Every emitted cell passes its printed-percentage checksum, so the arithmetic is
+# right and the ARM IDENTITY is invented: the reader has emitted pregnancy ordinals
+# ("First (n=837) / Second / Third") and baseline columns as trial arms. A wrong arm
+# inverts the effect direction. With no confidence gradient there is no reject
+# option, so there is no coverage at which it can be operated safely.
+#
+# Wiring it would have bought +3 net rung-7 rescues (measured 2026-07-16) at the
+# price of a 47% fabrication rate reaching every consumer.
+#
+# The test below exists because "port a working module" and "wire it in" look
+# identical from outside, and the difference here is the whole safety argument.
 
 from rct_extractor.api import extract  # noqa: E402
 
-# The canonical malaria primary the cross-vendor attack showed api.py returning 0 for:
-# PCR-adjusted ACPR day 28, DHA-PPQ 147/150 (98.0%) vs AL 131/148 (88.5%).
 MALARIA_TABLE = """<article><table-wrap><label>Table 2</label>
 <caption><p>Efficacy outcomes at day 28</p></caption><table>
  <thead><tr><th>Outcome</th><th>DHA-PPQ (N=150)</th><th>AL (N=148)</th></tr></thead>
@@ -198,54 +209,43 @@ MALARIA_TABLE = """<article><table-wrap><label>Table 2</label>
 MALARIA_TEXT = "Children with uncomplicated falciparum malaria were randomised to DHA-PPQ or AL."
 
 
-def _table_props(res):
+def test_the_reader_itself_still_works_on_the_table_api_returns_zero_for():
+    """The capability is real -- that was never the question. Keep it measured so a
+    future admission test has a known-good baseline to build on."""
+    cells = extract_2x2(MALARIA_TABLE, "PMCTEST")
+    got = {(c.outcome, c.arm.split(" (")[0], c.events, c.total) for c in cells}
+    assert ("PCR-adjusted ACPR day 28", "DHA-PPQ", 147, 150) in got
+    assert ("Treatment failure", "AL", 17, 148) in got      # N from the column header
+
+
+def test_binary_reader_is_not_wired_into_production():
+    """THE NON-WIRING GATE. If this fails, someone wired a reader with a measured
+    47.1% fabrication rate and no reject option into every consumer of extract().
+
+    Do not delete this test to make a wiring pass. Wiring requires FIRST either
+    (a) an admission test that decides whether a column is a trial arm and whether
+    a table is an outcome table, or (b) a validated confidence gradient supporting a
+    reject option -- and a re-measured fabrication rate to go with it.
+    """
+    res = extract(MALARIA_TEXT, tables_xml=MALARIA_TABLE)
     props = (res.get("arm_level") or {}).get("proportions") or []
-    return [p for p in props if p.get("source") == "jats_table_2x2"]
+    assert not [p for p in props if p.get("source") == "jats_table_2x2"], (
+        "binary_table_extractor is now reaching production output. See "
+        "oa-reachability/HEADTOHEAD.md: 200/425 cells fabricated at confidence='high'."
+    )
 
 
-def test_production_extract_recovers_the_binary_table():
-    """THE WIRING GATE. Before this, production returned 0 effects for this table."""
-    cells = _table_props(extract(MALARIA_TEXT, tables_xml=MALARIA_TABLE))
-    assert len(cells) == 4, f"production recovered {len(cells)}/4 cells"
-    got = {(c["endpoint"], c["events"], c["total"]) for c in cells}
-    assert ("PCR-adjusted ACPR day 28", 147, 150) in got
-    assert ("PCR-adjusted ACPR day 28", 131, 148) in got
-    assert ("Treatment failure", 3, 150) in got      # N read from the column header
-    assert ("Treatment failure", 17, 148) in got
-
-
-def test_production_rescue_route_now_fires_on_arms():
-    """rung7 counts a rescue when >=2 arm proportions carry events AND total. That
-    route got 0/98 rescues because binary tables never reached it."""
-    props = (extract(MALARIA_TEXT, tables_xml=MALARIA_TABLE).get("arm_level") or {}).get("proportions") or []
-    good = len([z for z in props if z.get("events") is not None and z.get("total")])
-    assert good >= 2
-
-
-def test_production_without_tables_recovers_nothing_from_tables():
-    """Control: the recovery is attributable to the table route, not the prose."""
-    assert _table_props(extract(MALARIA_TEXT)) == []
-
-
-def test_production_wiring_mutation_goes_red(monkeypatch):
-    """Mutation-test the CALLER: unwire the reader and production must lose the cells.
-    If this passes, api.py is no longer calling the reader."""
-    from rct_extractor._engine.core import binary_table_extractor as B
-    monkeypatch.setattr(B, "extract_from_fulltext", lambda xml, pmcid="": [])
-    assert _table_props(extract(MALARIA_TEXT, tables_xml=MALARIA_TABLE)) == [], \
-        "MUTATION DID NOT BITE -- production is not calling the binary reader"
-
-
-def test_production_does_not_fabricate_from_a_baseline_table():
-    """The gates must survive the port: a baseline table yields no outcome cells."""
-    baseline = MALARIA_TABLE.replace("Efficacy outcomes at day 28",
-                                     "Baseline characteristics of enrolled participants")
-    assert _table_props(extract(MALARIA_TEXT, tables_xml=baseline)) == []
-
-
-def test_production_refuses_a_wrong_denominator():
-    """G1 end-to-end: a printed pct that the header N cannot reproduce is dropped,
-    rather than emitted as a confident wrong cell."""
-    bad = MALARIA_TABLE.replace("<td>3 (2.0)</td>", "<td>9 (32.1)</td>")   # 9/150 = 6.0%, not 32.1%
-    cells = _table_props(extract(MALARIA_TEXT, tables_xml=bad))
-    assert not any(c["events"] == 9 for c in cells)
+def test_the_fabrication_class_the_gates_cannot_catch():
+    """Why an arithmetic checksum is not enough: this table's numbers are all real and
+    all internally consistent. The columns are simply not trial arms. The reader
+    cannot tell -- which is exactly what an admission test would have to decide."""
+    not_arms = """<table-wrap><caption><p>Outcomes by pregnancy order</p></caption><table>
+     <thead><tr><th>Outcome</th><th>First (N=837)</th><th>Second (N=421)</th></tr></thead>
+     <tbody><tr><td>Low birth weight</td><td>84 (10.0)</td><td>42 (10.0)</td></tr></tbody>
+    </table></table-wrap>"""
+    cells = extract_2x2(not_arms, "PMC8516506")
+    for c in cells:
+        ok, calc = _pct_ok(c.events, c.total, c.pct_printed)
+        assert ok, "the arithmetic is RIGHT -- that is the point"
+    # Documented, not asserted as safe: the reader treats pregnancy ordinals as arms.
+    assert all("First" in c.arm or "Second" in c.arm for c in cells) or cells == []
