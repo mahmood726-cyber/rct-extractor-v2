@@ -497,6 +497,15 @@ from .ophthalmology import (
     normalize_ophthalmology_endpoint
 )
 
+from .substance_use_disorder import (
+    SUBSTANCE_USE_DISORDER_ENDPOINTS,
+    OPIOID_PATTERNS as SUD_OPIOID_PATTERNS,
+    STIMULANT_PATTERNS as SUD_STIMULANT_PATTERNS,
+    GENERAL_PATTERNS as SUD_GENERAL_PATTERNS,
+    detect_substance_use_disorder_subspecialty,
+    normalize_substance_use_disorder_endpoint
+)
+
 from .oesophageal_cancer import (
     OESOPHAGEAL_CANCER_ENDPOINTS,
     DEFINITIVE_PATTERNS as OE_DEFINITIVE_PATTERNS,
@@ -1549,6 +1558,17 @@ SPECIALTY_REGISTRY = {
             'dry_eye': OPHTH_DRY_EYE_PATTERNS
         }
     },
+    'substance_use_disorder': {
+        'subspecialties': ['opioid', 'stimulant', 'general'],
+        'detection_function': detect_substance_use_disorder_subspecialty,
+        'normalizer': normalize_substance_use_disorder_endpoint,
+        'endpoints': SUBSTANCE_USE_DISORDER_ENDPOINTS,
+        'patterns': {
+            'opioid': SUD_OPIOID_PATTERNS,
+            'stimulant': SUD_STIMULANT_PATTERNS,
+            'general': SUD_GENERAL_PATTERNS
+        }
+    },
     'cirrhosis': {
         'subspecialties': ['portal_hypertension', 'decompensation', 'encephalopathy', 'progression'],
         'detection_function': detect_cirrhosis_subspecialty,
@@ -2491,6 +2511,16 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
             r'corneal\s+(?:fluorescein\s+)?staining', r'schirmer', r'\bocular\b', r'\bcorneal?\b',
             r'cyclosporine|lifitegrast|varenicline\s+nasal'
         ],
+        'substance_use_disorder': [
+            r'opioid\s+use\s+disorder|\boud\b', r'substance\s+use\s+disorder|\bsud\b',
+            r'opioid\s+dependence', r'cocaine\s+use\s+disorder',
+            r'methamphetamine\s+use\s+disorder', r'cannabis\s+use\s+disorder',
+            r'medications?\s+for\s+opioid\s+use\s+disorder|\bmoud\b',
+            r'buprenorphine[- ]naloxone|buprenorphine|methadone',
+            r'opioid[- ]negative\s+urine|urine\s+drug\s+(?:screen|test)',
+            r'opioid\s+withdrawal|\bcows\b|\bsows\b', r'treatment\s+retention',
+            r'contingency\s+management', r'overdose'
+        ],
         'respiratory': [
             r'chronic\s+obstructive\s+pulmonary\s+disease', r'\bcopd\b', r'\baecopd\b',
             r'\basthma\b', r'asthmatic', r'pulmonary\s+fibrosis', r'\bipf\b',
@@ -2720,6 +2750,9 @@ def detect_specialty(text: str) -> Tuple[str, str, float]:
         confidence = max(confidence, conf)
     elif best_specialty == 'ophthalmology':
         subspecialty, conf = detect_ophthalmology_subspecialty(text)
+        confidence = max(confidence, conf)
+    elif best_specialty == 'substance_use_disorder':
+        subspecialty, conf = detect_substance_use_disorder_subspecialty(text)
         confidence = max(confidence, conf)
     elif best_specialty == 'dyslipidaemia':
         subspecialty, conf = detect_dyslipidaemia_subspecialty(text)

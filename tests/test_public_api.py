@@ -24,7 +24,7 @@ EXPECTED_SPECIALTIES = {
     "gestational_diabetes",
     "diabetes", "respiratory", "cardiology", "oncology", "stroke",
     "nephrology", "psychiatry", "rheumatology", "gastroenterology",
-    "dermatology", "ophthalmology",
+    "dermatology", "ophthalmology", "substance_use_disorder",
     # oncology cluster (12)
     "oesophageal_cancer", "prostate_cancer", "ovarian_cancer", "pancreatic_cancer",
     "gastric_cancer", "hepatocellular_carcinoma", "melanoma", "leukaemia",

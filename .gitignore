@@ -449,3 +449,10 @@ data/field_portability/wound_healing/rct_trial_pdfs/
 data/field_portability/wound_healing/*.jsonl
 data/field_portability/wound_healing/*.json
 data/field_portability/wound_healing/*.log
+# Substance-use-disorder field bundle — large/transient data
+data/field_portability/substance_use_disorder/rct_trial_pdfs/
+data/field_portability/substance_use_disorder/*.jsonl
+data/field_portability/substance_use_disorder/*.json
+data/field_portability/substance_use_disorder/*.log
+data/pdf_eval/gold_substance_use_disorder.jsonl
+data/pdf_eval/eval_substance_use_disorder.json
