@@ -18,12 +18,16 @@ Config schema (meta-starter-kit/schema.json): {title, effect_measure in
 OR/HR/RR/MD/SMD/RD, trials:[{name, nct?, pmid?, year?, (tE,tN,cE,cN) | (effect,ci_low,ci_high)}]}
 """
 from __future__ import annotations
+import math
 from typing import List, Dict, Optional, Any
 
 # meta-starter-kit's supported effect measures (IRR/GMR/NNT/EFFICACY_PCT/RRR are
 # not in the kit enum and are mapped/ skipped explicitly).
 METAKIT_MEASURES = {"OR", "HR", "RR", "MD", "SMD", "RD"}
 _RATIO_MEASURES = {"OR", "HR", "RR"}
+# End-of-follow-up 2x2 event counts identify OR/RR, but cannot identify a
+# time-to-event hazard ratio (which requires event times/censoring information).
+_COUNT_MEASURES = {"OR", "RR"}
 _TYPE_TO_MEASURE = {"OR": "OR", "HR": "HR", "RR": "RR", "MD": "MD",
                     "SMD": "SMD", "ARD": "RD", "RD": "RD"}
 
@@ -46,11 +50,29 @@ def effect_trial(name: str, effect: float, ci_low: float, ci_high: float,
             "effect": float(effect), "ci_low": float(ci_low), "ci_high": float(ci_high)}
 
 
+def _validated_binary_counts(name: str, row: Dict[str, Any]) -> Dict[str, int]:
+    """Refuse impossible or silently truncated arm-level event counts."""
+    counts = {}
+    for field in ("tE", "tN", "cE", "cN"):
+        raw = row[field]
+        try:
+            value = float(raw)
+        except (TypeError, ValueError, OverflowError):
+            raise ValueError(f"trial {name!r}: {field} must be a finite non-negative integer") from None
+        if isinstance(raw, bool) or not math.isfinite(value) or value < 0 or not value.is_integer():
+            raise ValueError(f"trial {name!r}: {field} must be a finite non-negative integer")
+        counts[field] = int(value)
+    if (counts["tN"] == 0 or counts["cN"] == 0
+            or counts["tE"] > counts["tN"] or counts["cE"] > counts["cN"]):
+        raise ValueError(f"trial {name!r}: impossible 2x2 counts (events exceed arm size or total is zero)")
+    return counts
+
+
 def binary_trial(name: str, tE: int, tN: int, cE: int, cN: int,
                  nct=None, pmid=None, year=None) -> Dict[str, Any]:
-    """A 2x2 (events/total per arm) trial row."""
-    return {"name": name, **_meta_fields(nct, pmid, year),
-            "tE": int(tE), "tN": int(tN), "cE": int(cE), "cN": int(cN)}
+    """A validated 2x2 (events/total per arm) trial row."""
+    counts = _validated_binary_counts(name, {"tE": tE, "tN": tN, "cE": cE, "cN": cN})
+    return {"name": name, **_meta_fields(nct, pmid, year), **counts}
 
 
 def table2x2_to_trial(table: Dict, name: str, **meta) -> Dict[str, Any]:
@@ -67,6 +89,21 @@ def effect_dict_to_trial(e: Dict, name: str, **meta) -> Optional[Dict[str, Any]]
     return effect_trial(name, e["effect_size"], e["ci_lower"], e["ci_upper"], **meta)
 
 
+def _validated_effect_fields(name: str, row: Dict[str, Any], measure: str) -> Dict[str, float]:
+    """Validate the values the downstream pooling engine treats as effect plus CI."""
+    try:
+        effect, low, high = (float(row[key]) for key in ("effect", "ci_low", "ci_high"))
+    except (TypeError, ValueError, OverflowError, KeyError):
+        raise ValueError(f"trial {name!r}: effect and CI must be numeric") from None
+    if not all(math.isfinite(v) for v in (effect, low, high)):
+        raise ValueError(f"trial {name!r}: effect and CI must be finite")
+    if not low <= effect <= high:
+        raise ValueError(f"trial {name!r}: effect must lie inside ordered CI bounds")
+    if measure in _RATIO_MEASURES and low <= 0:
+        raise ValueError(f"trial {name!r}: {measure} effect and CI must be positive")
+    return {"effect": effect, "ci_low": low, "ci_high": high}
+
+
 def make_config(title: str, effect_measure: str, trials: List[Dict],
                 intervention="", comparator="", condition="", outcome="",
                 authors="") -> Dict[str, Any]:
@@ -81,8 +118,26 @@ def make_config(title: str, effect_measure: str, trials: List[Dict],
             continue
         has_2x2 = all(k in t for k in ("tE", "tN", "cE", "cN"))
         has_eff = all(k in t for k in ("effect", "ci_low", "ci_high"))
-        if has_2x2 and (em not in _RATIO_MEASURES):
-            continue   # counts only make sense for ratio measures in the kit
+        if has_2x2:
+            if em not in _COUNT_MEASURES:
+                if not has_eff:
+                    if em == "HR":
+                        raise ValueError(
+                            f"trial {t['name']!r}: an HR cannot be derived from 2x2 event counts"
+                        )
+                    continue  # no usable estimate for this effect measure
+                # Mixed records must not let the consumer choose an incompatible
+                # count-based estimate over a precomputed HR/MD/SMD/RD.
+                t = {k: v for k, v in t.items() if k not in ("tE", "tN", "cE", "cN")}
+                has_2x2 = False
+            else:
+                t = {**t, **_validated_binary_counts(str(t["name"]), t)}
+                if has_eff:
+                    # A single trial must have one unambiguous effect representation.
+                    t = {k: v for k, v in t.items() if k not in ("effect", "ci_low", "ci_high")}
+                    has_eff = False
+        if has_eff:
+            t = {**t, **_validated_effect_fields(str(t["name"]), t, em)}
         if has_2x2 or has_eff:
             good.append(t)
     if len(good) < 2:
@@ -130,6 +185,13 @@ def _effects_for(specialty: str, extractor, text: str) -> List[Dict]:
     return [to_dict(x) for x in extractor.extract(text)]
 
 
+def _same_endpoint(actual: Any, requested: Optional[str]) -> bool:
+    """Explicit outcome requests must never fall back to another endpoint."""
+    return requested is None or (
+        isinstance(actual, str) and actual.strip().casefold() == requested.strip().casefold()
+    )
+
+
 def build_config_from_records(records: List[Dict], extractor, *, title: str,
                               effect_measure: str, endpoint: Optional[str] = None,
                               prefer_2x2: bool = True,
@@ -137,8 +199,8 @@ def build_config_from_records(records: List[Dict], extractor, *, title: str,
     """Topic-routed: build a config from a list of trial records.
 
     records: [{name, text, nct?, pmid?, year?}]. For each record, pick the effect
-    that matches `effect_measure` (and `endpoint`, if given). For a ratio measure,
-    prefer a poolable 2x2 (raw counts) over a precomputed ratio.
+    that matches `effect_measure` (and `endpoint`, if given). Only for OR/RR,
+    prefer poolable 2x2 counts; an HR requires a reported time-to-event estimate.
 
     topics: if given (e.g. ['malaria','cardiology']), only records whose
     auto-detected specialty is in the list are processed -- the extractor engages
@@ -163,19 +225,19 @@ def build_config_from_records(records: List[Dict], extractor, *, title: str,
         if want is not None and spec not in want:
             continue   # auto-detect: only engage for the requested topics
         row = None
-        # ratio measure -> prefer raw 2x2 from this specialty's arm-level extractor
-        if prefer_2x2 and em in _RATIO_MEASURES:
+        # OR/RR only: event counts cannot identify a time-to-event hazard ratio.
+        if prefer_2x2 and em in _COUNT_MEASURES:
             arm = _arm_extractor_for(spec)
             if arm is not None:
                 tables = arm(text).get("poolable_2x2", [])
-                if endpoint:
-                    tables = [t for t in tables if t["endpoint"] == endpoint] or tables
+                if endpoint is not None:
+                    tables = [t for t in tables if _same_endpoint(t.get("endpoint"), endpoint)]
                 if tables:
                     row = table2x2_to_trial(tables[0], r["name"], **m)
         if row is None:                              # fall back to precomputed effect
             for e in _effects_for(spec, extractor, text):
-                if metakit_measure_for(e.get("type")) == em and (
-                    endpoint is None or e.get("endpoint") == endpoint
+                if metakit_measure_for(e.get("type")) == em and _same_endpoint(
+                    e.get("endpoint"), endpoint
                 ):
                     row = effect_dict_to_trial(e, r["name"], **m)
                     if row:

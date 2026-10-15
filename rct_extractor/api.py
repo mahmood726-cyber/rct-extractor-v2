@@ -538,9 +538,9 @@ def to_metakit_config(
 
     This is the universal hand-off format consumed by RapidMeta, allmeta,
     Pairwise70 and the E156 capsules. Each record is ``{name, text, nct?, pmid?,
-    year?}``. For ratio measures (OR/HR/RR) the bridge prefers raw 2x2 counts
-    recovered from arm-level extraction; otherwise it falls back to precomputed
-    effect+CI.
+    year?}``. For OR/RR the bridge prefers valid raw 2x2 counts; HR
+    always requires a precomputed time-to-event effect and CI. Explicit endpoint
+    requests cannot silently substitute an unrelated outcome.
 
     Thin wrapper over ``src.bridges.meta_starter_kit.build_config_from_records``.
     """
